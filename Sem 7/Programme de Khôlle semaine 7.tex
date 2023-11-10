@@ -1,0 +1,87 @@
+\documentclass[french]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{amsmath}
+
+\title{Programme de Khôlle Semaine 7}
+\author{Kylian Boyet, George Ober}
+\date{10 Novembre 2023}
+\usepackage[a4paper, total={7in, 10in}]{geometry}
+\usepackage{amsfonts}
+\newcommand*{\norme}[1]{\left\lVert\overrightarrow{#1}\right\rVert} 
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+\section{Preuve de la Linéarité de la dérivation d'une fonction complexe}
+
+Définissons les fonctions $f_r$ etc. comme les parties réelles et imaginaires de $f$ 
+
+Soient $(f, g) \in \mathcal{F}(I, \mathbb C)^2$, $(\alpha, \beta) \in \mathbb C^2$ fixés quelconques.
+\begin{align*}
+	f_r = \Re(f) &, f_i = \Im(f) &g_r = \Re(f) &, g_i = \Im(g)\\
+	\alpha_r = \Re(\alpha) &, \alpha_i = \Im(f) &\beta_r = \Re(f) &, \beta_i = \Im(g)
+\end{align*}
+
+\begin{align*}
+	\Re( \alpha f + \beta g) &= \Re((\alpha_r + i \alpha_i)(f_r + i f_i) + (\beta_r+ i\beta_i)(g_r+ i g_i)) \\
+	&= \underbrace{\alpha_r f_r + \beta_r g_r - \alpha_i f_i - \beta_i g_i}_{\text{Combinaison linéaire de } \underbrace{(f_r, f_i, g_r, g_i) \in \mathcal D^1(I, \mathbb R)^4}_{car (f,g) \in D^1(I, \mathbb R)^2}}
+\end{align*}
+Donc, selon le théorème de stabilité par combinaison linéaire des fonctions à valeurs réelles, $\Re(\alpha f + \beta g) \in \mathcal D^1(I, \mathbb R)$ et $\big(\Re(\alpha f + \beta g)\big)' = \alpha_r f_r' + \beta_r g_r' - \alpha_i f_i' - \beta_i g_i'$
+\\
+On montre de même que $\Im(\alpha f + \beta g) \in \mathcal D^1(I, \mathbb R)$ et $\big(\alpha f + \beta g\big)' = \alpha_r f_i' +\alpha f_r' +\beta_r g_i' +\beta_i g_r'$
+
+Ainsi,
+\begin{align*}
+	\big( \alpha f + \beta g \big)' &= (\alpha_r f_r' + \beta_r g_r' - \alpha_i f_i' - \beta_i g_i') + i (\alpha_r f_i' +\alpha f_r' +\beta_r g_i' +\beta_i g_r') \\
+	&= \alpha_r(f_r' + if_i') + \beta_r(g_r' + ig_i') + \alpha_i \underbrace{(-f_i' + if_r')}_{i(f_r' + if_i')} + \beta_i \underbrace{( -g_i' + ig_r')}_{i(g_r' + ig_i')} \\
+	&=\alpha f' + \beta g'
+\end{align*}
+
+\section{Dérivée composée}
+
+Soient $f \in \mathcal D ^1(J, \mathbb C) $ et $h \in \mathcal D^1(I, J)$ (I et J sont deux intervalles réels) fixés quelconques. Notons $f_r$ et $f_i$ respectivement la partie réelle et imaginaire de $f$.
+
+\begin{equation}
+	\left .
+	\begin{array}{ll}
+		h \in \mathcal D^1(I, J) \\
+		f_r \in \mathcal D^1(J, \mathbb R) \text{, car } f \in \mathcal D^1(J, \mathbb C)
+	\end{array}
+	\right \}
+	\implies f_r \circ h \in \mathcal D^1(I, \mathbb R)
+\end{equation}
+
+On montre de même que $f_i \circ h \in \mathcal D^1(I, \mathbb  R)$ donc $f \circ h \in \mathcal D^1(I, \mathbb C)$.
+
+De plus,
+
+\begin{align*}
+	(f \circ h)' &= (f_r \circ h)' + i (f_i \circ h)' \\
+	&= (f_r' \circ h ) \times h' + i((f_i' \circ h) \times h')\\
+	&=(f_r' \circ h + if_i' \circ h) \times h' = (f' \circ h) \times h'
+\end{align*}
+
+\section{Caractérisation des fonctions dérivables de dérivée nulle sur un intervalle}
+
+Soit $f \in \mathcal D ^1 (I, \mathbb C)$ où $I$ est un intervalle réel;
+Posons $f_r = \Re (f)$ et $f_i = \Im(f)$.
+
+\begin{align*}
+\forall t \in I, f'(t) = 0 &\iff \forall t \in I, f_r'(t) + i f_i'(t) = 0 \\
+&\iff \begin{cases}
+	\forall t \in I, f_r'(t) = 0 \\
+	\forall t \in I, f_i'(t) = 0
+\end{cases} \\
+&\iff \begin{cases}
+	\exists \lambda_r \in \mathbb R : \forall t \in I,  f_r(t) = \lambda_r \\
+		\exists \lambda_i \in \mathbb R : \forall t \in I,  f_i(t) = \lambda_i
+\end{cases} \\
+&\iff \exists \lambda \in \mathbb C : \forall t \in I,  f(t) = \lambda
+\end{align*}
+
+\end{document}
+
+
