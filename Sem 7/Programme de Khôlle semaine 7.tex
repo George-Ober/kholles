@@ -12,6 +12,12 @@
 \newcommand*{\norme}[1]{\left\lVert\overrightarrow{#1}\right\rVert} 
 \usepackage{graphicx}
 
+\renewcommand{\Re}{\text{Re}}
+\renewcommand{\Im}{\text{Im}}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+
 \begin{document}
 
 \maketitle
@@ -19,7 +25,7 @@
 
 Définissons les fonctions $f_r$ etc. comme les parties réelles et imaginaires de $f$ 
 
-Soient $(f, g) \in \mathcal{F}(I, \mathbb C)^2$, $(\alpha, \beta) \in \mathbb C^2$ fixés quelconques.
+Soient $(f, g) \in \mathcal{F}(I, \C)^2$, $(\alpha, \beta) \in \C^2$ fixés quelconques.
 \begin{align*}
 	f_r = \Re(f) &, f_i = \Im(f) &g_r = \Re(f) &, g_i = \Im(g)\\
 	\alpha_r = \Re(\alpha) &, \alpha_i = \Im(f) &\beta_r = \Re(f) &, \beta_i = \Im(g)
@@ -27,11 +33,11 @@ Soient $(f, g) \in \mathcal{F}(I, \mathbb C)^2$, $(\alpha, \beta) \in \mathbb C^
 
 \begin{align*}
 	\Re( \alpha f + \beta g) &= \Re((\alpha_r + i \alpha_i)(f_r + i f_i) + (\beta_r+ i\beta_i)(g_r+ i g_i)) \\
-	&= \underbrace{\alpha_r f_r + \beta_r g_r - \alpha_i f_i - \beta_i g_i}_{\text{Combinaison linéaire de } \underbrace{(f_r, f_i, g_r, g_i) \in \mathcal D^1(I, \mathbb R)^4}_{car (f,g) \in D^1(I, \mathbb R)^2}}
+	&= \underbrace{\alpha_r f_r + \beta_r g_r - \alpha_i f_i - \beta_i g_i}_{\text{Combinaison linéaire de } \underbrace{(f_r, f_i, g_r, g_i) \in \mathcal D^1(I, \R)^4}_{car (f,g) \in D^1(I, \R)^2}}
 \end{align*}
-Donc, selon le théorème de stabilité par combinaison linéaire des fonctions à valeurs réelles, $\Re(\alpha f + \beta g) \in \mathcal D^1(I, \mathbb R)$ et $\big(\Re(\alpha f + \beta g)\big)' = \alpha_r f_r' + \beta_r g_r' - \alpha_i f_i' - \beta_i g_i'$
+Donc, selon le théorème de stabilité par combinaison linéaire des fonctions à valeurs réelles, $\Re(\alpha f + \beta g) \in \mathcal D^1(I, \R)$ et $\big(\Re(\alpha f + \beta g)\big)' = \alpha_r f_r' + \beta_r g_r' - \alpha_i f_i' - \beta_i g_i'$
 \\
-On montre de même que $\Im(\alpha f + \beta g) \in \mathcal D^1(I, \mathbb R)$ et $\big(\alpha f + \beta g\big)' = \alpha_r f_i' +\alpha f_r' +\beta_r g_i' +\beta_i g_r'$
+On montre de même que $\Im(\alpha f + \beta g) \in \mathcal D^1(I, \R)$ et $\big(\alpha f + \beta g\big)' = \alpha_r f_i' +\alpha f_r' +\beta_r g_i' +\beta_i g_r'$
 
 Ainsi,
 \begin{align*}
@@ -42,19 +48,19 @@ Ainsi,
 
 \section{Dérivée composée}
 
-Soient $f \in \mathcal D ^1(J, \mathbb C) $ et $h \in \mathcal D^1(I, J)$ (I et J sont deux intervalles réels) fixés quelconques. Notons $f_r$ et $f_i$ respectivement la partie réelle et imaginaire de $f$.
+Soient $f \in \mathcal D ^1(J, \C) $ et $h \in \mathcal D^1(I, J)$ (I et J sont deux intervalles réels) fixés quelconques. Notons $f_r$ et $f_i$ respectivement la partie réelle et imaginaire de $f$.
 
 \begin{equation}
 	\left .
 	\begin{array}{ll}
 		h \in \mathcal D^1(I, J) \\
-		f_r \in \mathcal D^1(J, \mathbb R) \text{, car } f \in \mathcal D^1(J, \mathbb C)
+		f_r \in \mathcal D^1(J, \R) \text{, car } f \in \mathcal D^1(J, \C)
 	\end{array}
 	\right \}
-	\implies f_r \circ h \in \mathcal D^1(I, \mathbb R)
+	\implies f_r \circ h \in \mathcal D^1(I, \R)
 \end{equation}
 
-On montre de même que $f_i \circ h \in \mathcal D^1(I, \mathbb  R)$ donc $f \circ h \in \mathcal D^1(I, \mathbb C)$.
+On montre de même que $f_i \circ h \in \mathcal D^1(I, \mathbb  R)$ donc $f \circ h \in \mathcal D^1(I, \C)$.
 
 De plus,
 
@@ -66,7 +72,7 @@ De plus,
 
 \section{Caractérisation des fonctions dérivables de dérivée nulle sur un intervalle}
 
-Soit $f \in \mathcal D ^1 (I, \mathbb C)$ où $I$ est un intervalle réel;
+Soit $f \in \mathcal D ^1 (I, \C)$ où $I$ est un intervalle réel;
 Posons $f_r = \Re (f)$ et $f_i = \Im(f)$.
 
 \begin{align*}
@@ -76,10 +82,10 @@ Posons $f_r = \Re (f)$ et $f_i = \Im(f)$.
 	\forall t \in I, f_i'(t) = 0
 \end{cases} \\
 &\iff \begin{cases}
-	\exists \lambda_r \in \mathbb R : \forall t \in I,  f_r(t) = \lambda_r \\
-		\exists \lambda_i \in \mathbb R : \forall t \in I,  f_i(t) = \lambda_i
+	\exists \lambda_r \in \R : \forall t \in I,  f_r(t) = \lambda_r \\
+		\exists \lambda_i \in \R : \forall t \in I,  f_i(t) = \lambda_i
 \end{cases} \\
-&\iff \exists \lambda \in \mathbb C : \forall t \in I,  f(t) = \lambda
+&\iff \exists \lambda \in \C : \forall t \in I,  f(t) = \lambda
 \end{align*}
 
 \end{document}
