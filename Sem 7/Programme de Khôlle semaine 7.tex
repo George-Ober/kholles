@@ -3,6 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{babel}
 \usepackage{amsmath}
+\usepackage{amsthm}
 
 \title{Programme de Khôlle Semaine 7}
 \author{Kylian Boyet, George Ober}
@@ -11,6 +12,8 @@
 \usepackage{amsfonts}
 \newcommand*{\norme}[1]{\left\lVert\overrightarrow{#1}\right\rVert} 
 \usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
 
 \renewcommand{\Re}{\text{Re}}
 \renewcommand{\Im}{\text{Im}}
@@ -21,8 +24,11 @@
 \begin{document}
 
 \maketitle
-\section{Preuve de la Linéarité de la dérivation d'une fonction complexe}
 
+Aucune démo de ce document n'apparait au programme de Khôlle \verb|T_T|
+\section{Preuve de la Linéarité de la dérivation d'une fonction complexe}
+\begin{proof}
+	
 Définissons les fonctions $f_r$ etc. comme les parties réelles et imaginaires de $f$ 
 
 Soient $(f, g) \in \mathcal{F}(I, \C)^2$, $(\alpha, \beta) \in \C^2$ fixés quelconques.
@@ -46,11 +52,12 @@ Ainsi,
 	&=\alpha f' + \beta g'
 \end{align*}
 
-\section{Dérivée composée}
-
+\end{proof}
+\section{Dérivée composée d'une fonction à valeurs complexes}
+\begin{proof}
 Soient $f \in \mathcal D ^1(J, \C) $ et $h \in \mathcal D^1(I, J)$ (I et J sont deux intervalles réels) fixés quelconques. Notons $f_r$ et $f_i$ respectivement la partie réelle et imaginaire de $f$.
 
-\begin{equation}
+\begin{align*}
 	\left .
 	\begin{array}{ll}
 		h \in \mathcal D^1(I, J) \\
@@ -58,7 +65,7 @@ Soient $f \in \mathcal D ^1(J, \C) $ et $h \in \mathcal D^1(I, J)$ (I et J sont 
 	\end{array}
 	\right \}
 	\implies f_r \circ h \in \mathcal D^1(I, \R)
-\end{equation}
+\end{align*}
 
 On montre de même que $f_i \circ h \in \mathcal D^1(I, \mathbb  R)$ donc $f \circ h \in \mathcal D^1(I, \C)$.
 
@@ -69,9 +76,9 @@ De plus,
 	&= (f_r' \circ h ) \times h' + i((f_i' \circ h) \times h')\\
 	&=(f_r' \circ h + if_i' \circ h) \times h' = (f' \circ h) \times h'
 \end{align*}
-
+\end{proof}
 \section{Caractérisation des fonctions dérivables de dérivée nulle sur un intervalle}
-
+\begin{proof}
 Soit $f \in \mathcal D ^1 (I, \C)$ où $I$ est un intervalle réel;
 Posons $f_r = \Re (f)$ et $f_i = \Im(f)$.
 
@@ -87,6 +94,7 @@ Posons $f_r = \Re (f)$ et $f_i = \Im(f)$.
 \end{cases} \\
 &\iff \exists \lambda \in \C : \forall t \in I,  f(t) = \lambda
 \end{align*}
+\end{proof}
 
 \end{document}
 
