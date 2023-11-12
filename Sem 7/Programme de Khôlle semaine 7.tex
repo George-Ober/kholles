@@ -20,6 +20,7 @@
 \renewcommand{\Re}{\text{Re}}
 \renewcommand{\Im}{\text{Im}}
 
+\newcommand{\N}{\mathbb N}
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\C}{\mathbb C}
 \newcommand{\R}{\mathbb R}
@@ -52,6 +53,8 @@ Aucune démo de ce document n'apparait au programme de Khôlle \verb|T_T|
 	\end{cases}
 	$$
 	\\
+	Soit $n\in \N$ fq
+	
 	Soient $(a_0, ..., a_n) \in \C^{n+1}$ les coefficients de $P(z) = \sum_{k=0}^n a_k z^k$, et $s\in \Z$, et $r \in \R_+^*$ fq. tels que P soit nulle lorsqu'elle est évaluée sur $\mathscr C(0,r)$
 	\begin{align*}
 		\frac{1}{2 \pi} \int_0^{2\pi} P(re^{it}) e^{-imt}dt &= \frac{1}{2 \pi} \int_0^{2\pi} \bigg (\sum_{k=0}^n a_k (re^{it})^k \bigg) e^{-imt}dt\\
@@ -59,10 +62,21 @@ Aucune démo de ce document n'apparait au programme de Khôlle \verb|T_T|
 	\end{align*}
 	On remarque que:
 	\begin{itemize}
-	\item Si $s \notin [[0, n]], \{k \in [[0, n]] \text{ }| \text{ } k = s\}$ = $\emptyset$, Donc $$\sum_{\substack{k \in [[0, n]] \\ k = s}} a_k r^k I_k = 0$$
-	\item Si $s \in [[0, n]], \{k \in [[0, n]] \text{ }| \text{ } k = s\}$ = ${s}$, Donc $$\sum_{\substack{k \in [[0, n]] \\ k = s}} a_k s^k I_k = a_s r^s$$
+	\item Si $s \notin [[0, n]], \{k \in [[0, n]] \text{ }| \text{ } k = s\}$ = $\emptyset$, Donc $$\sum_{k \in [[0, n]]} a_k s^k I_k  = \sum_{\substack{k \in [[0, n]] \\ k = s}} a_k r^k  = 0$$
+	\item Si $s \in [[0, n]], \{k \in [[0, n]] \text{ }| \text{ } k = s\}$ = ${s}$, Donc $$\sum_{k \in [[0, n]]} a_k s^k I_k = \sum_{\substack{k \in [[0, n]] \\ k = s}} a_k s^k = a_s r^s \label{1}$$
 	\end{itemize}
-	Supposons maintenant que 
+	Or, puisque $P$ s'annule sur le cercle de rayon $r$ et de centre $0$,  $\mathscr C(0,r)$, ces sommes sont aussi nulles. On en déduit, en particularisant pour un $s \in [[0, n]]$ fixé quelconque que:
+	$$
+	\sum_{k \in [[0, n]]} a_k s^k I_k = a_sr^s = 0 \implies a_s = 0
+	$$
+	
+	Donc $$
+	(\exists r \in \R_+^* : \forall \theta \in \R, P(re^{i\theta})=0) \implies \forall s \in [[0, n]]
+	$$
+	\\
+	Pour la preuve réciproque,  soit $n \in \N$ fq. Soient $(a_0,...,a_n) \in \{ 0 \} ^{n+1}$ les coefficients nuls de la fonction polynomiale $P \in \C[z]$ définie pour tout $z \in \C$.
+	
+	En remarquant que $\forall z \in \C , P(z) = 0$, puisque n'importe quel cercle centré en 0 est un sous ensemble de $\C$,  $\exists r \in \R_+^*: \forall z \in \mathscr C(0, r), P(z) = 0$.
 \end{proof}
 
 \section{Preuve de la Linéarité de la dérivation d'une fonction complexe}
