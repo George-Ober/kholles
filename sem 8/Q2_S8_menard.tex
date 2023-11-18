@@ -1,1 +1,117 @@
-Q2_S8_menard.tex
+documentclass{article}
+
+\usepackage[french]{babel}
+\usepackage{amsmath}
+%\usepackage{stmaryrd}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta,arrows}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Khôlles Maths 6-16},
+    pdfpagemode=FullScreen,
+    }
+
+\title{Khôlles : Maths}
+\author{Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}
+
+\begin{document}
+\maketitle
+
+\flushleft
+\textbf{Question2.} Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).
+\newline
+
+\textbf{Réponse. } Considérons le problème de Cauchy suivant :
+$$\left\{ \begin{array}{l}
+    a_{2}y''+a_{1}y'+a_{0}y = b \text{ sur } J  \\
+    y(t_{0}) = \alpha_{0} \\
+    y'(t_{0}) = \alpha_{1}
+\end{array} \right. \text{ où } (\alpha_{0}, \alpha_{1}) \in \mathbb{K}^{2}, t_{0} \in J, (a_{0}, a_{1}, a_{2}) \in \mathbb{K}^{2} \times \mathbb{K}^{*}, b \in \mathcal{F}(J, \mathbb{K})$$
+Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.
+\newline\newline
+
+\textbf{Démonstration. } \\
+\textbf{Cas 1. } $\mathbb{K} = \mathbb{C}$ \\
+Nous savons que sous l'hyphothèse de continuité de $b$ sur $J$, les solutions de (EDL2) définies sur $J$ constituent le plan affine $S$ :
+$$S = \left\{ \lambda f_{1} + \mu f_{2} + s | (\lambda, \mu) \in \mathbb{C}^{2} \right\}$$
+où $s$ est une solution particulière de (EDL2), $(f_{1}, f_{2})$ sont deux solutions de (EDLH2) qui engendrent $S_{h}$. On a : \\
+
+$$\begin{array}{ccl}
+    f : J \to \mathbb{C} \text{ est sol. du pb de Cauchy } 
+    &\iff &\left\{ \begin{array}{l}
+      f \text{ sol de (EDL2) sur } J    \\
+      f(t_{0}) = \alpha_{0}    \\
+      f'(t_{0}) = \alpha_{1}
+    \end{array}  \right. \\\\
+    &\iff &\left\{ \begin{array}{l}
+      f \in S    \\
+      f(t_{0}) = \alpha_{0}    \\
+      f'(t_{0}) = \alpha_{1}
+    \end{array}\right. \\\\
+    &\iff &\exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
+      f = \lambda f_{1} + \mu f_{2} + s \\
+      \lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) + s(t_{0}) = \alpha_{0} \\
+      \lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) + s'(t_{0}) = \alpha_{1} \\
+    \end{array} \right. \\\\
+    &\iff &\exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
+      f = \lambda f_{1} + \mu f_{2} + s \\
+      \lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) = \alpha_{0} - s(t_{0}) \\
+      \lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) = \alpha_{1} - s'(t_{0}) \\
+    \end{array} \right. \\\\
+\end{array} $$
+On en déduit donc que $(\lambda, \mu)$ doit être solution d'un système linéaire $(2,2)$. On a une unique solution si et seulement si les déterminant de ce système est nul. \\
+Explicitons alors le déterminant de ce système, que l'on notera $D$.
+$$D = \left| 
+\begin{array}{cc}
+f_{1}(t_{0}) &f_{2}(t_{0}) \\
+f'_{1}(t_{0}) &f'_{2}(t_{0}) \\
+\end{array}
+\right| = f_{1}(t_{0}) \cdot f'_{2}(t_{0}) - f_{2}(t_{0}) \cdot f'_{1}(t_{0}) $$
+Notons $\Delta$ le discriminant de l'équation caractéristique de (EDL2) ($a_{2}r^{2} + a_{1}r^{1} + a_{0} = 0$). On distingue alors deux cas selon la nullité ou non de $\Delta$. Traitons d'abord le cas $\Delta \neq 0$. On peut choisir : 
+$$ f_{1}(t_{0}) = e^{r_{1}t_{0}} \text{ et } f_{2}(t_{0}) = e^{r_{2}t_{0}}$$
+$$ f'_{1}(t_{0}) = r_{1}e^{r_{1}t_{0}} \text{ et } f'_{2}(t_{0}) = r_{2}e^{r_{2}t_{0}}$$
+Donc (en sachant que $\Delta \neq 0 \Rightarrow r_{1} \neq r_{2}$):
+$$ D = e^{r_{1}t_{0}} \cdot r_{2}e^{r_{2}t_{0}} - r_{1}e^{r_{1}t_{0}} \cdot e^{r_{2}t_{0}} = (r_{2} - r_{1}) \cdot e^{r_{1}t_{0} + r_{2}t_{0}} \neq 0$$
+
+Dans le deuxième cas, on a $\Delta = 0$ ; on peut alors prendre :
+$$ f_{1}(t_{0}) = e^{r_{0}t_{0}} \text{ et } f_{2}(t_{0}) = t_{0}e^{r_{0}t_{0}}$$
+Ainsi : 
+$$ D = e^{r_{0}t_{0}} \left(r_{0}t_{0}e^{r_{0}t_{0}} + e^{r_{0}t_{0}} \right) - r_{0}e^{r_{0}t_{0}} \times t_{0}e^{r_{0}t_{0}} = e^{2r_{0}t_{0}} \neq 0$$
+On remarque alors que, dans les deux cas, $D \neq 0$, donc le système $(2, 2)$ étudié admet une unique solution, donc il existe un unique couple $(\lambda, \mu)$ le vérifiant d'où l'unicité et existence d'une solution au problème de Cauchy. 
+\newline\newline
+
+\textbf{Cas 2. } $\mathbb{K} = \mathbb{R}$ \\
+$(a_{0}, a_{1}, a_{2}) \in \mathbb{R}^{2} \times \mathbb{R}^{*},(\alpha_{0}, \alpha_{1}) \in \mathbb{R}^{2}, b \in C^{0}(J, \mathbb{R})$ 
+\newline
+\textbf{Existence :} Puisque $\mathbb{R} \subset \mathbb{C}$, le problème de Cauchy admet, dans $\mathbb{R}$, une solution à valeurs complexes $g$. Posons $f = \mathfrak{Re}(g)$ et montrons que $f$ est une solution réelle du problème de Cauchy. \\
+\begin{itemize}
+    \item[$\star$] $g \in \mathcal{D}^{2}(J, \mathbb{C}) \text{ donc } f \in \mathcal{D}^{2}(J, \mathbb{R})$
+    \item[$\star$] $g$ vérifie $a_{2}g'' + a_{1}g' + a_{0}g = b$ sur $J$ donc en prenant $\mathfrak{Re}(\cdot)$ : 
+    $$\begin{array}{ccl}
+      \mathfrak{Re}(a_{2}g'' + a_{1}g' + a_{0}g = b) = \mathfrak{Re}(b)   
+      &\iff &a_{2}\mathfrak{Re}(g'') + a_{1}\mathfrak{Re}(g') + a_{0}\mathfrak{Re}(g) = b  \\\\
+      &\iff & a_{2}f'' + a_{1}f' + a_{0}f = b \text{ sur } J
+    \end{array}$$
+    \item[$\star$] $f(t_{0} = \mathfrak{Re}(g(t_{0})) = \mathfrak{Re}(\alpha_{0}) = \alpha_{0}$
+    \item[$\star$] $f'(t_{0} = \mathfrak{Re}(g(t_{0}))' = \mathfrak{Re}(g'(t_{0})) = \mathfrak{Re}(\alpha_{1}) = \alpha_{1}$
+\end{itemize}
+Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy. 
+\newline
+
+\textbf{Unicité : }Soient $f_{1}$ et $f_{2}$ deux fonctions à valeurs réelles solutions du problème de Cauchy ci-dessus fixées quelconques : puisque $\mathbb{R} \subset \mathbb{C}$, $f_{1}$ et $f_{2}$ sont des fonctions à valeurs dans $\mathbb{C}$ solutions du même problème de Cauchy; or il y a unicité de la solution au problème de Cauchy dans les fonctions à valeurs complexes, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{C})$, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{R})$.
+\end{document}
