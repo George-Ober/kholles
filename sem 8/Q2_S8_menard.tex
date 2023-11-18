@@ -1,4 +1,4 @@
-documentclass{article}
+\documentclass{article}
 
 \usepackage[french]{babel}
 \usepackage{amsmath}
@@ -8,7 +8,10 @@ documentclass{article}
 \usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[utf8]{inputenc}
+
 \usepackage{amsthm}
+
 \usepackage{amsfonts}
 \usepackage{hyperref}
 \usepackage{tikz}
@@ -26,6 +29,16 @@ documentclass{article}
     pdfpagemode=FullScreen,
     }
 
+\newcommand{\Sol}{\mathcal S}
+
+\renewcommand{\Re}{\text{Re}}
+\renewcommand{\Im}{\text{Im}}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+
 \title{Khôlles : Maths}
 \author{Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}
 
@@ -33,10 +46,51 @@ documentclass{article}
 \maketitle
 
 \flushleft
-\textbf{Question2.} Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).
-\newline
 
-\textbf{Réponse. } Considérons le problème de Cauchy suivant :
+\section{Preuve de l’expression des solutions réelles des EDL homogènes d’ordre 2 à coefficients constants réels dans le cas $\Delta < 0$ (en admettant la connaissance de l’expression des solutions à valeurs complexes des EDLH2 à coeff. constants).}
+
+\begin{proof}
+	Notons $\Sol_{H, \C}$ et $\Sol_{H, \R}$ les ensembles des solutions complexes et réelles de l'équation différentielle, puisque nous nous plaçons dans le cas $\Delta = 0$ et $\alpha \pm i \beta$ les deux racines complexes conjuguées.
+	$$
+	\Sol_{H, \C} = 
+	\left\{ 
+	\begin{array}{l}
+    \R \to \C  \\
+    t \mapsto \lambda e^{(\alpha + i \beta) t}  + \mu e^{(\alpha - i \beta)t}
+  \end{array}
+	\middle\vert  (\lambda, \mu) \in \C ^2 \right\}
+	
+	$$
+	
+	Montrons que $\forall f \in \Sol_{H ,\C}, \Re(f) \in  \Sol_{H ,\R}$\\
+	Soit $f \in \Sol_{H ,\C}$ fq.
+	$$f \in \mathcal D^2(\R, \C) \implies \Re(f) \in \mathcal D^2(\R, \R)$$
+	Et, de plus, par morphisme additif de \Re
+	$$
+	a_2\Re(f)'' + a_1\Re(f)' + a_0\Re(f) = \Re( a_2 f'' + a_1 f' + a_0 f) = 0
+	$$
+	D'où, avec $f:t \mapsto e^{(\alpha + i \beta)t}$; $\Re(f(t)) = \Re(e^{(\alpha + i \beta)t}) = e^{\alpha t } \cos (\beta t)$. Qui appartient donc à $\Sol_{H, \R}$\\
+	En suivant le même raisonnement pour $\Im(f)$, $(t \mapsto e^\alpha \sin(\beta t)) \in \Sol_{H, \R}$
+	
+	
+	Ainsi, par combinaison linéaire (qui se base sur le principe de superposition),
+	$$
+	\left\{ 
+	\begin{array}{l}
+    \R \to \R  \\
+    t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
+  \end{array}
+	\middle\vert  (\lambda, \mu) \in \R ^2 \right\}
+	\subset \Sol_{H ,\R}
+
+	$$
+	
+	Réciproquement, soit $ f \in \Sol_{H ,\R}$ fq
+\end{proof}
+
+\section{Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).}
+
+Considérons le problème de Cauchy suivant :
 $$\left\{ \begin{array}{l}
     a_{2}y''+a_{1}y'+a_{0}y = b \text{ sur } J  \\
     y(t_{0}) = \alpha_{0} \\
@@ -45,7 +99,7 @@ $$\left\{ \begin{array}{l}
 Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.
 \newline\newline
 
-\textbf{Démonstration. } \\
+\begin{proof} \\
 \textbf{Cas 1. } $\mathbb{K} = \mathbb{C}$ \\
 Nous savons que sous l'hyphothèse de continuité de $b$ sur $J$, les solutions de (EDL2) définies sur $J$ constituent le plan affine $S$ :
 $$S = \left\{ \lambda f_{1} + \mu f_{2} + s | (\lambda, \mu) \in \mathbb{C}^{2} \right\}$$
@@ -114,4 +168,5 @@ Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy.
 \newline
 
 \textbf{Unicité : }Soient $f_{1}$ et $f_{2}$ deux fonctions à valeurs réelles solutions du problème de Cauchy ci-dessus fixées quelconques : puisque $\mathbb{R} \subset \mathbb{C}$, $f_{1}$ et $f_{2}$ sont des fonctions à valeurs dans $\mathbb{C}$ solutions du même problème de Cauchy; or il y a unicité de la solution au problème de Cauchy dans les fonctions à valeurs complexes, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{C})$, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{R})$.
+\end{proof}
 \end{document}
