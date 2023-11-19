@@ -85,7 +85,31 @@
 
 	$$
 	
-	Réciproquement, soit $ f \in \Sol_{H ,\R}$ fq
+	Réciproquement, soit $ f \in \Sol_{H ,\R}$ fq. Puisque $\R \subset \C$,  $ f \in \Sol_{H ,\C}$.
+	
+	$$
+	\exists (a, b) \in \C^2 : f \left| \begin{array}{l}
+    \R \to \C  \\
+    t \mapsto a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t}
+	\end{array}\right.$$
+
+	Or, puisque toutes les valeurs de $f$ sont réelles,
+	\begin{align*}
+		\forall t \in \R, f(t) &= \Re(f(t)) \\
+				&= \Re(a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t})\\
+				&= \Re((a_r + i a_i) e^{(\alpha + i \beta) t}  + (b_r + i b_i) e^{(\alpha - i \beta)t})\\
+			    &= a_r \cos(\beta t)e^\alpha - a_i\sin(\beta t)e^\alpha + b_r \cos(\beta t)e^\alpha + b_i \sin(\beta t) e^\alpha \\
+			    &= (a_r + b_r) \cos(\beta t) e^\alpha + (b_i - a_i) \sin(\beta t) e^\alpha
+	\end{align*}
+	Ainsi,
+	$$f\in \left\{ 
+	\begin{array}{l}
+    \R \to \R  \\
+    t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
+  \end{array}
+	\middle\vert  (\lambda, \mu) \in \R ^2 \right\}
+$$
+Ce qui conclut la preuve par double inclusion.
 \end{proof}
 
 \section{Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).}
@@ -99,7 +123,7 @@ $$\left\{ \begin{array}{l}
 Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.
 \newline\newline
 
-\begin{proof} \\
+\begin{proof} 
 \textbf{Cas 1. } $\mathbb{K} = \mathbb{C}$ \\
 Nous savons que sous l'hyphothèse de continuité de $b$ sur $J$, les solutions de (EDL2) définies sur $J$ constituent le plan affine $S$ :
 $$S = \left\{ \lambda f_{1} + \mu f_{2} + s | (\lambda, \mu) \in \mathbb{C}^{2} \right\}$$
