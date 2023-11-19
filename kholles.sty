@@ -1,0 +1,69 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kholles}[2023/09/12]
+
+% paquets de traduction
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[french]{babel}
+
+% paquets mathématiques
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{stmaryrd}
+\RequirePackage{mathrsfs}
+
+% paquets graphiques
+\RequirePackage{geometry}
+	\geometry{
+		a4paper,
+		top=2cm,
+		bottom=2cm,
+		right=3cm,
+		left=3cm
+	}
+\RequirePackage{hyperref}
+	\hypersetup{
+		colorlinks=true,
+		linkcolor=blue,
+		filecolor=magenta,
+		urlcolor=cyan,
+		pdftitle={Khôlles de Mathémtiques},
+		pdfauthor={Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}
+	}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{arrows.meta, arrows}
+\RequirePackage{pgfplots}
+	\pgfplotsset{compat=1.15}
+
+
+% environnement des questions de khôlles
+\newenvironment{question_kholle}[2][ ]
+{
+	\section{#2}
+	#1
+	\bigbreak\bigbreak
+	\begin{proof}
+	}
+	{
+	\end{proof}
+}
+
+
+% Symbols
+\newcommand{\Sol}{\mathcal S}
+
+\renewcommand{\Re}{\text{Re}}
+\renewcommand{\Im}{\text{Im}}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+
+% Le titre
+\title{Khôlles de Mathématiques}
+\author{Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}

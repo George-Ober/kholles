@@ -1,55 +1,13 @@
 \documentclass{article}
 
-\usepackage[french]{babel}
-\usepackage{amsmath}
-%\usepackage{stmaryrd}
-\usepackage{amssymb}
-\usepackage[T1]{fontenc}
-\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
-\usepackage{graphicx}
-\usepackage[colorlinks=true, allcolors=blue]{hyperref}
-\usepackage[utf8]{inputenc}
-
-\usepackage{amsthm}
-
-\usepackage{amsfonts}
-\usepackage{hyperref}
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.15}
-\usepackage{mathrsfs}
-\usetikzlibrary{shapes.geometric}
-\usetikzlibrary{arrows.meta,arrows}
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=cyan,
-    pdftitle={Khôlles Maths 6-16},
-    pdfpagemode=FullScreen,
-    }
-
-\newcommand{\Sol}{\mathcal S}
-
-\renewcommand{\Re}{\text{Re}}
-\renewcommand{\Im}{\text{Im}}
-
-\newcommand{\N}{\mathbb N}
-\newcommand{\Z}{\mathbb Z}
-\newcommand{\C}{\mathbb C}
-\newcommand{\R}{\mathbb R}
-
-\title{Khôlles : Maths}
-\author{Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}
+\usepackage{../kholles}
 
 \begin{document}
 \maketitle
 
 \flushleft
 
-\section{Preuve de l’expression des solutions réelles des EDL homogènes d’ordre 2 à coefficients constants réels dans le cas $\Delta < 0$ (en admettant la connaissance de l’expression des solutions à valeurs complexes des EDLH2 à coeff. constants).}
-
-\begin{proof}
+\begin{question_kholle}{Preuve de l’expression des solutions réelles des EDL homogènes d’ordre 2 à coefficients constants réels dans le cas $\Delta < 0$ (en admettant la connaissance de l’expression des solutions à valeurs complexes des EDLH2 à coeff. constants).}
 	Notons $\Sol_{H, \C}$ et $\Sol_{H, \R}$ les ensembles des solutions complexes et réelles de l'équation différentielle, puisque nous nous plaçons dans le cas $\Delta = 0$ et $\alpha \pm i \beta$ les deux racines complexes conjuguées.
 	$$
 	\Sol_{H, \C} = 
@@ -58,8 +16,7 @@
     \R \to \C  \\
     t \mapsto \lambda e^{(\alpha + i \beta) t}  + \mu e^{(\alpha - i \beta)t}
   \end{array}
-	\middle\vert  (\lambda, \mu) \in \C ^2 \right\}
-	
+	\middle\vert  (\lambda, \mu) \in \C ^2 \right\}	
 	$$
 	
 	Montrons que $\forall f \in \Sol_{H ,\C}, \Re(f) \in  \Sol_{H ,\R}$\\
@@ -82,7 +39,6 @@
   \end{array}
 	\middle\vert  (\lambda, \mu) \in \R ^2 \right\}
 	\subset \Sol_{H ,\R}
-
 	$$
 	
 	Réciproquement, soit $ f \in \Sol_{H ,\R}$ fq. Puisque $\R \subset \C$,  $ f \in \Sol_{H ,\C}$.
@@ -110,20 +66,19 @@
 	\middle\vert  (\lambda, \mu) \in \R ^2 \right\}
 $$
 Ce qui conclut la preuve par double inclusion.
-\end{proof}
+\end{question_kholle}
 
-\section{Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).}
-
-Considérons le problème de Cauchy suivant :
-$$\left\{ \begin{array}{l}
-    a_{2}y''+a_{1}y'+a_{0}y = b \text{ sur } J  \\
-    y(t_{0}) = \alpha_{0} \\
-    y'(t_{0}) = \alpha_{1}
-\end{array} \right. \text{ où } (\alpha_{0}, \alpha_{1}) \in \mathbb{K}^{2}, t_{0} \in J, (a_{0}, a_{1}, a_{2}) \in \mathbb{K}^{2} \times \mathbb{K}^{*}, b \in \mathcal{F}(J, \mathbb{K})$$
-Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.
-\newline\newline
-
-\begin{proof} 
+\begin{question_kholle}[
+	Considérons le problème de Cauchy suivant :
+	$$\left\{ \begin{array}{l}
+		a_{2}y''+a_{1}y'+a_{0}y = b \text{ sur } J  \\
+		y(t_{0}) = \alpha_{0} \\
+		y'(t_{0}) = \alpha_{1}
+	\end{array} \right. \text{ où } (\alpha_{0}, \alpha_{1}) \in \mathbb{K}^{2}, t_{0} \in J, (a_{0}, a_{1}, a_{2}) \in \mathbb{K}^{2} \times \mathbb{K}^{*}, b \in \mathcal{F}(J, \mathbb{K})$$
+	Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.
+	]
+	{Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).}
+ 
 \textbf{Cas 1. } $\mathbb{K} = \mathbb{C}$ \\
 Nous savons que sous l'hyphothèse de continuité de $b$ sur $J$, les solutions de (EDL2) définies sur $J$ constituent le plan affine $S$ :
 $$S = \left\{ \lambda f_{1} + \mu f_{2} + s | (\lambda, \mu) \in \mathbb{C}^{2} \right\}$$
@@ -192,37 +147,36 @@ Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy.
 \newline
 
 \textbf{Unicité : }Soient $f_{1}$ et $f_{2}$ deux fonctions à valeurs réelles solutions du problème de Cauchy ci-dessus fixées quelconques : puisque $\mathbb{R} \subset \mathbb{C}$, $f_{1}$ et $f_{2}$ sont des fonctions à valeurs dans $\mathbb{C}$ solutions du même problème de Cauchy; or il y a unicité de la solution au problème de Cauchy dans les fonctions à valeurs complexes, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{C})$, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{R})$.
-\end{proof}
+\end{question_kholle}
 
-\section{Soient $(a,b)\in \mathbb{C}^2$, $f$ et $g$ les  solutions, définies sur $\mathbb{R}$ à valeurs
-dans $\mathbb{C}$, des problèmes de Cauchy suivants :}
+\begin{question_kholle}[
+	\[
+	    \left\{ \begin{array}{cl}
+	        y'' +ay'+by = 0 \\
+	        y(3) = 1\\
+	        y'(3) = 0
+	        \end{array} \right.        
+		\quad \text{et} \quad
+	    \left\{ \begin{array}{cl}
+	        y'' +ay'+by = 0 \\
+	        y(3) = 0\\
+	        y'(3) = 1
+	        \end{array} \right.
+	\]
+	
+	Comment s'exprime la solution définie sur $\mathbb{R}$ de $\left\{ \begin{array}{cl}
+	    y'' +ay'+by = 0 \\
+	    y(3) = \alpha \\
+	    y'(3) = \beta
+	    \end{array} \right. $ pour $(\alpha, \beta)\in \mathbb{R}^2$ fixés ? 
+	
+	Peut-on affirmer que le plan vectoriel des solutions définies sur $\mathbb{R}$ à valeurs dans 
+	$\mathbb{C}$ de $y'' + ay' + by = 0$ est $\{ \lambda \cdot f + \mu \cdot g  | 
+	(\lambda, \mu)\in \mathbb{C}^2\}$
+	]
+	{Soient $(a,b)\in \mathbb{C}^2$, $f$ et $g$ les  solutions, définies sur $\mathbb{R}$ à valeurs
+		dans $\mathbb{C}$, des problèmes de Cauchy suivants :}
 
-
-\[
-    \left\{ \begin{array}{cl}
-        y'' +ay'+by = 0 \\
-        y(3) = 1\\
-        y'(3) = 0
-        \end{array} \right.        
-	\quad \text{et} \quad
-    \left\{ \begin{array}{cl}
-        y'' +ay'+by = 0 \\
-        y(3) = 0\\
-        y'(3) = 1
-        \end{array} \right.
-\]
-
-Comment s'exprime la solution définie sur $\mathbb{R}$ de $\left\{ \begin{array}{cl}
-    y'' +ay'+by = 0 \\
-    y(3) = \alpha \\
-    y'(3) = \beta
-    \end{array} \right. $ pour $(\alpha, \beta)\in \mathbb{R}^2$ fixés ? 
-
-Peut-on affirmer que le plan vectoriel des solutions définies sur $\mathbb{R}$ à valeurs dans 
-$\mathbb{C}$ de $y'' + ay' + by = 0$ est $\{ \lambda \cdot f + \mu \cdot g  | 
-(\lambda, \mu)\in \mathbb{C}^2\}$
-
-\begin{proof}
     La solution s'exprime simplement comme combinaison linéaire de f et g, plus précisément, la 
     combinaison linéaire en $\alpha$ et $\beta$. En effet, soient de tels scalaires, et soient $f$ et 
     $g$ de telles solutions, on a : 
@@ -242,6 +196,6 @@ $\mathbb{C}$ de $y'' + ay' + by = 0$ est $\{ \lambda \cdot f + \mu \cdot g  |
     l'$EDL_2$, mais aussi des conditions de Cauchy bien que celles-ci soient non-spécifiées, ainsi
     posons $\omega'(3) = \delta$ et $\omega''(3) = \theta$, donc en particulier, $ \omega = 
     \delta \cdot f + \theta \cdot g$, d'où l'égalité par double inclusion.
-\end{proof}
+\end{question_kholle}
 
 \end{document}
