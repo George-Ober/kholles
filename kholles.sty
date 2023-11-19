@@ -20,9 +20,8 @@
 		a4paper,
 		top=2cm,
 		bottom=2cm,
-		right=2cm,
-		left=2cm,
-		marginpparwidth=1.75cm
+		right=3cm,
+		left=3cm
 	}
 \RequirePackage{hyperref}
 	\hypersetup{
@@ -41,20 +40,17 @@
 	\pgfplotsset{compat=1.15}
 
 
-\title{Khôlles de Mathématiques}
-\author{Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}
-
-
 % environnement des questions de khôlles
-\newenvironment[title]{question_kholle}
-	{
-		\section{title}
-	
-		\begin{proof}
+\newenvironment{question_kholle}[2][ ]
+{
+	\section{#2}
+	#1
+	\bigbreak\bigbreak
+	\begin{proof}
 	}
 	{
-		\end{proof}
-	}
+	\end{proof}
+}
 
 
 % Symbols
@@ -67,3 +63,7 @@
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\C}{\mathbb C}
 \newcommand{\R}{\mathbb R}
+
+% Le titre
+\title{Khôlles de Mathématiques}
+\author{Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}

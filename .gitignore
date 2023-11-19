@@ -1,3 +1,5 @@
-textput.log
 *.log
 *.aux
+*.out
+*.synctex.gz
+*.toc
