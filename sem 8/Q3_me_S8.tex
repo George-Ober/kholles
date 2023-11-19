@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{stmaryrd}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta,arrows}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Khôlles Maths 6-16},
+    pdfpagemode=FullScreen,
+    }
+
+\title{Khôlles : Maths}
+\author{Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Soient $(a,b)\in \mathbb{C}^2$, $f$ et $g$ les  solutions, définies sur $\mathbb{R}$ à valeurs
+dans $\mathbb{C}$, des problèmes de Cauchy suivants :}
+
+
+\[
+    \left\{ \begin{array}{cl}
+        y'' +ay'+by = 0 \\
+        y(3) = 1\\
+        y'(3) = 0
+        \end{array} \right.        
+	\quad \text{et} \quad
+    \left\{ \begin{array}{cl}
+        y'' +ay'+by = 0 \\
+        y(3) = 0\\
+        y'(3) = 1
+        \end{array} \right.
+\]
+
+Comment s'exprime la solution définie sur $\mathbb{R}$ de $\left\{ \begin{array}{cl}
+    y'' +ay'+by = 0 \\
+    y(3) = \alpha \\
+    y'(3) = \beta
+    \end{array} \right. $ pour $(\alpha, \beta)\in \mathbb{R}^2$ fixés ? 
+
+Peut-on affirmer que le plan vectoriel des solutions définies sur $\mathbb{R}$ à valeurs dans 
+$\mathbb{C}$ de $y'' + ay' + by = 0$ est $\{ \lambda \cdot f + \mu \cdot g  | 
+(\lambda, \mu)\in \mathbb{C}^2\}$
+
+\begin{proof}
+    La solution s'exprime simplement comme combinaison linéaire de f et g, plus précisément, la 
+    combinaison linéaire en $\alpha$ et $\beta$. En effet, soient de tels scalaires, et soient $f$ et 
+    $g$ de telles solutions, on a : 
+    \[
+        (\alpha \cdot f + \beta \cdot g)'' + a (\alpha \cdot f + \beta \cdot g)' + b (\alpha \cdot f + 
+        \beta \cdot g) = 0 \text{, par définition des espaces vectoriels.}
+    \]
+    Et de même, $(\alpha \cdot f + \beta \cdot g)'(3) = \alpha \cdot f'(3) + \beta \cdot g'(3) = \alpha$,
+    et $(\alpha \cdot f + \beta \cdot g)''(3) = \alpha \cdot f''(3) + \beta \cdot g''(3) = \beta$.
+    \newline
+    Ce qui suffit par unicité des solutions ( de la donc) d'un problème de Cauchy dans le cadre du 
+    théorème du cours.
+    \newline
+    Pour ce qui est du plan vectoriel des solutions, noté $\Omega$, notons aussi $\Phi$ l'ensemble proposé.
+    L'inclusion $\Phi \subset \Omega$ est triviale par propriété de linéarité des espaces vectoriels.
+    Finalement, pour $\Omega \subset \Phi$, soit $\omega \in \Omega$, forcément, $\omega$ vérifie 
+    l'$EDL_2$, mais aussi des conditions de Cauchy bien que celles-ci soient non-spécifiées, ainsi
+    posons $\omega'(3) = \delta$ et $\omega''(3) = \theta$, donc en particulier, $ \omega = 
+    \delta \cdot f + \theta \cdot g$, d'où l'égalité par double inclusion.
+\end{proof}
+
+\end{document}
