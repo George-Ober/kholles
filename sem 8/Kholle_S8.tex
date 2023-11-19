@@ -93,7 +93,7 @@
     t \mapsto a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t}
 	\end{array}\right.$$
 
-	Or, puisque toutes les valeurs de $f$ sont réelles,
+	Or, puisque toutes les valeurs de $f$ sont réelles, en notant $(a_r, a_i, b_r, b_i)$ les parties réelles et imaginaires respectives de $a$ et $b$.
 	\begin{align*}
 		\forall t \in \R, f(t) &= \Re(f(t)) \\
 				&= \Re(a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t})\\
@@ -176,21 +176,72 @@ On remarque alors que, dans les deux cas, $D \neq 0$, donc le système $(2, 2)$ 
 \textbf{Cas 2. } $\mathbb{K} = \mathbb{R}$ \\
 $(a_{0}, a_{1}, a_{2}) \in \mathbb{R}^{2} \times \mathbb{R}^{*},(\alpha_{0}, \alpha_{1}) \in \mathbb{R}^{2}, b \in C^{0}(J, \mathbb{R})$ 
 \newline
-\textbf{Existence :} Puisque $\mathbb{R} \subset \mathbb{C}$, le problème de Cauchy admet, dans $\mathbb{R}$, une solution à valeurs complexes $g$. Posons $f = \mathfrak{Re}(g)$ et montrons que $f$ est une solution réelle du problème de Cauchy. \\
+\textbf{Existence :} Puisque $\mathbb{R} \subset \mathbb{C}$, le problème de Cauchy admet, dans $\mathbb{R}$, une solution à valeurs complexes $g$. Posons $f = \Re(g)$ et montrons que $f$ est une solution réelle du problème de Cauchy. \\
 \begin{itemize}
     \item[$\star$] $g \in \mathcal{D}^{2}(J, \mathbb{C}) \text{ donc } f \in \mathcal{D}^{2}(J, \mathbb{R})$
-    \item[$\star$] $g$ vérifie $a_{2}g'' + a_{1}g' + a_{0}g = b$ sur $J$ donc en prenant $\mathfrak{Re}(\cdot)$ : 
+    \item[$\star$] $g$ vérifie $a_{2}g'' + a_{1}g' + a_{0}g = b$ sur $J$ donc en prenant $\Re(\cdot)$ : 
     $$\begin{array}{ccl}
-      \mathfrak{Re}(a_{2}g'' + a_{1}g' + a_{0}g = b) = \mathfrak{Re}(b)   
-      &\iff &a_{2}\mathfrak{Re}(g'') + a_{1}\mathfrak{Re}(g') + a_{0}\mathfrak{Re}(g) = b  \\\\
+      \Re(a_{2}g'' + a_{1}g' + a_{0}g = b) = \Re(b)   
+      &\iff &a_{2}\Re(g'') + a_{1}\Re(g') + a_{0}\Re(g) = b  \\\\
       &\iff & a_{2}f'' + a_{1}f' + a_{0}f = b \text{ sur } J
     \end{array}$$
-    \item[$\star$] $f(t_{0} = \mathfrak{Re}(g(t_{0})) = \mathfrak{Re}(\alpha_{0}) = \alpha_{0}$
-    \item[$\star$] $f'(t_{0} = \mathfrak{Re}(g(t_{0}))' = \mathfrak{Re}(g'(t_{0})) = \mathfrak{Re}(\alpha_{1}) = \alpha_{1}$
+    \item[$\star$] $f(t_{0} = \Re(g(t_{0})) = \Re(\alpha_{0}) = \alpha_{0}$
+    \item[$\star$] $f'(t_{0} = \Re(g(t_{0}))' = \Re(g'(t_{0})) = \Re(\alpha_{1}) = \alpha_{1}$
 \end{itemize}
 Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy. 
 \newline
 
 \textbf{Unicité : }Soient $f_{1}$ et $f_{2}$ deux fonctions à valeurs réelles solutions du problème de Cauchy ci-dessus fixées quelconques : puisque $\mathbb{R} \subset \mathbb{C}$, $f_{1}$ et $f_{2}$ sont des fonctions à valeurs dans $\mathbb{C}$ solutions du même problème de Cauchy; or il y a unicité de la solution au problème de Cauchy dans les fonctions à valeurs complexes, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{C})$, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{R})$.
 \end{proof}
+
+\section{Soient $(a,b)\in \mathbb{C}^2$, $f$ et $g$ les  solutions, définies sur $\mathbb{R}$ à valeurs
+dans $\mathbb{C}$, des problèmes de Cauchy suivants :}
+
+
+\[
+    \left\{ \begin{array}{cl}
+        y'' +ay'+by = 0 \\
+        y(3) = 1\\
+        y'(3) = 0
+        \end{array} \right.        
+	\quad \text{et} \quad
+    \left\{ \begin{array}{cl}
+        y'' +ay'+by = 0 \\
+        y(3) = 0\\
+        y'(3) = 1
+        \end{array} \right.
+\]
+
+Comment s'exprime la solution définie sur $\mathbb{R}$ de $\left\{ \begin{array}{cl}
+    y'' +ay'+by = 0 \\
+    y(3) = \alpha \\
+    y'(3) = \beta
+    \end{array} \right. $ pour $(\alpha, \beta)\in \mathbb{R}^2$ fixés ? 
+
+Peut-on affirmer que le plan vectoriel des solutions définies sur $\mathbb{R}$ à valeurs dans 
+$\mathbb{C}$ de $y'' + ay' + by = 0$ est $\{ \lambda \cdot f + \mu \cdot g  | 
+(\lambda, \mu)\in \mathbb{C}^2\}$
+
+\begin{proof}
+    La solution s'exprime simplement comme combinaison linéaire de f et g, plus précisément, la 
+    combinaison linéaire en $\alpha$ et $\beta$. En effet, soient de tels scalaires, et soient $f$ et 
+    $g$ de telles solutions, on a : 
+    \[
+        (\alpha \cdot f + \beta \cdot g)'' + a (\alpha \cdot f + \beta \cdot g)' + b (\alpha \cdot f + 
+        \beta \cdot g) = 0 \text{, par définition des espaces vectoriels.}
+    \]
+    Et de même, $(\alpha \cdot f + \beta \cdot g)'(3) = \alpha \cdot f'(3) + \beta \cdot g'(3) = \alpha$,
+    et $(\alpha \cdot f + \beta \cdot g)''(3) = \alpha \cdot f''(3) + \beta \cdot g''(3) = \beta$.
+    \newline
+    Ce qui suffit par unicité des solutions ( de la donc) d'un problème de Cauchy dans le cadre du 
+    théorème du cours.
+    \newline
+    Pour ce qui est du plan vectoriel des solutions, noté $\Omega$, notons aussi $\Phi$ l'ensemble proposé.
+    L'inclusion $\Phi \subset \Omega$ est triviale par propriété de linéarité des espaces vectoriels.
+    Finalement, pour $\Omega \subset \Phi$, soit $\omega \in \Omega$, forcément, $\omega$ vérifie 
+    l'$EDL_2$, mais aussi des conditions de Cauchy bien que celles-ci soient non-spécifiées, ainsi
+    posons $\omega'(3) = \delta$ et $\omega''(3) = \theta$, donc en particulier, $ \omega = 
+    \delta \cdot f + \theta \cdot g$, d'où l'égalité par double inclusion.
+\end{proof}
+
 \end{document}
