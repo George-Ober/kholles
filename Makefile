@@ -11,7 +11,13 @@ all :
 		echo ; \
 		sed -e '/\\documentclass/,/\\maketitle/d' -e '/\\end{document}/,//d' Kholle_S$$w.tex >> ../Khôlles_Mathématiques.tex; \
 		cd ..; \
-		echo $$w done; \
+		echo Semaine $$w done; \
 	done
 	@cat end_kholles.tex >> Khôlles_Mathématiques.tex
 	pdflatex -synctex=1 -interaction=nonstopmode Khôlles_Mathématiques.tex > /dev/null
+
+
+.PHONY : clean
+
+clean :
+	rm -f *.log *.aux *.out *.synctex.gz *.toc *.gnuplot
