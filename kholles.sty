@@ -14,6 +14,9 @@
 \RequirePackage{stmaryrd}
 \RequirePackage{mathrsfs}
 
+% changement de puces dans les listes
+\RequirePackage{enumitem}
+
 % paquets graphiques
 \RequirePackage{geometry}
 	\geometry{
@@ -54,15 +57,17 @@
 
 
 % Symbols
-\newcommand{\Sol}{\mathcal S}
+\newcommand{\Sol}{\ensuremath{\mathcal S}}
 
-\renewcommand{\Re}{\text{Re}}
-\renewcommand{\Im}{\text{Im}}
+\renewcommand{\Re}{\ensuremath{\text{Re}}}
+\renewcommand{\Im}{\ensuremath{\text{Im}}}
 
-\newcommand{\N}{\mathbb N}
-\newcommand{\Z}{\mathbb Z}
-\newcommand{\C}{\mathbb C}
-\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\C}{\ensuremath{\mathbb C}}
+\newcommand{\K}{\ensuremath{\mathbb K}}
+
 
 % Le titre
 \title{Khôlles de Mathématiques}
