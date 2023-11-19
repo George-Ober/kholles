@@ -5,3 +5,5 @@
 *.toc
 *.gnuplot
 
+
+**/.DS_Store
