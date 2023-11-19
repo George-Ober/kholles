@@ -10,6 +10,6 @@ Espérons qu'avec un peu plus d'expérience, on arrive à les rédiger bien plus
 
 ## PDF de chaque semaine
 
-- [Semaine 6](Sem_6/kholle.pdf)
-- [Semaine 7](Sem_7/kholle.pdf)
-- [Semaine 8](Sem_6/kholle.pdf)
+- [Semaine 6](Sem_6/Kholle_S6.pdf)
+- [Semaine 7](Sem_7/Kholle_S7.pdf)
+- [Semaine 8](Sem_6/Kholle_S8.pdf)
