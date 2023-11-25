@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\usepackage{../kholles}
+
+\begin{document}
+	\maketitle
+	
+	\begin{question_kholle}
+		[\noindent Soit \Rel une relation d'équivalence sur $E$. \\
+		Soit $x \in E$. \\
+		La classe de $x$, notée $\bar{x}$, est l'ensemble des éléments de $E$ en relation avec x.
+		\begin{equation}
+			\bar{x} = \left\{ y \in E \;|\; x \Rel y \right\}
+		\end{equation}]
+		{Deux classes d'équivalence sont disjointes ou confondues. Les classes d'équivalence constituent une partition de l'ensemble sur lequel on considère la relation d'équivalence.}
+		
+		\textit{Montrons que deux classes d'équivalence sont disjointes ou confondues.}
+		
+		Soit $(x, y) \in E^2$ fq.
+		\begin{itemize}[label=\textemdash]
+			\item Si $\bar{x} \cap \bar{y} = \emptyset$, rien à démontrer.
+			\item Sinon $\bar{x} \cap \bar{y} \neq \emptyset$ donc $\exists z \in \bar{x} \cap \bar{y}$. Fixons un tel $z$.
+
+			Soit $x' \in \bar{x}$ fq.
+			\begin{equation*}
+				\left.
+				\begin{matrix}
+					\left. \begin{matrix}
+						x' \in \bar{x} \implies x \Rel x' \underset{sym\acute{e}trie}{\implies} x' \Rel x \\
+						z \in \bar{x} \implies x \Rel z
+					\end{matrix}
+					\right\} \underset{transitivit\acute{e}}{\implies} x' \Rel z \\
+					z \in \bar{y} \implies y \Rel z \underset{sym\acute{e}trie}{\implies} z \Rel y
+				\end{matrix}
+				\right\} \underset{transitivit\acute{e}}{\implies} x' \Rel y
+				\underset{sym\acute{e}trie}{\implies} y \Rel x'
+			\end{equation*}
+			
+			Donc $x' \in \bar{y}$ donc $\bar{x} \subset \bar{y}$.
+			
+			En échangeant les rôles de $x$ et $y$, on montre la deuxième inclusion $\bar{y} \subset \bar{x}$.
+		\end{itemize}
+		\bigbreak
+	
+		\textit{Montrons que les classes d'équivalence de E constituent une partition de E.}
+		
+		Soit $\Sol$ un système de représentant des classes fixé quelconque.
+		
+		\begin{itemize}[label=\textemdash]
+			\item Soit $s\in \Sol$ fq. $\bar{s} \neq \emptyset$ car $s \Rel s$ par réflexivité.
+			\item Soit $(s, s') \in \Sol^2$ fq. D'après la démonstration ci-dessus ci-dessus, $\bar{s} \cap \bar{s'} = \emptyset$ ou $\bar{s} = \bar{s'}$. Si $\bar{s} = \bar{s'}$ alors $s$ et $s'$ représente la même classe ce qui est impossible car un système de représentants des classes contient un unique représentant de chaque classe. Par conséquent, $\bar{s}$ et $\bar{s'}$ sont disjoints.
+			\item $\underset{s \in \Sol}{\bigcup} \bar{s} \subset E$ car $\forall s \in \Sol, \bar{s} \in E$ par définition d'une classe d'équivalence. \\
+			Réciproquement, soit $x \in E$ fq. \\
+			Par réflexivité de \Rel, $x \in \bar{x}$. \\
+			Par définition d'un système de classe $\exists ! s_x \in \Sol : s_x \in \bar{x}$ donc $\bar{s_x} = \bar{x}$. Donc $x \in \bar{s_x} \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. Donc $E \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. \\
+			Par double inclusion, $E = \underset{s \in \Sol}{\bigcap} \bar{s}$.			
+		\end{itemize}
+		
+		Ainsi,
+		\begin{equation}
+			E = \coprod_{s \in \Sol} \bar{s}
+		\end{equation}
+		
+	\end{question_kholle}
+
+	\begin{question_kholle}{Une suite décroissante et minorée de nombres entiers relatifs est stationnaire}
+		Soit $u \in \Z^\N$ une suite décroissante et minorée fixée quelconque. \\
+		Considérons $A = \{ u_n \;|\; n \in \N \}$ c'est-à-dire l'ensemble des valeurs prises par la suite $u$. \\
+		$A$ est : \begin{itemize}[label=\textemdash]
+			\item une partie de \Z car $u$ est à valeur dans \Z
+			\item non vide car $u_0 \in A$
+			\item minoré car $u$ est minorée
+		\end{itemize}
+		Donc $A$ admet un plus petit élément. Donc $\exists n_0 \in \N: u_{n_0} = min A$. Fixons un tel $n_0$. \\
+		Soit $n \in \N$ fq tq $n \geqslant n_0$.
+		\begin{equation*}
+			\left. \begin{matrix}
+				u_n \in A \implies u_n \leqslant min A = u_{n_0} \\
+				 u \text{ est décroissante et } n \geqslant n_0 \text{ donc } u_n \leqslant u_{n_0}
+			\end{matrix}
+			\right\} \implies u_n = u_{n_0}
+		\end{equation*}
+	\end{question_kholle}
+	
+	Ainsi, $u$ est stationnaire.
+\end{document}
