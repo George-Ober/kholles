@@ -3,3 +3,7 @@
 *.out
 *.synctex.gz
 *.toc
+*.gnuplot
+
+
+**/.DS_Store
