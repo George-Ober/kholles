@@ -7,6 +7,9 @@
 \RequirePackage[french]{babel}
 \RequirePackage{lmodern}
 
+% paquet de test
+\usepackage{etoolbox}
+
 % paquets mathématiques
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
@@ -48,8 +51,12 @@
 \newenvironment{question_kholle}[2][ ]
 {
 	\section{#2}
-	\noindent #1
-	\bigbreak
+	\notblank{#1}
+		{
+			\noindent #1
+			\bigbreak
+		}
+		{}
 	\begin{proof}
 	}
 	{
