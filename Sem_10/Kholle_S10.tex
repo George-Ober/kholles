@@ -7,10 +7,10 @@
 	
 	\begin{question_kholle}
 		[\noindent Soient $(A, B) \in \mathcal{P}(\R)^2$ fq
-  \begin{align*}
-      A \text{ est dense dans } B \iff \left\{\begin{array}{ll} A \subset B \\\mathrm{et}\\ \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon \end{array}\right.
-  \end{align*}
-  ]
+		 \begin{align*}
+		    A \text{ est dense dans } B \iff \left\{\begin{array}{ll} A \subset B \\\mathrm{et}\\ \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon \end{array}\right.
+		 \end{align*}
+		 ]
 		{Caractérisation de la densité d’une partie $A$ de \R dans une partie $B$ de \R la contenant avec des $\varepsilon$ (si la densité de A dans B est définie par $A \subset B$ et tout intervalle ouvert de \R qui rencontre B rencontre A).}
 		
 		\textit{Montrons la caractérisation de la densité}\\
@@ -22,18 +22,19 @@
             Appliquons le (ii) de la déf de Densité pour $u \leftarrow b - \varepsilon$ et $v \leftarrow b + \varepsilon$ 
             $$B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset \implies A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$$
             Or, $B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset$ est vraie
-            Donc $A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$
+            donc $A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$
 
-            Ce qui permet de choisir $a \in A \cap ]b - \varepsilon,  b + \varepsilon[$
+            Ce qui permet de choisir $a \in A \cap ]b - \varepsilon,  b + \varepsilon[$.
             Un tel $a$ vérifie $a \in A$ et $a \in ]b - \varepsilon,  b + \varepsilon[ \iff |b-a| < \varepsilon$
 		\end{itemize}
 		\bigbreak
-    	\emph{Sens réciproque} Supposons \left\{\begin{array}{ll} A \subset B \\\mathrm{et}\\ \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon \end{array}\right.
+    	\noindent \emph{Sens réciproque} Supposons $\left\{\begin{array}{ll} A \subset B \\\mathrm{et}\\ \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon \end{array}\right.$
 
         \begin{itemize}
             \item On a donc $A \subset B$
             \item Soient $(u, v) \in \R^2$ fq tq $B \cap ]u, v[ \neq \emptyset$
 
+			Soit $b \in B \cap ]u, v[$ fq.
             Appliquons l'hypothèse pour $b\leftarrow b$ et $\varepsilon \leftarrow \min\{v - b, b - u\}$, qui est autorisé $v-b$ et $b-u$ sont positifs
 
             Donc $\exists a \in A: | b - a| < \varepsilon $
@@ -45,7 +46,7 @@
 
             Donc $$
             \left\{\begin{array}{ll}
-            a < b + \varepsilon = b + \min\{v - b, b - u\} \leqslant b + v - b = v \\ \mathrm{et}\\
+            a < b + \varepsilon = b + \underbrace{\min\{v - b, b - u\}}_{\leqslant v - b} \leqslant b + v - b = v \\ \mathrm{et}\\
             a > b - \varepsilon = b - \underbrace{\min\{v - b, b - u\}}_{\leqslant b - u} \geqslant b - (b - u) = u
             \end{array}\right.
             $$
@@ -54,6 +55,92 @@
         \end{itemize}
         Donc $A \cap ]u, v[ \neq \emptyset$
 		
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[\begin{equation}
+			\forall (a, b) \in \R \times \R^*,
+			\exists ! (q, r) \in \Z \times \R :
+			\left\{ \begin{matrix}
+				a = b q + r \\
+				r \in [0;|b|[
+			\end{matrix} \right.
+		\end{equation}]
+		{Théorème de la division pseudo-euclidienne dans \R}
+		
+		\textit{Unicité} \;
+		Soient deux tels entiers $(a,b) \in \R^2$ et deux couples $((q,r),(q',r')) \in \left(\Z \times \R\right)^2$ tels que
+		\begin{equation*}
+			\left\{ \begin{matrix}
+				a = b q + r \\
+				r \in [0;|b|[
+			\end{matrix} \right.
+			\qquad
+			\left\{ \begin{matrix}
+				a = b q' + r' \\
+				r' \in [0;|b|[
+			\end{matrix} \right.
+		\end{equation*}
+		Directement, 
+		\[
+		b(q-q') = r'-r,
+		\]
+		mais comme $-(|b|-1) \leq r' - r \leq |b| -1$, il vient en divisant par $|b|$ l'inégalité précédente : 
+		\[
+		-1 < q - q' < 1,
+		\]
+		puisque $q$ et $q'$ sont dans $\Z$ leur différence est obligatoirement $0$, ainsi $q = q'$ ce qui implique $ r= r'$ et donc on a unicité de ladite écriture de $a$.
+		\newline
+		\\
+		\textit{Existence} \; Posons pour $b > 0$, $\Omega = \{ k\in \Z  \ | \ kb \leqslant a \}$
+		\begin{itemize}
+			\item $\Omega \subset \Z$
+			\item non-vide car $-|a| \in \Omega$ ($\Z$ archimédien suffit \ldots) 
+			\item $\Omega$ est majoré par $|a|$ car supposons, par l'absurde, que $\exists k \in \Omega : k > |a|$, alors $kb > |a|b > a$ ce qui contradiction avec la définition d'$\Omega$.
+		\end{itemize}
+		Donc $\Omega$ admet un plus grand élément, notons-le $q$. \\
+		Posons $r = a - bq$. Par construction, $a = bq + r$ et comme $q = \max \Omega$ et $r \in \R$.
+		\\
+		Par suite, $q \in \Omega$ donc $bq \leqslant a$ d'où $0 \leqslant r$. Et $q = \max \Omega$ donc $b(q+1) > a$ d'où $b > r$, c'est-à-dire, $r \in [ 0, |b| [$.
+		
+		Si $b < 0$, il suffit de prendre $q \leftarrow -q$ dans la preuve précédente.C'est donc l'existence de ladite écriture de $a$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		{\Q est dense dans \R et $\Q\setminus\R$ est aussi dense dans \R}
+		
+		Soit $x \in \R$ fq.
+		Posons $\forall n \in \N, a_n = \frac{\lfloor2^n x\rfloor}{2^n}$. \\
+		Soit $n \in \N$ fq. \\
+		\begin{itemize}
+			\item $a_n \in \Q$ car $\lfloor2^n x\rfloor \in \Z$ et $2^n \in \N$.
+			\item \begin{equation*}
+					a_n = \frac{\lfloor2^n x\rfloor}{2^n}
+					\implies \frac{2^n x - 1}{2^n} \leqslant a_n \leqslant \frac{2^n x}{2^n}
+					\implies x - \frac{1}{2^n} \leqslant a_n \leqslant x
+				\end{equation*}
+				Or $\nicefrac{1}{2^n} \;\underset{n \rightarrow + \infty}{\parbox{1.5cm}{\rightarrowfill}}\; 0$ donc d'après le théorème d'existence de limite par encadrement, \\ $a_n \;\underset{n \rightarrow + \infty}{\parbox{1.5cm}{\rightarrowfill}}\; x$.
+		\end{itemize}
+		Donc d'après la caractérisation séquentielle de la densité, \Q est dense dans \R.
+		\bigbreak
+
+		\noindent Soit $x \in \R$ fq. \\
+		Alors $x + \sqrt{2} \in \R$.
+		D'après la démonstration précédente, $\exists b \in \Q^\N : b_n \;\underset{n \rightarrow + \infty}{\parbox{1.5cm}{\rightarrowfill}}\; x + \sqrt{2}$. \\
+		Fixons un telle suite $b$.
+		Considérons $c = b - \sqrt{2}$. \\
+		Soit $n \in \N$ fq.
+		\begin{itemize}
+			\item $c_n \in \R\setminus\Q$ car $b_n \in \Q$ et $\sqrt{2} \in \R \setminus \Q$.
+			\item \begin{equation*}
+				\left. \begin{matrix}
+					b_n \;\underset{n \rightarrow + \infty}{\parbox{1.5cm}{\rightarrowfill}}\; x + \sqrt{2} \\
+					c_n = b_n - \sqrt{2}
+				\end{matrix} \right\}
+				\implies c_n \;\underset{n \rightarrow + \infty}{\parbox{1.5cm}{\rightarrowfill}}\; x
+			\end{equation*}
+		\end{itemize}
+		Donc d'après la caractérisation séquentielle de la densité, $\R\setminus\Q$ est dense dans \R.
 	\end{question_kholle}
 
 	\begin{question_kholle}[
@@ -65,12 +152,12 @@
     Posons donc $\varepsilon_0 = \frac{|\ell_1 - \ell_2|}{3}$
     \begin{itemize}
         \item Appliquons la définition de la convergence de u vers $\ell_1$, pour $\varepsilon \leftarrow \varepsilon_0$, ce qui est autorisé car $\varepsilon_0 \in \R_+^*$
-        \begin{equation}\label{eq:1}
+        \begin{equation*}\label{eq:1}
             \exists N_1 \in \N : \forall n \in \N, n \geqslant N_1 \implies |u_n - \ell_1| \leqslant \varepsilon_0
-        \end{equation}
-        \begin{equation}\label{eq:2}
+        \end{equation*}
+        \begin{equation*}\label{eq:2}
             \exists N_2 \in \N : \forall n \in \N, n \geqslant N_2 \implies |u_n - \ell_2| \leqslant \varepsilon_0
-        \end{equation}
+        \end{equation*}
         Fixons de tels $N_1$ et $N_2$.
         \item Posons $n_0 = N_1 + N_2$
         \begin{itemize}
