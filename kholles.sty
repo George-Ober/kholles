@@ -1,10 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{kholles}[2023/11/25]
 
-% paquets de traduction
+% paquets de police
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[french]{babel}
+\RequirePackage{lmodern}
+
+% paquet de test
+\usepackage{etoolbox}
 
 % paquets mathématiques
 \RequirePackage{amsmath}
@@ -47,8 +51,12 @@
 \newenvironment{question_kholle}[2][ ]
 {
 	\section{#2}
-	#1
-	\bigbreak\bigbreak
+	\notblank{#1}
+		{
+			\noindent #1
+			\bigbreak
+		}
+		{}
 	\begin{proof}
 	}
 	{
@@ -57,17 +65,18 @@
 
 
 % Symbols
+% Ensemble des solutions
 \newcommand{\Sol}{\ensuremath{\mathcal S} }
-
+% Parties réelle et imaginaire
 \renewcommand{\Re}{\ensuremath{\text{Re}}}
 \renewcommand{\Im}{\ensuremath{\text{Im}}}
-
+% Ensembles usuels
 \newcommand{\N}{\ensuremath{\mathbb N} }
 \newcommand{\Z}{\ensuremath{\mathbb Z} }
 \newcommand{\R}{\ensuremath{\mathbb R} }
 \newcommand{\C}{\ensuremath{\mathbb C} }
 \newcommand{\K}{\ensuremath{\mathbb K} }
-
+% Relation binaire
 \newcommand{\Rel}{\ensuremath{\mathcal R} }
 
 

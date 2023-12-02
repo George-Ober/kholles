@@ -1,8 +1,10 @@
 \documentclass{article}
 
+\date{29 novembre 2023}
 \usepackage{../kholles}
 
 \begin{document}
+	
 	\maketitle
 	
 	\begin{question_kholle}
@@ -53,7 +55,7 @@
 			Réciproquement, soit $x \in E$ fq. \\
 			Par réflexivité de \Rel, $x \in \bar{x}$. \\
 			Par définition d'un système de classe $\exists ! s_x \in \Sol : s_x \in \bar{x}$ donc $\bar{s_x} = \bar{x}$. Donc $x \in \bar{s_x} \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. Donc $E \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. \\
-			Par double inclusion, $E = \underset{s \in \Sol}{\bigcap} \bar{s}$.			
+			Par double inclusion, $E = \underset{s \in \Sol}{\bigcup} \bar{s}$.			
 		\end{itemize}
 		
 		Ainsi,
@@ -61,6 +63,68 @@
 			E = \coprod_{s \in \Sol} \bar{s}
 		\end{equation}
 		
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[\noindent Soit $(E, \leq)$ un ensemble ordonné, et $A$ une partie non-vide de $E$. \\
+		Si $A$ admet un plus grand élément alors $A$ admet une borne supérieure et $\sup{A} = \max{A}$. \\
+		Si $A$ admet une borne supérieure appartenant à elle-même alors $A$ admet un plus grand élément et $\max{A} = \sup{A}$.]
+		{Si $A$ admet un plus grand élément c'est aussi sa borne supérieure. Si $A$ admet une borne supérieure dans $A$ c'est sont plus grand élément.}
+		
+		Soient un tel ensemble $E$ et une telle partie $A$ et notons $M$ son plus grand élément. \\
+		Posons l'ensemble des majorants de $A$, $M(A) = \{ m\in E \ | \ \forall a \in A, \ a \leq m\}$. \\
+		Par définition : 
+		\[
+		\forall m \in M(A), \ M \leq m,
+		\]
+		car $M\in A$, mais comme $M\in M(A)$, on a directement que $M = \min{M(A)} = \sup{A}$. \\
+		
+		Pseudo-réciproquement, soit $A$ une partie de $E$ admettant une borne supérieure dans elle même, notons cette borne $S$. \\
+		Comme $S \in M(A)$, par définition, $S$ est plus grand que tous les éléments de $A$ mais appartient à $A$, donc de tous les éléments de $A$, $S$ est le plus grand.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Pour tout couple d'entiers relatifs $a$ et $b$, $b$ non nul, il existe un unique couple d'entiers relatifs $q$ et $r$ tel que $a = bq +r$ et $0 \leq r \leq |b| -1$
+		\begin{equation}
+			\forall (a, b) \in \Z^2,
+			\exists ! (q, r) \in \Z \times \N :
+			\left\{ \begin{matrix}
+				a = b q + r \\
+				r \in {[\![} 0 ; |b|-1 {]\!]}
+			\end{matrix} \right.
+		\end{equation}]
+		{Théorème de la division Euclidienne dans \Z}
+		
+		\textit{Existence} \;
+		Soient deux tels entiers $(a,b)$ et deux couples $((q,r),(q',r'))$ tels que
+		\begin{equation*}
+			\left\{ \begin{matrix}
+				a = b q + r \\
+				0 \leq r \leq |b| - 1
+			\end{matrix} \right.
+			\qquad
+			\left\{ \begin{matrix}
+				a = b q' + r' \\
+				0 \leq r' \leq |b| - 1
+			\end{matrix} \right.
+		\end{equation*}
+		Directement, 
+		\[
+		b(q-q') = r'-r,
+		\]
+		mais comme $-(|b|-1) \leq r' - r \leq |b| -1$, il vient en divisant par $|b|$ l'inégalité précédente : 
+		\[
+		-1 < q - q' < 1,
+		\]
+		puisque $q$ et $q'$ sont dans $\Z$ leur différence est obligatoirement $0$, ainsi $q = q'$ ce qui implique $ r= r'$ et donc on a unicité de ladite écriture de $a$.
+		\newline
+		\\
+		\textit{Unicité} \; Posons pour $b \geq 1$, $\Omega = \{ k\in \Z  \ | \ kb \leq a \}$, non-vide car $-|a|\in \Omega$ ($\Z$ archimédien suffit...), ainsi $\Omega \subset \Z$. Supposons qu'il existe un $k$ dans $\Omega$ tel que $k > |a|$, si tel est le cas alors $k\notin \Omega$ (multiplier par b). De fait, $\Omega$ est majoré par $|a|$, il admet donc un plus grand élément noté $q$. \\
+		Posons $r = a - bq$. Par construction, $a = bq + r$ et comme $q = \max \Omega$ et $\Omega \subset \Z$, $q\in \Z$ donc $r \in \Z$.
+		\\
+		Par suite, $q\in \Omega$ donc $bq \leq a$ d'où $0\leq r$ et $q=\max \Omega$ donc $b(q+1) > a$ d'où $b > r$, c'est-à-dire, $r\in [\![ 0, |b| -1 ]\!]$.
+		
+		Si $b< 1$, il suffit de prendre $q \leftarrow -q$ dans la preuve précédente.C'est donc l'existence de ladite écriture de $a$.
 	\end{question_kholle}
 
 	\begin{question_kholle}{Une suite décroissante et minorée de nombres entiers relatifs est stationnaire}
@@ -75,7 +139,7 @@
 		Soit $n \in \N$ fq tq $n \geqslant n_0$.
 		\begin{equation*}
 			\left. \begin{matrix}
-				u_n \in A \implies u_n \leqslant min A = u_{n_0} \\
+				u_n \in A \implies u_n \geqslant min A = u_{n_0} \\
 				 u \text{ est décroissante et } n \geqslant n_0 \text{ donc } u_n \leqslant u_{n_0}
 			\end{matrix}
 			\right\} \implies u_n = u_{n_0}
