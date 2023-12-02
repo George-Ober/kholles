@@ -84,8 +84,7 @@
 	\end{question_kholle}
 
 	\begin{question_kholle}
-		[Pour tout couple d'entiers relatifs $a$ et $b$, $b$ non nul, il existe un unique couple d'entiers relatifs $q$ et $r$ tel que $a = bq +r$ et $0 \leq r \leq |b| -1$
-		\begin{equation}
+		[\begin{equation}
 			\forall (a, b) \in \Z^2,
 			\exists ! (q, r) \in \Z \times \N :
 			\left\{ \begin{matrix}
@@ -95,34 +94,40 @@
 		\end{equation}]
 		{Théorème de la division Euclidienne dans \Z}
 		
-		\textit{Existence} \;
-		Soient deux tels entiers $(a,b)$ et deux couples $((q,r),(q',r'))$ tels que
+		\textit{Unicité} \;
+		Soient deux tels entiers $(a,b) \in \Z^2$ et deux couples $((q,r),(q',r')) \in \left(\Z \times \N\right)^2$ tels que
 		\begin{equation*}
 			\left\{ \begin{matrix}
 				a = b q + r \\
-				0 \leq r \leq |b| - 1
+				0 \leqslant r \leqslant |b| - 1
 			\end{matrix} \right.
 			\qquad
 			\left\{ \begin{matrix}
 				a = b q' + r' \\
-				0 \leq r' \leq |b| - 1
+				0 \leqslant r' \leqslant |b| - 1
 			\end{matrix} \right.
 		\end{equation*}
 		Directement, 
 		\[
 		b(q-q') = r'-r,
 		\]
-		mais comme $-(|b|-1) \leq r' - r \leq |b| -1$, il vient en divisant par $|b|$ l'inégalité précédente : 
+		mais comme $-(|b|-1) \leqslant r' - r \leqslant |b| -1$, il vient en divisant par $|b|$ l'inégalité précédente :
 		\[
 		-1 < q - q' < 1,
 		\]
 		puisque $q$ et $q'$ sont dans $\Z$ leur différence est obligatoirement $0$, ainsi $q = q'$ ce qui implique $ r= r'$ et donc on a unicité de ladite écriture de $a$.
 		\newline
 		\\
-		\textit{Unicité} \; Posons pour $b \geq 1$, $\Omega = \{ k\in \Z  \ | \ kb \leq a \}$, non-vide car $-|a|\in \Omega$ ($\Z$ archimédien suffit...), ainsi $\Omega \subset \Z$. Supposons qu'il existe un $k$ dans $\Omega$ tel que $k > |a|$, si tel est le cas alors $k\notin \Omega$ (multiplier par b). De fait, $\Omega$ est majoré par $|a|$, il admet donc un plus grand élément noté $q$. \\
-		Posons $r = a - bq$. Par construction, $a = bq + r$ et comme $q = \max \Omega$ et $\Omega \subset \Z$, $q\in \Z$ donc $r \in \Z$.
+		\textit{Existence} \; Posons pour $b \geqslant 1$, $\Omega = \{ k\in \Z  \ | \ kb \leqslant a \}$
+		\begin{itemize}
+			\item $\Omega \subset \Z$
+			\item non-vide car $-|a| \in \Omega$ ($\Z$ archimédien suffit \ldots) 
+			\item $\Omega$ est majoré par $|a|$ car supposons, par l'absurde, que $\exists k \in \Omega : k > |a|$, alors $kb > |a|b > a$ ce qui contradiction avec la définition d'$\Omega$.
+		\end{itemize}
+		Donc $\Omega$ admet un plus grand élément, notons-le $q$. \\
+		Posons $r = a - bq$. Par construction, $a = bq + r$ et comme $q = \max \Omega$ et $\Omega \subset \Z$, $q \in \Z$ donc $r \in \Z$.
 		\\
-		Par suite, $q\in \Omega$ donc $bq \leq a$ d'où $0\leq r$ et $q=\max \Omega$ donc $b(q+1) > a$ d'où $b > r$, c'est-à-dire, $r\in [\![ 0, |b| -1 ]\!]$.
+		Par suite, $q \in \Omega$ donc $bq \leqslant a$ d'où $0 \leqslant r$. Et $q = \max \Omega$ donc $b(q+1) > a$ d'où $b > r$, c'est-à-dire, $r\in [\![ 0, |b| -1 ]\!]$.
 		
 		Si $b< 1$, il suffit de prendre $q \leftarrow -q$ dans la preuve précédente.C'est donc l'existence de ladite écriture de $a$.
 	\end{question_kholle}
