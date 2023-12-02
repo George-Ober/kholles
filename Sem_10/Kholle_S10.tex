@@ -1,0 +1,89 @@
+\documentclass{article}
+
+\usepackage{../kholles}
+
+\begin{document}
+	\maketitle
+	
+	\begin{question_kholle}
+		[\noindent Soient $(A, B) \in \mathcal{P}(\R)^2$ fq
+  \begin{align*}
+      A \text{ est dense dans } B \iff \left\{\begin{array}{ll} A \subset B \\\mathrm{et}\\ \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon \end{array}\right.
+  \end{align*}
+  ]
+		{Caractérisation de la densité d’une partie $A$ de \R dans une partie $B$ de \R la contenant avec des $\varepsilon$ (si la densité de A dans B est définie par $A \subset B$ et tout intervalle ouvert de \R qui rencontre B rencontre A).}
+		
+		\textit{Montrons la caractérisation de la densité}\\
+		\emph{Sens Direct} Supposons $A$ dense dans $B$
+		\begin{itemize}[label=\textemdash]
+            \item Par déf $A \subset B$
+            \item Soit $b \in B$ et $\varepsilon \in \R_+^*$ fq
+
+            Appliquons le (ii) de la déf de Densité pour $u \leftarrow b - \varepsilon$ et $v \leftarrow b + \varepsilon$ 
+            $$B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset \implies A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$$
+            Or, $B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset$ est vraie
+            Donc $A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$
+
+            Ce qui permet de choisir $a \in A \cap ]b - \varepsilon,  b + \varepsilon[$
+            Un tel $a$ vérifie $a \in A$ et $a \in ]b - \varepsilon,  b + \varepsilon[ \iff |b-a| < \varepsilon$
+		\end{itemize}
+		\bigbreak
+    	\emph{Sens réciproque} Supposons \left\{\begin{array}{ll} A \subset B \\\mathrm{et}\\ \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon \end{array}\right.
+
+        \begin{itemize}
+            \item On a donc $A \subset B$
+            \item Soient $(u, v) \in \R^2$ fq tq $B \cap ]u, v[ \neq \emptyset$
+
+            Appliquons l'hypothèse pour $b\leftarrow b$ et $\varepsilon \leftarrow \min\{v - b, b - u\}$, qui est autorisé $v-b$ et $b-u$ sont positifs
+
+            Donc $\exists a \in A: | b - a| < \varepsilon $
+            
+            Fixons un tel a, alors:
+            $$
+                b-\varepsilon < a < b + \varepsilon
+            $$
+
+            Donc $$
+            \left\{\begin{array}{ll}
+            a < b + \varepsilon = b + \min\{v - b, b - u\} \leqslant b + v - b = v \\ \mathrm{et}\\
+            a > b - \varepsilon = b - \underbrace{\min\{v - b, b - u\}}_{\leqslant b - u} \geqslant b - (b - u) = u
+            \end{array}\right.
+            $$
+
+            Donc $a \in ]u, v[$.    
+        \end{itemize}
+        Donc $A \cap ]u, v[ \neq \emptyset$
+		
+	\end{question_kholle}
+
+	\begin{question_kholle}[
+        Soit u $\in \K ^ \N, (\ell_1, \ell_2) \in \K ^2$
+        Si u converge vers $\ell_1$ et $\ell_2$, alors $\ell_1 = \ell_2$
+    ]{Preuve de l'unicité de la limite d'une suite convergente}
+    Par l'absurde, supponsons que $u$ converge vers $\ell_1$ et $\ell_2$, et $\ell_1 \neq \ell_2$.
+    On prendra $\varepsilon_0 = \varepsilon_1 = \varepsilon_2$ assez petit pour que les tubes soient disjoints.\\
+    Posons donc $\varepsilon_0 = \frac{|\ell_1 - \ell_2|}{3}$
+    \begin{itemize}
+        \item Appliquons la définition de la convergence de u vers $\ell_1$, pour $\varepsilon \leftarrow \varepsilon_0$, ce qui est autorisé car $\varepsilon_0 \in \R_+^*$
+        \begin{equation}\label{eq:1}
+            \exists N_1 \in \N : \forall n \in \N, n \geqslant N_1 \implies |u_n - \ell_1| \leqslant \varepsilon_0
+        \end{equation}
+        \begin{equation}\label{eq:2}
+            \exists N_2 \in \N : \forall n \in \N, n \geqslant N_2 \implies |u_n - \ell_2| \leqslant \varepsilon_0
+        \end{equation}
+        Fixons de tels $N_1$ et $N_2$.
+        \item Posons $n_0 = N_1 + N_2$
+        \begin{itemize}
+            \item $n_0 \geqslant N_1$, donc (\ref{eq:1}) s'applique: $|u_{n_0} - \ell_1| \leqslant \varepsilon_0$
+            \item $n_0 \geqslant N_2$, donc (\ref{eq:2}) s'applique: $|u_{n_0} - \ell_2| \leqslant \varepsilon_0$
+        \end{itemize}
+        \item \begin{align*}
+            |\ell_1 - \ell_2| &= |\ell_1 - u_{n_0} + u_{n_0} - \ell_2|\\
+            &\leqslant \underbrace{|\ell_1 - u_{n_0}|}_{\leqslant \varepsilon_0} + \underbrace{|u_{n_0} - \ell_2|}_{\leqslant \varepsilon_0}\\
+            &\leqslant 2 \frac{|\ell_1 - \ell_2|}{3}\\
+            \implies 1 &\leqslant \frac 2 3
+        \end{align*}
+        Contradiction
+    \end{itemize}
+	\end{question_kholle}
+\end{document}
