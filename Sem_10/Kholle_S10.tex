@@ -173,4 +173,30 @@
         Contradiction
     \end{itemize}
 	\end{question_kholle}
+
+	\begin{question_kholle}[Le titre se suffit à lui-même]{Une suite convergente est bornée}
+    
+        Soit $u \in \mathbb{K}^{\mathbb{N}}$ convergente.
+Posons $\ell = \lim u$
+Appliquons la définition de la convergence pour $\varepsilon \leftarrow 1$
+$$
+\exists N_{1}\in \mathbb{N}: \forall n \in \mathbb{N}, n \geqslant N_{1} \implies |u_{n}-\ell| \leqslant 1
+$$
+Fixons un tel $N_{1}$
+Posons alors $M = \max\left\{ |u_{0}|, |u_{1}|, |u_{2}| \dots |u_{N_{1}}|, |\ell|+1 \right\}$, qui est bien défini, car toute partie finie, non vide d'un ensemble totalement ordonné (ici $(\mathbb{R}, \leqslant)$) admet un pgE.
+
+Soit $n \in \mathbb{N}$ fq.
+\begin{itemize}
+    \item Si $n \in [[0, N_{1}]], |u_{n}| \in \left\{ |u_{0}|, |u_{1}|, |u_{2}| \dots |u_{N_{1}}|, |\ell|+1 \right\}$ donc $|u_{n}| \leqslant M$
+	\item Sinon, 
+\end{itemize}
+
+\begin{align*}
+n> N_{1} &\implies |u_{n} - \ell| \leqslant 1 \\
+&\implies |u_{n}| - |u_{l}| \leqslant 1 \\
+ & \implies |u_{n}| \leqslant 1+ |\ell| \leqslant M
+\end{align*}
+
+Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
+    \end{question_kholle}
 \end{document}
