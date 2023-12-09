@@ -14,7 +14,7 @@
     \[
     \exists N \in \N \ : \ \forall n \in \N , \ n\geq N \ \implies \ |u_n - \ell | \leq \frac{\varepsilon}{2}.
     \]
-    Fixons un tel $N$. Posons $\omega = \sum_{k=0}^{N-1} |u_k - \ell | \in \R$. Soit $n\in \N$ tel que $n \leq N$. Calculons : 
+    Fixons un tel $N$. Posons $\omega = \sum_{k=0}^{N-1} |u_k - \ell | \in \R$. Soit $n\in \N$ tel que $n \geq N$. Calculons : 
     \[
     \left| \frac{1}{n} \sum_{k=0}^{n-1}u_k - \ell \right| = \left| \frac{1}{n} \left( \sum_{k=0}^{n-1}u_k - n\ell \right) \right|  = \left| \frac{1}{n} \sum_{k=0}^{n-1}(u_k - \ell)  \right| \leq \frac{1}{n} \underset{= \ \omega \in \R}{\underbrace{\sum_{k=0}^{N-1}|u_k - \ell|}} + \frac{1}{n} \underset{\leq \ \frac{\varepsilon}{2}}{\underbrace{\sum_{k=N}^{n}|u_k - \ell|}} \leq \frac{\omega}{n} + \underset{\leq \ \frac{\varepsilon}{2}}{\underbrace{\frac{\varepsilon}{2n}}}.
     \]
