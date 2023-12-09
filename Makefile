@@ -22,5 +22,9 @@ ${final_output} : ${pdf_ouput}
 
 .PHONY : clean
 
+to_clean := *.log *.aux *.out *.synctex.gz *.toc *.gnuplot
 clean :
-	rm -f *.log *.aux *.out *.synctex.gz *.toc *.gnuplot
+	rm -f ${to_clean}
+	for folder in $(shell ls -d -- */); do \
+		cd $${folder} && rm -f ${to_clean} && cd ..; \
+	done
