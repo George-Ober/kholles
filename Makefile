@@ -1,4 +1,5 @@
 # Automatise la compilation des fichiers .tex
+# Auteur : Hugo Vangilluwen
 
 compiler := pdflatex
 nb_weeks = $(shell ls -d Sem_* | sed 's/Sem_//g' | sort -n)
@@ -11,8 +12,9 @@ all : ${final_output}
 
 ${final_output} : ${pdf_ouput}
 	@cat begin_kholles.tex > Khôlles_Mathématiques.tex
-	@for f in ${sources_tex}; do \
-		sed -e '/\\documentclass/,/\\maketitle/d' -e '/\\end{document}/,//d' $$f >> ${final_output}; \
+	@for nb in ${nb_weeks}; do \
+		echo '\pagebreak\section{Semaine '$${nb}'}' >> ${final_output}; \
+		sed -e '/\\documentclass/,/\\maketitle/d' -e '/\\end{document}/,//d' Sem_$${nb}/Kholle_S$${nb}.tex >> ${final_output}; \
 	done
 	@cat end_kholles.tex >> ${final_output}
 	pdflatex -synctex=1 -interaction=nonstopmode ${final_output} > /dev/null
@@ -22,5 +24,9 @@ ${final_output} : ${pdf_ouput}
 
 .PHONY : clean
 
+to_clean := *.log *.aux *.out *.synctex.gz *.toc *.gnuplot
 clean :
-	rm -f *.log *.aux *.out *.synctex.gz *.toc *.gnuplot
+	rm -f ${to_clean}
+	for folder in $(shell ls -d -- */); do \
+		cd $${folder} && rm -f ${to_clean} && cd ..; \
+	done

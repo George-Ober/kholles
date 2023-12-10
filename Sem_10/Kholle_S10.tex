@@ -1,5 +1,6 @@
 \documentclass{article}
 
+\date{3 décembre 2023}
 \usepackage{../kholles}
 
 \begin{document}
@@ -26,7 +27,7 @@
 			\end{array} \right.
 		\end{align}
 		]
-		{Caractérisation de la densité d’une partie $A$ de \R dans une partie $B$ de \R la contenant avec des $\varepsilon$ (si la densité de $A$ dans $B$ est définie par $A \subset B$ et tout intervalle ouvert de \R qui rencontre $B$ rencontre $A$).}
+		{Caractérisation de la densité d’une partie $A$ de \R dans une partie $B$ de \R la contenant avec des $\varepsilon$.}
 
 		\textit{Montrons la caractérisation de la densité}\\
 		\emph{Sens Direct} Supposons $A$ dense dans $B$
@@ -100,7 +101,7 @@
 		\[
 		b(q-q') = r'-r,
 		\]
-		mais comme $-(|b|-1) \leq r' - r \leq |b| -1$, il vient en divisant par $|b|$ l'inégalité précédente :
+		mais comme $-|b| < r' - r < |b|$, il vient en divisant par $|b|$ l'inégalité précédente :
 		\[
 		-1 < q - q' < 1,
 		\]
@@ -134,14 +135,14 @@
 					\implies \frac{2^n x - 1}{2^n} \leqslant a_n \leqslant \frac{2^n x}{2^n}
 					\implies x - \frac{1}{2^n} \leqslant a_n \leqslant x
 				\end{equation*}
-				Or $\nicefrac{1}{2^n} \;\underset{n \rightarrow + \infty}{\parbox{1.5cm}{\rightarrowfill}}\; 0$ donc d'après le théorème d'existence de limite par encadrement, \\ $a_n \;\underset{n \rightarrow + \infty}{\parbox{1.5cm}{\rightarrowfill}}\; x$.
+				Or $\nicefrac{1}{2^n} \arrowlim{n}{+\infty} 0$ donc d'après le théorème d'existence de limite par encadrement, \\ $a_n \arrowlim{n}{+\infty} x$.
 		\end{itemize}
 		Donc d'après la caractérisation séquentielle de la densité, \Q est dense dans \R.
 		\bigbreak
 
 		\noindent Soit $x \in \R$ fq. \\
 		Alors $x + \sqrt{2} \in \R$.
-		D'après la démonstration précédente, $\exists b \in \Q^\N : b_n \;\underset{n \rightarrow + \infty}{\parbox{1.5cm}{\rightarrowfill}}\; x + \sqrt{2}$. \\
+		D'après la démonstration précédente, $\exists b \in \Q^\N : b_n \arrowlim{n}{+\infty} x + \sqrt{2}$. \\
 		Fixons un telle suite $b$.
 		Considérons $c = b - \sqrt{2}$. \\
 		Soit $n \in \N$ fq.
@@ -149,10 +150,10 @@
 			\item $c_n \in \R\setminus\Q$ car $b_n \in \Q$ et $\sqrt{2} \in \R \setminus \Q$.
 			\item \begin{equation*}
 				\left. \begin{matrix}
-					b_n \;\underset{n \rightarrow + \infty}{\parbox{1.5cm}{\rightarrowfill}}\; x + \sqrt{2} \\
+					b_n \arrowlim{n}{+\infty} x + \sqrt{2} \\
 					c_n = b_n - \sqrt{2}
 				\end{matrix} \right\}
-				\implies c_n \;\underset{n \rightarrow + \infty}{\parbox{1.5cm}{\rightarrowfill}}\; x
+				\implies c_n \arrowlim{n}{+\infty} x
 			\end{equation*}
 		\end{itemize}
 		Donc d'après la caractérisation séquentielle de la densité, $\R\setminus \Q$ est dense dans \R.

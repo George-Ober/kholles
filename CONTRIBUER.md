@@ -8,9 +8,11 @@ Simplement, commence son document LaTeX par
 
 	\documentclass{article}
 
-	\usepackage{../kholles}
+	\date{date à modifier à chaque ajout}
+	\usepackage[auteurs={les auteurs}]{../kholles}
 
 	\begin{document}
+
 	\maketitle
 
 Ensuite, utlise l'environnement fait maison.
