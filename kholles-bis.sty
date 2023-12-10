@@ -1,14 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{kholles}[2023/12/10]
+\ProvidesPackage{kholles-bis}[2023/12/10]
 % Author : Hugo Vangilluwen
 
 % Options
-\RequirePackage{xkeyval} % option du paquet de la forme key=value
-\newcommand{\authors}{}
-\DeclareOptionX{auteurs}{\renewcommand{\authors}{#1}}
-\DeclareOptionX*{\PackageWarning{examplepackage}{Unknown option ‘\CurrentOption’}} % others options
-\ExecuteOptionsX{auteurs={Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}} % default
-\ProcessOptionsX\relax
+%\RequirePackage{xkeyval} % option du paquet de la forme key=value
+\newcommand{\authors}{Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}
 
 % paquets de police
 \RequirePackage[utf8]{inputenc}
@@ -33,40 +29,40 @@
 
 % paquets graphiques
 \RequirePackage{geometry}
-	\geometry{
-		a4paper,
-		top=2cm,
-		bottom=2cm,
-		right=3cm,
-		left=3cm
-	}
+\geometry{
+	a4paper,
+	top=2cm,
+	bottom=2cm,
+	right=3cm,
+	left=3cm
+}
 \RequirePackage{hyperref}
-	\hypersetup{
-		colorlinks=true,
-		linkcolor=blue,
-		filecolor=magenta,
-		urlcolor=cyan,
-		pdftitle={Khôlles de Mathémtiques},
-		pdfauthor={\authors}
-	}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+	pdftitle={Khôlles de Mathémtiques},
+	pdfauthor={\authors}
+}
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
-	\usetikzlibrary{shapes.geometric}
-	\usetikzlibrary{arrows.meta, arrows}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta, arrows}
 \RequirePackage{pgfplots}
-	\pgfplotsset{compat=1.15}
+\pgfplotsset{compat=1.15}
 
 
 % environnement des questions de khôlles
 \newenvironment{question_kholle}[2][ ]
 {
-	\section{#2}
+	\subsection{#2}
 	\notblank{#1}
-		{
-			\noindent #1
-			\bigbreak
-		}
-		{}
+	{
+		\noindent #1
+		\bigbreak
+	}
+	{}
 	\begin{proof}
 	}
 	{
