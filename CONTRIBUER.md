@@ -9,7 +9,7 @@ Simplement, commence son document LaTeX par
 	\documentclass{article}
 
 	\date{date à modifier à chaque ajout}
-	\usepackage[auteurs={les auteurs}]{../kholles}
+	\usepackage[nb-sem=numéro,auteurs={les auteurs}]{../kholles}
 
 	\begin{document}
 

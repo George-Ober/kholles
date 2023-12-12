@@ -6,6 +6,7 @@
 \RequirePackage{xkeyval} % option du paquet de la forme key=value
 \newcommand{\authors}{}
 \DeclareOptionX{auteurs}{\renewcommand{\authors}{#1}}
+\DeclareOptionX{nb-sem}{\newcommand{\nbweek}{#1}}
 \DeclareOptionX*{\PackageWarning{examplepackage}{Unknown option ‘\CurrentOption’}} % others options
 \ExecuteOptionsX{auteurs={Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}} % default
 \ProcessOptionsX\relax
@@ -93,5 +94,9 @@
 \newcommand{\arrowlim}[2]{\ \xrightarrow[\;#1\to #2\;]{}\ }
 
 % Le titre
-\title{Khôlles de Mathématiques}
+\ifdefined\nbweek
+	\title{Khôlles de Mathématiques - Semaine \nbweek}
+\else
+	\title{Khôlles de Mathématiques}
+\fi
 \author{\authors}

@@ -1445,7 +1445,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 			Soient $b \in B$ et $\varepsilon \in \R^{*}_{+}$ fixés quelconques : \\
 			Par hypothèse appliquée pour $b \leftarrow b$ : $\exists(a_{n}) \in A^{\N} : a_{n} \underset{n \to +\infty}{\longrightarrow}b$ \\
 			Appliquons la définition de la convergence de $(a_{n})$ vers $b$ pour $\varepsilon \leftarrow \frac{\varepsilon}{2}$ : \\
-			$$\exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow |a_{n} - b_{n}| \leqslant \frac{\varepsilon}{2}$$
+			$$\exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow |a_{n} - b| \leqslant \frac{\varepsilon}{2}$$
 			Fixons un tel N : \\
 			En particulier, $a_{N} \in A$ et $|a_{N} - b| \leqslant \frac{\varepsilon}{2} \leqslant \varepsilon$ \\
 			Donc $A$ est dense dans $B$.
@@ -1459,7 +1459,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 			Appliquons la caractérisation de la densité par les $\varepsilon$ pour $\varepsilon \leftarrow \frac{1}{2^{n}}$ (autorisé car $\frac{1}{2^{n}} > 0$), et $b \leftarrow b$ : 
 			$$\exists a \in A : |a - b| \leqslant \frac{1}{2^{n}}$$
 			Notons $a_{n}$ un tel élément. Nous venons de construire $(a_{n})_{n \in \N} \in A^{\N}$ vérifiant : \\
-			$\forall n \in \N, |a - b| \leqslant \frac{1}{2^{n}}$ \\
+			$\forall n \in \N, |a_n - b| \leqslant \frac{1}{2^{n}}$ \\
 			Or : $\underset{n \to +\infty}{\lim} \frac{1}{2^{n}} = 0$ \\
 			Ainsi, d'après le théorème sans nom, $(a_{n})_{n \in \N}$ converge vers $b$.
 		\end{itemize}
@@ -1538,7 +1538,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	
 	\begin{question_kholle}
 	    [Soit $u$ une suite bornée. $u$ converge si et seulement si il existe $\ell \in \mathbb{K}$ tel que $L(u)$ est le singleton $\ell$ ]
-	    {*Facultative* Caracterisation de la convergence par l'unicité d'une valeur d'adhérence pour une suite bornée.}
+	    {*Facultative* Caractérisation de la convergence par l'unicité d'une valeur d'adhérence pour une suite bornée.}
 	    Traitons le cas réel, celui sur $\C$ est à adapter sans peine.\\
 	    Supposons que $u$ converge et posons $\lim u =\ell \in \R  $. Toutes les sous-suites de $u$ convergent vers $\ell$ donc $L(u)=\{\ell \}$. \\
 	    Supposons maintenant qu'il existe un unique $\ell \in \R$ tel que $L(u) = \{ \ell \}$. Par l'absurde, supposons que $u$ ne converge pas vers $\ell$, c'est-à-dire : 
