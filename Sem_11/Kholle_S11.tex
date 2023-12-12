@@ -42,6 +42,65 @@
 			Ainsi, d'après le théorème sans nom, $(a_{n})_{n \in \N}$ converge vers $b$.
 		\end{itemize}
 	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soit $u \in \R^\N$ une suite monotone :
+		{\begin{enumerate}
+			\item Si $u$ est croissante
+			\begin{enumerate}[label=($\roman*$)]
+				\item Soit $u$ est majorée, et dans ce cas, $\lim u = \sup\{ u_k | k \in \N \}$
+				\item Soit $u$ n'est pas bornée, et dans ce cas, $u$ diverge vers $+\infty$.
+			\end{enumerate}
+			\item Si $u$ est décroissante :
+			\begin{enumerate}[label=($\roman*$) Soit, leftmargin=4em]
+				\item $u$ est minorée, et dans ce cas, $\lim u = \inf\{ u_k | k \in \N \}$
+				\item $u$ n'est pas bornée, et dans ce cas, $u$ diverge vers $-\infty$.
+			\end{enumerate}
+		\end{enumerate} }]
+		{Théorème de la convergence monotone}
+		
+		Soit $u \in \R^\N$ monotone fq.
+		
+		\begin{enumerate}
+			\item Supposons que $u$ est croissante.
+			\begin{enumerate}[label=($\roman*$)]
+				\item Supposons que $u$ est majorée. \\
+				Alors $\exists M \in \R : \forall n \in \N, u_n \leqslant M$. Fixons un tel M. \\
+				$\Omega = \{ u_k | k \in \N \}$ est \begin{itemize}
+					\item une partie de \R
+					\item non vide car $u_0$ y appartient
+					\item majorée par M
+				\end{itemize}
+				donc elle admet un borne supérieure et notons-la $\sigma$. \\
+				Soit $\epsilon \in \R_+^*$ fq. \\
+				$\sigma - \epsilon < \sigma$ donc $\sigma - \epsilon$ ne majore pas $\Omega$. Donc $\exists N \in \N : u_N > \sigma - \epsilon$. Fixons un tel N. \\
+				Soit $n \in \N$ fq tq $n \geqslant N$. \\
+				Alors $u_n \underset{\text{par croissant de u}}{\geqslant} u_N \geqslant \sigma - \epsilon$ et $u_n \underset{\text{par défintion de }\sigma}{\leqslant} \sigma$. \\
+				Ainsi,
+				\begin{equation*}
+					\begin{aligned}
+						\sigma - \epsilon \leqslant u_n \leqslant \sigma
+						&\implies - \epsilon \leqslant u_n - \sigma \leqslant 0 \\
+						&\implies | u_n - \sigma | \leqslant \epsilon
+					\end{aligned}
+				\end{equation*}
+				Donc $u_n \arrowlim{n}{+\infty} \sigma$.
+
+				\item Supposons que $u$ n'est pas bornée. \\
+				Soit $A \in \R$ fq. \\
+				$u$ n'est pas bornée donc $\exists N \in \N : u_N > A$. \\
+				Or $u$ est croissante donc $\forall n \in \N, n \geqslant N \implies u_n \geqslant A$. \\
+				Donc $u_n \arrowlim{n}{+\infty} +\infty$.
+			\end{enumerate}
+		
+			\item Supposons que $u$ est décroissante. \\
+			Il suffit dans la preuve ci-dessus de remplacer les inégalités inférieures par des inégalités supérieures et inversement et d'utiliser la notion de borne inférieure plutôt que de borne supérieure.
+			\begin{enumerate}[label=($\roman*$)]
+				\item Si $u$ est minorée, $u_n \arrowlim{n}{+\infty} \inf\{u_k|k\in\N\}$.
+				\item Si $u$ n'est pas bornée, $u_n \arrowlim{n}{+\infty} -\infty$.
+			\end{enumerate}
+		\end{enumerate}
+	\end{question_kholle}
 	
 	\begin{question_kholle}
 	    [Soit $u\in \R ^{\N}$ qui converge vers $\ell \in \R$. \\
