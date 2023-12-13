@@ -1594,11 +1594,72 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	    \]
 	    Ainsi, $\lim u = \lim v$.
 	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Toute suite bornée réelle admet une sous-suite convergente. \\
+		L'ensemble des valeurs d'adhérence d'une suite réelle bornée est non vide.]
+		{*Facultative* Théorème de Bolzano-Weierstrass}
+
+		Soit $u \in \R^\N$ fq bornée. \\
+		Alors $\exists M \in \R_+ : \forall n \in \N, |u_n| \leqslant M$.
+
+		Construisons une suite de segments dans $[-M;M]$ de plus en plus petits par dichotomie. \\
+		Posons $a_0 = -M$, $b_0 = M$ et définissons les suites $c$ et $I$ pour tout $n$ dans \N par $c_n = \frac{a_n + b_n}{2}$ et $I_n = [a_n;b_n]$. \\
+		
+		\noindent Soit $n\in \N$ fq.
+		Supposons $a_n \text{ et } b_n$ construits et $\{ k \in \N \;|\; u_k \in I_n \}$ infini.
+		Construisons les termes d'indices $n+1$. \\
+		Posons $\left| \begin{array}{lcr}
+			I_n^- &=& \{ k \in \N \;|\; u_k \in [a_n;c_n] \} \\
+			I_n^+ &=& \{ k \in \N \;|\; u_k \in [c_n;b_n] \} \\
+		\end{array} \right.$ \\
+		Nous avons $I_n^- \cup I_n^+ = \{ k \in \N \;|\; u_k \in I_n \}$ donc $I_n^-$ ou $I_n^+$ est infini.
+
+		\begin{itemize}
+			\item Si $I_n^-$ est infini, posons $\left| \begin{array}{lcl}
+				a_{n+1} &=& a_n \\
+				b_{n+1} &=& c_n
+			\end{array} \right.$ \\
+			Ainsi $\{ k \in \N \;|\; u_k \in I_{n+1} \} = I_n^-$ est infini.
+			\item Si $I_n^+$ est infini, posons $\left| \begin{array}{lcl}
+				a_{n+1} &=& c_n \\
+				b_{n+1} &=& b_n
+			\end{array} \right.$ \\
+			Ainsi $\{ k \in \N \;|\; u_k \in I_{n+1} \} = I_n^+$ est infini.
+		\end{itemize}
+		\bigbreak
+
+		\noindent Étudions la suite $\left(I_n\right)_{n\in\N}$.
+		\begin{itemize}
+			\item Nous avons toujours $a_n \leqslant b_n$ donc $\forall n \in \N, I_n \neq \emptyset$
+			\item Par construction, $\forall n \in \N, I_{n+1} \subset I_n$
+			\item $ |I_{n+1}| = |a_{n+1}-b_{n+1}| = \frac{1}{2} |a_n-b_n| = \frac{1}{2} |I_n| $
+			donc la suite des cardinaux est une suite géométrique de raison $\nicefrac{1}{2}$.
+			Donc $|I_n| \arrowlim{n}{+\infty} 0$.
+		\end{itemize}
+		Donc, d'après le théorème des segments emboîtés, $\exists ! l\ell \in \R : \underset{n\in\N}{\bigcap} I_n = \{\ell\}$. Fixons un tel $\ell$. \\
+
+		Construisons maintenant une extractrice $\varphi$ de $u$. \\
+		Posons $\varphi(n) = 0$. \\
+		Soit $n \in \N$ fq. Supposons $\varphi(n)$ construite.
+		\begin{equation*}
+			\varphi(n+1) = \min\{ k \in \N | u_k \in I_{n+1} \wedge k > \varphi(n) \}
+		\end{equation*}
+		$\varphi(n+1)$ est bien définie car $\{ k \in \N | u_k \in I_{n+1} \}$ est une partie de \N non bornée (car infinie). \\
+		
+		\noindent Ainsi, nous avons construit $\varphi : \N \rightarrow \N$ strictement croissante. Nous pouvons extraire une sous-suite de $u$. Or $\forall n \in \N, u_{\varphi(n)} \in I_n$ donc
+		\begin{equation*}
+			\forall n \in \N, \quad
+			\underbrace{a_n}_{ \arrowlim{n}{+\infty} \ell } \leqslant u_{\varphi(n)} \leqslant \underbrace{b_n}_{ \arrowlim{n}{+\infty} \ell }
+		\end{equation*}
+		Donc, d'après le théorème d'existence de limite par encadrement, $u_{\varphi(n)} \arrowlim{n}{+\infty} \ell$. \\
+		Ainsi $\ell \in L_u$.
+	\end{question_kholle}
 	
 	\begin{question_kholle}
 	    [Soit $u$ une suite bornée. $u$ converge si et seulement si il existe $\ell \in \mathbb{K}$ tel que $L(u)$ est le singleton $\ell$ ]
 	    {*Facultative* Caractérisation de la convergence par l'unicité d'une valeur d'adhérence pour une suite bornée.}
-	    Traitons le cas réel, celui sur $\C$ est à adapter sans peine.\\
+	    Traitons le cas réel, celui sur \C est à adapter sans peine.\\
 	    Supposons que $u$ converge et posons $\lim u =\ell \in \R  $. Toutes les sous-suites de $u$ convergent vers $\ell$ donc $L(u)=\{\ell \}$. \\
 	    Supposons maintenant qu'il existe un unique $\ell \in \R$ tel que $L(u) = \{ \ell \}$. Par l'absurde, supposons que $u$ ne converge pas vers $\ell$, c'est-à-dire : 
 	    \[

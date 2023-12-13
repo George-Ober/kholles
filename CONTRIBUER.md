@@ -1,30 +1,34 @@
 ## Structure générale
 
-Les questions de Khôlles de chaque semaine sont dans le dossier /Sem_${numéro}/Kholle_S${numéro}.
+Les questions de Khôlles de chaque semaine sont dans le dossier /Sem_\${numéro}/Kholle_S\${numéro}.
 
 ## Utiliser kholles.sty
 
-Simplement, commence son document LaTeX par
+Simplement, commencez votre document LaTeX par
 
-	\documentclass{article}
+```latex
+\documentclass{article}
 
-	\date{date à modifier à chaque ajout}
-	\usepackage[nb-sem=numéro,auteurs={les auteurs}]{../kholles}
+\date{date à modifier à chaque ajout}
+\usepackage[nb-sem=numéro, auteurs={les auteurs}]{../kholles}
 
-	\begin{document}
+\begin{document}
 
-	\maketitle
+\maketitle
+```
 
 Ensuite, utlise l'environnement fait maison.
 
-	\begin{question_kholle}
-		[la question si elle est longue ou un commentaire sur la question]
-		{la question courte ou le nom de la formule démontré}
+```latex
+\begin{question_kholle}
+    [la question si elle est longue ou un commentaire sur la question]
+    {la question courte ou le nom de la formule démontré}
 
-	La démonstration
+    La démonstration
 
-	\end{question_kholle}
+\end{question_kholle}
+```
 
-Le commentaire est facultatif. Pense à la lisibilité du titre : il doit être court.
+Le commentaire est facultatif. Pensez à la lisibilité du titre : il doit être court.
 
-Et voilà !
+Et voilà !!!
