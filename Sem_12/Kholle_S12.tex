@@ -5,28 +5,124 @@
 
 \begin{document}
 	\maketitle
-	
+
+	\begin{question_kholle}
+		[Soient $a \in \K$ et $v \in \K^\N$ où \K peut être \C ou \R.
+		L'ensemble des solutions $S$ de l'équation d'inconnue $u \in \K^\N$
+		\begin{equation}
+			\forall n \in \N, u_{n+1} = a u_n + v_n
+		\end{equation}
+		est la droite affine $\{ w + \lambda \left(a^n\right)_{n\in\N} | \lambda \in \K \}$ où $w$ est une solution particulière.
+		]
+		{Résolution d'une relation de récurrence linéaire d'ordre 1 à coefficients constants et avec second membre}
+
+		Posons la suite w définie par $\left| \begin{matrix}
+			w_0 = 1 \\
+			\forall n \in \N, w_{n+1} = a w_n + v_n
+		\end{matrix} \right.$ \\
+		$w$ est évidement solution.
+
+		\begin{equation*}
+			\begin{aligned}
+				\forall n \in \N, u_{n+1} = a u_n + v_n
+				&\iff \forall n \in \N, u_{n+1} - a u_n = v_n \\
+				&\iff \forall n \in \N, u_{n+1} - a u_n = w_{n+1} - a w_n \\
+				&\iff \forall n \in \N, (u-w)_{n+1} - a (u-w)_n = 0 \\
+				&\iff u-w \in \textit{Vect}\{ \left(a^n\right)_{n\in\N} \} \\
+				&\iff \exists \lambda \in \K : u_n = w_n + \lambda a^n \\
+				&\iff u \in \{ w + \lambda \left(a^n\right)_{n\in\N} | \lambda \in \K \}
+			\end{aligned}
+		\end{equation*}
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soient $(a,b) \in \C^2$.
+		L'ensemble des solutions $S_H$ de l'équation d'inconnue $u \in \C^\N$
+		\begin{equation}
+			\forall n \in \N, u_{n+2} = a u_{n+1} + b u_n
+		\end{equation}
+		est le plan vectoriel $\text{Vect}\{ \left(r_1^n\right)_{n\in\N}, \left(r_2^n\right)_{n\in\N} \}$ où $r_1$ et $r_2$ sont les racines de l'équation caractéristique ($r^2 = ar + b$) quand $\Delta \neq 0$.]
+		{Résolution d'une relation de récurrence linéaire homogène d'ordre 2 à coefficients constants dans \C lorsque l'équation caractéristique est non nul}
+
+		Soient $(a,b) \in \C^2$ fq.
+
+		\underline{Lemme} Soit $r \in \C$. $\left(r^n\right)_{n\in\N}$ est solution de l'équation de récurrence si et seulement si $r^2 = br + a$.
+		\begin{equation*}
+			\begin{aligned}
+				(r^n)_{n\in\N} \text{ est solution }
+				\iff \forall n \in \N, r^{n+2} &= a r^{n+1} + b r^n \\
+				\iff \forall n \in \N, r^{n} \left( r^2 - a r - b \right) &= 0 \\
+				\underbrace{\iff}_{\text{ En particularisant pour } n \rightarrow 0} r^2 - a r - b &= 0 \\
+				\iff r^2 &= b r + a
+			\end{aligned}
+		\end{equation*}
+
+		Considérons le cas où l'équation $r^2 = ar + b$ admet deux racines distinctes ($\Delta \neq 0$) $r_1$ et $r_2$.
+		D'après le lemme, $\left(r_1^n\right)_{n\in\N}$ et $\left(r_2^n\right)_{n\in\N}$ sont solutions. Par linéarité de l'équation, toute combinaison linéaire est solution de l'équation homogène.
+		Donc $\text{Vect}\{ \left(r_1^n\right)_{n\in\N}, \left(r_2^n\right)_{n\in\N} \} \subset S_H$.
+
+		Réciproquement, soit $u \in \S_H$ fq.
+		Étudions le système à deux inconnues $(\lambda_0, \mu_0) \in \C^2$ :
+		\begin{equation*}
+			\left\{ \begin{matrix}
+				\lambda_0 r_1^0 + \mu_0 r_2^0 = u_0 \\
+				\lambda_0 r_1^1 + \mu_0 r_2^1 = u_1
+			\end{matrix} \right.
+			\iff \left\{ \begin{matrix}
+				\lambda_0 + \mu_0 = u_0 \\
+				\lambda_0 r_1 + \mu_0 r_2 = u_1
+			\end{matrix} \right.
+		\end{equation*}
+		$\begin{vmatrix}
+			1 & 1 \\
+			r_1 & r_2
+		\end{vmatrix}
+		= r_2 - r_1 \neq 0$
+		Donc d'après les formules de Cramer, ce système admet une unique solution.
+
+		Considérons le prédicat $\mathcal{P}(\bullet)$ défini pour tout $n \in \N$ par :
+		\begin{equation*}
+			u_n = \lambda_0 r_1^n + \mu_0 r_2^n \text{ et } u_{n+1} = \lambda_0 r_1^{n+1} + \mu_0 r_2^{n+1}
+		\end{equation*}
+		\begin{itemize}
+			\item $\mathcal{P}(0)$ est vrai par construction de $\lambda_0$ et $\mu_0$.
+			\item Soit $n \in \N$ fq tq $\mathcal{P}(n)$ vrai.
+			D'après $\mathcal{P}(n)$, $u_{n+1} = \lambda_0 r_1^{n+1} + \mu_0 r_2^{n+1}$.
+			\begin{equation*}
+				\begin{aligned}
+					u_{n+2} &= a u_{n+1} + b u_n \\
+					&= a \left( \lambda_0 r_1^n + \mu_0 r_2^n \right) + b \left( u_{n+1} = \lambda_0 r_1^{n+1} + \mu_0 r_2^{n+1} \right) \quad \text{ d'après } \mathcal{P}(n) \\
+					&= \lambda_0 r_1^n \left(ar_1 + b\right) + \mu_0 r_2^n \left(ar_2 + b\right) \\
+					&= \lambda_0 r_1^{n+2} + \mu_0 r_2^{n+2} \quad \text{ car } r_1 \text{ et } r_2 \text{ sont racine de } r^2 = ar + b
+				\end{aligned}
+			\end{equation*}
+		\end{itemize}
+		Ainsi $S_H \subset \text{Vect}\{ \left(r_1^n\right)_{n\in\N}, \left(r_2^n\right)_{n\in\N} \}$.
+
+		Par double inclusion, $S_H = \text{Vect}\{ \left(r_1^n\right)_{n\in\N}, \left(r_2^n\right)_{n\in\N} \}$.
+	\end{question_kholle}
+
 	\begin{question_kholle}
 		[Soit $u$ une suite bornée. $u$ converge si et seulement si il existe $\ell \in \mathbb{K}$ tel que $L(u)$ est le singleton $\ell$ ]
 		{Caractérisation de la convergence par l'unicité d'une valeur d'adhérence pour une suite bornée.}
 
 		Traitons le cas réel, celui sur \C est à adapter sans peine.\\
 		Supposons que $u$ converge et posons $\lim u =\ell \in \R  $. Toutes les sous-suites de $u$ convergent vers $\ell$ donc $L(u)=\{\ell \}$. \\
-		Supposons maintenant qu'il existe un unique $\ell \in \R$ tel que $L(u) = \{ \ell \}$. Par l'absurde, supposons que $u$ ne converge pas vers $\ell$, c'est-à-dire : 
+		Supposons maintenant qu'il existe un unique $\ell \in \R$ tel que $L(u) = \{ \ell \}$. Par l'absurde, supposons que $u$ ne converge pas vers $\ell$, c'est-à-dire :
 		\[
 			\exists \varepsilon \in \R ^* _+ \ : \ \forall N \in \N, \ \exists n \in \N \ : \ n\geq N \text{ et } |u_n - \ell | > \varepsilon.
 		\]
 		Fixons un tel $\varepsilon$. \\
 		%\textbf{Etape 1} : \textit{Construction d'une sous-suite de $u$ dont les termes sont $\varepsilon$-éloignés de $\ell$.} \\
-		Posons $\varphi (0) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon \} }$, ce qui a du sens car c'est une partie non-vide de $\N$. Posons ensuite $\varphi (1) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon, \ \varphi(0) < k \} } $, ce qui a du sens pour les mêmes raisons. On construit en itérant ce procédé $\varphi (n)$ tel que : 
+		Posons $\varphi (0) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon \} }$, ce qui a du sens car c'est une partie non-vide de $\N$. Posons ensuite $\varphi (1) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon, \ \varphi(0) < k \} } $, ce qui a du sens pour les mêmes raisons. On construit en itérant ce procédé $\varphi (n)$ tel que :
 		\[
 			\forall n \in \N, \ \varphi(n+1) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon, \ \varphi(n) < k \} }.
 		\]
-		De cette manière, nous venons de construire une extractrice telle que : 
+		De cette manière, nous venons de construire une extractrice telle que :
 		\[
 			\forall n \in \N, \ |u_{\varphi(n)} - \ell| > \varepsilon.
 		\]
-		Par hypothèse $u$ est bornée, donc il existe $M\in \R _+$ tel que : 
+		Par hypothèse $u$ est bornée, donc il existe $M\in \R _+$ tel que :
 		\[
 			\forall n \in \N, \ |u_n| \leq M,
 		\]
@@ -50,7 +146,7 @@
 			\subitem Les sous-suites $\left(u_{2n}\right))_{n\in\N}$ et $\left(u_{2n+1}\right))_{n\in\N}$ sont monotone et ont une monotonie opposée (utiliser les premiers termes pour trouver leur monotonie respectives).
 		\end{itemize}]
 		{Monotonie de $u$ et des sous-suites des termes pairs et impairs de la suite$u_{n+1} = f(u_n)$ selon la monotonie de $f$}
-		
+
 		Soient de tels $f, I$ et $u$.
 		\begin{itemize}
 			\item Supposons que $f$ est croissante sur $I$. \\
@@ -80,18 +176,18 @@
 			De même, si $\left(u_{2n}\right)_{n\in\N}$ est décroissante alors $\left(u_{2n+1}\right)_{n\in\N}$ est croissante.
 		\end{itemize}
 	\end{question_kholle}
-	
+
 	\begin{question_kholle}
 	    [Montrons que : $ \overset{\circ}{\Q} = \emptyset $]
 	    {L'intérieur de l'ensemble des rationnels est vide.}
 	    Par l'absurde, supposons que $\Q$ possède au moins un point intérieur. \\ Fixons $r_0 \in \overset{\circ}{\Q}$. Par définition d'un point intérieur, il existe $\varepsilon \in \R _+ ^* $ : $]r_0 - \varepsilon , \ r_0 + \varepsilon[ \subset \Q$. Or, par densité des irrationnels dans $\R$, il existe $\alpha \in \R \backslash \Q$ : $r_0 - \varepsilon < \alpha < r_0 + \varepsilon$. On en déduit que $\alpha \in ]r_0 - \varepsilon , \ r_0 + \varepsilon[$, or $]r_0 - \varepsilon , \ r_0 + \varepsilon[ \subset \Q$ donc $\alpha \in \Q$ ce qui contredit le choix de $\alpha \in \R \backslash \Q$. Ainsi, $\overset{\circ}{\Q} = \emptyset$
 	\end{question_kholle}
-	
+
 	\begin{question_kholle}
 	    [Soient $f,g \ : \ \mathcal{D} \to \R$, $\ell \in \R$ et $a \in \overline{\mathcal{D}}$ tels que $|f(x) - \ell| \leq g(x)$ au voisinage de $a$ et $g$ tend vers $0$ en $a$. Alors montrons que $f$ tend vers $\ell$ en $a$.]
 	    {Théorème sans nom version continue au voisinage de $a$}
-	
-	    On traite le cas $a\in \R$. Par définition de $|f(x) - \ell| \leq g(x)$ au voisinage de $a$, 
+
+	    On traite le cas $a\in \R$. Par définition de $|f(x) - \ell| \leq g(x)$ au voisinage de $a$,
 	    \[
 	    	\exists \varepsilon \in \R _+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \varepsilon \ \implies \ |f(x) - \ell| \leq g(x).
 	    \]
@@ -104,7 +200,7 @@
 	    Posons $\Omega = \min{ \{\varepsilon,  \varepsilon' \} }$. \\
 	    Soit $x\in \mathcal{D}$ tel que $|x-a| \leq \Omega$.
 	    \[
-		    |f(x) - \ell | \leq g(x) \leq \omega, 
+		    |f(x) - \ell | \leq g(x) \leq \omega,
 	    \]
 	    car la définition de $\Omega$ permet de remplir les conditions des deux propriétés.
 	\end{question_kholle}
