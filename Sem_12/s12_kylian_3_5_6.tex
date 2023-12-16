@@ -1,0 +1,68 @@
+\documentclass{article}
+
+\usepackage{../kholles}
+
+\begin{document}
+\maketitle
+
+\begin{question_kholle}
+	    [Soit $u$ une suite bornée. $u$ converge si et seulement si il existe $\ell \in \mathbb{K}$ tel que $L(u)$ est le singleton $\ell$ ]
+	    {Caractérisation de la convergence par l'unicité d'une valeur d'adhérence pour une suite bornée.}
+	    Traitons le cas réel, celui sur \C est à adapter sans peine.\\
+	    Supposons que $u$ converge et posons $\lim u =\ell \in \R  $. Toutes les sous-suites de $u$ convergent vers $\ell$ donc $L(u)=\{\ell \}$. \\
+	    Supposons maintenant qu'il existe un unique $\ell \in \R$ tel que $L(u) = \{ \ell \}$. Par l'absurde, supposons que $u$ ne converge pas vers $\ell$, c'est-à-dire : 
+	    \[
+	    \exists \varepsilon \in \R ^* _+ \ : \ \forall N \in \N, \ \exists n \in \N \ : \ n\geq N \text{ et } |u_n - \ell | > \varepsilon.
+	    \]
+	    Fixons un tel $\varepsilon$. \\
+	    %\textbf{Etape 1} : \textit{Construction d'une sous-suite de $u$ dont les termes sont $\varepsilon$-éloignés de $\ell$.} \\
+	    Posons $\varphi (0) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon \} }$, ce qui a du sens car c'est une partie non-vide de $\N$. Posons ensuite $\varphi (1) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon, \ \varphi(0) < k \} } $, ce qui a du sens pour les mêmes raisons. On construit en itérant ce procédé $\varphi (n)$ tel que : 
+	    \[
+	    \forall n \in \N, \ \varphi(n+1) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon, \ \varphi(n) < k \} }.
+	    \]
+	    De cette manière, nous venons de construire une extractrice telle que : 
+	    \[
+	    \forall n \in \N, \ |u_{\varphi(n)} - \ell| > \varepsilon.
+	    \]
+	    Par hypothèse $u$ est bornée, donc il existe $M\in \R _+$ tel que : 
+	    \[
+	    \forall n \in \N, \ |u_n| \leq M,
+	    \]
+	    donc pour tout $n$ dans $\N$, $|u_{\varphi(n)}| \leq M$, donc $(u_{\varphi(n)})_{n\in \N}$ est bornée. \\
+	    Par le théorème de Bolzano-Weierstrass, il existe $\psi$ une extractrice et $\ell ' \in \R$, avec $\varphi \circ \psi$ qui est aussi une extractrice par composition d'applications strictement croissantes, donc$(u_{\varphi \circ \psi (n)})_{n\in \N}$ est une sous-suite de $u$ et $\ell ' \in L(u) = \{ \ell \}$.\\
+	    Par ailleurs, pour tout $n$ dans $\N$ :
+	    \[
+	    \underset{\xrightarrow[n\to +\infty]{}|\ell' -\ell|}{\underbrace{|u_{\varphi \circ \psi (n)} - \ell|}} > \varepsilon,
+	    \]
+	    donc en passant à la limite dans l'inégalité on a pour tout $n$ dans $\N$, $|\ell ' - \ell | \geq \varepsilon > 0$, ce qui n'est pas possible car $\ell$ est la seule valeur d'adhérence possible et ici la différence n'est pas nulle.
+	\end{question_kholle}
+
+\begin{question_kholle}
+    [Montrons que : $ \overset{\circ}{\Q} = \emptyset $]
+    {Montrons que l'intérieur de l'ensemble des rationnels est vide.}
+    Par l'absurde, supposons que $\Q$ possède au moins un point intérieur. \\ Fixons $r_0 \in \overset{\circ}{\Q}$. Par définition d'un point intérieur, il existe $\varepsilon \in \R _+ ^* $ : $]r_0 - \varepsilon , \ r_0 + \varepsilon[ \subset \Q$. Or, par densité des irrationnels dans $\R$, il existe $\alpha \in \R \backslash \Q$ : $r_0 - \varepsilon < \alpha < r_0 + \varepsilon$. On en déduit que $\alpha \in ]r_0 - \varepsilon , \ r_0 + \varepsilon[$, or $]r_0 - \varepsilon , \ r_0 + \varepsilon[ \subset \Q$ donc $\alpha \in \Q$ ce qui contredit le choix de $\alpha \in \R \backslash \Q$. Ainsi, $\overset{\circ}{\Q} = \emptyset$
+\end{question_kholle}
+
+\begin{question_kholle}
+    [Soient $f,g \ : \ \mathcal{D} \to \R$, $\ell \in \R$ et $a \in \overline{\mathcal{D}}$ tels que $|f(x) - \ell| \leq g(x)$ au voisinage de $a$ et $g$ tend vers $0$ en $a$. Alors montrons que $f$ tend vers $\ell$ en $a$.]
+    {Théorème sans nom version continue au voisinage de $a$}
+
+    On traite le cas $a\in \R$. Par définition de $|f(x) - \ell| \leq g(x)$ au voisinage de $a$, 
+    \[
+    \exists \varepsilon \in \R _+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \varepsilon \ \implies \ |f(x) - \ell| \leq g(x).
+    \]
+    Fixons un tel $\varepsilon$. \\
+    Soit $\omega \in \R_+ ^*$. Appliquons la définition de $\lim_{x \to a} g(x) = 0$ pour $\varepsilon \gets \omega$ :
+    \[
+    \exists \varepsilon' \in \R_+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \varepsilon' \ \implies \ |g(x)| \leq \omega.
+    \]
+    Fixons un tel $\varepsilon'$. \\
+    Posons $\Omega = \min{ \{\varepsilon,  \varepsilon' \} }$. \\
+    Soit $x\in \mathcal{D}$ tel que $|x-a| \leq \Omega$.
+    \[
+    |f(x) - \ell | \leq g(x) \leq \omega, 
+    \]
+    car la définition de $\Omega$ permet de remplir les conditions des deux propriétés.
+\end{question_kholle}
+
+ \end{document}
