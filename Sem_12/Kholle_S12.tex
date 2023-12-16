@@ -8,31 +8,34 @@
 
 	\begin{question_kholle}
 		[Soient $a \in \K$ et $v \in \K^\N$ où \K peut être \C ou \R.
-		L'ensemble des solutions $S$ de l'équation d'inconnue $u \in \K^\N$
-		\begin{equation}
-			\forall n \in \N, u_{n+1} = a u_n + v_n
-		\end{equation}
-		est la droite affine $\{ w + \lambda \left(a^n\right)_{n\in\N} | \lambda \in \K \}$ où $w$ est une solution particulière.
+		L'ensemble des solutions de l'équation $\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n}$
+est la droite affine :$$
+\left\{ w + \lambda \left( a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\} 
+$$
 		]
 		{Résolution d'une relation de récurrence linéaire d'ordre 1 à coefficients constants et avec second membre}
 
-		Posons la suite w définie par $\left| \begin{matrix}
-			w_0 = 1 \\
-			\forall n \in \N, w_{n+1} = a w_n + v_n
-		\end{matrix} \right.$ \\
-		$w$ est évidement solution.
+		Posons $w$ la suite définie par $$
+\left\{ \begin{array}{ll}
+ w_{0} = 1 \\
+\forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n} 
+\end{array}\right.
+$$
+$w$ est "évidemment solution de particulière de l'équation"
 
-		\begin{equation*}
-			\begin{aligned}
-				\forall n \in \N, u_{n+1} = a u_n + v_n
-				&\iff \forall n \in \N, u_{n+1} - a u_n = v_n \\
-				&\iff \forall n \in \N, u_{n+1} - a u_n = w_{n+1} - a w_n \\
-				&\iff \forall n \in \N, (u-w)_{n+1} - a (u-w)_n = 0 \\
-				&\iff u-w \in \textit{Vect}\{ \left(a^n\right)_{n\in\N} \} \\
-				&\iff \exists \lambda \in \K : u_n = w_n + \lambda a^n \\
-				&\iff u \in \{ w + \lambda \left(a^n\right)_{n\in\N} | \lambda \in \K \}
-			\end{aligned}
-		\end{equation*}
+Maintenant que nous disposons d'une solution particulière, et ayant observé que l'équation est linéaire, mettons en œuvre l'artillerie classique pour exprimer l'ensemble des solutions par l'habituelle technique.
+
+
+\begin{align*}
+\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = v_{n} \\
+ & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = w_{n+1} - aw_{n} \\
+ & \iff \forall n \in \mathbb{N}, (u-w)_{n+1} = a(u-w)_{n} \\
+& \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}  \\
+	 & \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}} \\
+ & \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n \\
+ & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\} 
+\end{align*}
+
 	\end{question_kholle}
 
 	\begin{question_kholle}
@@ -204,43 +207,4 @@
 	    \]
 	    car la définition de $\Omega$ permet de remplir les conditions des deux propriétés.
 	\end{question_kholle}
-	\begin{question_kholle}[L'ensemble des solutions de l'équation $\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n}$
-		est la droite affine :$$
-		\left\{ w + \lambda \left( a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\} 
-		$$
-		]{Résolution des (ERH1)}
-		
-		Notons $\mathcal{S}$ l'ensemble des solutions
-		Soit $u \in \mathcal{S}$ fq.
-		$$
-		\begin{align}
-		\forall n \in \mathbb{N}, u_{n+1} = au_{n} &\implies \forall n \in \mathbb{N}, u_{n} = a^nu_{0} \\
-		 & \implies u = u_{0} \left( a^n \right) _{n \in \mathbb{N}} \\
-		 & \implies u \in \text{Vect}\left\{ (a^n)_{n \in \mathbb{N}} \right\} 
-		\end{align}
-		$$
-		Réciproquement, l'ensemble des suites géométriques de raison $a$ est solution de l'équation homogène.
-		
-		Posons $w$ la suite définie par $$
-		\left\{ \begin{array}{ll}
-		 w_{0} = 1 \\
-		\forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n} 
-		\end{array}\right.
-		$$
-		$w$ est "évidemment solution de particulière de l'équation"
-		
-		Maintenant que nous disposons d'une solution particulière, et ayant observé que l'équation est linéaire, mettons en œuvre l'artillerie classique pour exprimer l'ensemble des solutions par l'habituelle technique.
-		
-		
-		\begin{align*}
-		\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = v_{n} \\
-		 & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = w_{n+1} - aw_{n} \\
-		 & \iff \forall n \in \mathbb{N}, (u-w)_{n+1} = a(u-w)_{n} \\
-		& \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}  \\
-			 & \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}} \\
-		 & \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n \\
-		 & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\} 
-		\end{align*}
-		
-		 \end{question_kholle}
  \end{document}
