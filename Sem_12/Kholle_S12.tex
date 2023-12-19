@@ -10,7 +10,7 @@
 		[Soient $a \in \K$ et $v \in \K^\N$ où \K peut être \C ou \R.
 		L'ensemble des solutions de l'équation $\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n}$
 est la droite affine :$$
-\left\{ w + \lambda \left( a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\} 
+\left\{ w + \lambda \left( a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
 $$
 		]
 		{Résolution d'une relation de récurrence linéaire d'ordre 1 à coefficients constants et avec second membre}
@@ -18,7 +18,7 @@ $$
 		Posons $w$ la suite définie par $$
 \left\{ \begin{array}{ll}
  w_{0} = 1 \\
-\forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n} 
+\forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n}
 \end{array}\right.
 $$
 $w$ est "évidemment solution de particulière de l'équation"
@@ -33,7 +33,7 @@ Maintenant que nous disposons d'une solution particulière, et ayant observé qu
 & \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}  \\
 	 & \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}} \\
  & \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n \\
- & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\} 
+ & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
 \end{align*}
 
 	\end{question_kholle}
@@ -65,15 +65,15 @@ Maintenant que nous disposons d'une solution particulière, et ayant observé qu
 		Donc $\text{Vect}\{ \left(r_1^n\right)_{n\in\N}, \left(r_2^n\right)_{n\in\N} \} \subset S_H$.
 
 		Réciproquement, soit $u \in \S_H$ fq.
-		Étudions le système à deux inconnues $(\lambda_0, \mu_0) \in \C^2$ :
+		Étudions le système à deux inconnues $(\lambda, \mu) \in \C^2$ :
 		\begin{equation*}
 			\left\{ \begin{matrix}
-				\lambda_0 r_1^0 + \mu_0 r_2^0 = u_0 \\
-				\lambda_0 r_1^1 + \mu_0 r_2^1 = u_1
+				\lambda r_1^0 + \mu r_2^0 = u_0 \\
+				\lambda r_1^1 + \mu r_2^1 = u_1
 			\end{matrix} \right.
 			\iff \left\{ \begin{matrix}
-				\lambda_0 + \mu_0 = u_0 \\
-				\lambda_0 r_1 + \mu_0 r_2 = u_1
+				\lambda + \mu = u_0 \\
+				\lambda r_1 + \mu r_2 = u_1
 			\end{matrix} \right.
 		\end{equation*}
 		$\begin{vmatrix}
@@ -85,18 +85,18 @@ Maintenant que nous disposons d'une solution particulière, et ayant observé qu
 
 		Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N$ par :
 		\begin{equation*}
-			u_n = \lambda_0 r_1^n + \mu_0 r_2^n \text{ et } u_{n+1} = \lambda_0 r_1^{n+1} + \mu_0 r_2^{n+1}
+			u_n = \lambda r_1^n + \mu_0 r_2^n \text{ et } u_{n+1} = \lambda r_1^{n+1} + \mu_0 r_2^{n+1}
 		\end{equation*}
 		\begin{itemize}
-			\item $\mathcal{P}(0)$ est vrai par construction de $\lambda_0$ et $\mu_0$.
+			\item $\mathcal{P}(0)$ est vrai par construction de $\lambda$ et $\mu$.
 			\item Soit $n \in \N$ fq tq $\mathcal{P}(n)$ vrai.
-			D'après $\mathcal{P}(n)$, $u_{n+1} = \lambda_0 r_1^{n+1} + \mu_0 r_2^{n+1}$.
+			D'après $\mathcal{P}(n)$, $u_{n+1} = \lambda r_1^{n+1} + \mu r_2^{n+1}$.
 			\begin{equation*}
 				\begin{aligned}
 					u_{n+2} &= a u_{n+1} + b u_n \\
-					&= a \left( \lambda_0 r_1^{n+1} + \mu_0 r_2^{n+1} \right) + b \left( \lambda_0 r_1^n + \mu_0 r_2^n  \right) \quad \text{ d'après } \mathcal{P}(n) \\
-					&= \lambda_0 r_1^n \left(ar_1 + b\right) + \mu_0 r_2^n \left(ar_2 + b\right) \\
-					&= \lambda_0 r_1^{n+2} + \mu_0 r_2^{n+2} \quad \text{ car } r_1 \text{ et } r_2 \text{ sont racine de } r^2 = ar + b
+					&= a \left( \lambda r_1^{n+1} + \mu r_2^{n+1} \right) + b \left( \lambda r_1^n + \mu r_2^n  \right) \quad \text{ d'après } \mathcal{P}(n) \\
+					&= \lambda r_1^n \left(ar_1 + b\right) + \mu r_2^n \left(ar_2 + b\right) \\
+					&= \lambda r_1^{n+2} + \mu r_2^{n+2} \quad \text{ car } r_1 \text{ et } r_2 \text{ sont racine de } r^2 = ar + b
 				\end{aligned}
 			\end{equation*}
 		\end{itemize}

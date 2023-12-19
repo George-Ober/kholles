@@ -1,6 +1,8 @@
 ## Structure générale
 
-Les questions de Khôlles de chaque semaine sont dans le dossier /Sem_\${numéro}/Kholle_S\${numéro}.
+Dans le [README](README.md), les semaines cochées sont celles qui sont terminées !
+
+Les questions de Khôlles de chaque semaine sont dans le fichier `Sem_\${numéro}/Kholle_S\${numéro}.tex`. Par exemple, `Sem_12/Kholle_S12.tex`.
 
 ## Utiliser kholles.sty
 
@@ -32,3 +34,11 @@ Ensuite, utlise l'environnement fait maison.
 Le commentaire est facultatif. Pensez à la lisibilité du titre : il doit être court.
 
 Et voilà !!!
+
+## Compilation
+
+Sur *Linux*, taper dans votre console à la racine :
+
+```shell
+$: make
+```
