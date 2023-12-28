@@ -11,11 +11,10 @@ Simplement, commencez votre document LaTeX par
 ```latex
 \documentclass{article}
 
-\date{date à modifier à chaque ajout}
+\date{date à modifier à chaque ajout(jour mois année)}
 \usepackage[nb-sem=numéro, auteurs={les auteurs}]{../kholles}
 
 \begin{document}
-
 \maketitle
 ```
 

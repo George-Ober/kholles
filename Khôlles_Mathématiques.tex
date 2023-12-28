@@ -1701,25 +1701,25 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		{Résolution d'une relation de récurrence linéaire d'ordre 1 à coefficients constants et avec second membre}
 
 		Posons $w$ la suite définie par $$
-\left\{ \begin{array}{ll}
- w_{0} = 1 \\
-\forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n}
-\end{array}\right.
-$$
-$w$ est "évidemment solution de particulière de l'équation"
-
-Maintenant que nous disposons d'une solution particulière, et ayant observé que l'équation est linéaire, mettons en œuvre l'artillerie classique pour exprimer l'ensemble des solutions par l'habituelle technique.
-
-
-\begin{align*}
-\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = v_{n} \\
- & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = w_{n+1} - aw_{n} \\
- & \iff \forall n \in \mathbb{N}, (u-w)_{n+1} = a(u-w)_{n} \\
-& \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}  \\
-	 & \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}} \\
- & \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n \\
- & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
-\end{align*}
+		\left\{ \begin{array}{ll}
+		 w_{0} = 1 \\
+		\forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n}
+		\end{array}\right.
+		$$
+		$w$ est "évidemment solution de particulière de l'équation"
+		
+		Maintenant que nous disposons d'une solution particulière, et ayant observé que l'équation est linéaire, mettons en œuvre l'artillerie classique pour exprimer l'ensemble des solutions par l'habituelle technique.
+		
+		
+		\begin{align*}
+			\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = v_{n} \\
+			& \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = w_{n+1} - aw_{n} \\
+			& \iff \forall n \in \mathbb{N}, (u-w)_{n+1} = a(u-w)_{n} \\
+			& \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}  \\
+			& \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}} \\
+			& \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n \\
+			& \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
+		\end{align*}
 
 	\end{question_kholle}
 
@@ -1872,7 +1872,7 @@ Maintenant que nous disposons d'une solution particulière, et ayant observé qu
 	\end{question_kholle}
 
 	\begin{question_kholle}
-	    [Soient $f,g \ : \ \mathcal{D} \to \R$, $\ell \in \R$ et $a \in \overline{\mathcal{D}}$ tels que $|f(x) - \ell| \leq g(x)$ au voisinage de $a$ et $g$ tend vers $0$ en $a$. Alors montrons que $f$ tend vers $\ell$ en $a$.]
+	    [Soient $f,g \ : \ \mathcal{D} \to \R$, $\ell \in \R$ et $a \in \overline{\mathcal{D}}$ tels que $|f(x) - \ell| \leq g(x)$ au voisinage de $a$ et $g$ tend vers $0$ en $a$. Alors $f$ tend vers $\ell$ en $a$.]
 	    {Théorème sans nom version continue au voisinage de $a$}
 
 	    On traite le cas $a\in \R$. Par définition de $|f(x) - \ell| \leq g(x)$ au voisinage de $a$,
@@ -1892,5 +1892,76 @@ Maintenant que nous disposons d'une solution particulière, et ayant observé qu
 	    \]
 	    car la définition de $\Omega$ permet de remplir les conditions des deux propriétés.
 	\end{question_kholle}
+\pagebreak\section{Semaine 13}
+	
+	\begin{question_kholle}
+		[{ Soit une fonction continue $f : [a;b] \rightarrow \R$ avec $(a,b) \in \R^2$ et $a < b$. \\
+		Si $f(a)f(b) \leqslant 0$ alors $\exists c \in [a;b] : f(c) = 0$. \\
+		On rencontre aussi : \textit{Si $\mathit{f(a)f(b) < 0}$ alors $\mathit{\exists c \in ]a;b[ : f(c) = 0}$.} }]
+		{Théorème des valeurs intermédiaires}
+		
+		La démonstration repose sur la technique de la dichotomie. \\
+		
+		\begin{figure}[!h]
+			\centering
+			\tikzmath{ \labTVI = 12; } % la longueur du segment [a;b] dans la démonstration du TVI
+			\begin{tikzpicture}
+				\draw (0,0) node[anchor=north] {a} -- (\labTVI,0) node[anchor=north] {b};
+				\foreach \x in {0,...,\labTVI} {
+					\draw (\x,0.1) -- (\x,-0.1);
+				};
+				\draw[red] (0,0) to[out angle=80, in angle=240, curve through={(\labTVI/5,2) (\labTVI/3,-1) (\labTVI*3/5,0.5)}] (\labTVI,0);
+		
+				\draw[green] (\labTVI/2,0.1) -- (\labTVI/2,-0.1);
+				\draw (\labTVI/2,0) node[green, anchor=north] {$b_1$};
+				\draw[green] (\labTVI/4,0.1) -- (\labTVI/4,-0.1);
+				\draw (\labTVI/4,0) node[green, anchor=north] {$a_2$};
+				\draw[green] (\labTVI*3/8,0.1) -- (\labTVI*3/8,-0.1);
+				\draw (\labTVI*3/8,0) node[green, anchor=north] {$b_3$};
+				\draw[green] (\labTVI*5/16,0.1) -- (\labTVI*5/16,-0.1);
+				\draw (\labTVI*5/16,0) node[green, anchor=north] {$b_4$};
+			\end{tikzpicture}
+		\end{figure}
+	
+		\noindent Soient $a,b,f$ de tels objets. Procédons à la construction des suites $(a_n)_{n\in\N}, (b_n)_{n\in\N}, (c_n)_{n\in\N}$.
+
+		Posons $a_0 = a$, $b_0 = b$ et $c_0 = \frac{a+b}{2}$ (le milieu du segment $[a;b]$). Nous avons, par hypothèse $f(a_0)f(b_0) \leqslant 0$.
+
+		Soit $n \in \N$ fq. Supposons les trois suites construites au rang $n$ telles que $f(a_n)f(b_n) \leqslant 0$ et $c_n = \frac{a_n+b_n}{2}$ (milieu de $[a_n;b_n]$).
+		\begin{itemize}
+			\item Si $f(a_n)f(b_n) \leqslant 0$, posons $\left| \begin{array}{lcl}
+				a_{n+1} &=& a_n \\
+				b_{n+1} &=& c_n \\
+				c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
+			\end{array} \right.$
+			\item Sinon $f(a_n)f(b_n) > 0$. Or $f(a_n)f(b_n) \leqslant 0$, donc $f(a_n)^2 f(b_n) f(c_n) \leqslant 0$. Donc $f(b_n)f(c_n) \leqslant 0$. Posons $\left| \begin{array}{lcl}
+				a_{n+1} &=& c_n \\
+				b_{n+1} &=& b_n \\
+				c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
+			\end{array} \right.$
+		\end{itemize}
+		Ainsi, nous avons bien construits $a_{n+1}, b_{n+1}, c_{n+1}$ telles que $f(a_{n+1})f(b_{n+1}) \leqslant 0$ et ${ c_{n+1} = \frac{a_{n+1}+b_{n+1}}{2} }$ (milieu de $[a_{n+1};b_{n+1}]$).
+		
+		Par récurrence immédiate, $(a_n)_{n\in\N}$ est croissante, $(b_n)_{n\in\N}$ est décroissante et ${ \forall n \in \N, b_n - a_n = \frac{b-a}{2^n} }$ d'où $b_n - a_n \arrowlim{n}{+\infty} 0$.
+		Donc les suites $a$ et $b$ sont adjacentes.
+		D'après le théorème des suites adjacentes, elles convergent vers la même limite. Notons la $c$.
+
+		D'après le bonus de ce même théorème, $\forall n \in \N, a_n \leqslant c \leqslant b_n$ donc pour $n = 0$, $a \leqslant c \leqslant b$. Ainsi,
+		\begin{equation*}
+			c \in [a;b]
+		\end{equation*}
+		
+		Par ailleurs, $\forall n \in \N, f(a_n)f(b_n) \leqslant 0$. Par continuité de $f$ sur $[a;b]$ donc en $c$, $f(a_n) \arrowlim{n}{+\infty} c$ et $f(b_n) \arrowlim{n}{+\infty} c$. Par passage à limite dans l'inégalité,
+		\begin{equation*}
+			f(c) \times f(c) \leqslant 0
+		\end{equation*}
+		Or $f(c)^2 \geqslant 0$, d'où $f(c)^2 = 0$. Ainsi,
+		\begin{equation*}
+			f(c) = 0
+		\end{equation*}
+		Donc $c$ est un point fixe.
+		
+	\end{question_kholle}
+	
 
 \end{document}

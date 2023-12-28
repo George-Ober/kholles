@@ -24,7 +24,7 @@ ${final_output} : ${pdf_ouput}
 
 .PHONY : clean
 
-to_clean := *.log *.aux *.out *.synctex.gz *.toc *.gnuplot
+to_clean := *.log *.aux *.out *.synctex.gz *.gnuplot
 clean :
 	rm -f ${to_clean}
 	for folder in $(shell ls -d -- */); do \

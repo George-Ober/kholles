@@ -29,28 +29,30 @@
 
 % paquets graphiques
 \RequirePackage{geometry}
-\geometry{
-	a4paper,
-	top=2cm,
-	bottom=2cm,
-	right=3cm,
-	left=3cm
-}
+	\geometry{
+		a4paper,
+		top=2cm,
+		bottom=2cm,
+		right=3cm,
+		left=3cm
+	}
 \RequirePackage{hyperref}
-\hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	filecolor=magenta,
-	urlcolor=cyan,
-	pdftitle={Khôlles de Mathémtiques},
-	pdfauthor={\authors}
-}
+	\hypersetup{
+		colorlinks=true,
+		linkcolor=blue,
+		filecolor=magenta,
+		urlcolor=cyan,
+		pdftitle={Khôlles de Mathémtiques},
+		pdfauthor={\authors}
+	}
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
-\usetikzlibrary{shapes.geometric}
-\usetikzlibrary{arrows.meta, arrows}
+	\usetikzlibrary{shapes.geometric}
+	\usetikzlibrary{arrows.meta, arrows}
+	\usetikzlibrary{math} % pour les variables
+	\usetikzlibrary{hobby} % pour les courbes
 \RequirePackage{pgfplots}
-\pgfplotsset{compat=1.15}
+	\pgfplotsset{compat=1.15}
 
 
 % environnement des questions de khôlles
