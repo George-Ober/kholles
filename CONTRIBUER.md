@@ -1,10 +1,10 @@
-## Structure générale
+# Structure générale
 
 Dans le [README](README.md), les semaines cochées sont celles qui sont terminées !
 
 Les questions de Khôlles de chaque semaine sont dans le fichier `Sem_\${numéro}/Kholle_S\${numéro}.tex`. Par exemple, `Sem_12/Kholle_S12.tex`.
 
-## Utiliser kholles.sty
+# Utiliser kholles.sty
 
 Simplement, commencez votre document LaTeX par
 
@@ -35,7 +35,19 @@ Le commentaire est facultatif. Pensez à la lisibilité du titre : il doit être
 
 Et voilà !!!
 
-## Compilation
+`kholles.sty` définit aussi des commandes sympas :
+
+- **Les ensembles usuels** \N, \Z, \Q, R, \C, \K
+
+- L'ensemble des solutions \Sol
+
+- Les parties réelle et imaginaire \Re et \Im
+
+- Les relations binaires \Rel
+
+- Les limites \arrowlim{varaible}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
+
+# Compilation
 
 Sur *Linux*, taper dans votre console à la racine :
 

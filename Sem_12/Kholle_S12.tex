@@ -17,25 +17,25 @@
 		{Résolution d'une relation de récurrence linéaire d'ordre 1 à coefficients constants et avec second membre}
 
 		Posons $w$ la suite définie par $$
-\left\{ \begin{array}{ll}
- w_{0} = 1 \\
-\forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n}
-\end{array}\right.
-$$
-$w$ est "évidemment solution de particulière de l'équation"
-
-Maintenant que nous disposons d'une solution particulière, et ayant observé que l'équation est linéaire, mettons en œuvre l'artillerie classique pour exprimer l'ensemble des solutions par l'habituelle technique.
-
-
-\begin{align*}
-\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = v_{n} \\
- & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = w_{n+1} - aw_{n} \\
- & \iff \forall n \in \mathbb{N}, (u-w)_{n+1} = a(u-w)_{n} \\
-& \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}  \\
-	 & \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}} \\
- & \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n \\
- & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
-\end{align*}
+		\left\{ \begin{array}{ll}
+		 w_{0} = 1 \\
+		\forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n}
+		\end{array}\right.
+		$$
+		$w$ est "évidemment solution de particulière de l'équation"
+		
+		Maintenant que nous disposons d'une solution particulière, et ayant observé que l'équation est linéaire, mettons en œuvre l'artillerie classique pour exprimer l'ensemble des solutions par l'habituelle technique.
+		
+		
+		\begin{align*}
+			\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = v_{n} \\
+			& \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = w_{n+1} - aw_{n} \\
+			& \iff \forall n \in \mathbb{N}, (u-w)_{n+1} = a(u-w)_{n} \\
+			& \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}  \\
+			& \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}} \\
+			& \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n \\
+			& \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
+		\end{align*}
 
 	\end{question_kholle}
 
@@ -188,7 +188,7 @@ Maintenant que nous disposons d'une solution particulière, et ayant observé qu
 	\end{question_kholle}
 
 	\begin{question_kholle}
-	    [Soient $f,g \ : \ \mathcal{D} \to \R$, $\ell \in \R$ et $a \in \overline{\mathcal{D}}$ tels que $|f(x) - \ell| \leq g(x)$ au voisinage de $a$ et $g$ tend vers $0$ en $a$. Alors montrons que $f$ tend vers $\ell$ en $a$.]
+	    [Soient $f,g \ : \ \mathcal{D} \to \R$, $\ell \in \R$ et $a \in \overline{\mathcal{D}}$ tels que $|f(x) - \ell| \leq g(x)$ au voisinage de $a$ et $g$ tend vers $0$ en $a$. Alors $f$ tend vers $\ell$ en $a$.]
 	    {Théorème sans nom version continue au voisinage de $a$}
 
 	    On traite le cas $a\in \R$. Par définition de $|f(x) - \ell| \leq g(x)$ au voisinage de $a$,
