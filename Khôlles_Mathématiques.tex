@@ -4,7 +4,22 @@
 
 \documentclass{article}
 
-\usepackage{kholles-bis}
+\usepackage{kholles}
+
+\renewenvironment{question_kholle}[2][ ]
+{
+	\subsection{\texorpdfstring{#2}{}}
+	\notblank{#1}
+	{
+		\noindent #1
+		\bigbreak
+	}
+	{}
+	\begin{proof}
+}
+{
+	\end{proof}
+}
 
 \begin{document}
 \maketitle
@@ -680,21 +695,19 @@
 \end{question_kholle}
 
 \pagebreak\section{Semaine 8}
-	
-	\flushleft
-	
+
 	\begin{question_kholle}{Preuve de l’expression des solutions réelles des EDL homogènes d’ordre 2 à coefficients constants réels dans le cas $\Delta < 0$ (en admettant la connaissance de l’expression des solutions à valeurs complexes des EDLH2 à coeff. constants).}
 		Notons $\Sol_{H, \C}$ et $\Sol_{H, \R}$ les ensembles des solutions complexes et réelles de l'équation différentielle, puisque nous nous plaçons dans le cas $\Delta < 0$ et $\alpha \pm i \beta$ les deux racines complexes conjuguées.
 		$$
-		\Sol_{H, \C} = 
+		\Sol_{H, \C} =
 		\left\{
 		\begin{array}{l}
 	    \R \to \C  \\
 	    t \mapsto \lambda e^{(\alpha + i \beta) t}  + \mu e^{(\alpha - i \beta)t}
     	\end{array}
-		\middle\vert  (\lambda, \mu) \in \C ^2 \right\}	
+		\middle\vert  (\lambda, \mu) \in \C ^2 \right\}
 		$$
-		
+
 		Montrons que $\forall f \in \Sol_{H ,\C}, \Re(f) \in  \Sol_{H ,\R}$\\
 		Soit $f \in \Sol_{H ,\C}$ fq.
 		$$f \in \mathcal D^2(\R, \C) \implies \Re(f) \in \mathcal D^2(\R, \R)$$
@@ -704,11 +717,11 @@
 		$$
 		D'où, avec $f:t \mapsto e^{(\alpha + i \beta)t}$; $\Re(f(t)) = \Re(e^{(\alpha + i \beta)t}) = e^{\alpha t } \cos (\beta t)$. Qui appartient donc à $\Sol_{H, \R}$\\
 		En suivant le même raisonnement pour $\Im(f)$, $(t \mapsto e^\alpha \sin(\beta t)) \in \Sol_{H, \R}$
-		
-		
+
+
 		Ainsi, par combinaison linéaire (qui se base sur le principe de superposition),
 		$$
-		\left\{ 
+		\left\{
 		\begin{array}{l}
 	    \R \to \R  \\
 	    t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
@@ -716,15 +729,15 @@
 		\middle\vert  (\lambda, \mu) \in \R ^2 \right\}
 		\subset \Sol_{H ,\R}
 		$$
-		
+
 		Réciproquement, soit $ f \in \Sol_{H ,\R}$ fq. Puisque $\R \subset \C$,  $ f \in \Sol_{H ,\C}$.
-		
+
 		$$
 		\exists (a, b) \in \C^2 : f \left| \begin{array}{l}
 	    \R \to \C  \\
 	    t \mapsto a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t}
 		\end{array}\right.$$
-	
+
 		Or, puisque toutes les valeurs de $f$ sont réelles, en notant $(a_r, a_i, b_r, b_i)$ les parties réelles et imaginaires respectives de $a$ et $b$.
 		\begin{align*}
 			\forall t \in \R, f(t) &= \Re(f(t)) \\
@@ -734,7 +747,7 @@
 				    &= (a_r + b_r) \cos(\beta t) e^\alpha + (b_i - a_i) \sin(\beta t) e^\alpha
 		\end{align*}
 		Ainsi,
-		$$f\in \left\{ 
+		$$f\in \left\{
 		\begin{array}{l}
 	    \R \to \R  \\
 	    t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
@@ -743,7 +756,7 @@
 	$$
 	Ce qui conclut la preuve par double inclusion.
 	\end{question_kholle}
-	
+
 	\begin{question_kholle}[
 		Considérons le problème de Cauchy suivant :
 		$$\left\{ \begin{array}{l}
@@ -754,14 +767,14 @@
 		Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.
 		]
 		{Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).}
-	 
+
 	\textbf{Cas 1. } $\mathbb{K} = \mathbb{C}$ \\
 	Nous savons que sous l'hyphothèse de continuité de $b$ sur $J$, les solutions de (EDL2) définies sur $J$ constituent le plan affine $S$ :
 	$$S = \left\{ \lambda f_{1} + \mu f_{2} + s | (\lambda, \mu) \in \mathbb{C}^{2} \right\}$$
 	où $s$ est une solution particulière de (EDL2), $(f_{1}, f_{2})$ sont deux solutions de (EDLH2) qui engendrent $S_{h}$. On a : \\
-	
+
 	$$\begin{array}{ccl}
-	    f : J \to \mathbb{C} \text{ est sol. du pb de Cauchy } 
+	    f : J \to \mathbb{C} \text{ est sol. du pb de Cauchy }
 	    &\iff &\left\{ \begin{array}{l}
 	      f \text{ sol de (EDL2) sur } J    \\
 	      f(t_{0}) = \alpha_{0}    \\
@@ -785,46 +798,46 @@
 	\end{array} $$
 	On en déduit donc que $(\lambda, \mu)$ doit être solution d'un système linéaire $(2,2)$. On a une unique solution si et seulement si les déterminant de ce système est nul. \\
 	Explicitons alors le déterminant de ce système, que l'on notera $D$.
-	$$D = \left| 
+	$$D = \left|
 	\begin{array}{cc}
 	f_{1}(t_{0}) &f_{2}(t_{0}) \\
 	f'_{1}(t_{0}) &f'_{2}(t_{0}) \\
 	\end{array}
 	\right| = f_{1}(t_{0}) \cdot f'_{2}(t_{0}) - f_{2}(t_{0}) \cdot f'_{1}(t_{0}) $$
-	Notons $\Delta$ le discriminant de l'équation caractéristique de (EDL2) ($a_{2}r^{2} + a_{1}r^{1} + a_{0} = 0$). On distingue alors deux cas selon la nullité ou non de $\Delta$. Traitons d'abord le cas $\Delta \neq 0$. On peut choisir : 
+	Notons $\Delta$ le discriminant de l'équation caractéristique de (EDL2) ($a_{2}r^{2} + a_{1}r^{1} + a_{0} = 0$). On distingue alors deux cas selon la nullité ou non de $\Delta$. Traitons d'abord le cas $\Delta \neq 0$. On peut choisir :
 	$$ f_{1}(t_{0}) = e^{r_{1}t_{0}} \text{ et } f_{2}(t_{0}) = e^{r_{2}t_{0}}$$
 	$$ f'_{1}(t_{0}) = r_{1}e^{r_{1}t_{0}} \text{ et } f'_{2}(t_{0}) = r_{2}e^{r_{2}t_{0}}$$
 	Donc (en sachant que $\Delta \neq 0 \Rightarrow r_{1} \neq r_{2}$):
 	$$ D = e^{r_{1}t_{0}} \cdot r_{2}e^{r_{2}t_{0}} - r_{1}e^{r_{1}t_{0}} \cdot e^{r_{2}t_{0}} = (r_{2} - r_{1}) \cdot e^{r_{1}t_{0} + r_{2}t_{0}} \neq 0$$
-	
+
 	Dans le deuxième cas, on a $\Delta = 0$ ; on peut alors prendre :
 	$$ f_{1}(t_{0}) = e^{r_{0}t_{0}} \text{ et } f_{2}(t_{0}) = t_{0}e^{r_{0}t_{0}}$$
-	Ainsi : 
+	Ainsi :
 	$$ D = e^{r_{0}t_{0}} \left(r_{0}t_{0}e^{r_{0}t_{0}} + e^{r_{0}t_{0}} \right) - r_{0}e^{r_{0}t_{0}} \times t_{0}e^{r_{0}t_{0}} = e^{2r_{0}t_{0}} \neq 0$$
-	On remarque alors que, dans les deux cas, $D \neq 0$, donc le système $(2, 2)$ étudié admet une unique solution, donc il existe un unique couple $(\lambda, \mu)$ le vérifiant d'où l'unicité et existence d'une solution au problème de Cauchy. 
+	On remarque alors que, dans les deux cas, $D \neq 0$, donc le système $(2, 2)$ étudié admet une unique solution, donc il existe un unique couple $(\lambda, \mu)$ le vérifiant d'où l'unicité et existence d'une solution au problème de Cauchy.
 	\newline\newline
-	
+
 	\textbf{Cas 2. } $\mathbb{K} = \mathbb{R}$ \\
-	$(a_{0}, a_{1}, a_{2}) \in \mathbb{R}^{2} \times \mathbb{R}^{*},(\alpha_{0}, \alpha_{1}) \in \mathbb{R}^{2}, b \in C^{0}(J, \mathbb{R})$ 
+	$(a_{0}, a_{1}, a_{2}) \in \mathbb{R}^{2} \times \mathbb{R}^{*},(\alpha_{0}, \alpha_{1}) \in \mathbb{R}^{2}, b \in C^{0}(J, \mathbb{R})$
 	\newline
 	\textbf{Existence :} Puisque $\mathbb{R} \subset \mathbb{C}$, le problème de Cauchy admet, dans $\mathbb{R}$, une solution à valeurs complexes $g$. Posons $f = \Re(g)$ et montrons que $f$ est une solution réelle du problème de Cauchy. \\
 	\begin{itemize}
 	    \item[$\star$] $g \in \mathcal{D}^{2}(J, \mathbb{C}) \text{ donc } f \in \mathcal{D}^{2}(J, \mathbb{R})$
-	    \item[$\star$] $g$ vérifie $a_{2}g'' + a_{1}g' + a_{0}g = b$ sur $J$ donc en prenant $\Re(\cdot)$ : 
+	    \item[$\star$] $g$ vérifie $a_{2}g'' + a_{1}g' + a_{0}g = b$ sur $J$ donc en prenant $\Re(\cdot)$ :
 	    $$\begin{array}{ccl}
-	      \Re(a_{2}g'' + a_{1}g' + a_{0}g = b) = \Re(b)   
+	      \Re(a_{2}g'' + a_{1}g' + a_{0}g = b) = \Re(b)
 	      &\iff &a_{2}\Re(g'') + a_{1}\Re(g') + a_{0}\Re(g) = b  \\\\
 	      &\iff & a_{2}f'' + a_{1}f' + a_{0}f = b \text{ sur } J
 	    \end{array}$$
 	    \item[$\star$] $f(t_{0}) = \Re(g(t_{0})) = \Re(\alpha_{0}) = \alpha_{0}$
 	    \item[$\star$] $f'(t_{0}) = \Re(g(t_{0}))' = \Re(g'(t_{0})) = \Re(\alpha_{1}) = \alpha_{1}$
 	\end{itemize}
-	Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy. 
+	Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy.
 	\newline
-	
+
 	\textbf{Unicité : }Soient $f_{1}$ et $f_{2}$ deux fonctions à valeurs réelles solutions du problème de Cauchy ci-dessus fixées quelconques : puisque $\mathbb{R} \subset \mathbb{C}$, $f_{1}$ et $f_{2}$ sont des fonctions à valeurs dans $\mathbb{C}$ solutions du même problème de Cauchy; or il y a unicité de la solution au problème de Cauchy dans les fonctions à valeurs complexes, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{C})$, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{R})$.
 	\end{question_kholle}
-	
+
 	\begin{question_kholle}[
 		Soient $(a,b)\in \mathbb{C}^2$, $f$ et $g$ les  solutions, définies sur $\mathbb{R}$ à valeurs
 		dans $\mathbb{C}$, des problèmes de Cauchy suivants :
@@ -833,7 +846,7 @@
 		        y'' +ay'+by = 0 \\
 		        y(3) = 1\\
 		        y'(3) = 0
-		        \end{array} \right.        
+		        \end{array} \right.
 			\quad \text{et} \quad
 		    \left\{ \begin{array}{cl}
 		        y'' +ay'+by = 0 \\
@@ -841,44 +854,44 @@
 		        y'(3) = 1
 		        \end{array} \right.
 		\]
-		
+
 		Comment s'exprime la solution définie sur $\mathbb{R}$ de $\left\{ \begin{array}{cl}
 		    y'' +ay'+by = 0 \\
 		    y(3) = \alpha \\
 		    y'(3) = \beta
-		    \end{array} \right. $ pour $(\alpha, \beta)\in \mathbb{R}^2$ fixés ? 
-		
-		Peut-on affirmer que le plan vectoriel des solutions définies sur $\mathbb{R}$ à valeurs dans 
-		$\mathbb{C}$ de $y'' + ay' + by = 0$ est $\{ \lambda \cdot f + \mu \cdot g  | 
+		    \end{array} \right. $ pour $(\alpha, \beta)\in \mathbb{R}^2$ fixés ?
+
+		Peut-on affirmer que le plan vectoriel des solutions définies sur $\mathbb{R}$ à valeurs dans
+		$\mathbb{C}$ de $y'' + ay' + by = 0$ est $\{ \lambda \cdot f + \mu \cdot g  |
 		(\lambda, \mu)\in \mathbb{C}^2\}$
 		]
 		{Les solutions d'une EDL$_2$ constituent un espace vectoriel.}
-	
-	    La solution s'exprime simplement comme combinaison linéaire de f et g, plus précisément, la 
-	    combinaison linéaire en $\alpha$ et $\beta$. En effet, soient de tels scalaires, et soient $f$ et 
-	    $g$ de telles solutions, on a : 
+
+	    La solution s'exprime simplement comme combinaison linéaire de f et g, plus précisément, la
+	    combinaison linéaire en $\alpha$ et $\beta$. En effet, soient de tels scalaires, et soient $f$ et
+	    $g$ de telles solutions, on a :
 	    \[
-	        (\alpha \cdot f + \beta \cdot g)'' + a (\alpha \cdot f + \beta \cdot g)' + b (\alpha \cdot f + 
+	        (\alpha \cdot f + \beta \cdot g)'' + a (\alpha \cdot f + \beta \cdot g)' + b (\alpha \cdot f +
 	        \beta \cdot g) = 0 \text{, par définition des espaces vectoriels.}
 	    \]
 	    Et de même, $(\alpha \cdot f + \beta \cdot g)'(3) = \alpha \cdot f'(3) + \beta \cdot g'(3) = \alpha$,
 	    et $(\alpha \cdot f + \beta \cdot g)''(3) = \alpha \cdot f''(3) + \beta \cdot g''(3) = \beta$.
 	    \newline
-	    Ce qui suffit par unicité des solutions ( de la donc) d'un problème de Cauchy dans le cadre du 
+	    Ce qui suffit par unicité des solutions ( de la donc) d'un problème de Cauchy dans le cadre du
 	    théorème du cours.
 	    \newline
 	    Pour ce qui est du plan vectoriel des solutions, noté $\Omega$, notons aussi $\Phi$ l'ensemble proposé.
 	    L'inclusion $\Phi \subset \Omega$ est triviale par propriété de linéarité des espaces vectoriels.
-	    Finalement, pour $\Omega \subset \Phi$, soit $\omega \in \Omega$, forcément, $\omega$ vérifie 
+	    Finalement, pour $\Omega \subset \Phi$, soit $\omega \in \Omega$, forcément, $\omega$ vérifie
 	    l'$EDL_2$, mais aussi des conditions de Cauchy bien que celles-ci soient non-spécifiées, ainsi
-	    posons $\omega'(3) = \delta$ et $\omega''(3) = \theta$, donc en particulier, $ \omega = 
+	    posons $\omega'(3) = \delta$ et $\omega''(3) = \theta$, donc en particulier, $ \omega =
 	    \delta \cdot f + \theta \cdot g$, d'où l'égalité par double inclusion.
 	\end{question_kholle}
 
 	\begin{question_kholle}
 		[
 		Résolution générale des systèmes linéaires à 2 équations et 2 inconnues en fonction du déterminant du systèmes (\textbf{tous les cas ne sont pas nécessairement à envisager})
-		
+
 		Considérons le système linéaire à deux équations et à deux inconnues $(x,y)$ :
 		\begin{equation}
 			(S)
@@ -890,7 +903,7 @@
 			\right.
 		\end{equation}
 		dont $(a,b,c,d) \in \K^4$ sont les coefficients et $(b_1,b_2) \in \K^2$ sont les seconds membres.
-		
+
 		\begin{enumerate}
 			\item (S) admet une unique solution si et seulement si
 			$\begin{vmatrix}
@@ -913,7 +926,7 @@
 		]
 		{Formules de Cramer pour les systèmes 2 $\times$ 2}
 		Procédons par disjonction de cas.
-		
+
 		\begin{itemize}[label=$\bullet$ Supposons]
 			\item que $ad - bc \neq 0$.
 			\begin{itemize}[label=$\bullet$ Supposons]
@@ -948,7 +961,7 @@
 					\end{aligned}
 				\end{equation*}
 				Donc le système admet une unique solution qui est celle annoncée.
-				
+
 				\item que a = 0. L'hypothèse $ad - bc \neq 0$ implique $bc \neq 0$ donc $b \neq 0$ et $c \neq 0$.
 				\begin{equation*}
 					\begin{aligned}
@@ -976,7 +989,7 @@
 			\end{itemize}
 			Donc le système admet une unique solution qui est celle annoncée.
 		\end{itemize}
-	
+
 		\item $ad - bc = 0$.
 		\begin{itemize}[label=$\bullet$ Supposons]
 			\item $a \neq 0$. En reprenant la méthode pivot de Gauss,
@@ -1009,9 +1022,9 @@
 				\right\}
 			\end{equation}
 			Donc (S) admet un droite affine de solutions.
-			
+
 			\item $a = 0$. Puisque $ad - bc = 0$, alors $bc = 0$ donc b ou c est nul.
-			
+
 			\begin{itemize}[label=$\bullet$ Si]
 				\item $c = 0$,
 				\begin{equation*}
@@ -1021,9 +1034,9 @@
 							dy &=& b_2
 					\end{array} \right.
 				\end{equation*}
-				
+
 				\begin{itemize}[label=$\bullet$ Si]
-					\item $b = 0$, 
+					\item $b = 0$,
 					\begin{equation*}
 						(S) \iff
 						\left\{ \begin{array}{ccc}
@@ -1066,7 +1079,7 @@
 				\end{itemize}
 			\end{itemize}
 		\end{itemize}
-		
+
 	\end{question_kholle}
 
 \pagebreak\section{Semaine 9}
@@ -1701,25 +1714,25 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		{Résolution d'une relation de récurrence linéaire d'ordre 1 à coefficients constants et avec second membre}
 
 		Posons $w$ la suite définie par $$
-\left\{ \begin{array}{ll}
- w_{0} = 1 \\
-\forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n}
-\end{array}\right.
-$$
-$w$ est "évidemment solution de particulière de l'équation"
-
-Maintenant que nous disposons d'une solution particulière, et ayant observé que l'équation est linéaire, mettons en œuvre l'artillerie classique pour exprimer l'ensemble des solutions par l'habituelle technique.
-
-
-\begin{align*}
-\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = v_{n} \\
- & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = w_{n+1} - aw_{n} \\
- & \iff \forall n \in \mathbb{N}, (u-w)_{n+1} = a(u-w)_{n} \\
-& \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}  \\
-	 & \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}} \\
- & \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n \\
- & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
-\end{align*}
+		\left\{ \begin{array}{ll}
+		 w_{0} = 1 \\
+		\forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n}
+		\end{array}\right.
+		$$
+		$w$ est "évidemment solution de particulière de l'équation"
+		
+		Maintenant que nous disposons d'une solution particulière, et ayant observé que l'équation est linéaire, mettons en œuvre l'artillerie classique pour exprimer l'ensemble des solutions par l'habituelle technique.
+		
+		
+		\begin{align*}
+			\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = v_{n} \\
+			& \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = w_{n+1} - aw_{n} \\
+			& \iff \forall n \in \mathbb{N}, (u-w)_{n+1} = a(u-w)_{n} \\
+			& \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}  \\
+			& \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}} \\
+			& \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n \\
+			& \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
+		\end{align*}
 
 	\end{question_kholle}
 
@@ -1872,25 +1885,124 @@ Maintenant que nous disposons d'une solution particulière, et ayant observé qu
 	\end{question_kholle}
 
 	\begin{question_kholle}
-	    [Soient $f,g \ : \ \mathcal{D} \to \R$, $\ell \in \R$ et $a \in \overline{\mathcal{D}}$ tels que $|f(x) - \ell| \leq g(x)$ au voisinage de $a$ et $g$ tend vers $0$ en $a$. Alors montrons que $f$ tend vers $\ell$ en $a$.]
+	    [Soient $f,g \ : \ \mathcal{D} \to \R$, $\ell \in \R$ et $a \in \overline{\mathcal{D}}$ tels que $|f(x) - \ell| \leq g(x)$ au voisinage de $a$ et $g$ tend vers $0$ en $a$. Alors $f$ tend vers $\ell$ en $a$.]
 	    {Théorème sans nom version continue au voisinage de $a$}
 
 	    On traite le cas $a\in \R$. Par définition de $|f(x) - \ell| \leq g(x)$ au voisinage de $a$,
 	    \[
-	    	\exists \varepsilon \in \R _+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \varepsilon \ \implies \ |f(x) - \ell| \leq g(x).
+	    	\exists \eta \in \R _+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \eta \ \implies \ |f(x) - \ell| \leq g(x).
 	    \]
-	    Fixons un tel $\varepsilon$. \\
+	    Fixons un tel $\eta$. \\
 	    Soit $\omega \in \R_+ ^*$. Appliquons la définition de $\lim_{x \to a} g(x) = 0$ pour $\varepsilon \gets \omega$ :
 	    \[
-	   		\exists \varepsilon' \in \R_+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \varepsilon' \ \implies \ |g(x)| \leq \omega.
+	   		\exists \eta' \in \R_+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \eta' \ \implies \ |g(x)| \leq \omega.
 	    \]
-	    Fixons un tel $\varepsilon'$. \\
-	    Posons $\Omega = \min{ \{\varepsilon,  \varepsilon' \} }$. \\
+	    Fixons un tel $\eta'$. \\
+	    Posons $\Omega = \min{ \{\eta,  \eta' \} }$. \\
 	    Soit $x\in \mathcal{D}$ tel que $|x-a| \leq \Omega$.
 	    \[
 		    |f(x) - \ell | \leq g(x) \leq \omega,
 	    \]
 	    car la définition de $\Omega$ permet de remplir les conditions des deux propriétés.
 	\end{question_kholle}
+\pagebreak\section{Semaine 13}
+	
+	\begin{question_kholle}
+		[Soient $g$ une fonction définie sur $\mathcal{D}_g \subset \R$ et $f$ une fonction définie sur $\mathcal{D}_f \subset \R$ telle que $f(\mathcal{D}_f) \subset \mathcal{D}_g$.
+		Si $\left. \begin{array}{cc}
+			g \text{ admet une limite } \ell \in \overline{\R} \text{ en } b \in \overline{\mathcal{D}_g} \\
+			f \text{ admet } b \text{ comme limite en } a \in \overline{\mathcal{D}_f}
+		\end{array} \right\}$
+		alors $g \circ f$ admet $\ell$ comme limite en $a$.]
+		{Théorème de composition des limites}
+		
+		Traitons le cas où $\ell \in \R$, $a \in \R$ et $b \in \R$. \\
+		Soit $\varepsilon \in \R_+^*$ fq. \\
+		Appliquons la définition de $g(y) \arrowlim{y}{b} \ell$ pour cet $\varepsilon$ :
+		\begin{equation*}
+			\exists \eta_g \in \R_+^* : \forall y \in \mathcal{D}_g, | y - b | \leqslant \eta_g \implies | g(y) - \ell | \leqslant \varepsilon
+		\end{equation*}
+		Appliquons la définition de $f(x) \arrowlim{x}{a} b$ pour cet $\eta_g$ :
+		\begin{equation*}
+			\exists \eta_f \in \R_+^* : \forall x \in \mathcal{D}_f, | x - a | \leqslant \eta_f \implies | f(x) - b | \leqslant \eta_g
+		\end{equation*}
+		Posons $\eta = \eta_f$.
+		
+		Soit $x \in \mathcal{D}_{g \circ f}$ fq tq $ | x - a | \leqslant \eta $. Or $f(\mathcal{D}_f) \subset \mathcal{D}_g$ donc $\mathcal{D}_{g \circ f} = \mathcal{D}_f$. \\
+		Ainsi, $x \in \mathcal{D}_f$ et $ | x - a | \leqslant \eta_f $ d'où $ | f(x) - b | \leqslant \eta_g $ d'où $ | g(f(x)) - \ell | \leqslant \varepsilon $. Donc
+		\begin{equation*}
+			g \circ f \arrowlim{x}{a} \ell
+		\end{equation*}
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[{ Soit une fonction continue $f : [a;b] \rightarrow \R$ avec $(a,b) \in \R^2$ et $a < b$. \\
+		Si $f(a)f(b) \leqslant 0$ alors $\exists c \in [a;b] : f(c) = 0$. \\
+		On rencontre aussi : \textit{Si $\mathit{f(a)f(b) < 0}$ alors $\mathit{\exists c \in ]a;b[ : f(c) = 0}$.} }]
+		{Théorème des valeurs intermédiaires}
+		
+		La démonstration repose sur la technique de la dichotomie.
+		
+		\begin{figure}[!h]
+			\centering
+			\tikzmath{ \labTVI = 12; } % la longueur du segment [a;b] dans la démonstration du TVI
+			\begin{tikzpicture}
+				\draw (0,0) node[anchor=north] {a} -- (\labTVI,0) node[anchor=north] {b};
+				\foreach \x in {0,...,\labTVI} {
+					\draw (\x,0.1) -- (\x,-0.1);
+				};
+				\draw[red] (0,0) to[out angle=80, in angle=240, curve through={(\labTVI/5,2) (\labTVI/3,-1) (\labTVI*3/5,0.5)}] (\labTVI,0);
+		
+				\draw[green] (\labTVI/2,0.1) -- (\labTVI/2,-0.1);
+				\draw (\labTVI/2,0) node[green, anchor=north] {$b_1$};
+				\draw[green] (\labTVI/4,0.1) -- (\labTVI/4,-0.1);
+				\draw (\labTVI/4,0) node[green, anchor=north] {$a_2$};
+				\draw[green] (\labTVI*3/8,0.1) -- (\labTVI*3/8,-0.1);
+				\draw (\labTVI*3/8,0) node[green, anchor=north] {$b_3$};
+				\draw[green] (\labTVI*5/16,0.1) -- (\labTVI*5/16,-0.1);
+				\draw (\labTVI*5/16,0) node[green, anchor=north] {$b_4$};
+			\end{tikzpicture}
+		\end{figure}
+	
+		\noindent Soient $a,b,f$ de tels objets. Procédons à la construction des suites $(a_n)_{n\in\N}, (b_n)_{n\in\N}, (c_n)_{n\in\N}$.
+
+		Posons $a_0 = a$, $b_0 = b$ et $c_0 = \frac{a+b}{2}$ (le milieu du segment $[a;b]$). Nous avons, par hypothèse $f(a_0)f(b_0) \leqslant 0$.
+
+		Soit $n \in \N$ fq. Supposons les trois suites construites au rang $n$ telles que $f(a_n)f(b_n) \leqslant 0$ et $c_n = \frac{a_n+b_n}{2}$ (milieu de $[a_n;b_n]$).
+		\begin{itemize}
+			\item Si $f(a_n)f(b_n) \leqslant 0$, posons $\left| \begin{array}{lcl}
+				a_{n+1} &=& a_n \\
+				b_{n+1} &=& c_n \\
+				c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
+			\end{array} \right.$
+			\item Sinon $f(a_n)f(b_n) > 0$. Or $f(a_n)f(b_n) \leqslant 0$, donc $f(a_n)^2 f(b_n) f(c_n) \leqslant 0$. Donc $f(b_n)f(c_n) \leqslant 0$. Posons $\left| \begin{array}{lcl}
+				a_{n+1} &=& c_n \\
+				b_{n+1} &=& b_n \\
+				c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
+			\end{array} \right.$
+		\end{itemize}
+		Ainsi, nous avons bien construits $a_{n+1}, b_{n+1}, c_{n+1}$ telles que $f(a_{n+1})f(b_{n+1}) \leqslant 0$ et ${ c_{n+1} = \frac{a_{n+1}+b_{n+1}}{2} }$ (milieu de $[a_{n+1};b_{n+1}]$).
+		
+		Par récurrence immédiate, $(a_n)_{n\in\N}$ est croissante, $(b_n)_{n\in\N}$ est décroissante et ${ \forall n \in \N, b_n - a_n = \frac{b-a}{2^n} }$ d'où $b_n - a_n \arrowlim{n}{+\infty} 0$.
+		Donc les suites $a$ et $b$ sont adjacentes.
+		D'après le théorème des suites adjacentes, elles convergent vers la même limite. Notons la $c$.
+
+		D'après le bonus de ce même théorème, $\forall n \in \N, a_n \leqslant c \leqslant b_n$ donc pour $n = 0$, $a \leqslant c \leqslant b$. Ainsi,
+		\begin{equation*}
+			c \in [a;b]
+		\end{equation*}
+		
+		Par ailleurs, $\forall n \in \N, f(a_n)f(b_n) \leqslant 0$. Par continuité de $f$ sur $[a;b]$ donc en $c$, $f(a_n) \arrowlim{n}{+\infty} c$ et $f(b_n) \arrowlim{n}{+\infty} c$. Par passage à limite dans l'inégalité,
+		\begin{equation*}
+			f(c) \times f(c) \leqslant 0
+		\end{equation*}
+		Or $f(c)^2 \geqslant 0$, d'où $f(c)^2 = 0$. Ainsi,
+		\begin{equation*}
+			f(c) = 0
+		\end{equation*}
+		Donc $c$ est un point fixe.
+		
+	\end{question_kholle}
+	
 
 \end{document}

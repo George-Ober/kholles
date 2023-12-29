@@ -54,14 +54,16 @@
 \RequirePackage{tikz}
 	\usetikzlibrary{shapes.geometric}
 	\usetikzlibrary{arrows.meta, arrows}
+	\usetikzlibrary{math} % pour les variables
+	\usetikzlibrary{hobby} % pour les courbes
 \RequirePackage{pgfplots}
 	\pgfplotsset{compat=1.15}
 
 
 % environnement des questions de khôlles
-\newenvironment{question_kholle}[2][ ]
+\newenvironment{question_kholle}[2][]
 {
-	\section{#2}
+	\section{\texorpdfstring{#2}{}}
 	\notblank{#1}
 		{
 			\noindent #1
@@ -69,8 +71,8 @@
 		}
 		{}
 	\begin{proof}
-	}
-	{
+}
+{
 	\end{proof}
 }
 
