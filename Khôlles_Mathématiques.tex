@@ -8,7 +8,7 @@
 
 \renewenvironment{question_kholle}[2][ ]
 {
-	\subsection{#2}
+	\subsection{\texorpdfstring{#2}{}}
 	\notblank{#1}
 	{
 		\noindent #1
@@ -16,8 +16,8 @@
 	}
 	{}
 	\begin{proof}
-	}
-	{
+}
+{
 	\end{proof}
 }
 
@@ -1890,15 +1890,15 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 
 	    On traite le cas $a\in \R$. Par définition de $|f(x) - \ell| \leq g(x)$ au voisinage de $a$,
 	    \[
-	    	\exists \varepsilon \in \R _+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \varepsilon \ \implies \ |f(x) - \ell| \leq g(x).
+	    	\exists \eta \in \R _+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \eta \ \implies \ |f(x) - \ell| \leq g(x).
 	    \]
-	    Fixons un tel $\varepsilon$. \\
+	    Fixons un tel $\eta$. \\
 	    Soit $\omega \in \R_+ ^*$. Appliquons la définition de $\lim_{x \to a} g(x) = 0$ pour $\varepsilon \gets \omega$ :
 	    \[
-	   		\exists \varepsilon' \in \R_+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \varepsilon' \ \implies \ |g(x)| \leq \omega.
+	   		\exists \eta' \in \R_+ ^* \ : \ \forall x \in \mathcal{D}, \ |x-a| \leq \eta' \ \implies \ |g(x)| \leq \omega.
 	    \]
-	    Fixons un tel $\varepsilon'$. \\
-	    Posons $\Omega = \min{ \{\varepsilon,  \varepsilon' \} }$. \\
+	    Fixons un tel $\eta'$. \\
+	    Posons $\Omega = \min{ \{\eta,  \eta' \} }$. \\
 	    Soit $x\in \mathcal{D}$ tel que $|x-a| \leq \Omega$.
 	    \[
 		    |f(x) - \ell | \leq g(x) \leq \omega,
@@ -1908,12 +1908,40 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 \pagebreak\section{Semaine 13}
 	
 	\begin{question_kholle}
+		[Soient $g$ une fonction définie sur $\mathcal{D}_g \subset \R$ et $f$ une fonction définie sur $\mathcal{D}_f \subset \R$ telle que $f(\mathcal{D}_f) \subset \mathcal{D}_g$.
+		Si $\left. \begin{array}{cc}
+			g \text{ admet une limite } \ell \in \overline{\R} \text{ en } b \in \overline{\mathcal{D}_g} \\
+			f \text{ admet } b \text{ comme limite en } a \in \overline{\mathcal{D}_f}
+		\end{array} \right\}$
+		alors $g \circ f$ admet $\ell$ comme limite en $a$.]
+		{Théorème de composition des limites}
+		
+		Traitons le cas où $\ell \in \R$, $a \in \R$ et $b \in \R$. \\
+		Soit $\varepsilon \in \R_+^*$ fq. \\
+		Appliquons la définition de $g(y) \arrowlim{y}{b} \ell$ pour cet $\varepsilon$ :
+		\begin{equation*}
+			\exists \eta_g \in \R_+^* : \forall y \in \mathcal{D}_g, | y - b | \leqslant \eta_g \implies | g(y) - \ell | \leqslant \varepsilon
+		\end{equation*}
+		Appliquons la définition de $f(x) \arrowlim{x}{a} b$ pour cet $\eta_g$ :
+		\begin{equation*}
+			\exists \eta_f \in \R_+^* : \forall x \in \mathcal{D}_f, | x - a | \leqslant \eta_f \implies | f(x) - b | \leqslant \eta_g
+		\end{equation*}
+		Posons $\eta = \eta_f$.
+		
+		Soit $x \in \mathcal{D}_{g \circ f}$ fq tq $ | x - a | \leqslant \eta $. Or $f(\mathcal{D}_f) \subset \mathcal{D}_g$ donc $\mathcal{D}_{g \circ f} = \mathcal{D}_f$. \\
+		Ainsi, $x \in \mathcal{D}_f$ et $ | x - a | \leqslant \eta_f $ d'où $ | f(x) - b | \leqslant \eta_g $ d'où $ | g(f(x)) - \ell | \leqslant \varepsilon $. Donc
+		\begin{equation*}
+			g \circ f \arrowlim{x}{a} \ell
+		\end{equation*}
+	\end{question_kholle}
+	
+	\begin{question_kholle}
 		[{ Soit une fonction continue $f : [a;b] \rightarrow \R$ avec $(a,b) \in \R^2$ et $a < b$. \\
 		Si $f(a)f(b) \leqslant 0$ alors $\exists c \in [a;b] : f(c) = 0$. \\
 		On rencontre aussi : \textit{Si $\mathit{f(a)f(b) < 0}$ alors $\mathit{\exists c \in ]a;b[ : f(c) = 0}$.} }]
 		{Théorème des valeurs intermédiaires}
 		
-		La démonstration repose sur la technique de la dichotomie. \\
+		La démonstration repose sur la technique de la dichotomie.
 		
 		\begin{figure}[!h]
 			\centering
