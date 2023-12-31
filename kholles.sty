@@ -1,5 +1,15 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{kholles}[2023/11/25]
+\ProvidesPackage{kholles}[2023/12/10]
+% Author : Hugo Vangilluwen
+
+% Options
+\RequirePackage{xkeyval} % option du paquet de la forme key=value
+\newcommand{\authors}{}
+\DeclareOptionX{auteurs}{\renewcommand{\authors}{#1}}
+\DeclareOptionX{nb-sem}{\newcommand{\nbweek}{#1}}
+\DeclareOptionX*{\PackageWarning{examplepackage}{Unknown option ‘\CurrentOption’}} % others options
+\ExecuteOptionsX{auteurs={Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}} % default
+\ProcessOptionsX\relax
 
 % paquets de police
 \RequirePackage[utf8]{inputenc}
@@ -38,20 +48,22 @@
 		filecolor=magenta,
 		urlcolor=cyan,
 		pdftitle={Khôlles de Mathémtiques},
-		pdfauthor={Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}
+		pdfauthor={\authors}
 	}
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
 	\usetikzlibrary{shapes.geometric}
 	\usetikzlibrary{arrows.meta, arrows}
+	\usetikzlibrary{math} % pour les variables
+	\usetikzlibrary{hobby} % pour les courbes
 \RequirePackage{pgfplots}
 	\pgfplotsset{compat=1.15}
 
 
 % environnement des questions de khôlles
-\newenvironment{question_kholle}[2][ ]
+\newenvironment{question_kholle}[2][]
 {
-	\section{#2}
+	\section{\texorpdfstring{#2}{}}
 	\notblank{#1}
 		{
 			\noindent #1
@@ -59,8 +71,8 @@
 		}
 		{}
 	\begin{proof}
-	}
-	{
+}
+{
 	\end{proof}
 }
 
@@ -81,8 +93,12 @@
 % Relation binaire
 \newcommand{\Rel}{\ensuremath{\mathcal R} }
 % Limites
-
+\newcommand{\arrowlim}[2]{\ \xrightarrow[\;#1\to #2\;]{}\ }
 
 % Le titre
-\title{Khôlles de Mathématiques}
-\author{Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}
+\ifdefined\nbweek
+	\title{Khôlles de Mathématiques - Semaine \nbweek}
+\else
+	\title{Khôlles de Mathématiques}
+\fi
+\author{\authors}

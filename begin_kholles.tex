@@ -6,9 +6,22 @@
 
 \usepackage{kholles}
 
+\renewenvironment{question_kholle}[2][ ]
+{
+	\subsection{\texorpdfstring{#2}{}}
+	\notblank{#1}
+	{
+		\noindent #1
+		\bigbreak
+	}
+	{}
+	\begin{proof}
+}
+{
+	\end{proof}
+}
+
 \begin{document}
 \maketitle
 
 \tableofcontents
-
-\pagebreak
