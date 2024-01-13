@@ -46,7 +46,11 @@ Et voilà !!!
 
 - Les limites \arrowlim{varaible}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
 
-- Pour les flemmards, \eps pour \varepsilon et \ph pour \varphi
+- Les lettres utiles \eps pour \varepsilon, \ph pour \varphi et \e pour la constante d'Euler
+
+- Les ensembles pour la régularité des fonctions \Cont{nombre ou l'infini}{départ}{arrivée} et \Deriv (départ et arrivée sont facultatif, par exemple \Cont{\infty}{}{} ou \Deriv{1}{I}{})
+
+- Pour les flemmards, \fq pour 'fixé quelconque', \tq pour 'tel que' et \tqs pour '\tels que'
 
 # Compilation
 

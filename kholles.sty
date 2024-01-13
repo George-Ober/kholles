@@ -56,10 +56,10 @@
 	\usetikzlibrary{arrows.meta, arrows}
 	\usetikzlibrary{math} % pour les variables
 	\usetikzlibrary{hobby} % pour les courbes
-	% toutes les couleurs possibles
-	% black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow
+	\usetikzlibrary{shapes.misc}
+	% toutes les couleurs possibles : black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow
 \RequirePackage{pgfplots}
-	\pgfplotsset{compat=1.15}
+	\pgfplotsset{compat=1.15,width=10cm}
 
 
 % environnement des questions de khôlles
@@ -96,9 +96,29 @@
 \newcommand{\Rel}{\ensuremath{\mathcal R}}
 % Limites
 \newcommand{\arrowlim}[2]{\ \xrightarrow[\;#1\to #2\;]{}\ }
-% Lettres greques
+% Lettres utiles
 \newcommand{\eps}{\ensuremath{\varepsilon}}
 \newcommand{\ph}{\ensuremath{\varphi}}
+\newcommand{\e}{\ensuremath{\mathrm{e}}}
+% Régularité
+\newcommand{\regularite}[4]{\ensuremath{
+	\mathcal{#1}^{#2}
+	\notblank{#3}
+		{
+			\!
+			\left(
+			#3, 
+			\notblank{#4}{#4}{\mathbb{R}}
+			\right)
+		}
+		{}
+}}
+\newcommand{\Cont}[3]{\regularite{C}{#1}{#2}{#3}}
+\newcommand{\Deriv}[3]{\regularite{D}{#1}{#2}{#3}}
+% flemmards
+\newcommand{\fq}{fixé quelconque}
+\newcommand{\tq}{tel que}
+\newcommand{\tqs}{tels que}
 
 % Le titre
 \ifdefined\nbweek

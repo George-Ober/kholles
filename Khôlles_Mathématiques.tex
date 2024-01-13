@@ -1907,102 +1907,503 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	\end{question_kholle}
 \pagebreak\section{Semaine 13}
 	
-	\begin{question_kholle}
-		[Soient $g$ une fonction définie sur $\mathcal{D}_g \subset \R$ et $f$ une fonction définie sur $\mathcal{D}_f \subset \R$ telle que $f(\mathcal{D}_f) \subset \mathcal{D}_g$.
+\begin{question_kholle}
+	[Soient $g$ une fonction définie sur $\mathcal{D}_g \subset \R$ et $f$ une fonction définie sur $\mathcal{D}_f \subset \R$ telle que $f(\mathcal{D}_f) \subset \mathcal{D}_g$.
 		Si $\left. \begin{array}{cc}
-			g \text{ admet une limite } \ell \in \overline{\R} \text{ en } b \in \overline{\mathcal{D}_g} \\
-			f \text{ admet } b \text{ comme limite en } a \in \overline{\mathcal{D}_f}
+		g \text{ admet une limite } \ell \in \overline{\R} \text{ en } b \in \overline{\mathcal{D}_g} \\
+		f \text{ admet } b \text{ comme limite en } a \in \overline{\mathcal{D}_f}
 		\end{array} \right\}$
-		alors $g \circ f$ admet $\ell$ comme limite en $a$.]
-		{Théorème de composition des limites}
-		
-		Traitons le cas où $\ell \in \R$, $a \in \R$ et $b \in \R$. \\
-		Soit $\varepsilon \in \R_+^*$ fq. \\
-		Appliquons la définition de $g(y) \arrowlim{y}{b} \ell$ pour cet $\varepsilon$ :
-		\begin{equation*}
-			\exists \eta_g \in \R_+^* : \forall y \in \mathcal{D}_g, | y - b | \leqslant \eta_g \implies | g(y) - \ell | \leqslant \varepsilon
-		\end{equation*}
-		Appliquons la définition de $f(x) \arrowlim{x}{a} b$ pour cet $\eta_g$ :
-		\begin{equation*}
-			\exists \eta_f \in \R_+^* : \forall x \in \mathcal{D}_f, | x - a | \leqslant \eta_f \implies | f(x) - b | \leqslant \eta_g
-		\end{equation*}
-		Posons $\eta = \eta_f$.
-		
-		Soit $x \in \mathcal{D}_{g \circ f}$ fq tq $ | x - a | \leqslant \eta $. Or $f(\mathcal{D}_f) \subset \mathcal{D}_g$ donc $\mathcal{D}_{g \circ f} = \mathcal{D}_f$. \\
-		Ainsi, $x \in \mathcal{D}_f$ et $ | x - a | \leqslant \eta_f $ d'où $ | f(x) - b | \leqslant \eta_g $ d'où $ | g(f(x)) - \ell | \leqslant \varepsilon $. Donc
-		\begin{equation*}
-			g \circ f \arrowlim{x}{a} \ell
-		\end{equation*}
-	\end{question_kholle}
+	alors $g \circ f$ admet $\ell$ comme limite en $a$.]
+	{Théorème de composition des limites}
+			
+	Traitons le cas où $\ell \in \R$, $a \in \R$ et $b \in \R$. \\
+	Soit $\varepsilon \in \R_+^*$ fq. \\
+	Appliquons la définition de $g(y) \arrowlim{y}{b} \ell$ pour cet $\varepsilon$ :
+	\begin{equation*}
+		\exists \eta_g \in \R_+^* : \forall y \in \mathcal{D}_g, | y - b | \leqslant \eta_g \implies | g(y) - \ell | \leqslant \varepsilon
+	\end{equation*}
+	Appliquons la définition de $f(x) \arrowlim{x}{a} b$ pour cet $\eta_g$ :
+	\begin{equation*}
+		\exists \eta_f \in \R_+^* : \forall x \in \mathcal{D}_f, | x - a | \leqslant \eta_f \implies | f(x) - b | \leqslant \eta_g
+	\end{equation*}
+	Posons $\eta = \eta_f$.
+			
+	Soit $x \in \mathcal{D}_{g \circ f}$ fq tq $ | x - a | \leqslant \eta $. Or $f(\mathcal{D}_f) \subset \mathcal{D}_g$ donc $\mathcal{D}_{g \circ f} = \mathcal{D}_f$. \\
+	Ainsi, $x \in \mathcal{D}_f$ et $ | x - a | \leqslant \eta_f $ d'où $ | f(x) - b | \leqslant \eta_g $ d'où $ | g(f(x)) - \ell | \leqslant \varepsilon $. Donc
+	\begin{equation*}
+		g \circ f \arrowlim{x}{a} \ell
+	\end{equation*}
+\end{question_kholle}
 	
+\begin{question_kholle}
+	[{ Soit une fonction continue $f : [a;b] \rightarrow \R$ avec $(a,b) \in \R^2$ et $a < b$. \\
+			Si $f(a)f(b) \leqslant 0$ alors $\exists c \in [a;b] : f(c) = 0$. \\
+			On rencontre aussi : \textit{Si $\mathit{f(a)f(b) < 0}$ alors $\mathit{\exists c \in ]a;b[ : f(c) = 0}$.} }]
+				{Théorème des valeurs intermédiaires}
+						
+				La démonstration repose sur la technique de la dichotomie.
+						
+				\begin{figure}[!h]
+%					\centering
+					\tikzmath{ \labTVI = 12; } % la longueur du segment [a;b] dans la démonstration du TVI
+					\begin{tikzpicture}
+						\draw (0,0) node[anchor=north] {a} -- (\labTVI,0) node[anchor=north] {b};
+						\foreach \x in {0,...,\labTVI} {
+							\draw (\x,0.1) -- (\x,-0.1);
+						};
+						\draw[red] (0,0) to[out angle=80, in angle=240, curve through={(\labTVI/5,2) (\labTVI/3,-1) (\labTVI*3/5,0.5)}] (\labTVI,0);
+								
+						\draw[green] (\labTVI/2,0.1) -- (\labTVI/2,-0.1);
+						\draw (\labTVI/2,0) node[green, anchor=north] {$b_1$};
+						\draw[green] (\labTVI/4,0.1) -- (\labTVI/4,-0.1);
+						\draw (\labTVI/4,0) node[green, anchor=north] {$a_2$};
+						\draw[green] (\labTVI*3/8,0.1) -- (\labTVI*3/8,-0.1);
+						\draw (\labTVI*3/8,0) node[green, anchor=north] {$b_3$};
+						\draw[green] (\labTVI*5/16,0.1) -- (\labTVI*5/16,-0.1);
+						\draw (\labTVI*5/16,0) node[green, anchor=north] {$b_4$};
+					\end{tikzpicture}
+				\end{figure}
+					
+				\noindent Soient $a,b,f$ de tels objets. Procédons à la construction des suites $(a_n)_{n\in\N}, (b_n)_{n\in\N}, (c_n)_{n\in\N}$.
+				
+				Posons $a_0 = a$, $b_0 = b$ et $c_0 = \frac{a+b}{2}$ (le milieu du segment $[a;b]$). Nous avons, par hypothèse $f(a_0)f(b_0) \leqslant 0$.
+				
+				Soit $n \in \N$ fq. Supposons les trois suites construites au rang $n$ telles que $f(a_n)f(b_n) \leqslant 0$ et $c_n = \frac{a_n+b_n}{2}$ (milieu de $[a_n;b_n]$).
+				\begin{itemize}
+					\item Si $f(a_n)f(b_n) \leqslant 0$, posons $\left| \begin{array}{lcl}
+					      a_{n+1} &=& a_n \\
+					      b_{n+1} &=& c_n \\
+					      c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
+					\end{array} \right.$
+					\item Sinon $f(a_n)f(b_n) > 0$. Or $f(a_n)f(b_n) \leqslant 0$, donc $f(a_n)^2 f(b_n) f(c_n) \leqslant 0$. Donc $f(b_n)f(c_n) \leqslant 0$. Posons $\left| \begin{array}{lcl}
+					      a_{n+1} &=& c_n \\
+					      b_{n+1} &=& b_n \\
+					      c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
+					\end{array} \right.$
+				\end{itemize}
+				Ainsi, nous avons bien construits $a_{n+1}, b_{n+1}, c_{n+1}$ telles que $f(a_{n+1})f(b_{n+1}) \leqslant 0$ et ${ c_{n+1} = \frac{a_{n+1}+b_{n+1}}{2} }$ (milieu de $[a_{n+1};b_{n+1}]$).
+						
+				Par récurrence immédiate, $(a_n)_{n\in\N}$ est croissante, $(b_n)_{n\in\N}$ est décroissante et ${ \forall n \in \N, b_n - a_n = \frac{b-a}{2^n} }$ d'où $b_n - a_n \arrowlim{n}{+\infty} 0$.
+				Donc les suites $a$ et $b$ sont adjacentes.
+				D'après le théorème des suites adjacentes, elles convergent vers la même limite. Notons la $c$.
+				
+				D'après le bonus de ce même théorème, $\forall n \in \N, a_n \leqslant c \leqslant b_n$ donc pour $n = 0$, $a \leqslant c \leqslant b$. Ainsi,
+				\begin{equation*}
+					c \in [a;b]
+				\end{equation*}
+						
+				Par ailleurs, $\forall n \in \N, f(a_n)f(b_n) \leqslant 0$. Par continuité de $f$ sur $[a;b]$ donc en $c$, $f(a_n) \arrowlim{n}{+\infty} f(c)$ et $f(b_n) \arrowlim{n}{+\infty} f(c)$. Par passage à limite dans l'inégalité,
+				\begin{equation*}
+					f(c) \times f(c) \leqslant 0
+				\end{equation*}
+				Or $f(c)^2 \geqslant 0$, d'où $f(c)^2 = 0$. Ainsi,
+				\begin{equation*}
+					f(c) = 0
+				\end{equation*}
+				Donc $c$ est un point fixe.
+						
+				\end{question_kholle}
+				 
+				\begin{question_kholle}[{L'image d'un segment par une fonction continue sur ce segment est un segment : soient $(a, b) \in \mathbb{R}^2$ tels que $a < b$ et $f: [a, b] \to \mathbb{R}$. Si $f \in \mathcal{C}^0([a, b], \mathbb{R})$ alors $\exists (x_{1}, x_{2}) \in \mathbb{R}^2 : f([a, b]) = [f(x_{1}), f(x_{2})]$}]{Théorème de Weierstraß}
+                    \begin{itemize}
+    
+					\item \emph{Étape 1} Montrons que $f([a, b])$ est majoré.
+					     
+					Par l'absurde, supposons que $f([a, b])$ n'est pas majoré
+					     
+					Alors \begin{equation}\label{eq:1}
+					         \forall A \in \mathbb{R}, \exists x \in [a, b] : f(x) > A
+					\end{equation}
+					
+					Soit $n \in \mathbb{N}$ fq.
+					Appliquons (\ref{eq:1}) pour $A \leftarrow n$:
+					$\exists x \in [a, b] : f(x) > n$, et fixons un tel $x$ que l'on note $x_{n}$
+					Nous venons de créer la suite $(x_{n})_{n \in \mathbb{N}} \in [a, b]^{\mathbb{N}}$ qui vérifie:
+					
+					
+					$$
+					\left. 
+					\begin{array}{ll}
+						\forall n \in \mathbb{N}, f(x_{n}) \geqslant n \\
+						\lim_{ n \to \infty } n =  +\infty         
+					\end{array}
+					\right\} \underbrace{ \implies }_{ \text{théorème de divergence par minoration} } f(x_{n}) \xrightarrow[n \to +\infty]{} + \infty
+					$$
+					
+					
+					$(x_{n})_{n \in \mathbb{N}}$ est bornée (à valeurs dans $[a, b]$) donc, selon le théorème de Bolzanno-Weierstraß:
+					$$
+					\exists \ell \in \mathbb{R} : \exists \varphi : \mathbb{N} \to \mathbb{N} : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \mathbb{N}} \text{ tend vers } \ell
+					$$
+					Donc, en passant à la limite : $\forall n \in \mathbb{N}, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
+					
+					Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$ converge vers $f(\ell)$.
+					
+					Or $$
+					\left\{ \begin{array}{ll}
+					(f(x_{\varphi(n)}))_{n \in \mathbb{N}} \text{ est une sous suite de } (f(x_{n}))_{n \in \mathbb{N}} \\
+					f(x_{n}) \xrightarrow[n \to + \infty]{} + \infty
+					\end{array}\right.$$
+					
+					donc $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$, tend vers $+ \infty$, ce qui est absurde, donc $f$ est majorée.
+					
+					On fait de même pour la minoration.
+					
+					\item  \emph{Étape 2:} Montrons que $f([a, b])$ admet un pge et un ppe.
+					
+					Montrons donc que $f([a, b])$ admet une borne sup, qui, puisque c'est une valeur atteinte, deviendra un max.
+					
+					$$
+					f([a, b]) \text{ est } \left\{ \begin{array}{ll}
+					\text{ une partie de } \mathbb{R} \\
+					\text{ non vide car contient } f(a) \\
+					\text{majorée d'après l'étape 1}
+					\end{array}\right.
+					$$
+					
+					$f([a, b])$ admet donc une borne supérieure $\sigma$.
+					
+					Appliquons la caractérisation séquentielle de la borne supérieure:
+					$$
+					\exists (y_{n})_{n \in \mathbb{N}}, \in f([a, b])^{\mathbb{N}} : (y_{n}) \text{ converge vers } \sigma
+					$$
+					$$
+					\forall n \in \mathbb{N}, y_{n} \in f([a, b]) \implies \exists x_{n} \in [a, b] : f(x_{n} ) = y_{n}
+					$$
+					Fixons un tel $x_{n}$ pour tout $y_{n}$.
+					On a donc construit $(x_{n})_{n \in \mathbb{N}} \in [a, b]^{\mathbb{N}} : f(x_{n}) \xrightarrow[n \to +\infty]{} \sigma$
+					
+					De plus, $(x_{n})$ est bornée (à valeurs dans $[a, b]$) donc, selon le théorème de Bolzanno-Weierstraß:
+					$$
+					\exists \ell \in \mathbb{R} : \exists \varphi : \mathbb{N} \to \mathbb{N} : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \mathbb{N}} \text{ tend vers } \ell
+					$$
+					Donc, en passant à la limite : $\forall n \in \mathbb{N}, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
+
+     
+					Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$ converge vers $f(\ell)$.
+					
+					Or,
+					$$
+					\left\{ \begin{array}{ll}
+					(f(x_{\varphi(n)}))_{n \in \mathbb{N}} \text{ est une sous suite de } (f(x_{n}))_{n \in \mathbb{N}} \\
+					f(x_{n}) \xrightarrow[n \to + \infty]{} \sigma
+					\end{array}\right.$$
+					
+					Par unicité de la limite, $\sigma = f(\ell)$.
+					
+					On montre de même qu'il existe $\ell' \in [a, b]: f(\ell') = \inf f([a, b])$
+					
+					Ainsi, $f(\ell) = \max f([a, b])$ et $f(\ell') = \min f([a, b])$
+
+
+     
+					\item \emph{Étape 3:}
+					Montrons que $f([a, b]) = [f(\ell'), f(\ell)]$.
+					
+					Par la construction précédente, $\forall y \in f([a, b]), y \in [f(\ell'), f(\ell)]$.
+					
+					Ainsi, $f([a, b]) \subset [f(\ell'), f(\ell)]$.
+					
+					Réciproquement, l'image par la fonction continue $f$ du segment $[a, b]$ qui est un intervalle est un intervalle:
+					
+					$$
+					\left. 
+					\begin{array}{ll}
+						f([a,b]) \text{ est un intevalle} \\
+						f(\ell) \in f([a, b])             \\
+						f(\ell') \in f([a, b])            
+					\end{array}
+					\right\} 
+					\implies
+					[f(\ell'), f(\ell)] \subset f([a,b])
+					$$
+					
+					D'où $[f(\ell'), f(\ell)] = f([a,b])$
+					    
+                    \end{itemize}
+				\end{question_kholle}
+\pagebreak\section{Semaine 14}
+
 	\begin{question_kholle}
-		[{ Soit une fonction continue $f : [a;b] \rightarrow \R$ avec $(a,b) \in \R^2$ et $a < b$. \\
-		Si $f(a)f(b) \leqslant 0$ alors $\exists c \in [a;b] : f(c) = 0$. \\
-		On rencontre aussi : \textit{Si $\mathit{f(a)f(b) < 0}$ alors $\mathit{\exists c \in ]a;b[ : f(c) = 0}$.} }]
-		{Théorème des valeurs intermédiaires}
-		
-		La démonstration repose sur la technique de la dichotomie.
-		
-		\begin{figure}[!h]
-			\centering
-			\tikzmath{ \labTVI = 12; } % la longueur du segment [a;b] dans la démonstration du TVI
-			\begin{tikzpicture}
-				\draw (0,0) node[anchor=north] {a} -- (\labTVI,0) node[anchor=north] {b};
-				\foreach \x in {0,...,\labTVI} {
-					\draw (\x,0.1) -- (\x,-0.1);
-				};
-				\draw[red] (0,0) to[out angle=80, in angle=240, curve through={(\labTVI/5,2) (\labTVI/3,-1) (\labTVI*3/5,0.5)}] (\labTVI,0);
-		
-				\draw[green] (\labTVI/2,0.1) -- (\labTVI/2,-0.1);
-				\draw (\labTVI/2,0) node[green, anchor=north] {$b_1$};
-				\draw[green] (\labTVI/4,0.1) -- (\labTVI/4,-0.1);
-				\draw (\labTVI/4,0) node[green, anchor=north] {$a_2$};
-				\draw[green] (\labTVI*3/8,0.1) -- (\labTVI*3/8,-0.1);
-				\draw (\labTVI*3/8,0) node[green, anchor=north] {$b_3$};
-				\draw[green] (\labTVI*5/16,0.1) -- (\labTVI*5/16,-0.1);
-				\draw (\labTVI*5/16,0) node[green, anchor=north] {$b_4$};
-			\end{tikzpicture}
-		\end{figure}
-	
-		\noindent Soient $a,b,f$ de tels objets. Procédons à la construction des suites $(a_n)_{n\in\N}, (b_n)_{n\in\N}, (c_n)_{n\in\N}$.
-
-		Posons $a_0 = a$, $b_0 = b$ et $c_0 = \frac{a+b}{2}$ (le milieu du segment $[a;b]$). Nous avons, par hypothèse $f(a_0)f(b_0) \leqslant 0$.
-
-		Soit $n \in \N$ fq. Supposons les trois suites construites au rang $n$ telles que $f(a_n)f(b_n) \leqslant 0$ et $c_n = \frac{a_n+b_n}{2}$ (milieu de $[a_n;b_n]$).
-		\begin{itemize}
-			\item Si $f(a_n)f(b_n) \leqslant 0$, posons $\left| \begin{array}{lcl}
-				a_{n+1} &=& a_n \\
-				b_{n+1} &=& c_n \\
-				c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
-			\end{array} \right.$
-			\item Sinon $f(a_n)f(b_n) > 0$. Or $f(a_n)f(b_n) \leqslant 0$, donc $f(a_n)^2 f(b_n) f(c_n) \leqslant 0$. Donc $f(b_n)f(c_n) \leqslant 0$. Posons $\left| \begin{array}{lcl}
-				a_{n+1} &=& c_n \\
-				b_{n+1} &=& b_n \\
-				c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
-			\end{array} \right.$
-		\end{itemize}
-		Ainsi, nous avons bien construits $a_{n+1}, b_{n+1}, c_{n+1}$ telles que $f(a_{n+1})f(b_{n+1}) \leqslant 0$ et ${ c_{n+1} = \frac{a_{n+1}+b_{n+1}}{2} }$ (milieu de $[a_{n+1};b_{n+1}]$).
-		
-		Par récurrence immédiate, $(a_n)_{n\in\N}$ est croissante, $(b_n)_{n\in\N}$ est décroissante et ${ \forall n \in \N, b_n - a_n = \frac{b-a}{2^n} }$ d'où $b_n - a_n \arrowlim{n}{+\infty} 0$.
-		Donc les suites $a$ et $b$ sont adjacentes.
-		D'après le théorème des suites adjacentes, elles convergent vers la même limite. Notons la $c$.
-
-		D'après le bonus de ce même théorème, $\forall n \in \N, a_n \leqslant c \leqslant b_n$ donc pour $n = 0$, $a \leqslant c \leqslant b$. Ainsi,
-		\begin{equation*}
-			c \in [a;b]
-		\end{equation*}
-		
-		Par ailleurs, $\forall n \in \N, f(a_n)f(b_n) \leqslant 0$. Par continuité de $f$ sur $[a;b]$ donc en $c$, $f(a_n) \arrowlim{n}{+\infty} c$ et $f(b_n) \arrowlim{n}{+\infty} c$. Par passage à limite dans l'inégalité,
-		\begin{equation*}
-			f(c) \times f(c) \leqslant 0
-		\end{equation*}
-		Or $f(c)^2 \geqslant 0$, d'où $f(c)^2 = 0$. Ainsi,
-		\begin{equation*}
-			f(c) = 0
-		\end{equation*}
-		Donc $c$ est un point fixe.
-		
+	    [Soit $f \left| \begin{matrix}
+	    	\R_+^* \rightarrow \R \\
+	    	x \mapsto \frac{\ln x}{x}
+	    \end{matrix} \right. $. \\
+	    Exprimer $f^{(n)}$ pour tout $n \in \N$.]
+	    {Expression de dérivées successives}
+	    Soit $x\in \mathcal{D}_f$. \\
+	    Considérons le prédicat $P(\cdot)$ définit pour $n\in \N$ par :
+	    $$ P(n) \ : \ \text{\textquotedblleft} \ f^{(n)}(x) = \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right] \ " $$
+	    Initialisation : \\
+	    Pour $n = 0$, $$f^{(0)}(x) = f(x) = \frac{\ln (x)}{x} = \frac{(-1)^0 0!}{x^{0+1}}\left[ \ln (x) - \sum_{k=1}^0 \frac{1}{k!} \right],$$ donc $P(0)$ est vrai. \\
+	    Hérédité :
+	    \\
+	    Soit $n\in \N$ tel que $P(n)$. On a,
+	    $$f^{(n+1)}(x) = (f^{(n)}(x))' = \left( \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right] \right)'$$
+	    par véracité de $P(n)$. Ainsi,
+	$$\begin{array}{rcl}
+	f^{(n+1)}(x) & = & \frac{(-1)^nn!x^n - (-1)^n(n+1)!x^n\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right]}{x^{2(n+1)}} \\ [1ex]
+	 & = & \frac{(-1)^{n+1}(n+1)!\ln (x) - (-1)^{n+1}(n+1)!\sum_{k=1}^{n+1} \frac{1}{k!} }{x^{n+2}} \\ [1ex]
+	 & = & \frac{(-1)^{n+1} (n+1)!}{x^{n+2}}\left[ \ln (x) - \sum_{k=1}^{n+1} \frac{1}{k!} \right]
+	\end{array}$$
+	    c'est l'expression recherchée, donc $P(n+1)$ est vrai. \\
+	    Par théorème de récurrence sur $\N$, $P(n)$ est vraie pour tout $n\in \N$.
 	\end{question_kholle}
-	
+
+	\begin{question_kholle}
+	    [Soient $(a,b)\in \R ^2$ tels que $a<b$. Soit $I$ le segment $a,b$.
+	    \\
+	    Soit $f \ : \ I \ \to \ \R $ continue sur ledit segment et dérivable sur l'ouvert associé.\\
+	    {\begin{enumerate}[label=($\roman*$)]
+	    	\item Théroème de Rolle : \\
+	    	Si $f(a) = f(b)$, alors $\exists \ c \in \overset{\circ}{I}$ tel que $f'(c) =0$
+	    	\begin{figure}[!h]
+	    		\centering
+	    		\tikzmath{ integer \a \b \f \c \fc; \a = 1; \b = 9; \f = 2; \c = \a + 3; \fc = \f + 2; }
+	    		\begin{tikzpicture}
+	    			\draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
+	    			\draw[-stealth] (0,0) -- (0,5) node[anchor=south] {$y$};
+
+	    			\coordinate (A) at (\a,\f);
+	    			\coordinate (B) at (\b,\f);
+	    			\coordinate (C) at (\c,\fc);
+
+	    			%\draw[red] (A) to[out angle=80, in angle=240, curve through={(C) (6,1.5)}] (B);
+	    			\draw [red] plot [smooth] coordinates {(A) (C) (6,1.5) (B)};
+	    			\draw[blue, thick] (A) -- (B);
+	    			\draw[blue, dashed] (A) -- (\a,0) node[anchor=north] {$a$};
+	    			\draw[blue, dashed] (B) -- (\b,0) node[anchor=north] {$b$};
+	    			\draw[blue, dashed] (A) -- (0,\f) node[anchor=east] {$f(a)=f(b)$};
+
+	    			\draw[stealth-stealth, teal] (\c-2,\fc) -- (\c+2,\fc);
+	    			\draw (C) node[anchor=north, teal] {$c$} node[anchor=south, teal] {$f'(c)=0$};
+	    		\end{tikzpicture}
+    			\caption{Théorème de Rolle}
+	    	\end{figure}
+
+	    	\item Formule des accroissements finis : \\
+	    	$\exists \ c \in \overset{\circ}{I} \ : \ f'(c) = \frac{f(b)-f(a)}{b-a}.$
+	    	\begin{figure}[!h]
+	    		\centering
+	    		\tikzmath{integer \a \fa \b \fb \c \fc; \a = 1; \fa = 1; let \b = 9; \fb = 5; \c = \a + 5; \fc = \fa + 1; }
+	    		\begin{tikzpicture}
+	    			\draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
+	    			\draw[-stealth] (0,0) -- (0,6) node[anchor=south] {$y$};
+
+	    			\coordinate (A) at (\a,\fa);
+	    			\coordinate (B) at (\b,\fb);
+	    			\coordinate (C) at (\c,\fc);
+
+	    			%\draw[red] (A) to[out angle=80, in angle=240, curve through={(C) (6,1.5)}] (B);
+	    			\draw [red] plot [smooth] coordinates {(A) (3,4) (C) (7,4.5) (B)};
+	    			\draw[blue, thick] (A) -- (B);
+	    			\draw[blue, dashed] (A) -- (\a,0) node[anchor=north] {$a$};
+	    			\draw[blue, dashed] (A) -- (0,\fa) node[anchor=east] {$f(a)$};
+	    			\draw[blue, dashed] (B) -- (\b,0) node[anchor=north] {$b$};
+	    			\draw[blue, dashed] (B) -- (0,\fb) node[anchor=east] {$f(b)$};
+
+	    			\draw[stealth-stealth, teal] (\c-2,\fc-1) -- (\c+2,\fc+1);
+	    			\draw (C) node[anchor=south, teal] {$c$} node[anchor=north west, teal] {$f'(c)=\frac{f(b)-f(a)}{b-a}$};
+	    		\end{tikzpicture}
+    			\caption{Formule des accroissements finis}
+	    	\end{figure}
+	    \end{enumerate}}
+	    ]
+	    {Théorème de Rolle et formule des accroissements finis}
+	    Soient de tels objets. \\
+	    Prouvons $(i)$, donc supposons $f(a) = f(b)$. \\
+	    $f$ est continue sur $I$ donc par le théorème de Weierstraß, elle est bornée et atteint ses bornes sur ce segment :
+	    \\
+	    $$\exists \ (x_m, x_M)\in I^2 \ : \ (f(x_m) = \min f(I)) \wedge (f(x_M) = \max f(I))$$
+	    donc, si $(x_m, x_M)\in \{a,b\}^2$, alors,
+	    $$\forall x \in I, \ f(a)=f(x_m) \leq f(x) \leq f(x_M)=f(a)$$
+	    donc $\forall x \in I, f(x) = f(a)$ c'est-à-dire que $f$ est constante et donc tous les points intermédiaires à $I$ sont des $c$ valides.\\
+	    Sinon, $(x_m \notin \{a,b\}) \vee (x_M \notin \{a,b\}) $, quitte à prendre l'autre valeur, supposons que $x_M \notin \{a,b\}$, ainsi, $x_M \in \overset{\circ}{I}$ et $f(x_M)$ est un maximum global donc, $f$ étant dérivable sur $\overset{\circ}{I}$ elle est dérivable en $x_M$ donc $f'(x_M)=0$, on pose $c = x_M$, ce qui conclut. \\ \\
+	    Prouvons $(ii)$.\\
+	    Posons $d \ :\ I \ \to \ \R, \ x \ \mapsto \ f(x) \left( \frac{f(b)-f(a)}{b-a}(x-a) +f(a) \right) $. $d$ est continue sur $I$ et dérivable sur $\overset{\circ}{I}$ comme combinaison linéaire de telles fonctions. On a $d(a) = 0$ et $d(b) = 0$ donc $d(a) = 0 = d(b)$. On peut alors appliquer le Théorème de Rolle pour $f \gets d, a \gets a $ et $ b \gets b$ : il existe $c\in \overset{\circ}{I}$ tel que $d'(c) = 0$, c'est le résultat.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+	    [Soit $f\in \mathcal{C}^0(I, \R) \cap \mathcal{D}^1(\overset{\circ}{I}, \R)$ et $x_0 \in I$, posons {$X_- = ]-\infty;x_0]$} la demi-droite fermée en $x_0$ et vers $-\infty$, de même {$X_+ = [x_0;+\infty[$} la demi-droite fermée en $x_0$ et vers $+ \infty$. \\ \\
+	    {\begin{enumerate}[label=$(\roman*)$]
+	    	\item \begin{itemize}[label=$\star$, leftmargin=0.4cm]
+	    		\item Si $\exists \ m \in \R \ : \ \forall x \in \overset{\circ}{I}, \ m\leq f'(x)$, alors, $$\forall x \in I \cap X_+, \ f(x_0) + m(x-x_0) \leq f(x)$$ et $$\forall x \in I \cap X_-, \ f(x) \leq f(x_0) + m(x-x_0)$$
+	    		\item Si $\exists \ M \in \R \ : \ \forall x \in \overset{\circ}{I}, \ f'(x) \leq M $, alors, $$\forall x \in I \cap X_+, \ f(x) \leq f(x_0) + M(x-x_0)$$ et $$\forall x \in I \cap X_-, \ f(x_0) + M(x-x_0) \leq f(x) $$
+	    		\item Si $\exists \ (m,M) \in \R^2 \ : \ \forall x \in \overset{\circ}{I}, \ m\leq f'(x) \leq M$, alors, $$\forall x \in I \cap X_+, \ f(x_0) + m(x-x_0) \leq f(x) \leq f(x_0) +M(x-x_0)$$ et $$\forall x \in I \cap X_-, \ f(x_0) + M(x-x_0) \leq f(x) \leq f(x_0) +m(x-x_0)$$
+	    	\end{itemize}
+    		\item Si $\exists M \in \R \ : \ \forall x \in \overset{\circ}{I}, \ |f'(x)|\leq M$, alors, $$\forall (x,y) \in I^2, \ |f(y) -f(x)| \leq M|y-x|$$
+	    \end{enumerate}}
+
+		{\begin{figure}[!h]
+			\centering
+			\tikzmath{ integer \x0 \fx0 \m \M; \x0 = 5;\fx0 = 2.5; \m = 0.2; \M = 0.7; }
+			\begin{tikzpicture}
+				\draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
+				\draw[-stealth] (0,0) -- (0,5) node[anchor=south] {$y$};
+
+				\coordinate (A) at (1,\fx0-\m*\x0+\m*1);
+				\coordinate (B) at (9,\fx0-\m*\x0+\m*9);
+				\coordinate (C) at (1,\fx0-\M*\x0+\M*1);
+				\coordinate (D) at (9,\fx0-\M*\x0+\M*9);
+				\draw[ultra thick, black] (A) -- (B) node[anchor=north west] {$y = f(x_0) + m(x -x_0)$};
+				\draw[ultra thick, black] (C) -- (D) node[anchor=south east] {$y = f(x_0) + M(x -x_0)$};
+				\filldraw[magenta!30] (A) -- (B) -- (D) -- (C) -- cycle;
+
+				\draw (\x0,\fx0) node[cross out, minimum size=8*\pgflinewidth, inner sep=0pt, outer sep=0pt, draw=blue, rotate=45, thick] {};
+				\draw[blue, dashed] (\x0,\fx0) -- (0,\fx0) node[anchor=east] {$f(x_0)$};
+				\draw[blue, dashed] (\x0,\fx0) -- (\x0,0) node[anchor=north] {$x_0$};
+			\end{tikzpicture}
+			\caption{Interprétation géométrique des accroissements finis}
+		\end{figure}}]
+	    {Inégalité des accroissements finis}
+	    $(i)$ Soit $x\in I$ et posons $S$ le segment d'extrémités $x$ et $x_0$. \\
+	    $\star$ Si $x\neq x_0$, $f$ est continue sur $S$ et dérivable sur $\overset{\circ}{S}$, la formule des accroissements finis donne alors l'existence d'un $c$ appartenant à $\overset{\circ}{S}$ tel que $$f(x) - f(x_0) = (x-x_0)f'(c)$$ Si $x> x_0, \ x-x_0 > 0$, or $m \leq f'(c) \leq M$ donc $$m(x-x_0) \leq (x-x_0)f'(c) \leq M(x-x_0)$$ si bien que $$m(x-x_0) \leq f(x) - f(x_0) \leq M(x-x_0) $$ d'où $$f(x_0) + m(x-x_0) \leq f(x) \leq f(x_0) + M(x-x_0). $$ Si $x<x_0$, il suffit de retourner l'inégalité lors de la première multiplication et $(i)$ est prouvé.\\ \\
+	    $(ii)$ Soit $y \in I.$\\
+	    L'hypothèse $\forall x\in \overset{\circ}{I}, \ |f'(x)|\leq M$ équivaut à $\forall x \in \overset{\circ}{I}, \ -M \leq f'(x) \leq M$, donc on peut appliquer $(i)$ pour $x_0 \gets y, \ M \gets M$ et $m\gets -M$ : $$\forall x \in I\cap [y, +\infty [,  \ f(y) -M(x-y) \leq f(x) \leq f(y) + M(x-y)$$
+	    Or $x-y >0$ donc $|f(x) -f(y) | \leq M|x-y|$.
+	    Et $$\forall x \in I\cap ]-\infty, y ],  \ f(y) +M(x-y) \leq f(x) \leq f(y) - M(x-y)$$
+	    Or $x-y < 0$ donc $|f(x) -f(y) | \leq M|x-y|$. \\
+	    Par conséquent, $\forall (x,y)\in I^2, \ |f(y) -f(x)| \leq M|y-x|.$
+	\end{question_kholle}
+
+	\begin{question_kholle}
+	    [Soit $f\in \mathcal{C}^1(I,\R)$, $I$ le segment $a,b$. Alors $f$ est $||f'||_{\infty,I}$-lipschitzienne sur I.]
+	    {Caractère lipschitzien d'une fonction $\mathcal{C}^1$ sur un segment}
+	    Soient de tels objets. \\
+	    $\star$ $f\in \mathcal{C}^1(I, \R)$ donc $f\in \mathcal{C}^0(I, \R)$. \\
+	    $\star$ $f\in \mathcal{C}^1(I,\R)$ donc $f\in \mathcal{D}^1(\overset{\circ}{I}, \R)$.\\
+	    $\star$ $f\in \mathcal{C}^1(I,\R)$ donc $f'$ est continue sur $I$ donc le réel $||f'||_{\infty,I}$ est bien défini et $$\forall  x \in \overset{\circ}{I}, \ |f'(x)| \leq ||f'||_{\infty,I}.$$ Ces propriétés permettent d'appliquer le corollaire du TAF qui conclut que $f$ est $||f'||_{\infty,I}$-lipschitzienne.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+	    [Soit $f\in \mathcal{F}(I, \R)$ et $a\in I$.\\
+	    \newline
+	    \textit{Lemme} : \\
+	    Si
+	        $\left\{ \begin{array}{cl}
+	        f \text{ est dérivable sur } I\backslash \{a\}  \\
+	        f \text{ est continue en }a \\
+	        f'_{|I\backslash \{a\}} \text{ admet une limite $\ell \in \overline{\R}$ en }a
+	        \end{array}
+	        \right.$, alors $\lim_{x \to a} \frac{f(x) -f(a)}{x-a} = \ell$\\
+	    \newline
+	    \textit{Théorème} : \\
+	    Si
+	        $\left\{ \begin{array}{cl}
+	        f \text{ est dérivable sur } I\backslash \{a\}  \\
+	        f \text{ est continue en }a \\
+	        f'_{|I\backslash \{a\}} \text{ admet une limite \textbf{finie} $\ell \in \R$ en }a
+	        \end{array}
+	        \right.$, alors $\left\{ \begin{array}{cl}
+	        f \text{ est dérivable en } a  \\
+	        f'(a) = \ell \ (\textbf{donc } f' \textbf{ est continue en } a)
+	        \end{array}
+	        \right.$ ]
+	    {Théorème du prolongement de la propriété de la dérivabilité}
+	    Prouvons le lemme pour $\ell\in \R$, c'est le cas qui nous intéresse. \\
+	    Soient de tels objets. Soit $\varepsilon\in \R_+^*$. Appliquons la définition de $\lim_{\substack{x\to a \\ x\neq a}}  f'_{|I\backslash \{a\}}(x) =\ell $ pour $\varepsilon \gets \varepsilon$ :
+	    $$\exists \ \eta \in \R_+^* \ : \ \forall x\in I\backslash \{a\}, \ |x-a| \leq \eta \ \implies \ | f'_{|I\backslash \{a\}}(x) - \ell |\leq \varepsilon.$$ Fixons un tel $\eta$.\\
+	    Soit $x\in I\backslash \{a\}$ tel que $|x-a|\leq \eta$.\\ La fonction $f$ est continue sur $I$ donc $f$ est continue sur le segment d'extrémités $a$ et $x$ qui est par ailleurs inclus dans $I$ par convexité d'un intervalle.\\ La fonction $f$ est dérivable sur $I$ donc $f$ est dérivable sur l'intervalle ouvert $a$, $x$ qui est aussi inclus dans $\overset{\circ}{I}$ par convexité.\\ L'égalité des accroissements finis s'applique à $f$ sur l'intervalle $a$ et $x$ : $$\exists \ c_x \in ]a,x[ \cup ]x,a[ \ : \ \frac{f(x) -f(a)}{x-a} = f'(c_x)$$
+	    Or $|c_x-a| \leq |x-a| \leq \eta $ donc ladite définition de la limite s'applique pour $x\gets c_x$ : $|f'(c_x) - \ell|\leq \varepsilon $ si bien que $$|\frac{f(x)-f(a)}{x-a}- \ell |\leq \varepsilon.$$ D'où le lemme. \\
+	    \newline
+	    Prouvons alors le théorème.\\
+	    Sous ces hypothèses, le lemme s'applique donc $\lim_{x\to a} \frac{f(x) -f(a)}{x-a} = \ell$, or $\ell \in \R$, donc le taux d'accroissement de $f$ en $a$ admet une limite finie en $a$ ce qui prouve la dérivabilité de $f$ en $a$ et $f'(a) = \ell$. Ce qui suffit.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Posons $\zeta \left| \begin{matrix}
+			\R \longrightarrow \R \\
+			x \mapsto \left\{ \begin{array}{cc}
+				0 &\text{si } x \leqslant 0\\
+				\e^{-\frac{1}{x}} &\text{si } x > 0
+			\end{array} \right.
+		\end{matrix} \right.$.
+		Montrons que $\zeta \in \Cont{\infty}{\R}{\R}$.
+		{\begin{figure}[!h]
+			\centering
+			\begin{tikzpicture}
+				\begin{axis}[
+					axis lines = center,
+					xlabel = $x$,
+					ylabel = {$f(x)$},
+					width=15cm,
+					height=5cm,
+					ymax=1.5
+					]
+					\addplot[
+						domain=0.01:20,
+						samples=200,
+						color=red,
+						]
+						{exp(-1/x)};
+					\addplot[
+						domain=-10:0,
+						samples=100,
+						color=red,
+						]
+						{0};
+					\addlegendentry{$\zeta$}
+
+					\addplot[
+						domain=0:20,
+						samples=100,
+						color=blue,
+						dashed
+						]
+						{1};
+				\end{axis}
+			\end{tikzpicture}
+		\end{figure}}]
+		{La fonction $\zeta$ (pas celle-là une autre) est de classe \Cont{\infty}{}{} sur \R}
+		~ \\
+
+		\begin{itemize}[label=$\star$]
+			\item $\zeta_{]-\infty;0[}$ est constante donc $\zeta \in \Cont{\infty}{]0;-\infty[}{}$.
+			\item $x \mapsto - \frac{1}{x} \in \mathcal{C}^\infty(]0;-\infty[,\R)$ et $\exp \in \Cont{\infty}{]0;-\infty[}{}$ donc, par stabilité de \Cont{\infty}{}{} par composition, $\zeta \in \Cont{\infty}{]0;-\infty[}{}$.
+		\end{itemize}
+
+		Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N$ :
+		\begin{equation}
+			\mathcal{P} : \text{\textquotedblleft} \ \exists P_n \in \R[x] : \forall x \in \R^*, \ \zeta^{(n)} = \left\{ \begin{array}{lc}
+				0 &\text{si } x < 0 \\
+				\frac{P_n(x)}{x^{2n}} \e^{-\frac{1}{x}} &\text{si } x > 0
+			\end{array} \right. \ \text{\textquotedblright}
+		\end{equation}
+		\begin{itemize}[label=$\star$]
+			\item $\mathcal{P}(0)$ est vrai par définition de $\zeta$ en posant $P_0(x) = 1$
+			\item Soit $n \in \N^*$ \fq tel que $\mathcal{P}$ est vrai.
+			D'une part, $\forall x \in ]-\infty;0[, \zeta^{(n)}(x) = 0$ donc
+			\begin{equation*}
+				\forall x \in ]-\infty;0[, \zeta^{(n+1)}(x) = 0
+			\end{equation*}
+			D'autre part, $\forall x \in ]0;+\infty[, \zeta^{(n)}(x) = \frac{P_n(x)}{x^{2n}} \e^{-\frac{1}{x}}$ ce qui est un produit de trois expressions dérivables. D'où :
+			\begin{equation*}
+				\begin{aligned}
+					\forall x \in ]-\infty;0[,
+					\zeta^{(n+1)}(x)
+					&= \left( P_n'(x) \frac{1}{x^{2n}} + P_n(x) \frac{-2n}{x^{2n+1}} + \frac{P_n(x)}{x^{2n}} \frac{1}{x^2} \right) \e^{-\frac{1}{x}} \\
+					&= \frac{x^2 P_n'(x) - 2nxP_n(x) + P_n(x)}{x^{2(n+1)}} \e^{-\frac{1}{x}}
+				\end{aligned}
+			\end{equation*}
+			Si bien qu'en posant $P_{n+1}(x) = x^2 P_n'(x) - 2 n x P_n(x) + P_n(x) \in \R[x]$, on obtient :
+			\begin{equation*}
+				\forall x \in ]0;+\infty[, \zeta^{(n+1)}(x) = \frac{P_{n+1}(x)}{x^{2(n+1)}} \e^{-\frac{1}{x}}
+			\end{equation*}
+			Par conséquent, $\mathcal{P}(x)$ est vrai.
+
+			Appliquons maintenant le théorème de prolongement du caractère \Cont{\infty}{}{}.
+			\begin{itemize}[label=$\star$]
+				\item Nous avons montré que $\zeta \in  \Cont{\infty}{\R \!\setminus\! \{0\}}{}$.
+				\item Calculons les limites à gauche et à droite de 0. Soit $k \in \N$ \fq.
+				\begin{itemize}[label=$\star\star$]
+					\item $\zeta^{(k)}$ est nulle sur $]-\infty;0[$, $\zeta^{(k)} \arrowlim{x}{0^-} 0$.
+					\item De plus, $\exists P_n \in \R[x] : \ \forall x \in ]0;+\infty[, \zeta^{(k)}(x) = \frac{P_k(x)}{x^{2k}} \e^{-\frac{1}{x}}$. Posons $u = \frac{1}{x}$, ainsi $\zeta^{(k)}(x) = u^{2k} P_k(\frac{1}{u}) \e^{-\frac{1}{x}}$ et $u \arrowlim{x}{0^+} +\infty$. \\
+					Le théorème des croissances comparées donne $u^{2k} P_k(\frac{1}{u}) \e^{-\frac{1}{x}} \arrowlim{x}{0^+} 0$ donc $\zeta^{(k)} = 0$.
+				\end{itemize}
+			\end{itemize}
+			Donc $\zeta \in \Cont{\infty}{\R}{\R}$.
+		\end{itemize}
+	\end{question_kholle}
+
 
 \end{document}
