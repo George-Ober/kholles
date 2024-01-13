@@ -1,0 +1,116 @@
+\documentclass{article}
+
+\date{13 Janvier 2024}
+\usepackage[nb-sem=14, auteurs={Kylian Boyet}]{../kholles}
+
+\begin{document}
+\maketitle
+	
+\begin{question_kholle}
+    [Exprimer : $\forall n \in \N, \ f^{(n)}(x) = \frac{d^n}{dx^n}\left( \frac{\ln (x)}{x} \right)$]
+    {Expression de dérivées successives}
+    Soit $x\in \mathcal{D}_f$. \\
+    Considérons le prédicat $P(\cdot)$ définit pour $n\in \N$ par : 
+    $$ P(n) \ : \ " \ f^{(n)}(x) = \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right] \ " $$ 
+    Initialisation : \\
+    Pour $n = 0$, $$f^{(0)}(x) = f(x) = \frac{\ln (x)}{x} = \frac{(-1)^0 0!}{x^{0+1}}\left[ \ln (x) - \sum_{k=1}^0 \frac{1}{k!} \right],$$ donc $P(0)$. \\
+    Hérédité : 
+    \\
+    Soit $n\in \N$ tel que $P(n)$. On a, 
+    $$f^{(n+1)}(x) = (f^{(n)}(x))' = \left( \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right] \right)'$$
+    par véracité de $P(n)$. Ainsi, 
+$$\begin{array}{rcl}
+f^{(n+1)}(x) & = & \frac{(-1)^nn!x^n - (-1)^n(n+1)!x^n\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right]}{x^{2(n+1)}} \\ [1ex]
+ & = & \frac{(-1)^{n+1}(n+1)!\ln (x) - (-1)^{n+1}(n+1)!\sum_{k=1}^{n+1} \frac{1}{k!} }{x^{n+2}} \\ [1ex]
+ & = & \frac{(-1)^{n+1} (n+1)!}{x^{n+2}}\left[ \ln (x) - \sum_{k=1}^{n+1} \frac{1}{k!} \right]
+\end{array}$$
+    c'est l'expression recherchée, donc $P(n+1)$. \\
+    Par théorème de récurrence sur $\N$, $P(n)$ est vraie pour tout $n\in \N$.
+\end{question_kholle}
+
+\begin{question_kholle}
+    [Soient $(a,b)\in \R ^2$ tels que $a<b$. Soit $I$ le segment $a,b$.
+    \\
+    Soit $f \ : \ I \ \to \ \R $ continue sur ledit segment et dérivable sur l'ouvert associé.\\
+    \newline
+    $(i)$ Théroème de Rolle :
+   \\ Si $f(a) = f(b)$, alors $\exists \ c \in \overset{\circ}{I}$ tel que $f'(c) =0$ 
+    \\ 
+    \newline
+    $(ii)$ Formule des accroissements finis : \\
+    $\exists \ c \in \overset{\circ}{I} \ : \ f'(c) = \frac{f(b)-f(a)}{b-a}.$
+    ]
+    {Théorème de Rolle et formule des accroissements finis}
+    Soient de tels objets. \\
+    Prouvons $(i)$, donc supposons $f(a) = f(b)$. \\
+    $f$ est continue sur $I$ donc par le théorème de Weierstraß elle est bornée et atteint ses bornes sur ce segment : 
+    \\
+    $$\exists \ (x_m, x_M)\in I^2 \ : \ (f(x_m) = \min f(I)) \wedge (f(x_M) = \max f(I))$$
+    donc, si $(x_m, x_M)\in \{a,b\}^2$, alors, 
+    $$\forall x \in I, \ f(a)=f(x_m) \leq f(x) \leq f(x_M)=f(a)$$
+    donc $f(x) = f(a)$ et donc tous les points intermédiaires à $I$ sont des $c$ valident.\\ Sinon, $(x_m \notin\{a,b\})\vee (x_M\notin\{a,b\}) $, quitte à prendre l'autre valeur, supposons que $x_M\notin \{a,b\}$, ainsi, $x_M \in \overset{\circ}{I}$ et $f(x_M)$ est un maximum global donc, $f$ étant dérivable sur $\overset{\circ}{I}$ elle est dérivable en $x_M$ donc $f'(x_M)=0$, on pose $c = x_M$, ce qui conclut. \\
+    \newline
+    Prouvons $(ii)$.\\
+    Posons $d \ :\ I \ \to \ \R, \ x \ \mapsto \ f(x) \left( \frac{f(b)-f(a)}{b-a}(x-a) +f(a) \right) $. $d$ est continue sur $I$ et dérivable sur $\overset{\circ}{I}$ comme combinaison linéaire de telles fonctions. On a $d(a) = 0$ et $d(b) = 0$ donc $d(a) = 0 = d(b)$. On peut alors appliquer le Théorème de Rolle pour $f \gets d, a \gets a $ et $ b \gets b$ : il existe $c\in \overset{\circ}{I}$ tel que $d'(c) = 0$, c'est le résultat.
+\end{question_kholle}
+
+\begin{question_kholle}
+    [Soit $f\in \mathcal{C}^0(I, \R) \cap \mathcal{D}^1(\overset{\circ}{I}, \R)$ et $x_0 \in I$, posons $X_-$ la demi-droite fermée en $x_0$ et vers $-\infty$, de même $X_+$ la demi-droite fermée en $x_0$ et vers $+ \infty$. \\
+    \newline
+    $(i)$ $\star$ Si $\exists \ m \in \R \ : \ \forall x \in \overset{\circ}{I}, \ m\leq f'(x)$, alors, $$\forall x \in I \cap X_+, \ f(x_0) + m(x-x_0) \leq f(x)$$ et $$\forall x \in I \cap X_-, \ f(x) \leq f(x_0) + m(x-x_0)$$
+    $\star$ Si $\exists \ M \in \R \ : \ \forall x \in \overset{\circ}{I}, \ f'(x) \leq M $, alors, $$\forall x \in I \cap X_+, \ f(x) \leq f(x_0) + M(x-x_0)$$ et $$\forall x \in I \cap X_-, \ f(x_0) + M(x-x_0) \leq f(x) $$
+    $\star$ Si $\exists \ (m,M) \in \R^2 \ : \ \forall x \in \overset{\circ}{I}, \ m\leq f'(x) \leq M$, alors, $$\forall x \in I \cap X_+, \ f(x_0) + m(x-x_0) \leq f(x) \leq f(x_0) +M(x-x_0)$$ et $$\forall x \in I \cap X_-, \ f(x_0) + M(x-x_0) \leq f(x) \leq f(x_0) +m(x-x_0)$$ \\
+    $(ii)$ Si $\exists M \in \R \ : \ \forall x \in \overset{\circ}{I}, \ |f'(x)|\leq M$, alors, $$\forall (x,y) \in I^2, \ |f(y) -f(x)| \leq M|y-x|$$]
+    {Inégalité des accroissements finis}
+    $(i)$ Soit $x\in I$ et posons $S$ le segment d'extrémités $x$ et $x_0$. \\
+    $\star$ Si $x\neq x_0$, $f$ est continue sur $S$ et dérivable sur $\overset{\circ}{S}$, la formule des accroissements finis donne alors l'existence d'un $c$ appartenant à $\overset{\circ}{S}$ tel que $$f(x) - f(x_0) = (x-x_0)f'(c)$$ Si $x> x_0, \ x-x_0 > 0$, or $m \leq f'(c) \leq M$ donc $$m(x-x_0) \leq (x-x_0)f'(c) \leq M(x-x_0)$$ si bien que $$m(x-x_0) \leq f(x) - f(x_0) \leq M(x-x_0) $$ d'où $$f(x_0) + m(x-x_0) \leq f(x) \leq f(x_0) + M(x-x_0). $$ Si $x<x_0$, il suffit de retourner l'inégalité lors de la première multiplication et $(i)$ est prouvé.\\
+    \newline
+    $(ii)$ Soit $y \in I.$\\
+    L'hypothèse $\forall x\in \overset{\circ}{I}, \ |f'(x)|\leq M$ équivaut à $\forall x \in \overset{\circ}{I}, \ -M \leq f'(x) \leq M$, donc on peut appliquer $(i)$ pour $x_0 \gets y, \ M \gets M$ et $m\gets -M$ : $$\forall x \in I\cap [y, +\infty [,  \ f(y) -M(x-y) \leq f(x) \leq f(y) + M(x-y) \ \implies \ |f(x) -f(y) | \leq M|x-y|$$ car $x-y >0$, et $$\forall x \in I\cap ]-\infty, y ],  \ f(y) +M(x-y) \leq f(x) \leq f(y) - M(x-y) \ \implies \ |f(x) -f(y) | \leq M|x-y|$$ car $x-y < 0$. 
+    Par conséquent, $\forall (x,y)\in I^2, \ |f(y) -f(x)| \leq M|y-x|.$
+\end{question_kholle}
+
+\begin{question_kholle}
+    [Soit $f\in \mathcal{C}^1(I,\R)$, $I$ le segment $a,b$. Alors $f$ est $||f'||_{\infty,I}$-lipschitzienne sur I.]
+    {Caractère lipschitzien d'une fonction $\mathcal{C}^1$ sur un segment}
+    Soient de tels objets. \\
+    $\star$ $f\in \mathcal{C}^1(I, \R)$ donc $f\in \mathcal{C}^0(I, \R)$. \\
+    $\star$ $f\in \mathcal{C}^1(I,\R)$ donc $f\in \mathcal{D}^1(\overset{\circ}{I}, \R)$.\\
+    $\star$ $f\in \mathcal{C}^1(I,\R)$ donc $f'$ est continue sur $I$ donc le réel $||f'||_{\infty,I}$ est bien défini et $$\forall  x \in \overset{\circ}{I}, \ |f'(x)| \leq ||f'||_{\infty,I}.$$ Ces propriétés permettent d'appliquer le corollaire du TAF qui conclut que $f$ est $||f'||_{\infty,I}$-lipschitzienne.
+\end{question_kholle}
+*
+\begin{question_kholle}
+    [Soit $f\in \mathcal{F}(I, \R)$ et $a\in I$.\\
+    \newline
+    \textit{Lemme} : \\ 
+    Si
+        $\left\{ \begin{array}{cl}
+        f \text{ est dérivable sur } I\backslash \{a\}  \\
+        f \text{ est continue en }a \\
+        f'_{|I\backslash \{a\}} \text{ admet une limite $\ell \in \overline{\R}$ en }a
+        \end{array} 
+        \right.$, alors $\lim_{x \to a} \frac{f(x) -f(a)}{x-a} = \ell$\\
+    \newline
+    \textit{Théorème} : \\
+    Si
+        $\left\{ \begin{array}{cl}
+        f \text{ est dérivable sur } I\backslash \{a\}  \\
+        f \text{ est continue en }a \\
+        f'_{|I\backslash \{a\}} \text{ admet une limite \textbf{finie} $\ell \in \R$ en }a
+        \end{array} 
+        \right.$, alors $\left\{ \begin{array}{cl}
+        f \text{ est dérivable en } a  \\
+        f'(a) = \ell \ (\textbf{donc } f' \textbf{ est continue en } a) 
+        \end{array} 
+        \right.$ ] 
+    {Théorème du prolongement de la propriété de la dérivabilité}
+    Prouvons le lemme pour $\ell\in \R$, c'est le cas qui nous intéresse. \\
+    Soient de tels objets. Soit $\varepsilon\in \R_+^*$. Appliquons la définition de $\lim_{\substack{x\to a \\ x\neq a}}  f'_{|I\backslash \{a\}}(x) =\ell $ pour $\varepsilon \gets \varepsilon$ :
+    $$\exists \ \eta \in \R_+^* \ : \ \forall x\in I\backslash \{a\}, \ |x-a| \leq \eta \ \implies \ | f'_{|I\backslash \{a\}}(x) - \ell |\leq \varepsilon.$$ Fixons un tel $\eta$.\\
+    Soit $x\in I\backslash \{a\}$ tel que $|x-a|\leq \eta$.\\ La fonction $f$ est continue sur $I$ donc $f$ est continue sur le segment d'extrémités $a$ et $x$ qui est par ailleurs inclus dans $I$ par convexité d'un intervalle.\\ La fonction $f$ est dérivable sur $I$ donc $f$ est dérivable sur l'intervalle ouvert $a$, $x$ qui est aussi inclus dans $\overset{\circ}{I}$ par convexité.\\ L'égalité des accroissements finis s'applique à $f$ sur l'intervalle $a$ et $x$ : $$\exists \ c_x \in ]a,x[ \cup ]x,a[ \ : \ \frac{f(x) -f(a)}{x-a} = f'(c_x)$$
+    Or $|c_x-a| \leq |x-a| \leq \eta $ donc ladite définition de la limite s'applique pour $x\gets c_x$ : $|f'(c_x) - \ell|\leq \varepsilon $ si bien que $$|\frac{f(x)-f(a)}{x-a}- \ell |\leq \varepsilon.$$ D'où le lemme. \\
+    \newline 
+    Prouvons alors le théorème.\\
+    Sous ces hypothèses, le lemme s'applique donc $\lim_{x\to a} \frac{f(x) -f(a)}{x-a} = \ell$, or $\ell \in \R$, donc le taux d'accroissement de $f$ en $a$ admet une limite finie en $a$ ce qui prouve la dérivabilité de $f$ en $a$ et $f'(a) = \ell$. Ce qui suffit.
+\end{question_kholle}
+\end{document}
