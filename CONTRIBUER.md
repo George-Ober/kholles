@@ -46,6 +46,8 @@ Et voilà !!!
 
 - Les limites \arrowlim{varaible}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
 
+- Pour les flemmards, \eps pour \varepsilon et \ph pour \varphi
+
 # Compilation
 
 Sur *Linux*, taper dans votre console à la racine :
