@@ -7,7 +7,7 @@
 \newcommand{\authors}{}
 \DeclareOptionX{auteurs}{\renewcommand{\authors}{#1}}
 \DeclareOptionX{nb-sem}{\newcommand{\nbweek}{#1}}
-\DeclareOptionX*{\PackageWarning{examplepackage}{Unknown option ‘\CurrentOption’}} % others options
+\DeclareOptionX*{\PackageWarning{kholles}{Unknown option ‘\CurrentOption’}} % others options
 \ExecuteOptionsX{auteurs={Kylian Boyet, George Ober, Hugo Vangilluwen, Jérémie Menard}} % default
 \ProcessOptionsX\relax
 
@@ -18,7 +18,7 @@
 \RequirePackage{lmodern}
 
 % paquet de test
-\usepackage{etoolbox}
+\RequirePackage{etoolbox}
 
 % paquets mathématiques
 \RequirePackage{amsmath}
@@ -56,8 +56,10 @@
 	\usetikzlibrary{arrows.meta, arrows}
 	\usetikzlibrary{math} % pour les variables
 	\usetikzlibrary{hobby} % pour les courbes
+	\usetikzlibrary{shapes.misc}
+	% toutes les couleurs possibles : black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow
 \RequirePackage{pgfplots}
-	\pgfplotsset{compat=1.15}
+	\pgfplotsset{compat=1.15,width=10cm}
 
 
 % environnement des questions de khôlles
@@ -77,23 +79,46 @@
 }
 
 
-% Symbols
+% Symboles
 % Ensemble des solutions
 \newcommand{\Sol}{\ensuremath{\mathcal S} }
 % Parties réelle et imaginaire
 \renewcommand{\Re}{\ensuremath{\text{Re}}}
 \renewcommand{\Im}{\ensuremath{\text{Im}}}
 % Ensembles usuels
-\newcommand{\N}{\ensuremath{\mathbb N} }
-\newcommand{\Z}{\ensuremath{\mathbb Z} }
-\newcommand{\Q}{\ensuremath{\mathbb Q} }
-\newcommand{\R}{\ensuremath{\mathbb R} }
-\newcommand{\C}{\ensuremath{\mathbb C} }
-\newcommand{\K}{\ensuremath{\mathbb K} }
+\newcommand{\N}{\ensuremath{\mathbb N}}
+\newcommand{\Z}{\ensuremath{\mathbb Z}}
+\newcommand{\Q}{\ensuremath{\mathbb Q}}
+\newcommand{\R}{\ensuremath{\mathbb R}}
+\newcommand{\C}{\ensuremath{\mathbb C}}
+\newcommand{\K}{\ensuremath{\mathbb K}}
 % Relation binaire
-\newcommand{\Rel}{\ensuremath{\mathcal R} }
+\newcommand{\Rel}{\ensuremath{\mathcal R}}
 % Limites
 \newcommand{\arrowlim}[2]{\ \xrightarrow[\;#1\to #2\;]{}\ }
+% Lettres utiles
+\newcommand{\eps}{\ensuremath{\varepsilon}}
+\newcommand{\ph}{\ensuremath{\varphi}}
+\newcommand{\e}{\ensuremath{\mathrm{e}}}
+% Régularité
+\newcommand{\regularite}[4]{\ensuremath{
+	\mathcal{#1}^{#2}
+	\notblank{#3}
+		{
+			\!
+			\left(
+			#3, 
+			\notblank{#4}{#4}{\mathbb{R}}
+			\right)
+		}
+		{}
+}}
+\newcommand{\Cont}[3]{\regularite{C}{#1}{#2}{#3}}
+\newcommand{\Deriv}[3]{\regularite{D}{#1}{#2}{#3}}
+% flemmards
+\newcommand{\fq}{fixé quelconque}
+\newcommand{\tq}{tel que}
+\newcommand{\tqs}{tels que}
 
 % Le titre
 \ifdefined\nbweek
