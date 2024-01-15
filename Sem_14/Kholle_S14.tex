@@ -15,21 +15,25 @@
 	    {Expression de dérivées successives}
 	    Soit $x\in \mathcal{D}_f$. \\
 	    Considérons le prédicat $P(\cdot)$ définit pour $n\in \N$ par :
-	    $$ P(n) \ : \ \text{\textquotedblleft} \ f^{(n)}(x) = \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right] \ " $$
+	    $$ P(n) \ : \ \text{\textquotedblleft} \ f^{(n)}(x) = \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right] \ " $$
 	    Initialisation : \\
-	    Pour $n = 0$, $$f^{(0)}(x) = f(x) = \frac{\ln (x)}{x} = \frac{(-1)^0 0!}{x^{0+1}}\left[ \ln (x) - \sum_{k=1}^0 \frac{1}{k!} \right],$$ donc $P(0)$ est vrai. \\
+	    Pour $n = 0$, $$f^{(0)}(x) = f(x) = \frac{\ln (x)}{x} = \frac{(-1)^0 0!}{x^{0+1}}\left[ \ln (x) - \sum_{k=1}^0 \frac{1}{k} \right],$$ donc $P(0)$ est vrai. \\
 	    Hérédité :
 	    \\
 	    Soit $n\in \N$ tel que $P(n)$. On a,
-	    $$f^{(n+1)}(x) = (f^{(n)}(x))' = \left( \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right] \right)'$$
+	    $$f^{(n+1)}(x) = (f^{(n)}(x))' = \left( \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right] \right)'$$
 	    par véracité de $P(n)$. Ainsi,
-	$$\begin{array}{rcl}
-	f^{(n+1)}(x) & = & \frac{(-1)^nn!x^n - (-1)^n(n+1)!x^n\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right]}{x^{2(n+1)}} \\ [1ex]
-	 & = & \frac{(-1)^{n+1}(n+1)!\ln (x) - (-1)^{n+1}(n+1)!\sum_{k=1}^{n+1} \frac{1}{k!} }{x^{n+2}} \\ [1ex]
-	 & = & \frac{(-1)^{n+1} (n+1)!}{x^{n+2}}\left[ \ln (x) - \sum_{k=1}^{n+1} \frac{1}{k!} \right]
-	\end{array}$$
+		$$\begin{array}{rcl}
+		f^{(n+1)}(x) & = & \frac{(-1)^nn!x^n - (-1)^n(n+1)!x^n\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right]}{x^{2(n+1)}} \\ [1ex]
+		 & = & \frac{(-1)^{n+1}(n+1)!\ln (x) - (-1)^{n+1}(n+1)!\sum_{k=1}^{n+1} \frac{1}{k} }{x^{n+2}} \\ [1ex]
+		 & = & \frac{(-1)^{n+1} (n+1)!}{x^{n+2}}\left[ \ln (x) - \sum_{k=1}^{n+1} \frac{1}{k} \right]
+		\end{array}$$
 	    c'est l'expression recherchée, donc $P(n+1)$ est vrai. \\
 	    Par théorème de récurrence sur $\N$, $P(n)$ est vraie pour tout $n\in \N$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		{Extremum}
 	\end{question_kholle}
 
 	\begin{question_kholle}
@@ -240,8 +244,8 @@
 		~ \\
 
 		\begin{itemize}[label=$\star$]
-			\item $\zeta_{]-\infty;0[}$ est constante donc $\zeta \in \Cont{\infty}{]0;-\infty[}{}$.
-			\item $x \mapsto - \frac{1}{x} \in \mathcal{C}^\infty(]0;-\infty[,\R)$ et $\exp \in \Cont{\infty}{]0;-\infty[}{}$ donc, par stabilité de \Cont{\infty}{}{} par composition, $\zeta \in \Cont{\infty}{]0;-\infty[}{}$.
+			\item $\zeta_{]-\infty;0[}$ est constante donc $\zeta \in \Cont{\infty}{]-\infty;0[}{}$.
+			\item $x \mapsto - \frac{1}{x} \in \mathcal{C}^\infty(]0;+\infty[,]-\infty;0[)$ et $\exp \in \Cont{\infty}{]-\infty;0[}{}$ donc, par stabilité de \Cont{\infty}{}{} par composition, $\zeta \in \Cont{\infty}{]-\infty;0[}{}$.
 		\end{itemize}
 
 		Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N$ :
@@ -280,7 +284,7 @@
 				\begin{itemize}[label=$\star\star$]
 					\item $\zeta^{(k)}$ est nulle sur $]-\infty;0[$, $\zeta^{(k)} \arrowlim{x}{0^-} 0$.
 					\item De plus, $\exists P_n \in \R[x] : \ \forall x \in ]0;+\infty[, \zeta^{(k)}(x) = \frac{P_k(x)}{x^{2k}} \e^{-\frac{1}{x}}$. Posons $u = \frac{1}{x}$, ainsi $\zeta^{(k)}(x) = u^{2k} P_k(\frac{1}{u}) \e^{-\frac{1}{x}}$ et $u \arrowlim{x}{0^+} +\infty$. \\
-					Le théorème des croissances comparées donne $u^{2k} P_k(\frac{1}{u}) \e^{-\frac{1}{x}} \arrowlim{x}{0^+} 0$ donc $\zeta^{(k)} = 0$.
+					Le théorème des croissances comparées donne $u^{2k} P_k(\frac{1}{u}) \e^{-u} \arrowlim{u}{+\infty} 0$ donc $\zeta^{(k)}(x) \arrowlim{x}{0^+} 0$.
 				\end{itemize}
 			\end{itemize}
 			Donc $\zeta \in \Cont{\infty}{\R}{\R}$.
