@@ -44,7 +44,7 @@ Et voilà !!!
 
 - Les relations binaires \Rel
 
-- Les limites \arrowlim{varaible}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
+- Les limites \arrowlim{varaible}{limite} et \textlim{variable}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
 
 - Les lettres utiles \eps pour \varepsilon, \ph pour \varphi et \e pour la constante d'Euler
 

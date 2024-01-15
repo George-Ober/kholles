@@ -1,7 +1,9 @@
 \documentclass{article}
 
-\date{13 Janvier 2024}
+\date{15 Janvier 2024}
 \usepackage[nb-sem=14, auteurs={Kylian Boyet, Hugo Vangilluwen}]{../kholles}
+
+\usepackage{tikz}
 
 \begin{document}
 	\maketitle
@@ -15,21 +17,80 @@
 	    {Expression de dérivées successives}
 	    Soit $x\in \mathcal{D}_f$. \\
 	    Considérons le prédicat $P(\cdot)$ définit pour $n\in \N$ par :
-	    $$ P(n) \ : \ \text{\textquotedblleft} \ f^{(n)}(x) = \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right] \ " $$
+	    $$ P(n) \ : \ \text{\textquotedblleft} \ f^{(n)}(x) = \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right] \ " $$
 	    Initialisation : \\
-	    Pour $n = 0$, $$f^{(0)}(x) = f(x) = \frac{\ln (x)}{x} = \frac{(-1)^0 0!}{x^{0+1}}\left[ \ln (x) - \sum_{k=1}^0 \frac{1}{k!} \right],$$ donc $P(0)$ est vrai. \\
+	    Pour $n = 0$, $$f^{(0)}(x) = f(x) = \frac{\ln (x)}{x} = \frac{(-1)^0 0!}{x^{0+1}}\left[ \ln (x) - \sum_{k=1}^0 \frac{1}{k} \right],$$ donc $P(0)$ est vrai. \\
 	    Hérédité :
 	    \\
 	    Soit $n\in \N$ tel que $P(n)$. On a,
-	    $$f^{(n+1)}(x) = (f^{(n)}(x))' = \left( \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right] \right)'$$
+	    $$f^{(n+1)}(x) = (f^{(n)}(x))' = \left( \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right] \right)'$$
 	    par véracité de $P(n)$. Ainsi,
-	$$\begin{array}{rcl}
-	f^{(n+1)}(x) & = & \frac{(-1)^nn!x^n - (-1)^n(n+1)!x^n\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k!} \right]}{x^{2(n+1)}} \\ [1ex]
-	 & = & \frac{(-1)^{n+1}(n+1)!\ln (x) - (-1)^{n+1}(n+1)!\sum_{k=1}^{n+1} \frac{1}{k!} }{x^{n+2}} \\ [1ex]
-	 & = & \frac{(-1)^{n+1} (n+1)!}{x^{n+2}}\left[ \ln (x) - \sum_{k=1}^{n+1} \frac{1}{k!} \right]
-	\end{array}$$
+		$$\begin{array}{rcl}
+		f^{(n+1)}(x) & = & \frac{(-1)^nn!x^n - (-1)^n(n+1)!x^n\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right]}{x^{2(n+1)}} \\ [1ex]
+		 & = & \frac{(-1)^{n+1}(n+1)!\ln (x) - (-1)^{n+1}(n+1)!\sum_{k=1}^{n+1} \frac{1}{k} }{x^{n+2}} \\ [1ex]
+		 & = & \frac{(-1)^{n+1} (n+1)!}{x^{n+2}}\left[ \ln (x) - \sum_{k=1}^{n+1} \frac{1}{k} \right]
+		\end{array}$$
 	    c'est l'expression recherchée, donc $P(n+1)$ est vrai. \\
 	    Par théorème de récurrence sur $\N$, $P(n)$ est vraie pour tout $n\in \N$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soit $f : I \rightarrow f(I) \subset \R$ continue, strictement monotone sur $I$ et dérivable en $a \in I$.
+		Si $f'(a) \neq 0$ alors $f$ est bijective, $f^{-1}$ est dérivable en $f(a)$ et $f^{-1}(f(a)) = \frac{1}{f'(a)}$.]
+		{Dérivé d'une bijection réciproque}
+		Soient de tels objets. \\
+		Rappelons le lemme inattendu. Soit $g : J \rightarrow \R$ monotone (où $J$ est un intervalle). Nous avons l'équivalence suivante :
+		\begin{equation*}
+			f(J) \text{ est un intervalle } \iff f \text{ est continue sur } J
+		\end{equation*}
+		Par définition, $f$ est surjective. Comme elle est strictement monotone, $f$ est injective. Ainsi $f$ est bijective. \\
+		D'après le lemme inattendu, $f(I)$ est un intervalle. Nous avons $f^{-1} : f(I) \rightarrow I$ avec $f(I)$ et $I$ des intervalles donc $f^{-1}$ est continue sur $f(I)$. \\
+		Calculons la limite du taux d'accroissement de $f^{-1}$ en $f(a)$ :
+		\begin{equation*}
+			\forall x \in f(I), \tau_{f^{-1},f(a)} = \frac{f^{-1}(x) - f^{-1}(f(a))}{x - f(a)}
+		\end{equation*}
+		Posons $u = f^{-1}(x)$. D'où :
+		\begin{equation*}
+			\tau_{f^{-1},f(a)} = \frac{u - a}{f(u) - f(a)}
+		\end{equation*}
+		De plus, par continuité de $f^{-1}$, $u \arrowlim{x}{f(a)} f^{-1}(f(a)) = a$.
+		Par dérivabilité en a et par continuité de $x \mapsto x^{-1}$ en $f(a) \neq 0$, $\frac{u - a}{f(u) - f(a)} \arrowlim{u}{a} \frac{1}{f('(a)}$. \\
+		Ainsi, $f^{-1}$ est dérivable en $f(a)$ et $f^{-1}(f(a)) = \frac{1}{f'(a)}$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soit $f : I \rightarrow \R$. Si $f$ admet un extremum local en $a \in \overset{\circ}{I}$ et si $f$ est dérivable en $a$ alors $f'(a) = 0$
+		{\begin{figure}[!h]
+				\centering
+				\tikzmath{ integer \m; real \fm; \m = 3; \fm = 0.8; }
+				\begin{tikzpicture}
+					\draw[-stealth] (0,0) -- (6,0) node[anchor=west] {$x$};
+					\draw[-stealth] (0,0) -- (0,3) node[anchor=south] {$y$};
+					
+					\draw[red] plot [smooth] coordinates {(0,2.5) (\m,\fm) (6,1.7)};
+					\draw[blue, dashed] (\m,\fm) -- (\m,0) node[anchor=north] {minimum local};
+					
+					\draw[stealth-stealth, teal] (\m-1,\fm) -- (\m+1,\fm);
+					\draw (\m,\fm) node[anchor=north east, teal] {$m$} node[anchor=south, teal] {$f'(m)=0$};
+				\end{tikzpicture}
+		\end{figure}}]
+		{Dérivée d'un extremum local intérieur au domaine de définition}
+		Soient de tels objets. \\
+		$a \in \overset{\circ}{I} \implies \exists \eta_1 \in \R_+^* : [a-\eta_1;a+\eta_1] \subset I$ Fixons un tel $\eta_1$. \\
+		Calculons le taux d'accroissement en $a$.
+		\begin{equation*}
+			\forall x \in [a-\eta_1;a+\eta_1], \tau_{f,a}(x) = \frac{f(x) - f(a)}{x - a}`
+		\end{equation*}
+		Or $f$ est dérivable en $a$ donc $\tau_{f,a}(x)$ admet une limite lorsque $x \rightarrow a$.
+		Traitons le cas où $a$ est maximum local. Par définition :
+		\begin{equation*}
+			\exists \eta_2 \in \R_+^* : \forall x \in [a-\eta_2;a+\eta_2], f(x) \leqslant f(a)
+		\end{equation*}
+		Fixons un tel $\eta_2$. Soit $x \in [a-\eta_2;a+\eta_2] \setminus \{a\}$ fq. \\
+		Alors $f(x) - f(a) \leqslant 0$. \\
+		Si $x > a$, $x - a > 0$. Alors $\frac{f(x) - f(a)}{x - a} \leqslant 0$. Donc $\textlim{x}{a} \tau_{f,a}(x) \leqslant 0$. \\
+		Sinon $x < a$, $x - a < 0$. Alors $\frac{f(x) - f(a)}{x - a} \geqslant 0$. Donc $\textlim{x}{a} \tau_{f,a}(x) \geqslant 0$. \\
+		Ainsi $0 \leqslant \textlim{x}{a} \tau_{f,a}(x) \leqslant 0$. Donc $f'a) = 0$.
 	\end{question_kholle}
 
 	\begin{question_kholle}
@@ -240,8 +301,8 @@
 		~ \\
 
 		\begin{itemize}[label=$\star$]
-			\item $\zeta_{]-\infty;0[}$ est constante donc $\zeta \in \Cont{\infty}{]0;-\infty[}{}$.
-			\item $x \mapsto - \frac{1}{x} \in \mathcal{C}^\infty(]0;-\infty[,\R)$ et $\exp \in \Cont{\infty}{]0;-\infty[}{}$ donc, par stabilité de \Cont{\infty}{}{} par composition, $\zeta \in \Cont{\infty}{]0;-\infty[}{}$.
+			\item $\zeta_{]-\infty;0[}$ est constante donc $\zeta \in \Cont{\infty}{]-\infty;0[}{}$.
+			\item $x \mapsto - \frac{1}{x} \in \mathcal{C}^\infty(]0;+\infty[,]-\infty;0[)$ et $\exp \in \Cont{\infty}{]-\infty;0[}{}$ donc, par stabilité de \Cont{\infty}{}{} par composition, $\zeta \in \Cont{\infty}{]-\infty;0[}{}$.
 		\end{itemize}
 
 		Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N$ :
