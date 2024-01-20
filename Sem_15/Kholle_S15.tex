@@ -1,0 +1,96 @@
+\documentclass{article}
+
+\date{20 Janvier 2024}
+\usepackage[nb-sem=15, auteurs={Hugo Vangilluwen}]{../kholles}
+
+\begin{document}
+	\maketitle
+	
+	\begin{question_kholle}
+		[Soit $f : I \rightarrow \R$ convexe sur $I$. \\
+		Soit $n \in \N^*$. Soient $x \in I^n$, $\lambda \in {[0;1]}^n$ telle que $\displaystyle \sum_{k=1}^{n} \lambda_k = 1$. \\
+		\begin{equation}
+			\sum_{k=1}^{n} \lambda_k x_k \in I \wedge
+			f\left( \sum_{k=1}^{n} \lambda_k x_k \right)
+			\leqslant \sum_{k=1}^{n} \lambda_k f\left( x_k \right)
+		\end{equation}]
+		{Inégalité de Jensen}
+		Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N^*$ par :
+		\begin{equation*}
+			\mathcal{P}(n) : \text{\textquotedblleft}
+			\forall x \in I^n,
+			\forall \lambda \in [0;1]^n,
+			\sum_{k=1}^{n} \lambda_k = 1 \implies
+			\sum_{k=1}^{n} \lambda_k x_k \in I \wedge
+			f\left( \sum_{k=1}^{n} \lambda_k x_k \right)
+			\leqslant \sum_{k=1}^{n} \lambda_k f\left( x_k \right)
+			\text{\textquotedblright}
+		\end{equation*}
+	
+		\begin{itemize}[label=*, leftmargin=0.5cm]
+			\item Soient $x \in I^1$ et $\lambda \in [0;1]^1$ tel que $\sum_{k=1}^{1} \lambda_k = 1$. \\
+			Alors $\lambda_1 = 1$. Trivialement, $\sum_{k=1}^{1} \lambda_k x_k = \lambda_1 x_1 = x_1 \in I$. \\
+			De plus, $f\left( \sum_{k=1}^{1} \lambda_k x_k \right)
+				= f\left( \lambda_1 x_1 \right)
+				= f\left( x_1 \right)
+				= \lambda_1 f\left( x_1 \right)
+				= \sum_{k=1}^{1} \lambda_k f\left( x_k \right)$. \\
+			Donc $\mathcal{P}(1)$ vrai.
+
+			\item  Soit $n \in \N^*$  tel que $\mathcal{P}(n)$ vrai. \\
+			Soient $x \in I^{n+1}$ et $\lambda \in [0;1]^{n+1}$ tel que $\sum_{k=1}^{n+1} \lambda_k = 1$.
+			$\{ x_k \;|_; k \in [\![1;n+1]\!] \}$ est une partie de \N non vide ($n \geqslant 1$).
+			Posons $a = \min\{ x_k \;|_; k \in [\![1;n+1]\!] \}$ et $b = \max\{ x_k \;|_; k \in [\![1;n+1]\!] \}$. D'où
+			\begin{equation*}
+				a
+				\underbrace{=}_{\displaystyle \sum_{k=1}^{n+1} \lambda_k = 1} \sum_{k=1}^{n+1} \lambda_k a
+				\underbrace{\leqslant}_{a \leqslant x_k} \sum_{k=1}^{n+1} \lambda_k x_k
+				\underbrace{\leqslant}_{x_k \leqslant b} \sum_{k=1}^{n+1} \lambda_k b
+				\underbrace{=}_{\displaystyle \sum_{k=1}^{n+1} \lambda_k = 1} b
+			\end{equation*}
+			Or $\{ x_k \;|_; k \in [\![1;n]\!] \} \subset I$ (car $x \in I^n$) donc $a \in I \wedge b \in I$. Donc
+			\begin{equation*}
+				\sum_{k=1}^{n+1} \lambda_k x_k
+				\in [a;b]
+				\underbrace{\subset}_{\begin{array}{c} \text{par convexité} \\ \text{de l'intervalle } I \end{array}} I
+			\end{equation*}
+			
+			$\sum_{k=1}^{n+1} \lambda_k = 1$ donc $\exists i_0 \in [\![1;n+1]\!] : \lambda_{i_0} \neq 1$ (sinon $\sum_{k=1}^{n+1} \lambda_k = n+1 \neq 1$ car $n \neq 0$). \\
+			Fixons un tel $i_0$.
+			\begin{equation*}
+				\begin{aligned}
+					f\left( \sum_{k=1}^{n+1} \lambda_k x_k \right)
+					&= f\left( \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \lambda_k x_k + \lambda_{i_0} x_{i_0} \right) \\
+					&= f\left( \lambda_{i_0} x_{i_0} + \left( 1 - \lambda_{i_0} \right) \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} x_k \right) \\
+					\underbrace{\leqslant}_{\begin{array}{c} \text{Par convexité} \\ \text{de } f \end{array}}& \lambda_{i_0} f(x_{i_0}) + \left( 1 - \lambda_{i_0} \right) f\left( \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} x_k \right)
+				\end{aligned}
+			\end{equation*}
+			Or $\displaystyle \forall i \in [\![1;n+1]\!] \lambda_i \leqslant \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \lambda_k = 1 - \lambda_{i_0}$ Donc $\displaystyle \frac{\lambda_i}{1 - \lambda_{i_0}} \in [0;1]$ et $\displaystyle \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} = 1$. Nous pouvons appliquer $\mathcal{P}(n)$ pour $\lambda_i \rightarrow \frac{\lambda_i}{1 - \lambda_{i_0}}$ :
+			\begin{equation*}
+				\begin{aligned}
+					f\left( \sum_{k=1}^{n+1} \lambda_k x_k \right)
+					&\leqslant \lambda_{i_0} f(x_{i_0}) + \left( 1 - \lambda_{i_0} \right) \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} f\left( x_k \right) \\
+					&\leqslant \lambda_{i_0} f(x_{i_0}) + \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \lambda_k f\left( x_k \right) \\
+					&\leqslant \sum_{k = 1}^{n+1} \lambda_k f\left( x_k \right) \\
+				\end{aligned}
+			\end{equation*}
+			Donc $\mathcal{P}(n+1)$ vrai.
+		\end{itemize}
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Soit $n \in \N^*$. Soit $x \in \R_+^{*n}$.
+		\begin{equation}
+				\left( \prod_{k=1}^{n} x_k \right)^{\nicefrac{1}{n}}
+				\leqslant \frac{1}{n} \sum_{k=1}^{n} x_k
+		\end{equation}]
+		{Inégalité arithmético-géométrique}
+		Soit de tels objets. Posons $\forall k \in [\![1;n]\!], \lambda_k = \nicefrac{1}{n}$. \\
+		Sachant que l'exponentielle est convexe, appliquons l'inégalité de Jensen pour $x_k \leftarrow ln(x_k)$ (autorisé car $x_k \in \R_+^*$) :
+		\begin{equation*}
+			\exp \left( \sum_{k=1}^{n} \frac{1}{n} \ln \left( x_k \right) \right)
+			\leqslant \sum_{k=1}^{n} \frac{1}{n} \exp \left( \ln \left( x_k \right) \right)
+		\end{equation*}
+		L'exponentielle est la bijection réciproque du logarithme népérien et est un morphisme additif. Nous obtenons ainsi l'inégalité recherchée.
+	\end{question_kholle}
+\end{document}
