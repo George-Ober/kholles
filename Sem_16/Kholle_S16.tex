@@ -1,0 +1,77 @@
+\documentclass{article}
+
+\date{27 Janvier 2024}
+\usepackage[nb-sem=16, auteurs={Hugo Vangilluwen}]{../kholles}
+
+\begin{document}
+	\maketitle
+	
+	\begin{question_kholle}
+		{Deux fonctions équivalentes au voisinage de $a$ ont le même signe sur un voisinage de $a$}
+		
+		Soient $f : \mathcal{D} \rightarrow \R$ et $g : \mathcal{D} \rightarrow \R$ telles que $f(x) \underset{x \rightarrow a}{\sim} g(x)$ avec $a \in \mathcal{D}$. \\
+		Appliquons la définition de l'équivalence pour $\epsilon \leftarrow \frac{1}{2}$, il existe un voisinage $V$ de $a$ tel que :
+		\begin{equation*}
+			\forall x \in V \cap \mathcal{D},
+			| f(x) - g(x) | \leqslant \frac{1}{2} | g(x) |
+		\end{equation*}
+	
+		Fixons un tel voisinage $V$.
+		Nous obtenons :
+		\begin{equation*}
+			\forall x \in V \cap \mathcal{D},
+			\underbrace{g(x) - \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
+			\leqslant f(x) \leqslant
+			\underbrace{g(x) + \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
+		\end{equation*}
+	
+		Ainsi $f(x)$ et $g(x)$ ont le même signe sur $V \cap \mathcal{D}$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[ Soient $f \in \Cont{\infty}{\mathcal{D}}{}$ et $a \in \overset{\circ}{\mathcal{D}}$. Supposons que $E_0 = \left\{ p \in \N^* \setminus \{1\} \;|\; f^{(p)}(a) \neq 0 \right\}$ est non vide. \\
+		Posons $p_0 = \min E_0$. \\
+		$f$ admet un extremum local en $a$ si et seulement si $f'(a) = 0$ et $p_0$ est pair. \\
+		$f$ admet un point d'inflexion en $a$ si et seulement si $p_0$ est impair. ]
+		{Condition nécessaire et suffisante pour qu'une fonction \Cont{\infty}{}{} admette un extremum local ou un point d'inflexion}
+		
+		Soient de tels objets. Traitons le cas de l'extremum local.
+		
+		\noindent $f \in \Cont{\infty}{}{}$ donc, la formule Taylor-Young donne un $DL_{p_0}(a)$ de $f$ :
+		\begin{equation*}
+			f(x) \underset{x \rightarrow a}{=}
+			\sum_{k=0}^{p_0} \frac{f^{(k)}(a)}{k!} (x-a)^k + o \left( (x-a)^{p_0} \right)
+		\end{equation*}
+		
+		En développant :
+		\begin{equation*}
+			f(x) \underset{x \rightarrow a}{=}
+			f(a) + \underbrace{f'(a)}_{= 0} + \underbrace{\ldots + \frac{f^{(p_0-1)}(a)}{(p_0-1)!} (x-a)^{p_0-1}}_{= 0 \text{ par défintion de }p_0} + \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0} + o \left( (x-a)^{p_0} \right)
+		\end{equation*}
+		
+		Ainsi (car $f^{(p_0)}(a) \neq 0$)
+		\begin{equation}
+			f(x) - f(a) \underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
+		\end{equation}
+		Au voisinage de $a$, $f(x) - f(a)$ et $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ ont le même signe.
+		\\
+		
+		Supposons que $f$ admette un extremum local en $a$.
+		Or $a \in \overset{\circ}{\mathcal{D}}$ et $f$ est dérivable en 0, donc $f'(a) = 0$.
+		Comme $f$ admette un extremum local en $a$, $f(x) - f(a)$ est de signe constant au voisinage de $a$.
+		Donc $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$.
+		Par conséquent, $p_0$ est pair.
+		\\
+		
+		Réciproquement, supposons que $f'(a) = 0$ et que $p_0$ est pair. $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$. Donc $f(x) - f(a)$ est de signe constant au voisinage de $a$. Ainsi, $a$ est un extremum local de $f$.
+		\\
+		
+		Traitons le cas du point d'inflexion. La formule de Taylor-Young donne :
+		\begin{equation}
+			f(x) - \underbrace{\left( f(a) + (x-a)f'(a) \right)}_{\text{tangente en } (a,f(a))}
+			\underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
+		\end{equation}
+		Le signe de l'écart courbe/tangente en $a$ est donc celui de $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$. Ce qui conclut de la même manière que l'extremum local.
+	\end{question_kholle}
+	
+\end{document}

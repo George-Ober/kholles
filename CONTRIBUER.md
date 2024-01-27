@@ -15,7 +15,7 @@ Simplement, commencez votre document LaTeX par
 \usepackage[nb-sem=numéro, auteurs={les auteurs}]{../kholles}
 
 \begin{document}
-\maketitle
+    \maketitle
 ```
 
 Ensuite, utlise l'environnement fait maison.
@@ -32,7 +32,28 @@ Ensuite, utlise l'environnement fait maison.
 
 Le commentaire est facultatif. Pensez à la lisibilité du titre : il doit être court.
 
-Et voilà !!!
+Par exemple,
+
+```latex
+\documentclass{article}
+
+\date{1905}
+\usepackage[nb-sem=42, auteurs={Albert Einstein}]{../kholles}
+
+\begin{document}
+    \maketitle
+
+    \begin{question_kholle}
+        [$E = m c^2$]
+        {Lien entre masse et énergie}
+
+        Écoutez les équations !
+
+    \end{question_kholle}
+
+
+\end{document}
+```
 
 `kholles.sty` définit aussi des commandes sympas :
 
@@ -44,13 +65,15 @@ Et voilà !!!
 
 - Les relations binaires \Rel
 
-- Les limites \arrowlim{varaible}{limite} et \textlim{variable}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
+- Les limites \arrowlim{varaible}{limite}, \textlim{variable}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
 
 - Les lettres utiles \eps pour \varepsilon, \ph pour \varphi et \e pour la constante d'Euler
 
 - Les ensembles pour la régularité des fonctions \Cont{nombre ou l'infini}{départ}{arrivée} et \Deriv (départ et arrivée sont facultatif, par exemple \Cont{\infty}{}{} ou \Deriv{1}{I}{})
 
 - Pour les flemmards, \fq pour 'fixé quelconque', \tq pour 'tel que' et \tqs pour '\tels que'
+
+Et voilà !!!
 
 # Compilation
 
