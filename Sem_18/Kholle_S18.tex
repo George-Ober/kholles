@@ -5,13 +5,72 @@
 
 \begin{document}
 	\maketitle
-	
+
+	\begin{question_kholle}
+		{L'ensemble des nombres premiers est infini}
+
+		Notons l'ensemble des nombres premiers $\Prime = \left\{ n \in \N \;|\; \left| \mathcal{D}(n) \cup \N \right| = 2 \right\}$
+		Par l'absurde, supposons que $\Prime$ est fini. \\
+		Posons $\displaystyle m = 1 + \prod_{p \in \Prime} p \in \N$. \\
+		Comme $2 \in \Prime$, $m \geqslant 2$. Donc $m$ admet un diviseur premier, $\exists q \in \Prime : q \;|\; m$. Donc $q \wedge m = q$. \\
+		Par ailleurs, $\displaystyle m = 1 + q \left( \prod_{\tiny \begin{matrix} p \in \Prime \\ p \neq q \end{matrix}} p \right)$. Donc $\displaystyle m - q \left( \prod_{\tiny \begin{matrix} p \in \Prime \\ p \neq q \end{matrix}} p \right) = 1$. D'après le théorème de Bézout, $q \wedge m = 1$. \\
+		Donc $q = 1$ ce qui est une contradiction avec $q \in \Prime$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soit $n \in \N^*, p \in \Prime, k_0 \in \N$.
+		\begin{equation}
+			\nu_p(n) = k_0 \iff
+			\exists m \in \Z : \left\{ \begin{matrix}
+				n = p^{k_0} \\
+				m \wedge p = 1
+			\end{matrix} \right.
+		\end{equation}
+		]
+		{Caractérisation de la valuation \textit{p}-adique}
+
+		$\implies$ Supposons que $\nu_p(n) = k_0$. \\
+		Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{k_0} \;|\; n$.
+		Notons $m \in \Z$ le quotient de la division euclidienne de $n$ par $p^{k_0}$. Nous avons $n = p^{k_0} m$. \\
+		Comme $m \wedge p \in \mathcal{D}(p) \cap \N$, $m \wedge p \in \left\{1,p\right\}$.
+		Par l'absurde, supposons que $m \wedge p = p$.
+		\begin{equation*}
+			\begin{aligned}
+				p \;|\; m
+				&\implies \exists m' \in \Z : m = p m' \\
+				&\implies \exists m' \in \Z : n = p p^{k_0} m' = p^{k_0+1} m' \\
+				&\implies k_0 + 1 \in \left\{ k \in \N \;|\; p^k | n \right\} \\
+				&\implies k_0 + 1 \leqslant \max \left\{ k \in \N \;|\; p^k | n \right\} = \nu_p(n) = k_0
+			\end{aligned}
+		\end{equation*}
+		Ce qui est une contradiction donc $m \wedge p = 1$.
+
+		$\impliedby$ Supposons $\exists m \in \Z : \left\{ \begin{matrix}
+			n = p^{k_0} \\
+			m \wedge p = 1
+		\end{matrix} \right.$ \\
+		Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{\nu_p(n)} \;|\; p^{k_0} m$. Or $m \wedge p = 1$ donc $m \wedge p^{\nu_p(n)} = 1$.
+		D'après le théorème de Gauss, $p_{\nu_p(n)} \;|\; p^{k_0}$. Donc $\exists \alpha \in \Z : \alpha p_{\nu_p(n)} = p^{k_0}$
+		\begin{equation*}
+			\begin{aligned}
+				\alpha p_{\nu_p(n)} = p^{k_0}
+				&\implies p^{k_0} - \alpha p_{\nu_p(n)} = 0 \\
+				&\implies p^{k_0} \left( 1 - \alpha p^{\nu_p(n) - k_0} \right) = 0 \text{ car } k_0 \leqslant \nu_p(n) \\
+				&\implies \alpha p^{\nu_p(n) - k_0} = 1 \text{ car \Z est intègre} \\
+				&\implies p^{\nu_p(n) - k_0} \in \mathcal{D}(1) \cap \N \\
+				&\implies p^{\nu_p(n) - k_0} = 1 \\
+				&\implies \nu_p(n) - k_0 = 0 \\
+				&\implies \nu_p(n) = k_0 \\
+			\end{aligned}
+		\end{equation*}
+	\end{question_kholle}
+
 	\begin{question_kholle}
 		{Les éléments inversibles d'un anneau $A$ forment un groupe multiplicatif noté $\left( A^\times, \times \right)$}
-		
+
 		Soit $(A, +, \times)$ un anneau. \\
 		Un élément inversible (ou unité) est un élément de $A$ symétrisable pour la loi $\times$. Posons l'ensemble des éléments inversibles $A^\times = \left\{ a \in A \;|\; \exists b \in A : a \times b = b \times a = 1_A \right\}$.
-		
+
 		\begin{itemize}[label=$\star$, leftmargin=.5cm]
 			\item Montrons que la LCI $\times$ se restreint bien à $A^\times$ en un LCI $\times_{A^\times}$. \\
 			Soient $(a_1, a_2) \in {A^\times}^2$.
@@ -29,12 +88,12 @@
 				= 1_A
 			\end{equation*}
 			Donc $\left( a_1 \times a_2 \right) \in A^\times$.
-			
+
 			\item La loi $\times$ est associative donc la loi $\times_{A^\times}$ l'est aussi.
-			
+
 			\item $1_A$ vérifie $1_A \times 1_A = 1_A$ donc $1_A \in A^\times$. \\
 			De plus, $\forall a \in A^\times, 1_A \times_{A^\times} a = a \times_{A^\times} 1_A = a$ donc $\times_{A^\times}$ admet $1_A$ comme élément neutre.
-			
+
 			\item Soit $a \in A^\times$. Par définition de $A^\times$, $\exists b \in A : a \times b = b \times a = 1_A$. \\
 			D'où $b \in A^\times$. En pensant les égalités ci-dessus dans $A^\times$,
 			\begin{equation*}
@@ -42,15 +101,15 @@
 			\end{equation*}
 			Donc $a$ est inversible dans $A^\times$.
 		\end{itemize}
-		
+
 		Ainsi, $\left( A^\times, \times_{A^\times} \right)$ est un groupe.
 	\end{question_kholle}
-	
+
 	\begin{question_kholle}
 		{L'image directe par un morphisme d'anneau d'un sous-anneau de l'anneau de départ est un sous anneau de l'anneau d'arrivée. De même pour l'image réciproque.}
-		
+
 		Soient $\left(A,+,\times\right)$ et $\left(B,+,\times\right)$ deux anneaux et $f : A \rightarrow B$ un morphisme d'anneau.
-		
+
 		\noindent Soit $A'$ un sous-anneau de $A$. Montrons que $f(A')$ est un sous-anneau de $B$.
 		\begin{itemize}[label=$\star$, leftmargin=.5cm]
 			\item Par définition de $f$, $f(A') \subset B$ et $(B,+,\times)$ est un anneau.
@@ -66,7 +125,7 @@
 			Comme $A'$ est un sous-anneau, $a \times b \in A'$. Donc $u \times v \in f(A')$.
 			\item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $A'$ est un sous-anneau donc $1_A \in A'$. D'où $1_B \in f(A')$.
 		\end{itemize}
-		
+
 		\noindent Soit $B'$ un sous-anneau de $B$. Montrons que $f^{-1}(B')$ est un sous-anneau de $A$.
 		\begin{itemize}[label=$\star$, leftmargin=.5cm]
 			\item Par définition de $f$, $f^{-1}(B') \subset A$ et $(A,+,\times)$ est un anneau.

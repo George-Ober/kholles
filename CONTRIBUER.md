@@ -57,7 +57,7 @@ Par exemple,
 
 `kholles.sty` définit aussi des commandes sympas :
 
-- **Les ensembles usuels** \N, \Z, \Q, R, \C, \K
+- **Les ensembles usuels** \N, \Z, \Q, R, \C, \K, \Prime
 
 - L'ensemble des solutions \Sol
 
