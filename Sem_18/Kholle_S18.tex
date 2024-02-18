@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\date{18 Février 2024}
+\usepackage[nb-sem=18, auteurs={Hugo Vangilluwen}]{../kholles}
+
+\begin{document}
+	\maketitle
+	
+	\begin{question_kholle}
+		{Les éléments inversibles d'un anneau $A$ forment un groupe multiplicatif noté $\left( A^\times, \times \right)$}
+		
+		Soit $(A, +, \times)$ un anneau. \\
+		Un élément inversible (ou unité) est un élément de $A$ symétrisable pour la loi $\times$. Posons l'ensemble des éléments inversibles $A^\times = \left\{ a \in A \;|\; \exists b \in A : a \times b = b \times a = 1_A \right\}$.
+		
+		\begin{itemize}[label=$\star$, leftmargin=.5cm]
+			\item Montrons que la LCI $\times$ se restreint bien à $A^\times$ en un LCI $\times_{A^\times}$. \\
+			Soient $(a_1, a_2) \in {A^\times}^2$.
+			Par défintion de $A^\times$, $\exists (b_1, b_2) \in A^2 : a_1 \times b_1 = b_1 \times a_1 = 1_A \text{ et } a_2 \times b_2 = b_2 \times a_2 = 1_A$.
+			\begin{equation*}
+				\left( a_1 \times a_2 \right) \times \left( b_2 \times b_1 \right)
+				\underbrace{=}_{\text{loi associative}} a_1 \times \underbrace{a_2 \times b_2}_{= ~ 1_A} \times b_1
+				= a_1 \times b_1
+				= 1_A
+			\end{equation*}
+			\begin{equation*}
+				\left( b_2 \times b_1 \right) \times \left( a_1 \times a_2 \right)
+				\underbrace{=}_{\text{loi associative}} b_2 \times \underbrace{b_1 \times a_1}_{= ~ 1_A} \times a_2
+				= b_2 \times a_2
+				= 1_A
+			\end{equation*}
+			Donc $\left( a_1 \times a_2 \right) \in A^\times$.
+			
+			\item La loi $\times$ est associative donc la loi $\times_{A^\times}$ l'est aussi.
+			
+			\item $1_A$ vérifie $1_A \times 1_A = 1_A$ donc $1_A \in A^\times$. \\
+			De plus, $\forall a \in A^\times, 1_A \times_{A^\times} a = a \times_{A^\times} 1_A = a$ donc $\times_{A^\times}$ admet $1_A$ comme élément neutre.
+			
+			\item Soit $a \in A^\times$. Par définition de $A^\times$, $\exists b \in A : a \times b = b \times a = 1_A$. \\
+			D'où $b \in A^\times$. En pensant les égalités ci-dessus dans $A^\times$,
+			\begin{equation*}
+				a \times_{A^\times} b = b \times_{A^\times} a = 1_A
+			\end{equation*}
+			Donc $a$ est inversible dans $A^\times$.
+		\end{itemize}
+		
+		Ainsi, $\left( A^\times, \times_{A^\times} \right)$ est un groupe.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		{L'image directe par un morphisme d'anneau d'un sous-anneau de l'anneau de départ est un sous anneau de l'anneau d'arrivée. De même pour l'image réciproque.}
+		
+		Soient $\left(A,+,\times\right)$ et $\left(B,+,\times\right)$ deux anneaux et $f : A \rightarrow B$ un morphisme d'anneau.
+		
+		\noindent Soit $A'$ un sous-anneau de $A$. Montrons que $f(A')$ est un sous-anneau de $B$.
+		\begin{itemize}[label=$\star$, leftmargin=.5cm]
+			\item Par définition de $f$, $f(A') \subset B$ et $(B,+,\times)$ est un anneau.
+			\item Soient $(u,v) \in f(A')^2$. Alors $\exists (a,b) \in A'^2 : f(a) = u \text{ et } f(b) = v$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
+			\begin{equation*}
+				u - v = f(a) - f(b) = f(a - b)
+			\end{equation*}
+			Comme $A'$ est un sous-anneau, $a - b \in A'$. Donc $u - v \in f(A')$. \\
+			De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
+			\begin{equation*}
+				u \times v = f(a) \times f(b) = f(a \times b)
+			\end{equation*}
+			Comme $A'$ est un sous-anneau, $a \times b \in A'$. Donc $u \times v \in f(A')$.
+			\item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $A'$ est un sous-anneau donc $1_A \in A'$. D'où $1_B \in f(A')$.
+		\end{itemize}
+		
+		\noindent Soit $B'$ un sous-anneau de $B$. Montrons que $f^{-1}(B')$ est un sous-anneau de $A$.
+		\begin{itemize}[label=$\star$, leftmargin=.5cm]
+			\item Par définition de $f$, $f^{-1}(B') \subset A$ et $(A,+,\times)$ est un anneau.
+			\item Soient $(a,b) \in f^{-1}(B')^2$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
+			\begin{equation*}
+				f(a - b) = \underbrace{f(a)}_{\in B'} - \underbrace{f(b)}_{\in B'} \in B'
+			\end{equation*}
+			Donc $a - b \in f^{-1}(B')$. \\
+			De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
+			\begin{equation*}
+				f(a b) = \underbrace{f(a)}_{\in B'} \underbrace{f(b)}_{\in B'} \in B'
+			\end{equation*}
+			Donc $a b \in f^{-1}(B')$.
+			\item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $B'$ est un sous-anneau donc $1_B \in B'$. D'où $1_A \in f^{-1}(B')$.
+		\end{itemize}
+	\end{question_kholle}
+\end{document}
