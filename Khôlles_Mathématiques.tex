@@ -2595,7 +2595,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		En développant :
 		\begin{equation*}
 			f(x) \underset{x \rightarrow a}{=}
-			f(a) + \underbrace{f'(a)}_{= 0} + \underbrace{\ldots + \frac{f^{(p_0-1)}(a)}{(p_0-1)!} (x-a)^{p_0-1}}_{= 0 \text{ par défintion de }p_0} + \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0} + o \left( (x-a)^{p_0} \right)
+			f(a) + \underbrace{f'(a)(x-a)}_{= 0} + \underbrace{\ldots + \frac{f^{(p_0-1)}(a)}{(p_0-1)!} (x-a)^{p_0-1}}_{= 0 \text{ par défintion de }p_0} + \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0} + o \left( (x-a)^{p_0} \right)
 		\end{equation*}
 		
 		Ainsi (car $f^{(p_0)}(a) \neq 0$)
@@ -2623,4 +2623,131 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Le signe de l'écart courbe/tangente en $a$ est donc celui de $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$. Ce qui conclut de la même manière que l'extremum local.
 	\end{question_kholle}
 	
+\pagebreak\section{Semaine 17}
+
+	 \begin{question_kholle}
+	    [Soient $a,b\in \N ^*$ et $c\in \Z$. Il existe des entiers $x,y\in \Z$ tels que $ax + yb = c$ si et seulement si $c$ est multiple du pgcd de $a$ et $b$.]
+	    {Théorème de Bézout}
+	    Soient $a,b\in \N^*$. On suppose l'algorithme d'Euclide réalisé pour $a,b$, ainsi à la fin de ce dernier on a un entier naturel $r_n$ tel que $r_n = a\wedge b$. Comme l'algorithme est terminé, on peut remonter chaque ligne de proche en proche, on aurait, à titre d'exemple, pour une première itération, $r_n =r_{n-2} - q_{n} \cdot r_{n-1}$. En réalisant toutes les étapes nécessaires, on obtient une relation entre $r_n$ et $a,b$, cette relation s'écrit : $$\exists \ (x_0, y_0)\in (\Z ^*)^2 \ : \ a\wedge b = r_n = ax_0 + y_0b.$$
+	    Si $c$ est un multiple de $a\wedge b $, alors il existe $k\in \Z^*$ tel que $c = k(a\wedge b)$, donc en multipliant le résultat montré au dessus par $k$, on a le sens indirect. Si pour $c\in \Z$, il existe des entiers $x,y\in \Z$ tels que $ax + yb = c$, alors le pgcd de $a$ et $b$ divise le membre de gauche et donc par égalite le membre de droite aussi donc $c$ est multiple de $a\wedge b$, ce qui suffit. 
+	\end{question_kholle}
+	\begin{question_kholle}
+	    [Soient $a,b,c$ trois entiers naturels non nuls. Si $c$ est premier avec $a$ et divise le produit $ab$, alors il divise $b$.]
+	    {Théorème de Gauss}
+	    Soient $a,b,c$ des entiers naturels vérifiant les hypothèses. \\
+	    Comme $c$ est premier avec $a$ on écrit une relation de Bézout pour $1$, leur pgcd et on multiplie le tout par $b$ : 
+	    $$\exists \ (u,v) \in (\N ^*)^2 \ : \ au + vc = 1 \ \implies \ abu + vbc = b, $$
+	    or $c$ divise $ab$ et lui-même donc aussi le membre de gauche donc par égalité, le membre droite, c'est le théorème.
+	\end{question_kholle}
+	\begin{question_kholle}
+	    [Soient $a,b,c\in \Z$. Résoudre l'équation $$ax + yb = c,$$ d'inconnues $x$ et $y$ dans $\Z$.]
+	    {Résoudre une équation du type $ax + yb = c$}
+	    Soient $a,b,c\in \Z$ et une telle équation, notée $(i)$, en lesdites inconnues. \\
+	    Si $a\wedge b \not| \ c$, alors le théorème de Bézout, affirme que l'équation n'a pas de solution. \\
+	    Supposons le contraire. Posons $d = a\wedge b$. Le lemme technique affirme l'existence de $a'$ et $b'$ dans $\Z$, tels que $a'd= a$, $b'd =b$ et $a' \wedge b' = 1$. Donc, comme $d$ divise $c$, il existe $c'$ tel que $c = c'd$. On réécrit l'équation, notée $(ii)$ : $$ a'x +yb'  = c'.$$ On sait d'après le théorème de Bézout qu'il existe des solutions, en particulier grâce à l'algorithme d'Euclide on construit $(x_0,y_0)$, une solution de la nouvelle équation, puis on l'injecte et on raisonne par équivalence, on note $\omega$ l'ensemble des solutions de $(ii)$ et $\Omega$ celui de $(i)$ :
+	    \begin{center}
+	    $
+	    \begin{array}{ccc}
+	      (x,y) \in \Omega  & \iff &  (x,y)\in \omega \\
+	         &\iff & a'x +yb' = c' \\
+	         &\iff & a'x + yb' = a'x_0 + y_0b' \\
+	         &\iff & a'(x-x_0) = b'(y_0 -y) \\[1ex]
+	         &\iff & \exists \ k \in \Z \ :\left\{  \begin{array}{ccc}
+	                                                a'(x-x_0) & = & b'(y_0 -y)  \\
+	                                                y_0 - y & = & a'k 
+	                                                \end{array} \right. \\[2ex]
+	         &\iff &  \exists \ k \in \Z \ :\left\{  \begin{array}{ccc}
+	                                                a'(x-x_0) & = & b'(y_0 -y)  \\
+	                                                 y & = & y_0 - a'k 
+	                                                \end{array} \right. \\[2ex]
+	         &\iff &  \exists \ k \in \Z \ :\left\{  \begin{array}{ccc}
+	                                                 x & = & x_0 + b'k  \\
+	                                                 y & = & y_0 - a'k 
+	                                                \end{array} \right. \\[2ex]
+	         &\iff & (x,y) \in \{ (x_0 + b'k,\  y_0 - a'k) \ | \ k\in \Z \}
+	    \end{array}
+	    $ \\
+	    \end{center}
+	    La première ligne découle de la divisibilité des coefficients par $d$, la deuxième est la définition d'appartenance à $\omega$, la troisième est une réécriture du fait que $(x_0,y_0)$ soit solution de $(ii)$, la quatrième est une factorisation banale, la cinquième une utilisation du théorème de Gauss pour le sens direct et le sens indirect ne pose pas de problème, la sixième est une réécriture de la deuxième relation, la septième découle de l'expression de $y$ pour le sens direct et le sens indirect s'obtient en multipliant avec parcimonie l'équation, la huitième est une réécriture de la septième qui ne pose pas de problème. C'est $\Omega$, par équivalence.
+	    
+	\end{question_kholle}
+\pagebreak\section{Semaine 18}
+	
+	\begin{question_kholle}
+		{Les éléments inversibles d'un anneau $A$ forment un groupe multiplicatif noté $\left( A^\times, \times \right)$}
+		
+		Soit $(A, +, \times)$ un anneau. \\
+		Un élément inversible (ou unité) est un élément de $A$ symétrisable pour la loi $\times$. Posons l'ensemble des éléments inversibles $A^\times = \left\{ a \in A \;|\; \exists b \in A : a \times b = b \times a = 1_A \right\}$.
+		
+		\begin{itemize}[label=$\star$, leftmargin=.5cm]
+			\item Montrons que la LCI $\times$ se restreint bien à $A^\times$ en un LCI $\times_{A^\times}$. \\
+			Soient $(a_1, a_2) \in {A^\times}^2$.
+			Par défintion de $A^\times$, $\exists (b_1, b_2) \in A^2 : a_1 \times b_1 = b_1 \times a_1 = 1_A \text{ et } a_2 \times b_2 = b_2 \times a_2 = 1_A$.
+			\begin{equation*}
+				\left( a_1 \times a_2 \right) \times \left( b_2 \times b_1 \right)
+				\underbrace{=}_{\text{loi associative}} a_1 \times \underbrace{a_2 \times b_2}_{= ~ 1_A} \times b_1
+				= a_1 \times b_1
+				= 1_A
+			\end{equation*}
+			\begin{equation*}
+				\left( b_2 \times b_1 \right) \times \left( a_1 \times a_2 \right)
+				\underbrace{=}_{\text{loi associative}} b_2 \times \underbrace{b_1 \times a_1}_{= ~ 1_A} \times a_2
+				= b_2 \times a_2
+				= 1_A
+			\end{equation*}
+			Donc $\left( a_1 \times a_2 \right) \in A^\times$.
+			
+			\item La loi $\times$ est associative donc la loi $\times_{A^\times}$ l'est aussi.
+			
+			\item $1_A$ vérifie $1_A \times 1_A = 1_A$ donc $1_A \in A^\times$. \\
+			De plus, $\forall a \in A^\times, 1_A \times_{A^\times} a = a \times_{A^\times} 1_A = a$ donc $\times_{A^\times}$ admet $1_A$ comme élément neutre.
+			
+			\item Soit $a \in A^\times$. Par définition de $A^\times$, $\exists b \in A : a \times b = b \times a = 1_A$. \\
+			D'où $b \in A^\times$. En pensant les égalités ci-dessus dans $A^\times$,
+			\begin{equation*}
+				a \times_{A^\times} b = b \times_{A^\times} a = 1_A
+			\end{equation*}
+			Donc $a$ est inversible dans $A^\times$.
+		\end{itemize}
+		
+		Ainsi, $\left( A^\times, \times_{A^\times} \right)$ est un groupe.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		{L'image directe par un morphisme d'anneau d'un sous-anneau de l'anneau de départ est un sous anneau de l'anneau d'arrivée. De même pour l'image réciproque.}
+		
+		Soient $\left(A,+,\times\right)$ et $\left(B,+,\times\right)$ deux anneaux et $f : A \rightarrow B$ un morphisme d'anneau.
+		
+		\noindent Soit $A'$ un sous-anneau de $A$. Montrons que $f(A')$ est un sous-anneau de $B$.
+		\begin{itemize}[label=$\star$, leftmargin=.5cm]
+			\item Par définition de $f$, $f(A') \subset B$ et $(B,+,\times)$ est un anneau.
+			\item Soient $(u,v) \in f(A')^2$. Alors $\exists (a,b) \in A'^2 : f(a) = u \text{ et } f(b) = v$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
+			\begin{equation*}
+				u - v = f(a) - f(b) = f(a - b)
+			\end{equation*}
+			Comme $A'$ est un sous-anneau, $a - b \in A'$. Donc $u - v \in f(A')$. \\
+			De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
+			\begin{equation*}
+				u \times v = f(a) \times f(b) = f(a \times b)
+			\end{equation*}
+			Comme $A'$ est un sous-anneau, $a \times b \in A'$. Donc $u \times v \in f(A')$.
+			\item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $A'$ est un sous-anneau donc $1_A \in A'$. D'où $1_B \in f(A')$.
+		\end{itemize}
+		
+		\noindent Soit $B'$ un sous-anneau de $B$. Montrons que $f^{-1}(B')$ est un sous-anneau de $A$.
+		\begin{itemize}[label=$\star$, leftmargin=.5cm]
+			\item Par définition de $f$, $f^{-1}(B') \subset A$ et $(A,+,\times)$ est un anneau.
+			\item Soient $(a,b) \in f^{-1}(B')^2$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
+			\begin{equation*}
+				f(a - b) = \underbrace{f(a)}_{\in B'} - \underbrace{f(b)}_{\in B'} \in B'
+			\end{equation*}
+			Donc $a - b \in f^{-1}(B')$. \\
+			De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
+			\begin{equation*}
+				f(a b) = \underbrace{f(a)}_{\in B'} \underbrace{f(b)}_{\in B'} \in B'
+			\end{equation*}
+			Donc $a b \in f^{-1}(B')$.
+			\item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $B'$ est un sous-anneau donc $1_B \in B'$. D'où $1_A \in f^{-1}(B')$.
+		\end{itemize}
+	\end{question_kholle}
 \end{document}
