@@ -1,24 +1,23 @@
 \documentclass{article}
 
-\date{18 Février 2024}
-\usepackage[nb-sem=18, auteurs={Hugo Vangilluwen}]{../kholles}
-
-\begin{document}
+\date{20 Février 2024}
+\usepackage[nb-sem=18, auteurs={Hugo Vangilluwen, Kylian Boyet}]{../kholles}
+ \begin{document}
 	\maketitle
 
 	\begin{question_kholle}
 		{L'ensemble des nombres premiers est infini}
 
-		Notons l'ensemble des nombres premiers $\Prime = \left\{ n \in \N \;|\; \left| \mathcal{D}(n) \cup \N \right| = 2 \right\}$
-		Par l'absurde, supposons que $\Prime$ est fini. \\
-		Posons $\displaystyle m = 1 + \prod_{p \in \Prime} p \in \N$. \\
-		Comme $2 \in \Prime$, $m \geqslant 2$. Donc $m$ admet un diviseur premier, $\exists q \in \Prime : q \;|\; m$. Donc $q \wedge m = q$. \\
-		Par ailleurs, $\displaystyle m = 1 + q \left( \prod_{\tiny \begin{matrix} p \in \Prime \\ p \neq q \end{matrix}} p \right)$. Donc $\displaystyle m - q \left( \prod_{\tiny \begin{matrix} p \in \Prime \\ p \neq q \end{matrix}} p \right) = 1$. D'après le théorème de Bézout, $q \wedge m = 1$. \\
-		Donc $q = 1$ ce qui est une contradiction avec $q \in \Prime$.
+		Notons l'ensemble des nombres premiers $\PRIME = \left\{ n \in \N \;|\; \left| \mathcal{D}(n) \cup \N \right| = 2 \right\}$
+		Par l'absurde, supposons que \PRIME est fini. \\
+		Posons $\displaystyle m = 1 + \prod_{p \in \PRIME} p \in \N$. \\
+		Comme $2 \in \PRIME$, $m \geqslant 2$. Donc $m$ admet un diviseur premier, $\exists q \in \PRIME : q \;|\; m$. Donc $q \wedge m = q$. \\
+		Par ailleurs, $\displaystyle m = 1 + q \left( \prod_{\tiny \begin{matrix} p \in \PRIME \\ p \neq q \end{matrix}} p \right)$. Donc $\displaystyle m - q \left( \prod_{\tiny \begin{matrix} p \in \PRIME \\ p \neq q \end{matrix}} p \right) = 1$. D'après le théorème de Bézout, $q \wedge m = 1$. \\
+		Donc $q = 1$ ce qui est une contradiction avec $q \in \PRIME$.
 	\end{question_kholle}
 
 	\begin{question_kholle}
-		[Soit $n \in \N^*, p \in \Prime, k_0 \in \N$.
+		[Soit $n \in \N^*, p \in \PRIME, k_0 \in \N$.
 		\begin{equation}
 			\nu_p(n) = k_0 \iff
 			\exists m \in \Z : \left\{ \begin{matrix}
@@ -64,6 +63,102 @@
 			\end{aligned}
 		\end{equation*}
 	\end{question_kholle}
+
+    \begin{question_kholle}
+        {Caractérisation de $a | b$ par les valuations $p$-adiques et preuve de leur propriété de morphisme.}
+        Montrons que : $a|b \ \iff \ \forall p \in \PRIME, \ \nu _p (a) \leq \nu _p (b)$. \\
+        Premièrement, montrons que la valuation $p$-adique est un morphisme de $(\Z ^* , \times)$ dans $(\N ,+)$. \\
+        Soient de tels entiers relatifs $a,b$. \\
+        \[
+            \exists \ m,n \in (\Z ^*)^2 \ : \ \left(\left(a = p^{\nu _p (a)}m\right) \ \wedge \ (m\wedge p = 1)\right) \ \wedge \ \left(\left(b = p^{\nu _p (b)}n\right) \ \wedge \ (n\wedge p = 1)\right),
+        \]
+        donc $ab = p^{\nu _p (a) + \nu _p (b)}mn$ et $mn \wedge p = 1$, par la réciproque de la caractérisation des valuations $p$-adiques :
+        \[
+            \nu _p (ab) = \nu _p (a) + \nu _p (b).
+        \]
+        Prouvons le sens réciproque de la susdite caractérisation.  Supposons le membre de droite. \\
+        D'après le théorème de décomposition en facteurs premiers,
+        \[
+            |b| = \prod_{p\in \PRIME} p^{\nu _p (b)} = \prod_{p\in \PRIME} p^{\nu _p (a)}(p^{\nu _p (b) - \nu _p (a)}) = \prod_{p\in \PRIME}  p^{\nu _p (a)} \prod_{p\in \PRIME} p^{\nu _p (b) - \nu _p (a)}= |a|\prod_{p\in \PRIME} p^{\nu _p (b) - \nu _p (a)},
+        \]
+        la première manipulation se justifie par hypothèse et la seconde peut se justifier par le calcul.\\
+        Ainsi, $|a| | |b|$ donc $a|b$. \\
+        Prouvons le sens direct. Supposons le membre de gauche.  \\
+        Soit $p \in \PRIME$. Il existe $k\in \Z$ tel que $ak = b $ car $a |b$. Ainsi,
+        \[
+            \nu _p (b) = \nu _p (ak) = \nu _p (a) + \nu _p (k) \geq \nu _p (a).
+        \]
+        Ce qui suffit.
+    \end{question_kholle}
+
+    \begin{question_kholle}
+        [Le pgcd comme produit des $p$ à la puissance du minimum des $\nu _p$ et le ppcm comme le produit des  $p$ à la puissance du maximum des $\nu _p$.]
+        {Expression du pgcd et du ppcm à partir des décomposition en facteurs premiers de $a$ et $b$.}
+        Prouvons la formule du pgcd et déduisons-en la formule du ppcm. \\
+        Soient $(a,b)\in (\Z ^*)^2$. Soit $p \in \PRIME $. Il faut et il suffit de montrer que $\nu_p (a \wedge b) = \min (\nu_p(a), \nu_p(b))$ pour obtenir le résultat. On a $a\wedge b | a$ et $a \wedge b | b$ donc d'après la caractérisation de la divisibilité par les valuations $p$-adiques, $\nu_p (a \wedge b) \leq \nu _p (a)$ et $\nu _p (a\wedge b) \leq \nu _p (b)$ donc $\nu _p (a\wedge b) \leq \min (\nu _p(a), \nu_p (b)).$ \\
+        Posons $m = \min (\nu _p(a), \nu_p (b))$. On a
+        \[
+            |a| = \prod_{q \in \PRIME} q ^{\nu _q (a)} = p^m \left( (p^{\nu_p (a)- m})\prod_{q \in \PRIME \backslash \{p\}} q ^{\nu _q (a)} \right),
+        \]
+        car par définition, $m \leq \nu _p (a)$, donc $p^m | a$, on montrerait de même que $p^m |b$, donc par définition, $p^m | a\wedge b$, donc une nouvelle fois en appliquant la caractérisation de la divisibilité par les valuations $p$-adiques, $m \leq \nu_p ( a\wedge b)$. Finalement, $\nu_p (a\wedge b) = m$. \\
+        On en déduit la formule du ppcm :
+        \[
+            |a||b| = (a \wedge b) (a \vee b) \ \implies \ a\vee b = \prod_{p\in \PRIME} p^{\nu _p(a) + \nu _p(b) - \min (\nu _p (a),\nu_p (b))} =  \prod_{p\in \PRIME} p^{\nu_p\max (\nu _p (a),\nu_p (b))}
+        \]
+
+    \end{question_kholle}
+
+    \begin{question_kholle}
+        [Petit Th. de Fermat : \\
+        ($i$) $\ \forall a \in \Z , \ a^p \equiv a \mod p$ \\
+        \indent    $\ \forall x \in \Z / p\Z, \ x^p = x $ \\
+        ($ii$)$\ \forall a \in \Z, \ p\not | a, \ \implies \ a^{p-1} \equiv 1 \mod p$ \\
+        \indent $\ \forall x \in \Z / p\Z, \ x^{p-1} = 1 $]
+        {Pour $p$ premier, $(a+b)^p \equiv a^p + b^p \mod p$, en déduire le petit Th. de Fermat (2 versions), expression du résultat dans $\Z / p\Z$.}
+        Soient $a,b$ de tels entiers relatifs et soit $p$ un nombre premier. Calculons,
+        \[
+            (a + b )^p  = \sum_{k = 0}^p \binom{p}{k}a^{p-k}b^k  = a^p + b^p + \sum_{k = 1}^{p-1} \binom{p}{k}a^{p-k}b^k \equiv a^p + b^p \mod p,
+        \]
+        car $\forall k \in [\![1,p-1 ]\!], \ p | \binom{p}{k}$ (élémentaire), d'où le résultat. \\
+        Dans $\Z /p\Z$, ce résultat s'énonce comme suit :
+        \[
+            \forall (x,y) \in \Z /p\Z ^2, \ (x+y)^p = x^p + y^p.
+        \]
+        En guise d'application, démontrons le petit Th. de Fermat énoncé plus haut. \\
+        Démonstration du $(i)$. Considérons le prédicat $\PRIME ( \cdot)$ défini sur $\N$  par :
+        \[
+            \PRIME (a) : "a^p \equiv a \mod p".
+        \]
+        Initialisation : Pour $a = 0$, rien à faire, donc $\PRIME (0)$ est vrai. \\
+        Hérédité : Soit $a\in \N$ \tq $\ \PRIME (a)$. Calculons,
+        \[
+            (a+1)^p  \equiv a^p + 1 \mod p \overset{\PRIME (a)}{\equiv} a + 1 \mod p,
+        \]
+        donc $\PRIME (a+1)$ vrai. \\
+        Par Th. de récurrence sur $\N$, $\PRIME(a)$ est vrai pour tout $a\in \N$. \\
+        Il faut maintenant étendre le résultat à $\Z$. Soit $p\in \PRIME \backslash \{2\}$, ainsi $p$ est impair. Soit $a\in \Z \backslash \N$. Calculons,
+        \[
+            a^p\equiv (-|a|)^p \mod p \equiv - |a|^p \mod p \overset{\underset{\text{pour }a \gets |a|}{\text{Th. de Fermat}}}{\equiv} - |a| \mod p \equiv a \mod p  .
+        \]
+        Si $p =2$, $\ a^2 \equiv |a|^2 \mod 2 \equiv |a| \mod 2 \equiv -|a| \mod 2 \equiv a \mod 2$. \\
+        Le $(ii)$, soit $a\in \Z$ tel que $p \not | a$.
+        \[
+            (p\not | a)\wedge (p\in \PRIME) \implies p\wedge a = 1,
+        \]
+        d'après le $(i)$, $\ p | a^p -a \ \implies \ p| a(a^{p-1} -1) \ \overset{\text{Th. de Gauss}}{\implies}  \ p| a^{p-1} -1 \ \implies \ a^{p-1} \equiv 1 \mod p$. \\
+        Les écritures dans $\Z /p \Z$ ne posent pas de problème.s, ce qui conclut.
+    \end{question_kholle}
+
+    \begin{question_kholle}
+        []
+        {$\Z /n\Z$ est un corps si et seulement si $n$ est premier.}
+        Montrons le sens réciproque, supposons $n\in \PRIME$. \\
+        Soit $x\in \Z/n\Z$ tel que $x \neq \overline{0}$. \\
+        $\exists \ a \in [\![0,p-1]\!]\ : \ c = \overline{a}$, $\ I =[\![0, p-1]\!]$ étant un système de représentant des classes. \\
+        Comme $a\in I, \ n\not | a$, or $n \in \PRIME$, donc $n \wedge a = 1$. Par Bezout, il existe $u,v \in \Z^2$ tels que $au +nv =1$, donc $u$ est l'inverse de $a$ modulo $n$ donc $a\in \Z/n\Z ^\times$, dès lors, tout élément non nul de $\Z/n\Z$ est inversible, or c'est un anneau commutatif, donc c'est un corps. \\ \\
+        Montrons le sens direct en raisonnant par contraposition, supposons $n\not \in \PRIME$. \\
+        Comme $n$ n'est pas premier et est plus grand que $2$, il admet un diviseur, $d$, dans $I\backslash \{0,1\} = J$. Notons $d'$ le quotient de la division euclidienne de $n$ par $d$, on a alors $a = dd'$ et $d'\in J$. Donc $\overline{d}\overline{d'}=\overline{0}$ et comme $d,d' \in J$, on a $d,d' \neq 0$, donc $\overline{d}$ est un diviseur de zéro de $\Z/n\Z$, donc $\overline{d}$ est un élément non nul de $\Z/n\Z$ non inversible, donc $\Z/n\Z$ n'est pas un corps. En contraposant ce que nous venons de démontrer on a le résulat. Ce qui conclut.
+    \end{question_kholle}
 
 	\begin{question_kholle}
 		{Les éléments inversibles d'un anneau $A$ forment un groupe multiplicatif noté $\left( A^\times, \times \right)$}
