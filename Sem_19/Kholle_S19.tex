@@ -1,0 +1,46 @@
+\documentclass{article}
+
+\date{02 Mars 2024}
+\usepackage[nb-sem=19, auteurs={Hugo Vangilluwen, Ober George}]{../kholles}
+
+\begin{document}
+\maketitle
+	
+\begin{question_kholle}
+	[]
+	{Calculer $E^{i,j} \times E^{k,l}$ en fonction de $i$, $j$, $k$, $l$ et des Symboles de Kronecker}
+			
+	Calculons $E^{i,j}(n,p) \times E^{k,l}(p,q)$.
+ 
+Soient $(r, s) \in [ \! [ 1, n] \!] \times [ \! [ 1, q ] \!]$ fq
+
+\begin{align*}
+\left[ E^{i,j} \times E^{k,l} \right] _{rs}  & = \sum_{t = 1}^{n}E^{i,j}_{r,t} E^{k,l}_{t,s} \\
+ & =\sum_{t = 1}^{n} \delta_{ir} \delta_{jt} \delta_{kt} \delta_{ls} \\
+ & = \delta_{jk} \delta_{ir} \delta_{ls}
+\end{align*}
+
+
+Ainsi, pour le calcul de $(E^{i,j})^{2}$, $q \leftarrow n$, $p \leftarrow n$, $k \leftarrow i$, $l \leftarrow j$.
+
+Soient $(r, s) \in [ \! [ 1, n] \!]^{2}$ fq
+
+
+
+
+\begin{align*}
+
+
+\left[  (E^{i,j})^{2} \right]_{rs} = \delta_{ir} \delta_{js} \delta_{ij} = \left\{ 
+\begin{array}{ll}
+  \left[   E^{i,i} \right]_{rs} \text{ si } i = j  \\ 
+  \left[ 0_{n,n} \right] _{rs} \text{ si } i \neq j 
+\end{array}
+\right.
+
+
+\end{align*}
+
+\end{question_kholle}
+	
+\end{document}
