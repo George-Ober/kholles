@@ -57,7 +57,7 @@ Par exemple,
 
 `kholles.sty` définit aussi des commandes sympas :
 
-- **Les ensembles usuels** \N, \Z, \Q, R, \C, \K, \Prime
+- **Les ensembles usuels** \N, \Z, \Q, R, \C, \K, \PRIME
 
 - L'ensemble des solutions \Sol
 
@@ -71,13 +71,13 @@ Par exemple,
 
 - Les ensembles pour la régularité des fonctions \Cont{nombre ou l'infini}{départ}{arrivée} et \Deriv (départ et arrivée sont facultatif, par exemple \Cont{\infty}{}{} ou \Deriv{1}{I}{})
 
-- Pour les flemmards, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que'
+- Pour les flemmards, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que' (et \bda pour \lambda)
 
 Et voilà !!!
 
 # Compilation
 
-Sur *Linux*, taper dans votre console à la racine :
+Sur *Linux*, taper dans votre console à la racine du projet :
 
 ```shell
 $: make

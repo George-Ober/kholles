@@ -12,7 +12,7 @@ final_pdf := $(subst tex, pdf, ${final_output})
 all : ${final_output}
 
 ${final_output} : ${pdf_ouput}
-	cat begin_kholles.tex > Khôlles_Mathématiques.tex
+	@cat begin_kholles.tex > Khôlles_Mathématiques.tex
 	@for nb in ${nb_weeks}; do \
 		echo '\pagebreak\section{Semaine '$${nb}'}' >> ${final_output}; \
 		sed -e '/\\documentclass/,/\\maketitle/d' -e '/\\end{document}/,//d' Sem_$${nb}/Kholle_S$${nb}.tex >> ${final_output}; \
