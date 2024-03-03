@@ -7,18 +7,40 @@
 	\maketitle
 	
 	\begin{question_kholle}
+		[Pour une matrice $A \in \mathcal{M}_{(n,p)}(\K)$, la matrice transposée est définit :
+		{\begin{equation*}
+			\forall (k, l) \in [\![1,p]\!] \!\times\! [\![1,n]\!], \ \left[A^T\right]_{kl} = A_{lk}
+		\end{equation*}}
+		Formellement, la transposition est une application de $\mathcal{M}_{(n,p)}(\K)$ dans $\mathcal{M}_{(p,n)}(\K)$.]
+		{$\left(A \times B\right)^T = B^T \times A^T$}
+		
+		Soit $(A, B) \in \mathcal{M}_{(n,p)}(\K) \times \mathcal{M}_{(p,q)}(\K)$. \\
+		$\left(A \times B\right)^T \in \mathcal{M}_{(q,n)}(\K)$. Soit $(i, j) \in [\![1,q]\!] \!\times\! [\![1,n]\!]$.
+		\begin{equation*}
+			\begin{aligned}
+				\left[ \left(A \times B\right)^T \right]_{i,j}
+				&= \left[A \times B\right]_{j,i} \\
+				&= \sum_{k=1}^{p} A_{j,k} \times_\K B_{k,i} \\
+				&= \sum_{k=1}^{p} B_{k,i} \times_\K A_{j,k} \\
+				&= \sum_{k=1}^{p} \left[B^T\right]_{i,k} \times_\K \left[A^T\right]_{k,j} \\
+				&= \left(B^T\right) \times \left(A^T\right)
+			\end{aligned}
+		\end{equation*}
+	\end{question_kholle}
+	
+	\begin{question_kholle}
 		[Le symbole de Kronecker est définit de la manière suivante :
-		\begin{equation}
+		\begin{equation*}
 			\forall (x, y) \in \R^2, \delta_{xy} = \left\{ \begin{matrix}
 				0 \text{ si } x \neq y \\
 				1 \text{ si } x = y
 			\end{matrix} \right.
-		\end{equation}
+		\end{equation*}
 		La matrice $E^{i,j} \in \mathcal{M}(n, p)(\K)$ avec {$(i, j) \in [\![ 1, n ]\!] \!\times\! [\![ 1, p ]\!]$} ne possède que des coefficients nuls sauf le coefficient de la $i^{ème}$ ligne et $j^{ème}$ colonne qui vaut 1. Formellement :
-		{\begin{equation}
+		{\begin{equation*}
 			\forall (r, s) \in [\![ 1, n ]\!] \times [\![ 1, p ]\!], \
 			\left[E^{i,j}\right]_{rs} = \delta_{ir} \delta_{js}
-		\end{equation}}]
+		\end{equation*}}]
 		{Calculer $E^{i,j} \times E^{k,l}$ en fonction de $i$, $j$, $k$, $l$ et des symboles de Kronecker}
 				
 		Calculons $E^{i,j}(n,p) \times E^{k,l}(p,q)$.
@@ -47,6 +69,32 @@
 			\right.
 		\end{align*}
 	
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		{Les matrices triangulaires supérieurs forment un sous-anneau de $\mathcal{M}_n(\K)$}
+		
+		$\mathcal{T}_n^+(\K) \subset \mathcal(M)_n(\K)$ et $(\mathcal{M}_n(\K), +, \times)$ est un anneau. \\
+		$\mathcal{T}_n^+(\K) \neq \emptyset$ car $I_n \in \mathcal{T}_n^+(\K)$ ($I_n$ est le neutre multiplicatif de $\mathcal{M}_n(\K)$). \\
+		Soient $(A, B) \in \mathcal{T}_n^+(\K)^2$ \fqs. \\
+		Soient $(i, j) \in [\![1,n]\!]^2$ \fqs \tqs $i > j$.
+		\begin{equation*}
+			(A - B)_{i,j}
+			= \underbrace{A_{i,j}}_{=0 \text{ car } A \in \mathcal{T}_n^+(\K)} - \underbrace{B_{i,j}}_{=0 \text{ car } B \in \mathcal{T}_n^+(\K)}
+			= 0
+		\end{equation*}
+		Donc, $A - B \in \mathcal{T}_n^+(\K)$.
+		
+		\begin{equation*}
+			\begin{aligned}
+				(A \times B)_{i,j}
+				&= \sum_{k=1}^{n} A_{i,k} \times_\K B_{k,j} \\
+				&= \sum_{k=1}^{j} \underbrace{A_{i,k}}_{=0 \text{ car } i > j \geqslant k \text{ et } A \in \mathcal{T}_n^+(\K)} \times_\K B_{k,j}
+				+ \sum_{k=j+1}^{n} A_{i,k} \times_\K \underbrace{B_{k,j}}_{=0 \text{ car } k > j \text{ et } B \in \mathcal{T}_n^+(\K)} \\
+				&= 0
+			\end{aligned}
+		\end{equation*}
+		Donc, $A \times B \in \mathcal{T}_n^+(\K)$.
 	\end{question_kholle}
 	
 \end{document}

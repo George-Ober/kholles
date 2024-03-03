@@ -2689,7 +2689,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		\begin{equation}
 			\nu_p(n) = k_0 \iff
 			\exists m \in \Z : \left\{ \begin{matrix}
-				n = p^{k_0} \\
+				n = p^{k_0} m \\
 				m \wedge p = 1
 			\end{matrix} \right.
 		\end{equation}
@@ -2713,7 +2713,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Ce qui est une contradiction donc $m \wedge p = 1$.
 
 		$\impliedby$ Supposons $\exists m \in \Z : \left\{ \begin{matrix}
-			n = p^{k_0} \\
+			n = p^{k_0} m \\
 			m \wedge p = 1
 		\end{matrix} \right.$ \\
 		Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{\nu_p(n)} \;|\; p^{k_0} m$. Or $m \wedge p = 1$ donc $m \wedge p^{\nu_p(n)} = 1$.
@@ -2733,8 +2733,11 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	\end{question_kholle}
 
     \begin{question_kholle}
+    	[\begin{equation}
+    		\forall (a, b) \in \Z^2, \
+    		a|b \ \iff \ \forall p \in \PRIME, \ \nu _p (a) \leq \nu _p (b)
+    	\end{equation}]
         {Caractérisation de $a | b$ par les valuations $p$-adiques et preuve de leur propriété de morphisme.}
-        Montrons que : $a|b \ \iff \ \forall p \in \PRIME, \ \nu _p (a) \leq \nu _p (b)$. \\
         Premièrement, montrons que la valuation $p$-adique est un morphisme de $(\Z ^* , \times)$ dans $(\N ,+)$. \\
         Soient de tels entiers relatifs $a,b$. \\
         \[
@@ -2760,7 +2763,13 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
     \end{question_kholle}
 
     \begin{question_kholle}
-        [Le pgcd comme produit des $p$ à la puissance du minimum des $\nu _p$ et le ppcm comme le produit des  $p$ à la puissance du maximum des $\nu _p$.]
+        [Le pgcd comme produit des $p$ à la puissance du minimum des $\nu _p$ et le ppcm comme le produit des  $p$ à la puissance du maximum des $\nu _p$.
+        \begin{equation}
+        	\begin{aligned}
+        		a \wedge b &= \prod_{p\in \PRIME} p^{\min (\nu _p (a),\nu_p (b))} \\
+        		a \vee b &= \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
+        	\end{aligned}
+        \end{equation}]
         {Expression du pgcd et du ppcm à partir des décomposition en facteurs premiers de $a$ et $b$.}
         Prouvons la formule du pgcd et déduisons-en la formule du ppcm. \\
         Soient $(a,b)\in (\Z ^*)^2$. Soit $p \in \PRIME $. Il faut et il suffit de montrer que $\nu_p (a \wedge b) = \min (\nu_p(a), \nu_p(b))$ pour obtenir le résultat. On a $a\wedge b | a$ et $a \wedge b | b$ donc d'après la caractérisation de la divisibilité par les valuations $p$-adiques, $\nu_p (a \wedge b) \leq \nu _p (a)$ et $\nu _p (a\wedge b) \leq \nu _p (b)$ donc $\nu _p (a\wedge b) \leq \min (\nu _p(a), \nu_p (b)).$ \\
@@ -2771,17 +2780,19 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
         car par définition, $m \leq \nu _p (a)$, donc $p^m | a$, on montrerait de même que $p^m |b$, donc par définition, $p^m | a\wedge b$, donc une nouvelle fois en appliquant la caractérisation de la divisibilité par les valuations $p$-adiques, $m \leq \nu_p ( a\wedge b)$. Finalement, $\nu_p (a\wedge b) = m$. \\
         On en déduit la formule du ppcm :
         \[
-            |a||b| = (a \wedge b) (a \vee b) \ \implies \ a\vee b = \prod_{p\in \PRIME} p^{\nu _p(a) + \nu _p(b) - \min (\nu _p (a),\nu_p (b))} =  \prod_{p\in \PRIME} p^{\nu_p\max (\nu _p (a),\nu_p (b))}
+            |a||b| = (a \wedge b) (a \vee b) \ \implies \ a\vee b = \prod_{p\in \PRIME} p^{\nu _p(a) + \nu _p(b) - \min (\nu _p (a),\nu_p (b))} =  \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
         \]
 
     \end{question_kholle}
 
     \begin{question_kholle}
-        [Petit Th. de Fermat : \\
-        ($i$) $\ \forall a \in \Z , \ a^p \equiv a \mod p$ \\
-        \indent    $\ \forall x \in \Z / p\Z, \ x^p = x $ \\
-        ($ii$)$\ \forall a \in \Z, \ p\not | a, \ \implies \ a^{p-1} \equiv 1 \mod p$ \\
-        \indent $\ \forall x \in \Z / p\Z, \ x^{p-1} = 1 $]
+        [Petit Th. de Fermat :
+        {\begin{enumerate}[label=($\roman*$)]
+        	\item $\forall a \in \Z , \ a^p \equiv a \mod p$ \\
+	        $\ \forall x \in \Z / p\Z, \ x^p = x $
+	        \item $\forall a \in \Z, \ p\not | a, \ \implies \ a^{p-1} \equiv 1 \mod p$ \\
+        	$\ \forall x \in \Z / p\Z, \ x^{p-1} = 1 $
+        \end{enumerate}}]
         {Pour $p$ premier, $(a+b)^p \equiv a^p + b^p \mod p$, en déduire le petit Th. de Fermat (2 versions), expression du résultat dans $\Z / p\Z$.}
         Soient $a,b$ de tels entiers relatifs et soit $p$ un nombre premier. Calculons,
         \[
@@ -2905,4 +2916,97 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 			\item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $B'$ est un sous-anneau donc $1_B \in B'$. D'où $1_A \in f^{-1}(B')$.
 		\end{itemize}
 	\end{question_kholle}
+\pagebreak\section{Semaine 19}
+	
+	\begin{question_kholle}
+		[Pour une matrice $A \in \mathcal{M}_{(n,p)}(\K)$, la matrice transposée est définit :
+		{\begin{equation*}
+			\forall (k, l) \in [\![1,p]\!] \!\times\! [\![1,n]\!], \ \left[A^T\right]_{kl} = A_{lk}
+		\end{equation*}}
+		Formellement, la transposition est une application de $\mathcal{M}_{(n,p)}(\K)$ dans $\mathcal{M}_{(p,n)}(\K)$.]
+		{$\left(A \times B\right)^T = B^T \times A^T$}
+		
+		Soit $(A, B) \in \mathcal{M}_{(n,p)}(\K) \times \mathcal{M}_{(p,q)}(\K)$. \\
+		$\left(A \times B\right)^T \in \mathcal{M}_{(q,n)}(\K)$. Soit $(i, j) \in [\![1,q]\!] \!\times\! [\![1,n]\!]$.
+		\begin{equation*}
+			\begin{aligned}
+				\left[ \left(A \times B\right)^T \right]_{i,j}
+				&= \left[A \times B\right]_{j,i} \\
+				&= \sum_{k=1}^{p} A_{j,k} \times_\K B_{k,i} \\
+				&= \sum_{k=1}^{p} B_{k,i} \times_\K A_{j,k} \\
+				&= \sum_{k=1}^{p} \left[B^T\right]_{i,k} \times_\K \left[A^T\right]_{k,j} \\
+				&= \left(B^T\right) \times \left(A^T\right)
+			\end{aligned}
+		\end{equation*}
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Le symbole de Kronecker est définit de la manière suivante :
+		\begin{equation*}
+			\forall (x, y) \in \R^2, \delta_{xy} = \left\{ \begin{matrix}
+				0 \text{ si } x \neq y \\
+				1 \text{ si } x = y
+			\end{matrix} \right.
+		\end{equation*}
+		La matrice $E^{i,j} \in \mathcal{M}(n, p)(\K)$ avec {$(i, j) \in [\![ 1, n ]\!] \!\times\! [\![ 1, p ]\!]$} ne possède que des coefficients nuls sauf le coefficient de la $i^{ème}$ ligne et $j^{ème}$ colonne qui vaut 1. Formellement :
+		{\begin{equation*}
+			\forall (r, s) \in [\![ 1, n ]\!] \times [\![ 1, p ]\!], \
+			\left[E^{i,j}\right]_{rs} = \delta_{ir} \delta_{js}
+		\end{equation*}}]
+		{Calculer $E^{i,j} \times E^{k,l}$ en fonction de $i$, $j$, $k$, $l$ et des symboles de Kronecker}
+				
+		Calculons $E^{i,j}(n,p) \times E^{k,l}(p,q)$.
+	 
+		Soient $(r, s) \in [ \! [ 1, n] \!] \times [ \! [ 1, q ] \!]$ fq
+		
+		\begin{align*}
+			\left[ E^{i,j} \times E^{k,l} \right] _{rs}
+			& = \sum_{t = 1}^{n}E^{i,j}_{r,t} E^{k,l}_{t,s} \\
+		 	& =\sum_{t = 1}^{n} \delta_{ir} \delta_{jt} \delta_{kt} \delta_{ls} \\
+		 	& = \delta_{jk} \delta_{ir} \delta_{ls} \\
+		 	& = \delta_{jk} \left[ E^{i,l} \right] _{rs}
+		\end{align*}
+		
+		Donc $E^{i,j} \times E^{k,l} = \delta_{jk} E^{i,l}$.
+		
+		
+		Ainsi, pour le calcul de $(E^{i,j})^{2}$, $q \leftarrow n$, $k \leftarrow i$, $l \leftarrow j$.
+		
+		\begin{align*}
+			(E^{i,j})^{2} = \delta_{ji} E^{i,j} = \left\{ 
+			\begin{array}{ll}
+			  E^{i,j} \text{ si } i = j  \\ 
+			  0_{n,p} \text{ si } i \neq j 
+			\end{array}
+			\right.
+		\end{align*}
+	
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		{Les matrices triangulaires supérieurs forment un sous-anneau de $\mathcal{M}_n(\K)$}
+		
+		$\mathcal{T}_n^+(\K) \subset \mathcal(M)_n(\K)$ et $(\mathcal{M}_n(\K), +, \times)$ est un anneau. \\
+		$\mathcal{T}_n^+(\K) \neq \emptyset$ car $I_n \in \mathcal{T}_n^+(\K)$ ($I_n$ est le neutre multiplicatif de $\mathcal{M}_n(\K)$). \\
+		Soient $(A, B) \in \mathcal{T}_n^+(\K)^2$ \fqs. \\
+		Soient $(i, j) \in [\![1,n]\!]^2$ \fqs \tqs $i > j$.
+		\begin{equation*}
+			(A - B)_{i,j}
+			= \underbrace{A_{i,j}}_{=0 \text{ car } A \in \mathcal{T}_n^+(\K)} - \underbrace{B_{i,j}}_{=0 \text{ car } B \in \mathcal{T}_n^+(\K)}
+			= 0
+		\end{equation*}
+		Donc, $A - B \in \mathcal{T}_n^+(\K)$.
+		
+		\begin{equation*}
+			\begin{aligned}
+				(A \times B)_{i,j}
+				&= \sum_{k=1}^{n} A_{i,k} \times_\K B_{k,j} \\
+				&= \sum_{k=1}^{j} \underbrace{A_{i,k}}_{=0 \text{ car } i > j \geqslant k \text{ et } A \in \mathcal{T}_n^+(\K)} \times_\K B_{k,j}
+				+ \sum_{k=j+1}^{n} A_{i,k} \times_\K \underbrace{B_{k,j}}_{=0 \text{ car } k > j \text{ et } B \in \mathcal{T}_n^+(\K)} \\
+				&= 0
+			\end{aligned}
+		\end{equation*}
+		Donc, $A \times B \in \mathcal{T}_n^+(\K)$.
+	\end{question_kholle}
+	
 \end{document}
