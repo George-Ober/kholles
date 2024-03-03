@@ -22,9 +22,14 @@
 }
 
 \begin{document}
-\maketitle
-
-\tableofcontents
+	\maketitle
+	
+	\begin{abstract}
+		Bienvenue très chers camarades sereins, ce document contient les questions de khôlles de mathématiques de la MP1 de Fermat. Il est coécrit par Kylian Boyet, George Ober, Hugo \textit{Vangi}lluwen (qui maintient la structure du projet, la compilation et le paquet kholles.sty) avec la contribution de Jérémie Menard.
+		Il n'est malheureusement pas exhaustif. Si vous voulez nous aider, lisez CONTRIBUER.md et envoyez-nous votre code \LaTeX ou plus simplement dites-nous quand vous rencontrez une erreur.
+	\end{abstract}
+	
+	\tableofcontents
 \pagebreak\section{Semaine 6}
 
 
@@ -1907,102 +1912,1106 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	\end{question_kholle}
 \pagebreak\section{Semaine 13}
 	
-	\begin{question_kholle}
-		[Soient $g$ une fonction définie sur $\mathcal{D}_g \subset \R$ et $f$ une fonction définie sur $\mathcal{D}_f \subset \R$ telle que $f(\mathcal{D}_f) \subset \mathcal{D}_g$.
+\begin{question_kholle}
+	[Soient $g$ une fonction définie sur $\mathcal{D}_g \subset \R$ et $f$ une fonction définie sur $\mathcal{D}_f \subset \R$ telle que $f(\mathcal{D}_f) \subset \mathcal{D}_g$.
 		Si $\left. \begin{array}{cc}
-			g \text{ admet une limite } \ell \in \overline{\R} \text{ en } b \in \overline{\mathcal{D}_g} \\
-			f \text{ admet } b \text{ comme limite en } a \in \overline{\mathcal{D}_f}
+		g \text{ admet une limite } \ell \in \overline{\R} \text{ en } b \in \overline{\mathcal{D}_g} \\
+		f \text{ admet } b \text{ comme limite en } a \in \overline{\mathcal{D}_f}
 		\end{array} \right\}$
-		alors $g \circ f$ admet $\ell$ comme limite en $a$.]
-		{Théorème de composition des limites}
-		
-		Traitons le cas où $\ell \in \R$, $a \in \R$ et $b \in \R$. \\
-		Soit $\varepsilon \in \R_+^*$ fq. \\
-		Appliquons la définition de $g(y) \arrowlim{y}{b} \ell$ pour cet $\varepsilon$ :
+	alors $g \circ f$ admet $\ell$ comme limite en $a$.]
+	{Théorème de composition des limites}
+			
+	Traitons le cas où $\ell \in \R$, $a \in \R$ et $b \in \R$. \\
+	Soit $\varepsilon \in \R_+^*$ fq. \\
+	Appliquons la définition de $g(y) \arrowlim{y}{b} \ell$ pour cet $\varepsilon$ :
+	\begin{equation*}
+		\exists \eta_g \in \R_+^* : \forall y \in \mathcal{D}_g, | y - b | \leqslant \eta_g \implies | g(y) - \ell | \leqslant \varepsilon
+	\end{equation*}
+	Appliquons la définition de $f(x) \arrowlim{x}{a} b$ pour cet $\eta_g$ :
+	\begin{equation*}
+		\exists \eta_f \in \R_+^* : \forall x \in \mathcal{D}_f, | x - a | \leqslant \eta_f \implies | f(x) - b | \leqslant \eta_g
+	\end{equation*}
+	Posons $\eta = \eta_f$.
+			
+	Soit $x \in \mathcal{D}_{g \circ f}$ fq tq $ | x - a | \leqslant \eta $. Or $f(\mathcal{D}_f) \subset \mathcal{D}_g$ donc $\mathcal{D}_{g \circ f} = \mathcal{D}_f$. \\
+	Ainsi, $x \in \mathcal{D}_f$ et $ | x - a | \leqslant \eta_f $ d'où $ | f(x) - b | \leqslant \eta_g $ d'où $ | g(f(x)) - \ell | \leqslant \varepsilon $. Donc
+	\begin{equation*}
+		g \circ f \arrowlim{x}{a} \ell
+	\end{equation*}
+\end{question_kholle}
+	
+\begin{question_kholle}
+	[{ Soit une fonction continue $f : [a;b] \rightarrow \R$ avec $(a,b) \in \R^2$ et $a < b$. \\
+			Si $f(a)f(b) \leqslant 0$ alors $\exists c \in [a;b] : f(c) = 0$. \\
+			On rencontre aussi : \textit{Si $\mathit{f(a)f(b) < 0}$ alors $\mathit{\exists c \in ]a;b[ : f(c) = 0}$.} }]
+				{Théorème des valeurs intermédiaires}
+						
+				La démonstration repose sur la technique de la dichotomie.
+						
+				\begin{figure}[!h]
+%					\centering
+					\tikzmath{ \labTVI = 12; } % la longueur du segment [a;b] dans la démonstration du TVI
+					\begin{tikzpicture}
+						\draw (0,0) node[anchor=north] {a} -- (\labTVI,0) node[anchor=north] {b};
+						\foreach \x in {0,...,\labTVI} {
+							\draw (\x,0.1) -- (\x,-0.1);
+						};
+						\draw[red] (0,0) to[out angle=80, in angle=240, curve through={(\labTVI/5,2) (\labTVI/3,-1) (\labTVI*3/5,0.5)}] (\labTVI,0);
+								
+						\draw[green] (\labTVI/2,0.1) -- (\labTVI/2,-0.1);
+						\draw (\labTVI/2,0) node[green, anchor=north] {$b_1$};
+						\draw[green] (\labTVI/4,0.1) -- (\labTVI/4,-0.1);
+						\draw (\labTVI/4,0) node[green, anchor=north] {$a_2$};
+						\draw[green] (\labTVI*3/8,0.1) -- (\labTVI*3/8,-0.1);
+						\draw (\labTVI*3/8,0) node[green, anchor=north] {$b_3$};
+						\draw[green] (\labTVI*5/16,0.1) -- (\labTVI*5/16,-0.1);
+						\draw (\labTVI*5/16,0) node[green, anchor=north] {$b_4$};
+					\end{tikzpicture}
+				\end{figure}
+					
+				\noindent Soient $a,b,f$ de tels objets. Procédons à la construction des suites $(a_n)_{n\in\N}, (b_n)_{n\in\N}, (c_n)_{n\in\N}$.
+				
+				Posons $a_0 = a$, $b_0 = b$ et $c_0 = \frac{a+b}{2}$ (le milieu du segment $[a;b]$). Nous avons, par hypothèse $f(a_0)f(b_0) \leqslant 0$.
+				
+				Soit $n \in \N$ fq. Supposons les trois suites construites au rang $n$ telles que $f(a_n)f(b_n) \leqslant 0$ et $c_n = \frac{a_n+b_n}{2}$ (milieu de $[a_n;b_n]$).
+				\begin{itemize}
+					\item Si $f(a_n)f(b_n) \leqslant 0$, posons $\left| \begin{array}{lcl}
+					      a_{n+1} &=& a_n \\
+					      b_{n+1} &=& c_n \\
+					      c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
+					\end{array} \right.$
+					\item Sinon $f(a_n)f(b_n) > 0$. Or $f(a_n)f(b_n) \leqslant 0$, donc $f(a_n)^2 f(b_n) f(c_n) \leqslant 0$. Donc $f(b_n)f(c_n) \leqslant 0$. Posons $\left| \begin{array}{lcl}
+					      a_{n+1} &=& c_n \\
+					      b_{n+1} &=& b_n \\
+					      c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
+					\end{array} \right.$
+				\end{itemize}
+				Ainsi, nous avons bien construits $a_{n+1}, b_{n+1}, c_{n+1}$ telles que $f(a_{n+1})f(b_{n+1}) \leqslant 0$ et ${ c_{n+1} = \frac{a_{n+1}+b_{n+1}}{2} }$ (milieu de $[a_{n+1};b_{n+1}]$).
+						
+				Par récurrence immédiate, $(a_n)_{n\in\N}$ est croissante, $(b_n)_{n\in\N}$ est décroissante et ${ \forall n \in \N, b_n - a_n = \frac{b-a}{2^n} }$ d'où $b_n - a_n \arrowlim{n}{+\infty} 0$.
+				Donc les suites $a$ et $b$ sont adjacentes.
+				D'après le théorème des suites adjacentes, elles convergent vers la même limite. Notons la $c$.
+				
+				D'après le bonus de ce même théorème, $\forall n \in \N, a_n \leqslant c \leqslant b_n$ donc pour $n = 0$, $a \leqslant c \leqslant b$. Ainsi,
+				\begin{equation*}
+					c \in [a;b]
+				\end{equation*}
+						
+				Par ailleurs, $\forall n \in \N, f(a_n)f(b_n) \leqslant 0$. Par continuité de $f$ sur $[a;b]$ donc en $c$, $f(a_n) \arrowlim{n}{+\infty} f(c)$ et $f(b_n) \arrowlim{n}{+\infty} f(c)$. Par passage à limite dans l'inégalité,
+				\begin{equation*}
+					f(c) \times f(c) \leqslant 0
+				\end{equation*}
+				Or $f(c)^2 \geqslant 0$, d'où $f(c)^2 = 0$. Ainsi,
+				\begin{equation*}
+					f(c) = 0
+				\end{equation*}
+				Donc $c$ est un point fixe.
+						
+				\end{question_kholle}
+				 
+				\begin{question_kholle}[{L'image d'un segment par une fonction continue sur ce segment est un segment : soient $(a, b) \in \mathbb{R}^2$ tels que $a < b$ et $f: [a, b] \to \mathbb{R}$. Si $f \in \mathcal{C}^0([a, b], \mathbb{R})$ alors $\exists (x_{1}, x_{2}) \in \mathbb{R}^2 : f([a, b]) = [f(x_{1}), f(x_{2})]$}]{Théorème de Weierstraß}
+                    \begin{itemize}
+    
+					\item \emph{Étape 1} Montrons que $f([a, b])$ est majoré.
+					     
+					Par l'absurde, supposons que $f([a, b])$ n'est pas majoré
+					     
+					Alors \begin{equation}\label{eq:1}
+					         \forall A \in \mathbb{R}, \exists x \in [a, b] : f(x) > A
+					\end{equation}
+					
+					Soit $n \in \mathbb{N}$ fq.
+					Appliquons (\ref{eq:1}) pour $A \leftarrow n$:
+					$\exists x \in [a, b] : f(x) > n$, et fixons un tel $x$ que l'on note $x_{n}$
+					Nous venons de créer la suite $(x_{n})_{n \in \mathbb{N}} \in [a, b]^{\mathbb{N}}$ qui vérifie:
+					
+					
+					$$
+					\left. 
+					\begin{array}{ll}
+						\forall n \in \mathbb{N}, f(x_{n}) \geqslant n \\
+						\lim_{ n \to \infty } n =  +\infty         
+					\end{array}
+					\right\} \underbrace{ \implies }_{ \text{théorème de divergence par minoration} } f(x_{n}) \xrightarrow[n \to +\infty]{} + \infty
+					$$
+					
+					
+					$(x_{n})_{n \in \mathbb{N}}$ est bornée (à valeurs dans $[a, b]$) donc, selon le théorème de Bolzanno-Weierstraß:
+					$$
+					\exists \ell \in \mathbb{R} : \exists \varphi : \mathbb{N} \to \mathbb{N} : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \mathbb{N}} \text{ tend vers } \ell
+					$$
+					Donc, en passant à la limite : $\forall n \in \mathbb{N}, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
+					
+					Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$ converge vers $f(\ell)$.
+					
+					Or $$
+					\left\{ \begin{array}{ll}
+					(f(x_{\varphi(n)}))_{n \in \mathbb{N}} \text{ est une sous suite de } (f(x_{n}))_{n \in \mathbb{N}} \\
+					f(x_{n}) \xrightarrow[n \to + \infty]{} + \infty
+					\end{array}\right.$$
+					
+					donc $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$, tend vers $+ \infty$, ce qui est absurde, donc $f$ est majorée.
+					
+					On fait de même pour la minoration.
+					
+					\item  \emph{Étape 2:} Montrons que $f([a, b])$ admet un pge et un ppe.
+					
+					Montrons donc que $f([a, b])$ admet une borne sup, qui, puisque c'est une valeur atteinte, deviendra un max.
+					
+					$$
+					f([a, b]) \text{ est } \left\{ \begin{array}{ll}
+					\text{ une partie de } \mathbb{R} \\
+					\text{ non vide car contient } f(a) \\
+					\text{majorée d'après l'étape 1}
+					\end{array}\right.
+					$$
+					
+					$f([a, b])$ admet donc une borne supérieure $\sigma$.
+					
+					Appliquons la caractérisation séquentielle de la borne supérieure:
+					$$
+					\exists (y_{n})_{n \in \mathbb{N}}, \in f([a, b])^{\mathbb{N}} : (y_{n}) \text{ converge vers } \sigma
+					$$
+					$$
+					\forall n \in \mathbb{N}, y_{n} \in f([a, b]) \implies \exists x_{n} \in [a, b] : f(x_{n} ) = y_{n}
+					$$
+					Fixons un tel $x_{n}$ pour tout $y_{n}$.
+					On a donc construit $(x_{n})_{n \in \mathbb{N}} \in [a, b]^{\mathbb{N}} : f(x_{n}) \xrightarrow[n \to +\infty]{} \sigma$
+					
+					De plus, $(x_{n})$ est bornée (à valeurs dans $[a, b]$) donc, selon le théorème de Bolzanno-Weierstraß:
+					$$
+					\exists \ell \in \mathbb{R} : \exists \varphi : \mathbb{N} \to \mathbb{N} : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \mathbb{N}} \text{ tend vers } \ell
+					$$
+					Donc, en passant à la limite : $\forall n \in \mathbb{N}, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
+
+     
+					Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$ converge vers $f(\ell)$.
+					
+					Or,
+					$$
+					\left\{ \begin{array}{ll}
+					(f(x_{\varphi(n)}))_{n \in \mathbb{N}} \text{ est une sous suite de } (f(x_{n}))_{n \in \mathbb{N}} \\
+					f(x_{n}) \xrightarrow[n \to + \infty]{} \sigma
+					\end{array}\right.$$
+					
+					Par unicité de la limite, $\sigma = f(\ell)$.
+					
+					On montre de même qu'il existe $\ell' \in [a, b]: f(\ell') = \inf f([a, b])$
+					
+					Ainsi, $f(\ell) = \max f([a, b])$ et $f(\ell') = \min f([a, b])$
+
+
+     
+					\item \emph{Étape 3:}
+					Montrons que $f([a, b]) = [f(\ell'), f(\ell)]$.
+					
+					Par la construction précédente, $\forall y \in f([a, b]), y \in [f(\ell'), f(\ell)]$.
+					
+					Ainsi, $f([a, b]) \subset [f(\ell'), f(\ell)]$.
+					
+					Réciproquement, l'image par la fonction continue $f$ du segment $[a, b]$ qui est un intervalle est un intervalle:
+					
+					$$
+					\left. 
+					\begin{array}{ll}
+						f([a,b]) \text{ est un intevalle} \\
+						f(\ell) \in f([a, b])             \\
+						f(\ell') \in f([a, b])            
+					\end{array}
+					\right\} 
+					\implies
+					[f(\ell'), f(\ell)] \subset f([a,b])
+					$$
+					
+					D'où $[f(\ell'), f(\ell)] = f([a,b])$
+					    
+                    \end{itemize}
+				\end{question_kholle}
+\pagebreak\section{Semaine 14}
+
+	\begin{question_kholle}
+	    [Soit $f \left| \begin{matrix}
+	    	\R_+^* \rightarrow \R \\
+	    	x \mapsto \frac{\ln x}{x}
+	    \end{matrix} \right. $. \\
+	    Exprimer $f^{(n)}$ pour tout $n \in \N$.]
+	    {Expression de dérivées successives}
+	    Soit $x\in \mathcal{D}_f$. \\
+	    Considérons le prédicat $P(\cdot)$ définit pour $n\in \N$ par :
+	    $$ P(n) \ : \ \text{\textquotedblleft} \ f^{(n)}(x) = \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right] \ " $$
+	    Initialisation : \\
+	    Pour $n = 0$, $$f^{(0)}(x) = f(x) = \frac{\ln (x)}{x} = \frac{(-1)^0 0!}{x^{0+1}}\left[ \ln (x) - \sum_{k=1}^0 \frac{1}{k} \right],$$ donc $P(0)$ est vrai. \\
+	    Hérédité :
+	    \\
+	    Soit $n\in \N$ tel que $P(n)$. On a,
+	    $$f^{(n+1)}(x) = (f^{(n)}(x))' = \left( \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right] \right)'$$
+	    par véracité de $P(n)$. Ainsi,
+		$$\begin{array}{rcl}
+		f^{(n+1)}(x) & = & \frac{(-1)^nn!x^n - (-1)^n(n+1)!x^n\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right]}{x^{2(n+1)}} \\ [1ex]
+		 & = & \frac{(-1)^{n+1}(n+1)!\ln (x) - (-1)^{n+1}(n+1)!\sum_{k=1}^{n+1} \frac{1}{k} }{x^{n+2}} \\ [1ex]
+		 & = & \frac{(-1)^{n+1} (n+1)!}{x^{n+2}}\left[ \ln (x) - \sum_{k=1}^{n+1} \frac{1}{k} \right]
+		\end{array}$$
+	    c'est l'expression recherchée, donc $P(n+1)$ est vrai. \\
+	    Par théorème de récurrence sur $\N$, $P(n)$ est vraie pour tout $n\in \N$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soit $f : I \rightarrow f(I) \subset \R$ continue, strictement monotone sur $I$ et dérivable en $a \in I$.
+		Si $f'(a) \neq 0$ alors $f$ est bijective, $f^{-1}$ est dérivable en $f(a)$ et $f^{-1}(f(a)) = \frac{1}{f'(a)}$.]
+		{Dérivé d'une bijection réciproque}
+		Soient de tels objets. \\
+		Rappelons le lemme inattendu. Soit $g : J \rightarrow \R$ monotone (où $J$ est un intervalle). Nous avons l'équivalence suivante :
 		\begin{equation*}
-			\exists \eta_g \in \R_+^* : \forall y \in \mathcal{D}_g, | y - b | \leqslant \eta_g \implies | g(y) - \ell | \leqslant \varepsilon
+			f(J) \text{ est un intervalle } \iff f \text{ est continue sur } J
 		\end{equation*}
-		Appliquons la définition de $f(x) \arrowlim{x}{a} b$ pour cet $\eta_g$ :
+		Par définition, $f$ est surjective. Comme elle est strictement monotone, $f$ est injective. Ainsi $f$ est bijective. \\
+		D'après le lemme inattendu, $f(I)$ est un intervalle. Nous avons $f^{-1} : f(I) \rightarrow I$ avec $f(I)$ et $I$ des intervalles donc $f^{-1}$ est continue sur $f(I)$. \\
+		Calculons la limite du taux d'accroissement de $f^{-1}$ en $f(a)$ :
 		\begin{equation*}
-			\exists \eta_f \in \R_+^* : \forall x \in \mathcal{D}_f, | x - a | \leqslant \eta_f \implies | f(x) - b | \leqslant \eta_g
+			\forall x \in f(I), \tau_{f^{-1},f(a)} = \frac{f^{-1}(x) - f^{-1}(f(a))}{x - f(a)}
 		\end{equation*}
-		Posons $\eta = \eta_f$.
-		
-		Soit $x \in \mathcal{D}_{g \circ f}$ fq tq $ | x - a | \leqslant \eta $. Or $f(\mathcal{D}_f) \subset \mathcal{D}_g$ donc $\mathcal{D}_{g \circ f} = \mathcal{D}_f$. \\
-		Ainsi, $x \in \mathcal{D}_f$ et $ | x - a | \leqslant \eta_f $ d'où $ | f(x) - b | \leqslant \eta_g $ d'où $ | g(f(x)) - \ell | \leqslant \varepsilon $. Donc
+		Posons $u = f^{-1}(x)$. D'où :
 		\begin{equation*}
-			g \circ f \arrowlim{x}{a} \ell
+			\tau_{f^{-1},f(a)} = \frac{u - a}{f(u) - f(a)}
+		\end{equation*}
+		De plus, par continuité de $f^{-1}$, $u \arrowlim{x}{f(a)} f^{-1}(f(a)) = a$.
+		Par dérivabilité en a et par continuité de $x \mapsto x^{-1}$ en $f(a) \neq 0$, $\frac{u - a}{f(u) - f(a)} \arrowlim{u}{a} \frac{1}{f('(a)}$. \\
+		Ainsi, $f^{-1}$ est dérivable en $f(a)$ et $f^{-1}(f(a)) = \frac{1}{f'(a)}$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soit $f : I \rightarrow \R$. Si $f$ admet un extremum local en $a \in \overset{\circ}{I}$ et si $f$ est dérivable en $a$ alors $f'(a) = 0$
+		{\begin{figure}[!h]
+				\centering
+				\tikzmath{ integer \m; real \fm; \m = 3; \fm = 0.8; }
+				\begin{tikzpicture}
+					\draw[-stealth] (0,0) -- (6,0) node[anchor=west] {$x$};
+					\draw[-stealth] (0,0) -- (0,3) node[anchor=south] {$y$};
+					
+					\draw[red] plot [smooth] coordinates {(0,2.5) (\m,\fm) (6,1.7)};
+					\draw[blue, dashed] (\m,\fm) -- (\m,0) node[anchor=north] {minimum local};
+					
+					\draw[stealth-stealth, teal] (\m-1,\fm) -- (\m+1,\fm);
+					\draw (\m,\fm) node[anchor=north east, teal] {$m$} node[anchor=south, teal] {$f'(m)=0$};
+				\end{tikzpicture}
+		\end{figure}}]
+		{Dérivée d'un extremum local intérieur au domaine de définition}
+		Soient de tels objets. \\
+		$a \in \overset{\circ}{I} \implies \exists \eta_1 \in \R_+^* : [a-\eta_1;a+\eta_1] \subset I$ Fixons un tel $\eta_1$. \\
+		Calculons le taux d'accroissement en $a$.
+		\begin{equation*}
+			\forall x \in [a-\eta_1;a+\eta_1], \tau_{f,a}(x) = \frac{f(x) - f(a)}{x - a}`
+		\end{equation*}
+		Or $f$ est dérivable en $a$ donc $\tau_{f,a}(x)$ admet une limite lorsque $x \rightarrow a$.
+		Traitons le cas où $a$ est maximum local. Par définition :
+		\begin{equation*}
+			\exists \eta_2 \in \R_+^* : \forall x \in [a-\eta_2;a+\eta_2], f(x) \leqslant f(a)
+		\end{equation*}
+		Fixons un tel $\eta_2$. Soit $x \in [a-\eta_2;a+\eta_2] \setminus \{a\}$ fq. \\
+		Alors $f(x) - f(a) \leqslant 0$. \\
+		Si $x > a$, $x - a > 0$. Alors $\frac{f(x) - f(a)}{x - a} \leqslant 0$. Donc $\textlim{x}{a} \tau_{f,a}(x) \leqslant 0$. \\
+		Sinon $x < a$, $x - a < 0$. Alors $\frac{f(x) - f(a)}{x - a} \geqslant 0$. Donc $\textlim{x}{a} \tau_{f,a}(x) \geqslant 0$. \\
+		Ainsi $0 \leqslant \textlim{x}{a} \tau_{f,a}(x) \leqslant 0$. Donc $f'a) = 0$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+	    [Soient $(a,b)\in \R ^2$ tels que $a<b$. Soit $I$ le segment $a,b$.
+	    \\
+	    Soit $f \ : \ I \ \to \ \R $ continue sur ledit segment et dérivable sur l'ouvert associé.\\
+	    {\begin{enumerate}[label=($\roman*$)]
+	    	\item Théroème de Rolle : \\
+	    	Si $f(a) = f(b)$, alors $\exists \ c \in \overset{\circ}{I}$ tel que $f'(c) =0$
+	    	\begin{figure}[!h]
+	    		\centering
+	    		\tikzmath{ integer \a \b \f \c \fc; \a = 1; \b = 9; \f = 2; \c = \a + 3; \fc = \f + 2; }
+	    		\begin{tikzpicture}
+	    			\draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
+	    			\draw[-stealth] (0,0) -- (0,5) node[anchor=south] {$y$};
+
+	    			\coordinate (A) at (\a,\f);
+	    			\coordinate (B) at (\b,\f);
+	    			\coordinate (C) at (\c,\fc);
+
+	    			%\draw[red] (A) to[out angle=80, in angle=240, curve through={(C) (6,1.5)}] (B);
+	    			\draw [red] plot [smooth] coordinates {(A) (C) (6,1.5) (B)};
+	    			\draw[blue, thick] (A) -- (B);
+	    			\draw[blue, dashed] (A) -- (\a,0) node[anchor=north] {$a$};
+	    			\draw[blue, dashed] (B) -- (\b,0) node[anchor=north] {$b$};
+	    			\draw[blue, dashed] (A) -- (0,\f) node[anchor=east] {$f(a)=f(b)$};
+
+	    			\draw[stealth-stealth, teal] (\c-2,\fc) -- (\c+2,\fc);
+	    			\draw (C) node[anchor=north, teal] {$c$} node[anchor=south, teal] {$f'(c)=0$};
+	    		\end{tikzpicture}
+    			\caption{Théorème de Rolle}
+	    	\end{figure}
+
+	    	\item Formule des accroissements finis : \\
+	    	$\exists \ c \in \overset{\circ}{I} \ : \ f'(c) = \frac{f(b)-f(a)}{b-a}.$
+	    	\begin{figure}[!h]
+	    		\centering
+	    		\tikzmath{integer \a \fa \b \fb \c \fc; \a = 1; \fa = 1; let \b = 9; \fb = 5; \c = \a + 5; \fc = \fa + 1; }
+	    		\begin{tikzpicture}
+	    			\draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
+	    			\draw[-stealth] (0,0) -- (0,6) node[anchor=south] {$y$};
+
+	    			\coordinate (A) at (\a,\fa);
+	    			\coordinate (B) at (\b,\fb);
+	    			\coordinate (C) at (\c,\fc);
+
+	    			%\draw[red] (A) to[out angle=80, in angle=240, curve through={(C) (6,1.5)}] (B);
+	    			\draw [red] plot [smooth] coordinates {(A) (3,4) (C) (7,4.5) (B)};
+	    			\draw[blue, thick] (A) -- (B);
+	    			\draw[blue, dashed] (A) -- (\a,0) node[anchor=north] {$a$};
+	    			\draw[blue, dashed] (A) -- (0,\fa) node[anchor=east] {$f(a)$};
+	    			\draw[blue, dashed] (B) -- (\b,0) node[anchor=north] {$b$};
+	    			\draw[blue, dashed] (B) -- (0,\fb) node[anchor=east] {$f(b)$};
+
+	    			\draw[stealth-stealth, teal] (\c-2,\fc-1) -- (\c+2,\fc+1);
+	    			\draw (C) node[anchor=south, teal] {$c$} node[anchor=north west, teal] {$f'(c)=\frac{f(b)-f(a)}{b-a}$};
+	    		\end{tikzpicture}
+    			\caption{Formule des accroissements finis}
+	    	\end{figure}
+	    \end{enumerate}}
+	    ]
+	    {Théorème de Rolle et formule des accroissements finis}
+	    Soient de tels objets. \\
+	    Prouvons $(i)$, donc supposons $f(a) = f(b)$. \\
+	    $f$ est continue sur $I$ donc par le théorème de Weierstraß, elle est bornée et atteint ses bornes sur ce segment :
+	    \\
+	    $$\exists \ (x_m, x_M)\in I^2 \ : \ (f(x_m) = \min f(I)) \wedge (f(x_M) = \max f(I))$$
+	    donc, si $(x_m, x_M)\in \{a,b\}^2$, alors,
+	    $$\forall x \in I, \ f(a)=f(x_m) \leq f(x) \leq f(x_M)=f(a)$$
+	    donc $\forall x \in I, f(x) = f(a)$ c'est-à-dire que $f$ est constante et donc tous les points intermédiaires à $I$ sont des $c$ valides.\\
+	    Sinon, $(x_m \notin \{a,b\}) \vee (x_M \notin \{a,b\}) $, quitte à prendre l'autre valeur, supposons que $x_M \notin \{a,b\}$, ainsi, $x_M \in \overset{\circ}{I}$ et $f(x_M)$ est un maximum global donc, $f$ étant dérivable sur $\overset{\circ}{I}$ elle est dérivable en $x_M$ donc $f'(x_M)=0$, on pose $c = x_M$, ce qui conclut. \\ \\
+	    Prouvons $(ii)$.\\
+	    Posons $d \ :\ I \ \to \ \R, \ x \ \mapsto \ f(x) - \left( \frac{f(b)-f(a)}{b-a}(x-a) +f(a) \right) $. $d$ est continue sur $I$ et dérivable sur $\overset{\circ}{I}$ comme combinaison linéaire de telles fonctions. On a $d(a) = 0$ et $d(b) = 0$ donc $d(a) = 0 = d(b)$. On peut alors appliquer le Théorème de Rolle pour $f \gets d, a \gets a $ et $ b \gets b$ : il existe $c\in \overset{\circ}{I}$ tel que $d'(c) = 0$, c'est le résultat.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+	    [Soit $f\in \mathcal{C}^0(I, \R) \cap \mathcal{D}^1(\overset{\circ}{I}, \R)$ et $x_0 \in I$, posons {$X_- = ]-\infty;x_0]$} la demi-droite fermée en $x_0$ et vers $-\infty$, de même {$X_+ = [x_0;+\infty[$} la demi-droite fermée en $x_0$ et vers $+ \infty$. \\ \\
+	    {\begin{enumerate}[label=$(\roman*)$]
+	    	\item \begin{itemize}[label=$\star$, leftmargin=0.4cm]
+	    		\item Si $\exists \ m \in \R \ : \ \forall x \in \overset{\circ}{I}, \ m\leq f'(x)$, alors, $$\forall x \in I \cap X_+, \ f(x_0) + m(x-x_0) \leq f(x)$$ et $$\forall x \in I \cap X_-, \ f(x) \leq f(x_0) + m(x-x_0)$$
+	    		\item Si $\exists \ M \in \R \ : \ \forall x \in \overset{\circ}{I}, \ f'(x) \leq M $, alors, $$\forall x \in I \cap X_+, \ f(x) \leq f(x_0) + M(x-x_0)$$ et $$\forall x \in I \cap X_-, \ f(x_0) + M(x-x_0) \leq f(x) $$
+	    		\item Si $\exists \ (m,M) \in \R^2 \ : \ \forall x \in \overset{\circ}{I}, \ m\leq f'(x) \leq M$, alors, $$\forall x \in I \cap X_+, \ f(x_0) + m(x-x_0) \leq f(x) \leq f(x_0) +M(x-x_0)$$ et $$\forall x \in I \cap X_-, \ f(x_0) + M(x-x_0) \leq f(x) \leq f(x_0) +m(x-x_0)$$
+	    	\end{itemize}
+    		\item Si $\exists M \in \R \ : \ \forall x \in \overset{\circ}{I}, \ |f'(x)|\leq M$, alors, $$\forall (x,y) \in I^2, \ |f(y) -f(x)| \leq M|y-x|$$
+	    \end{enumerate}}
+
+		{\begin{figure}[!h]
+			\centering
+			\tikzmath{ integer \x0 \fx0 \m \M; \x0 = 5;\fx0 = 2.5; \m = 0.2; \M = 0.7; }
+			\begin{tikzpicture}
+				\draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
+				\draw[-stealth] (0,0) -- (0,5) node[anchor=south] {$y$};
+
+				\coordinate (A) at (1,\fx0-\m*\x0+\m*1);
+				\coordinate (B) at (9,\fx0-\m*\x0+\m*9);
+				\coordinate (C) at (1,\fx0-\M*\x0+\M*1);
+				\coordinate (D) at (9,\fx0-\M*\x0+\M*9);
+				\draw[ultra thick, black] (A) -- (B) node[anchor=north west] {$y = f(x_0) + m(x -x_0)$};
+				\draw[ultra thick, black] (C) -- (D) node[anchor=south east] {$y = f(x_0) + M(x -x_0)$};
+				\filldraw[magenta!30] (A) -- (B) -- (D) -- (C) -- cycle;
+
+				\draw (\x0,\fx0) node[cross out, minimum size=8*\pgflinewidth, inner sep=0pt, outer sep=0pt, draw=blue, rotate=45, thick] {};
+				\draw[blue, dashed] (\x0,\fx0) -- (0,\fx0) node[anchor=east] {$f(x_0)$};
+				\draw[blue, dashed] (\x0,\fx0) -- (\x0,0) node[anchor=north] {$x_0$};
+			\end{tikzpicture}
+			\caption{Interprétation géométrique des accroissements finis}
+		\end{figure}}]
+	    {Inégalité des accroissements finis}
+	    $(i)$ Soit $x\in I$ et posons $S$ le segment d'extrémités $x$ et $x_0$. \\
+	    $\star$ Si $x\neq x_0$, $f$ est continue sur $S$ et dérivable sur $\overset{\circ}{S}$, la formule des accroissements finis donne alors l'existence d'un $c$ appartenant à $\overset{\circ}{S}$ tel que $$f(x) - f(x_0) = (x-x_0)f'(c)$$ Si $x> x_0, \ x-x_0 > 0$, or $m \leq f'(c) \leq M$ donc $$m(x-x_0) \leq (x-x_0)f'(c) \leq M(x-x_0)$$ si bien que $$m(x-x_0) \leq f(x) - f(x_0) \leq M(x-x_0) $$ d'où $$f(x_0) + m(x-x_0) \leq f(x) \leq f(x_0) + M(x-x_0). $$ Si $x<x_0$, il suffit de retourner l'inégalité lors de la première multiplication et $(i)$ est prouvé.\\ \\
+	    $(ii)$ Soit $y \in I.$\\
+	    L'hypothèse $\forall x\in \overset{\circ}{I}, \ |f'(x)|\leq M$ équivaut à $\forall x \in \overset{\circ}{I}, \ -M \leq f'(x) \leq M$, donc on peut appliquer $(i)$ pour $x_0 \gets y, \ M \gets M$ et $m\gets -M$ : $$\forall x \in I\cap [y, +\infty [,  \ f(y) -M(x-y) \leq f(x) \leq f(y) + M(x-y)$$
+	    Or $x-y >0$ donc $|f(x) -f(y) | \leq M|x-y|$.
+	    Et $$\forall x \in I\cap ]-\infty, y ],  \ f(y) +M(x-y) \leq f(x) \leq f(y) - M(x-y)$$
+	    Or $x-y < 0$ donc $|f(x) -f(y) | \leq M|x-y|$. \\
+	    Par conséquent, $\forall (x,y)\in I^2, \ |f(y) -f(x)| \leq M|y-x|.$
+	\end{question_kholle}
+
+	\begin{question_kholle}
+	    [Soit $f\in \mathcal{C}^1(I,\R)$, $I$ le segment $a,b$. Alors $f$ est $||f'||_{\infty,I}$-lipschitzienne sur I.]
+	    {Caractère lipschitzien d'une fonction $\mathcal{C}^1$ sur un segment}
+	    Soient de tels objets. \\
+	    $\star$ $f\in \mathcal{C}^1(I, \R)$ donc $f\in \mathcal{C}^0(I, \R)$. \\
+	    $\star$ $f\in \mathcal{C}^1(I,\R)$ donc $f\in \mathcal{D}^1(\overset{\circ}{I}, \R)$.\\
+	    $\star$ $f\in \mathcal{C}^1(I,\R)$ donc $f'$ est continue sur $I$ donc le réel $||f'||_{\infty,I}$ est bien défini et $$\forall  x \in \overset{\circ}{I}, \ |f'(x)| \leq ||f'||_{\infty,I}.$$ Ces propriétés permettent d'appliquer le corollaire du TAF qui conclut que $f$ est $||f'||_{\infty,I}$-lipschitzienne.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+	    [Soit $f\in \mathcal{F}(I, \R)$ et $a\in I$.\\
+	    \newline
+	    \textit{Lemme} : \\
+	    Si
+	        $\left\{ \begin{array}{cl}
+	        f \text{ est dérivable sur } I\backslash \{a\}  \\
+	        f \text{ est continue en }a \\
+	        f'_{|I\backslash \{a\}} \text{ admet une limite $\ell \in \overline{\R}$ en }a
+	        \end{array}
+	        \right.$, alors $\lim_{x \to a} \frac{f(x) -f(a)}{x-a} = \ell$\\
+	    \newline
+	    \textit{Théorème} : \\
+	    Si
+	        $\left\{ \begin{array}{cl}
+	        f \text{ est dérivable sur } I\backslash \{a\}  \\
+	        f \text{ est continue en }a \\
+	        f'_{|I\backslash \{a\}} \text{ admet une limite \textbf{finie} $\ell \in \R$ en }a
+	        \end{array}
+	        \right.$, alors $\left\{ \begin{array}{cl}
+	        f \text{ est dérivable en } a  \\
+	        f'(a) = \ell \ (\textbf{donc } f' \textbf{ est continue en } a)
+	        \end{array}
+	        \right.$ ]
+	    {Théorème du prolongement de la propriété de la dérivabilité}
+	    Prouvons le lemme pour $\ell\in \R$, c'est le cas qui nous intéresse. \\
+	    Soient de tels objets. Soit $\varepsilon\in \R_+^*$. Appliquons la définition de $\lim_{\substack{x\to a \\ x\neq a}}  f'_{|I\backslash \{a\}}(x) =\ell $ pour $\varepsilon \gets \varepsilon$ :
+	    $$\exists \ \eta \in \R_+^* \ : \ \forall x\in I\backslash \{a\}, \ |x-a| \leq \eta \ \implies \ | f'_{|I\backslash \{a\}}(x) - \ell |\leq \varepsilon.$$ Fixons un tel $\eta$.\\
+	    Soit $x\in I\backslash \{a\}$ tel que $|x-a|\leq \eta$.\\ La fonction $f$ est continue sur $I$ donc $f$ est continue sur le segment d'extrémités $a$ et $x$ qui est par ailleurs inclus dans $I$ par convexité d'un intervalle.\\ La fonction $f$ est dérivable sur $I$ donc $f$ est dérivable sur l'intervalle ouvert $a$, $x$ qui est aussi inclus dans $\overset{\circ}{I}$ par convexité.\\ L'égalité des accroissements finis s'applique à $f$ sur l'intervalle $a$ et $x$ : $$\exists \ c_x \in ]a,x[ \cup ]x,a[ \ : \ \frac{f(x) -f(a)}{x-a} = f'(c_x)$$
+	    Or $|c_x-a| \leq |x-a| \leq \eta $ donc ladite définition de la limite s'applique pour $x\gets c_x$ : $|f'(c_x) - \ell|\leq \varepsilon $ si bien que $$|\frac{f(x)-f(a)}{x-a}- \ell |\leq \varepsilon.$$ D'où le lemme. \\
+	    \newline
+	    Prouvons alors le théorème.\\
+	    Sous ces hypothèses, le lemme s'applique donc $\lim_{x\to a} \frac{f(x) -f(a)}{x-a} = \ell$, or $\ell \in \R$, donc le taux d'accroissement de $f$ en $a$ admet une limite finie en $a$ ce qui prouve la dérivabilité de $f$ en $a$ et $f'(a) = \ell$. Ce qui suffit.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Posons $\zeta \left| \begin{matrix}
+			\R \longrightarrow \R \\
+			x \mapsto \left\{ \begin{array}{cc}
+				0 &\text{si } x \leqslant 0\\
+				\e^{-\frac{1}{x}} &\text{si } x > 0
+			\end{array} \right.
+		\end{matrix} \right.$.
+		Montrons que $\zeta \in \Cont{\infty}{\R}{\R}$.
+		{\begin{figure}[!h]
+			\centering
+			\begin{tikzpicture}
+				\begin{axis}[
+					axis lines = center,
+					xlabel = $x$,
+					ylabel = {$f(x)$},
+					width=15cm,
+					height=5cm,
+					ymax=1.5
+					]
+					\addplot[
+						domain=0.01:20,
+						samples=200,
+						color=red,
+						]
+						{exp(-1/x)};
+					\addplot[
+						domain=-10:0,
+						samples=100,
+						color=red,
+						]
+						{0};
+					\addlegendentry{$\zeta$}
+
+					\addplot[
+						domain=0:20,
+						samples=100,
+						color=blue,
+						dashed
+						]
+						{1};
+				\end{axis}
+			\end{tikzpicture}
+		\end{figure}}]
+		{La fonction $\zeta$ (pas celle-là une autre) est de classe \Cont{\infty}{}{} sur \R}
+		~ \\
+
+		\begin{itemize}[label=$\star$]
+			\item $\zeta_{]-\infty;0[}$ est constante donc $\zeta \in \Cont{\infty}{]-\infty;0[}{}$.
+			\item $x \mapsto - \frac{1}{x} \in \mathcal{C}^\infty(]0;+\infty[,]-\infty;0[)$ et $\exp \in \Cont{\infty}{]-\infty;0[}{}$ donc, par stabilité de \Cont{\infty}{}{} par composition, $\zeta \in \Cont{\infty}{]0;+\infty[}{}$.
+		\end{itemize}
+
+		Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N$ :
+		\begin{equation}
+			\mathcal{P} : \text{\textquotedblleft} \ \exists P_n \in \R[x] : \forall x \in \R^*, \ \zeta^{(n)} = \left\{ \begin{array}{lc}
+				0 &\text{si } x < 0 \\
+				\frac{P_n(x)}{x^{2n}} \e^{-\frac{1}{x}} &\text{si } x > 0
+			\end{array} \right. \ \text{\textquotedblright}
+		\end{equation}
+		\begin{itemize}[label=$\star$]
+			\item $\mathcal{P}(0)$ est vrai par définition de $\zeta$ en posant $P_0(x) = 1$
+			\item Soit $n \in \N^*$ \fq tel que $\mathcal{P}$ est vrai.
+			D'une part, $\forall x \in ]-\infty;0[, \zeta^{(n)}(x) = 0$ donc
+			\begin{equation*}
+				\forall x \in ]-\infty;0[, \zeta^{(n+1)}(x) = 0
+			\end{equation*}
+			D'autre part, $\forall x \in ]0;+\infty[, \zeta^{(n)}(x) = \frac{P_n(x)}{x^{2n}} \e^{-\frac{1}{x}}$ ce qui est un produit de trois expressions dérivables. D'où :
+			\begin{equation*}
+				\begin{aligned}
+					\forall x \in ]-\infty;0[,
+					\zeta^{(n+1)}(x)
+					&= \left( P_n'(x) \frac{1}{x^{2n}} + P_n(x) \frac{-2n}{x^{2n+1}} + \frac{P_n(x)}{x^{2n}} \frac{1}{x^2} \right) \e^{-\frac{1}{x}} \\
+					&= \frac{x^2 P_n'(x) - 2nxP_n(x) + P_n(x)}{x^{2(n+1)}} \e^{-\frac{1}{x}}
+				\end{aligned}
+			\end{equation*}
+			Si bien qu'en posant $P_{n+1}(x) = x^2 P_n'(x) - 2 n x P_n(x) + P_n(x) \in \R[x]$, on obtient :
+			\begin{equation*}
+				\forall x \in ]0;+\infty[, \zeta^{(n+1)}(x) = \frac{P_{n+1}(x)}{x^{2(n+1)}} \e^{-\frac{1}{x}}
+			\end{equation*}
+			Par conséquent, $\mathcal{P}(x)$ est vrai.
+
+			Appliquons maintenant le théorème de prolongement du caractère \Cont{\infty}{}{}.
+			\begin{itemize}[label=$\star$]
+				\item Nous avons montré que $\zeta \in  \Cont{\infty}{\R \!\setminus\! \{0\}}{}$.
+				\item Calculons les limites à gauche et à droite de 0. Soit $k \in \N$ \fq.
+				\begin{itemize}[label=$\star\star$]
+					\item $\zeta^{(k)}$ est nulle sur $]-\infty;0[$, $\zeta^{(k)} \arrowlim{x}{0^-} 0$.
+					\item De plus, $\exists P_n \in \R[x] : \ \forall x \in ]0;+\infty[, \zeta^{(k)}(x) = \frac{P_k(x)}{x^{2k}} \e^{-\frac{1}{x}}$. Posons $u = \frac{1}{x}$, ainsi $\zeta^{(k)}(x) = u^{2k} P_k(\frac{1}{u}) \e^{-\frac{1}{x}}$ et $u \arrowlim{x}{0^+} +\infty$. \\
+					Le théorème des croissances comparées donne $u^{2k} P_k(\frac{1}{u}) \e^{-u} \arrowlim{u}{+\infty} 0$ donc $\zeta^{(k)}(x) \arrowlim{x}{0^+} 0$.
+				\end{itemize}
+			\end{itemize}
+			Donc $\zeta \in \Cont{\infty}{\R}{\R}$.
+		\end{itemize}
+	\end{question_kholle}
+
+\pagebreak\section{Semaine 15}
+	
+	\begin{question_kholle}
+		[Soit $f : I \rightarrow \R$ convexe sur $I$. \\
+		Soit $n \in \N^*$. Soient $x \in I^n$, $\lambda \in {[0;1]}^n$ telle que $\displaystyle \sum_{k=1}^{n} \lambda_k = 1$. \\
+		\begin{equation}
+			\sum_{k=1}^{n} \lambda_k x_k \in I \wedge
+			f\left( \sum_{k=1}^{n} \lambda_k x_k \right)
+			\leqslant \sum_{k=1}^{n} \lambda_k f\left( x_k \right)
+		\end{equation}]
+		{Inégalité de Jensen}
+		Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N^*$ par :
+		\begin{equation*}
+			\mathcal{P}(n) : \text{\textquotedblleft}
+			\forall x \in I^n,
+			\forall \lambda \in [0;1]^n,
+			\sum_{k=1}^{n} \lambda_k = 1 \implies
+			\sum_{k=1}^{n} \lambda_k x_k \in I \wedge
+			f\left( \sum_{k=1}^{n} \lambda_k x_k \right)
+			\leqslant \sum_{k=1}^{n} \lambda_k f\left( x_k \right)
+			\text{\textquotedblright}
+		\end{equation*}
+	
+		\begin{itemize}[label=*, leftmargin=0.5cm]
+			\item Soient $x \in I^1$ et $\lambda \in [0;1]^1$ tel que $\sum_{k=1}^{1} \lambda_k = 1$. \\
+			Alors $\lambda_1 = 1$. Trivialement, $\sum_{k=1}^{1} \lambda_k x_k = \lambda_1 x_1 = x_1 \in I$. \\
+			De plus, $f\left( \sum_{k=1}^{1} \lambda_k x_k \right)
+				= f\left( \lambda_1 x_1 \right)
+				= f\left( x_1 \right)
+				= \lambda_1 f\left( x_1 \right)
+				= \sum_{k=1}^{1} \lambda_k f\left( x_k \right)$. \\
+			Donc $\mathcal{P}(1)$ vrai.
+
+			\item  Soit $n \in \N^*$  tel que $\mathcal{P}(n)$ vrai. \\
+			Soient $x \in I^{n+1}$ et $\lambda \in [0;1]^{n+1}$ tel que $\sum_{k=1}^{n+1} \lambda_k = 1$. \\
+			$\{ x_k \;|_; k \in [\![1;n+1]\!] \}$ est une partie non vide ($n \geqslant 1$) d'un ensemble totalement ordonnée $\left(\R,\leqslant\right)$.
+			Posons $a = \min\{ x_k \;|_; k \in [\![1;n+1]\!] \}$ et $b = \max\{ x_k \;|_; k \in [\![1;n+1]\!] \}$. D'où
+			\begin{equation*}
+				a
+				\underbrace{=}_{\displaystyle \sum_{k=1}^{n+1} \lambda_k = 1} \sum_{k=1}^{n+1} \lambda_k a
+				\underbrace{\leqslant}_{a \leqslant x_k} \sum_{k=1}^{n+1} \lambda_k x_k
+				\underbrace{\leqslant}_{x_k \leqslant b} \sum_{k=1}^{n+1} \lambda_k b
+				\underbrace{=}_{\displaystyle \sum_{k=1}^{n+1} \lambda_k = 1} b
+			\end{equation*}
+			Or $\{ x_k \;|_; k \in [\![1;n]\!] \} \subset I$ (car $x \in I^n$) donc $a \in I \wedge b \in I$. Donc
+			\begin{equation*}
+				\sum_{k=1}^{n+1} \lambda_k x_k
+				\in [a;b]
+				\underbrace{\subset}_{\begin{array}{c} \text{par convexité} \\ \text{de l'intervalle } I \end{array}} I
+			\end{equation*}
+			
+			$\sum_{k=1}^{n+1} \lambda_k = 1$ donc $\exists i_0 \in [\![1;n+1]\!] : \lambda_{i_0} \neq 1$ (sinon $\sum_{k=1}^{n+1} \lambda_k = n+1 \neq 1$ car $n \neq 0$). \\
+			Fixons un tel $i_0$.
+			\begin{equation*}
+				\begin{aligned}
+					f\left( \sum_{k=1}^{n+1} \lambda_k x_k \right)
+					&= f\left( \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \lambda_k x_k + \lambda_{i_0} x_{i_0} \right) \\
+					&= f\left( \lambda_{i_0} x_{i_0} + \left( 1 - \lambda_{i_0} \right) \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} x_k \right) \\
+					\underbrace{\leqslant}_{\begin{array}{c} \text{Par convexité} \\ \text{de } f \end{array}}& \lambda_{i_0} f(x_{i_0}) + \left( 1 - \lambda_{i_0} \right) f\left( \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} x_k \right)
+				\end{aligned}
+			\end{equation*}
+			Or $\displaystyle \forall i \in [\![1;n+1]\!] \lambda_i \leqslant \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \lambda_k = 1 - \lambda_{i_0}$ Donc $\displaystyle \frac{\lambda_i}{1 - \lambda_{i_0}} \in [0;1]$ et $\displaystyle \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} = 1$. Nous pouvons appliquer $\mathcal{P}(n)$ pour $\lambda_i \rightarrow \frac{\lambda_i}{1 - \lambda_{i_0}}$ :
+			\begin{equation*}
+				\begin{aligned}
+					f\left( \sum_{k=1}^{n+1} \lambda_k x_k \right)
+					&\leqslant \lambda_{i_0} f(x_{i_0}) + \left( 1 - \lambda_{i_0} \right) \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} f\left( x_k \right) \\
+					&\leqslant \lambda_{i_0} f(x_{i_0}) + \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \lambda_k f\left( x_k \right) \\
+					&\leqslant \sum_{k = 1}^{n+1} \lambda_k f\left( x_k \right) \\
+				\end{aligned}
+			\end{equation*}
+			Donc $\mathcal{P}(n+1)$ vrai.
+		\end{itemize}
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Soit $n \in \N^*$. Soit $x \in \R_+^{*n}$.
+		\begin{equation}
+				\left( \prod_{k=1}^{n} x_k \right)^{\nicefrac{1}{n}}
+				\leqslant \frac{1}{n} \sum_{k=1}^{n} x_k
+		\end{equation}]
+		{Inégalité arithmético-géométrique}
+		Soit de tels objets. Posons $\forall k \in [\![1;n]\!], \lambda_k = \nicefrac{1}{n}$. \\
+		Sachant que l'exponentielle est convexe, appliquons l'inégalité de Jensen pour $x_k \leftarrow ln(x_k)$ (autorisé car $x_k \in \R_+^*$) :
+		\begin{equation*}
+			\exp \left( \sum_{k=1}^{n} \frac{1}{n} \ln \left( x_k \right) \right)
+			\leqslant \sum_{k=1}^{n} \frac{1}{n} \exp \left( \ln \left( x_k \right) \right)
+		\end{equation*}
+		L'exponentielle est la bijection réciproque du logarithme népérien et est un morphisme additif. Nous obtenons ainsi l'inégalité recherchée.
+	\end{question_kholle}
+\pagebreak\section{Semaine 16}
+	
+	\begin{question_kholle}
+		{Deux fonctions équivalentes au voisinage de $a$ ont le même signe sur un voisinage de $a$}
+		
+		Soient $f : \mathcal{D} \rightarrow \R$ et $g : \mathcal{D} \rightarrow \R$ telles que $f(x) \underset{x \rightarrow a}{\sim} g(x)$ avec $a \in \mathcal{D}$. \\
+		Appliquons la définition de l'équivalence pour $\epsilon \leftarrow \frac{1}{2}$, il existe un voisinage $V$ de $a$ tel que :
+		\begin{equation*}
+			\forall x \in V \cap \mathcal{D},
+			| f(x) - g(x) | \leqslant \frac{1}{2} | g(x) |
+		\end{equation*}
+	
+		Fixons un tel voisinage $V$.
+		Nous obtenons :
+		\begin{equation*}
+			\forall x \in V \cap \mathcal{D},
+			\underbrace{g(x) - \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
+			\leqslant f(x) \leqslant
+			\underbrace{g(x) + \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
+		\end{equation*}
+	
+		Ainsi $f(x)$ et $g(x)$ ont le même signe sur $V \cap \mathcal{D}$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[ Soient $f \in \Cont{\infty}{\mathcal{D}}{}$ et $a \in \overset{\circ}{\mathcal{D}}$. Supposons que $E_0 = \left\{ p \in \N^* \setminus \{1\} \;|\; f^{(p)}(a) \neq 0 \right\}$ est non vide. \\
+		Posons $p_0 = \min E_0$. \\
+		$f$ admet un extremum local en $a$ si et seulement si $f'(a) = 0$ et $p_0$ est pair. \\
+		$f$ admet un point d'inflexion en $a$ si et seulement si $p_0$ est impair. ]
+		{Condition nécessaire et suffisante pour qu'une fonction \Cont{\infty}{}{} admette un extremum local ou un point d'inflexion}
+		
+		Soient de tels objets. Traitons le cas de l'extremum local.
+		
+		\noindent $f \in \Cont{\infty}{}{}$ donc, la formule Taylor-Young donne un $DL_{p_0}(a)$ de $f$ :
+		\begin{equation*}
+			f(x) \underset{x \rightarrow a}{=}
+			\sum_{k=0}^{p_0} \frac{f^{(k)}(a)}{k!} (x-a)^k + o \left( (x-a)^{p_0} \right)
+		\end{equation*}
+		
+		En développant :
+		\begin{equation*}
+			f(x) \underset{x \rightarrow a}{=}
+			f(a) + \underbrace{f'(a)(x-a)}_{= 0} + \underbrace{\ldots + \frac{f^{(p_0-1)}(a)}{(p_0-1)!} (x-a)^{p_0-1}}_{= 0 \text{ par défintion de }p_0} + \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0} + o \left( (x-a)^{p_0} \right)
+		\end{equation*}
+		
+		Ainsi (car $f^{(p_0)}(a) \neq 0$)
+		\begin{equation}
+			f(x) - f(a) \underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
+		\end{equation}
+		Au voisinage de $a$, $f(x) - f(a)$ et $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ ont le même signe.
+		\\
+		
+		Supposons que $f$ admette un extremum local en $a$.
+		Or $a \in \overset{\circ}{\mathcal{D}}$ et $f$ est dérivable en 0, donc $f'(a) = 0$.
+		Comme $f$ admette un extremum local en $a$, $f(x) - f(a)$ est de signe constant au voisinage de $a$.
+		Donc $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$.
+		Par conséquent, $p_0$ est pair.
+		\\
+		
+		Réciproquement, supposons que $f'(a) = 0$ et que $p_0$ est pair. $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$. Donc $f(x) - f(a)$ est de signe constant au voisinage de $a$. Ainsi, $a$ est un extremum local de $f$.
+		\\
+		
+		Traitons le cas du point d'inflexion. La formule de Taylor-Young donne :
+		\begin{equation}
+			f(x) - \underbrace{\left( f(a) + (x-a)f'(a) \right)}_{\text{tangente en } (a,f(a))}
+			\underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
+		\end{equation}
+		Le signe de l'écart courbe/tangente en $a$ est donc celui de $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$. Ce qui conclut de la même manière que l'extremum local.
+	\end{question_kholle}
+	
+\pagebreak\section{Semaine 17}
+
+	 \begin{question_kholle}
+	    [Soient $a,b\in \N ^*$ et $c\in \Z$. Il existe des entiers $x,y\in \Z$ tels que $ax + yb = c$ si et seulement si $c$ est multiple du pgcd de $a$ et $b$.]
+	    {Théorème de Bézout}
+	    Soient $a,b\in \N^*$. On suppose l'algorithme d'Euclide réalisé pour $a,b$, ainsi à la fin de ce dernier on a un entier naturel $r_n$ tel que $r_n = a\wedge b$. Comme l'algorithme est terminé, on peut remonter chaque ligne de proche en proche, on aurait, à titre d'exemple, pour une première itération, $r_n =r_{n-2} - q_{n} \cdot r_{n-1}$. En réalisant toutes les étapes nécessaires, on obtient une relation entre $r_n$ et $a,b$, cette relation s'écrit : $$\exists \ (x_0, y_0)\in (\Z ^*)^2 \ : \ a\wedge b = r_n = ax_0 + y_0b.$$
+	    Si $c$ est un multiple de $a\wedge b $, alors il existe $k\in \Z^*$ tel que $c = k(a\wedge b)$, donc en multipliant le résultat montré au dessus par $k$, on a le sens indirect. Si pour $c\in \Z$, il existe des entiers $x,y\in \Z$ tels que $ax + yb = c$, alors le pgcd de $a$ et $b$ divise le membre de gauche et donc par égalite le membre de droite aussi donc $c$ est multiple de $a\wedge b$, ce qui suffit. 
+	\end{question_kholle}
+	\begin{question_kholle}
+	    [Soient $a,b,c$ trois entiers naturels non nuls. Si $c$ est premier avec $a$ et divise le produit $ab$, alors il divise $b$.]
+	    {Théorème de Gauss}
+	    Soient $a,b,c$ des entiers naturels vérifiant les hypothèses. \\
+	    Comme $c$ est premier avec $a$ on écrit une relation de Bézout pour $1$, leur pgcd et on multiplie le tout par $b$ : 
+	    $$\exists \ (u,v) \in (\N ^*)^2 \ : \ au + vc = 1 \ \implies \ abu + vbc = b, $$
+	    or $c$ divise $ab$ et lui-même donc aussi le membre de gauche donc par égalité, le membre droite, c'est le théorème.
+	\end{question_kholle}
+	\begin{question_kholle}
+	    [Soient $a,b,c\in \Z$. Résoudre l'équation $$ax + yb = c,$$ d'inconnues $x$ et $y$ dans $\Z$.]
+	    {Résoudre une équation du type $ax + yb = c$}
+	    Soient $a,b,c\in \Z$ et une telle équation, notée $(i)$, en lesdites inconnues. \\
+	    Si $a\wedge b \not| \ c$, alors le théorème de Bézout, affirme que l'équation n'a pas de solution. \\
+	    Supposons le contraire. Posons $d = a\wedge b$. Le lemme technique affirme l'existence de $a'$ et $b'$ dans $\Z$, tels que $a'd= a$, $b'd =b$ et $a' \wedge b' = 1$. Donc, comme $d$ divise $c$, il existe $c'$ tel que $c = c'd$. On réécrit l'équation, notée $(ii)$ : $$ a'x +yb'  = c'.$$ On sait d'après le théorème de Bézout qu'il existe des solutions, en particulier grâce à l'algorithme d'Euclide on construit $(x_0,y_0)$, une solution de la nouvelle équation, puis on l'injecte et on raisonne par équivalence, on note $\omega$ l'ensemble des solutions de $(ii)$ et $\Omega$ celui de $(i)$ :
+	    \begin{center}
+	    $
+	    \begin{array}{ccc}
+	      (x,y) \in \Omega  & \iff &  (x,y)\in \omega \\
+	         &\iff & a'x +yb' = c' \\
+	         &\iff & a'x + yb' = a'x_0 + y_0b' \\
+	         &\iff & a'(x-x_0) = b'(y_0 -y) \\[1ex]
+	         &\iff & \exists \ k \in \Z \ :\left\{  \begin{array}{ccc}
+	                                                a'(x-x_0) & = & b'(y_0 -y)  \\
+	                                                y_0 - y & = & a'k 
+	                                                \end{array} \right. \\[2ex]
+	         &\iff &  \exists \ k \in \Z \ :\left\{  \begin{array}{ccc}
+	                                                a'(x-x_0) & = & b'(y_0 -y)  \\
+	                                                 y & = & y_0 - a'k 
+	                                                \end{array} \right. \\[2ex]
+	         &\iff &  \exists \ k \in \Z \ :\left\{  \begin{array}{ccc}
+	                                                 x & = & x_0 + b'k  \\
+	                                                 y & = & y_0 - a'k 
+	                                                \end{array} \right. \\[2ex]
+	         &\iff & (x,y) \in \{ (x_0 + b'k,\  y_0 - a'k) \ | \ k\in \Z \}
+	    \end{array}
+	    $ \\
+	    \end{center}
+	    La première ligne découle de la divisibilité des coefficients par $d$, la deuxième est la définition d'appartenance à $\omega$, la troisième est une réécriture du fait que $(x_0,y_0)$ soit solution de $(ii)$, la quatrième est une factorisation banale, la cinquième une utilisation du théorème de Gauss pour le sens direct et le sens indirect ne pose pas de problème, la sixième est une réécriture de la deuxième relation, la septième découle de l'expression de $y$ pour le sens direct et le sens indirect s'obtient en multipliant avec parcimonie l'équation, la huitième est une réécriture de la septième qui ne pose pas de problème. C'est $\Omega$, par équivalence.
+	    
+	\end{question_kholle}
+\pagebreak\section{Semaine 18}
+
+	\begin{question_kholle}
+		{L'ensemble des nombres premiers est infini}
+
+		Notons l'ensemble des nombres premiers $\PRIME = \left\{ n \in \N \;|\; \left| \mathcal{D}(n) \cup \N \right| = 2 \right\}$
+		Par l'absurde, supposons que \PRIME est fini. \\
+		Posons $\displaystyle m = 1 + \prod_{p \in \PRIME} p \in \N$. \\
+		Comme $2 \in \PRIME$, $m \geqslant 2$. Donc $m$ admet un diviseur premier, $\exists q \in \PRIME : q \;|\; m$. Donc $q \wedge m = q$. \\
+		Par ailleurs, $\displaystyle m = 1 + q \left( \prod_{\tiny \begin{matrix} p \in \PRIME \\ p \neq q \end{matrix}} p \right)$. Donc $\displaystyle m - q \left( \prod_{\tiny \begin{matrix} p \in \PRIME \\ p \neq q \end{matrix}} p \right) = 1$. D'après le théorème de Bézout, $q \wedge m = 1$. \\
+		Donc $q = 1$ ce qui est une contradiction avec $q \in \PRIME$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soit $n \in \N^*, p \in \PRIME, k_0 \in \N$.
+		\begin{equation}
+			\nu_p(n) = k_0 \iff
+			\exists m \in \Z : \left\{ \begin{matrix}
+				n = p^{k_0} m \\
+				m \wedge p = 1
+			\end{matrix} \right.
+		\end{equation}
+		]
+		{Caractérisation de la valuation \textit{p}-adique}
+
+		$\implies$ Supposons que $\nu_p(n) = k_0$. \\
+		Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{k_0} \;|\; n$.
+		Notons $m \in \Z$ le quotient de la division euclidienne de $n$ par $p^{k_0}$. Nous avons $n = p^{k_0} m$. \\
+		Comme $m \wedge p \in \mathcal{D}(p) \cap \N$, $m \wedge p \in \left\{1,p\right\}$.
+		Par l'absurde, supposons que $m \wedge p = p$.
+		\begin{equation*}
+			\begin{aligned}
+				p \;|\; m
+				&\implies \exists m' \in \Z : m = p m' \\
+				&\implies \exists m' \in \Z : n = p p^{k_0} m' = p^{k_0+1} m' \\
+				&\implies k_0 + 1 \in \left\{ k \in \N \;|\; p^k | n \right\} \\
+				&\implies k_0 + 1 \leqslant \max \left\{ k \in \N \;|\; p^k | n \right\} = \nu_p(n) = k_0
+			\end{aligned}
+		\end{equation*}
+		Ce qui est une contradiction donc $m \wedge p = 1$.
+
+		$\impliedby$ Supposons $\exists m \in \Z : \left\{ \begin{matrix}
+			n = p^{k_0} m \\
+			m \wedge p = 1
+		\end{matrix} \right.$ \\
+		Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{\nu_p(n)} \;|\; p^{k_0} m$. Or $m \wedge p = 1$ donc $m \wedge p^{\nu_p(n)} = 1$.
+		D'après le théorème de Gauss, $p_{\nu_p(n)} \;|\; p^{k_0}$. Donc $\exists \alpha \in \Z : \alpha p_{\nu_p(n)} = p^{k_0}$
+		\begin{equation*}
+			\begin{aligned}
+				\alpha p_{\nu_p(n)} = p^{k_0}
+				&\implies p^{k_0} - \alpha p_{\nu_p(n)} = 0 \\
+				&\implies p^{k_0} \left( 1 - \alpha p^{\nu_p(n) - k_0} \right) = 0 \text{ car } k_0 \leqslant \nu_p(n) \\
+				&\implies \alpha p^{\nu_p(n) - k_0} = 1 \text{ car \Z est intègre} \\
+				&\implies p^{\nu_p(n) - k_0} \in \mathcal{D}(1) \cap \N \\
+				&\implies p^{\nu_p(n) - k_0} = 1 \\
+				&\implies \nu_p(n) - k_0 = 0 \\
+				&\implies \nu_p(n) = k_0 \\
+			\end{aligned}
+		\end{equation*}
+	\end{question_kholle}
+
+    \begin{question_kholle}
+    	[\begin{equation}
+    		\forall (a, b) \in \Z^2, \
+    		a|b \ \iff \ \forall p \in \PRIME, \ \nu _p (a) \leq \nu _p (b)
+    	\end{equation}]
+        {Caractérisation de $a | b$ par les valuations $p$-adiques et preuve de leur propriété de morphisme.}
+        Premièrement, montrons que la valuation $p$-adique est un morphisme de $(\Z ^* , \times)$ dans $(\N ,+)$. \\
+        Soient de tels entiers relatifs $a,b$. \\
+        \[
+            \exists \ m,n \in (\Z ^*)^2 \ : \ \left(\left(a = p^{\nu _p (a)}m\right) \ \wedge \ (m\wedge p = 1)\right) \ \wedge \ \left(\left(b = p^{\nu _p (b)}n\right) \ \wedge \ (n\wedge p = 1)\right),
+        \]
+        donc $ab = p^{\nu _p (a) + \nu _p (b)}mn$ et $mn \wedge p = 1$, par la réciproque de la caractérisation des valuations $p$-adiques :
+        \[
+            \nu _p (ab) = \nu _p (a) + \nu _p (b).
+        \]
+        Prouvons le sens réciproque de la susdite caractérisation.  Supposons le membre de droite. \\
+        D'après le théorème de décomposition en facteurs premiers,
+        \[
+            |b| = \prod_{p\in \PRIME} p^{\nu _p (b)} = \prod_{p\in \PRIME} p^{\nu _p (a)}(p^{\nu _p (b) - \nu _p (a)}) = \prod_{p\in \PRIME}  p^{\nu _p (a)} \prod_{p\in \PRIME} p^{\nu _p (b) - \nu _p (a)}= |a|\prod_{p\in \PRIME} p^{\nu _p (b) - \nu _p (a)},
+        \]
+        la première manipulation se justifie par hypothèse et la seconde peut se justifier par le calcul.\\
+        Ainsi, $|a| | |b|$ donc $a|b$. \\
+        Prouvons le sens direct. Supposons le membre de gauche.  \\
+        Soit $p \in \PRIME$. Il existe $k\in \Z$ tel que $ak = b $ car $a |b$. Ainsi,
+        \[
+            \nu _p (b) = \nu _p (ak) = \nu _p (a) + \nu _p (k) \geq \nu _p (a).
+        \]
+        Ce qui suffit.
+    \end{question_kholle}
+
+    \begin{question_kholle}
+        [Le pgcd comme produit des $p$ à la puissance du minimum des $\nu _p$ et le ppcm comme le produit des  $p$ à la puissance du maximum des $\nu _p$.
+        \begin{equation}
+        	\begin{aligned}
+        		a \wedge b &= \prod_{p\in \PRIME} p^{\min (\nu _p (a),\nu_p (b))} \\
+        		a \vee b &= \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
+        	\end{aligned}
+        \end{equation}]
+        {Expression du pgcd et du ppcm à partir des décomposition en facteurs premiers de $a$ et $b$.}
+        Prouvons la formule du pgcd et déduisons-en la formule du ppcm. \\
+        Soient $(a,b)\in (\Z ^*)^2$. Soit $p \in \PRIME $. Il faut et il suffit de montrer que $\nu_p (a \wedge b) = \min (\nu_p(a), \nu_p(b))$ pour obtenir le résultat. On a $a\wedge b | a$ et $a \wedge b | b$ donc d'après la caractérisation de la divisibilité par les valuations $p$-adiques, $\nu_p (a \wedge b) \leq \nu _p (a)$ et $\nu _p (a\wedge b) \leq \nu _p (b)$ donc $\nu _p (a\wedge b) \leq \min (\nu _p(a), \nu_p (b)).$ \\
+        Posons $m = \min (\nu _p(a), \nu_p (b))$. On a
+        \[
+            |a| = \prod_{q \in \PRIME} q ^{\nu _q (a)} = p^m \left( (p^{\nu_p (a)- m})\prod_{q \in \PRIME \backslash \{p\}} q ^{\nu _q (a)} \right),
+        \]
+        car par définition, $m \leq \nu _p (a)$, donc $p^m | a$, on montrerait de même que $p^m |b$, donc par définition, $p^m | a\wedge b$, donc une nouvelle fois en appliquant la caractérisation de la divisibilité par les valuations $p$-adiques, $m \leq \nu_p ( a\wedge b)$. Finalement, $\nu_p (a\wedge b) = m$. \\
+        On en déduit la formule du ppcm :
+        \[
+            |a||b| = (a \wedge b) (a \vee b) \ \implies \ a\vee b = \prod_{p\in \PRIME} p^{\nu _p(a) + \nu _p(b) - \min (\nu _p (a),\nu_p (b))} =  \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
+        \]
+
+    \end{question_kholle}
+
+    \begin{question_kholle}
+        [Petit Th. de Fermat :
+        {\begin{enumerate}[label=($\roman*$)]
+        	\item $\forall a \in \Z , \ a^p \equiv a \mod p$ \\
+	        $\ \forall x \in \Z / p\Z, \ x^p = x $
+	        \item $\forall a \in \Z, \ p\not | a, \ \implies \ a^{p-1} \equiv 1 \mod p$ \\
+        	$\ \forall x \in \Z / p\Z, \ x^{p-1} = 1 $
+        \end{enumerate}}]
+        {Pour $p$ premier, $(a+b)^p \equiv a^p + b^p \mod p$, en déduire le petit Th. de Fermat (2 versions), expression du résultat dans $\Z / p\Z$.}
+        Soient $a,b$ de tels entiers relatifs et soit $p$ un nombre premier. Calculons,
+        \[
+            (a + b )^p  = \sum_{k = 0}^p \binom{p}{k}a^{p-k}b^k  = a^p + b^p + \sum_{k = 1}^{p-1} \binom{p}{k}a^{p-k}b^k \equiv a^p + b^p \mod p,
+        \]
+        car $\forall k \in [\![1,p-1 ]\!], \ p | \binom{p}{k}$ (élémentaire), d'où le résultat. \\
+        Dans $\Z /p\Z$, ce résultat s'énonce comme suit :
+        \[
+            \forall (x,y) \in \Z /p\Z ^2, \ (x+y)^p = x^p + y^p.
+        \]
+        En guise d'application, démontrons le petit Th. de Fermat énoncé plus haut. \\
+        Démonstration du $(i)$. Considérons le prédicat $\PRIME ( \cdot)$ défini sur $\N$  par :
+        \[
+            \PRIME (a) : "a^p \equiv a \mod p".
+        \]
+        Initialisation : Pour $a = 0$, rien à faire, donc $\PRIME (0)$ est vrai. \\
+        Hérédité : Soit $a\in \N$ \tq $\ \PRIME (a)$. Calculons,
+        \[
+            (a+1)^p  \equiv a^p + 1 \mod p \overset{\PRIME (a)}{\equiv} a + 1 \mod p,
+        \]
+        donc $\PRIME (a+1)$ vrai. \\
+        Par Th. de récurrence sur $\N$, $\PRIME(a)$ est vrai pour tout $a\in \N$. \\
+        Il faut maintenant étendre le résultat à $\Z$. Soit $p\in \PRIME \backslash \{2\}$, ainsi $p$ est impair. Soit $a\in \Z \backslash \N$. Calculons,
+        \[
+            a^p\equiv (-|a|)^p \mod p \equiv - |a|^p \mod p \overset{\underset{\text{pour }a \gets |a|}{\text{Th. de Fermat}}}{\equiv} - |a| \mod p \equiv a \mod p  .
+        \]
+        Si $p =2$, $\ a^2 \equiv |a|^2 \mod 2 \equiv |a| \mod 2 \equiv -|a| \mod 2 \equiv a \mod 2$. \\
+        Le $(ii)$, soit $a\in \Z$ tel que $p \not | a$.
+        \[
+            (p\not | a)\wedge (p\in \PRIME) \implies p\wedge a = 1,
+        \]
+        d'après le $(i)$, $\ p | a^p -a \ \implies \ p| a(a^{p-1} -1) \ \overset{\text{Th. de Gauss}}{\implies}  \ p| a^{p-1} -1 \ \implies \ a^{p-1} \equiv 1 \mod p$. \\
+        Les écritures dans $\Z /p \Z$ ne posent pas de problème.s, ce qui conclut.
+    \end{question_kholle}
+
+    \begin{question_kholle}
+        []
+        {$\Z /n\Z$ est un corps si et seulement si $n$ est premier.}
+        Montrons le sens réciproque, supposons $n\in \PRIME$. \\
+        Soit $x\in \Z/n\Z$ tel que $x \neq \overline{0}$. \\
+        $\exists \ a \in [\![0,p-1]\!]\ : \ c = \overline{a}$, $\ I =[\![0, p-1]\!]$ étant un système de représentant des classes. \\
+        Comme $a\in I, \ n\not | a$, or $n \in \PRIME$, donc $n \wedge a = 1$. Par Bezout, il existe $u,v \in \Z^2$ tels que $au +nv =1$, donc $u$ est l'inverse de $a$ modulo $n$ donc $a\in \Z/n\Z ^\times$, dès lors, tout élément non nul de $\Z/n\Z$ est inversible, or c'est un anneau commutatif, donc c'est un corps. \\ \\
+        Montrons le sens direct en raisonnant par contraposition, supposons $n\not \in \PRIME$. \\
+        Comme $n$ n'est pas premier et est plus grand que $2$, il admet un diviseur, $d$, dans $I\backslash \{0,1\} = J$. Notons $d'$ le quotient de la division euclidienne de $n$ par $d$, on a alors $a = dd'$ et $d'\in J$. Donc $\overline{d}\overline{d'}=\overline{0}$ et comme $d,d' \in J$, on a $d,d' \neq 0$, donc $\overline{d}$ est un diviseur de zéro de $\Z/n\Z$, donc $\overline{d}$ est un élément non nul de $\Z/n\Z$ non inversible, donc $\Z/n\Z$ n'est pas un corps. En contraposant ce que nous venons de démontrer on a le résulat. Ce qui conclut.
+    \end{question_kholle}
+
+	\begin{question_kholle}
+		{Les éléments inversibles d'un anneau $A$ forment un groupe multiplicatif noté $\left( A^\times, \times \right)$}
+
+		Soit $(A, +, \times)$ un anneau. \\
+		Un élément inversible (ou unité) est un élément de $A$ symétrisable pour la loi $\times$. Posons l'ensemble des éléments inversibles $A^\times = \left\{ a \in A \;|\; \exists b \in A : a \times b = b \times a = 1_A \right\}$.
+
+		\begin{itemize}[label=$\star$, leftmargin=.5cm]
+			\item Montrons que la LCI $\times$ se restreint bien à $A^\times$ en un LCI $\times_{A^\times}$. \\
+			Soient $(a_1, a_2) \in {A^\times}^2$.
+			Par défintion de $A^\times$, $\exists (b_1, b_2) \in A^2 : a_1 \times b_1 = b_1 \times a_1 = 1_A \text{ et } a_2 \times b_2 = b_2 \times a_2 = 1_A$.
+			\begin{equation*}
+				\left( a_1 \times a_2 \right) \times \left( b_2 \times b_1 \right)
+				\underbrace{=}_{\text{loi associative}} a_1 \times \underbrace{a_2 \times b_2}_{= ~ 1_A} \times b_1
+				= a_1 \times b_1
+				= 1_A
+			\end{equation*}
+			\begin{equation*}
+				\left( b_2 \times b_1 \right) \times \left( a_1 \times a_2 \right)
+				\underbrace{=}_{\text{loi associative}} b_2 \times \underbrace{b_1 \times a_1}_{= ~ 1_A} \times a_2
+				= b_2 \times a_2
+				= 1_A
+			\end{equation*}
+			Donc $\left( a_1 \times a_2 \right) \in A^\times$.
+
+			\item La loi $\times$ est associative donc la loi $\times_{A^\times}$ l'est aussi.
+
+			\item $1_A$ vérifie $1_A \times 1_A = 1_A$ donc $1_A \in A^\times$. \\
+			De plus, $\forall a \in A^\times, 1_A \times_{A^\times} a = a \times_{A^\times} 1_A = a$ donc $\times_{A^\times}$ admet $1_A$ comme élément neutre.
+
+			\item Soit $a \in A^\times$. Par définition de $A^\times$, $\exists b \in A : a \times b = b \times a = 1_A$. \\
+			D'où $b \in A^\times$. En pensant les égalités ci-dessus dans $A^\times$,
+			\begin{equation*}
+				a \times_{A^\times} b = b \times_{A^\times} a = 1_A
+			\end{equation*}
+			Donc $a$ est inversible dans $A^\times$.
+		\end{itemize}
+
+		Ainsi, $\left( A^\times, \times_{A^\times} \right)$ est un groupe.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		{L'image directe par un morphisme d'anneau d'un sous-anneau de l'anneau de départ est un sous anneau de l'anneau d'arrivée. De même pour l'image réciproque.}
+
+		Soient $\left(A,+,\times\right)$ et $\left(B,+,\times\right)$ deux anneaux et $f : A \rightarrow B$ un morphisme d'anneau.
+
+		\noindent Soit $A'$ un sous-anneau de $A$. Montrons que $f(A')$ est un sous-anneau de $B$.
+		\begin{itemize}[label=$\star$, leftmargin=.5cm]
+			\item Par définition de $f$, $f(A') \subset B$ et $(B,+,\times)$ est un anneau.
+			\item Soient $(u,v) \in f(A')^2$. Alors $\exists (a,b) \in A'^2 : f(a) = u \text{ et } f(b) = v$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
+			\begin{equation*}
+				u - v = f(a) - f(b) = f(a - b)
+			\end{equation*}
+			Comme $A'$ est un sous-anneau, $a - b \in A'$. Donc $u - v \in f(A')$. \\
+			De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
+			\begin{equation*}
+				u \times v = f(a) \times f(b) = f(a \times b)
+			\end{equation*}
+			Comme $A'$ est un sous-anneau, $a \times b \in A'$. Donc $u \times v \in f(A')$.
+			\item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $A'$ est un sous-anneau donc $1_A \in A'$. D'où $1_B \in f(A')$.
+		\end{itemize}
+
+		\noindent Soit $B'$ un sous-anneau de $B$. Montrons que $f^{-1}(B')$ est un sous-anneau de $A$.
+		\begin{itemize}[label=$\star$, leftmargin=.5cm]
+			\item Par définition de $f$, $f^{-1}(B') \subset A$ et $(A,+,\times)$ est un anneau.
+			\item Soient $(a,b) \in f^{-1}(B')^2$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
+			\begin{equation*}
+				f(a - b) = \underbrace{f(a)}_{\in B'} - \underbrace{f(b)}_{\in B'} \in B'
+			\end{equation*}
+			Donc $a - b \in f^{-1}(B')$. \\
+			De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
+			\begin{equation*}
+				f(a b) = \underbrace{f(a)}_{\in B'} \underbrace{f(b)}_{\in B'} \in B'
+			\end{equation*}
+			Donc $a b \in f^{-1}(B')$.
+			\item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $B'$ est un sous-anneau donc $1_B \in B'$. D'où $1_A \in f^{-1}(B')$.
+		\end{itemize}
+	\end{question_kholle}
+\pagebreak\section{Semaine 19}
+	
+	\begin{question_kholle}
+		[Pour une matrice $A \in \mathcal{M}_{(n,p)}(\K)$, la matrice transposée est définit :
+		{\begin{equation*}
+			\forall (k, l) \in [\![1,p]\!] \!\times\! [\![1,n]\!], \ \left[A^T\right]_{kl} = A_{lk}
+		\end{equation*}}
+		Formellement, la transposition est une application de $\mathcal{M}_{(n,p)}(\K)$ dans $\mathcal{M}_{(p,n)}(\K)$.]
+		{$\left(A \times B\right)^T = B^T \times A^T$}
+		
+		Soit $(A, B) \in \mathcal{M}_{(n,p)}(\K) \times \mathcal{M}_{(p,q)}(\K)$. \\
+		$\left(A \times B\right)^T \in \mathcal{M}_{(q,n)}(\K)$. Soit $(i, j) \in [\![1,q]\!] \!\times\! [\![1,n]\!]$.
+		\begin{equation*}
+			\begin{aligned}
+				\left[ \left(A \times B\right)^T \right]_{i,j}
+				&= \left[A \times B\right]_{j,i} \\
+				&= \sum_{k=1}^{p} A_{j,k} \times_\K B_{k,i} \\
+				&= \sum_{k=1}^{p} B_{k,i} \times_\K A_{j,k} \\
+				&= \sum_{k=1}^{p} \left[B^T\right]_{i,k} \times_\K \left[A^T\right]_{k,j} \\
+				&= \left(B^T\right) \times \left(A^T\right)
+			\end{aligned}
 		\end{equation*}
 	\end{question_kholle}
 	
 	\begin{question_kholle}
-		[{ Soit une fonction continue $f : [a;b] \rightarrow \R$ avec $(a,b) \in \R^2$ et $a < b$. \\
-		Si $f(a)f(b) \leqslant 0$ alors $\exists c \in [a;b] : f(c) = 0$. \\
-		On rencontre aussi : \textit{Si $\mathit{f(a)f(b) < 0}$ alors $\mathit{\exists c \in ]a;b[ : f(c) = 0}$.} }]
-		{Théorème des valeurs intermédiaires}
+		[Le symbole de Kronecker est définit de la manière suivante :
+		\begin{equation*}
+			\forall (x, y) \in \R^2, \delta_{xy} = \left\{ \begin{matrix}
+				0 \text{ si } x \neq y \\
+				1 \text{ si } x = y
+			\end{matrix} \right.
+		\end{equation*}
+		La matrice $E^{i,j} \in \mathcal{M}(n, p)(\K)$ avec {$(i, j) \in [\![ 1, n ]\!] \!\times\! [\![ 1, p ]\!]$} ne possède que des coefficients nuls sauf le coefficient de la $i^{ème}$ ligne et $j^{ème}$ colonne qui vaut 1. Formellement :
+		{\begin{equation*}
+			\forall (r, s) \in [\![ 1, n ]\!] \times [\![ 1, p ]\!], \
+			\left[E^{i,j}\right]_{rs} = \delta_{ir} \delta_{js}
+		\end{equation*}}]
+		{Calculer $E^{i,j} \times E^{k,l}$ en fonction de $i$, $j$, $k$, $l$ et des symboles de Kronecker}
+				
+		Calculons $E^{i,j}(n,p) \times E^{k,l}(p,q)$.
+	 
+		Soient $(r, s) \in [ \! [ 1, n] \!] \times [ \! [ 1, q ] \!]$ fq
 		
-		La démonstration repose sur la technique de la dichotomie.
+		\begin{align*}
+			\left[ E^{i,j} \times E^{k,l} \right] _{rs}
+			& = \sum_{t = 1}^{n}E^{i,j}_{r,t} E^{k,l}_{t,s} \\
+		 	& =\sum_{t = 1}^{n} \delta_{ir} \delta_{jt} \delta_{kt} \delta_{ls} \\
+		 	& = \delta_{jk} \delta_{ir} \delta_{ls} \\
+		 	& = \delta_{jk} \left[ E^{i,l} \right] _{rs}
+		\end{align*}
 		
-		\begin{figure}[!h]
-			\centering
-			\tikzmath{ \labTVI = 12; } % la longueur du segment [a;b] dans la démonstration du TVI
-			\begin{tikzpicture}
-				\draw (0,0) node[anchor=north] {a} -- (\labTVI,0) node[anchor=north] {b};
-				\foreach \x in {0,...,\labTVI} {
-					\draw (\x,0.1) -- (\x,-0.1);
-				};
-				\draw[red] (0,0) to[out angle=80, in angle=240, curve through={(\labTVI/5,2) (\labTVI/3,-1) (\labTVI*3/5,0.5)}] (\labTVI,0);
+		Donc $E^{i,j} \times E^{k,l} = \delta_{jk} E^{i,l}$.
 		
-				\draw[green] (\labTVI/2,0.1) -- (\labTVI/2,-0.1);
-				\draw (\labTVI/2,0) node[green, anchor=north] {$b_1$};
-				\draw[green] (\labTVI/4,0.1) -- (\labTVI/4,-0.1);
-				\draw (\labTVI/4,0) node[green, anchor=north] {$a_2$};
-				\draw[green] (\labTVI*3/8,0.1) -- (\labTVI*3/8,-0.1);
-				\draw (\labTVI*3/8,0) node[green, anchor=north] {$b_3$};
-				\draw[green] (\labTVI*5/16,0.1) -- (\labTVI*5/16,-0.1);
-				\draw (\labTVI*5/16,0) node[green, anchor=north] {$b_4$};
-			\end{tikzpicture}
-		\end{figure}
+		
+		Ainsi, pour le calcul de $(E^{i,j})^{2}$, $q \leftarrow n$, $k \leftarrow i$, $l \leftarrow j$.
+		
+		\begin{align*}
+			(E^{i,j})^{2} = \delta_{ji} E^{i,j} = \left\{ 
+			\begin{array}{ll}
+			  E^{i,j} \text{ si } i = j  \\ 
+			  0_{n,p} \text{ si } i \neq j 
+			\end{array}
+			\right.
+		\end{align*}
 	
-		\noindent Soient $a,b,f$ de tels objets. Procédons à la construction des suites $(a_n)_{n\in\N}, (b_n)_{n\in\N}, (c_n)_{n\in\N}$.
-
-		Posons $a_0 = a$, $b_0 = b$ et $c_0 = \frac{a+b}{2}$ (le milieu du segment $[a;b]$). Nous avons, par hypothèse $f(a_0)f(b_0) \leqslant 0$.
-
-		Soit $n \in \N$ fq. Supposons les trois suites construites au rang $n$ telles que $f(a_n)f(b_n) \leqslant 0$ et $c_n = \frac{a_n+b_n}{2}$ (milieu de $[a_n;b_n]$).
-		\begin{itemize}
-			\item Si $f(a_n)f(b_n) \leqslant 0$, posons $\left| \begin{array}{lcl}
-				a_{n+1} &=& a_n \\
-				b_{n+1} &=& c_n \\
-				c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
-			\end{array} \right.$
-			\item Sinon $f(a_n)f(b_n) > 0$. Or $f(a_n)f(b_n) \leqslant 0$, donc $f(a_n)^2 f(b_n) f(c_n) \leqslant 0$. Donc $f(b_n)f(c_n) \leqslant 0$. Posons $\left| \begin{array}{lcl}
-				a_{n+1} &=& c_n \\
-				b_{n+1} &=& b_n \\
-				c_{n+1} &=& \frac{a_{n+1}+b_{n+1}}{2}
-			\end{array} \right.$
-		\end{itemize}
-		Ainsi, nous avons bien construits $a_{n+1}, b_{n+1}, c_{n+1}$ telles que $f(a_{n+1})f(b_{n+1}) \leqslant 0$ et ${ c_{n+1} = \frac{a_{n+1}+b_{n+1}}{2} }$ (milieu de $[a_{n+1};b_{n+1}]$).
-		
-		Par récurrence immédiate, $(a_n)_{n\in\N}$ est croissante, $(b_n)_{n\in\N}$ est décroissante et ${ \forall n \in \N, b_n - a_n = \frac{b-a}{2^n} }$ d'où $b_n - a_n \arrowlim{n}{+\infty} 0$.
-		Donc les suites $a$ et $b$ sont adjacentes.
-		D'après le théorème des suites adjacentes, elles convergent vers la même limite. Notons la $c$.
-
-		D'après le bonus de ce même théorème, $\forall n \in \N, a_n \leqslant c \leqslant b_n$ donc pour $n = 0$, $a \leqslant c \leqslant b$. Ainsi,
-		\begin{equation*}
-			c \in [a;b]
-		\end{equation*}
-		
-		Par ailleurs, $\forall n \in \N, f(a_n)f(b_n) \leqslant 0$. Par continuité de $f$ sur $[a;b]$ donc en $c$, $f(a_n) \arrowlim{n}{+\infty} c$ et $f(b_n) \arrowlim{n}{+\infty} c$. Par passage à limite dans l'inégalité,
-		\begin{equation*}
-			f(c) \times f(c) \leqslant 0
-		\end{equation*}
-		Or $f(c)^2 \geqslant 0$, d'où $f(c)^2 = 0$. Ainsi,
-		\begin{equation*}
-			f(c) = 0
-		\end{equation*}
-		Donc $c$ est un point fixe.
-		
 	\end{question_kholle}
 	
-
+	\begin{question_kholle}
+		{Les matrices triangulaires supérieurs forment un sous-anneau de $\mathcal{M}_n(\K)$}
+		
+		$\mathcal{T}_n^+(\K) \subset \mathcal(M)_n(\K)$ et $(\mathcal{M}_n(\K), +, \times)$ est un anneau. \\
+		$\mathcal{T}_n^+(\K) \neq \emptyset$ car $I_n \in \mathcal{T}_n^+(\K)$ ($I_n$ est le neutre multiplicatif de $\mathcal{M}_n(\K)$). \\
+		Soient $(A, B) \in \mathcal{T}_n^+(\K)^2$ \fqs. \\
+		Soient $(i, j) \in [\![1,n]\!]^2$ \fqs \tqs $i > j$.
+		\begin{equation*}
+			(A - B)_{i,j}
+			= \underbrace{A_{i,j}}_{=0 \text{ car } A \in \mathcal{T}_n^+(\K)} - \underbrace{B_{i,j}}_{=0 \text{ car } B \in \mathcal{T}_n^+(\K)}
+			= 0
+		\end{equation*}
+		Donc, $A - B \in \mathcal{T}_n^+(\K)$.
+		
+		\begin{equation*}
+			\begin{aligned}
+				(A \times B)_{i,j}
+				&= \sum_{k=1}^{n} A_{i,k} \times_\K B_{k,j} \\
+				&= \sum_{k=1}^{j} \underbrace{A_{i,k}}_{=0 \text{ car } i > j \geqslant k \text{ et } A \in \mathcal{T}_n^+(\K)} \times_\K B_{k,j}
+				+ \sum_{k=j+1}^{n} A_{i,k} \times_\K \underbrace{B_{k,j}}_{=0 \text{ car } k > j \text{ et } B \in \mathcal{T}_n^+(\K)} \\
+				&= 0
+			\end{aligned}
+		\end{equation*}
+		Donc, $A \times B \in \mathcal{T}_n^+(\K)$.
+	\end{question_kholle}
+	
 \end{document}
