@@ -1,46 +1,52 @@
 \documentclass{article}
 
-\date{02 Mars 2024}
+\date{03 Mars 2024}
 \usepackage[nb-sem=19, auteurs={Hugo Vangilluwen, Ober George}]{../kholles}
 
 \begin{document}
-\maketitle
+	\maketitle
 	
-\begin{question_kholle}
-	[]
-	{Calculer $E^{i,j} \times E^{k,l}$ en fonction de $i$, $j$, $k$, $l$ et des Symboles de Kronecker}
-			
-	Calculons $E^{i,j}(n,p) \times E^{k,l}(p,q)$.
- 
-Soient $(r, s) \in [ \! [ 1, n] \!] \times [ \! [ 1, q ] \!]$ fq
-
-\begin{align*}
-\left[ E^{i,j} \times E^{k,l} \right] _{rs}  & = \sum_{t = 1}^{n}E^{i,j}_{r,t} E^{k,l}_{t,s} \\
- & =\sum_{t = 1}^{n} \delta_{ir} \delta_{jt} \delta_{kt} \delta_{ls} \\
- & = \delta_{jk} \delta_{ir} \delta_{ls}
-\end{align*}
-
-
-Ainsi, pour le calcul de $(E^{i,j})^{2}$, $q \leftarrow n$, $p \leftarrow n$, $k \leftarrow i$, $l \leftarrow j$.
-
-Soient $(r, s) \in [ \! [ 1, n] \!]^{2}$ fq
-
-
-
-
-\begin{align*}
-
-
-\left[  (E^{i,j})^{2} \right]_{rs} = \delta_{ir} \delta_{js} \delta_{ij} = \left\{ 
-\begin{array}{ll}
-  \left[   E^{i,i} \right]_{rs} \text{ si } i = j  \\ 
-  \left[ 0_{n,n} \right] _{rs} \text{ si } i \neq j 
-\end{array}
-\right.
-
-
-\end{align*}
-
-\end{question_kholle}
+	\begin{question_kholle}
+		[Le symbole de Kronecker est définit de la manière suivante :
+		\begin{equation}
+			\forall (x, y) \in \R^2, \delta_{xy} = \left\{ \begin{matrix}
+				0 \text{ si } x \neq y \\
+				1 \text{ si } x = y
+			\end{matrix} \right.
+		\end{equation}
+		La matrice $E^{i,j} \in \mathcal{M}(n, p)(\K)$ avec {$(i, j) \in [\![ 1, n ]\!] \!\times\! [\![ 1, p ]\!]$} ne possède que des coefficients nuls sauf le coefficient de la $i^{ème}$ ligne et $j^{ème}$ colonne qui vaut 1. Formellement :
+		{\begin{equation}
+			\forall (r, s) \in [\![ 1, n ]\!] \times [\![ 1, p ]\!], \
+			\left[E^{i,j}\right]_{rs} = \delta_{ir} \delta_{js}
+		\end{equation}}]
+		{Calculer $E^{i,j} \times E^{k,l}$ en fonction de $i$, $j$, $k$, $l$ et des symboles de Kronecker}
+				
+		Calculons $E^{i,j}(n,p) \times E^{k,l}(p,q)$.
+	 
+		Soient $(r, s) \in [ \! [ 1, n] \!] \times [ \! [ 1, q ] \!]$ fq
+		
+		\begin{align*}
+			\left[ E^{i,j} \times E^{k,l} \right] _{rs}
+			& = \sum_{t = 1}^{n}E^{i,j}_{r,t} E^{k,l}_{t,s} \\
+		 	& =\sum_{t = 1}^{n} \delta_{ir} \delta_{jt} \delta_{kt} \delta_{ls} \\
+		 	& = \delta_{jk} \delta_{ir} \delta_{ls} \\
+		 	& = \delta_{jk} \left[ E^{i,l} \right] _{rs}
+		\end{align*}
+		
+		Donc $E^{i,j} \times E^{k,l} = \delta_{jk} E^{i,l}$.
+		
+		
+		Ainsi, pour le calcul de $(E^{i,j})^{2}$, $q \leftarrow n$, $k \leftarrow i$, $l \leftarrow j$.
+		
+		\begin{align*}
+			(E^{i,j})^{2} = \delta_{ji} E^{i,j} = \left\{ 
+			\begin{array}{ll}
+			  E^{i,j} \text{ si } i = j  \\ 
+			  0_{n,p} \text{ si } i \neq j 
+			\end{array}
+			\right.
+		\end{align*}
+	
+	\end{question_kholle}
 	
 \end{document}

@@ -21,7 +21,7 @@
 		\begin{equation}
 			\nu_p(n) = k_0 \iff
 			\exists m \in \Z : \left\{ \begin{matrix}
-				n = p^{k_0} \\
+				n = p^{k_0} m \\
 				m \wedge p = 1
 			\end{matrix} \right.
 		\end{equation}
@@ -45,7 +45,7 @@
 		Ce qui est une contradiction donc $m \wedge p = 1$.
 
 		$\impliedby$ Supposons $\exists m \in \Z : \left\{ \begin{matrix}
-			n = p^{k_0} \\
+			n = p^{k_0} m \\
 			m \wedge p = 1
 		\end{matrix} \right.$ \\
 		Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{\nu_p(n)} \;|\; p^{k_0} m$. Or $m \wedge p = 1$ donc $m \wedge p^{\nu_p(n)} = 1$.
@@ -65,8 +65,11 @@
 	\end{question_kholle}
 
     \begin{question_kholle}
+    	[\begin{equation}
+    		\forall (a, b) \in \Z^2, \
+    		a|b \ \iff \ \forall p \in \PRIME, \ \nu _p (a) \leq \nu _p (b)
+    	\end{equation}]
         {Caractérisation de $a | b$ par les valuations $p$-adiques et preuve de leur propriété de morphisme.}
-        Montrons que : $a|b \ \iff \ \forall p \in \PRIME, \ \nu _p (a) \leq \nu _p (b)$. \\
         Premièrement, montrons que la valuation $p$-adique est un morphisme de $(\Z ^* , \times)$ dans $(\N ,+)$. \\
         Soient de tels entiers relatifs $a,b$. \\
         \[
@@ -92,7 +95,13 @@
     \end{question_kholle}
 
     \begin{question_kholle}
-        [Le pgcd comme produit des $p$ à la puissance du minimum des $\nu _p$ et le ppcm comme le produit des  $p$ à la puissance du maximum des $\nu _p$.]
+        [Le pgcd comme produit des $p$ à la puissance du minimum des $\nu _p$ et le ppcm comme le produit des  $p$ à la puissance du maximum des $\nu _p$.
+        \begin{equation}
+        	\begin{aligned}
+        		a \wedge b &= \prod_{p\in \PRIME} p^{\min (\nu _p (a),\nu_p (b))} \\
+        		a \vee b &= \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
+        	\end{aligned}
+        \end{equation}]
         {Expression du pgcd et du ppcm à partir des décomposition en facteurs premiers de $a$ et $b$.}
         Prouvons la formule du pgcd et déduisons-en la formule du ppcm. \\
         Soient $(a,b)\in (\Z ^*)^2$. Soit $p \in \PRIME $. Il faut et il suffit de montrer que $\nu_p (a \wedge b) = \min (\nu_p(a), \nu_p(b))$ pour obtenir le résultat. On a $a\wedge b | a$ et $a \wedge b | b$ donc d'après la caractérisation de la divisibilité par les valuations $p$-adiques, $\nu_p (a \wedge b) \leq \nu _p (a)$ et $\nu _p (a\wedge b) \leq \nu _p (b)$ donc $\nu _p (a\wedge b) \leq \min (\nu _p(a), \nu_p (b)).$ \\
@@ -103,17 +112,19 @@
         car par définition, $m \leq \nu _p (a)$, donc $p^m | a$, on montrerait de même que $p^m |b$, donc par définition, $p^m | a\wedge b$, donc une nouvelle fois en appliquant la caractérisation de la divisibilité par les valuations $p$-adiques, $m \leq \nu_p ( a\wedge b)$. Finalement, $\nu_p (a\wedge b) = m$. \\
         On en déduit la formule du ppcm :
         \[
-            |a||b| = (a \wedge b) (a \vee b) \ \implies \ a\vee b = \prod_{p\in \PRIME} p^{\nu _p(a) + \nu _p(b) - \min (\nu _p (a),\nu_p (b))} =  \prod_{p\in \PRIME} p^{\nu_p\max (\nu _p (a),\nu_p (b))}
+            |a||b| = (a \wedge b) (a \vee b) \ \implies \ a\vee b = \prod_{p\in \PRIME} p^{\nu _p(a) + \nu _p(b) - \min (\nu _p (a),\nu_p (b))} =  \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
         \]
 
     \end{question_kholle}
 
     \begin{question_kholle}
-        [Petit Th. de Fermat : \\
-        ($i$) $\ \forall a \in \Z , \ a^p \equiv a \mod p$ \\
-        \indent    $\ \forall x \in \Z / p\Z, \ x^p = x $ \\
-        ($ii$)$\ \forall a \in \Z, \ p\not | a, \ \implies \ a^{p-1} \equiv 1 \mod p$ \\
-        \indent $\ \forall x \in \Z / p\Z, \ x^{p-1} = 1 $]
+        [Petit Th. de Fermat :
+        {\begin{enumerate}[label=($\roman*$)]
+        	\item $\forall a \in \Z , \ a^p \equiv a \mod p$ \\
+	        $\ \forall x \in \Z / p\Z, \ x^p = x $
+	        \item $\forall a \in \Z, \ p\not | a, \ \implies \ a^{p-1} \equiv 1 \mod p$ \\
+        	$\ \forall x \in \Z / p\Z, \ x^{p-1} = 1 $
+        \end{enumerate}}]
         {Pour $p$ premier, $(a+b)^p \equiv a^p + b^p \mod p$, en déduire le petit Th. de Fermat (2 versions), expression du résultat dans $\Z / p\Z$.}
         Soient $a,b$ de tels entiers relatifs et soit $p$ un nombre premier. Calculons,
         \[
