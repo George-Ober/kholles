@@ -25,4 +25,4 @@ Espérons qu'avec un peu plus d'expérience, on arrive à les rédiger bien plus
 - [ ] [Semaine 16](Sem_16/Kholle_S16.pdf)
 - [ ] [Semaine 17](Sem_17/Kholle_S17.pdf)
 - [x] [Semaine 18](Sem_18/Kholle_S18.pdf)
-- [ ] [Semaine 19](Sem_19/kholle_S19.pdf)
+- [ ] [Semaine 19](Sem_19/kholle_s19.pdf)
