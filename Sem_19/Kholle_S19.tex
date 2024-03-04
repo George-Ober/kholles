@@ -95,28 +95,98 @@
 		Donc, $A \times B \in \mathcal{T}_n^+(\K)$.
 	\end{question_kholle}
  
- \begin{question_kholle}
-    []
-    {Si $A$ est une matrice d'ordre $n$ et $\lambda$ un scalaire non nul d'un corps, alors la transposée de $A$ et $\lambda A$ sont inversibles aussi.}
-    Soient $A,\lambda \in \mathcal{GL}_n(\mathbb{K})\times \mathbb{K}^*$, avec $\mathbb{K}$ un corps. \\
-    Par définition, il existe $B\in \mathcal{GL}_n(\mathbb{K})$ tel que $AB=BA=I_n$. Ainsi : 
-    \[
-    (AB)^T = I_n^T \ \iff \ B^TA^T = I_n,
-    \]
-    donc $A^T$ admet un inverse à gauche, $B^T$, donc un inverse tout court et donc $A^T$ est inversible (on notera que $A^T$ reste dans les matrices d'ordre $n$). De même, 
-    \[
-    \lambda AB = \lambda I_n \ \iff \ (\lambda A)B = \lambda I_n \ \iff \ (\lambda A) \left(\frac{1}{\lambda}B \right) = I_n, 
-    \]
-    car les scalaires commutent avec toutes les matrices. Ainsi, $\lambda A$ admet un inverse à droite, donc un inverse tout court, donc est inversible, d'inverse $\frac{1}{\lambda}B$. Concluant la preuve.    
- \end{question_kholle}
+	\begin{question_kholle}
+		{Si $A$ est une matrice d'ordre $n$ et $\lambda$ un scalaire non nul d'un corps, alors la transposée de $A$ et $\lambda A$ sont inversibles aussi.}
+		Soient $A,\lambda \in \mathcal{GL}_n(\mathbb{K})\times \mathbb{K}^*$, avec $\mathbb{K}$ un corps. \\
+		Par définition, il existe $B\in \mathcal{GL}_n(\mathbb{K})$ tel que $AB=BA=I_n$. Ainsi : 
+		\[
+		(AB)^T = I_n^T \ \iff \ B^TA^T = I_n,
+		\]
+		donc $A^T$ admet un inverse à gauche, $B^T$, donc un inverse tout court et donc $A^T$ est inversible (on notera que $A^T$ reste dans les matrices d'ordre $n$). De même, 
+		\[
+		\lambda AB = \lambda I_n \ \iff \ (\lambda A)B = \lambda I_n \ \iff \ (\lambda A) \left(\frac{1}{\lambda}B \right) = I_n, 
+		\]
+		car les scalaires commutent avec toutes les matrices. Ainsi, $\lambda A$ admet un inverse à droite, donc un inverse tout court, donc est inversible, d'inverse $\frac{1}{\lambda}B$. Concluant la preuve.    
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		{Si $N$ est une matrice d'ordre $n$ nilpotente, alors $I_n + \lambda N$ est inversible pour tout $\lambda$, scalaire d'un corps.}
+		Soient $N$ une matrice d'ordre $n$ à coefficient dans $\mathbb{K}$, un corps, nilpotente, d'indice de nilpotence $k$ (un entier naturel donc) et $\lambda \in \mathbb{K}$. Calculons : 
+		\[
+		I_n^{2k+1} + (\lambda N)^{2k+1} = I_n^{2k+1} - (- \lambda N)^{2k+1} = (I_n + \lambda N)\sum_{i=0}^{2k}(-\lambda N)^i =  (I_n + \lambda N)\sum_{i=0}^{k-1}(-\lambda N)^i,
+		\]
+		car $\lambda N$ commute avec $I_n$, or le membre de gauche est égal à $I_n$ car $2k+1 > k$, donc $I_n + \lambda N$ est inversible à droite, donc inversible tout court, d'inverse $\sum_{i=0}^{k-1}(-\lambda N)^i$. Ce qui conclut la preuve.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[$A \in \mathcal{M}_n(\K)$ est inversible si et seulement si pour tout $Y \in \mathcal{M}_{n,1}(\K)$, l'équation $AX = Y$ d'inconnue $X \in \mathcal{M}_{n,1}$ admet une unique solution.
+		\begin{equation}
+			\forall A \mathcal{M}_n(\K),
+			A \in \mathcal{GL}_n(\K) \iff
+			\forall Y \in \mathcal{M}_{n,1}(\K), \exists ! X \in \mathcal{M}_{n,1} : AX = Y
+		\end{equation}]
+		{Caractérisation de l'inversibilité pour les matrices}
+		
+		Supposons que $A \in \mathcal{GL}_n(\K)$.
+		Soit $Y \in \mathcal{M}_{n,1}(\K)$ \fq. \\
+		$AX = Y \iff A^{-1}AX = A^{-1}Y \iff X = A^{-1}Y$ donc l'équation $AX = Y$ d'inconnue $X \in \mathcal{M}_{n,1}$ admet une unique solution.
+		
+		Supposons maintenant que $\forall Y \in \mathcal{M}_{n,1}(\K), \exists ! X \in \mathcal{M}_{n,1} : AX = Y$. \\
+		Pour $i \in [\![1;n]\!]$, notons  $X_i$ la solution de $AX = E^{i,1}$. \\
+		Posons $\displaystyle B = \left[ \begin{array}{c|c|c|c}
+			&&&\\
+			X_1 & X_2 & \ldots & X_n \\
+			&&&\\
+		\end{array} \right]$. \\
+		Calculons $\displaystyle AB
+		= \left[ \begin{array}{c|c|c|c}
+			&&&\\
+			AX_1 & AX_2 & \ldots & AX_n \\
+			&&&\\
+		\end{array} \right]
+		= \left[ \begin{array}{c|c|c|c}
+			&&&\\
+			E^{1,1} & E^{2,1} & \ldots & E^{n,1} \\
+			&&&\\
+		\end{array} \right]
+		= I_n$. \\
+		Ainsi A est inversible à droite donc $A \in \mathcal{GL}_n(\K)$ et $A^{-1} = B$.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Une matrice diagonale est inversible si et seulement si tous ses coefficients diagonaux sont non nuls.
+		\begin{equation}
+			\forall D = diag(d_1, d_2, \ldots, d_n) \in \mathcal{D}_n(\K),
+			D \in \mathcal{GL}_n(\K) \iff \prod_{i=1}^{n} d_i \neq 0
+		\end{equation}]
+		{Caractérisation des matrices diagonales inversibles}
+		
+		Soit $D \in \mathcal{D}_n(\K)$ de coefficients diagonaux $d_1, d_2, \ldots, d_n \in \K^n$. \\
+		Soit $Y = \begin{bmatrix} y_1 \\ \ldots \\ y_n \end{bmatrix} \in \mathcal{M}_{n,1}(\K)$.
+		\'Etudions l'équation $DX = Y$ d'inconnue $X = \begin{bmatrix} x_1 \\ \ldots \\ x_n \end{bmatrix} \in \mathcal{M}_{n,1}(\K)$.
+		\begin{equation*}
+			DX = Y \iff
+			\left\{ \begin{array}{cccccccccc}
+				d_1 x_1 & & & & = & y_1 & & & \\
+				& d_2 x_2 & & & = & & y_2 & & & \\
+				& & \ddots & & = & & & \ddots & \\
+				& & & d_n x_n & = & & & & y_n \\
+			\end{array} \right.
+		\end{equation*}
 
- \begin{question_kholle}
-    []
-    {Si $N$ est une matrice d'ordre $n$ nilpotente, alors $I_n + \lambda N$ est inversible pour tout $\lambda$, scalaire d'un corps.}
-    Soient $N$ une matrice d'ordre $n$ à coefficient dans $\mathbb{K}$, un corps, nilpotente, d'indice de nilpotence $k$ (un entier naturel donc) et $\lambda \in \mathbb{K}$. Calculons : 
-    \[
-    I_n^{2k+1} + (\lambda N)^{2k+1} = I_n^{2k+1} - (- \lambda N)^{2k+1} = (I_n + \lambda N)\sum_{i=0}^{2k}(-\lambda N)^i =  (I_n + \lambda N)\sum_{i=0}^{k-1}(-\lambda N)^i,
-    \]
-    car $\lambda N$ commute avec $I_n$, or le membre de gauche est égal à $I_n$ car $2k+1 > k$, donc $I_n + \lambda N$ est inversible à droite, donc inversible tout court, d'inverse $\sum_{i=0}^{k-1}(-\lambda N)^i$. Ce qui conclut la preuve.
- \end{question_kholle}
+		\begin{itemize}
+			\item Si $\exists i_0 \in [\![1;n]\!] : d_{i_0} = 0$, la $i_0$-ème ligne du système ci-dessus deviens une condition de compatibilité $0 = y_{i_0}$ qui ne sera pas respecté pour $Y = E^{i_0,1}$. Donc $D \notin \mathcal{GL}_{n}(\K)$.
+			\item Sinon $\forall i \in [\![1;n]\!] : d_i \neq 0$, le système est donc triangulaire à coefficients diagonaux non nuls. Il admet donc une unique solution. Ainsi $D \in \mathcal{GL}_{n}(\K)$.
+			\begin{equation*}
+				DX = Y \iff
+				\left\{ \begin{array}{cccccccccc}
+					x_1 & & & & = & d_1^{-1} y_1 & & & \\
+					& x_2 & & & = & & d_2^{-1} y_2 & & & \\
+					& & \ddots & & = & & & \ddots & \\
+					& & & x_n & = & & & & d_n^{-1} y_n \\
+				\end{array} \right.
+			\end{equation*}
+			Ainsi $D^{-1} = diag\left(d_1^{-1}, d_2^{-1}, \ldots, d_n^{-1}\right)$.
+		\end{itemize}
+	\end{question_kholle}
 \end{document}
