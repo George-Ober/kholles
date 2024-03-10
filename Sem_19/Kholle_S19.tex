@@ -4,7 +4,8 @@
 \usepackage[nb-sem=19, auteurs={Hugo Vangilluwen, George Ober, Kylian Boyet}]{../kholles}
  \begin{document}
 	\maketitle
-\begin{question_kholle}
+	
+	\begin{question_kholle}
 		[Pour une matrice $A \in \mathcal{M}_{(n,p)}(\K)$, la matrice transposée est définie :
 		{\begin{equation*}
 			\forall (k, l) \in [\![1,p]\!] \!\times\! [\![1,n]\!], \ \left[A^T\right]_{kl} = A_{lk}
@@ -21,7 +22,7 @@
 				&= \sum_{k=1}^{p} A_{j,k} \times_\K B_{k,i} \\
 				&= \sum_{k=1}^{p} B_{k,i} \times_\K A_{j,k} \\
 				&= \sum_{k=1}^{p} \left[B^T\right]_{i,k} \times_\K \left[A^T\right]_{k,j} \\
-				&= \left(B^T\right) \times \left(A^T\right)
+				&= \left[ \left(B^T\right) \times \left(A^T\right) \right]_{i,j}
 			\end{aligned}
 		\end{equation*}
 	\end{question_kholle}

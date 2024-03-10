@@ -1,0 +1,85 @@
+\documentclass{article}
+
+\date{10 Mars 2024}
+\usepackage[nb-sem=20, auteurs={Hugo Vangilluwen}]{../kholles}
+
+\begin{document}
+	\maketitle
+	
+	\begin{question_kholle}
+		[{\begin{equation}
+			\K[X] ^\times = \left\{ \lambda X^0, \lambda \in \K^* \right\}
+		\end{equation}}]
+		{Éléments inversibles de l'anneau $\K[X]$}
+		
+		Soit P un élément inversible de $\K[X]$.
+		Alors $\exists Q \in \K[X] : P \cdot Q = Q \cdot P = 1_{\K[X]}$.
+		En prenant les degrés des polynômes, $\text{deg } P \times \text{deg } Q = 0$. \\
+		Si $\text{deg } P = 0$ alors $P \neq O_ {\K[X]}$ (sinon $PQ = 0_{\K[X]}$). Donc $\exists \lambda \in \K^* : P = \lambda$. \\
+		Si $\text{deg } P \neq 0$. Or $\text{deg } : \K[X] \rightarrow \N$, $\N \subset \Z$ et \Z est intègre donc $\text{deg } Q = 0$. D'où $\exists \mu \in \K : Q = \mu (= \mu X^0)$. Par définition de $\K[X]$, $\displaystyle \exists p \in \Z^{(\N} : P = \sum_{k \in \N} p_k X^k$. Or $P \cdot Q = X^0$ donc $\displaystyle \sum_{k \in \N} \mu p_k X^k = X^0$. Par unicité des coefficients, $\forall k \in \N^*, p_k = 0$ et $p_0 = \mu^{-1} \in \K^*$. Donc, en posant $\lambda = \mu^{-1}$, $P = \lambda$. \\
+		Ainsi $\K[X]^\times \subset \left\{ \lambda X^0, \lambda \in \K^* \right\}$.
+		
+		Soit $\lambda \in \K^*$. Considérons $P = \lambda$.
+		Posons $Q = \lambda^{-1}$ (car \K est un corps). $P \cdot Q = \lambda \lambda^{-1}$ et $Q \cdot P = \lambda^{-1} \lambda$ donc $P$ est inversible. Ainsi $\left\{ \lambda X^0, \lambda \in \K^* \right\} \subset \K[X]^\times$.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Les fonctions symétriques élémentaires $\displaystyle \left( \sigma_k \right)_{k \in [\![0;n]\!]}$ pour une famille $\displaystyle \left( x_k \right)_{k \in [\![1;n]\!]}$ sont définies par
+		\begin{equation}
+			\sigma_ k = \sum_{1 \leqslant i_1 < \ldots < i_k \leqslant n} \ \prod_{j=1}^{k} x_{i_j}
+		\end{equation}]
+		{Pour $P = (X-x_1)(X-x_2)(X-x_3)$, exprimer $x_1^3 + x_2^3 + x_3^3$ en fonction des fonctions symétriques élémentaires}
+		
+		Sous forme développée, $P = X^3 - (x1 + x_2 + x_3) X^2 + (x_1 x_2 + x_1 x_3 + x_2 x_3) X - x_1 x_2 x_3 = X^3 - \sigma_1 X^2 + \sigma_2 X - \sigma_3$. Comme $x_1, x_2, x_3$ sont racines de $P$, nous avons les trois égalité suivantes :
+		\begin{equation*}
+			\begin{aligned}
+				0 = P(x_1) &= x_1^3 - \sigma_1 x_1^2 + \sigma_2 x_1 - \sigma_3 \\
+				0 = P(x_1) &= x_2^3 - \sigma_1 x_2^2 + \sigma_2 x_2 - \sigma_3 \\
+				0 = P(x_1) &= x_3^3 - \sigma_1 x_3^2 + \sigma_2 x_3 - \sigma_3
+			\end{aligned}
+		\end{equation*}
+		En sommant ces trois équation,
+		\begin{equation*}
+			0 = x_1^3 + x_2^3 + x_3^3 - \sigma_1 (x_1^2 + x_2^2 + x_3^2) + \sigma_2 (x_1 + x_2 + x_3) - 3 \sigma_3
+		\end{equation*}
+		Cherchons la somme des carrés.
+		\begin{equation*}
+			\begin{aligned}
+				(x_1 + x_2 + x_3)^2 &= x_1^2 +  x_2^2 + x_3^2 + 2 x_1 x_2 + 2 x_1 x_3 + 2 x_2 x_3 \\
+				\implies x_1^2 +  x_2^2 + x_3^2 + x_1 x_2 &= \sigma_1^2 - 2 \sigma_2
+			\end{aligned}
+		\end{equation*}
+		Ainsi \begin{equation*}
+			x_1^3 + x_2^3 + x_3^3 = \sigma_1^3 - 3 \sigma_1 \sigma_2 + 3 \sigma_3
+		\end{equation*}
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Les sommes de Newton $(S_k)_{k\in\Z^*}$ pour une famille $(x_k)_{k \in \N^*}$ sont définies par (sous réserve d'existence pour $k<0$) :
+		\begin{equation}
+			S_k = \sum_{i=1}^{n} x_i^k
+		\end{equation}]
+		{Expression de $S_2$, $S_{-1}$ et $S_{-2}$ à l'aide des fonctions élémentaires symétriques.}
+		
+		\begin{equation*}
+			\begin{aligned}
+				\sigma_1^2 &= \left( \sum_{i=1}^{n} x_i \right)^2 \\
+				&= \underbrace{ \sum_{i=1}^{n} x_i^2 }_{S_2} + \ 2 \ \underbrace{ \sum_{1 \leqslant i < j \leqslant n} x_i x_j }_{\sigma_2} \\
+				\implies S_2 &= \sigma_1^2 - 2 \sigma_2
+			\end{aligned}
+		\end{equation*}
+		\begin{equation*}
+			S_{-1} = \sum_{i=1}^{n} \frac{1}{x_i}
+			= \frac{\displaystyle \sum_{i=1}^{n} \prod_{\tiny \begin{matrix} j = 1 \\ j \neq i \end{matrix}}^{n} x_j }{\displaystyle \prod_{i=1}^{n} x_i }
+			= \frac{\sigma_{n-1}}{\sigma_n}
+		\end{equation*}
+		\begin{equation*}
+			\begin{aligned}
+				S_{-2} &= \sum_{i=1}^{n} \frac{1}{x_i^2} \\
+				&= \left( \sum_{i=1}^{n} \frac{1}{x_i} \right)^2 - 2 \sum_{1 \leqslant i < j \leqslant n} \frac{1}{x_i} \frac{1}{x_j} \\
+				&= \frac{\sigma_{n-1}^2}{\sigma_n} - 2 \frac{\displaystyle \sum_{1 \leqslant i < j \leqslant n} \prod_{\tiny \begin{matrix} k = 1 \\ k \notin \{i,j\} \end{matrix}} \frac{1}{x_j} }{\sigma_n} \\
+				&= \frac{\sigma_{n-1}^2 - 2 \sigma_{n-2}\sigma_n}{\sigma_n^2}
+			\end{aligned}
+		\end{equation*}
+	\end{question_kholle}
+\end{document}
