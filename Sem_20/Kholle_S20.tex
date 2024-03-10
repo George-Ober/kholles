@@ -14,9 +14,9 @@
 		
 		Soit P un élément inversible de $\K[X]$.
 		Alors $\exists Q \in \K[X] : P \cdot Q = Q \cdot P = 1_{\K[X]}$.
-		En prenant les degrés des polynômes, $\text{deg } P \times \text{deg } Q = 0$. \\
-		Si $\text{deg } P = 0$ alors $P \neq O_ {\K[X]}$ (sinon $PQ = 0_{\K[X]}$). Donc $\exists \lambda \in \K^* : P = \lambda$. \\
-		Si $\text{deg } P \neq 0$. Or $\text{deg } : \K[X] \rightarrow \N$, $\N \subset \Z$ et \Z est intègre donc $\text{deg } Q = 0$. D'où $\exists \mu \in \K : Q = \mu (= \mu X^0)$. Par définition de $\K[X]$, $\displaystyle \exists p \in \Z^{(\N} : P = \sum_{k \in \N} p_k X^k$. Or $P \cdot Q = X^0$ donc $\displaystyle \sum_{k \in \N} \mu p_k X^k = X^0$. Par unicité des coefficients, $\forall k \in \N^*, p_k = 0$ et $p_0 = \mu^{-1} \in \K^*$. Donc, en posant $\lambda = \mu^{-1}$, $P = \lambda$. \\
+		En prenant les degrés des polynômes, $\text{deg } P + \text{deg } Q = 0$. \\
+		Or $\text{deg } : \K[X] \rightarrow \N$ donc $\text{deg } P = \text{deg } Q = 0$.
+		Donc $\exists \lambda \in \K^* : P = \lambda$. \\
 		Ainsi $\K[X]^\times \subset \left\{ \lambda X^0, \lambda \in \K^* \right\}$.
 		
 		Soit $\lambda \in \K^*$. Considérons $P = \lambda$.
@@ -77,7 +77,7 @@
 			\begin{aligned}
 				S_{-2} &= \sum_{i=1}^{n} \frac{1}{x_i^2} \\
 				&= \left( \sum_{i=1}^{n} \frac{1}{x_i} \right)^2 - 2 \sum_{1 \leqslant i < j \leqslant n} \frac{1}{x_i} \frac{1}{x_j} \\
-				&= \frac{\sigma_{n-1}^2}{\sigma_n} - 2 \frac{\displaystyle \sum_{1 \leqslant i < j \leqslant n} \prod_{\tiny \begin{matrix} k = 1 \\ k \notin \{i,j\} \end{matrix}} \frac{1}{x_j} }{\sigma_n} \\
+				&= \frac{\sigma_{n-1}^2}{\sigma_n^2} - 2 \frac{\displaystyle \sum_{1 \leqslant i < j \leqslant n} \prod_{\tiny \begin{matrix} k = 1 \\ k \notin \{i,j\} \end{matrix}} \frac{1}{x_j} }{\sigma_n} \\
 				&= \frac{\sigma_{n-1}^2 - 2 \sigma_{n-2}\sigma_n}{\sigma_n^2}
 			\end{aligned}
 		\end{equation*}
