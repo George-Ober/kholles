@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \date{10 Mars 2024}
-\usepackage[nb-sem=20, auteurs={Hugo Vangilluwen, George Ober}]{../kholles}
+\usepackage[nb-sem=20, auteurs={Hugo Vangilluwen, George Ober, Kylian Boyet}]{../kholles}
 
 \begin{document}
 	\maketitle
@@ -97,6 +97,38 @@
 		\end{itemize}
 	\end{question_kholle}
 
+    \begin{question_kholle}
+        [Soient $P$ à coeff dans $\K$ et $a\in \K$. On a : 
+        $$
+            P = \sum_{n\in \N}\frac{\widetilde{P^{(n)}}(a)}{n!}(X-a)^n
+        $$
+        ]
+        {Formule de Taylor dans $\K [X]$ (caractéristique nulle)}
+        Considérons le prédicat $\PRIME (\cdot)$ défini sur $\N$ par : 
+        \[
+        \PRIME (n ) \ :  " \forall P \in \K _n[X], \ P = \sum_{k = 0}^n\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^k " 
+        \]
+        Initialisation : pour $n = 0 $, soit $P\in \K _0 [X]$. \\
+        $\exists \ p_0 \in \K \ : \ P = p_0 X^0$ et $\sum_{k = 0}^0\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^k = \frac{\widetilde{P^{(0)}}(a)}{1}X^0 = p_0 X^0$, donc $\PRIME (0)$ vrai. \\ \\
+        Hérédité : Soit $n\in \N$ tel que $\PRIME (n)$. Soit $P\in \K _{n+1} [X]$. On a donc $\deg P' = \deg P -1 \leq n$ donc $\PRIME (n)$ s'applique à $P'$ : 
+        \[
+        P' = \sum_{k = 0}^n\frac{\widetilde{P'^{(k)}}(a)}{k!}(X-a)^k = \left( \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} \right) ',
+        \]
+        donc : 
+        \[
+        \left( P - \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} \right) ' = 0 \ \implies \ \exists \ \mu \in \K \ : \ P - \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} = \mu ,
+        \]
+        ainsi : 
+        \[
+        P = \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{(k+1)!}(X-a)^{k+1} + \mu = \sum_{k = 1}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k} + \mu,
+        \] 
+        donc en $a$ par $\ph _ a$ : 
+        \[
+        \widetilde{P}(a) = \mu \ \implies \ P = \sum_{k = 1}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k} + \widetilde{P}(a) = \sum_{k = 0}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k},
+        \]
+        donc $\PRIME (n+1) $ vrai. Ainsi par théorème de récurrence sur $\N$, $\PRIME (n)$ est vrai pour tout $n\in \N$.
+    \end{question_kholle}
+
 	\begin{question_kholle}
 		[Soit {$P \in \K[X]$}. Soit $a \in \K$.
 		\begin{equation}
@@ -159,6 +191,28 @@
 			Donc $a$ est une racine de $P$ de multiplicité strictement inférieur à $m + 1$ et, d'après le point précédent, supérieur à $m$. Donc $a$ est une racine de $P$ de multiplicité exactement $m$.
 		\end{enumerate}
 	\end{question_kholle}
+
+    \begin{question_kholle}
+        []
+        {Identification de $\K[X]$ à $\K [x]$, par l'injectivité de $\Phi$}
+        Montrons que l'application $\Phi$ définie comme suit est injective : 
+        \[
+        \Phi : \left|   \begin{array}{ccc}
+                            \K[X] & \longrightarrow & \mathcal{F}(\K, \K) \\
+                            P & \longmapsto & \widetilde{P}
+                        \end{array} \right..
+        \] 
+        Soit donc $P\in \ker \Phi $, on a : 
+        \[
+        \Phi (P)  = \widetilde{0} \ \implies \ \widetilde{P} = \widetilde{0} \text{ sur } \K \ \implies \ P = 0_{\K [X]},
+        \]
+        donc $\ker \Phi \subset \{ 0_{\K [X]} \}$. \\
+        Réciproquement, on calcule l'image du polynôme nul par $\Phi$ : 
+        \[
+        \Phi (0 _{\K [X]} ) = \widetilde{0},
+        \]
+        donc $0_{\K [X]} \in \ker \Phi$, ainsi on a l'égalité ensembliste et donc cela suffit.
+    \end{question_kholle}
 
 	\begin{question_kholle}
 		[Les fonctions symétriques élémentaires $\displaystyle \left( \sigma_k \right)_{k \in [\![0;n]\!]}$ pour une famille $\displaystyle \left( x_k \right)_{k \in [\![1;n]\!]}$ sont définies par
