@@ -3201,6 +3201,39 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		\end{itemize}
 	\end{question_kholle}
 
+    \begin{question_kholle}
+        [Soient $P$ à coefficients dans $\K$ et $a\in \K$. On a : 
+        \begin{equation}
+            P = \sum_{n\in \N}\frac{\widetilde{P^{(n)}}(a)}{n!}(X-a)^n
+        \end{equation}
+        ]
+        {Formule de Taylor dans $\K [X]$ (caractéristique nulle)}
+        
+        Considérons le prédicat $\PRIME (\cdot)$ défini sur $\N$ par : 
+        \[
+        \PRIME (n ) \ :  \text{\textquotedblleft} \ \forall P \in \K _n[X], \ P = \sum_{k = 0}^n\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^k \ \text{\textquotedblright}
+        \]
+        Initialisation : pour $n = 0 $, soit $P\in \K _0 [X]$. \\
+        $\exists \ p_0 \in \K \ : \ P = p_0 X^0$ et $\sum_{k = 0}^0\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^k = \frac{\widetilde{P^{(0)}}(a)}{1}X^0 = p_0 X^0$, donc $\PRIME (0)$ vrai. \\ \\
+        Hérédité : Soit $n\in \N$ tel que $\PRIME (n)$. Soit $P\in \K _{n+1} [X]$. On a donc $\deg P' = \deg P -1 \leq n$ donc $\PRIME (n)$ s'applique à $P'$ : 
+        \[
+        P' = \sum_{k = 0}^n\frac{\widetilde{P'^{(k)}}(a)}{k!}(X-a)^k = \left( \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} \right) ',
+        \]
+        donc : 
+        \[
+        \left( P - \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} \right) ' = 0 \ \implies \ \exists \ \mu \in \K \ : \ P - \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} = \mu ,
+        \]
+        ainsi : 
+        \[
+        P = \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{(k+1)!}(X-a)^{k+1} + \mu = \sum_{k = 1}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k} + \mu,
+        \] 
+        donc en $a$ par $\ph _ a$ : 
+        \[
+        \widetilde{P}(a) = \mu \ \implies \ P = \sum_{k = 1}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k} + \widetilde{P}(a) = \sum_{k = 0}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k},
+        \]
+        donc $\PRIME (n+1) $ vrai. Ainsi par théorème de récurrence sur $\N$, $\PRIME (n)$ est vrai pour tout $n\in \N$.
+    \end{question_kholle}
+
 	\begin{question_kholle}
 		[Soit {$P \in \K[X]$}. Soit $a \in \K$.
 		\begin{equation}
@@ -3264,6 +3297,28 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		\end{enumerate}
 	\end{question_kholle}
 
+    \begin{question_kholle}
+        []
+        {Identification de $\K[X]$ à $\K [x]$, par l'injectivité de $\Phi$}
+        Montrons que l'application $\Phi$ définie comme suit est injective : 
+        \[
+        \Phi : \left|   \begin{array}{ccc}
+                            \K[X] & \longrightarrow & \mathcal{F}(\K, \K) \\
+                            P & \longmapsto & \widetilde{P}
+                        \end{array} \right..
+        \] 
+        Soit donc $P\in \ker \Phi $, on a : 
+        \[
+        \Phi (P)  = \widetilde{0} \ \implies \ \widetilde{P} = \widetilde{0} \text{ sur } \K \ \implies \ P = 0_{\K [X]},
+        \]
+        donc $\ker \Phi \subset \{ 0_{\K [X]} \}$. \\
+        Réciproquement, on calcule l'image du polynôme nul par $\Phi$ : 
+        \[
+        \Phi (0 _{\K [X]} ) = \widetilde{0},
+        \]
+        donc $0_{\K [X]} \in \ker \Phi$, ainsi on a l'égalité ensembliste et donc cela suffit.
+    \end{question_kholle}
+
 	\begin{question_kholle}
 		[Les fonctions symétriques élémentaires $\displaystyle \left( \sigma_k \right)_{k \in [\![0;n]\!]}$ pour une famille $\displaystyle \left( x_k \right)_{k \in [\![1;n]\!]}$ sont définies par
 		\begin{equation}
@@ -3323,4 +3378,90 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 			\end{aligned}
 		\end{equation*}
 	\end{question_kholle}
+\pagebreak\section{Semaine 22}
+	
+	Pour cette semaine, \K désigne un corps commutatif, $E$ et $F$ des \K\!\!-espaces vectoriels et $I$ un ensemble quelconque non vide.
+	
+	\begin{question_kholle}
+		[Une famille est liée si et seulement si l'un de ses vecteurs est une combinaison linéaires d'autres vecteurs de la famille.
+		\begin{equation}
+			(x_i)_{i \in I} \text{ est liée}
+			\iff \exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
+			x_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i
+		\end{equation}]
+		{Caractérisation d'une famille liée}
+		
+		Supposons que $(x_i)_{i \in I}$ est liée. \\
+		Par définition, $\displaystyle \exists (\mu_i) \K^{(I)} :
+		\left\{ \begin{array}{ccc}
+			\sum_{i \in I} \mu_i x_i &= O_E \\
+			(_mu_i)_{i \in I} &\neq (0_\K)_{i \in I}
+		\end{array} \right.$ \\
+		Donc $\exists i_0 \in I : \mu_{i_0} \neq 0_\K$. Fixons un tel $i_0$. \\
+		$\displaystyle \mu_{i_0} x_{i_0} + \sum_{i \in I \setminus \{i_0\}} \mu_i x_i = 0_E$ \\
+		Or $\mu_{i_0} \neq 0$, donc $\displaystyle x_{i_0} = \sum_{i \in I \setminus \{i_0\}} \left( \mu_{i_0}^{-1} \times (-\mu_i) \right) \ldotp x_i$. \\
+		En posant $\lambda_i = \mu_{i_0}^{-1} \times (-\mu_i)$, on obtient $\displaystyle \sum_{i \in I \setminus \{i_0\}} \lambda_i \ldotp x_i$.
+		
+		Supposons $\exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
+		x_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i$. \\
+		Alors $\displaystyle -x_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i = 0_E$. \\
+		Posons $\mu_{i_0} = - 1_\K$ et $\forall i \in I \!\setminus\! \{i_0\}, \mu_i = \lambda_i$. \\
+		Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
+		Donc $(\mu_i)_{i \in I}$ est liée.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Soit $\mathcal{F}$ une famille de vecteurs de $E$. Les propositions suivantes sont équivalentes :
+		{ \begin{enumerate}[label=$(\roman*)$]
+			\item $\mathcal{F}$ est une base.
+			\item Tout vecteur de $E$ se décompose de manière unique dans $\mathcal{F}$ .
+			\item $\mathcal{F}$ est génératrice minimale (au sens de l'inclusion)
+			\item $\mathcal{F}$ est libre maximale (au sens de l'inclusion)
+		\end{enumerate} }]
+		{Caractérisations d'une base}
+		
+		Notons $(e_i)_{i \in I}$ la famille $\mathcal{F}$.
+		
+		
+		$(i) \implies (ii)$ Supposons que $\mathcal{F}$ est une base de $E$. \\
+		Soit $x \in E$ \fq. Montrons que $x$ s'écrit de manière unique comme une combinaison linéaire des vecteurs de $\mathcal{F}$. \\
+		$\mathcal{F}$ est une base donc elle est une famille génératrice et libre de $E$. La propriété génératrice donne, par définition, l'existence d'une telle écriture tandis que la propriété libre donne l'unicité d'une telle écriture.
+		
+		$(ii) \implies (iii)$ Supposons que tout vecteur de $E$ s'écrit de manière unique comme une combinaison linéaire de vecteurs de $\mathcal{F}$. \\
+		L'existence d'un telle décomposition permet d'affirmer que $\mathcal{F}$ est génératrice. \\
+		Supposons que $\mathcal{F}$ ne soit pas génératrice minimale c'est-à-dire qu'il existe une famille $\mathcal{F}'$ de vecteurs de $E$ telle que $\mathcal{F}' \subsetneq \mathcal{F}$ et $\mathcal{F}'$ engendre $E$. \\
+		Alors $\exists i_0 \in I : e_{i_0} \notin \mathcal{F}'$. Comme $\mathcal{F}'$ est génératrice, $\exists (\lambda_i)_{i \in I \setminus \{i_0\}} \in \K^{(I \setminus \{i_0\})} : e_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp e_i$.
+		Donc \begin{equation*}
+			\begin{aligned}
+				e_{i_0} &= 0_\K + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp e_i \\
+				e_{i_0} &= 1_\K + \sum_{\substack{i \in I \\ i \neq i_0}} 0_\K \ldotp e_i
+			\end{aligned}
+		\end{equation*}
+		$e_{i_0}$ peut donc s'écrire de deux manières différentes au moins comme combinaison linéaire de vecteurs de $\mathcal{F}$ ce qui contredit le caractère libre de $\mathcal{F}$. \\
+		Par conséquent, $\mathcal{F}$ est génératrice et minimale parmi les familles génératrices.
+		
+		$(iii) \implies (iv)$ Supposons que $\mathcal{F}$ est une famille génératrice minimale.
+		Par l'absurde, supposons que $\mathcal{F}$ est liée. Alors il existe un $i_0 \in I$ tel que $e_{i_0}$ s'écrit comme une combinaison linéaire d'autres vecteurs de $\mathcal{F}$ donc $(e_i)_{i \in I \setminus \{i_0\}}$ est génératrice de $E$ . Or cette famille est strictement incluse dans $\mathcal{F}$ ce qui contredit la propriété de génératrice minimale. \\
+		Donc $\mathcal{F}$ est libre. \\
+		Par l'absurde, supposons que $\mathcal{F}$ n'est pas libre maximale c'est-à-dire qu'il existe une famille $\mathcal{F}'$ de vecteurs de $E$ telle que $\mathcal{F} \subsetneq \mathcal{F}'$ et $\mathcal{F}'$ est libre. \\
+		Alors $\exists x \in \mathcal{F}' : x \notin \mathcal{F}$. Or $\mathcal{F}$ est génératrice d'où :
+		\begin{equation*}
+			\exists (\lambda_i)_{i \in I} \in \K^{(I)} :
+			x = \sum_{i \in I} \lambda_i \ldotp x_i
+			= 0_\K \ldotp x + \sum_{i \in I} \lambda_i \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
+		\end{equation*}
+		Puisque $x \in \mathcal{F}'$,
+		\begin{equation*}
+			\exists (\lambda_i)_{i \in I} \in \K^{(I)} :
+			x = 1_\K \ldotp x + \sum_{i \in I} 0_\K \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
+		\end{equation*}
+		Donc $x$ s'écrit de deux manières différentes au moins comme combinaison linéaire de vecteurs $\mathcal{F}'$, ce qui contredit la liberté de $\mathcal{F}'$. \\
+		Par conséquent, $\mathcal{F}$ est libre maximale.
+		
+		$(iv) \implies (i)$ Supposons que $\mathcal{F}$ est une famille libre maximale. \\
+		Par hypothèse même, $\mathcal{F}$ est libre.
+		Par l'absurde, supposons que $\mathcal{F}$ n'est pas génératrice. Alors il existe $x \in E$ tel que $x \notin \Vect \mathcal{F}$. Donc $\mathcal{F} \wedge \{x\}$ est libre et contient strictement $\mathcal{F}$, ce qui contredit la propriété de liberté maximale. \\
+		Par conséquent, $\mathcal{F}$ est aussi génératrice, donc une base.
+	\end{question_kholle}
+
 \end{document}

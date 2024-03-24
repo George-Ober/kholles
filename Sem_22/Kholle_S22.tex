@@ -1,0 +1,93 @@
+\documentclass{article}
+
+\date{24 Mars 2024}
+\usepackage[nb-sem=22, auteurs={Hugo Vangilluwen}]{../kholles}
+
+\begin{document}
+	\maketitle
+	
+	Pour cette semaine, \K désigne un corps commutatif, $E$ et $F$ des \K\!\!-espaces vectoriels et $I$ un ensemble quelconque non vide.
+	
+	\begin{question_kholle}
+		[Une famille est liée si et seulement si l'un de ses vecteurs est une combinaison linéaires d'autres vecteurs de la famille.
+		\begin{equation}
+			(x_i)_{i \in I} \text{ est liée}
+			\iff \exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
+			x_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i
+		\end{equation}]
+		{Caractérisation d'une famille liée}
+		
+		Supposons que $(x_i)_{i \in I}$ est liée. \\
+		Par définition, $\displaystyle \exists (\mu_i) \K^{(I)} :
+		\left\{ \begin{array}{ccc}
+			\sum_{i \in I} \mu_i x_i &= O_E \\
+			(_mu_i)_{i \in I} &\neq (0_\K)_{i \in I}
+		\end{array} \right.$ \\
+		Donc $\exists i_0 \in I : \mu_{i_0} \neq 0_\K$. Fixons un tel $i_0$. \\
+		$\displaystyle \mu_{i_0} x_{i_0} + \sum_{i \in I \setminus \{i_0\}} \mu_i x_i = 0_E$ \\
+		Or $\mu_{i_0} \neq 0$, donc $\displaystyle x_{i_0} = \sum_{i \in I \setminus \{i_0\}} \left( \mu_{i_0}^{-1} \times (-\mu_i) \right) \ldotp x_i$. \\
+		En posant $\lambda_i = \mu_{i_0}^{-1} \times (-\mu_i)$, on obtient $\displaystyle \sum_{i \in I \setminus \{i_0\}} \lambda_i \ldotp x_i$.
+		
+		Supposons $\exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
+		x_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i$. \\
+		Alors $\displaystyle -x_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i = 0_E$. \\
+		Posons $\mu_{i_0} = - 1_\K$ et $\forall i \in I \!\setminus\! \{i_0\}, \mu_i = \lambda_i$. \\
+		Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
+		Donc $(\mu_i)_{i \in I}$ est liée.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Soit $\mathcal{F}$ une famille de vecteurs de $E$. Les propositions suivantes sont équivalentes :
+		{ \begin{enumerate}[label=$(\roman*)$]
+			\item $\mathcal{F}$ est une base.
+			\item Tout vecteur de $E$ se décompose de manière unique dans $\mathcal{F}$ .
+			\item $\mathcal{F}$ est génératrice minimale (au sens de l'inclusion)
+			\item $\mathcal{F}$ est libre maximale (au sens de l'inclusion)
+		\end{enumerate} }]
+		{Caractérisations d'une base}
+		
+		Notons $(e_i)_{i \in I}$ la famille $\mathcal{F}$.
+		
+		
+		$(i) \implies (ii)$ Supposons que $\mathcal{F}$ est une base de $E$. \\
+		Soit $x \in E$ \fq. Montrons que $x$ s'écrit de manière unique comme une combinaison linéaire des vecteurs de $\mathcal{F}$. \\
+		$\mathcal{F}$ est une base donc elle est une famille génératrice et libre de $E$. La propriété génératrice donne, par définition, l'existence d'une telle écriture tandis que la propriété libre donne l'unicité d'une telle écriture.
+		
+		$(ii) \implies (iii)$ Supposons que tout vecteur de $E$ s'écrit de manière unique comme une combinaison linéaire de vecteurs de $\mathcal{F}$. \\
+		L'existence d'un telle décomposition permet d'affirmer que $\mathcal{F}$ est génératrice. \\
+		Supposons que $\mathcal{F}$ ne soit pas génératrice minimale c'est-à-dire qu'il existe une famille $\mathcal{F}'$ de vecteurs de $E$ telle que $\mathcal{F}' \subsetneq \mathcal{F}$ et $\mathcal{F}'$ engendre $E$. \\
+		Alors $\exists i_0 \in I : e_{i_0} \notin \mathcal{F}'$. Comme $\mathcal{F}'$ est génératrice, $\exists (\lambda_i)_{i \in I \setminus \{i_0\}} \in \K^{(I \setminus \{i_0\})} : e_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp e_i$.
+		Donc \begin{equation*}
+			\begin{aligned}
+				e_{i_0} &= 0_\K + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp e_i \\
+				e_{i_0} &= 1_\K + \sum_{\substack{i \in I \\ i \neq i_0}} 0_\K \ldotp e_i
+			\end{aligned}
+		\end{equation*}
+		$e_{i_0}$ peut donc s'écrire de deux manières différentes au moins comme combinaison linéaire de vecteurs de $\mathcal{F}$ ce qui contredit le caractère libre de $\mathcal{F}$. \\
+		Par conséquent, $\mathcal{F}$ est génératrice et minimale parmi les familles génératrices.
+		
+		$(iii) \implies (iv)$ Supposons que $\mathcal{F}$ est une famille génératrice minimale.
+		Par l'absurde, supposons que $\mathcal{F}$ est liée. Alors il existe un $i_0 \in I$ tel que $e_{i_0}$ s'écrit comme une combinaison linéaire d'autres vecteurs de $\mathcal{F}$ donc $(e_i)_{i \in I \setminus \{i_0\}}$ est génératrice de $E$ . Or cette famille est strictement incluse dans $\mathcal{F}$ ce qui contredit la propriété de génératrice minimale. \\
+		Donc $\mathcal{F}$ est libre. \\
+		Par l'absurde, supposons que $\mathcal{F}$ n'est pas libre maximale c'est-à-dire qu'il existe une famille $\mathcal{F}'$ de vecteurs de $E$ telle que $\mathcal{F} \subsetneq \mathcal{F}'$ et $\mathcal{F}'$ est libre. \\
+		Alors $\exists x \in \mathcal{F}' : x \notin \mathcal{F}$. Or $\mathcal{F}$ est génératrice d'où :
+		\begin{equation*}
+			\exists (\lambda_i)_{i \in I} \in \K^{(I)} :
+			x = \sum_{i \in I} \lambda_i \ldotp x_i
+			= 0_\K \ldotp x + \sum_{i \in I} \lambda_i \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
+		\end{equation*}
+		Puisque $x \in \mathcal{F}'$,
+		\begin{equation*}
+			\exists (\lambda_i)_{i \in I} \in \K^{(I)} :
+			x = 1_\K \ldotp x + \sum_{i \in I} 0_\K \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
+		\end{equation*}
+		Donc $x$ s'écrit de deux manières différentes au moins comme combinaison linéaire de vecteurs $\mathcal{F}'$, ce qui contredit la liberté de $\mathcal{F}'$. \\
+		Par conséquent, $\mathcal{F}$ est libre maximale.
+		
+		$(iv) \implies (i)$ Supposons que $\mathcal{F}$ est une famille libre maximale. \\
+		Par hypothèse même, $\mathcal{F}$ est libre.
+		Par l'absurde, supposons que $\mathcal{F}$ n'est pas génératrice. Alors il existe $x \in E$ tel que $x \notin \Vect \mathcal{F}$. Donc $\mathcal{F} \wedge \{x\}$ est libre et contient strictement $\mathcal{F}$, ce qui contredit la propriété de liberté maximale. \\
+		Par conséquent, $\mathcal{F}$ est aussi génératrice, donc une base.
+	\end{question_kholle}
+
+\end{document}
