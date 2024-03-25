@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \date{24 Mars 2024}
-\usepackage[nb-sem=22, auteurs={Hugo Vangilluwen}]{../kholles}
+\usepackage[nb-sem=22, auteurs={Hugo Vangilluwen, George Ober}]{../kholles}
 
 \begin{document}
 	\maketitle
@@ -35,7 +35,28 @@
 		Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
 		Donc $(\mu_i)_{i \in I}$ est liée.
 	\end{question_kholle}
+    \begin{question_kholle}[{Soient $(E,F)$ deux $\mathbb{K}$-espaces vectoriels $f \in \mathcal{L}(E, F)$, $\mathcal{F}=(x_{i})_{i\in I}$ une base de $E$.
 
+Alors $$\text{Vect} \underbrace{ f(\mathcal{F}) }_{ \left\{ x_{i} \mid i \in I \right\}  } = f(\text{Vect}\mathcal{ F})$$}]{L’image par une application linéaire d’une partie génératrice engendre l’image de l’application linéaire}
+    Soit $y \in \text{Vect}f(\mathcal{F})$
+Alors $\exists (\lambda_{i})_{i \in I} \in \mathbb{K}^{(I)}$ tel que $y = \sum_{i \in I} \lambda_{i}f(x_{i})$
+Mais 
+\begin{align*}
+y & =  \sum_{i \in I} \lambda_{i}f(x_{i}) \\
+ & = f\left( \sum _{i \in I} \lambda _{i} x_{i} \right) \implies y \in f(\text{Vect}{\mathcal{F}})
+\end{align*}
+
+
+Réciproquement soit $y \in f(\text{Vect}{\mathcal{F}})$ fq.
+$$\exists x \in \text{Vect} \mathcal{F} : f(x) = y \implies \exists (x_{i})_{i \in I} : x = \sum_{i \in I} \lambda_{i}x_{i}$$
+Donc:
+
+\begin{align*}
+y = f(x)  & = f\left( \sum_{i \in I} \lambda_{i} x_{i} \right) \\
+ & = \sum _{i \in I} \lambda_{i} f(x_{i}) \in \text{Vect} f ( \mathcal F)
+\end{align*}
+
+    \end{question_kholle}
 	\begin{question_kholle}
 		[Soit $\mathcal{F}$ une famille de vecteurs de $E$. Les propositions suivantes sont équivalentes :
 		{ \begin{enumerate}[label=$(\roman*)$]
