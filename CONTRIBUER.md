@@ -71,9 +71,9 @@ Par exemple,
 
 - Les ensembles pour la régularité des fonctions \Cont{nombre ou l'infini}{départ}{arrivée} et \Deriv (départ et arrivée sont facultatif, par exemple \Cont{\infty}{}{} ou \Deriv{1}{I}{})
 
-- Les espaces vectoriels \Vect pour l'accronyme de "sous-espace vectoriel engendré par"
+- Les espaces vectoriels \Vect pour l'accronyme de "sous-espace vectoriel engendré par", \Ker pour noyau
 
-- Pour les flemmards, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que' (et \bda pour \lambda)
+- Pour les flemmards, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que', \sev pour 'sous-espace vectoriel', \sevs au pluriel (et \bda pour \lambda)
 
 Et voilà !!!
 

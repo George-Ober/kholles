@@ -3380,7 +3380,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	\end{question_kholle}
 \pagebreak\section{Semaine 22}
 
-	Pour cette semaine, \K désigne un corps commutatif, $E$ et $F$ des \K\!\!-espaces vectoriels et $I$ un ensemble quelconque non vide.
+	Pour cette semaine, \K désigne un corps commutatif, $E$ et $F$ des \K\!\!-espaces vectoriels, $E'$ et $F'$ des sous-espaces vectoriels respectivement de $E$ et de $F$, $I$ un ensemble quelconque non vide.
 
 	\begin{question_kholle}
 		[Une famille est liée si et seulement si l'un de ses vecteurs est une combinaison linéaires d'autres vecteurs de la famille.
@@ -3408,16 +3408,24 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Posons $\mu_{i_0} = - 1_\K$ et $\forall i \in I \!\setminus\! \{i_0\}, \mu_i = \lambda_i$. \\
 		Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
 		Donc $(\mu_i)_{i \in I}$ est liée.
+		
+		\begin{equation*}
+			\begin{matrix}
+				(i) &\!\!\!\implies\!\!\!& (ii) \\
+				\Uparrow & & \Downarrow \\
+				(iv) &\!\!\!\impliedby\!\!\!& (iii) \\
+			\end{matrix}
+		\end{equation*}
 	\end{question_kholle}
 
 	\begin{question_kholle}
 		[Soit $\mathcal{F}$ une famille de vecteurs de $E$. Les propositions suivantes sont équivalentes :
-		{ \begin{enumerate}[label=$(\roman*)$]
+		\begin{propositions}
 			\item $\mathcal{F}$ est une base.
 			\item Tout vecteur de $E$ se décompose de manière unique dans $\mathcal{F}$ .
 			\item $\mathcal{F}$ est génératrice minimale (au sens de l'inclusion)
 			\item $\mathcal{F}$ est libre maximale (au sens de l'inclusion)
-		\end{enumerate} }]
+		\end{propositions}]
 		{Caractérisations d'une base}
 
 		Notons $(e_i)_{i \in I}$ la famille $\mathcal{F}$.
@@ -3462,6 +3470,44 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Par hypothèse même, $\mathcal{F}$ est libre.
 		Par l'absurde, supposons que $\mathcal{F}$ n'est pas génératrice. Alors il existe $x \in E$ tel que $x \notin \Vect \mathcal{F}$. Donc $\mathcal{F} \wedge \{x\}$ est libre et contient strictement $\mathcal{F}$, ce qui contredit la propriété de liberté maximale. \\
 		Par conséquent, $\mathcal{F}$ est aussi génératrice, donc une base.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Soit $f \in \mathcal{L}_\K(E, F)$.
+		\begin{equation}
+			\begin{aligned}
+				\Ker{f} &= \left\{ x \in E \;|\; f(x) = 0_F \right\} = f^{-1} (\{0_F\}) \\
+				\Im f &= \left\{ y \in F \;|\; \exists x \in E : f(x) = y \right\}
+			\end{aligned}
+		\end{equation}
+		Nous démontrerons le résultat plus général suivant :
+		\begin{propositions}
+			\item $f(E')$ est un \sev de $F$.
+			\item $f^{-1}(F')$ est un \sev de $E$.
+		\end{propositions}
+		]
+		{Le noyau et l'image d'une application linéaire sont des \sevs}
+		
+		$(i)$ $0_E \in E'$ et $f(0_E) = 0_F$ donc $0_F \in f(E')$ d'où $f(E') \neq \emptyset$ \\
+		Soit $(\alpha, \beta, y, y') \in \K^2 \times f(E')^2$ \fqs. \\
+		Par définition, $\exists (x, x') \in E'^2 : f(x) = y \wedge f(x') = y$.
+		\begin{equation*}
+			\begin{aligned}
+				\alpha y + \beta y'
+				&= \alpha f(x) + \beta f(x') \\
+				&= f( \alpha x + \beta x' ) \quad \text{ car } f \in \mathcal{L}_\K(E, F) \\
+				&\in f(E') \quad \text{ car } \alpha x + \beta x' \in E' \text{ puisque } E' \text{ est un \sev}
+			\end{aligned}
+		\end{equation*}
+		Donc $f(E')$ est un \sev.
+		
+		$(ii)$ $0_F \in F'$ et $f(0_E) = 0_F$ donc $0_E \in f^{-1}(F')$ d'où $f(F') \neq \emptyset$ \\
+		Soit $(\alpha, \beta, x, x') \in \K^2 \times f^{-1}(F')^2$ \fqs. \\
+		Par définition, $\exists (y, y') \in F'^2 : f(x) = y \wedge f(x') = y$. \\
+		Or $F'$ est \sev donc $\alpha y + \beta y' \in F'$. $f \in \mathcal{L}_\K(E, F)$ d'où $f(\alpha x + \beta x') = \alpha y + \beta y'$. Donc $\alpha x + \beta x' \in f^{-1}(F')$. \\
+		Ainsi, $f^{-1}(F')$ est un \sev.
+		
+		En appliquant pour $E' = E$ et $F' = \{0_F\}$, nous obtenons que \Ker{f} et \Im $f$ sont des \sevs.
 	\end{question_kholle}
 
 \end{document}
