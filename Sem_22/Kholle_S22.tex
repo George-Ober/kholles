@@ -1,7 +1,7 @@
 \documentclass{article}
 
-\date{24 Mars 2024}
-\usepackage[nb-sem=22, auteurs={Hugo Vangilluwen, George Ober}]{../kholles}
+\date{25 Mars 2024}
+\usepackage[nb-sem=22, auteurs={Hugo Vangilluwen, George Ober, Kylian Boyet}]{../kholles}
 
 \begin{document}
 	\maketitle
@@ -55,7 +55,6 @@ Donc:
 y = f(x)  & = f\left( \sum_{i \in I} \lambda_{i} x_{i} \right) \\
  & = \sum _{i \in I} \lambda_{i} f(x_{i}) \in \text{Vect} f ( \mathcal F)
 \end{align*}
-
     \end{question_kholle}
 	\begin{question_kholle}
 		[Soit $\mathcal{F}$ une famille de vecteurs de $E$. Les propositions suivantes sont équivalentes :
@@ -110,5 +109,40 @@ y = f(x)  & = f\left( \sum_{i \in I} \lambda_{i} x_{i} \right) \\
 		Par l'absurde, supposons que $\mathcal{F}$ n'est pas génératrice. Alors il existe $x \in E$ tel que $x \notin \Vect \mathcal{F}$. Donc $\mathcal{F} \wedge \{x\}$ est libre et contient strictement $\mathcal{F}$, ce qui contredit la propriété de liberté maximale. \\
 		Par conséquent, $\mathcal{F}$ est aussi génératrice, donc une base.
 	\end{question_kholle}
+
+ \begin{question_kholle}
+        [Nous donnerons les caractérisations au fur et à mesure de la démonstration.]
+        {Caractérisation inj/surj/bij d'une application linéaire par l'image d'une base de l'espace de départ.}
+        Soient donc pour la suite, $f \in \mathcal{L}(E,F)$, $\mathcal{B} = (e_i)_{i\in I}$ une base de $E$, $\mathcal{B}' = (e'_i)\ii$ une base de $F$,$\mathcal{F} = (x_i)_{i\in I}$ une famille libre de $E$ et $\mathcal{G} = (y_i)_{i \in I}$ une famille génératrice de $E$, ces objets servent ici de notation et seront utilisés indépendamment lors de la preuve. \\ \\
+        Montrons que l'image d'une base $\mathcal{B}$ par une application injective est une famille libre $\mathcal{F}$. \\
+        Supposons $f$ injective, donc pour $\bdak$, 
+        \[
+         0_F = \sum_{i\in  I}\bda_i f(e_i) = f \left( \sum_{i\in  I} \bda_i e_i \right) \ \overset{f \text{ inj}}{\implies} \ \sum_{i\in  I} \bda_i e_i = 0_E \ \overset{\mathcal{B} \text{ base donc libre}}{\implies} \ (\bda _i)_{i\in  I} = \widetilde{0_\K},
+        \]
+        donc $f(\mathcal{B})= \mathcal{F}$ libre. \\
+        Supposons qu'il existe $\mathcal{B}$ telle que $f(\mathcal{B})$ soit libre, montrons qu'alors $f$ est injective. \\
+        Soit $x \in \ker f$ :  
+        \[
+         \exists \ \bdak \ : \ 0_F = f(x) = f\left( \sum\ii \bda_i e_i \right) =\sum \ii \bda _i f(e_i) \  \overset{f(\mathcal{B}) \text{ libre}}{\implies} \ (\bda _i)_{i\in  I} = \widetilde{0_\K},
+        \]
+        donc $x = 0_E$ donc $\ker f = \{0_E\}$ et $f$ injective. \\ \\
+        Montrons que l'image d'une base $\mathcal{B}$ par une application surjective est une famille génératrice $\mathcal{G}$. \\
+        Supposons $f$ surjective. Ainsi, $\Im f = F$, or $\mathcal{B}$ est une base donc est génératrice donc : 
+        \[
+        \Vect f(\mathcal{B}) = f\left( \Vect \mathcal{B} \right) = f( E) = \Im f = F,
+        \]
+        donc $f(\mathcal{B}) = \mathcal{G}$ est génératrice. \\
+        Supposons qu'il existe $\mathcal{B}$ telle que $f(\mathcal{B})$ soit génératrice, montrons que $f$ est surjective. \\
+        On a ainsi, 
+        \[
+        F = \Vect f(\mathcal{B}) = f \left( \Vect \mathcal{B} \right) = f(E) = \Im f,
+        \]
+        donc $f$ surjective. \\ \\
+        Montrons que l'image d'une base $\mathcal{B}$ par un isomorphisme est une base $\mathcal{B}'$. \\
+        Supposons que $f$ soit un isomorphisme. $f$ est injective et $\mathcal{B}$ est une base donc $f(\mathcal{B})$ est libre. $f$ est surjective et $\mathcal{B}$ est une base donc $f(\mathcal{B})$ est génératrice. Ainsi, $f(\mathcal{B})=\mathcal{B}'$ est une base. \\
+        Réciproquement, supposons qu'il existe $\mathcal{B}$ telle que $f(\mathcal{B})=\mathcal{B}'$ soit une base, montrons que $f$ est un isomorphisme.\\
+        $\mathcal{B}'$ est une base donc est libre donc $f$ est injective. $\mathcal{B}'$ est une base donc est génératrice donc $f$ est surjective.
+        Ainsi, $f$ est un isomorphisme.
+    \end{question_kholle}
 
 \end{document}
