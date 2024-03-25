@@ -3509,5 +3509,52 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		
 		En appliquant pour $E' = E$ et $F' = \{0_F\}$, nous obtenons que \Ker{f} et \Im $f$ sont des \sevs.
 	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Il existe une unique application linéaire de $E$ dans $F$ qui envoie une base donnée de $E$ sur une famille de $F$ imposée. \\
+		Soient $(e_i)\ii$ une base de $E$ et $(y_i)\ii$ une famille de $F$.
+		\begin{equation}
+			\exists ! f \in \mathcal{L}_\K(E, F) : \forall i \in I, f(e_i) = y_i
+		\end{equation}
+		Nous pouvons expliciter une telle application :
+		\begin{equation}
+			f \left| \;\; \begin{matrix}
+				E & \rightarrow & F \\
+				\displaystyle \sum\ii \lambda_i \ldotp e_i & \mapsto & \displaystyle \sum\ii \lambda_i \ldotp y_i
+			\end{matrix} \right.
+		\end{equation}]
+		{Caractérisation d'une application linéaire par l'image d'une base}
+		~\newline
+		\underline{Analyse} Supposons qu'il existe $f \in \mathcal{L}_\K(E, F)$ \tq $\forall i \in I, f(e_i) = y_i$. \\
+		Tout vecteur de $E$ peut se décomposer de manière unique dans la base $(e_i)\ii$, ce qui détermine son image. Ainsi, $f$ est unique.
+		\newline
+		
+		\noindent \underline{Synthèse} Posons une telle application $f$. \\
+		\begin{itemize}
+			\item $(e_i)\ii$ est une base donc $(\lambda_i)\ii$ est presque nulle et unique donc $\sum\ii \lambda_i \ldotp y_i$ existe et unique.
+			Ainsi, $f$ est bien définie.
+			\item Soient $(\alpha, \beta, x, x') \in \K^2 \times E^2$ \fqs\!\!. Notons $(\lambda_i)\ii$ et $(\lambda'_i)\ii$ les coordonnées de $x$ et $x'$ dans $(e_i)\ii$.
+			\begin{equation*}
+				\begin{aligned}
+					f( \alpha x + \beta x' )
+					&= f\left( \alpha \sum\ii \lambda_i \ldotp e_i + \beta \sum\ii \lambda'_i \ldotp e_i \right) \\
+					&= f\left( \sum\ii \left( \alpha \lambda_i + \beta \lambda'_i \right) \ldotp e_i \right) \\
+					&= \sum\ii \left( \alpha \lambda_i + \beta \lambda'_i \right) \ldotp y_i \quad \text{ par définiton de } f \\
+					&= \alpha \sum\ii \lambda_i y_i + \beta \sum\ii \lambda'_i y_i \\
+					&= \alpha f(x) + \beta f(x')
+				\end{aligned}
+			\end{equation*}
+			Donc $f$ est linéaire.
+			\item Soit $j \in I$ \fq.
+			\begin{equation*}
+				\begin{aligned}
+					f(e_j)
+					&= f \left(\sum\ii \delta_{i,j} \ldotp e_i \right) \\
+					&= \sum\ii \delta_{i,j} \ldotp y_i \\
+					&= y_j
+				\end{aligned}
+			\end{equation*}
+		\end{itemize}
+	\end{question_kholle}
 
 \end{document}
