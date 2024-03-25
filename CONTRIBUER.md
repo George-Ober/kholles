@@ -57,6 +57,8 @@ Par exemple,
 
 `kholles.sty` définit aussi des commandes sympas :
 
+- L'environnement propositions pour lister des propositions (bah oui) avec \item
+
 - **Les ensembles usuels** \N, \Z, \Q, R, \C, \K, \PRIME
 
 - L'ensemble des solutions \Sol
@@ -71,9 +73,9 @@ Par exemple,
 
 - Les ensembles pour la régularité des fonctions \Cont{nombre ou l'infini}{départ}{arrivée} et \Deriv (départ et arrivée sont facultatif, par exemple \Cont{\infty}{}{} ou \Deriv{1}{I}{})
 
-- Les espaces vectoriels \Vect pour l'accronyme de "sous-espace vectoriel engendré par"
+- Les espaces vectoriels \Vect pour l'accronyme de "sous-espace vectoriel engendré par", \Ker pour noyau
 
-- Pour les flemmards, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que' (et \bda pour \lambda)
+- Pour les flemmards, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que', \sev pour 'sous-espace vectoriel', \sevs au pluriel, \ii pour `_{i \in I}`,(\bda pour \lambda), \bdak pour `(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}}`
 
 Et voilà !!!
 
