@@ -25,7 +25,7 @@
 	\maketitle
 	
 	\begin{abstract}
-		Bienvenue très chers camarades sereins, ce document contient les questions de khôlles de mathématiques de la MP1 de Fermat. Il est coécrit par Kylian Boyet, Hugo \textit{Vangi}lluwen (qui maintient la structure du projet, la compilation et le paquet kholles.sty) avec la contribution de George Ober et de Jérémie Menard.
+		Bienvenue très chers camarades sereins, ce document contient les questions de khôlles de mathématiques de la MP1 de Fermat. Il est coécrit par Kylian Boyet, George Ober, Hugo \textit{Vangi}lluwen (qui maintient la structure du projet, la compilation et le paquet kholles.sty) avec la contribution de Jérémie Menard.
 		Il n'est malheureusement pas exhaustif. Si vous voulez nous aider, lisez CONTRIBUER.md et envoyez-nous votre code \LaTeX \ ou plus simplement dites-nous quand vous rencontrez une erreur.
 	\end{abstract}
 	
@@ -2435,7 +2435,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		\end{equation}
 		\begin{itemize}[label=$\star$]
 			\item $\mathcal{P}(0)$ est vrai par définition de $\zeta$ en posant $P_0(x) = 1$
-			\item Soit $n \in \N^*$ \fq tel que $\mathcal{P}$ est vrai.
+			\item Soit $n \in \N^*$ \fq \ tel que $\mathcal{P}$ est vrai.
 			D'une part, $\forall x \in ]-\infty;0[, \zeta^{(n)}(x) = 0$ donc
 			\begin{equation*}
 				\forall x \in ]-\infty;0[, \zeta^{(n+1)}(x) = 0
@@ -3394,19 +3394,19 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Supposons que $(x_i)_{i \in I}$ est liée. \\
 		Par définition, $\displaystyle \exists (\mu_i) \K^{(I)} :
 		\left\{ \begin{array}{ccc}
-			\sum_{i \in I} \mu_i x_i &= O_E \\
-			(_mu_i)_{i \in I} &\neq (0_\K)_{i \in I}
+			\sum_{i \in I} \mu_i x_i &= 0_E \\
+			(\mu_i)_{i \in I} &\neq (0_\K)_{i \in I}
 		\end{array} \right.$ \\
 		Donc $\exists i_0 \in I : \mu_{i_0} \neq 0_\K$. Fixons un tel $i_0$. \\
 		$\displaystyle \mu_{i_0} x_{i_0} + \sum_{i \in I \setminus \{i_0\}} \mu_i x_i = 0_E$ \\
 		Or $\mu_{i_0} \neq 0$, donc $\displaystyle x_{i_0} = \sum_{i \in I \setminus \{i_0\}} \left( \mu_{i_0}^{-1} \times (-\mu_i) \right) \ldotp x_i$. \\
-		En posant $\lambda_i = \mu_{i_0}^{-1} \times (-\mu_i)$, on obtient $\displaystyle \sum_{i \in I \setminus \{i_0\}} \lambda_i \ldotp x_i$.
+		En posant $\lambda_i = \mu_{i_0}^{-1} \times (-\mu_i)$, on obtient $x_{i_0} = \displaystyle \sum_{i \in I \setminus \{i_0\}} \lambda_i \ldotp x_i$.
 
-		Supposons $\exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
+		Supposons maintenant que $\exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
 		x_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i$. \\
-		Alors $\displaystyle -x_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i = 0_E$. \\
-		Posons $\mu_{i_0} = - 1_\K$ et $\forall i \in I \!\setminus\! \{i_0\}, \mu_i = \lambda_i$. \\
-		Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
+		Alors $-x_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i = 0_E$.
+		Posons $\mu_{i_0} = - 1_\K$ et $\forall i \in I \!\setminus\! \{i_0\}, \mu_i = \lambda_i$.
+		Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i = 0_\K$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
 		Donc $(\mu_i)_{i \in I}$ est liée.
 	\end{question_kholle}
 
@@ -3414,7 +3414,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		[Soit $\mathcal{F}$ une famille de vecteurs de $E$. Les propositions suivantes sont équivalentes :
 		\begin{propositions}
 			\item $\mathcal{F}$ est une base.
-			\item Tout vecteur de $E$ se décompose de manière unique dans $\mathcal{F}$ .
+			\item Tout vecteur de $E$ se décompose de manière unique dans $\mathcal{F}$.
 			\item $\mathcal{F}$ est génératrice minimale (au sens de l'inclusion)
 			\item $\mathcal{F}$ est libre maximale (au sens de l'inclusion)
 		\end{propositions}]
@@ -3446,13 +3446,13 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Par l'absurde, supposons que $\mathcal{F}$ n'est pas libre maximale c'est-à-dire qu'il existe une famille $\mathcal{F}'$ de vecteurs de $E$ telle que $\mathcal{F} \subsetneq \mathcal{F}'$ et $\mathcal{F}'$ est libre. \\
 		Alors $\exists x \in \mathcal{F}' : x \notin \mathcal{F}$. Or $\mathcal{F}$ est génératrice d'où :
 		\begin{equation*}
-			\exists (\lambda_i)_{i \in I} \in \K^{(I)} :
+			\exists \bdak :
 			x = \sum_{i \in I} \lambda_i \ldotp x_i
 			= 0_\K \ldotp x + \sum_{i \in I} \lambda_i \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
 		\end{equation*}
 		Puisque $x \in \mathcal{F}'$,
 		\begin{equation*}
-			\exists (\lambda_i)_{i \in I} \in \K^{(I)} :
+			\exists \bdak :
 			x = 1_\K \ldotp x + \sum_{i \in I} 0_\K \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
 		\end{equation*}
 		Donc $x$ s'écrit de deux manières différentes au moins comme combinaison linéaire de vecteurs $\mathcal{F}'$, ce qui contredit la liberté de $\mathcal{F}'$. \\
@@ -3476,7 +3476,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		[Soit $f \in \mathcal{L}_\K(E, F)$.
 		\begin{equation}
 			\begin{aligned}
-				\Ker{f} &= \left\{ x \in E \;|\; f(x) = 0_F \right\} = f^{-1} (\{0_F\}) \\
+				\ker f &= \left\{ x \in E \;|\; f(x) = 0_F \right\} = f^{-1} (\{0_F\}) \\
 				\Im f &= \left\{ y \in F \;|\; \exists x \in E : f(x) = y \right\}
 			\end{aligned}
 		\end{equation}
@@ -3507,13 +3507,17 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Or $F'$ est \sev donc $\alpha y + \beta y' \in F'$. $f \in \mathcal{L}_\K(E, F)$ d'où $f(\alpha x + \beta x') = \alpha y + \beta y'$. Donc $\alpha x + \beta x' \in f^{-1}(F')$. \\
 		Ainsi, $f^{-1}(F')$ est un \sev.
 
-		En appliquant pour $E' = E$ et $F' = \{0_F\}$, nous obtenons que \Ker{f} et \Im $f$ sont des \sevs.
+		En appliquant pour $E' = E$ et $F' = \{0_F\}$, nous obtenons que $\ker f$ et $\Im f$ sont des \sevs.
 	\end{question_kholle}
 
 
-	\begin{question_kholle}[{Soient $(E,F)$ deux $\mathbb{K}$-espaces vectoriels $f \in \mathcal{L}(E, F)$, $\mathcal{F}=(x_{i})_{i\in I}$ une base de $E$.
+	\begin{question_kholle}
+		[{Soient $(E,F)$ deux $\mathbb{K}$-espaces vectoriels $f \in \mathcal{L}_\K(E, F)$, $\mathcal{F}=(x_{i})_{i\in I}$ une base de $E$.
 
-		Alors $$\text{Vect} \underbrace{ f(\mathcal{F}) }_{ \left\{ x_{i} \mid i \in I \right\}  } = f(\text{Vect}\mathcal{ F})$$}]
+		Alors \begin{equation}
+			\text{Vect} \!\!\!\! \underbrace{ f(\mathcal{F}) }_{ \left\{ f(x_{i}) \mid i \in I \right\}  } = f(\Vect\mathcal{ F})
+		\end{equation}
+		}]
 		{L’image par une application linéaire d’une partie génératrice engendre l’image de l’application linéaire}
 		Soit $y \in \text{Vect}f(\mathcal{F})$
 		Alors $\exists (\lambda_{i})_{i \in I} \in \mathbb{K}^{(I)}$ tel que $y = \sum_{i \in I} \lambda_{i}f(x_{i})$
@@ -3537,7 +3541,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	\begin{question_kholle}
 		[Nous donnerons les caractérisations au fur et à mesure de la démonstration.]
 		{Caractérisation inj/surj/bij d'une application linéaire par l'image d'une base de l'espace de départ.}
-		Soient donc pour la suite, $f \in \mathcal{L}(E,F)$, $\mathcal{B} = (e_i)_{i\in I}$ une base de $E$, $\mathcal{B}' = (e'_i)\ii$ une base de $F$,$\mathcal{F} = (x_i)_{i\in I}$ une famille libre de $E$ et $\mathcal{G} = (y_i)_{i \in I}$ une famille génératrice de $E$, ces objets servent ici de notation et seront utilisés indépendamment lors de la preuve. \\ \\
+		Soient donc pour la suite, $f \in \mathcal{L}_\K(E,F)$, $\mathcal{B} = (e_i)_{i\in I}$ une base de $E$, $\mathcal{B}' = (e'_i)\ii$ une base de $F$,$\mathcal{F} = (x_i)_{i\in I}$ une famille libre de $E$ et $\mathcal{G} = (y_i)_{i \in I}$ une famille génératrice de $E$, ces objets servent ici de notation et seront utilisés indépendamment lors de la preuve. \\ \\
 		Montrons que l'image d'une base $\mathcal{B}$ par une application injective est une famille libre $\mathcal{F}$. \\
 		Supposons $f$ injective, donc pour $\bdak$,
 		\[
@@ -3592,7 +3596,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		\begin{itemize}
 			\item $(e_i)\ii$ est une base donc $(\lambda_i)\ii$ est presque nulle et unique donc $\sum\ii \lambda_i \ldotp y_i$ existe et unique.
 			Ainsi, $f$ est bien définie.
-			\item Soient $(\alpha, \beta, x, x') \in \K^2 \times E^2$ \fqs\!\!. Notons $(\lambda_i)\ii$ et $(\lambda'_i)\ii$ les coordonnées de $x$ et $x'$ dans $(e_i)\ii$.
+			\item Soient $(\alpha, \beta, x, x') \in \K^2 \times E^2$ \fqs. Notons $(\lambda_i)\ii$ et $(\lambda'_i)\ii$ les coordonnées de $x$ et $x'$ dans $(e_i)\ii$.
 			\begin{equation*}
 				\begin{aligned}
 					f( \alpha x + \beta x' )
@@ -3616,4 +3620,64 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		\end{itemize}
 	\end{question_kholle}
 
+\pagebreak\section{Semaine 23}
+
+	Pour cette semaine, \K désigne un corps commutatif, $E$ et $F$ des \K\!\!-espaces vectoriels, $E'$ et $F'$ des sous-espaces vectoriels respectivement de $E$ et de $F$, $I$ un ensemble quelconque non vide.
+
+	\begin{question_kholle}
+		{L'ensemble des automorphisme d'un espace vectoriel muni de la loi de composition forme un groupe}
+
+		Montrons que $(\mathcal{GL}_\K(E), \circ)$ est un sous-groupe de $(\mathcal{S}(E), \circ)$.
+		\begin{itemize}
+			\item $\mathcal{GL}_\K(E) \subset \mathcal{S}(E)$ et $(\mathcal{S}(E), \circ)$ est bien un groupe.
+			\item $\mathcal{GL}_\K(E) \neq \emptyset$ puisque $Id_E \in \mathcal{GL}_\K$.
+			\item Soit $(f, g) \in \mathcal{GL}(E)$. Montrons que $f \circ g^{-1} \in \mathcal{GL}(E)$. \\
+			Soit $(\alpha, \beta, x, y) \in \K^2 \times E^2$ \fqs. \\
+			\begin{equation*}
+				\begin{aligned}
+					\left(f \circ g^{-1}\right) \left(\alpha x + \beta y\right)
+					&= f \left( g^{-1} \left(\alpha x + \beta y\right) \right) \\
+					&= f \left( g^{-1} \left(\alpha g^{-1}(g(x)) + \beta g^{-1}(g(y))\right) \right) \\
+					&= f \left( g^{-1} \left( \alpha g\left(g^{-1}(x)\right) + \beta g\left(g^{-1}(y)\right) \right) \right) \\
+					&= f \left( g^{-1} \left( g \left( \alpha g^{-1}(x) + \beta g^{-1}(y) \right) \right) \right) \quad \text{car } g \text{ est linéaire} \\
+					&= f \left( \alpha g^{-1}(x) + \beta g^{-1}(y) \right) \\
+					&= \alpha f \left( g^{-1}(x) \right) + \beta f \left( g^{-1}(y) \right) \\
+					&= \alpha \left(f \circ g^{-1}\right) (x) + \beta \left(f \circ g^{-1}\right) (y)
+				\end{aligned}
+			\end{equation*}
+		\end{itemize}
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soit $\ffinie{E}{p}{E}$ $p$ \sev de E avec $p \in \N^*$ \fq. \\
+		Par définition, cette famille est en somme directe si tout vecteur de $E_1 + E_2 + \ldots + E_p$ peut s'écrire comme une somme unique d'élément de $E_1 \times E_2 \times \ldots \times E_p$. Formellement :
+		\begin{equation}
+			\forall x \in \sum_{i=1}^{p} E_i,
+			\exists ! x \in \! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i :
+			x = \sum_{i=1}^{p} x_i
+		\end{equation}
+		Nous allons démontrer que $E_1, E_2, \ldots$ et $E_p$ sont en somme directe \ssi
+		{\begin{equation}
+			\forall x \in \! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i,
+			\left( \sum_{i=1}^{p} x_i = 0_E \implies \forall i \in [\![1;p]\!], x_i = 0_E \right)
+		\end{equation}}]
+		{Caractérisation de la somme directe de $p$ \sevs}
+
+		Supposons que $E_1, E_2, \ldots E_p$ sont en somme directe. \\
+		Soient $x \in \!\! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$ \fqs \tqs $x_1 + x_2 + \ldots + x_p = 0_E$. \\
+		Or $0_E = \underbrace{0_E}_{\in E_1} + \underbrace{0_E}_{\in E_2} + \ldots + \underbrace{0_E}_{\in E_p}$.
+		Par unicité de l'écriture de x comme somme d'éléments de $\overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$, $\forall i \in [\![]1;p\!], x_i = 0_E$.
+
+		Supposons maintenant l'équation de la caractérisation. \\
+		Soit $x \in \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$ \tq $x$ puisse s'écrire comme somme de $x' \!\! \in \!\! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$ et somme de $x'' \!\! \in \!\! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$. Montrons que $x' = x''$.
+		\begin{equation*}
+			\sum_{i=1}^{p} x'_i = x = \sum_{i=1}^{p} x''_i
+		\end{equation*}
+		Donc
+		\begin{equation*}
+			\sum_{i=1}^{p} \left( x''_i -x''_i \right) = 0_E
+		\end{equation*}
+		D'après l'équation de la caractérisation, $\forall i \in [\![1;p]\!], x'_i - x''_i = 0_E$. \\
+		Donc $\forall i \in [\![1;p]\!], x'_i = x''_i$
+	\end{question_kholle}
 \end{document}
