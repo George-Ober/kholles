@@ -20,19 +20,19 @@
 		Supposons que $(x_i)_{i \in I}$ est liée. \\
 		Par définition, $\displaystyle \exists (\mu_i) \K^{(I)} :
 		\left\{ \begin{array}{ccc}
-			\sum_{i \in I} \mu_i x_i &= O_E \\
-			(_mu_i)_{i \in I} &\neq (0_\K)_{i \in I}
+			\sum_{i \in I} \mu_i x_i &= 0_E \\
+			(\mu_i)_{i \in I} &\neq (0_\K)_{i \in I}
 		\end{array} \right.$ \\
 		Donc $\exists i_0 \in I : \mu_{i_0} \neq 0_\K$. Fixons un tel $i_0$. \\
 		$\displaystyle \mu_{i_0} x_{i_0} + \sum_{i \in I \setminus \{i_0\}} \mu_i x_i = 0_E$ \\
 		Or $\mu_{i_0} \neq 0$, donc $\displaystyle x_{i_0} = \sum_{i \in I \setminus \{i_0\}} \left( \mu_{i_0}^{-1} \times (-\mu_i) \right) \ldotp x_i$. \\
-		En posant $\lambda_i = \mu_{i_0}^{-1} \times (-\mu_i)$, on obtient $\displaystyle \sum_{i \in I \setminus \{i_0\}} \lambda_i \ldotp x_i$.
+		En posant $\lambda_i = \mu_{i_0}^{-1} \times (-\mu_i)$, on obtient $x_{i_0} = \displaystyle \sum_{i \in I \setminus \{i_0\}} \lambda_i \ldotp x_i$.
 
-		Supposons $\exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
+		Supposons maintenant que $\exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
 		x_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i$. \\
-		Alors $\displaystyle -x_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i = 0_E$. \\
-		Posons $\mu_{i_0} = - 1_\K$ et $\forall i \in I \!\setminus\! \{i_0\}, \mu_i = \lambda_i$. \\
-		Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
+		Alors $-x_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i = 0_E$.
+		Posons $\mu_{i_0} = - 1_\K$ et $\forall i \in I \!\setminus\! \{i_0\}, \mu_i = \lambda_i$.
+		Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i = 0_\K$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
 		Donc $(\mu_i)_{i \in I}$ est liée.
 	\end{question_kholle}
 
@@ -40,7 +40,7 @@
 		[Soit $\mathcal{F}$ une famille de vecteurs de $E$. Les propositions suivantes sont équivalentes :
 		\begin{propositions}
 			\item $\mathcal{F}$ est une base.
-			\item Tout vecteur de $E$ se décompose de manière unique dans $\mathcal{F}$ .
+			\item Tout vecteur de $E$ se décompose de manière unique dans $\mathcal{F}$.
 			\item $\mathcal{F}$ est génératrice minimale (au sens de l'inclusion)
 			\item $\mathcal{F}$ est libre maximale (au sens de l'inclusion)
 		\end{propositions}]
@@ -72,13 +72,13 @@
 		Par l'absurde, supposons que $\mathcal{F}$ n'est pas libre maximale c'est-à-dire qu'il existe une famille $\mathcal{F}'$ de vecteurs de $E$ telle que $\mathcal{F} \subsetneq \mathcal{F}'$ et $\mathcal{F}'$ est libre. \\
 		Alors $\exists x \in \mathcal{F}' : x \notin \mathcal{F}$. Or $\mathcal{F}$ est génératrice d'où :
 		\begin{equation*}
-			\exists (\lambda_i)_{i \in I} \in \K^{(I)} :
+			\exists \bdak :
 			x = \sum_{i \in I} \lambda_i \ldotp x_i
 			= 0_\K \ldotp x + \sum_{i \in I} \lambda_i \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
 		\end{equation*}
 		Puisque $x \in \mathcal{F}'$,
 		\begin{equation*}
-			\exists (\lambda_i)_{i \in I} \in \K^{(I)} :
+			\exists \bdak :
 			x = 1_\K \ldotp x + \sum_{i \in I} 0_\K \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
 		\end{equation*}
 		Donc $x$ s'écrit de deux manières différentes au moins comme combinaison linéaire de vecteurs $\mathcal{F}'$, ce qui contredit la liberté de $\mathcal{F}'$. \\
@@ -137,9 +137,13 @@
 	\end{question_kholle}
 
 
-	\begin{question_kholle}[{Soient $(E,F)$ deux $\mathbb{K}$-espaces vectoriels $f \in \mathcal{L}(E, F)$, $\mathcal{F}=(x_{i})_{i\in I}$ une base de $E$.
+	\begin{question_kholle}
+		[{Soient $(E,F)$ deux $\mathbb{K}$-espaces vectoriels $f \in \mathcal{L}_\K(E, F)$, $\mathcal{F}=(x_{i})_{i\in I}$ une base de $E$.
 
-		Alors $$\text{Vect} \underbrace{ f(\mathcal{F}) }_{ \left\{ x_{i} \mid i \in I \right\}  } = f(\text{Vect}\mathcal{ F})$$}]
+		Alors \begin{equation}
+			\text{Vect} \!\!\!\! \underbrace{ f(\mathcal{F}) }_{ \left\{ f(x_{i}) \mid i \in I \right\}  } = f(\Vect\mathcal{ F})
+		\end{equation}
+		}]
 		{L’image par une application linéaire d’une partie génératrice engendre l’image de l’application linéaire}
 		Soit $y \in \text{Vect}f(\mathcal{F})$
 		Alors $\exists (\lambda_{i})_{i \in I} \in \mathbb{K}^{(I)}$ tel que $y = \sum_{i \in I} \lambda_{i}f(x_{i})$
@@ -163,7 +167,7 @@
 	\begin{question_kholle}
 		[Nous donnerons les caractérisations au fur et à mesure de la démonstration.]
 		{Caractérisation inj/surj/bij d'une application linéaire par l'image d'une base de l'espace de départ.}
-		Soient donc pour la suite, $f \in \mathcal{L}(E,F)$, $\mathcal{B} = (e_i)_{i\in I}$ une base de $E$, $\mathcal{B}' = (e'_i)\ii$ une base de $F$,$\mathcal{F} = (x_i)_{i\in I}$ une famille libre de $E$ et $\mathcal{G} = (y_i)_{i \in I}$ une famille génératrice de $E$, ces objets servent ici de notation et seront utilisés indépendamment lors de la preuve. \\ \\
+		Soient donc pour la suite, $f \in \mathcal{L}_\K(E,F)$, $\mathcal{B} = (e_i)_{i\in I}$ une base de $E$, $\mathcal{B}' = (e'_i)\ii$ une base de $F$,$\mathcal{F} = (x_i)_{i\in I}$ une famille libre de $E$ et $\mathcal{G} = (y_i)_{i \in I}$ une famille génératrice de $E$, ces objets servent ici de notation et seront utilisés indépendamment lors de la preuve. \\ \\
 		Montrons que l'image d'une base $\mathcal{B}$ par une application injective est une famille libre $\mathcal{F}$. \\
 		Supposons $f$ injective, donc pour $\bdak$,
 		\[
@@ -218,7 +222,7 @@
 		\begin{itemize}
 			\item $(e_i)\ii$ est une base donc $(\lambda_i)\ii$ est presque nulle et unique donc $\sum\ii \lambda_i \ldotp y_i$ existe et unique.
 			Ainsi, $f$ est bien définie.
-			\item Soient $(\alpha, \beta, x, x') \in \K^2 \times E^2$ \fqs\!\!. Notons $(\lambda_i)\ii$ et $(\lambda'_i)\ii$ les coordonnées de $x$ et $x'$ dans $(e_i)\ii$.
+			\item Soient $(\alpha, \beta, x, x') \in \K^2 \times E^2$ \fqs. Notons $(\lambda_i)\ii$ et $(\lambda'_i)\ii$ les coordonnées de $x$ et $x'$ dans $(e_i)\ii$.
 			\begin{equation*}
 				\begin{aligned}
 					f( \alpha x + \beta x' )

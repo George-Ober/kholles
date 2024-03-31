@@ -8,7 +8,7 @@
 \DeclareOptionX{auteurs}{\renewcommand{\authors}{#1}}
 \DeclareOptionX{nb-sem}{\newcommand{\nbweek}{#1}}
 \DeclareOptionX*{\PackageWarning{kholles}{Unknown option ‘\CurrentOption’}} % others options
-\ExecuteOptionsX{auteurs={Kylian Boyet, George Ober, Hugo \textit{Vangi}lluwen, Jérémie Menard}} % default
+\ExecuteOptionsX{auteurs={Kylian Boyet, George Ober, Hugo \textit{Vangi}lluwen}} % default
 \ProcessOptionsX\relax
 
 % paquets de police
@@ -128,15 +128,15 @@
 \newcommand{\Ker}[1]{\ensuremath{\text{Ker }#1}}
 \newcommand{\Vect}{\ensuremath{\text{Vect}} }
 % flemmards
-\newcommand{\fq}{fixé quelconque }
-\newcommand{\fqs}{fixés quelconques }
+\newcommand{\fq}{fixé quelconque}
+\newcommand{\fqs}{fixés quelconques}
 \newcommand{\tq}{tel que }
 \newcommand{\tqs}{tels que }
 \newcommand{\sev}{sous-espace vectoriel }
 \newcommand{\sevs}{sous-espaces vectoriels }
 \newcommand{\ii}{_{i \in I}}
 \newcommand{\bda}{\ensuremath{\lambda} }
-\newcommand{\bdak}{\ensuremath{(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}} }
+\newcommand{\bdak}{\ensuremath{(\lambda_i)\ii \in \K^{(I)}} }
 
 % Le titre
 \ifdefined\nbweek

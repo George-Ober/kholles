@@ -44,7 +44,7 @@ Par exemple,
     \maketitle
 
     \begin{question_kholle}
-        [$E = m c^2$]
+        [$$E = m c^2$$]
         {Lien entre masse et énergie}
 
         Écoutez les équations !
@@ -54,6 +54,8 @@ Par exemple,
 
 \end{document}
 ```
+
+
 
 `kholles.sty` définit aussi des commandes sympas :
 
