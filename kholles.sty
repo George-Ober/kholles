@@ -11,11 +11,20 @@
 \ExecuteOptionsX{auteurs={Kylian Boyet, George Ober, Hugo \textit{Vangi}lluwen}} % default
 \ProcessOptionsX\relax
 
+% Le titre
+\ifdefined\nbweek
+	\title{Khôlles de Mathématiques - Semaine \nbweek}
+\else
+	\title{Khôlles de Mathématiques}
+\fi
+\author{\authors}
+
 % paquets de police
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[french]{babel}
 \RequirePackage{lmodern}
+\RequirePackage{relsize}
 
 % paquet de test
 \RequirePackage{etoolbox}
@@ -86,12 +95,16 @@
 	\end{enumerate}
 }
 
-% Symboles
+
+% ----- Symboles -----
+
 % Ensemble des solutions
 \newcommand{\Sol}{\ensuremath{\mathcal S} }
+
 % Parties réelle et imaginaire
-\renewcommand{\Re}{\ensuremath{\text{Re}} }
-\renewcommand{\Im}{\ensuremath{\text{Im}} }
+\renewcommand{\Re}{\text{Re} }
+\renewcommand{\Im}{\text{Im} }
+
 % Ensembles usuels
 \newcommand{\N}{\ensuremath{\mathbb N} }
 \newcommand{\Z}{\ensuremath{\mathbb Z} }
@@ -100,15 +113,20 @@
 \newcommand{\C}{\ensuremath{\mathbb C} }
 \newcommand{\K}{\ensuremath{\mathbb K} }
 \newcommand{\PRIME}{\ensuremath{\mathcal P} }
+
 % Relation binaire
 \newcommand{\Rel}{\ensuremath{\mathcal R} }
+
 % Limites et notations de Landau
 \newcommand{\arrowlim}[2]{\ \xrightarrow[\;#1 \to #2\;]{}\ }
 \newcommand{\textlim}[2]{\lim\limits_{\;#1 \to #2\;}\!\! }
+
 % Lettres utiles
 \newcommand{\eps}{\ensuremath{\varepsilon} }
 \newcommand{\ph}{\ensuremath{\varphi} }
-\newcommand{\e}{\ensuremath{\mathrm{e}} }
+\newcommand{\bda}{\ensuremath{\lambda} }
+\newcommand{\e}{\ensuremath{\mathrm e} }
+
 % Régularité
 \newcommand{\regularite}[4]{\ensuremath{
 	\mathcal{#1}^{#2}
@@ -124,24 +142,22 @@
 }}
 \newcommand{\Cont}[3]{\regularite{C}{#1}{#2}{#3}}
 \newcommand{\Deriv}[3]{\regularite{D}{#1}{#2}{#3}}
+
 % Espaces vectorielles
-\newcommand{\Ker}[1]{\ensuremath{\text{Ker }#1}}
 \newcommand{\Vect}{\ensuremath{\text{Vect}} }
+\newcommand{\sev}{sous-espace vectoriel }
+\newcommand{\sevs}{sous-espaces vectoriels }
+
+% Familles
+\newcommand{\bdak}{\ensuremath{(\lambda_i)\ii \in \K^{(I)}} }
+\newcommand{\famille}[3][i]{\ensuremath{\left(#2_#1\right)_{#1 \in #3}} }
+\newcommand{\fpnulle}[3][I]{\ensuremath{\left(#2_i\right)\ii[#1] \in #3^{(#1)}} }
+\newcommand{\ffinie}[4][i]{\ensuremath{\left(#2_#1\right)_{#1 \in [\![1;#3]\!]} \in #4^{#3}} }
+
 % flemmards
 \newcommand{\fq}{fixé quelconque}
 \newcommand{\fqs}{fixés quelconques}
 \newcommand{\tq}{tel que }
 \newcommand{\tqs}{tels que }
-\newcommand{\sev}{sous-espace vectoriel }
-\newcommand{\sevs}{sous-espaces vectoriels }
-\newcommand{\ii}{_{i \in I}}
-\newcommand{\bda}{\ensuremath{\lambda} }
-\newcommand{\bdak}{\ensuremath{(\lambda_i)\ii \in \K^{(I)}} }
-
-% Le titre
-\ifdefined\nbweek
-	\title{Khôlles de Mathématiques - Semaine \nbweek}
-\else
-	\title{Khôlles de Mathématiques}
-\fi
-\author{\authors}
+\newcommand{\ssi}{si et seulement si}
+\newcommand{\ii}[1][I]{_{i \in #1}}

@@ -55,29 +55,29 @@ Par exemple,
 \end{document}
 ```
 
-
-
 `kholles.sty` définit aussi des commandes sympas :
 
-- L'environnement propositions pour lister des propositions (bah oui) avec \item
+- **L'environnement propositions** pour lister des propositions (bah oui) avec \item
 
-- **Les ensembles usuels** \N, \Z, \Q, R, \C, \K, \PRIME
+- Les **ensembles usuels** \N, \Z, \Q, R, \C, \K, \PRIME
 
-- L'ensemble des solutions \Sol
+- L'**ensemble des solutions** \Sol
 
-- Les parties réelle et imaginaire \Re et \Im
+- Les **parties réelle et imaginaire** \Re et \Im
 
-- Les relations binaires \Rel
+- Les **relations binaires** \Rel
 
-- Les limites \arrowlim{varaible}{limite}, \textlim{variable}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
+- Les **limites** \arrowlim{varaible}{limite}, \textlim{variable}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
 
-- Les lettres utiles \eps pour \varepsilon, \ph pour \varphi et \e pour la constante d'Euler
+- Les **lettres utiles** \eps pour \varepsilon, \ph pour \varphi, \bda pour \lambda, et \e pour la constante d'Euler
 
-- Les ensembles pour la régularité des fonctions \Cont{nombre ou l'infini}{départ}{arrivée} et \Deriv (départ et arrivée sont facultatif, par exemple \Cont{\infty}{}{} ou \Deriv{1}{I}{})
+- Les **ensembles pour la régularité des fonctions** \Cont{nombre ou l'infini}{départ}{arrivée} et \Deriv (départ et arrivée sont facultatif, par exemple \Cont{\infty}{}{} ou \Deriv{1}{I}{})
 
-- Les espaces vectoriels \Vect pour l'accronyme de "sous-espace vectoriel engendré par", \Ker pour noyau
+- Les **espaces vectoriels** \Vect pour l'accronyme de "sous-espace vectoriel engendré par", \ker pour noyau, \sev pour 'sous-espace vectoriel', \sevs au pluriel
 
-- Pour les flemmards, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que', \sev pour 'sous-espace vectoriel', \sevs au pluriel, \ii pour `_{i \in I}`,(\bda pour \lambda), \bdak pour `(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}}`
+- Les **familles** quelconques \famille[variable muette]{nom de la famille}{ensemble indexant} ( \famille[k]{\sigma}{[\\![0;n]\\!]} por les fonctions symétriques élémentaires ), presque nulles \fpnulle[ensemble indexant (facultatif)]{nom de la famille}{ensemble de base} (par exemple \famille{\lambda}{E} pour une famille de vecteurs de E) et finies \ffinie[variable muette]{nom de la famille}{nombre d'éléments}{ensemble de base}
+
+- Pour les flemmards, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que', \ssi pour 'si et seulement si', \ii pour `_{i \in I}`, \bdak pour `(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}}`
 
 Et voilà !!!
 
