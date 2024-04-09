@@ -1,0 +1,108 @@
+\documentclass{article}
+
+\date{9 Avril 2024}
+\usepackage[nb-sem=23, auteurs={Hugo Vangilluwen}]{../kholles}
+
+\begin{document}
+	\maketitle
+	
+	Pour cette semaine, \K désigne un corps commutatif, $E$ et $F$ des \K\!\!-espaces vectoriels, $E'$ et $F'$ des sous-espaces vectoriels respectivement de $E$ et de $F$.
+	
+	Nous rappelons que $\dim \{0_E\} = 0$ et que $\{0_E\} = \Vect \emptyset$.
+	
+	\begin{question_kholle}
+		[Pour tout \sev de $E$, il existe un \sev complémentaire.]
+		{Existence d'un supplémentaire en base finie}
+		
+		~\newline
+		\textit{Théorème de la base incomplète} (admis ici mais démontré dans le cours) : pour toute famille libre de E, nous pouvons y adjoindre une partie d'une famille quelconque génératrice de $E$ (généralement une base, la base canonique si elle a un sens) pour en faire une base de $E$. \\
+		
+		Posons $n = \dim E$ et $p = \dim E'$. Ainsi, il existe $(e_1, \ldots, e_p)$ base de $E'$. \\
+		Appliquons le théorème de la base incomplète pour cette famille. Il existe $(e_{p+1}, \ldots, e_n)$ $n-p$ vecteurs de E \tq $(e_1, \ldots, e_n)$ est un base de $E$. \\
+		Posons $E'' = \Vect \{ e_{p+1}, \ldots, e_n \}$ et vérifions qu'il est complémentaire à $E'$.
+		
+		\begin{itemize}[label=$*$]
+			\item Par définition de \Vect\!\!, $E''$ est un \sev.
+			\item Trivialement, $E' + E'' = E$.
+			\item $\{0_E\} \subset E' \cap E''$ car $E'$ et $E''$ sont deux \sevs.
+			\item Soit $x \in E' \cap E''$. \\
+			$X \in E' \implies \exists (\lambda_1, \ldots, \lambda_p) \in \K^p : x = \sum_{i=1}^{p} \lambda_i e_i$ \\
+			$X \in E'' \implies \exists (\lambda_{p+1}, \ldots, \lambda_n) \in \K^{n-p} : x = \sum_{i=p+1}^{n} \lambda_i e_i$ \\
+			Par différence, $\sum_{i=1}^{p} \lambda_i e_i + \sum_{i=p+1}^{n} \left(-\lambda_i\right) e_i = 0_E$. \\
+			Or $\famille{e}{\lient 1 ; n \rient}$ est une base de $E$ donc $\forall i \in \lient 1 ; p \rient, \lambda_i = 0_\K$. \\
+			donc $x = 0_E$.
+			Ainsi, $E' \cap E'' \subset \{0_E\}$.
+		\end{itemize}
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[$\mathcal{L}_\K(E,F)$ est dimension finie et
+		\begin{equation}
+			\dim \mathcal{L}_\K(E,F) = \dim E \times \dim F
+		\end{equation}]
+		{Dimension de $\mathcal{L}_\K(E,F)$}
+		
+		Notons $n = \dim E$ et $\famille{e}{\lient 1 ; n \rient}$ une base de $E$. Considérons
+		\begin{equation*}
+			\varphi
+			\left| \begin{matrix}
+				\mathcal{L}_\K(E,F) &\rightarrow& F^n \\
+				f &\mapsto& \underbrace{\left(f(e_i))\right)_{1 \leqslant i \leqslant n}}_{\text{évaluation de f en la base choisie}}
+			\end{matrix} \right.
+		\end{equation*}
+		
+		\begin{itemize}[label=$*$]
+			\item $\varphi$ est linéaire.
+			\item $\varphi$ est bijective d'après le théorème de création des applications linéaires qui établit que pour toute famille de $n$ vecteurs de $F$, il existe une unique application linéaire de $E$ dans $F$ envoyant la base $\famille{e}{\lient 1 ; n \rient}$ sur cette famille.
+		\end{itemize}
+		
+		Ainsi, $\mathcal{L}_\K(E,F)$ et $F^n$ sont isomorphes. $F^n$ est de dimension finie, ce qui conclut.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Supposons $E$ de dimension finie. \\
+		Soient $E_1$ et $E_2$ deux \sevs. Alors $E_1 + E_2$ est de dimension finie et
+		\begin{equation}
+			\dim E_1 + E_2 = \dim E_1 + \dim E_2 - \dim E_1 \cap E_2
+		\end{equation}]
+		{Formule de Grassman}
+		
+		Commençons par prouver une version simplifier de la somme directe. Supposons que $E_1$ et $E_2$ sont en somme directe. \\
+		Fixons $\mathcal{B}_1$ et $\mathcal{B}_2$ deux bases de $E_1$ et $E_2$.
+		
+		Alors $\left(\mathcal{B}_1, \mathcal{B}_2\right)$ engendre $E_1 + E_2$. Or $\left(\mathcal{B}_1, \mathcal{B}_2\right)$ est finie donc $E_1 + E_2$ est de dimension finie. \\
+		Posons $n = \dim E_1$ et $p = \dim E_2$. Notons $\famille{e}{\lient 1 ; n \rient}$ la base $\mathcal{B}_1$ et $\famille{f}{\lient 1 ; n \rient}$ la base $\mathcal{B}_2$. \\
+		Soient $\lambda_1, \ldots, \lambda_n, \mu_1, \ldots, \mu_p) \in \K^{n+p}$ \fqs \fqs \ $\displaystyle \sum_{i=1}^{n} \lambda_i e_i + \sum_{i=1}^{p} \mu_i f_i = 0_E$. \\
+		Alors $\sum_{i=1}^{n} \lambda_i e_i = \sum_{i=1}^{p} (-\mu_i) f_i$.
+		Or $\sum_{i=1}^{n} \lambda_i e_i \in E_1$ et $\sum_{i=1}^{n} (-\mu_i) e_i \in E_2$ donc $\sum_{i=1}^{n} \lambda_i e_i \in E_1 \cap E_2 = \{0_E\}$.
+		Donc $\lambda = \tilde{0}$. De même, $\mu = \tilde{0}$. \\
+		Donc $\left(\mathcal{B}_1, \mathcal{B}_2\right)$ est libre.
+		
+		Ainsi, $\left(\mathcal{B}_1, \mathcal{B}_2\right)$ est une base de $E_1 \oplus E_2$.
+		Donc $ \dim E_1 \oplus E_2 = |(\mathcal{B}_1, \mathcal{B}_2)| = |\mathcal{B}_1| + |\mathcal{B}_2| = \dim E_1 + \dim E_2$. \\
+		
+		Enlevons l'hypothèse que $E_1$ et $E_2$ sont en somme directe. \\
+		$E_1 \cap E_2$ est un \sev de $E_2$ et $E_2$ est un \K-espace vectoriel de dimension finie donc il existe $E_2'$ \sev de $E_2$ \tq $E_2 = (E1 \cap E_2) \oplus E_2'$. \\
+		Montrons que $E_1 + E_2 = E_1 \oplus E_2'$
+		\begin{itemize}[label=$*$]
+			\item $E_1$ et $E_2'$ sont en somme directe. \\
+			\begin{equation*}
+				\begin{aligned}
+					E_1 \cap E_2' &= E_1 \cap \left( E_2' \cap E_2 \right) \text{ car } E_2' \subset E_2 \\
+					&= \left( E_1 \cap E_2 \right) \cap E_2' \text{ car } \cap \text{ est associative et commutative} \\
+					&= {0_E} \text{ car $E_1$ et $E_2$ sont en somme directe et $E_2'$ sev}
+				\end{aligned}
+			\end{equation*}
+			\item $E_1 + E_2 \subset E_1 + E_2'$ \\
+			Soit $x \in E_1 + E_2$.
+			Alors $\exists (x_1, x_2) \in E_1 \times E_2 : x = x_1 + x_2$. \\
+			Or $x_2 \in E_2 = \left( E_1 \cap E_2 \right) \oplus E_2'$ donc $\exists (x_{21}, x_2') \times E_2' : x_2 = x_{21} + x_2'$. \\
+			D'où $x = \underbrace{x_1 + x_{21}}_{\in E_1} + \underbrace{x_2'}_{\in E_2} \in E_1 + E_2$.
+			\item Trivialement, $E_1 + E_2' \subset E_1 + E_2$ (car $E_2' \subset E_2$). 
+		\end{itemize}
+		
+		Ainsi, $E_1$ et $E_2'$ (car sev) étant de dimension finie, $\dim E_1 \oplus E_2' = \dim E_1 + \dim E_2'$. \\
+		De plus, $\dim E_2 = \dim (E_1 \cap E_2) \oplus E_2' = \dim E_1 \cap E_2 + \dim E_2'$. \\
+		Donc $\dim E_1 + E_2 = \dim E_1 + \dim E_2 - \dim E_1 \cap E_2$.
+	\end{question_kholle}
+\end{document}
