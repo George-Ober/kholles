@@ -109,13 +109,20 @@
 	\begin{question_kholle}
 		[Soit $f \in \mathcal{L}_{\mathbb{K}}(E, F)$.
 		\begin{propositions}
-			\item Si $E$ est de dimension finie $$f \text{ injective } \iff \mathrm{rg} f = \dim E$$
-			\item Si $F$ est de dimension finie$$f \text{ surjective } \iff \mathrm{rg} f = \dim F$$
+			\item Si $E$ est de dimension finie 
+			\begin{equation}
+				f \text{ injective } \iff \mathrm{rg} f = \dim E
+			\end{equation}
+			\item Si $F$ est de dimension finie
+			\begin{equation}
+				f \text{ surjective } \iff \mathrm{rg} f = \dim F
+			\end{equation}
 			\item Si $E$ et $F$ sont de même dimension finie $$f \text{ bijective } \iff f \text{ injective } \iff f \text{ sujective }$$
+			C'est \textit{l'accident de la dimension finie} !
 		\end{propositions}]
 		{Caractérisation injectivité/bijectivité/surjectivité par le rang}
 		
-		~\newline
+		~
 		\begin{propositions}
 			\item Supposons $E$ de dimension finie, fixons $(e_{1}, \dots, e_{n})$ une base de $E$ (avec $n = \dim E$)
 			Supposons $f$ injective :
@@ -146,6 +153,25 @@
 			$$
 			D'où la bijectivité.
 		\end{propositions}
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Soit $G$ un \K-espace vectoriel et $(u,v) \in \mathcal{L}_\K(E, F) \times \mathcal{L}_\K(F, G)$. Si $E$ et $F$ sont de dimension finie alors
+		\begin{equation}
+			\rg u = \rg v \circ u + \dim \ker v \cap \Im u
+		\end{equation}]
+		{Rang d'une composition d'applications linéaires}
+		
+		Considérons que $E$ et $F$ sont de dimension finie. Soient de tels objets. \\
+		Appliquons le théorème du rang à $v_{|\Im u}$ ce qui est autorisé puisque $v_{|\Im u}$ est une application linéaire et $\Im u$ est un \K-ev de dimension finie (car sev de $F$).
+		\begin{equation*}
+			\dim \Im u = \rg v_{|\Im u} + \dim \ker v_{|\Im u}
+		\end{equation*}
+		$\ker v_{|\Im u} = \left\{ y \in \Im u \;|\; v(y) = 0_G \right\} = \left\{ y \in \Im u \;|\; y \in \ker v \right\} = \Im u \cap \ker v$ \\
+		$\Im v_{|\Im u} = v(Im u) = \Im v \circ u$ (cette égalité est vraie pour deux fonctions de $E$ dans $F$ et de $F$ dans $G$ quelconques, pas forcément linéaires.) \\
+		Donc \begin{equation*}
+			\rg f = \rg v \circ u + \dim \ker v \cap \Im u
+		\end{equation*}
 	\end{question_kholle}
 
 \end{document}
