@@ -1,0 +1,50 @@
+\documentclass{article}
+
+\date{22 Avril 2024}
+\usepackage[nb-sem=24, auteurs={Hugo Vangilluwen, George Ober}]{../kholles}
+
+\begin{document}
+	\maketitle
+
+	
+%Question 4
+	\begin{question_kholle}[{Soient $E, F$ deux $\mathbb{K}$ espaces vectoriels, $f \in \mathcal{L}_{\mathbb{K}}(E, F)$\\
+1. Si $E$ est de dimension finie $$f \text{ injective } \iff \mathrm{rg} f = \dim E$$
+2. Si $F$ est de dimension finie$$f \text{ surjective } \iff \mathrm{rg} f = \dim F$$
+3. Si $E$ et $F$ sont de même dimension finie $$f \text{ bijective } \iff f \text{ injective } \iff f \text{ sujective }$$}]
+		{Caractérisation injectivité/bijectivité/surjectivité par le rang}
+
+(i)
+Supposons $E$ de dimension finie, fixons $(e_{1}, \dots, e_{n})$ une base de $E$ (avec $n = \dim E$)
+Supposons $f$ injective :
+$$
+\mathrm{rg} f = \dim \mathrm{Im} f = \dim \text{Vect} \left\{ f(e_{1}) \dots f(e_{n}) \right\}  
+$$
+
+Donc $(f(e_{1}), \dots f(e_{n}))$ est génératrice.
+$(f(e_{1}), \dots f(e_{n}))$ est de plus libre car $f$ est injective.
+Donc c'est une base, donc
+$$
+\dim \text{Vect} \left\{ f(e_{1}) \dots f(e_{n}) \right\}  =n = \dim E
+$$
+donc $\mathrm{rg} f = \dim E$.
+Réciproquement, supposons que $\mathrm{rg} f = \dim E = n$.
+Alors $$n = \mathrm{rg} f = \dim \text{Vect} \left\{ f(e_{1}),\dots,f(e_{n}) \right\}$$
+Donc $(f(e_{1}), \dots f(e_{n}))$ est génératrice de cardinal $n$, égal à la dimension du sous-espace vectoriel engendré. C'est donc une base du sous-espace vectoriel engendré.
+Donc $(f(e_{1}),\dots , f(e_{n}))$ est libre, donc $f$ est injective.
+
+(ii)
+Supposons $F$ de dimension finie
+$$
+f \text{ surjective } \iff \mathrm{Im} f = F \iff \dim \mathrm{Im} f = \dim F
+$$
+
+(iii)
+Supposons $E$ et $F$ de même dimension finie
+$$
+f \text{ injective } \iff \mathrm{rg} f = \dim E \iff \mathrm{rg} f = \dim F \iff f \text{ surjective}
+$$
+D'où la bijectivité.
+	\end{question_kholle}
+
+\end{document}
