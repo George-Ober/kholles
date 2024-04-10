@@ -1,7 +1,7 @@
 \documentclass{article}
 
-\date{9 Avril 2024}
-\usepackage[nb-sem=23, auteurs={Hugo Vangilluwen}]{../kholles}
+\date{22 Avril 2024}
+\usepackage[nb-sem=24, auteurs={Hugo Vangilluwen, George Ober}]{../kholles}
 
 \begin{document}
 	\maketitle
@@ -105,4 +105,47 @@
 		De plus, $\dim E_2 = \dim (E_1 \cap E_2) \oplus E_2' = \dim E_1 \cap E_2 + \dim E_2'$. \\
 		Donc $\dim E_1 + E_2 = \dim E_1 + \dim E_2 - \dim E_1 \cap E_2$.
 	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soit $f \in \mathcal{L}_{\mathbb{K}}(E, F)$.
+		\begin{propositions}
+			\item Si $E$ est de dimension finie $$f \text{ injective } \iff \mathrm{rg} f = \dim E$$
+			\item Si $F$ est de dimension finie$$f \text{ surjective } \iff \mathrm{rg} f = \dim F$$
+			\item Si $E$ et $F$ sont de même dimension finie $$f \text{ bijective } \iff f \text{ injective } \iff f \text{ sujective }$$
+		\end{propositions}]
+		{Caractérisation injectivité/bijectivité/surjectivité par le rang}
+		
+		~\newline
+		\begin{propositions}
+			\item Supposons $E$ de dimension finie, fixons $(e_{1}, \dots, e_{n})$ une base de $E$ (avec $n = \dim E$)
+			Supposons $f$ injective :
+			$$
+			\mathrm{rg} f = \dim \mathrm{Im} f = \dim \text{Vect} \left\{ f(e_{1}) \dots f(e_{n}) \right\}  
+			$$
+			
+			Donc $(f(e_{1}), \dots f(e_{n}))$ est génératrice.
+			$(f(e_{1}), \dots f(e_{n}))$ est de plus libre car $f$ est injective.
+			Donc c'est une base, donc
+			$$
+			\dim \text{Vect} \left\{ f(e_{1}) \dots f(e_{n}) \right\}  =n = \dim E
+			$$
+			donc $\mathrm{rg} f = \dim E$.
+			Réciproquement, supposons que $\mathrm{rg} f = \dim E = n$.
+			Alors $$n = \mathrm{rg} f = \dim \text{Vect} \left\{ f(e_{1}),\dots,f(e_{n}) \right\}$$
+			Donc $(f(e_{1}), \dots f(e_{n}))$ est génératrice de cardinal $n$, égal à la dimension du sous-espace vectoriel engendré. C'est donc une base du sous-espace vectoriel engendré.
+			Donc $(f(e_{1}),\dots , f(e_{n}))$ est libre, donc $f$ est injective.
+			
+			\item Supposons $F$ de dimension finie
+			$$
+			f \text{ surjective } \iff \mathrm{Im} f = F \iff \dim \mathrm{Im} f = \dim F
+			$$
+			
+			\item Supposons $E$ et $F$ de même dimension finie
+			$$
+			f \text{ injective } \iff \mathrm{rg} f = \dim E \iff \mathrm{rg} f = \dim F \iff f \text{ surjective}
+			$$
+			D'où la bijectivité.
+		\end{propositions}
+	\end{question_kholle}
+
 \end{document}
