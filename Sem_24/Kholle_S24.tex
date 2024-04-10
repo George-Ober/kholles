@@ -12,7 +12,7 @@
 	
 	\begin{question_kholle}
 		[Pour tout \sev de $E$, il existe un \sev complémentaire.]
-		{Existence d'un supplémentaire en base finie}
+		{Existence d'un supplémentaire en dimension finie}
 		
 		~\newline
 		\textit{Théorème de la base incomplète} (admis ici mais démontré dans le cours) : pour toute famille libre de E, nous pouvons y adjoindre une partie d'une famille quelconque génératrice de $E$ (généralement une base, la base canonique si elle a un sens) pour en faire une base de $E$. \\
@@ -156,6 +156,34 @@
 	\end{question_kholle}
 	
 	\begin{question_kholle}
+		[Si $E$ est de dimension finie alors pour toute $f \in \mathcal{L}_\K(E, F)$ application linéaire,
+		\begin{equation}
+			\dim E = \rg f + \dim \ker f
+		\end{equation}]
+		{Théorème du rang}
+		
+		Démontrons d'abord le lemme suivant.
+		Soient $f \in \mathcal{L}_\K(E, F)$ et $H$ un supplémentaire de $\ker f$ dans $E$.
+		Alors $f_{|H}^{|\Im f}$ est un isomorphisme de $H$ sur $\Im f$. \\
+		Notons $\hat{f}$ un telle restriction et corestriction. Cette application est bien définie (car $f(H) \subset \Im f$) et $\hat{f} \in \mathcal{L}_\K(H, \Im f)$. \\
+		$\ker \hat{f} = \{ x \in H \;|\; \hat{f}(x) = 0_E \} = \{ x \in H | x \in \ker f \} = H \cap \ker f = \{0_E\}$  car $H$ et $\ker f$ sont complémentaire.
+		Donc $\hat{f}$ est injective. \\
+		Soit $y \in \Im f$. D'où $\exists x \in E: y = f(x)$. \\
+		Décomposons $x$ dans $E = H \oplus \ker f$, $\exists (x_H, x_k) \in H \times \ker f : x = x_H + x_k$. \\
+		Ainsi, $y = f(x) = f(x_H) + f(x_k)= f(x_H)$ car $x_k \in \ker f$.
+		Donc $y$ admet un antécédent par $\hat{f}$ (qui est $x_H$). \\
+		Donc $\hat{f}$ est surjective. \\
+		Donc $f_{|H}^{|\Im f}$ est un isomorphisme de $H$ sur $\Im f$.
+		
+		Supposons maintenant que $E$ est de dimension finie.
+		Soit $f \in \mathcal{L}_\K(E, F)$. \\
+		D'après le théorème d'existence d'un supplémentaire en dimension finie, $\ker f$, étant un \sev de $E$, admet un supplémentaire $H$ c'est-à-dire $E = H + \oplus \ker f$. \\
+		En prenant la dimension sur cette égalité, $\dim E = \dim \ker f + \dim H$.
+		D'après le lemme précédent, $\dim H = \dim \Im f = \rg f$. \\
+		D'où $\dim E = \rg f + \dim \ker f$.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
 		[Soit $G$ un \K-espace vectoriel et $(u,v) \in \mathcal{L}_\K(E, F) \times \mathcal{L}_\K(F, G)$. Si $E$ et $F$ sont de dimension finie alors
 		\begin{equation}
 			\rg u = \rg v \circ u + \dim \ker v \cap \Im u
@@ -173,5 +201,4 @@
 			\rg f = \rg v \circ u + \dim \ker v \cap \Im u
 		\end{equation*}
 	\end{question_kholle}
-
 \end{document}
