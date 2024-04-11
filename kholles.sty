@@ -10,6 +10,7 @@
 \DeclareOptionX*{\PackageWarning{kholles}{Unknown option ‘\CurrentOption’}} % others options
 \ExecuteOptionsX{auteurs={Kylian Boyet, George Ober, Hugo \textit{Vangi}lluwen}} % default
 \ProcessOptionsX\relax
+\setlength{\parindent}{0pt}
 
 % Le titre
 \ifdefined\nbweek
@@ -71,6 +72,14 @@
 \RequirePackage{pgfplots}
 	\pgfplotsset{compat=1.15,width=10cm}
 
+%À faire : trouver une manière de pouvoir choisir manuellement le chiffre de la question de kholle
+%J'ai ajouté ici une commande qui permet de créer une section avec son propre numéro avec  \DIV[42]{section}{Le titre}
+%Mais j'avoue que je ne connais pas bien la syntaxe pour la rajouter comme argument optionnel de l'environnement "question_kholle"
+
+\NewDocumentCommand{\DIV}{om}{%
+  \IfValueT{#1}{\setcounter{#2}{\numexpr#1-1\relax}}%
+  \csname #2\endcsname
+}
 
 % environnement des questions de khôlles
 \newenvironment{question_kholle}[2][]
@@ -148,7 +157,7 @@
 \newcommand{\Cont}[3]{\regularite{C}{#1}{#2}{#3}}
 \newcommand{\Deriv}[3]{\regularite{D}{#1}{#2}{#3}}
 
-% Espaces vectorielles
+% Espaces vectoriels
 \newcommand{\Vect}{\ensuremath{\text{Vect }}}
 \newcommand{\sev}{sous-espace vectoriel }
 \newcommand{\sevs}{sous-espaces vectoriels }
