@@ -177,7 +177,7 @@
 		
 		Supposons maintenant que $E$ est de dimension finie.
 		Soit $f \in \mathcal{L}_\K(E, F)$. \\
-		D'après le théorème d'existence d'un supplémentaire en dimension finie, $\ker f$, étant un \sev de $E$, admet un supplémentaire $H$ c'est-à-dire $E = H + \oplus \ker f$. \\
+		D'après le théorème d'existence d'un supplémentaire en dimension finie, $\ker f$, étant un \sev de $E$, admet un supplémentaire $H$ c'est-à-dire $E = H  \oplus \ker f$. \\
 		En prenant la dimension sur cette égalité, $\dim E = \dim \ker f + \dim H$.
 		D'après le lemme précédent, $\dim H = \dim \Im f = \rg f$. \\
 		D'où $\dim E = \rg f + \dim \ker f$.
@@ -201,4 +201,81 @@
 			\rg f = \rg v \circ u + \dim \ker v \cap \Im u
 		\end{equation*}
 	\end{question_kholle}
+% la q6 ne me dit absolument rien
+
+\begin{question_kholle}[{
+Soient $E$ un $\mathbb{K}$-espace vectoriel, et $\varphi \in E^{*}$ une forme linéaire \emph{non nulle}. Soit $F$ un sous-espace vectoriel de $E$ de dimension finie $p \in \mathbb{N}$, alors
+$$\dim_{\mathbb{K}}F \cap \ker \varphi = \left\{ \begin{array}{ll} p  & \text{ si }F \subset \ker \varphi \\ p-1  & \text{ sinon}\end{array}\right.$$
+En particulier, on a toujours $\dim_{\mathbb{K}}F \cap \ker F \geqslant p-1$}]{Lemme sur les formes linéaires non nulles}
+
+Si $F \subset \ker\varphi$, $F \cap \ker \varphi = F$ donc $\dim F \cap \ker \varphi = p$
+
+Sinon, il existe $a \in F$ tel que $a \not\in \ker \varphi$. Ainsi,
+$$
+\text{Vect}\left\{ a \right\}  \oplus \ker \varphi = E
+$$
+Montrons alors que $F = \text{Vect} \left\{ a \right\} \oplus (F \cap \ker \varphi)$.
+$$\text{Vect} \left\{ a \right\} \cap (F \cap \ker \varphi) = \underbrace{ \text{Vect} \left\{ a \right\} \cap F }_{ =\text{Vect}\left\{ a \right\}  } \cap \ker \varphi = \text{Vect}\left\{ a \right\}  \cap \ker \varphi = \left\{ 0_{E} \right\} $$ car les deux espaces sont supplémentaires donc en somme directe.
+
+Donc $\text{Vect} \left\{ a \right\} \oplus (F \cap \ker \varphi)$.
+
+Par double inclusion, montrons que $\text{Vect} \left\{ a \right\} + (F \cap \ker \varphi) = F$
+
+Pour l'inclusion directe, remarquons que $a \in F$ donc $\text{Vect}\left\{ a \right\} \subset F$ or $F \cap \ker \varphi \subset F$ donc leur somme est bien incluse $\text{Vect} \left\{ a \right\} + (F \cap \ker \varphi) \subset F$
+Réciproquement, soit $x \in F$ fq.
+Puisque $\text{Vect} \left\{ a \right\} \oplus \ker \varphi = E$
+$$
+\exists (\lambda, x_{K}) \in \mathbb{K} \times \ker \varphi : x = \lambda .a+x_{K}
+$$
+De plus, $x_{K} = x - \lambda.a \in F$ car $(a, x) \in F^{2}$ donc
+$$
+x = \underbrace{ \lambda . a }_{ \in \text{Vect} \left\{ a \right\}  } + \underbrace{ x_{K} }_{ \in F \cap \ker \varphi } \in \text{Vect} \left\{ a \right\} + (F \cap \ker \varphi)
+$$
+D'où l'inclusion réciproque.
+
+donc $F = \text{Vect} \left\{ a \right\} \oplus (F \cap \ker \varphi)$
+en passant à la dimension :
+$$
+\underbrace{ \dim F }_{= p } = \underbrace{ \dim \text{Vect} \left\{ a \right\} }_{ =1 } + \dim (F \cap \ker \varphi)
+$$
+Donc $\dim (F \cap \ker \varphi) = p - 1$.
+
+
+
+Appliquons ce lemme pour la démonstration de la propriété suivante
+
+\fbox{\begin{minipage}{\textwidth}
+Soit $E$ un $\mathbb{K}$ espace vectoriel de dimension $n \in \mathbb{N}^{*}$
+
+Soient $m \in \mathbb{N}^{*}$ et $(H_{i})_{n \in [ \! [ 1,m ] \!]}$, $m$ hyperplans de $E$.
+
+Alors $$\dim_{\mathbb{K}} \bigcap_{i=1}^{m}H_{i} \geqslant n-m$$
+\end{minipage}}
+
+Considérons la propriété $\mathcal{P}(\cdot)$ définie pour tout $m \in \mathbb{N}^{*}$ par.
+$$
+\mathcal{P}(m) : « \text{ pour tous } H_{1},\dots, H_{m} \text{ hyperplans de } E, \dim_{\mathbb{K}} \bigcap_{i=1}^{m}H_{i} \geqslant n-m »
+$$
+Soit $H_{1}$ un hyperplan de $E$ fixé quelconque. D'après la caractérisation des hyperplans en dimension finie, 
+$$
+\dim_{\mathbb{K}} \bigcap_{i=1}^{1}H_{i} = \dim_{\mathbb{K}}H_{1}= n-1 \geqslant n-1
+$$
+Donc $\mathcal{P}(1)$ est vraie.
+
+Soit $m \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(m)$ est vraie.
+Soient $H_{1},\dots,H_{m}$ et $H_{m+1}$ $m+1$ hyperplans de $E$.
+D'après la définition d'un hyperplan, il existe $\varphi \in E ^{*}$ non nulle telle que $H_{m+1} = \ker \varphi$.
+
+Appliquons donc le lemme précédent pour $F \leftarrow \bigcap_{i=1}^{m}H_{i}$ (autorisé car c'est un sous espace de l'espace $E$, qui est de dimension finie, donc ses sous espaces les sont aussi) et $\varphi \leftarrow \varphi$ (autorisé car c'est une forme linéaire non nulle) :
+
+$$
+\dim_{\mathbb{K}} \underbrace{ \left( \bigcap_{i=1}^{m}H_{i} \right) \cap \ker \varphi  }_{ =\left( \bigcap_{i=1}^{m}H_{i}  \right)\cap H_{m+1} }\geqslant \dim_{\mathbb{K}} \left( \bigcap_{i=1}^{m}H_{i} \right) - 1 \underbrace{ \geqslant n - m - 1 }_{ \text{ en appliquant }\mathcal{P(m)} \text{ pour } H_{1},\dots,H_{m} }
+$$
+
+Donc par associativité de l'intersection, $\dim_{\mathbb{K}} \bigcap_{i=1}^{m+1}H_{i} \geqslant n - (m+1)$
+
+Donc $\mathcal{P}(m+1)$ est vraie.
+
+\end{question_kholle}
+
 \end{document}
