@@ -80,6 +80,10 @@
   \csname #2\endcsname
 }
 
+\newcommand{\setnbquestion}[1]{
+	\setcounter{section}{\numexpr#1-1\relax}
+}
+
 % environnement des questions de khôlles
 \newenvironment{question_kholle}[2][]
 {

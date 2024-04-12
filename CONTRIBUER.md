@@ -81,6 +81,8 @@ Par exemple,
 
 - Pour les flemmards, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que', \ssi pour 'si et seulement si', \ii pour `_{i \in I}`, \bdak pour `(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}}`
 
+- Si ils manquent des questions, la command \setnbquestion{} permet de fixer manuellement le numéro de la question
+
 Et voilà !!!
 
 # Compilation

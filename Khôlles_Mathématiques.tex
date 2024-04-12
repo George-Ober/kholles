@@ -20,6 +20,9 @@
 {
 	\end{proof}
 }
+\renewcommand{\setnbquestion}[1]{
+	\setcounter{subsection}{#1}
+}
 
 \begin{document}
 	\maketitle
@@ -2630,12 +2633,15 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	
 \pagebreak\section{Semaine 17}
 
+	\setnbquestion{4}
 	 \begin{question_kholle}
 	    [Soient $a,b\in \N ^*$ et $c\in \Z$. Il existe des entiers $x,y\in \Z$ tels que $ax + yb = c$ si et seulement si $c$ est multiple du pgcd de $a$ et $b$.]
 	    {Théorème de Bézout}
 	    Soient $a,b\in \N^*$. On suppose l'algorithme d'Euclide réalisé pour $a,b$, ainsi à la fin de ce dernier on a un entier naturel $r_n$ tel que $r_n = a\wedge b$. Comme l'algorithme est terminé, on peut remonter chaque ligne de proche en proche, on aurait, à titre d'exemple, pour une première itération, $r_n =r_{n-2} - q_{n} \cdot r_{n-1}$. En réalisant toutes les étapes nécessaires, on obtient une relation entre $r_n$ et $a,b$, cette relation s'écrit : $$\exists \ (x_0, y_0)\in (\Z ^*)^2 \ : \ a\wedge b = r_n = ax_0 + y_0b.$$
 	    Si $c$ est un multiple de $a\wedge b $, alors il existe $k\in \Z^*$ tel que $c = k(a\wedge b)$, donc en multipliant le résultat montré au dessus par $k$, on a le sens indirect. Si pour $c\in \Z$, il existe des entiers $x,y\in \Z$ tels que $ax + yb = c$, alors le pgcd de $a$ et $b$ divise le membre de gauche et donc par égalite le membre de droite aussi donc $c$ est multiple de $a\wedge b$, ce qui suffit. 
 	\end{question_kholle}
+	
+	\setnbquestion{6}
 	\begin{question_kholle}
 	    [Soient $a,b,c$ trois entiers naturels non nuls. Si $c$ est premier avec $a$ et divise le produit $ab$, alors il divise $b$.]
 	    {Théorème de Gauss}
@@ -2644,6 +2650,8 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	    $$\exists \ (u,v) \in (\N ^*)^2 \ : \ au + vc = 1 \ \implies \ abu + vbc = b, $$
 	    or $c$ divise $ab$ et lui-même donc aussi le membre de gauche donc par égalité, le membre droite, c'est le théorème.
 	\end{question_kholle}
+	
+	\setnbquestion{8}
 	\begin{question_kholle}
 	    [Soient $a,b,c\in \Z$. Résoudre l'équation $$ax + yb = c,$$ d'inconnues $x$ et $y$ dans $\Z$.]
 	    {Résoudre une équation du type $ax + yb = c$}
