@@ -10,7 +10,6 @@
 \DeclareOptionX*{\PackageWarning{kholles}{Unknown option ‘\CurrentOption’}} % others options
 \ExecuteOptionsX{auteurs={Kylian Boyet, George Ober, Hugo \textit{Vangi}lluwen}} % default
 \ProcessOptionsX\relax
-\setlength{\parindent}{0pt}
 
 % Le titre
 \ifdefined\nbweek
@@ -79,6 +78,10 @@
 \NewDocumentCommand{\DIV}{om}{%
   \IfValueT{#1}{\setcounter{#2}{\numexpr#1-1\relax}}%
   \csname #2\endcsname
+}
+
+\newcommand{\setnbquestion}[1]{
+	\setcounter{section}{\numexpr#1-1\relax}
 }
 
 % environnement des questions de khôlles
@@ -159,6 +162,8 @@
 
 % Espaces vectoriels
 \newcommand{\Vect}{\ensuremath{\text{Vect }}}
+\newcommand{\ev}[1][\K]{#1\!\!-espace vectoriel }
+\newcommand{\evs}[1][\K]{#1\!\!-espaces vectoriels }
 \newcommand{\sev}{sous-espace vectoriel }
 \newcommand{\sevs}{sous-espaces vectoriels }
 \newcommand{\rg}{\text{rg }}

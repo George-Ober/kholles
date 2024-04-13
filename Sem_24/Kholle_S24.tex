@@ -47,15 +47,11 @@
 			\varphi
 			\left| \begin{matrix}
 				\mathcal{L}_\K(E,F) &\rightarrow& F^n \\
-				f &\mapsto& \underbrace{\left(f(e_i))\right)_{1 \leqslant i \leqslant n}}_{\text{évaluation de f en la base choisie}}
+				f &\mapsto& \left(f(e_i))\right)_{1 \leqslant i \leqslant n}
 			\end{matrix} \right.
 		\end{equation*}
 		
-		\begin{itemize}[label=$*$]
-			\item $\varphi$ est linéaire.
-			\item $\varphi$ est bijective d'après le théorème de création des applications linéaires qui établit que pour toute famille de $n$ vecteurs de $F$, il existe une unique application linéaire de $E$ dans $F$ envoyant la base $\famille{e}{\lient 1 ; n \rient}$ sur cette famille.
-		\end{itemize}
-		
+		$\varphi$ est linéaire et, d'après le théorème de création des applications linéaires, bijective.
 		Ainsi, $\mathcal{L}_\K(E,F)$ et $F^n$ sont isomorphes. $F^n$ est de dimension finie, ce qui conclut.
 	\end{question_kholle}
 	
@@ -67,42 +63,42 @@
 		\end{equation}]
 		{Formule de Grassman}
 		
-		Commençons par prouver une version simplifier de la somme directe. Supposons que $E_1$ et $E_2$ sont en somme directe. \\
-		Fixons $\mathcal{B}_1$ et $\mathcal{B}_2$ deux bases de $E_1$ et $E_2$.
+		Commençons par prouver une version simplifier de la somme directe. Supposons que $E_1$ et $E_2$ sont en somme directe.
 		
-		Alors $\left(\mathcal{B}_1, \mathcal{B}_2\right)$ engendre $E_1 + E_2$. Or $\left(\mathcal{B}_1, \mathcal{B}_2\right)$ est finie donc $E_1 + E_2$ est de dimension finie. \\
-		Posons $n = \dim E_1$ et $p = \dim E_2$. Notons $\famille{e}{\lient 1 ; n \rient}$ la base $\mathcal{B}_1$ et $\famille{f}{\lient 1 ; n \rient}$ la base $\mathcal{B}_2$. \\
-		Soient $\lambda_1, \ldots, \lambda_n, \mu_1, \ldots, \mu_p) \in \K^{n+p}$ \fqs \fqs \ $\displaystyle \sum_{i=1}^{n} \lambda_i e_i + \sum_{i=1}^{p} \mu_i f_i = 0_E$. \\
+		Fixons $\mathcal{B}_1$ et $\mathcal{B}_2$ deux bases de $E_1$ et $E_2$.
+		Alors $\left(\mathcal{B}_1, \mathcal{B}_2\right)$ engendre $E_1 + E_2$. Or $\left(\mathcal{B}_1, \mathcal{B}_2\right)$ est finie donc $E_1 + E_2$ est de dimension finie.
+		
+		Posons $n = \dim E_1$ et $p = \dim E_2$. Notons $\famille{e}{\lient 1 ; n \rient}$ la base $\mathcal{B}_1$ et $\famille{f}{\lient 1 ; n \rient}$ la base $\mathcal{B}_2$.
+		Soient $\lambda_1, \ldots, \lambda_n, \mu_1, \ldots, \mu_p) \in \K^{n+p}$ \fqs \ \tqs \ $\displaystyle \sum_{i=1}^{n} \lambda_i e_i + \sum_{i=1}^{p} \mu_i f_i = 0_E$.
 		Alors $\sum_{i=1}^{n} \lambda_i e_i = \sum_{i=1}^{p} (-\mu_i) f_i$.
 		Or $\sum_{i=1}^{n} \lambda_i e_i \in E_1$ et $\sum_{i=1}^{n} (-\mu_i) e_i \in E_2$ donc $\sum_{i=1}^{n} \lambda_i e_i \in E_1 \cap E_2 = \{0_E\}$.
-		Donc $\lambda = \tilde{0}$. De même, $\mu = \tilde{0}$. \\
+		Donc $\lambda = \widetilde{0}$. De même, $\mu = \widetilde{0}$.
 		Donc $\left(\mathcal{B}_1, \mathcal{B}_2\right)$ est libre.
 		
 		Ainsi, $\left(\mathcal{B}_1, \mathcal{B}_2\right)$ est une base de $E_1 \oplus E_2$.
 		Donc $ \dim E_1 \oplus E_2 = |(\mathcal{B}_1, \mathcal{B}_2)| = |\mathcal{B}_1| + |\mathcal{B}_2| = \dim E_1 + \dim E_2$. \\
 		
-		Enlevons l'hypothèse que $E_1$ et $E_2$ sont en somme directe. \\
-		$E_1 \cap E_2$ est un \sev de $E_2$ et $E_2$ est un \K-espace vectoriel de dimension finie donc il existe $E_2'$ \sev de $E_2$ \tq $E_2 = (E1 \cap E_2) \oplus E_2'$. \\
-		Montrons que $E_1 + E_2 = E_1 \oplus E_2'$
-		\begin{itemize}[label=$*$]
-			\item $E_1$ et $E_2'$ sont en somme directe. \\
-			\begin{equation*}
-				\begin{aligned}
-					E_1 \cap E_2' &= E_1 \cap \left( E_2' \cap E_2 \right) \text{ car } E_2' \subset E_2 \\
-					&= \left( E_1 \cap E_2 \right) \cap E_2' \text{ car } \cap \text{ est associative et commutative} \\
-					&= {0_E} \text{ car $E_1$ et $E_2$ sont en somme directe et $E_2'$ sev}
-				\end{aligned}
-			\end{equation*}
-			\item $E_1 + E_2 \subset E_1 + E_2'$ \\
-			Soit $x \in E_1 + E_2$.
-			Alors $\exists (x_1, x_2) \in E_1 \times E_2 : x = x_1 + x_2$. \\
-			Or $x_2 \in E_2 = \left( E_1 \cap E_2 \right) \oplus E_2'$ donc $\exists (x_{21}, x_2') \times E_2' : x_2 = x_{21} + x_2'$. \\
-			D'où $x = \underbrace{x_1 + x_{21}}_{\in E_1} + \underbrace{x_2'}_{\in E_2} \in E_1 + E_2$.
-			\item Trivialement, $E_1 + E_2' \subset E_1 + E_2$ (car $E_2' \subset E_2$). 
-		\end{itemize}
+		Enlevons l'hypothèse que $E_1$ et $E_2$ sont en somme directe.
+		$E_1 \cap E_2$ est un \sev de $E_2$. Comme $E_2$ et un \K\!\!-espace vectoriel de dimension finie, il existe $E_2'$ \sev de $E_2$ \tq $E_2 = (E1 \cap E_2) \oplus E_2'$.
 		
-		Ainsi, $E_1$ et $E_2'$ (car sev) étant de dimension finie, $\dim E_1 \oplus E_2' = \dim E_1 + \dim E_2'$. \\
-		De plus, $\dim E_2 = \dim (E_1 \cap E_2) \oplus E_2' = \dim E_1 \cap E_2 + \dim E_2'$. \\
+		Montrons que $E_1 + E_2 = E_1 \oplus E_2'$.
+		\begin{equation*}
+			\begin{aligned}
+				E_1 \cap E_2' &= E_1 \cap \left( E_2' \cap E_2 \right) \text{ car } E_2' \subset E_2 \\
+				&= \left( E_1 \cap E_2 \right) \cap E_2' \text{ car } \cap \text{ est associative et commutative} \\
+				&= {0_E} \text{ car $E_1$ et $E_2$ sont en somme directe et $E_2'$ sev}
+			\end{aligned}
+		\end{equation*}
+		Donc $E_1$ et $E_2'$ sont en somme directe.
+		
+		$E_2' \subset E_2$ donc $E_1 + E_2' \subset E_1 + E_2$.
+		Soit $x \in E_1 + E_2$.
+		Alors $\exists (x_1, x_2) \in E_1 \times E_2 : x = x_1 + x_2$. \\
+		Or $E_2 = \left( E_1 \cap E_2 \right) \oplus E_2'$ donc $\exists (x_{21}, x_2') \times E_2' : x_2 = x_{21} + x_2'$.
+		D'où $x = x_1 + x_{21} + x_2'$. Or $x_1 + x_{21} \in E_1$ et $x_2' \in E_2$ donc $x \in E_1 + E_2$.
+		
+		Ainsi, $E_1$ et $E_2'$ étant des \sev de dimension finie, $\dim E_1 \oplus E_2' = \dim E_1 + \dim E_2'$.
+		De plus, $\dim E_2 = \dim (E_1 \cap E_2) \oplus E_2' = \dim E_1 \cap E_2 + \dim E_2'$.
 		Donc $\dim E_1 + E_2 = \dim E_1 + \dim E_2 - \dim E_1 \cap E_2$.
 	\end{question_kholle}
 
@@ -164,22 +160,27 @@
 		
 		Démontrons d'abord le lemme suivant.
 		Soient $f \in \mathcal{L}_\K(E, F)$ et $H$ un supplémentaire de $\ker f$ dans $E$.
-		Alors $f_{|H}^{|\Im f}$ est un isomorphisme de $H$ sur $\Im f$. \\
-		Notons $\hat{f}$ un telle restriction et corestriction. Cette application est bien définie (car $f(H) \subset \Im f$) et $\hat{f} \in \mathcal{L}_\K(H, \Im f)$. \\
-		$\ker \hat{f} = \{ x \in H \;|\; \hat{f}(x) = 0_E \} = \{ x \in H | x \in \ker f \} = H \cap \ker f = \{0_E\}$  car $H$ et $\ker f$ sont complémentaire.
-		Donc $\hat{f}$ est injective. \\
-		Soit $y \in \Im f$. D'où $\exists x \in E: y = f(x)$. \\
-		Décomposons $x$ dans $E = H \oplus \ker f$, $\exists (x_H, x_k) \in H \times \ker f : x = x_H + x_k$. \\
+		Alors $f_{|H}^{|\Im f}$ est un isomorphisme de $H$ sur $\Im f$.
+		
+		Notons $\hat{f}$ un telle restriction et corestriction. Cette application est bien définie (car $f(H) \subset \Im f$) et $\hat{f} \in \mathcal{L}_\K(H, \Im f)$.
+		
+		Calculons son noyau. $\ker \hat{f} = \{ x \in H \;|\; \hat{f}(x) = 0_E \} = \{ x \in H | x \in \ker f \} = H \cap \ker f = \{0_E\}$  car $H$ et $\ker f$ sont complémentaire.
+		Donc $\hat{f}$ est injective.
+		
+		Soit $y \in \Im f$. D'où $\exists x \in E: y = f(x)$.
+		Décomposons $x$ dans $E = H \oplus \ker f$, $\exists (x_H, x_k) \in H \times \ker f : x = x_H + x_k$.
 		Ainsi, $y = f(x) = f(x_H) + f(x_k)= f(x_H)$ car $x_k \in \ker f$.
-		Donc $y$ admet un antécédent par $\hat{f}$ (qui est $x_H$). \\
-		Donc $\hat{f}$ est surjective. \\
+		Donc $y$ admet un antécédent par $\hat{f}$ (qui est $x_H$).
+		Donc $\hat{f}$ est surjective.
+		
 		Donc $f_{|H}^{|\Im f}$ est un isomorphisme de $H$ sur $\Im f$.
+		\newline
 		
 		Supposons maintenant que $E$ est de dimension finie.
-		Soit $f \in \mathcal{L}_\K(E, F)$. \\
-		D'après le théorème d'existence d'un supplémentaire en dimension finie, $\ker f$, étant un \sev de $E$, admet un supplémentaire $H$ c'est-à-dire $E = H  \oplus \ker f$. \\
+		Soit $f \in \mathcal{L}_\K(E, F)$.
+		D'après le théorème d'existence d'un supplémentaire en dimension finie, $\ker f$, étant un \sev de $E$, admet un supplémentaire $H$ c'est-à-dire $E = H  \oplus \ker f$.
 		En prenant la dimension sur cette égalité, $\dim E = \dim \ker f + \dim H$.
-		D'après le lemme précédent, $\dim H = \dim \Im f = \rg f$. \\
+		D'après le lemme précédent, $\dim H = \dim \Im f = \rg f$.
 		D'où $\dim E = \rg f + \dim \ker f$.
 	\end{question_kholle}
 	
@@ -190,92 +191,227 @@
 		\end{equation}]
 		{Rang d'une composition d'applications linéaires}
 		
-		Considérons que $E$ et $F$ sont de dimension finie. Soient de tels objets. \\
-		Appliquons le théorème du rang à $v_{|\Im u}$ ce qui est autorisé puisque $v_{|\Im u}$ est une application linéaire et $\Im u$ est un \K-ev de dimension finie (car sev de $F$).
+		Considérons que $E$ et $F$ sont de dimension finie.
+		Soient de tels objets.
+		Appliquons le théorème du rang à $v_{|\Im u}$ ce qui est autorisé puisque $v_{|\Im u}$ est une application linéaire et $\Im u$ est un \ev de dimension finie (car sev de $F$).
 		\begin{equation*}
 			\dim \Im u = \rg v_{|\Im u} + \dim \ker v_{|\Im u}
 		\end{equation*}
-		$\ker v_{|\Im u} = \left\{ y \in \Im u \;|\; v(y) = 0_G \right\} = \left\{ y \in \Im u \;|\; y \in \ker v \right\} = \Im u \cap \ker v$ \\
-		$\Im v_{|\Im u} = v(Im u) = \Im v \circ u$ (cette égalité est vraie pour deux fonctions de $E$ dans $F$ et de $F$ dans $G$ quelconques, pas forcément linéaires.) \\
-		Donc \begin{equation*}
-			\rg f = \rg v \circ u + \dim \ker v \cap \Im u
-		\end{equation*}
+		Ainsi, $\ker v_{|\Im u} = \left\{ y \in \Im u \;|\; v(y) = 0_G \right\} = \left\{ y \in \Im u \;|\; y \in \ker v \right\} = \Im u \cap \ker v$
+		et $\Im v_{|\Im u} = v(Im u) = \Im v \circ u$ (cette égalité est vraie pour deux fonctions de $E$ dans $F$ et de $F$ dans $G$ quelconques, pas forcément linéaires).
+		Ce qui conclut.
 	\end{question_kholle}
-% la q6 ne me dit absolument rien
+	
+	\begin{question_kholle}
+		[Soit $H$ un \sev de $E$.
+		Les conditions suivantes sont équivalentes :
+		\begin{propositions}
+			\item $H$ est un hyperplan de $E$ :
+			$\exists \varphi \in E^* : H = \ker \varphi$
+			\item $H$ admet une droite vectorielle comme supplémentaire :
+			$\exists a \in E \setminus \{0_E\} : H \oplus \Vect{\{a\}} = E$
+		\end{propositions}]
+		{Caractérisation des hyperplans}
+		
+		$(i) \implies (ii)$ Supposons que $H$ est un hyperplan de $E$.
+		Appliquons la définition de l'hyperplan, $\exists \varphi \in E^* : H = \ker \varphi$.
+		Par l'absurde, supposons que $E \setminus H = \emptyset$. Or $H \subset E$ donc $E = H$. Donc $\varphi = 0_{E^*}$ ce qui est une contradiction.
 
-\begin{question_kholle}[{
-Soient $E$ un $\mathbb{K}$-espace vectoriel, et $\varphi \in E^{*}$ une forme linéaire \emph{non nulle}. Soit $F$ un sous-espace vectoriel de $E$ de dimension finie $p \in \mathbb{N}$, alors
-$$\dim_{\mathbb{K}}F \cap \ker \varphi = \left\{ \begin{array}{ll} p  & \text{ si }F \subset \ker \varphi \\ p-1  & \text{ sinon}\end{array}\right.$$
-En particulier, on a toujours $\dim_{\mathbb{K}}F \cap \ker F \geqslant p-1$}]{Lemme sur les formes linéaires non nulles}
+		Ainsi fixons $a \in E \setminus H$ quelconque.
+		Montrons que $E = H \oplus \Vect{\{a\}}$.
+		Trivialement, $\{0_E\} \subset H \cap \Vect{\{a\}}$.
+		Soit $x \in H \cap \Vect{\{a\}}$.
+		$x \in \Vect{\{a\}}$ donc $\exists \lambda \in  \K : x = \lambda$. De plus, $x \in H = \ker \varphi$ donc $0_\K = \varphi(x) = \lambda \varphi(a)$.
+		Si $\lambda \neq 0_\K$, alors $a \in \ker \varphi$ ce qui est impossible car $a \notin H$.
+		Donc $\lambda = 0_\K$, d'où $x = 0_E$.
+		Ainsi, $H \cap \Vect{\{a\}} = \{0_E\}$. $H$ et $\Vect{\{a\}}$ sont en somme directe.
+		
+		Trivialement, $H + \Vect{\{a\}} \subset E$.
+		Soit $x \in E$ \fq.
+		$a \notin H$ donc $\varphi(a) \neq 0_\K$. $\varphi(a)$ est inversible dans \K d'où :
+		\begin{equation*}
+			\varphi(x)
+			= \frac{\varphi(x)}{\varphi(a)} \cdot \varphi(a)
+			= \varphi\left( \frac{\varphi(x)}{\varphi(a)} \times a \right)
+		\end{equation*}
+		Donc $x - \frac{\varphi(x)}{\varphi(a)} \!\cdot\! a \in H$. D'où
+		\begin{equation*}
+			x =
+			\underbrace{x - \frac{\varphi(x)}{\varphi(a)} \!\cdot\! a}_{\in H}
+			+ \underbrace{\frac{\varphi(x)}{\varphi(a)} \!\cdot\! a}_{\in \Vect{\{a\}}}
+		\end{equation*}
+		Ainsi, $E = H + \Vect{\{a\}}$.
+		
+		$(ii) \implies (i)$ Supposons maintenant que $H$ soit un sous-espace vectoriel tel que $\exists a \in E \setminus \{0_E\} : E = H \oplus \Vect{\{a\}}$.
+		Posons $\displaystyle \varphi : \begin{matrix}
+			E &=& H \oplus \Vect{\{a\}} &\rightarrow& \K \\
+			x &=& h_x + \lambda_x \cdot a &\mapsto& \lambda_x
+		\end{matrix}$.
+		Montrons que $\varphi$ est une forme linéaire non triviale dont $H$ est le noyau.
+		\
+		
+		$\varphi$ est
+		bien définie (car $h_x$ et $\lambda_x$ sont uniques),
+		linéaire,
+		à valeur dans le corps de base \K
+		donc $\varphi$ est un forme linéaire.
+		$\varphi \neq 0_{E^*}$ car $\varphi(a) = 1_\K \neq 0_\K$.
+		Soit $x \in E$ \fq. Alors $\exists (h_x, \lambda_x) \in H \times \K : x = h_x + \lambda_x \cdot a$.
+		\begin{equation*}
+			x \in \ker \varphi
+			\iff \varphi(x) = 0_\K
+			\iff \lambda_x = 0_\K
+			\iff x \in H
+		\end{equation*}
+		donc $\ker \varphi = H$.
+		Donc $H$ est un hyperplan de $E$.
+		\bigbreak
+		
+		\noindent Si $E$ est de dimension finie, alors les deux conditions sont équivalentes à
+		\begin{enumerate}[label=$(\roman*)$, leftmargin=1.5cm]
+			\setcounter{enumi}{2}
+			\item $H$ est de codimension 1 c'est-à-dire de dimension $n - 1$.
+		\end{enumerate}
+		$(ii) \implies (iii)$ Il faut prendre la dimension de l'égalité $H \oplus \Vect{\{a\}}$. \\
+		$(iii) \implies (ii)$ Supposons que $\dim H = n - 1$.
+		Comme $E$ est de dimension finie, $H$ admet un supplémentaire $I$ dans $E$ : $H \oplus I = E$.
+		En prenant la dimension, $\dim I = 1$. Donc $I$ est une droite vectorielle.
+		D'où $\exists a \in E : I = \Vect{\{a\}}$.
+		$a \notin H$ car sinon $I \subset H$ ce qui contredit $I \cap H = \{0_E\}$ ($I$ et $H$ sont en somme directe).
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[\textit{Lemme fondamental dans l'étude des formes linéaires} \ \
+		Soit $\varphi \in E^* \setminus \{0_{E^*}\}$. \\
+		Tout vecteur de $E$ n'appartenant pas au noyau de $\varphi$ engendre une droite qui est supplémentaire au noyau de $\varphi$ dans $E$.
+		\begin{equation}
+			\forall a \in E \setminus \ker \varphi, \
+			E = \ker \varphi \oplus \Vect{\{a\}}
+		\end{equation}
+		
+		Deux formes linéaires non nulles $\varphi$ et $\psi$ ont le même noyau si est seulement si elles sont proportionnelles ce qui revient à dire que la famille $\left(\varphi,\psi\right)$ est liée.
+		\begin{equation}
+			\forall \left(\varphi,\psi\right) \in \left( E^* \setminus \{0_{E^*}\} \right) \!^2, \
+			\ker \varphi = \ker \psi \iff \exists \lambda \in \K^* : \varphi = \lambda \cdot \psi
+		\end{equation}]
+		{Proportionnalité des formes linéaires ayant le même noyau}
+		
+		Commençons par prouver le lemme.
+		Soit $a \in E \setminus \ker \varphi$. \\
+		Soit $x \in E$ \fq.
+		Exhibons la décomposition unique de $x$ dans $\ker \varphi + \Vect{\{a\}}$.
+		
+		\textit{Analyse} Supposons qu'il existe $(x_k, \lambda) \in \ker \varphi \times \K$ \tq $x = x_k + \lambda a$.
+		Puisque $x_k \in \ker \varphi$, $\varphi(x) = \lambda \cdot \varphi(a)$. Or $\varphi(a) \neq 0_\K$ (car $a \notin \ker \varphi$) donc $\varphi(a)$ est inversible dans \K.
+		D'où $\lambda = \nicefrac{\varphi(x)}{\varphi(a)}$ et $x_k = x - \nicefrac{\varphi(x)}{\varphi(a)}$.
+		
+		Ainsi, sous réserve d'existence, $\lambda$ et $x_k$ sont uniques.
+		
+		\textit{Synthèse} Posons $\displaystyle \left\{ \begin{matrix}
+			\lambda &=& \frac{\varphi(x)}{\varphi(a)} \\
+			x_k &=& x - \frac{\varphi(x)}{\varphi(a)}
+		\end{matrix} \right.$
+		Nous avons bien
+		$x = x_k + \lambda \cdot a$,
+		$\lambda \cdot a \in \Vect{\{a\}}$ (car $\lambda \in \K$)
+		et $x_k \in \ker \varphi$ (car $\varphi(x_k) = \varphi(x) - \varphi\left( \frac{\varphi(x)}{\varphi(a)} a \right) = \varphi(x) - \frac{\varphi(x)}{\varphi(a)} \varphi(a) = 0_\K$).
+		Ainsi $E = \ker \varphi \oplus \Vect{\{a\}}$.
+		\newline \newline
+		
+		\noindent Soient $\left(\varphi,\psi\right) \in \left( E^* \setminus \{0_{E^*}\} \right) ^2$ \fqs.
+		
+		\textit{Sens direct
+		} Supposons que $\ker \varphi = \ker \psi$.
+		$\varphi \neq 0_{E^*}$ donc $\ker \varphi \neq E$ donc $\exists a \in E : a \notin \ker \varphi$. Appliquons la lemme ci-dessus :
+		\begin{equation*}
+			\begin{array}{ccccccccc}
+				& & E &=& \substack{\ker \varphi \\ \shortparallel \\ \ker \psi} &\oplus& \Vect{\{a\}} & \rightarrow & \K \\
+				& \varphi : & x &=& \left( x - \frac{\varphi(x)}{\varphi(a)} \cdot a \right) &+& \frac{\varphi(x)}{\varphi(a)} \cdot a & \mapsto & \varphi(x) \\
+				& \psi : & x &=& \left( x - \frac{\varphi(x)}{\varphi(a)} \cdot a \right) &+& \frac{\varphi(x)}{\varphi(a)} \cdot a & \mapsto & \psi(x)
+			\end{array}
+		\end{equation*}
+		Or $\left( x - \frac{\varphi(x)}{\varphi(a)} \cdot a \right) \in \ker \psi$ donc $\psi(x) = \frac{\psi(a)}{\varphi(a)} \varphi(x)$.
+		Ainsi, $\psi = \frac{\psi(a)}{\varphi(a)} \varphi$. Donc $\varphi$ et $\psi$ sont proportionnelles.
+		
+		\textit{Sens réciproque} Supposons que $\varphi$ et $\psi$ sont proportionnelles. Alors $\exists \lambda \in \K^* : \varphi = \lambda \psi$.
+		$\varphi = \lambda \psi \implies \ker \psi \subset \ker \varphi$ et
+		$\psi = \lambda^{-1} \varphi \implies \ker \varphi \subset \ker \psi$.
+		Ce qui donne l'égalité.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[\indent Soit $\varphi \in E^{*}$ une forme linéaire \emph{non nulle}. Soit $F$ un sous-espace vectoriel de $E$ de dimension finie $p \in \mathbb{N}$, alors
+		\begin{equation}
+			\dim_{\mathbb{K}}F \cap \ker \varphi =
+			\left\{ \begin{array}{ll}
+				p  & \text{ si } F \subset \ker \varphi \\
+				p-1  & \text{ sinon}
+			\end{array}\right.
+		\end{equation}
+		En particulier, on a toujours $\dim_{\mathbb{K}}F \cap \ker \varphi \geqslant p-1$
+		\newline
+		
+		Supposons que  $E$ un \ev de dimension finie $n \in \mathbb{N}^{*}$.
+		Soient $m \in \mathbb{N}^{*}$ et $(H_{i})_{n \in [ \! [ 1,m ] \!]}$, $m$ hyperplans de $E$.
+		Alors
+		\begin{equation}
+			\dim_{\mathbb{K}} \bigcap_{i=1}^{m}H_{i} \geqslant n-m
+		\end{equation}]
+		{Intersection d'hyperplans}
+		% {Lemme sur les formes linéaires non nulles} ???
+		
+		Si $F \subset \ker\varphi$, $F \cap \ker \varphi = F$ donc $\dim F \cap \ker \varphi = p$
+		
+		Sinon, il existe $a \in F$ tel que $a \not\in \ker \varphi$. Ainsi,
+		$$
+		\text{Vect}\left\{ a \right\}  \oplus \ker \varphi = E
+		$$
+		Montrons alors que $F = \text{Vect} \left\{ a \right\} \oplus (F \cap \ker \varphi)$.
+		$$\text{Vect} \left\{ a \right\} \cap (F \cap \ker \varphi) = \underbrace{ \text{Vect} \left\{ a \right\} \cap F }_{ =\text{Vect}\left\{ a \right\}  } \cap \ker \varphi = \text{Vect}\left\{ a \right\}  \cap \ker \varphi = \left\{ 0_{E} \right\} $$ car les deux espaces sont supplémentaires donc en somme directe.
+		
+		Par double inclusion, montrons que $\text{Vect} \left\{ a \right\} + (F \cap \ker \varphi) = F$.
+		Pour l'inclusion directe, remarquons que $a \in F$ donc $\text{Vect}\left\{ a \right\} \subset F$ or $F \cap \ker \varphi \subset F$ donc leur somme est bien incluse $\text{Vect} \left\{ a \right\} + (F \cap \ker \varphi) \subset F$.
+		Réciproquement, soit $x \in F$ \fq.
+		Puisque $\text{Vect} \left\{ a \right\} \oplus \ker \varphi = E$
+		$$
+		\exists (\lambda, x_{K}) \in \mathbb{K} \times \ker \varphi : x = \lambda .a+x_{K}
+		$$
+		De plus, $x_{K} = x - \lambda.a \in F$ car $(a, x) \in F^{2}$ donc
+		$$
+		x = \underbrace{ \lambda . a }_{ \in \text{Vect} \left\{ a \right\}  } + \underbrace{ x_{K} }_{ \in F \cap \ker \varphi } \in \text{Vect} \left\{ a \right\} + (F \cap \ker \varphi)
+		$$
+		D'où l'inclusion réciproque.
 
-Si $F \subset \ker\varphi$, $F \cap \ker \varphi = F$ donc $\dim F \cap \ker \varphi = p$
-
-Sinon, il existe $a \in F$ tel que $a \not\in \ker \varphi$. Ainsi,
-$$
-\text{Vect}\left\{ a \right\}  \oplus \ker \varphi = E
-$$
-Montrons alors que $F = \text{Vect} \left\{ a \right\} \oplus (F \cap \ker \varphi)$.
-$$\text{Vect} \left\{ a \right\} \cap (F \cap \ker \varphi) = \underbrace{ \text{Vect} \left\{ a \right\} \cap F }_{ =\text{Vect}\left\{ a \right\}  } \cap \ker \varphi = \text{Vect}\left\{ a \right\}  \cap \ker \varphi = \left\{ 0_{E} \right\} $$ car les deux espaces sont supplémentaires donc en somme directe.
-
-Donc $\text{Vect} \left\{ a \right\} \oplus (F \cap \ker \varphi)$.
-
-Par double inclusion, montrons que $\text{Vect} \left\{ a \right\} + (F \cap \ker \varphi) = F$
-
-Pour l'inclusion directe, remarquons que $a \in F$ donc $\text{Vect}\left\{ a \right\} \subset F$ or $F \cap \ker \varphi \subset F$ donc leur somme est bien incluse $\text{Vect} \left\{ a \right\} + (F \cap \ker \varphi) \subset F$
-Réciproquement, soit $x \in F$ fq.
-Puisque $\text{Vect} \left\{ a \right\} \oplus \ker \varphi = E$
-$$
-\exists (\lambda, x_{K}) \in \mathbb{K} \times \ker \varphi : x = \lambda .a+x_{K}
-$$
-De plus, $x_{K} = x - \lambda.a \in F$ car $(a, x) \in F^{2}$ donc
-$$
-x = \underbrace{ \lambda . a }_{ \in \text{Vect} \left\{ a \right\}  } + \underbrace{ x_{K} }_{ \in F \cap \ker \varphi } \in \text{Vect} \left\{ a \right\} + (F \cap \ker \varphi)
-$$
-D'où l'inclusion réciproque.
-
-donc $F = \text{Vect} \left\{ a \right\} \oplus (F \cap \ker \varphi)$
-en passant à la dimension :
-$$
-\underbrace{ \dim F }_{= p } = \underbrace{ \dim \text{Vect} \left\{ a \right\} }_{ =1 } + \dim (F \cap \ker \varphi)
-$$
-Donc $\dim (F \cap \ker \varphi) = p - 1$.
-
-
-
-Appliquons ce lemme pour la démonstration de la propriété suivante
-
-\fbox{\begin{minipage}{\textwidth}
-Soit $E$ un $\mathbb{K}$ espace vectoriel de dimension $n \in \mathbb{N}^{*}$
-
-Soient $m \in \mathbb{N}^{*}$ et $(H_{i})_{n \in [ \! [ 1,m ] \!]}$, $m$ hyperplans de $E$.
-
-Alors $$\dim_{\mathbb{K}} \bigcap_{i=1}^{m}H_{i} \geqslant n-m$$
-\end{minipage}}
-
-Considérons la propriété $\mathcal{P}(\cdot)$ définie pour tout $m \in \mathbb{N}^{*}$ par.
-$$
-\mathcal{P}(m) : « \text{ pour tous } H_{1},\dots, H_{m} \text{ hyperplans de } E, \dim_{\mathbb{K}} \bigcap_{i=1}^{m}H_{i} \geqslant n-m »
-$$
-Soit $H_{1}$ un hyperplan de $E$ fixé quelconque. D'après la caractérisation des hyperplans en dimension finie, 
-$$
-\dim_{\mathbb{K}} \bigcap_{i=1}^{1}H_{i} = \dim_{\mathbb{K}}H_{1}= n-1 \geqslant n-1
-$$
-Donc $\mathcal{P}(1)$ est vraie.
-
-Soit $m \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(m)$ est vraie.
-Soient $H_{1},\dots,H_{m}$ et $H_{m+1}$ $m+1$ hyperplans de $E$.
-D'après la définition d'un hyperplan, il existe $\varphi \in E ^{*}$ non nulle telle que $H_{m+1} = \ker \varphi$.
-
-Appliquons donc le lemme précédent pour $F \leftarrow \bigcap_{i=1}^{m}H_{i}$ (autorisé car c'est un sous espace de l'espace $E$, qui est de dimension finie, donc ses sous espaces les sont aussi) et $\varphi \leftarrow \varphi$ (autorisé car c'est une forme linéaire non nulle) :
-
-$$
-\dim_{\mathbb{K}} \underbrace{ \left( \bigcap_{i=1}^{m}H_{i} \right) \cap \ker \varphi  }_{ =\left( \bigcap_{i=1}^{m}H_{i}  \right)\cap H_{m+1} }\geqslant \dim_{\mathbb{K}} \left( \bigcap_{i=1}^{m}H_{i} \right) - 1 \underbrace{ \geqslant n - m - 1 }_{ \text{ en appliquant }\mathcal{P(m)} \text{ pour } H_{1},\dots,H_{m} }
-$$
-
-Donc par associativité de l'intersection, $\dim_{\mathbb{K}} \bigcap_{i=1}^{m+1}H_{i} \geqslant n - (m+1)$
-
-Donc $\mathcal{P}(m+1)$ est vraie.
-
-\end{question_kholle}
+		Donc $F = \text{Vect} \left\{ a \right\} \oplus (F \cap \ker \varphi)$
+		en passant à la dimension :
+		$$
+		\underbrace{ \dim F }_{= p } = \underbrace{ \dim \text{Vect} \left\{ a \right\} }_{ =1 } + \dim (F \cap \ker \varphi)
+		$$
+		Donc $\dim (F \cap \ker \varphi) = p - 1$.
+		\newline \newline
+		
+		Considérons la propriété $\mathcal{P}(\cdot)$ définie pour tout $m \in \mathbb{N}^{*}$ par :
+		$$
+		\mathcal{P}(m) : \text{\textquotedblleft} \text{ pour tous } H_{1},\dots, H_{m} \text{ hyperplans de } E, \dim_{\mathbb{K}} \bigcap_{i=1}^{m}H_{i} \geqslant n-m \text{\textquotedblright}
+		$$
+		Soit $H_{1}$ un hyperplan de $E$ fixé quelconque. D'après la caractérisation des hyperplans en dimension finie, 
+		$$
+		\dim_{\mathbb{K}} \bigcap_{i=1}^{1}H_{i} = \dim_{\mathbb{K}}H_{1}= n-1 \geqslant n-1
+		$$
+		Donc $\mathcal{P}(1)$ est vraie.
+		
+		Soit $m \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(m)$ est vraie.
+		Soient $H_{1},\dots,H_{m}$ et $H_{m+1}$ $m+1$ hyperplans de $E$.
+		D'après la définition d'un hyperplan, il existe $\varphi \in E ^{*}$ non nulle telle que $H_{m+1} = \ker \varphi$.
+		
+		Appliquons donc le lemme précédent pour $F \leftarrow \bigcap_{i=1}^{m}H_{i}$ (autorisé car c'est un sous espace de l'espace $E$, qui est de dimension finie, donc ses sous espaces les sont aussi) et $\varphi \leftarrow \varphi$ (autorisé car c'est une forme linéaire non nulle) :
+		
+		$$
+		\dim_{\mathbb{K}} \underbrace{ \left( \bigcap_{i=1}^{m}H_{i} \right) \cap \ker \varphi  }_{ =\left( \bigcap_{i=1}^{m}H_{i}  \right)\cap H_{m+1} }\geqslant \dim_{\mathbb{K}} \left( \bigcap_{i=1}^{m}H_{i} \right) - 1 \underbrace{ \geqslant n - m - 1 }_{ \text{ en appliquant } \mathcal{P}(m) \text{ pour } H_{1},\dots,H_{m} }
+		$$
+		
+		Donc par associativité de l'intersection, $\dim_{\mathbb{K}} \bigcap_{i=1}^{m+1}H_{i} \geqslant n - (m+1)$.
+		Donc $\mathcal{P}(m+1)$ est vraie.
+	\end{question_kholle}
 
 \end{document}
