@@ -75,7 +75,7 @@ Par exemple,
 
 - Les **ensembles pour la régularité des fonctions** \Cont{nombre ou l'infini}{départ}{arrivée} et \Deriv (départ et arrivée sont facultatif, par exemple \Cont{\infty}{}{} ou \Deriv{1}{I}{})
 
-- Les **espaces vectoriels** \Vect pour l'accronyme de "sous-espace vectoriel engendré par", \ker pour noyau, \sev pour 'sous-espace vectoriel', \sevs au pluriel, \rg pour rg  (en mode math) (le rang d'une application linéaire)
+- Les **espaces vectoriels** \Vect pour l'accronyme de "sous-espace vectoriel engendré par", \ev[corps] pour "corps-espace vectoriel" (le corps est factultatif), \evs pour le pluriel, \sev pour 'sous-espace vectoriel', \sevs au pluriel, \rg pour rg  (en mode math) (le rang d'une application linéaire)
 
 - Les **familles** quelconques \famille[variable muette]{nom de la famille}{ensemble indexant} ( \famille[k]{\sigma}{[\\![0;n]\\!]} por les fonctions symétriques élémentaires ), presque nulles \fpnulle[ensemble indexant (facultatif)]{nom de la famille}{ensemble de base} (par exemple \famille{\lambda}{E} pour une famille de vecteurs de E) et finies \ffinie[variable muette]{nom de la famille}{nombre d'éléments}{ensemble de base}
 
