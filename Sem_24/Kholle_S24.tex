@@ -17,22 +17,21 @@
 		~\newline
 		\textit{Théorème de la base incomplète} (admis ici mais démontré dans le cours) : pour toute famille libre de E, nous pouvons y adjoindre une partie d'une famille quelconque génératrice de $E$ (généralement une base, la base canonique si elle a un sens) pour en faire une base de $E$. \\
 		
-		Posons $n = \dim E$ et $p = \dim E'$. Ainsi, il existe $(e_1, \ldots, e_p)$ base de $E'$. \\
-		Appliquons le théorème de la base incomplète pour cette famille. Il existe $(e_{p+1}, \ldots, e_n)$ $n-p$ vecteurs de E \tq $(e_1, \ldots, e_n)$ est un base de $E$. \\
+		Posons $n = \dim E$ et $p = \dim E'$. Ainsi, il existe $(e_1, \ldots, e_p)$ base de $E'$.
+		Appliquons le théorème de la base incomplète pour cette famille.
+		Il existe $(e_{p+1}, \ldots, e_n)$ $n-p$ vecteurs de E \tq $(e_1, \ldots, e_n)$ est un base de $E$.
 		Posons $E'' = \Vect \{ e_{p+1}, \ldots, e_n \}$ et vérifions qu'il est complémentaire à $E'$.
 		
-		\begin{itemize}[label=$*$]
-			\item Par définition de \Vect\!\!, $E''$ est un \sev.
-			\item Trivialement, $E' + E'' = E$.
-			\item $\{0_E\} \subset E' \cap E''$ car $E'$ et $E''$ sont deux \sevs.
-			\item Soit $x \in E' \cap E''$. \\
-			$X \in E' \implies \exists (\lambda_1, \ldots, \lambda_p) \in \K^p : x = \sum_{i=1}^{p} \lambda_i e_i$ \\
-			$X \in E'' \implies \exists (\lambda_{p+1}, \ldots, \lambda_n) \in \K^{n-p} : x = \sum_{i=p+1}^{n} \lambda_i e_i$ \\
-			Par différence, $\sum_{i=1}^{p} \lambda_i e_i + \sum_{i=p+1}^{n} \left(-\lambda_i\right) e_i = 0_E$. \\
-			Or $\famille{e}{\lient 1 ; n \rient}$ est une base de $E$ donc $\forall i \in \lient 1 ; p \rient, \lambda_i = 0_\K$. \\
-			donc $x = 0_E$.
-			Ainsi, $E' \cap E'' \subset \{0_E\}$.
-		\end{itemize}
+		Par définition de \Vect\!\!, $E''$ est un \sev.
+		Trivialement, $E' + E'' = E$.
+		$\{0_E\} \subset E' \cap E''$ car $E'$ et $E''$ sont deux \sevs.
+		Soit $x \in E' \cap E''$.
+		$X \in E' \implies \exists (\lambda_1, \ldots, \lambda_p) \in \K^p : x = \sum_{i=1}^{p} \lambda_i e_i$ et 
+		$X \in E'' \implies \exists (\lambda_{p+1}, \ldots, \lambda_n) \in \K^{n-p} : x = \sum_{i=p+1}^{n} \lambda_i e_i$.
+		Par différence, $\sum_{i=1}^{p} \lambda_i e_i + \sum_{i=p+1}^{n} \left(-\lambda_i\right) e_i = 0_E$.
+		Or $\famille{e}{\lient 1 ; n \rient}$ est une base de $E$ donc $\forall i \in \lient 1 ; p \rient, \lambda_i = 0_\K$.
+		donc $x = 0_E$.
+		Ainsi, $E' \cap E'' = \{0_E\}$.
 	\end{question_kholle}
 	
 	\begin{question_kholle}
