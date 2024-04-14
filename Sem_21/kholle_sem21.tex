@@ -143,7 +143,7 @@
         {Donner des expressions des deux coefficients associés à un pôle double dans une décomposition en éléments simples.}
         Soient $(P, Q) \in \K [X] \times \left( \K [X] \backslash \{ 0_{\K[X] }\} \right) $ tels que la fraction rationnelle $\frac{P}{Q}$ soit \\ irréductible et en prenant $\deg P < \deg Q$. En appliquant le théorème de décomposition en éléments simples on obtient un expression de la forme suivante en considérant $z_{k_0}$, une racine double de $Q$ : 
         \[
-            \exists \ R \in \K (X) \ : \ \frac{P}{Q} = \frac{a_1}{X - z_{k_0}}  + \frac{a_2}{(X - z_{k_0})^2} + R, 
+            \exists \ R \in \K (X) \ : \ \frac{P}{Q} = \frac{a_1}{X - z_{k_0}}  + \frac{a_2}{(X - z_{k_0})^2} + R, \quad \quad (\star)  
         \]
         puis de même, 
         \[
@@ -155,7 +155,7 @@
         \]
         c'est une première expression. Pour la suivante, encore une fois, explicitons $\widetilde{Q}$. Remarquons que :
         \[
-            \exists \ A \in \K [X] \ : \ \left[ Q'' = 2\prod_{\substack{k=1 \\ k= k_0}}^n (X-z_k)^{\nu_{(X-z_k)}(Q)} + A \right] \ \wedge \ \left[ A(z_{k_0} ) = 0 \right],
+            \exists \ A \in \K [X] \ : \ \left[ Q'' = 2\prod_{\substack{k=1 \\ k \neq k_0}}^n (X-z_k)^{\nu_{(X-z_k)}(Q)} + A \right] \ \wedge \ \left[ A(z_{k_0} ) = 0 \right],
         \]
         donc, en remarquant que : 
         \[
@@ -163,9 +163,16 @@
         \]
         on a finalement : 
         \[
-            \frac{2P(z_{k_0})}{Q''(z_{k_0})} = a_2,
+            \frac{2P(z_{k_0})}{Q''(z_{k_0})} = a_2.
         \]
-        ce qui termine la question. 
+        Pour récupérer $a_1$, on multiplie $(\star )$ par $(X- z_{k_0})^2$ puis on dérive : 
+        \[
+            \left( \frac{P  ( X - z_{k_0})^2}{Q}\right)' =  a_1 + R'(X-z_{k_0})^2 + 2R(X - z_{k_0}),
+        \]
+        soit, 
+        \[
+            \frac{((P'(X - z_{k_0}) + 2P)Q - Q'P)(X-z_{k_0}) }{Q^2}  = a_1 + R'(X-z_{k_0})^2 + 2R(X - z_{k_0})
+        \]
     \end{question_kholle}
     
 \end{document}
