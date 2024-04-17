@@ -63,4 +63,67 @@
         
     \end{itemize}
 \end{question_kholle}
+\begin{question_kholle}
+    [{L'exponentielle complexe a pour image $\mathbb{C}^{*}$ et, pour tout $z_{0} \in \mathbb{C}^{*}$,
+    $$
+    \exp_{\mathbb{C}}^{-1}(\{ z_{0} \}) = \{ \ln \lvert z_{0} \rvert +i\theta_{0} +2ik\pi \mid k \in \mathbb{Z}\}
+    $$
+    où $\theta_{0} \in \arg(z_{0})$}]{Résolution de $e^z = z_0$ où $z_0 \in \C^*$}
+    
+    La propriété, pour tout $z \in \mathbb{C}$, $\lvert e^{z} \rvert = \lvert e^{\mathrm{Re}(z)} \rvert>0$ montre que $0 \not\in \exp_{\mathbb{C}}(\mathbb{C})$.
+    
+    $z_{0}\neq 0$ donc $\exists \theta_{0} \in \arg(z_{0}): z_{0} = \lvert z_{0} \rvert e^{i\theta_{0}}$.
+    Résolvons l'équation d'inconnue $z \in \mathbb{C}$
+    
+    \begin{align*}
+        \exp_{\mathbb{C}}(z) = z_{0}  & \iff e^{\mathrm{Re}(z)}e^{i\mathrm{Im}(z)} = \lvert z_{0} \rvert e^{i\theta_{0}} \\
+        & \iff \left\{ \begin{array}{ll}
+            e^{\mathrm{Re}(z)} = \lvert z_{0} \rvert  \\
+            \text{et} \\
+            \mathrm{Im}(z) \equiv \theta_{0} [2\pi]
+        \end{array}\right. \\
+        & \iff \left\{ \begin{array}{ll}
+            \mathrm{Re}(z)  = \ln \lvert  z_{0} \rvert  \\
+            \text{et} \\
+            \mathrm{Im}(z) \equiv \theta_{0} [2\pi]
+        \end{array}\right. \\
+        &\iff z \in \left\{ \ln \lvert z_{0} \rvert +i \theta_{0} +2ik\pi \mid k \in \mathbb{Z} \right\} 
+    \end{align*}
+    
+\end{question_kholle}
+\begin{question_kholle}{Montrer l'unicité de l'élément neutre et du symétrique d'un élément sous des hypothèses sur la loi à préciser.}
+    \begin{itemize}[label=$\lozenge$]
+        \item Unicité de l'élément neutre bilatère
+        
+        Soient $(e_{1}, e_{2}) \in E^{2}$ fixés quelconques tels que $\left\{ \begin{array}{ll} \forall x \in E, x * e_{1} = e_{1} * x = x \\ \forall x \in E, x*e_{2}=e_{2}*x = x\end{array}\right.$
+        Particularisons la première relation pour $x \leftarrow e_{2}$:
+        $$
+        e_{2}*e_{1} = e_{1}*e_{2} = e_{2}
+        $$
+        En particularisant, de même la deuxième relation pour $x \leftarrow e_{1}$
+        $$
+        e_{1}*e_{2} = e_{2}*e_{1} = e_{2}
+        $$
+        D'où, par transitivité de l'égalité : $e_{1} = e_{2}$
+        
+        \item Unicité du symétrique sous réserve d'existence (LCI associative d'unité $e$)
+        Soit $a \in E$ symétrisable
+        $$
+        \exists z \in E : a * z = z*a = e
+        $$
+        Fixons un tel $z$ pour la suite de la preuve
+        \begin{itemize}
+            \item L'ensemble $\{ y \in E \mid a * y = y * a = e \}$ n'est pas vide puisqu'il contient $z$.
+            
+            \item Soit $b \in \{ y \in E \mid a * y = y * a = e \}$ fixé quelconque.
+            Alors
+            \begin{align*}
+                a * b = e &\implies z * ( a * b ) = z * e\\
+                &\implies \underbrace{ z*a }_{ e } * b = z * e \text{ par associativité}\\
+                &\implies b = z
+            \end{align*}
+        \end{itemize}
+        Donc l'ensemble $\{ y \in E \mid a * y = y * a = e \}$ contient au plus un élément neutre, qui est $z$.
+    \end{itemize}
+\end{question_kholle}
 \end{document}
