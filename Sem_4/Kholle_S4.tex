@@ -1,0 +1,66 @@
+\documentclass{article}
+
+\date{17 avril 2024}
+\usepackage[nb-sem=4, auteurs={George Ober}]{../kholles}
+
+
+
+\begin{document}
+
+\maketitle
+\begin{question_kholle}[{Considérons l'équation algébrique de degré 2:
+    $$az^{2}+bz+c=0$$
+    Où $z\in L$ est l'inconnue et $(a,b,c)\in\mathbb{C}^*\times\mathbb{C}^2$ sont des paramètres. Posons $\Delta = b^{2}-4ac$ que l'on appelle le discriminant de l'équation.
+    \begin{itemize}
+        \item Si $\Delta=0$, l'équation admet une unique solution dite double qui est $-\frac b{2a}$ et la forme factorisée du trinôme est
+        $$
+        az^2+bz+c = a \left( z + \frac b {2a} \right)^2
+        $$
+        \item Si $\Delta\neq0$, notons $\delta$ une racine carrée de $\Delta$, l'équation admet deux solutions distinctes $\frac{-b-\delta}{2a}$ et $\frac{-b+\delta}{2a}$ dites simples et la forme factorisée du trinôme est
+        $$
+        az^2+bz+c = a(z - \frac{-b-\delta}{2a})(z - \frac{-b+\delta}{2a})
+        $$
+    \end{itemize}
+    }]{Résolution des équations algébriques de degré $2$ dans $\C$ et algorithme de recherche d'une racine carrée sous forme cartésienne (sur un exemple explicite).}
+    La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
+    
+    La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
+    
+    \begin{align*}
+        az^{2}+bz+c = a\left[ \underbrace{ z^{2}+\frac{b}{a}z }_{ \text{But: Absorber ces termes dans un carré} }+\frac{c}{a} \right] &= a\left[ z^{2}+2\frac{b}{2a}z +\frac{b^{2}}{4a^{2}}-\frac{b^{2}}{4a^{2}}+\frac{c}{a} \right]\\
+        &=a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}}{4a^{2}}+\frac{c}{a} \right]  \\
+        &=a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}-4ac}{4a^{2}}\right]  \\
+        &=a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{\Delta}{4a^{2}}\right] 
+    \end{align*}
+    \begin{itemize}
+        \item Si $\Delta = 0$
+        $$
+        az^{2}+bz+c = a\left( z-\frac{-b}{2a} \right)^{2}
+        $$
+        de sorte que 
+        $$
+        az^{2}+bz+c = 0 \iff a\left( z-\frac{-b}{2a} \right)^{2} = 0 \iff z = -\frac{b}{2a}
+        $$
+        
+        \item Sinon
+        \begin{align*}
+            az^{2}+bz+c = a \left[ \left( z+\frac{b}{2a} \right)^{2}-\left( \frac{\delta}{2a} \right)^{2} \right] &= a \left( z + \frac{b}{2a}-\frac{\delta}{2a} \right)\left( z+\frac{b}{2a}+\frac{\delta}{2a} \right)\\ &= a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right)
+        \end{align*}
+        de sorte que
+        
+        \begin{align*}
+            az^{2}+bz+c =0 &\iff a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right) = 0\\ \\
+            &\iff \left\{ \begin{array}{ll}
+                z -  \frac{-z-\delta}{2a}  = 0 \\
+                \text{ou} \\
+                z- \frac{-z+\delta}{2a} =0
+            \end{array}\right. \\
+            &\iff \left\{ \begin{array}{ll}
+                z = \frac{-z-\delta}{2a}  \\ \text{ou} \\
+                z = \frac{-z+\delta}{2a} 
+            \end{array}\right.
+        \end{align*}
+        
+    \end{itemize}
+\end{question_kholle}
+\end{document}
