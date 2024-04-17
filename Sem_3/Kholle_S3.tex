@@ -2,7 +2,8 @@
 
 \date{17 avril 2024}
 \usepackage[nb-sem=3, auteurs={George Ober}]{../kholles}
-
+\usepackage{tikz}
+\def\n{5}
 
 \begin{document}
 
@@ -190,6 +191,144 @@ $$
             \frac{\theta}{2} + \pi \in \mathrm{Arg}  (z)
         \end{array}\right.
         $$
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{
+    Pour tout $n \in \mathbb N ^{*} \setminus \{ 1 \}$, 
+    $$
+    \mathbb U _n = \left\{ e^{\frac{2ik\pi}{n}}\mid k \in [ \! [ 0, n - 1 ] \!] \right\} 
+    $$
+    }]{Décrire (avec preuve) l'ensemble des racines $n$-ièmes de l'unité et les localiser géométriquement dans le plan complexe.}
+    \begin{itemize}
+        \item \underline{Description de l'ensemble $\mathbb U _n$}
+        \begin{align*}
+            \left\{ \begin{array}{ll}
+                z^{n}=1 \\
+                z \in \mathbb{C} 
+            \end{array}\right.
+            &\iff 
+            \left\{ \begin{array}{ll}
+                z^{n} = 1 \\
+                z \in \mathbb{C}^{*}
+            \end{array}\right. \text{ ou } 
+            \left\{ \begin{array}{ll}
+                z^{n} = 1 \\
+                z = 0 
+            \end{array}\right. \\
+            & \iff 
+            \left\{ \begin{array}{ll}
+                \rho^{n}e^{in \theta}  = 1 \\
+                z = \rho e^{i \theta} \\
+                (\rho, \theta) \in \mathbb{R}_{+}^{*}\times \mathbb{R}
+            \end{array}\right.
+            \\ & \iff 
+            \left\{ \begin{array}{ll} 
+                \rho^{n} = 1 \\
+                n \theta \equiv 0 [2 \pi]\\
+                z = \rho e^{i \theta} \\
+                (\rho, \theta) \in \mathbb{R}_{+}^{*}\times \mathbb{R}
+            \end{array}\right. 
+            \\ & \iff 
+            \left\{ \begin{array}{ll} 
+                \rho = 1 \text{ car } \rho > 0 \\
+                \theta \equiv 0 \left[ \frac{2\pi}{n} \right]\\
+                z = \rho e^{i \theta} \\
+                (\rho, \theta) \in \mathbb{R}_{+}^{*}\times \mathbb{R}
+            \end{array}\right.
+            \\ & \iff 
+            \left\{ \begin{array}{ll} 
+                \rho = 1 \\
+                \exists k \in \mathbb{Z} : \theta = \frac{2k\pi}{n} \\
+                z = \rho e^{i \theta} \\
+                (\rho, \theta) \in \mathbb{R}_{+}^{*}\times \mathbb{R}
+            \end{array}\right.
+            \\  & \iff \exists k \in \mathbb{Z}: z=e^{\frac{2ik\pi}{n}} \\
+            & \iff z \in \left\{ e^{\frac{2ik\pi}{n}}\mid k \in \mathbb{Z} \right\} 
+        \end{align*}
+        
+        
+        L'ensemble des solutions est paramétré par l'entier $k$ qui parcourt un ensemble infini. Toutefois, en représentant graphiquement les solutions, il semblerait que "tous les $n$", on fait un tour de cercle trigonométrique de plus, en redécrivant les solutions déjà obtenues pour $k \in [ \! [ 0, n-1 ] \!]$.
+        \item Localisation géométrique
+        \begin{itemize}[label=$\star$]
+            \item $\mathbb U _3$ est l'ensemble des sommets du triangle équilatéral inscrit dans le cercle unité, et dont $1$ est l'un des sommets
+            \begin{figure}[!h]
+                \centering
+                \begin{tikzpicture}[
+                    dot/.style={draw,fill,circle,inner sep=1pt}
+                    ]
+                    \draw[->] (-2,0) -- (2,0) node[below] {$\Re$};
+                    \draw[->] (0,-2) -- (0,2) node[left] {$\Im$};
+                    \draw[help lines] (0,0) circle (1);
+                    
+                    \node[dot,label={below right:$O$}] (O) at (0,0) {};
+                    \foreach \i in {1,...,3} {
+                    \node[dot,label={\i*360/3-(\i==3)*45:$e^\frac{2 \times {\i} i \pi}{3}$}] (w\i) at (\i*360/3:1) {};
+                    \draw[->] (O) -- (w\i);
+                    }
+                    \draw[->] (0:.3) arc (0:360/3:.3);
+                    \node at (360/3/2:.5) {$\alpha$};
+                \end{tikzpicture}
+            \end{figure}
+            
+            \item $\mathbb U _4$ est l'ensemble des sommets du carré inscrit dans le cercle unité et dont 1 est l'un des sommets. Le côté du carré vaut $\lvert 1 - i\rvert = \sqrt 2$.
+            \item $\mathbb U _5$ est l'ensemble des sommets du pentagone régulier inscrit dans le cercle unité et dont 1 est l'un des sommets.
+            \begin{figure}[!h]
+                \centering
+                \begin{tikzpicture}[
+                    dot/.style={draw,fill,circle,inner sep=1pt}
+                    ]
+                    \draw[->] (-2,0) -- (2,0) node[below] {$\Re$};
+                    \draw[->] (0,-2) -- (0,2) node[left] {$\Im$};
+                    \draw[help lines] (0,0) circle (1);
+                    
+                    \node[dot,label={below right:$O$}] (O) at (0,0) {};
+                    \foreach \i in {1,...,5} {
+                    \node[dot,label={\i*360/5-(\i==5)*45:$e^\frac{2 \times {\i} i \pi}{5}$}] (w\i) at (\i*360/5:1) {};
+                    \draw[->] (O) -- (w\i);
+                    }
+                    \draw[->] (0:.3) arc (0:360/5:.3);
+                    \node at (360/5/2:.5) {$\alpha$};
+                \end{tikzpicture}
+            \end{figure}
+        \end{itemize}
+    \end{itemize}
+    
+\end{question_kholle}
+\begin{question_kholle}{Somme et Produit des racines $n$-ièmes}
+    \begin{itemize}[label=$\lozenge$]
+        \item \textbf{Méthode 1} En utilisant les relations coefficients racines.
+
+        $\mathbb{U}_{n}$ sont les n racines disctinctes de $z^{n}-1$
+        $$S_{n} = - \frac{1}{\text{coefficient dominant}}\times(\text{coefficient de }z^{n-1} \text{ dans }z^{n}-1)= \left\{ \begin{array}{ll}
+            -0  & \text{ si }  n\geqslant 2 \\
+            -(-1)   & \text{ sinon}
+        \end{array}\right.$$
+        $$
+        P_{n} = (-1)^{n} \frac{\text{coefficient constant}}{\text{coefficient dominant}} = (-1) ^{n}\times \frac{-1}{1} = (-1)^{n+1}
+        $$
+        
+        \item \textbf{Méthode 2} Manipulation des symboles sommatoires
+        
+        \begin{align*}
+            S_{n} = \sum_{\omega \in \mathbb{U}_{n}}\omega &= \sum_{k=0}^{n-1}\omega_{0}^{k}\\
+            &= \left\{ \begin{array}{ll}
+                1 & \text{si }  n =1 \\
+                1 \times \frac{1 - \omega_{0}^{n}}{1-\omega_{0}}  & \text{sinon}
+            \end{array}\right.
+        \end{align*}
+        
+        Puisqu'on ne peut appliquer la formule de la somme des termes d'une suite géométrique seulement si la raison $\omega_{0} = 1 \iff e^{\frac{2i\pi}{n}} = 1 \iff \frac{2\pi}{n} \equiv 0 [2\pi] \iff n = 1$
+        
+        De même
+        
+        \begin{align*}
+            P_{n} = \prod_{\omega \in \mathbb{U}_{n}}\omega = \prod_{k=0}^{n-1}\omega_{0}^{k}= \omega_{0}^{\sum_{k=0}^{n-1}k} &= \omega_{0} ^{\frac{n(n-1)}{2}}\\ \\
+            &=\left\{ \begin{array}{ll}
+                (\omega_{0}^{n})^{\frac{n-1}{2}} = 1^{\frac{n-1}{2}} = 1 & \text{si } n \equiv 1 [2] \\
+                e^{\frac{2i\pi n(n-1)}{2n}} = e^{i \pi(n-1)} = (-1)^{n-1}
+            \end{array}\right.
+            \\ &= (-1)^{n-1}
+        \end{align*}
     \end{itemize}
 \end{question_kholle}
 \end{document}
