@@ -67,9 +67,11 @@
 	\usetikzlibrary{math} % pour les variables
 	\usetikzlibrary{hobby} % pour les courbes
 	\usetikzlibrary{shapes.misc}
+	\usetikzlibrary{patterns, patterns.meta}
 	% toutes les couleurs possibles : black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow
 \RequirePackage{pgfplots}
 	\pgfplotsset{compat=1.15,width=10cm}
+\usepackage{float}
 
 %À faire : trouver une manière de pouvoir choisir manuellement le chiffre de la question de kholle
 %J'ai ajouté ici une commande qui permet de créer une section avec son propre numéro avec  \DIV[42]{section}{Le titre}
@@ -126,6 +128,7 @@
 \newcommand{\C}{\ensuremath{\mathbb C} }
 \newcommand{\K}{\ensuremath{\mathbb K} }
 \newcommand{\PRIME}{\ensuremath{\mathcal P} }
+\newcommand{\cx}[1]{\ensuremath{#1[X]}}
 
 % Relation binaire
 \newcommand{\Rel}{\ensuremath{\mathcal R} }

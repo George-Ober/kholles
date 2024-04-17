@@ -59,7 +59,7 @@ Par exemple,
 
 - **L'environnement propositions** pour lister des propositions (bah oui) avec \item
 
-- Les **ensembles usuels** \N, \Z, \Q, R, \C, \K, \PRIME
+- Les **ensembles usuels** \N, \Z, \Q, R, \C, \K, \PRIME, \cx{corps} pour
 
 - L'**ensemble des solutions** \Sol
 
