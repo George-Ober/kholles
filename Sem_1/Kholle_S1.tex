@@ -29,25 +29,27 @@
         S_{n} = \frac{n(n+1)}{2}
         $$
         \item Soient $q \in \mathbb{R}$ , $k \in \mathbb{N}$ fixés quelconques.
-        Si $q = 1$, 
-        $$
-        \sum_{i=0}^{k}q^{i} = \sum_{i=0}^{k}1 = k+1
-        $$
-        Avec l'identité algébrique, on a
-        $$
-        q^{k+1}-1^{k+1} = (q-1) \sum_{i=0}^{k}q^{i}\times 1^{k-i}
-        $$
-        Ainsi, si $q \neq 1$ on a, par multiplication par $(q-1)^{-1}$
-        $$
-        \sum_{i=0}^{k}q^{i} = \frac{q^{k+1}-1}{q-1}
-        $$
-        Nous avons donc établi que
-        $$
-        \sum_{i=0}^{k} q^{i} = \left\{ \begin{array}{ll}
-            \frac{1-q^{k+1}}{1-q}  &\text{ si } q \neq 1 \\
-            k + 1 &\text{ sinon}
-        \end{array}\right.
-        $$
+        \begin{itemize}[label=$\star$]
+            \item Si $q = 1$, 
+            $$
+            \sum_{i=0}^{k}q^{i} = \sum_{i=0}^{k}1 = k+1
+            $$
+            \item Sinon, avec l'identité algébrique, on a
+            $$
+            q^{k+1}-1^{k+1} = (q-1) \sum_{i=0}^{k}q^{i}\times 1^{k-i}
+            $$
+            Ainsi, puisque $q \neq 1$ on a, par multiplication par $(q-1)^{-1}$
+            $$
+            \sum_{i=0}^{k}q^{i} = \frac{q^{k+1}-1}{q-1}
+            $$
+            Nous avons donc établi que
+            $$
+            \sum_{i=0}^{k} q^{i} = \left\{ \begin{array}{ll}
+                \frac{1-q^{k+1}}{1-q}  &\text{ si } q \neq 1 \\
+                k + 1 &\text{ sinon}
+            \end{array}\right.
+            $$
+        \end{itemize}
     \end{itemize}
 \end{question_kholle}
 
