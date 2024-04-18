@@ -4,7 +4,7 @@ Bienvenue très chers camarades sereins.
 
 Ce projet est maintenu par Kylian, Jérémie, George, et Hugo de la MP1.
 
-Quand on arrivera à s'organiser, ce *repo* sera "Lendroit" où l'on publiera nos résolutions des questions de Cours pour les Khôlles de Maths.
+Quand on arrivera à s'organiser, ce _repo_ sera "Lendroit" où l'on publiera nos résolutions des questions de Cours pour les Khôlles de Maths.
 
 Espérons qu'avec un peu plus d'expérience, on arrive à les rédiger bien plus vite.
 
@@ -12,6 +12,10 @@ Espérons qu'avec un peu plus d'expérience, on arrive à les rédiger bien plus
 
 [Toutes les semaines](Khôlles_Mathématiques.pdf)
 
+- [ ] [Semaine 1](Sem_1/Kholle_S1.pdf)
+- [x] [Semaine 2](Sem_2/Kholle_S2.pdf)
+- [x] [Semaine 3](Sem_3/Kholle_S3.pdf)
+- [x] [Semaine 4](Sem_4/Kholle_S4.pdf)
 - [ ] [Semaine 6](Sem_6/Kholle_S6.pdf)
 - [ ] [Semaine 7](Sem_7/Kholle_S7.pdf)
 - [ ] [Semaine 8](Sem_8/Kholle_S8.pdf)
