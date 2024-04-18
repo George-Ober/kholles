@@ -174,7 +174,46 @@
 \end{question_kholle}
 
 \begin{question_kholle}{Montrer par récurrence qu'une fonction polynomiale à coefficients réels est nulle si et seulement si tous ses coefficients sont nuls}
-    
+    Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \mathbb{N}$
+    $$
+    \mathcal{P}(n) : \text{toute fonction polynômiale identiquement nulle sur }\mathbb{R} \text{ a tous ses coefficients nuls}
+    $$
+    Autrement dit
+    $$
+    \mathcal{P}(n) : \forall(a_{0}, \dots ,a_{n}) \in \mathbb{R}^{n+1}\left( \forall x \in \mathbb{R}, \sum_{k=0}^{n}a_{k}x^{k} = 0 \right) \implies \forall k \in [ \! [ 0, n ] \!], a_{k} = 0
+    $$
+    \begin{itemize}[label=$\lozenge$]
+        \item Pour $n \leftarrow 0$
+        Soit $a_{0} \in \mathbb{R}$ fixé quelconque tel que $\forall x \in \mathbb{R}, a_{0}x^{0} = 0$ Alors $a_{0} = 0$
+        
+        \item Soit $n \in \mathbb{N}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie
+        Soient $(a_{0},\dots, a_{n+1}) \in \mathbb{R}^{n+2}$
+        Posons $Q(x) = \sum_{k=0}^{n+1}a_{k}x^{k}$ tel que $\forall x \in \mathbb{R}, Q(x) = 0$
+        D'une part
+        $$
+        \forall x \in \R, \underbrace{ Q(2x) }_{ =0 } - 2^{n+1}\underbrace{ Q(x) }_{ =0 } = 0
+        $$
+        D'autre part
+        
+        \begin{align*}
+            \forall x \in \mathbb{R}, Q(2x) - 2^{n+1}Q(x) &= \sum_{k=0}^{n+1}a_{k}(2x)^{k}-2^{n+1}\sum_{k=0}^{n+1}a_{k}x^{k} \\
+            &= \sum_{k=0}^{n+1}a_{k}(2^{k}-2^{n+1})x^{k}
+        \end{align*}
+        
+        Le terme d'indice $n+1$ s'annule, si bien que l'on peut écrire
+        $$\forall x \in \mathbb{R}, Q(2x) - 2^{n+1}Q(x) = \sum_{k=0}^{n}a_{k}(2^{k}-2^{n+1})x^{k}$$
+        Qui est une fonction polynômiale de degré $\leqslant n$, ce qui permet d'appliquer $\mathcal{P}(n)$ pour $(a_{k})_{k \in[ \! [ 0, n ] \!]} \leftarrow (a_{k}(2^{k}-2^{n+1}))_{k \in[ \! [ 0, n ] \!]}$.
+        
+        Donc $\forall x \in [ \! [ 0, n ] \!]: a_{k}(2^{k}-2^{n+1}) = 0$ et puisque $2^{k}-2^{n+1} \neq 0$, on en déduit que $$\forall k \in [ \! [ 0, n ] \!], a_{k} = 0$$
+        
+        L'expression de $Q$ devient:
+        $$
+        \forall x \in \mathbb{R}, \underbrace{ \sum_{k=0}^{n}a_{k}x^{k} }_{ =0 }+ a_{n+1}x^{n+1} = 0
+        $$
+        Donc en particularisant pour $x\leftarrow 1$, on en déduit que $a_{n+1} = 0$
+        
+        Donc $\mathcal{P}(n+1)$ est vraie.
+    \end{itemize}
 \end{question_kholle}
 \begin{question_kholle}{Montrer par analyse/synthèse qu'une fonction réelle d'une variable réelle s'écrit de manière unique comme somme d'une fonction paire et d'une fonction impaire}
     Soit $f \in \mathcal{F}(\mathbb{R}, \mathbb{R})$ fixée quelconque.
