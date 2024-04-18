@@ -33,8 +33,1158 @@
 	\end{abstract}
 	
 	\tableofcontents
-	
-	\setcounter{section}{5}
+\pagebreak\section{Semaine 1}
+
+
+\begin{question_kholle}{Preuve formelle de la somme des entiers et des termes d'une suite géométrique} 
+    \begin{itemize}[label=$\lozenge$]
+        \item Soit $n \in \mathbb{N}$ fq. Posons $$S_{n} = \sum_{k=0}^{n}k$$
+        En posant la symétrie d'indice $i = n-k$, on a aussi
+        $$
+        S_{n}= \sum_{i=0}^{n}(n-i)=\sum_{i=0}^{n}n - \sum_{i=0}^{n}i=(n \times \mathrm{card}[ \! [ 0, n ] \!]) - \sum_{i=0}^{n} i
+        $$
+        Or, puisque $\mathrm{card}[ \! [ 0, n ] \!] = n + 1$ et que $\sum_{i=0}^{n} i = S_{n}$
+        $$
+        S_{n} = n \times (n+1) + S_{n}
+        $$
+        Donc
+        $$
+        S_{n} = \frac{n(n+1)}{2}
+        $$
+        \item Soient $q \in \mathbb{R}$ , $k \in \mathbb{N}$ fixés quelconques.
+        \begin{itemize}[label=$\star$]
+            \item Si $q = 1$, 
+            $$
+            \sum_{i=0}^{k}q^{i} = \sum_{i=0}^{k}1 = k+1
+            $$
+            \item Sinon, avec l'identité algébrique, on a
+            $$
+            q^{k+1}-1^{k+1} = (q-1) \sum_{i=0}^{k}q^{i}\times 1^{k-i}
+            $$
+            Ainsi, puisque $q \neq 1$ on a, par multiplication par $(q-1)^{-1}$
+            $$
+            \sum_{i=0}^{k}q^{i} = \frac{q^{k+1}-1}{q-1}
+            $$
+            Nous avons donc établi que
+            $$
+            \sum_{i=0}^{k} q^{i} = \left\{ \begin{array}{ll}
+                \frac{1-q^{k+1}}{1-q}  &\text{ si } q \neq 1 \\
+                k + 1 &\text{ sinon}
+            \end{array}\right.
+            $$
+        \end{itemize}
+    \end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}{Preuve de la factorisation de $a^n - b^n$ puis de celle de $a^{2m+1} + b^{2m+1} $}
+    Calculons 
+    
+    \begin{align*}
+        (a-b)\sum_{k=0}^{m-1}a^{k}b^{m-1-k} 
+        &=a \sum_{k=0}^{m-1}a^{k}b^{m-1-k} -b \sum_{k=0}^{m-1}a^{k}b^{m-1-k} \\
+        &= \sum_{k=0}^{m-1}a^{k+1}b^{m-1-k} - \sum_{k=0}^{m-1}a^{k}b^{m-k} \\
+    \end{align*}
+    
+    Si bien qu'en posant le changement d'indice $j = k + 1$ on reconnait le téléscopage.
+    $$
+    \sum_{j=1}^{m}a^{j}b^{m-j} - \sum_{k=0}^{m-1}a^{k}b^{m-k} = a^{m} - b ^{m}
+    $$
+\end{question_kholle}
+\begin{question_kholle}[
+    {$$\left( \sum_{k=1}^{n}x_{k} \right)^{2} = \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n}} x_{k}x_{j} = 2 \sum_{1\leqslant k < j \leqslant n} x_{k}x_{j}+\sum_{k=1}^{n}x_{i}^{2}$$}
+    ]{Développement d'une somme}
+    
+    \begin{align*}
+        \left( \sum_{k=0}^{n}x_{k} \right)^{2}
+        &= \left( \sum_{k=1}^{n} x_{k} \right) \times \left( \sum_{j=1}^{n} x_{j} \right) \\
+        &= \sum_{k=1}^{n}\left[ x_{k} \times \sum_{j=1}^{n}x_{j} \right] \\
+        &= \sum_{k=1}^{n}\left( \sum_{j=1}^{n} x_{k}\times x_{j} \right) \\
+        &= \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n}} x_{k}x_{j}
+    \end{align*}
+    
+    
+    On peut aussi séparer cette somme
+    
+    \begin{align*}
+        \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n}} x_{k}x_{j}
+        &=
+        \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n \\ k<j}} x_{k}x_{j} &+
+        \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n\\k=j}} x_{k}x_{j} &+
+        \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n\\k>j}} x_{k}x_{j}\\
+        &=
+        \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n \\ k<j}} x_{k}x_{j} & +
+        \underbrace{ \sum_{k=1}^{n}x_{k}^{2} }_{ \text{somme sur les indices }(k,j) \text{ tels que } k = j } &+
+        \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n\\k>j}} x_{k}x_{j}
+    \end{align*}
+    
+    On remarque aussi qu'en permutant les indices des deux sommes (les variables sont muettes)
+    $$
+    \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n \\ k<j}} x_{k}x_{j} = \sum_{\substack{1\leqslant j \leqslant n\\ 1 \leqslant k \leqslant n\\j<k}} x_{j}x_{k}
+    $$
+    Qui, par commutativité du produit dans $\mathbb{C}$ nous donne cette égalité
+    $$
+    \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n \\ k<j}} x_{k}x_{j} =
+    \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n\\k>j}} x_{k}x_{j}
+    $$
+    On a donc bien l'identité attendue :
+    $$
+    \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n}} x_{k}x_{j} = 2 \sum_{\substack{1\leqslant k \leqslant n\\ 1 \leqslant j \leqslant n \\ k<j}} x_{k}x_{j} +
+    \sum_{k=1}^{n}x_{k}^{2}
+    $$
+\end{question_kholle}
+
+\begin{question_kholle}[{Pour tout $(a, b) \in \C^2$, $n \in \N$: $$(a+b)^{n} = \sum_{k=0}^{n}\binom n k a^{k} b^{n-k}$$}]{Preuve de la formule du binôme de Newton}
+    Soient $(a, b) \in \mathbb{C}^{2}$ fixés quelconques.
+    Posons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \mathbb{N}$ par
+    $$
+    \mathcal{P}(n): (a+b)^{n} = \sum_{k=0}^{n}\binom n k a^{k} b^{n-k}
+    $$
+    \begin{itemize}[label=$\star$]
+        \item Initialisation, $n \leftarrow 0$
+        D'une part $(a+b)^{0} = 0$, même si les deux sont nuls (par convention $0^{0} =0$)
+        D'autre part
+        $$
+        \sum_{k=0}^{0}\binom 0 k a^{k}b^{n-k} = \binom 0 0 a^{0} b^{0} = 0
+        $$
+        Donc $\mathcal{P}(0)$ est vérifée.
+        
+        \item Soit $n \in \mathbb{N}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie
+        
+        \begin{align*}
+            (a+b)^{n+1} &= (a+b)\times(a+b)^{n} \\
+            &= (a+b) \times \sum_{k=0}^{n}\binom n k a^{k} b^{n-k} \\
+            &= a\sum_{k=0}^{n}\binom n k a^{k} b^{n-k} + b\sum_{k=0}^{n}\binom n k a^{k} b^{n-k} \\
+            &= \sum_{k=0}^{n}\binom n k a^{k+1} b^{n-k} + \sum_{k=0}^{n}\binom n k a^{k} b^{n+1-k} \\
+            &= \sum_{j=1}^{n+1}\binom n {j-1} a^{j} b^{n+1-j} + \sum_{k=0}^{n}\binom n k a^{k} b^{n+1-k} \\
+            (\text{en posant } j = k + 1) &= a^{n+1} + \sum_{j=1}^{n}\binom n {j-1} a^{j} b^{n+1-j} + \sum_{k=1}^{n}\binom n k a^{k} b^{n+1-k} + b^{n+1} \\
+            &= a^{n+1} + \left( \sum_{k=1}^{n} \left(\binom n {k-1} + \binom n k \right) a^{k} b^{n+1-k} \right) + b^{n+1} \\
+            (\text{en utilisant la relation de Pascal}) &= a^{n+1} + \sum_{k=1}^{n} \binom {n+1} k a^{k} b^{n+1-k} + b^{n+1} \\
+            &=\sum_{k=0}^{n+1} \binom {n+1} k a^{k} b^{n+1-k}
+        \end{align*}
+        
+        Donc $\mathcal{P}(n+1)$ est vraie.
+    \end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}{Montrer que tout entier $n > 2$ admet un diviseur premier}
+    Raisonnons par récurrence forte avec la propriété $\mathcal{P}(\cdot)$ définie pour tout $n > 2$ par
+    $$
+    \mathcal{P}(n) : « \forall k \in [ \! [ 2, n ] \!], k \text{ admet un diviseur premier } »
+    $$
+    \begin{itemize}
+        \item Initialisation: $n \leftarrow 2$
+        
+        Soit $k \in [ \! [ 2, 2 ] \!]$ fixé quelconque. Nécéssairement, $k = 2$.
+        or, $2$ admet $2$ pour diviseur premier.
+        
+        Donc $\forall k \in [ \! [ 2, 2 ] \!], k \text{ admet un diviseur premier}$, ce qui prouve $\mathcal{P}(2)$.
+        
+        \item Hérédité: Soit $n \in \mathbb{N} \setminus \{ 1, 0 \}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
+        
+        Pour montrer $\mathcal{P}(n+1)$, il nous faudra montrer que $\forall k \in [ \! [ 2, n+1 ] \!], k \text{ admet un diviseur premier }$
+        
+        Soit $k \in [ \! [ 2, n+1 ] \!]$ fixé quelconque.
+        \begin{itemize}[label=$\star$]
+            \item    Si $k \in [ \! [ 2, n ] \!]$, alors la véracité de $\mathcal{P}(n)$ nous permet de conclure, et de dire que k admet un diviseur premier.
+            
+            \item Sinon $k = n + 1$
+            \begin{itemize}[label=$\lozenge$]
+                \item Si $n+1$ est premier, alors il admet $k$ comme diviseur premier
+                \item Sinon, $\exists d \in [ \! [ 2, n ] \! ]: d \mid n+1$ 
+                
+                Mais, puisque $d \in [ \! [ 2, n ] \! ]$, la véracité de $\mathcal{P}(n)$ nous permet d'affirmer que $d$ admet un diviseur premier $p$. Donc par transitivité de la relation de divisibilité $$(p \mid d \text{ et } d \mid n) \implies p \mid n$$
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}{Montrer par récurrence qu'une fonction polynomiale à coefficients réels est nulle si et seulement si tous ses coefficients sont nuls}
+    Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \mathbb{N}$
+    $$
+    \mathcal{P}(n) : \text{toute fonction polynômiale identiquement nulle sur }\mathbb{R} \text{ a tous ses coefficients nuls}
+    $$
+    Autrement dit
+    $$
+    \mathcal{P}(n) : \forall(a_{0}, \dots ,a_{n}) \in \mathbb{R}^{n+1}\left( \forall x \in \mathbb{R}, \sum_{k=0}^{n}a_{k}x^{k} = 0 \right) \implies \forall k \in [ \! [ 0, n ] \!], a_{k} = 0
+    $$
+    \begin{itemize}[label=$\lozenge$]
+        \item Pour $n \leftarrow 0$
+        Soit $a_{0} \in \mathbb{R}$ fixé quelconque tel que $\forall x \in \mathbb{R}, a_{0}x^{0} = 0$ Alors $a_{0} = 0$
+        
+        \item Soit $n \in \mathbb{N}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie
+        Soient $(a_{0},\dots, a_{n+1}) \in \mathbb{R}^{n+2}$
+        Posons $Q(x) = \sum_{k=0}^{n+1}a_{k}x^{k}$ tel que $\forall x \in \mathbb{R}, Q(x) = 0$
+        D'une part
+        $$
+        \forall x \in \R, \underbrace{ Q(2x) }_{ =0 } - 2^{n+1}\underbrace{ Q(x) }_{ =0 } = 0
+        $$
+        D'autre part
+        
+        \begin{align*}
+            \forall x \in \mathbb{R}, Q(2x) - 2^{n+1}Q(x) &= \sum_{k=0}^{n+1}a_{k}(2x)^{k}-2^{n+1}\sum_{k=0}^{n+1}a_{k}x^{k} \\
+            &= \sum_{k=0}^{n+1}a_{k}(2^{k}-2^{n+1})x^{k}
+        \end{align*}
+        
+        Le terme d'indice $n+1$ s'annule, si bien que l'on peut écrire
+        $$\forall x \in \mathbb{R}, Q(2x) - 2^{n+1}Q(x) = \sum_{k=0}^{n}a_{k}(2^{k}-2^{n+1})x^{k}$$
+        Qui est une fonction polynômiale de degré $\leqslant n$, ce qui permet d'appliquer $\mathcal{P}(n)$ pour $(a_{k})_{k \in[ \! [ 0, n ] \!]} \leftarrow (a_{k}(2^{k}-2^{n+1}))_{k \in[ \! [ 0, n ] \!]}$.
+        
+        Donc $\forall x \in [ \! [ 0, n ] \!]: a_{k}(2^{k}-2^{n+1}) = 0$ et puisque $2^{k}-2^{n+1} \neq 0$, on en déduit que $$\forall k \in [ \! [ 0, n ] \!], a_{k} = 0$$
+        
+        L'expression de $Q$ devient:
+        $$
+        \forall x \in \mathbb{R}, \underbrace{ \sum_{k=0}^{n}a_{k}x^{k} }_{ =0 }+ a_{n+1}x^{n+1} = 0
+        $$
+        Donc en particularisant pour $x\leftarrow 1$, on en déduit que $a_{n+1} = 0$
+        
+        Donc $\mathcal{P}(n+1)$ est vraie.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Montrer par analyse/synthèse qu'une fonction réelle d'une variable réelle s'écrit de manière unique comme somme d'une fonction paire et d'une fonction impaire}
+    Soit $f \in \mathcal{F}(\mathbb{R}, \mathbb{R})$ fixée quelconque.
+    \begin{itemize}[label=$\lozenge$]
+        
+        
+        \item \underline{Analyse}:
+        Supposons que $f : \mathbb{R} \to \mathbb{R}$ se décompose de manière unique en $f = g+h$ avec $g$ paire et $h$ impaire (i.e. $\forall x \in \mathbb{R}, g(-x)= g(x)$ et $h(-x)= -h(x)$).
+        Soit $x \in \mathbb{R}$ fixé quelconque
+        Calculons $f(-x)$:
+        $$f(-x) = g(-x) + h(-x) = g(x) -h(x)$$
+        Par demi somme, nous avons donc
+        $$
+        \left\{ \begin{array}{ll}
+            2g(x)  = f(x)+f(-x) \\
+            2h(x) = f(x)-f(-x)
+        \end{array}\right.
+        $$
+        Ainsi, si une telle décomposition existe, c'est
+        $$
+        \left\{ \begin{array}{ll}
+            g : x \mapsto \frac{f(x)+f(-x)}{2}  \\
+            h : x \mapsto \frac{f(x)-f(-x)}{2}
+        \end{array}\right.
+        $$
+        
+        \item \underline{Synthèse}:
+        Posons
+        
+        \begin{align} 
+            g\left|\begin{array}{ll} \mathbb{R} &\to \mathbb{R} \\ x &\mapsto \frac{f(x)+f(-x)}{2} \end{array}\right.
+            \text{ et } h \left|\begin{array}{ll} \mathbb{R} &\to \mathbb{R} \\ x &\mapsto \frac{f(x)-f(-x)}{2} \end{array}\right.
+        \end{align}
+        
+        
+        Remarquons, d'une part que:
+        $$
+        \forall x \in \mathbb{R}, g(x)+h(x) = \frac{f(x)+f(-x)}{2} + \frac{f(x)-f(-x)}{2} = f(x)
+        $$
+        Vérifions si les fonctions $g$ et $h$ vérifient les conditions de parité:
+        $$
+        \forall x \in \mathbb{R}, g(-x) = \frac{f(-x)+f(-(-x))}{2}= \frac{f(x)+f(-x)}{2} = g(x) \text{ ainsi } g \text{ est paire.}
+        $$
+        $$
+        \forall x \in \mathbb{R}, h(-x) = \frac{f(-x)-f(-(-x))}{2} = -\frac{f(x)-f(-x)}{2} = -h(x) \text{ ainsi } h \text{ est impaire}
+        $$
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Illustration graphique de certaines identités trigonométriques}
+    
+\end{question_kholle}
+\begin{question_kholle}{Technique de résolution des équations trigonométriques du type $A \cos x + B \sin x = C$}
+    Étudions l'équation d'inconnue $x$
+    
+    $$
+    A \cos x + B \sin x = C
+    $$
+    \begin{itemize}[label=$\star$]
+        \item Si $A = 0$ et $B = 0$
+        \begin{itemize}[label=$\lozenge$]
+            \item Si $C = 0$ l'équation admet $\mathbb{R}$ pour ensemble de solutions
+            \item Sinon, l'équation n'admet pas de solutions
+        \end{itemize}
+        \item Sinon,
+        
+        Factorisons par $\sqrt{ A^{2}+B^{2} }$ (ce qui a un sens car $(A, B) \neq (0, 0) \implies \sqrt{ A^{2}+ B^{2} } \neq 0$)
+        
+        $$
+        \frac{A}{\sqrt{ A^{2}+B^{2} }}\cos x + \frac{B}{\sqrt{ A^{2}+B^{2} }} \sin x = \frac{C}{ \sqrt{ A^{2}+B^{2} }}
+        $$
+        Le nombre complexe $\frac{A}{\sqrt{ A^{2}+B^{2}} }+i \frac{B}{\sqrt{ A^{2} +B^{2}}}$ est de module $1$, donc $\exists \varphi \in \mathbb{R}$ tel que
+        
+        $$
+        e^{i\varphi} = \underbrace{ \frac{A}{\sqrt{ A^{2}+B^{2}} } }_{ \cos \varphi }+i \underbrace{ \frac{B}{\sqrt{ A^{2} +B^{2}}} }_{ \sin \varphi }
+        $$
+        
+        Ainsi,
+        $$
+        (\cos \varphi \cos x-\sin \varphi \sin x) = \frac{C}{ \sqrt{ A^{2}+B^{2} }}
+        $$
+        donc
+        $$
+        \cos(\varphi+x) = \frac{C}{\sqrt{ A^{2}+B^{2} }}
+        $$
+        \begin{itemize}[label=$\lozenge$]
+            \item Si $\frac{C}{\sqrt{ A^{2}+B^{2} }}\leqslant 1$
+            
+            \begin{align*}
+                \cos(\varphi+x) = \frac{C}{\sqrt{ A^{2}+B^{2} }} &\iff
+                \left\{ \begin{array}{ll}
+                    \phi + x \equiv \arccos\frac{C}{\sqrt{ A^{2}+B^{2} }}  [2\pi]\\
+                    \text{ou} \\
+                    \phi + x \equiv - \arccos\frac{C}{\sqrt{ A^{2}+B^{2} }} [2\pi]
+                \end{array}\right. \\
+                &\iff x \in \begin{array}{ll}\left\{ \arccos \frac{C}{\sqrt{ A^{2}+B^{2} }} + 2k\pi \mid k \in \mathbb{Z} \right\} \\ \cup \\ \left\{- \arccos \frac{C}{\sqrt{ A^{2}+B^{2} }} + 2k\pi \mid k \in \mathbb{Z} \right\} 
+                \end{array}
+            \end{align*}
+            
+            
+            \item Sinon, l'équation n'admet aucune solution
+        \end{itemize}
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Étude complète de la fonction tangente, tracé du graphe et en déduire celui de cotangente.}
+    
+\end{question_kholle}
+\begin{question_kholle}{Expression $\sin \theta$, $\cos \theta$, $\tan \theta$ en fonction de $\tan \frac \theta 2$}
+    Soit $\theta \in \mathbb{R} \setminus \pi \mathbb{Z}$.
+    Posons $u = \tan \frac{\theta}{2}$
+    \begin{itemize}[label=$\lozenge$]
+        \item $\tan \theta = \frac{2u}{1-u^{2}}$
+        
+        En utilisant la formule classique de trigonométrie
+        
+        $$\tan (a+b) = \frac{\tan a+\tan b}{1-\tan a\tan b}$$
+        
+        On obtient, avec $(a,b) \leftarrow (\frac{\theta}{2}, \frac{\theta}{2})$
+        $$
+        \tan \theta = \frac{2 \tan \frac{\theta}{2}}{1-\tan ^{2} \frac{\theta}{2}}=\frac{2u}{1-u^{2}}
+        $$
+        
+        
+        \item $\cos \theta = \frac{1-u^{2}}{1+u^{2}}$
+        \begin{align*}
+            \cos \theta  & = 2\cos ^{2} \frac{\theta}{2} -1 \\
+            & = \frac{2}{1+\tan ^{2} \frac{\theta}{2}} - 1 \\
+            &= \frac{2}{1+u^{2}}-1 \\
+            &= \frac{1-u^{2}}{1+u^{2}}
+        \end{align*}
+        
+        \item $\sin \theta \frac{2u}{1+u^{2}}$
+        
+        \begin{align*}
+            \sin \theta  & = \cos \theta \tan \theta \\
+            & = \frac{1-u^{2}}{1+u^{2}} \times \frac{2u}{1-u^{2}} \\
+            &= \frac{2u}{1+u^{2}}
+        \end{align*}
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Preuve des formules du type $\cos p + \cos q = \dots$}
+    Partons des formules d'addition
+    
+    $$
+    \cos (a+b) = \cos a\cos b-\sin a\sin b\\
+    $$
+    $$
+    \cos (a-b) = \cos a\cos b+\sin a\sin b
+    $$
+    
+    \begin{align*}        
+        \cos(a+b) + \cos (a-b) = 2\cos a\cos b 
+        \tag{$\spadesuit$}\label{eqn:cos}
+    \end{align*}
+    
+    
+    Si bien qu'en posant
+    $$
+    \left\{ \begin{array}{ll}
+        p = a+b \\
+        q= a-b 
+    \end{array}\right.
+    \iff
+    \left\{ \begin{array}{ll}
+        a = \frac{p+q}{2} \\
+        b= \frac{p-q}{2} 
+    \end{array}\right.
+    $$
+    D'où, en injectant dans \eqref{eqn:cos}
+    $$
+    \cos p + \cos q = 2\cos \frac{p+q}{2} \cos \frac{p-q}{2}
+    $$
+    
+\end{question_kholle}
+\pagebreak\section{Semaine 2}
+
+\begin{question_kholle}{Montrer qu'une composée d'applications inj/surj/bij est inj/surj/bij}
+    Soient $u : E \to F$ et $v: F \to G$
+    \begin{itemize}[label = $\lozenge$]
+        \item Supposons $u$ et $v$ injectives.
+        
+        Soient $(x_{1}, x_{2}) \in E^{2}$ fq tels que $(v \circ u) (x_{1}) =(v\circ u)(x_{2})$.
+        
+        Alors $v(u(x_{1})) = v(u(x_{2}))$, mais $v$ est injective donc, $u(x_{1})= u(x_{2})$ mais $u$ est injective donc $x_{1} = x_{2}$.
+        Ainsi $v \circ u$ est injective.
+        \item Supposons $u$ et $v$ surjectives
+        Soit $y \in G$ fixé quelconque.
+        
+        $v$ est surjective donc $\exists t \in F : v(t) = y$
+        
+        $u$ est surjective, donc $\exists x \in E : u(x) = t$
+        Ainsi,
+        $$
+        (v \circ u) (x) = v(u(x)) = v(t) = y
+        $$
+        Donc $v \circ u$ est surjective.
+        
+        \item Supposons $u$ et $v$ bijectives.
+        
+        Le fait que $v \circ u$ est une bijection est une conséquence des deux points précédents.
+        
+    \end{itemize}
+    
+\end{question_kholle}
+\begin{question_kholle}{Montrer que, si $u$ est une application de $E$ dans $F$, si $v$ est une application de $F$ dans $E$ telle que $v \circ u = \mathrm{Id}_E$ et $u \circ v = \mathrm{Id}_F$ alors $u$ est bijective ($v$ aussi) et sa bijection réciproque est $v$}
+    Soient $(u, v) \in \mathcal{F}(E, F) \times \mathcal{F}(F, E)$ qui satisfont les conditions de l'énnoncé.
+    \begin{itemize}[label=$\lozenge$]
+        \item $u$ est injective
+        
+        Soient $(x_{1}, x_{2}) \in E^{2}$ fixés quelconques tels que $u(x_{1}) = u(x_{2})$. Alors $v(u(x_{1})) = v(u(x_{2}))$. Donc $x_{1} = x_{2}$ puisque $v \circ u = \mathrm{Id}_{E}$
+        
+        \item $u$ est surjective
+        Soit $y \in F$ fixé quelconque. Posons $t = v(y)$. Ainsi, $u(t) = u(v(y))= y$ car $u \circ v = \mathrm{Id}_{F}$
+        
+        
+    \end{itemize}
+    Ainsi, $u$ est bijective, notons $u^{-1}$ sa bijection réciproque
+    \begin{align*}
+        u^{-1} \circ (u \circ v ) &= (u^{-1} \circ u) \circ v\\
+        u^{-1} \circ \mathrm{Id}_{F} &= \mathrm{Id}_{E}\circ v\\
+        u^{-1} &= v
+    \end{align*}
+    
+\end{question_kholle}
+
+\begin{question_kholle}{Montrer que $v \circ u$ injective implique $u$ injective + montrer que cela n'implique pas $v$ injective.}
+    Soient $(u, v) \in \mathcal{F}(E, F) \times \mathcal{F}(F, G)$.
+    
+    Supposons $v \circ u$ est injective
+    Soient $(x_1, x_2) \in E^2$ fixés quelconques tels que $u(x_1) = u(x_2)$.
+    Composons par $v$ à gauche : $v \circ u ( x_1 ) = v \circ u (x_2)$
+    Puisque $v \circ u$ est injective, cela implique que $x_1 = x_2$.
+    
+    
+    \begin{figure}[!h]
+        \centering
+        \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=-2pt}]
+            \node[label=above:$E$] at (0, 4.5) {};
+            \node[label=above:$F$] at (4, 4.5) {};
+            \node[label=above:$G$] at (8, 4.5) {};
+            
+            \node[label=above:$u$] at (2, 4) {};
+            \node[label=above:$v$] at (6, 4) {};
+            
+            
+            \node[ele,label=left:$a$] (a1) at (0,4) {};    
+            \node[ele,label=left:$b$] (a2) at (0,3) {};    
+            
+            \node[ele,,label=below:$1$] (b1) at (4,4) {};
+            \node[ele,,label=above:$2$] (b2) at (4,3) {};
+            \node[ele,,label=above:$3$] (b3) at (4,2) {};
+            
+            \node[ele,,label=right:$\star$] (c1) at (8,4) {};
+            \node[ele,,label=right:$\triangle$] (c2) at (8,3) {};
+            
+            \node[draw,fit= (a1) (a2) ,minimum width=2cm] {} ;
+            \node[draw,fit= (b1) (b2) (b3) ,minimum width=2cm] {} ;  
+            \node[draw,fit= (c1) (c2) ,minimum width=2cm] {} ; 
+            
+            \draw[->,thick,shorten <=2pt,shorten >=2pt] (a1) -- (b1);
+            \draw[->,thick,shorten <=2pt,shorten >=2] (a2) -- (b2);
+            \draw[->,thick,shorten <=2pt,shorten >=2] (b1) -- (c1);
+            \draw[->,thick,shorten <=2pt,shorten >=2] (b2) -- (c2);
+            \draw[->,thick,shorten <=2pt,shorten >=2] (b3) -- (c2);
+        \end{tikzpicture}
+    \end{figure}
+    Ici, $v \circ u$ est injective, on a montré que cela impliquait $u$ injective. Pourtant, $v$ n'est pas injective.
+    
+\end{question_kholle}
+
+\begin{question_kholle}{Montrer que $v \circ u$ surjective implique $v$ surjective + montrer que cela n'implique pas $u$ surjective.}
+    Soient $(u, v) \in \mathcal{F}(E, F) \times \mathcal{F}(F, G)$.
+    
+    Supposons $v \circ u$ est surjective
+    Soit $y \in G$ fixé quelconque.
+    Puisque $v \circ u$ est surjective, $\exists x \in E : (v \circ u)(x) = y$
+    Donc $v(u(x)) = y$.
+    Donc, en posant $t = u(x)$, on a $v(t) = y$.
+    Ainsi, $v$ est surjective.
+    
+    \begin{figure}[!h]
+        \centering
+        \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=-2pt}]
+            \node[label=above:$E$] at (0, 4.5) {};
+            \node[label=above:$F$] at (4, 4.5) {};
+            \node[label=above:$G$] at (8, 4.5) {};
+            
+            \node[label=above:$u$] at (2, 4) {};
+            \node[label=above:$v$] at (6, 4) {};
+            
+            
+            \node[ele,label=left:$a$] (a1) at (0,4) {};    
+            \node[ele,label=left:$b$] (a2) at (0,3) {};    
+            
+            \node[ele,,label=below:$1$] (b1) at (4,4) {};
+            \node[ele,,label=above:$2$] (b2) at (4,3) {};
+            \node[ele,,label=above:$3$] (b3) at (4,2) {};
+            
+            \node[ele,,label=right:$\star$] (c1) at (8,4) {};
+            \node[ele,,label=right:$\triangle$] (c2) at (8,3) {};
+            
+            \node[draw,fit= (a1) (a2) ,minimum width=2cm] {} ;
+            \node[draw,fit= (b1) (b2) (b3) ,minimum width=2cm] {} ;  
+            \node[draw,fit= (c1) (c2) ,minimum width=2cm] {} ; 
+            
+            \draw[->,thick,shorten <=2pt,shorten >=2pt] (a1) -- (b1);
+            \draw[->,thick,shorten <=2pt,shorten >=2] (a2) -- (b2);
+            \draw[->,thick,shorten <=2pt,shorten >=2] (b1) -- (c1);
+            \draw[->,thick,shorten <=2pt,shorten >=2] (b2) -- (c2);
+            \draw[->,thick,shorten <=2pt,shorten >=2] (b3) -- (c2);
+        \end{tikzpicture}
+    \end{figure}
+    
+    Ici, $v \circ u$ est surjective, on a montré que cela impliquait $v$ surjective. Pourtant, $u$ n'est pas surjective. 
+    
+\end{question_kholle}
+
+\textbf{Remarque} : Les deux contre contre-exemples exhibés ici sont les mêmes, mais il y en a bien d'autres où $v \circ u$ n'est pas bijective.
+
+\begin{question_kholle}{Soit $u$ une application de $E$ dans $F$. Si $A$ et $A'$ sont des parties de $E$, y'a-t-il égalité entre $u(A \cap A')$ et $u(A) \cap u(A')$? (On justifiera les réponses aux deux inclusions suggérées par la question)}
+    Soit $u \in \mathcal{F}(E, F)$ fixée quelconque, $(A, A') \in \mathcal{P}(E)^{2}$, deux parties de $E$.
+    \begin{itemize}[label=$\lozenge$]
+        \item Soit $y \in u(A \cap A')$ fixé quelconque.
+        Par définition $\exists x \in (A \cap A') : u(x) = y$.
+        Ainsi, $x \in A \implies u(x) \in u(A)$
+        $x \in A' \implies u(x) \in u(A')$
+        
+        $$
+        \left.
+        \begin{array}{ll}
+            u(x) \in u(A) \\
+            u(x) \in u(A')
+        \end{array}\right\} \implies u(x) \in u(A) \cap u(A')
+        $$
+        Donc $u(A \cap A') \subset u(A) \cap u(A')$.
+        
+        \item En revanche l'inclusion réciproque est fausse: considérons
+        $$
+        u \left|\begin{array}{ll} \{ 1, 2, 3, 4 \} &\to \{ a, b, c, d \} \\ 1 &\mapsto a \\
+            2  & \mapsto b  \\
+            3  & \mapsto a \\
+            4  & \mapsto d\end{array}\right.
+            $$
+            Si on choisit $A = \{ 1, 2 \}$ et $A' = \{ 2, 3 \}$.
+            
+            Alors, $u(A) = \{ a, b \}$, et $u(A') = \{ a, b \}$
+            $u(A \cap A') = u(\{ 2 \}) = \{ b \}$
+            
+            et $u(A) \cap u(A') = \{ a, b \} \not\subset \{  b \}$
+        \end{itemize}
+    \end{question_kholle}
+    \begin{question_kholle}{Montrer que, si $u$ est une application de $E$ dans $F$. Si $B$ est une partie de $F$, alors $u^{-1}(F\setminus B) = E \setminus u^{-1}(B)$.}
+        Soit $x \in u^{-1}(F\setminus B)$. Raisonnons par équivalences. 
+        
+        \begin{align*}
+            x \in u^{-1}(F \setminus B) 
+            & \iff u(x) \in F \setminus B \\
+            & \iff \mathrm{non} (u(x) \in B) \\
+            & \iff \mathrm{non} (x \in u^{-1}(B)) \\
+            & \iff x \in E \setminus u^{-1}(B)
+        \end{align*}
+        
+    \end{question_kholle}
+    \begin{question_kholle}{Montrer que, parmi les entiers ne s'écrivant qu'avec des 7, il existe au moins un multiple de 61.}
+        
+        Posons $s$ la suite des entiers tels que $\forall n \in \mathbb{N}^{*}, s_{n} = \underbrace{ 7\dots 7 }_{ n \text{ fois} }$.
+        Considérons les $62$ premiers termes de la suite.
+        
+        Puisqu'il y a $61$ classes de congruences modulo $61$, le principe des tiroirs de Dirichlet nous permet d'affirmer que $\exists (k, l) \in [ \! [ 1, 62 ] \!]^{2}, k < l:s_{k} \equiv s_{l}[61]$.
+        
+        Remarquons maintenant que $s_{l}-s_{k} \equiv 0 [61]$, autrement dit que $61\mid s_{l} - s_{k}$.
+        
+        Cependant, $$
+        s_{l} - s_{k} = \underbrace{ 7\dots7 }_{ l \text{ fois} } - \underbrace{ 7 \dots 7 }_{ k \text{ fois} } = \underbrace{ 7 \dots 7 }_{ l-k \text{ fois} } \underbrace{ 0 \dots 0 }_{ k \text{ fois} } = s_{l-k} \times 10^{k}
+        $$
+        Donc $61 \mid 10^{k} \times s_{l-k}$, mais $\mathrm{pgcd}(61, 10^{k}) = 1$ donc le théorème de Gauss donne $61\mid s_{l-k}$.
+        
+        Ainsi, parmi les entiers ne s'écrivant qu'avec des 7, il existe au moins un multiple de 61.
+    \end{question_kholle}
+\pagebreak\section{Semaine 3}
+
+\begin{question_kholle}
+    [{Pour tout $(z_{1}, z_{2})\in \mathbb{C}^{2}$,
+    
+    (i) $\lvert z_{1}+z_{2} \rvert \leqslant \lvert z_{1} \rvert + \lvert z_{2} \rvert$
+    
+    (ii) $\bigg| \lvert z_{1} \rvert-\lvert z_{2} \rvert \bigg|\leqslant \lvert z_{1}-z_{2} \rvert$
+    
+    }]
+    {Preuve de l'inégalité triangulaire et de l'inégalité montrant que le module est 1-lipschitzien + dessin et interprétation géométrique}
+    Soient $(z_1,z_2) \in \C^2$ fixés quelconques.
+    \begin{itemize}[label=$\lozenge$]
+        \item 
+        
+        Si $z_{2} = 0$ l'inégalité est évidente
+        Sinon, $z_{2} \neq 0$ alors $\lvert z_{1}+z_{2} \rvert \leqslant \lvert z_{1} \rvert + \lvert z_{2} \rvert \iff \left| 1+\frac{z_{1}}{z_{2}} \right|\leqslant 1 + \left\lvert  \frac{z_{1}}{z_{2}}  \right\rvert$.
+        Posons $u = \frac{z_{1}}{z_{2}}$
+        
+        \begin{align*}
+            \lvert 1+u \rvert ^{2} - (1+\lvert u \rvert )^{2}  & = (1+u)(\overline{1+u})-(1+2\lvert u \rvert +\lvert u \rvert ^{2}) \\
+            & = (1+u)(1+ \overline u) - 1 - 2\lvert u \rvert  - \lvert u \rvert ^{2} \\
+            &= u + \overline u -2 \lvert u \rvert  \\
+            &= 2(\mathrm{Re}(u)-u) \leqslant 0
+        \end{align*}
+        
+        \item Appliquons l'inégalité triangulaire
+        $$
+        \lvert  z_{1} \rvert  = \lvert z_{1} - z_{2} + z_{2} \rvert  \leqslant \lvert z_{1}-z_{2} \rvert +\lvert z_{2} \rvert  \implies \lvert z_{1} \rvert - \lvert z_{2} \rvert \leqslant \lvert z_{1}-z_{2} \rvert 
+        $$
+        Puisque $z_{1}$ et $z_{2}$ jouent de rôles symétriques on a aussi
+        $$
+        \lvert z_{2} \rvert - \lvert z_{1} \rvert \leqslant \lvert z_{2}-z_{1} \rvert =\lvert z_{1}-z_{2} \rvert 
+        $$
+        Donc 
+        $$
+        \bigg| \lvert z_{1} \rvert-\lvert z_{2} \rvert \bigg|\leqslant \lvert z_{1}-z_{2} \rvert
+        $$
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Caractérisation du cas d'égalité de l'inégalité triangulaire dans $\mathbb C$}
+    \begin{itemize}[label=$\star$]
+        \item ($\implies$) Supposons qu'il y ait égalité dans l'inégalité triangulaire
+        \begin{itemize}[label=$\lozenge$]
+            \item Si $z_{2} = 0$ alors $z_{1}$ et $z_{2}$ sont positivement liés
+            \item Sinon $\lvert 1+u \rvert ^{2} - (1+\lvert u \rvert )^{2}  = 0$ donc $\mathrm{Re}(u) - \lvert u \rvert = 0$ Donc $u \in \mathbb{R}_{+}$ mais $z_{1} = uz_{2}$.
+            Donc $z_{1}$ et $z_{2}$ sont positivement liés.
+        \end{itemize}
+        \item ($\impliedby$) Supposons que $z_{1}$ et $z_{2}$ sont positivement liés. Alors il existe $\lambda \in \mathbb{R}_{+}$ tel que $z_{1} = \lambda z_{2}$
+        
+        Si $z_{1} = \lambda z_{2}$
+        $$
+        \lvert z_{1}+z_{2} \rvert  = \lvert (\lambda+1) z_{2} \rvert  = \lvert \lambda + 1  \rvert \lvert z_{2} \rvert = (\lambda+1)\lvert z_{2} \rvert = \lambda \lvert z_{2} \rvert +\lvert z_{2} \rvert  = \lvert \lambda z_{2} \rvert +\lvert z_{2} \rvert = \lvert z_{1} \rvert + \lvert z_{2} \rvert 
+        $$
+        Donc l'inégalité est une égalité
+        
+        Si $z_{2} = \lambda z_{1}$, en échangeant les rôles joués par $z_{1}$ et $z_{2}$ on obtient que l'inégalité est une égalité.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Calcul de $\sum_{k=0}^{n}\cos(k\theta)$ pour tout $\theta \in \mathbb R$}
+    Soit $\theta \in \mathbb{R}$ fixé quelconque, $n \in \mathbb{N}$ fixé quelconque.
+    
+    
+    \begin{align*}
+        C_{n}(\theta)=\sum_{k=0}^{n} \cos(k\theta) &= \sum_{k=0}^{n} \mathrm{Re}(e^{i k \theta}) \\
+        &= \mathrm{Re} \left(\sum_{k=0}^{n} e^{i k \theta}\right) \\
+        &= \mathrm{Re} \left( \sum_{k=0}^{n} (e^{i \theta})^{k} \right) \text{ par les formules de moivre} \\
+    \end{align*}
+    
+    Ainsi, si $e^{i\theta} = 1 \iff \theta \equiv 0 [2\pi]$,
+    $$
+    C_{n}(\theta) = \mathrm{Re}\left( \sum_{k=0}^{n}(1)^{k} \right) = \mathrm{Re}(n+1) = n+1
+    $$
+    Sinon, 
+    $$
+    C_{n}(\theta) = \mathrm{Re}\left( \frac{1-(e^{i\theta})^{n+1}}{1-e^{i\theta}} \right)
+    $$
+    Simplifions donc ce quotient.
+    
+    \begin{align*}
+        \frac{1-(e^{i\theta})^{n+1}}{1-e^{i\theta}} = \frac{1-e^{i\theta(n+1)}}{1-e^{i\theta}}
+        &=\frac{e^{\frac{i\theta(n+1)}2{}}\left( e^{-\frac{i\theta(n+1)}2{}}-e^{\frac{i\theta(n+1)}2{}} \right)}{e^{i\frac{\theta}{2}}\left( e^{-i\frac{\theta}{2}}- e^{i \frac{\theta}{2}} \right)}\\
+        &= e^{i \frac{\theta n}2}\left( \frac{-2i \sin\left( \frac{\theta (n+1)}{2} \right)}{-2i\sin \frac{\theta}{2}} \right) \\
+        &= \frac{\sin\left( \frac{\theta(n+1)}{2} \right)}{\sin \frac{\theta}{2}}\left( \cos \frac{\theta n}{2} + i \sin \frac{\theta n}{2} \right) \tag{$\clubsuit$}\label{eqn:somme1}
+    \end{align*}
+    
+    
+    En prenant la partie réelle de ce résultat, on a
+    $$
+    C_{n}(\theta) = \mathrm{Re}\left[ \frac{\sin\left( \frac{\theta(n+1)}{2} \right)}{\sin \frac{\theta}{2}}\left( \cos \frac{\theta n}{2} + i \sin \frac{\theta n}{2} \right) \right] = \frac{\sin\left( \frac{\theta(n+1)}{2} \right)}{\sin \frac{\theta}{2}} \cos \frac{n\theta}{2}
+    $$
+    
+    Donc
+    $$
+    C_{n}(\theta) = \left\{ \begin{array}{ll}
+        n+1 & \text{ si } \theta \equiv 0 [2 \pi] \\
+        \frac{\sin\left( \frac{\theta(n+1)}{2} \right)}{\sin \frac{\theta}{2}} \cos \frac{n\theta}{2}  & \text{ sinon}
+    \end{array}\right.
+    $$
+\end{question_kholle}
+\textbf{Remarque}
+En prenant la partie imaginaire de \eqref{eqn:somme1}, on peut retrouver la somme $S_n(\theta)$:
+$$
+S_{n}(\theta)= \sum_{k=0}^n \sin(k \theta) = \left\{ \begin{array}{ll}
+    0 & \text{ si } \theta \equiv 0 [2 \pi] \\
+    \frac{\sin\left( \frac{\theta(n+1)}{2} \right)}{\sin \frac{\theta}{2}} \sin \frac{n\theta}{2}  & \text{ sinon}
+\end{array}\right.
+$$
+\begin{question_kholle}
+    [{Soient $n \in \mathbb{N}, (a_{0}, \dots, a_{n})\in\mathbb{C}^{n+1}$ et $z_{0} \in \mathbb{C}$ Posons pour tout $z \in \mathbb{C}, P(z) = \sum_{k=0}^{n}a_{k}z^{k}$
+    
+    (i) Si $P(z_{0}) = 0$, alors $\exists Q \in\mathbb{C}[z]:\forall z \in \mathbb{C}, P(z)=(z-z_{0})Q(z)$}]
+    {Si $z_0$ est racine de la fonction polynômiale $P$, alors $P$ se factorise par $(z-z_0)$}
+    Soit $z \in \mathbb{C}$ fixé quelconque,
+    
+    \begin{align*}
+        P(z)  & = P(z) - P(z_{0}) \\
+        & = \sum_{k=0}^{n}a_{k}z^{k} - \sum_{k=0}^{n}a_{k}z_{0}^{k}  \\
+        & = \sum_{k=0}^{n}a_{k}(z^{k}-z_{0}^{k}) &\text{ nul pour }k = 0\\
+        & = \sum_{k=1}^{n}\left( a_{k}(z-z_{0})\left( \sum _{j=0}^{k-1}z^{j}z_{0}^{k-1-j} \right) \right) \\
+        & = (z-z_{0}) \sum_{k=1}^{n}a_{k}\left( \sum _{j=0}^{k-1}z^{j}z_{0}^{k-1-j} \right)
+    \end{align*}
+    
+    Donc en posant $Q(z) = \sum_{k=1}^{n}a_{k}\left( \sum _{j=0}^{k-1}z^{j}z_{0}^{k-1-j} \right), \in \mathbb{C}[z]$, on a montré que $P$ se factorise.
+\end{question_kholle}
+\begin{question_kholle}
+    [{Soient $n \in \mathbb{N}, (a_{0}, \dots, a_{n})\in\mathbb{C}^{n+1}$ et $z_{0} \in \mathbb{C}$ Posons pour tout $z \in \mathbb{C}, P(z) = \sum_{k=0}^{n}a_{k}z^{k}$
+    
+    (ii) Si $\exists p \in \mathbb{N}^{*}: \exists(z_{1},\dots ,z_{p})\in\mathbb{C}^{p}$ deux à deux distincts tels que $\forall k \in [ \! [ 1, p ] \!], P(z_{k}) = 0$ alors, $\exists Q \in \mathbb{C}[x]:\forall z \in \mathbb{C}, P(z) = Q(z) \times \prod_{k=1}^{p}(z-z_{k})$.
+    }]
+    {Si $z_1, \dots , z_n$ sont $n$ racines distinctes de la fonction polynômiale $P$ de degré $n$, alors $P(z)$ se factorise en ... }
+    Considérons la propriété $\mathcal{P}(\cdot)$ définie pour tout $p \in \mathbb{N}^{*}$ par
+    $$
+    \mathcal{P}(p) : \forall P \in \mathbb{C}[z], (\exists (z_{1}, \dots, z_{p}) \in \mathbb{C}^{p}, \text{ 2 à 2 distincts }: \forall i \in [ \! [ 1, p ] \!], P(z_{i}) = 0)\\
+    \implies \exists Q \in \mathbb{C}[z]: P(z) = Q(z) \prod_{i=1}^{p}(z-z_{i})
+    $$
+    \begin{itemize}[label=$\lozenge$]
+        \item $\mathcal{P}(1)$ est vraie d'après la preuve précédente.
+        \item Soit $p \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(p)$ est vraie.
+        Soit $P \in \mathbb{C}[z]$ fq tq $\exists (z_{1}, \dots, z_{p+1}) \in \mathbb{C} ^{p+1}$ deux à deux distincts tels que $\forall i \in [ \! [ 1, p + 1 ] \!], P(z_{i}) = 0$.
+        Appliquons $\mathcal{P}(p)$ à $P \in \mathbb{C}[z]$ dont $(z_{1}, \dots, z_{p})$ sont les $p$ racines deux à deux distinctes.
+        
+        $$\exists Q_{1} \in \mathbb{C}[z]:\forall z \in \mathbb{C}, P(z) = Q_{1}(z)\prod_{i=1}^{p}(z-z_{i})$$
+        Évaluons cette expression en $z_{p+1}$
+        $$\underbrace{ P(z_{p+1}) }_{ =0 } = Q_{1}(z_{p+1}) \prod_{i=1}^{p}\underbrace{ (z_{p+1}-z_{i}) }_{ \neq 0 \text{ car distincts} }$$
+        Donc $Q_{1}(z_{p+1}) = 0$, ce qui permet d'appliquer (i) pour $P \leftarrow Q_{1}$, $z_{0} \leftarrow z_{p+1}$.
+        $$
+        \exists Q \in \mathbb{C}[z]:\forall z \in \mathbb{C}, Q_{1}(z)=(z-z_{p+1})Q(z)
+        $$
+        Donc
+        $$
+        \forall z \in \mathbb{C}, P(z) = (z-z_{p+1})Q(z) \prod_{i=1}^{p}(z-z_{i}) = Q(z) \prod_{i=1}^{p+1}(z-z_{i})
+        $$
+        Donc $\mathcal{P}(p+1)$ est vraie.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Calculer le module et un argument de $z=1+ e^{i \theta}$ en fonction de $\theta \in [0, 2 \pi[$}
+    Soit $\theta \in [0, 2\pi[$
+    $$
+    z = 1+ e^{i \theta} = e^{i\times0}+e^{i\theta} = e^{i \frac{\theta}{2}}\left( e^{-i\frac{\theta}{2}} + e^{i \frac{\theta}{2}} \right)= 2 \cos \frac{\theta}{2}e^{i\frac{\theta}{2}}
+    $$
+    Cette dernière notation est une notation exponentielle seulement si $2 \cos \frac{\theta}{2} \geqslant 0$.
+    \begin{itemize}[label=$\star$]
+        \item Si $\theta \in [0, \pi[$,
+        $$\left\{ \begin{array}{ll}
+            |z| = 2\cos \frac{\theta}{2} \\
+            \frac{\theta}{2} \in \mathrm{Arg}  (z)
+        \end{array}\right.$$
+        \item Si $\theta = \pi$, $z = 0$ donc $\lvert z \rvert = 0$
+        
+        \item Si $\theta \in ]\pi, 2\pi[$,
+        
+        \begin{align*}
+            z = 2 \cos \frac{\theta}{2}e^{i\frac{\theta}{2}} &= -2 \left\lvert  \cos \frac{\theta}{2}  \right\rvert e^{i\frac{\theta}{2}} \\
+            & =-2 \left\lvert  \cos \frac{\theta}{2}  \right\rvert e^{i \left( \frac{\theta}{2} + \pi \right)}
+        \end{align*}
+        
+        Donc 
+        $$
+        \left\{ \begin{array}{ll}
+            |z| = -2 \lvert  \cos \frac{\theta}{2}  \rvert \\
+            \frac{\theta}{2} + \pi \in \mathrm{Arg}  (z)
+        \end{array}\right.
+        $$
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{
+    Pour tout $n \in \mathbb N ^{*} \setminus \{ 1 \}$, 
+    $$
+    \mathbb U _n = \left\{ e^{\frac{2ik\pi}{n}}\mid k \in [ \! [ 0, n - 1 ] \!] \right\} 
+    $$
+    }]{Décrire (avec preuve) l'ensemble des racines $n$-ièmes de l'unité et les localiser géométriquement dans le plan complexe.}
+    \begin{itemize}
+        \item \underline{Description de l'ensemble $\mathbb U _n$}
+        \begin{align*}
+            \left\{ \begin{array}{ll}
+                z^{n}=1 \\
+                z \in \mathbb{C} 
+            \end{array}\right.
+            &\iff 
+            \left\{ \begin{array}{ll}
+                z^{n} = 1 \\
+                z \in \mathbb{C}^{*}
+            \end{array}\right. \text{ ou } 
+            \left\{ \begin{array}{ll}
+                z^{n} = 1 \\
+                z = 0 
+            \end{array}\right. \\
+            & \iff 
+            \left\{ \begin{array}{ll}
+                \rho^{n}e^{in \theta}  = 1 \\
+                z = \rho e^{i \theta} \\
+                (\rho, \theta) \in \mathbb{R}_{+}^{*}\times \mathbb{R}
+            \end{array}\right.
+            \\ & \iff 
+            \left\{ \begin{array}{ll} 
+                \rho^{n} = 1 \\
+                n \theta \equiv 0 [2 \pi]\\
+                z = \rho e^{i \theta} \\
+                (\rho, \theta) \in \mathbb{R}_{+}^{*}\times \mathbb{R}
+            \end{array}\right. 
+            \\ & \iff 
+            \left\{ \begin{array}{ll} 
+                \rho = 1 \text{ car } \rho > 0 \\
+                \theta \equiv 0 \left[ \frac{2\pi}{n} \right]\\
+                z = \rho e^{i \theta} \\
+                (\rho, \theta) \in \mathbb{R}_{+}^{*}\times \mathbb{R}
+            \end{array}\right.
+            \\ & \iff 
+            \left\{ \begin{array}{ll} 
+                \rho = 1 \\
+                \exists k \in \mathbb{Z} : \theta = \frac{2k\pi}{n} \\
+                z = \rho e^{i \theta} \\
+                (\rho, \theta) \in \mathbb{R}_{+}^{*}\times \mathbb{R}
+            \end{array}\right.
+            \\  & \iff \exists k \in \mathbb{Z}: z=e^{\frac{2ik\pi}{n}} \\
+            & \iff z \in \left\{ e^{\frac{2ik\pi}{n}}\mid k \in \mathbb{Z} \right\} 
+        \end{align*}
+        
+        
+        L'ensemble des solutions est paramétré par l'entier $k$ qui parcourt un ensemble infini. Toutefois, en représentant graphiquement les solutions, il semblerait que "tous les $n$", on fait un tour de cercle trigonométrique de plus, en redécrivant les solutions déjà obtenues pour $k \in [ \! [ 0, n-1 ] \!]$.
+        \item \underline{Localisation géométrique}
+        \begin{itemize}[label=$\star$]
+            \item $\mathbb U _3$ est l'ensemble des sommets du triangle équilatéral inscrit dans le cercle unité, et dont $1$ est l'un des sommets
+            \begin{figure}[!h]
+                \centering
+                \begin{tikzpicture}[
+                    dot/.style={draw,fill,circle,inner sep=1pt}
+                    ]
+                    \draw[->] (-2,0) -- (2,0) node[below] {$\Re$};
+                    \draw[->] (0,-2) -- (0,2) node[left] {$\Im$};
+                    \draw[help lines] (0,0) circle (1);
+                    
+                    \node[dot,label={below right:$O$}] (O) at (0,0) {};
+                    \foreach \i in {1,...,3} {
+                    \node[dot,label={\i*360/3-(\i==3)*45:$e^\frac{2 \times {\i} i \pi}{3}$}] (w\i) at (\i*360/3:1) {};
+                    \draw[->] (O) -- (w\i);
+                    }
+                    \draw[->] (0:.3) arc (0:360/3:.3);
+                    \node at (360/3/2:.5) {$\alpha$};
+                \end{tikzpicture}
+            \end{figure}
+            
+            \item $\mathbb U _4$ est l'ensemble des sommets du carré inscrit dans le cercle unité et dont 1 est l'un des sommets. Le côté du carré vaut $\lvert 1 - i\rvert = \sqrt 2$.
+            \item $\mathbb U _5$ est l'ensemble des sommets du pentagone régulier inscrit dans le cercle unité et dont 1 est l'un des sommets.
+            \begin{figure}[!h]
+                \centering
+                \begin{tikzpicture}[
+                    dot/.style={draw,fill,circle,inner sep=1pt}
+                    ]
+                    \draw[->] (-2,0) -- (2,0) node[below] {$\Re$};
+                    \draw[->] (0,-2) -- (0,2) node[left] {$\Im$};
+                    \draw[help lines] (0,0) circle (1);
+                    
+                    \node[dot,label={below right:$O$}] (O) at (0,0) {};
+                    \foreach \i in {1,...,5} {
+                    \node[dot,label={\i*360/5-(\i==5)*45:$e^\frac{2 \times {\i} i \pi}{5}$}] (w\i) at (\i*360/5:1) {};
+                    \draw[->] (O) -- (w\i);
+                    }
+                    \draw[->] (0:.3) arc (0:360/5:.3);
+                    \node at (360/5/2:.5) {$\alpha$};
+                \end{tikzpicture}
+            \end{figure}
+        \end{itemize}
+    \end{itemize}
+    
+\end{question_kholle}
+\begin{question_kholle}{Somme et Produit des racines $n$-ièmes}
+    \begin{itemize}[label=$\lozenge$]
+        \item \textbf{Méthode 1} En utilisant les relations coefficients racines.
+
+        $\mathbb{U}_{n}$ sont les n racines disctinctes de $z^{n}-1$
+        $$S_{n} = - \frac{1}{\text{coefficient dominant}}\times(\text{coefficient de }z^{n-1} \text{ dans }z^{n}-1)= \left\{ \begin{array}{ll}
+            -0  & \text{ si }  n\geqslant 2 \\
+            -(-1)   & \text{ sinon}
+        \end{array}\right.$$
+        $$
+        P_{n} = (-1)^{n} \frac{\text{coefficient constant}}{\text{coefficient dominant}} = (-1) ^{n}\times \frac{-1}{1} = (-1)^{n+1}
+        $$
+        
+        \item \textbf{Méthode 2} Manipulation des symboles sommatoires
+        
+        \begin{align*}
+            S_{n} = \sum_{\omega \in \mathbb{U}_{n}}\omega &= \sum_{k=0}^{n-1}\omega_{0}^{k}\\
+            &= \left\{ \begin{array}{ll}
+                1 & \text{si }  n =1 \\
+                1 \times \frac{1 - \omega_{0}^{n}}{1-\omega_{0}}  & \text{sinon}
+            \end{array}\right.
+        \end{align*}
+        
+        Puisqu'on ne peut appliquer la formule de la somme des termes d'une suite géométrique seulement si la raison $\omega_{0} = 1 \iff e^{\frac{2i\pi}{n}} = 1 \iff \frac{2\pi}{n} \equiv 0 [2\pi] \iff n = 1$
+        
+        De même
+        
+        \begin{align*}
+            P_{n} = \prod_{\omega \in \mathbb{U}_{n}}\omega = \prod_{k=0}^{n-1}\omega_{0}^{k}= \omega_{0}^{\sum_{k=0}^{n-1}k} &= \omega_{0} ^{\frac{n(n-1)}{2}}\\ \\
+            &=\left\{ \begin{array}{ll}
+                (\omega_{0}^{n})^{\frac{n-1}{2}} = 1^{\frac{n-1}{2}} = 1 & \text{si } n \equiv 1 [2] \\
+                e^{\frac{2i\pi n(n-1)}{2n}} = e^{i \pi(n-1)} = (-1)^{n-1}
+            \end{array}\right.
+            \\ &= (-1)^{n-1}
+        \end{align*}
+    \end{itemize}
+\end{question_kholle}
+\pagebreak\section{Semaine 4}
+\begin{question_kholle}[{Considérons l'équation algébrique de degré 2:
+    $$az^{2}+bz+c=0$$
+    Où $z\in L$ est l'inconnue et $(a,b,c)\in\mathbb{C}^*\times\mathbb{C}^2$ sont des paramètres. Posons $\Delta = b^{2}-4ac$ que l'on appelle le discriminant de l'équation.
+    \begin{itemize}
+        \item Si $\Delta=0$, l'équation admet une unique solution dite double qui est $-\frac b{2a}$ et la forme factorisée du trinôme est
+        $$
+        az^2+bz+c = a \left( z + \frac b {2a} \right)^2
+        $$
+        \item Si $\Delta\neq0$, notons $\delta$ une racine carrée de $\Delta$, l'équation admet deux solutions distinctes $\frac{-b-\delta}{2a}$ et $\frac{-b+\delta}{2a}$ dites simples et la forme factorisée du trinôme est
+        $$
+        az^2+bz+c = a\left(z - \frac{-b-\delta}{2a}\right)\left(z - \frac{-b+\delta}{2a}\right)
+        $$
+    \end{itemize}
+    }]{Résolution des équations algébriques de degré $2$ dans $\C$ et algorithme de recherche d'une racine carrée sous forme cartésienne (sur un exemple explicite).}
+    La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
+    
+    La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
+    
+    \begin{align*}
+        az^{2}+bz+c = a\left[ \underbrace{ z^{2}+\frac{b}{a}z }_{ \text{But: Absorber ces termes dans un carré} }+\frac{c}{a} \right] &= a\left[ z^{2}+2\frac{b}{2a}z +\frac{b^{2}}{4a^{2}}-\frac{b^{2}}{4a^{2}}+\frac{c}{a} \right]\\
+        &=a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}}{4a^{2}}+\frac{c}{a} \right]  \\
+        &=a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}-4ac}{4a^{2}}\right]  \\
+        &=a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{\Delta}{4a^{2}}\right] 
+    \end{align*}
+    \begin{itemize}
+        \item Si $\Delta = 0$
+        $$
+        az^{2}+bz+c = a\left( z-\frac{-b}{2a} \right)^{2}
+        $$
+        de sorte que 
+        $$
+        az^{2}+bz+c = 0 \iff a\left( z-\frac{-b}{2a} \right)^{2} = 0 \iff z = -\frac{b}{2a}
+        $$
+        
+        \item Sinon
+        \begin{align*}
+            az^{2}+bz+c = a \left[ \left( z+\frac{b}{2a} \right)^{2}-\left( \frac{\delta}{2a} \right)^{2} \right] &= a \left( z + \frac{b}{2a}-\frac{\delta}{2a} \right)\left( z+\frac{b}{2a}+\frac{\delta}{2a} \right)\\ &= a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right)
+        \end{align*}
+        de sorte que
+        
+        \begin{align*}
+            az^{2}+bz+c =0 &\iff a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right) = 0\\ \\
+            &\iff \left\{ \begin{array}{ll}
+                z -  \frac{-z-\delta}{2a}  = 0 \\
+                \text{ou} \\
+                z- \frac{-z+\delta}{2a} =0
+            \end{array}\right. \\
+            &\iff \left\{ \begin{array}{ll}
+                z = \frac{-z-\delta}{2a}  \\ \text{ou} \\
+                z = \frac{-z+\delta}{2a} 
+            \end{array}\right.
+        \end{align*}
+        
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}
+    [{L'exponentielle complexe a pour image $\mathbb{C}^{*}$ et, pour tout $z_{0} \in \mathbb{C}^{*}$,
+    $$
+    \exp_{\mathbb{C}}^{-1}(\{ z_{0} \}) = \{ \ln \lvert z_{0} \rvert +i\theta_{0} +2ik\pi \mid k \in \mathbb{Z}\}
+    $$
+    où $\theta_{0} \in \arg(z_{0})$}]{Résolution de $e^z = z_0$ où $z_0 \in \C^*$}
+    
+    La propriété, pour tout $z \in \mathbb{C}$, $\lvert e^{z} \rvert = \lvert e^{\mathrm{Re}(z)} \rvert>0$ montre que $0 \not\in \exp_{\mathbb{C}}(\mathbb{C})$.
+    
+    $z_{0}\neq 0$ donc $\exists \theta_{0} \in \arg(z_{0}): z_{0} = \lvert z_{0} \rvert e^{i\theta_{0}}$.
+    Résolvons l'équation d'inconnue $z \in \mathbb{C}$
+    
+    \begin{align*}
+        \exp_{\mathbb{C}}(z) = z_{0}  & \iff e^{\mathrm{Re}(z)}e^{i\mathrm{Im}(z)} = \lvert z_{0} \rvert e^{i\theta_{0}} \\
+        & \iff \left\{ \begin{array}{ll}
+            e^{\mathrm{Re}(z)} = \lvert z_{0} \rvert  \\
+            \text{et} \\
+            \mathrm{Im}(z) \equiv \theta_{0} [2\pi]
+        \end{array}\right. \\
+        & \iff \left\{ \begin{array}{ll}
+            \mathrm{Re}(z)  = \ln \lvert  z_{0} \rvert  \\
+            \text{et} \\
+            \mathrm{Im}(z) \equiv \theta_{0} [2\pi]
+        \end{array}\right. \\
+        &\iff z \in \left\{ \ln \lvert z_{0} \rvert +i \theta_{0} +2ik\pi \mid k \in \mathbb{Z} \right\} 
+    \end{align*}
+    
+\end{question_kholle}
+\begin{question_kholle}{Montrer l'unicité de l'élément neutre et du symétrique d'un élément sous des hypothèses sur la loi à préciser.}
+    \begin{itemize}[label=$\lozenge$]
+        \item Unicité de l'élément neutre bilatère
+        
+        Soient $(e_{1}, e_{2}) \in E^{2}$ fixés quelconques tels que $\left\{ \begin{array}{ll} \forall x \in E, x * e_{1} = e_{1} * x = x \\ \forall x \in E, x*e_{2}=e_{2}*x = x\end{array}\right.$
+        Particularisons la première relation pour $x \leftarrow e_{2}$:
+        $$
+        e_{2}*e_{1} = e_{1}*e_{2} = e_{2}
+        $$
+        En particularisant, de même la deuxième relation pour $x \leftarrow e_{1}$
+        $$
+        e_{1}*e_{2} = e_{2}*e_{1} = e_{2}
+        $$
+        D'où, par transitivité de l'égalité : $e_{1} = e_{2}$
+        
+        \item Unicité du symétrique sous réserve d'existence (LCI associative d'unité $e$)
+        Soit $a \in E$ symétrisable
+        $$
+        \exists z \in E : a * z = z*a = e
+        $$
+        Fixons un tel $z$ pour la suite de la preuve
+        \begin{itemize}
+            \item L'ensemble $\{ y \in E \mid a * y = y * a = e \}$ n'est pas vide puisqu'il contient $z$.
+            
+            \item Soit $b \in \{ y \in E \mid a * y = y * a = e \}$ fixé quelconque.
+            Alors
+            \begin{align*}
+                a * b = e &\implies z * ( a * b ) = z * e\\
+                &\implies \underbrace{ z*a }_{ e } * b = z * e \text{ par associativité}\\
+                &\implies b = z
+            \end{align*}
+        \end{itemize}
+        Donc l'ensemble $\{ y \in E \mid a * y = y * a = e \}$ contient au plus un élément neutre, qui est $z$.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{Soit $(G, *)$ un groupe, et $H$ une partie de $G$ $$
+    H\text{ est un sous groupe de }G \iff \left\{ \begin{array}{ll}
+        H \neq \emptyset \\
+        \forall (x, y) \in H^{2}, x * y^{-1} \in H
+    \end{array}\right.
+    $$}]{Preuve de la caractérisation d'un sous-groupe, application au fait que $(\mathbb U _n, \times)$ est un sous-groupe de $(\mathbb U, \times)$.}
+    \begin{itemize}[label=$\star$]
+        \item Supposons que $H$ est un sous groupe de $G$
+        Par définition d'un sous groupe, $H \neq \emptyset$.
+        
+        Soient $(x, y) \in H^{2}$ fixés quelconques
+        $H$ est un sous groupe, donc $y$ est symétrisable dans $H$ : $y^{-1} \in H$
+        De plus, c'est un groupe, donc stable pour la loi $*$, donc $x*y^{-1} \in H$
+        
+        \item Supposons que $\left\{ \begin{array}{ll}H \neq \emptyset &(1) \\\forall (x, y) \in H^{2}, x * y^{-1} \in H & (2)\end{array}\right.$
+        \begin{itemize}[label=$\lozenge$]
+            \item $H$ est non vide par hypothèse
+            \item Puisque $H \neq \emptyset$, $\exists x \in H$
+            Ainsi, $x * x^{-1} \in H$ donc $e \in H$
+            \item Soient $(x, y) \in H^{2}$ fixés quelconques.
+            $y \in H$ permet d'appliquer (2) pour $x \leftarrow y$ et $y \leftarrow e$:
+            $$
+            e * y^{-1} \in H
+            $$
+            Donc $y^{-1} \in H$. Tout élément est symétrisable dans $H$
+            \item Soient $(x, y) \in H^{2}$ fixés quelconques. On a montré que $y$ est symétrisable dans H, donc en appliquant (2) pour $x \leftarrow x$ et $y \leftarrow y^{-1}$:
+            $$
+            x * (y^{-1})^{-1} \in H \implies x* y \in H
+            $$
+            Donc $H$ est stable pour la loi $H$.
+        \end{itemize}
+        Donc $H$ est un sous groupe de $G$.
+    \end{itemize}
+\end{question_kholle}
+\textbf{Application aux racines n-ièmes de l'unité}
+
+Soit $n \in \mathbb{N}^{*}$ fixé quelconque
+\begin{itemize}[label=$\star$]
+    \item $\forall z \in \mathbb{U}_{n}, z^{n} = 1$ donc $1 = \lvert  z^{n} \rvert = \lvert z \rvert^{n}$. Or $\lvert z \rvert \geqslant 0$ donc $\lvert z \rvert = 1$, si bien que $\mathbb{U}_{n} \subset \mathbb{U}$
+    
+    \item $\mathbb{U}_{n} \neq \emptyset$ car $1 \in \mathbb{U}_{n}$
+    
+    \item Soient $(z_{1}, z_{2}) \in \mathbb{U}_{n}$ fixés quelconques.
+    Calculons
+    $$
+    (z_{1}z_{2}^{-1})^{n} = \left( \frac{z_{1}}{z_{2}} \right)^{n} = \frac{z_{1}^{n}}{z_{2}^{n}} = \frac{1}{1} = 1
+    $$
+\end{itemize}
+Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n, \times})$ est un sous groupe de $(\mathbb{U}, \times)$.
+
+\begin{question_kholle}{Si $\varphi$ est un morphisme de groupes de $G_1$ de neutre $e_1$ dans $G_2$ de neutre $e_2$, calculer $\varphi(e_1)$ et $\varphi(x^{-1})$}
+    \begin{itemize}[label=$\star$]
+        \item Soit $f$ un morphisme de groupe de $(G_{1}, *_{1})$ dans $(G_{2}, *_{2})$
+        
+        D'une part $f(e_{1} *_{1} e_{1}) = f(e_{1})$
+        D'autre part, par propriété de morphisme, $f(e_{1} *_{1} e_{1}) =f(e_{1})*_{2} f(e_{1})$
+        Donc
+        $$
+        f(e_{1}) *_{2} f(e_{1}) = f(e_{1})
+        $$
+        Si l'on compose à gauche par $f(e_{1})^{-1}$
+        
+        \begin{align*}
+            f(e_{1})^{-1} *_{2} f(e_{1}) *_{2} f(e_{1}) &= f(e_{1})^{-1} *_{2}f(e_{1}) \\
+            \implies f(e_{1}) &= e_{2}
+        \end{align*}
+        
+        
+        \item Soit $x \in G_{1}$ fixé quelconque
+        $$
+        f(x)*_{2}f(x^{-1}) = f(x*_{1}x^{-1})=f(e_{1}) = e_{2}
+        $$
+        Composons les deux membres à gauche par $f(x)^{-1}$
+        $$
+        f(x)^{-1} *_{2} f(x)*_{2}f(x^{-1}) = f(x)^{-1} *_{2} * e_{2}
+        $$
+        Donc
+        $$
+        f(x^{-1}) = f(x)^{-1}
+        $$
+        
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Montrer que l'image d'un sous-groupe par un morphisme de groupes est un sous-groupe du groupe d'arrivée}
+    Soit $f$ un morphisme de groupe de $(G_{1},*_{1})$ dans $(G_{2}, *_{2})$. Notons $e_{1}$ et $e_{2}$ les neutres respectifs de $G_{1}$ et $G_{2}$.
+    
+    Soit $H_{1}$ un sous groupe de $G_{1}$ fixé quelconque
+    \begin{itemize}[label=$\star$]
+        \item $f(H_{1})$ est par définition une partie de $G_{2}$
+        \item $f(H_{1}) \neq \emptyset$ car $H_{1}$ est un groupe, qui contient $e_{1}$ $f(e_{1}) = e_{2}$ donc $e_{2} \in f(H_{1})$
+        \item Soient $(g_{2},h_{2}) \in f(H_{1})^{2}$ fixés quelconques
+        alors $\exists (g_{1}, h_{1}) \in H_{1} : f(g_{1})= g_{2}, f(h_{1})=h_{2}$
+        donc
+        $$
+        g_{2}*_{2}h_{2}^{-1} = f(g_{1}) *_{2} f(h_{1}^{-1}) = f(\underbrace{ g_{1} *_{1} h_{1}^{-1} }_{ \in H_{1} \text{ car sous groupe de }G_{1} })
+        $$
+        Donc $g_{2} *_{2} h_{2}^{-1} \in f(H_{1})$
+        Donc $f(H_{1})$ est un sous groupe de $G_{2}$
+    \end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}{Montrer que l'image réciproque par un morphisme de groupes d'un sous-groupe est toujours un sous-groupe du groupe de départ, }
+    Soit $f$ un morphisme de groupe de $(G_{1},*_{1})$ dans $(G_{2}, *_{2})$. Notons $e_{1}$ et $e_{2}$ les neutres respectifs de $G_{1}$ et $G_{2}$.
+    
+    Soit $H_{2}$ un sous groupe de $G_{2}$ fixé quelconque
+    \begin{itemize}[label=$\star$]
+        \item $f^{-1}(H_{2})$ est par définition une partie de $G_{1}$
+        \item $f(H_{2}) \neq \emptyset$ car $H_{2}$ est un groupe, qui contient $e_{2}$ $f(e_{1}) = e_{2}$ donc $e_{1} \in f^{-1}(H_{2})$
+        \item Soient $(g_{1},h_{1}) \in f^{-1}(H_{2})^{2}$ fixés quelconques
+        alors $f(g_{1}) \in H_{2}$ et $f(h_{1}) \in H_{2}$
+        donc
+        $$
+        f(g_{1} *_{1} h_{1}^{-1}) = \underbrace{ f(g_{1}) }_{ \in H_{2} }*_{2}\underbrace{ f(h_{1})^{-1} }_{ \in H_{2} } \in H_{2} \text{ car c'est un sous groupe}$$
+        Donc $f(g_{1} *_{1} h_{1}^{-1}) \in H_{2}$ donc $g_{1} *_{1} h_{1}^{-1} \in f^{-1}(H_{2})$
+    \end{itemize}
+    Donc $f^{-1}(H_{2})$ est un sous groupe de $G_{1}$
+\end{question_kholle}
+    
+\textbf{Application 1:} Le noyau d'un morphisme est un sous-groupe
+
+Le noyau, noté $\ker f$ est par définition égal à $f^{-1}(\{e_2\})$ c'est donc un sous groupe de $G_1$
+
+\textbf{Application 2:} Pour tout $n \in \mathbb{N}$, $\phi _{n}\left|\begin{array}{ll} (\mathbb{C}^{*},\times) &\to (\mathbb{C}^{*},\times) \\ z &\mapsto z^{n} \end{array}\right.$ est un morphisme de groupes. Son noyau, $\ker \phi _n = \{ z \in \mathbb{C}^{*} | z^{n} = 1 \} = \mathbb{U}_{n}$. D'après l'application 1, $\ker \phi_{n}$ est un sous groupe de $(\mathbb{C}^{*}, \times)$. Donc $(\mathbb{U}_{n}, \times)$ est un sous groupe de $(\mathbb{C}^{*},\times)$.
+\pagebreak\section{Semaine 5}
+
 \pagebreak\section{Semaine 6}
 
 
@@ -3920,13 +5070,13 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		\end{equation}]
 		{Dimension de $\mathcal{L}_\K(E,F)$}
 		
-		Notons $n = \dim E$ et $\famille{e}{\lient 1 ; n \rient}$ une base de $E$. Considérons
+		Notons $n = \dim E$ et $\famille{e}{\lient 1 , n \rient}$ une base de $E$. Considérons
 		\begin{equation*}
 			\varphi
-			\left| \begin{matrix}
-				\mathcal{L}_\K(E,F) &\rightarrow& F^n \\
-				f &\mapsto& \left(f(e_i))\right)_{1 \leqslant i \leqslant n}
-			\end{matrix} \right.
+			\left| \begin{array}{ccl}
+				\mathcal{L}_\K(E,F) &\to &F^n \\
+				f &\mapsto &\Big( f(e_i) \Big)_{i \in \lient 1 , n \rient}
+			\end{array} \right.
 		\end{equation*}
 		
 		$\varphi$ est linéaire et, d'après le théorème de création des applications linéaires, bijective.
