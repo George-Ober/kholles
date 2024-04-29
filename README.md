@@ -35,3 +35,4 @@ Espérons qu'avec un peu plus d'expérience, on arrive à les rédiger bien plus
 - [x] [Semaine 22](Sem_22/Kholle_S22.pdf)
 - [ ] [Semaine 23](Sem_23/Kholle_S23.pdf)
 - [x] [Semaine 24](Sem_24/Kholle_S24.pdf)
+- [ ] [Semaine 24](Sem_25/Kholle_S25.pdf)

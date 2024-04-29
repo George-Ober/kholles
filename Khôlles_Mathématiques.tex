@@ -26,13 +26,17 @@
 
 \begin{document}
 	\maketitle
-	
+
 	\begin{abstract}
 		Bienvenue très chers camarades sereins, ce document contient les questions de khôlles de mathématiques de la MP1 de Fermat. Il est coécrit par Kylian Boyet, George Ober, Hugo \textit{Vangi}lluwen (qui maintient la structure du projet, la compilation et le paquet kholles.sty) avec la contribution de Jérémie Menard.
 		Il n'est malheureusement pas exhaustif. Si vous voulez nous aider, lisez CONTRIBUER.md et envoyez-nous votre code \LaTeX \ ou plus simplement dites-nous quand vous rencontrez une erreur.
 	\end{abstract}
-	
+
+	\pagenumbering{roman}
 	\tableofcontents
+	\clearpage
+	\pagenumbering{arabic}
+
 \pagebreak\section{Semaine 1}
 
 
@@ -2771,7 +2775,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	\begin{question_kholle}
 		[Toute suite bornée réelle admet une sous-suite convergente. \\
 		L'ensemble des valeurs d'adhérence d'une suite réelle bornée est non vide.]
-		{*Facultative* Théorème de Bolzano-Weierstrass}
+		{\emph{Facultative} Théorème de Bolzano-Weierstrass}
 
 		Soit $u \in \R^\N$ fq bornée. \\
 		Alors $\exists M \in \R_+ : \forall n \in \N, |u_n| \leqslant M$.
@@ -2831,7 +2835,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	
 	\begin{question_kholle}
 	    [Soit $u$ une suite bornée. $u$ converge si et seulement si il existe $\ell \in \mathbb{K}$ tel que $L(u)$ est le singleton $\ell$ ]
-	    {*Facultative* Caractérisation de la convergence par l'unicité d'une valeur d'adhérence pour une suite bornée.}
+	    {\emph{Facultative} Caractérisation de la convergence par l'unicité d'une valeur d'adhérence pour une suite bornée.}
 	    Traitons le cas réel, celui sur \C est à adapter sans peine.\\
 	    Supposons que $u$ converge et posons $\lim u =\ell \in \R  $. Toutes les sous-suites de $u$ convergent vers $\ell$ donc $L(u)=\{\ell \}$. \\
 	    Supposons maintenant qu'il existe un unique $\ell \in \R$ tel que $L(u) = \{ \ell \}$. Par l'absurde, supposons que $u$ ne converge pas vers $\ell$, c'est-à-dire : 
@@ -5049,7 +5053,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Posons $n = \dim E$ et $p = \dim E'$. Ainsi, il existe $(e_1, \ldots, e_p)$ base de $E'$.
 		Appliquons le théorème de la base incomplète pour cette famille.
 		Il existe $(e_{p+1}, \ldots, e_n)$ $n-p$ vecteurs de E \tq $(e_1, \ldots, e_n)$ est un base de $E$.
-		Posons $E'' = \Vect \{ e_{p+1}, \ldots, e_n \}$ et vérifions qu'il est complémentaire à $E'$.
+		Posons $E'' = \Vect \{ e_{p+1}, \ldots, e_n \}$ et vérifions qu'il est supplémentaire à $E'$.
 		
 		Par définition de \Vect\!\!, $E''$ est un \sev.
 		Trivialement, $E' + E'' = E$.
@@ -5123,7 +5127,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Soit $x \in E_1 + E_2$.
 		Alors $\exists (x_1, x_2) \in E_1 \times E_2 : x = x_1 + x_2$. \\
 		Or $E_2 = \left( E_1 \cap E_2 \right) \oplus E_2'$ donc $\exists (x_{21}, x_2') \times E_2' : x_2 = x_{21} + x_2'$.
-		D'où $x = x_1 + x_{21} + x_2'$. Or $x_1 + x_{21} \in E_1$ et $x_2' \in E_2$ donc $x \in E_1 + E_2$.
+		D'où $x = x_1 + x_{21} + x_2'$. Or $x_1 + x_{21} \in E_1$ et $x_2' \in E_2$ donc $x \in E_1 + E_2'$.
 		
 		Ainsi, $E_1$ et $E_2'$ étant des \sev de dimension finie, $\dim E_1 \oplus E_2' = \dim E_1 + \dim E_2'$.
 		De plus, $\dim E_2 = \dim (E_1 \cap E_2) \oplus E_2' = \dim E_1 \cap E_2 + \dim E_2'$.
@@ -5331,13 +5335,13 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		
 		\textit{Analyse} Supposons qu'il existe $(x_k, \lambda) \in \ker \varphi \times \K$ \tq $x = x_k + \lambda a$.
 		Puisque $x_k \in \ker \varphi$, $\varphi(x) = \lambda \cdot \varphi(a)$. Or $\varphi(a) \neq 0_\K$ (car $a \notin \ker \varphi$) donc $\varphi(a)$ est inversible dans \K.
-		D'où $\lambda = \nicefrac{\varphi(x)}{\varphi(a)}$ et $x_k = x - \nicefrac{\varphi(x)}{\varphi(a)}$.
+		D'où $\lambda = \nicefrac{\varphi(x)}{\varphi(a)}$ et $x_k = x - \nicefrac{\varphi(x)}{\varphi(a)} \cdot a$.
 		
 		Ainsi, sous réserve d'existence, $\lambda$ et $x_k$ sont uniques.
 		
 		\textit{Synthèse} Posons $\displaystyle \left\{ \begin{matrix}
 			\lambda &=& \frac{\varphi(x)}{\varphi(a)} \\
-			x_k &=& x - \frac{\varphi(x)}{\varphi(a)}
+			x_k &=& x - \frac{\varphi(x)}{\varphi(a)} a
 		\end{matrix} \right.$
 		Nous avons bien
 		$x = x_k + \lambda \cdot a$,
@@ -5442,4 +5446,32 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Donc $\mathcal{P}(m+1)$ est vraie.
 	\end{question_kholle}
 
+\pagebreak\section{Semaine 25}
+
+\begin{question_kholle}
+	[Soit $A \in \mathcal{M}_{n}(\mathbb{K})$
+	\begin{itemize}
+		\item S'il existe $B \in \mathcal{M}_{n}(\mathbb{K}):A\times B = I_{n}$, alors $A\in GL_{n}(\mathbb{K})$ et $A^{-1}=B$
+		\item S'il existe $B \in \mathcal{M}_{n}(\mathbb{K}):B \times A = I_{n}$, alors $A\in GL_{n}(\mathbb{K})$ et $A^{-1}=B$
+	\end{itemize}
+	]
+	{S'il existe un inverse à droite (ou à gauche) pour une matrice carrée, alors celle ci est inversible}
+
+
+	Supposons $\exists B \in \mathcal{M}_{n}(\mathbb{K}):A\times B = I_{n}$. Notons $(\hat{a}, \hat{b}) \in \mathcal{L}(\mathbb{K}^{n})$ les endomorphismes canoniquement associés à $A$ et à $B$.
+
+
+	\begin{align*}
+		\Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}(\hat{a} \circ \hat{b}) &= \mathrm{mat}(\hat{a} \circ  \hat{b}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \\
+		&= \mathrm{mat}(\hat{a}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \times_{\mathcal{M_{n}(\mathbb{K})}} \mathrm{mat}(\hat{b}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \\
+		&= A \times B \\
+		&= I_{n} \\
+		&= \mathrm{mat}(\mathrm{Id}_{\mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) = \Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}(\mathrm{Id}_{\mathbb{K}^{n}})
+	\end{align*}
+
+
+	D'où, par injectivité de $\Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}$, $\hat{a} \circ \hat{b} = \mathrm{Id}_{\mathbb{K}^{n}}$.
+
+	Ainsi, $\hat{a} \circ \hat{b}$ est surjective, donc $\hat{a}$ est surjective, mais par l'accident de la dimension finie, $\hat{a}$ est bijective, donc c'est un automorphisme, donc toutes ses matrices associées sont inversibles. On effectue un même raisonnement pour l'inversibilité à gauche, en utilisant cette fois l'injectivité.
+\end{question_kholle}
 \end{document}
