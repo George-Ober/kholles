@@ -20,7 +20,7 @@
 		Posons $n = \dim E$ et $p = \dim E'$. Ainsi, il existe $(e_1, \ldots, e_p)$ base de $E'$.
 		Appliquons le théorème de la base incomplète pour cette famille.
 		Il existe $(e_{p+1}, \ldots, e_n)$ $n-p$ vecteurs de E \tq $(e_1, \ldots, e_n)$ est un base de $E$.
-		Posons $E'' = \Vect \{ e_{p+1}, \ldots, e_n \}$ et vérifions qu'il est complémentaire à $E'$.
+		Posons $E'' = \Vect \{ e_{p+1}, \ldots, e_n \}$ et vérifions qu'il est supplémentaire à $E'$.
 		
 		Par définition de \Vect\!\!, $E''$ est un \sev.
 		Trivialement, $E' + E'' = E$.
@@ -94,7 +94,7 @@
 		Soit $x \in E_1 + E_2$.
 		Alors $\exists (x_1, x_2) \in E_1 \times E_2 : x = x_1 + x_2$. \\
 		Or $E_2 = \left( E_1 \cap E_2 \right) \oplus E_2'$ donc $\exists (x_{21}, x_2') \times E_2' : x_2 = x_{21} + x_2'$.
-		D'où $x = x_1 + x_{21} + x_2'$. Or $x_1 + x_{21} \in E_1$ et $x_2' \in E_2$ donc $x \in E_1 + E_2$.
+		D'où $x = x_1 + x_{21} + x_2'$. Or $x_1 + x_{21} \in E_1$ et $x_2' \in E_2$ donc $x \in E_1 + E_2'$.
 		
 		Ainsi, $E_1$ et $E_2'$ étant des \sev de dimension finie, $\dim E_1 \oplus E_2' = \dim E_1 + \dim E_2'$.
 		De plus, $\dim E_2 = \dim (E_1 \cap E_2) \oplus E_2' = \dim E_1 \cap E_2 + \dim E_2'$.
@@ -302,13 +302,13 @@
 		
 		\textit{Analyse} Supposons qu'il existe $(x_k, \lambda) \in \ker \varphi \times \K$ \tq $x = x_k + \lambda a$.
 		Puisque $x_k \in \ker \varphi$, $\varphi(x) = \lambda \cdot \varphi(a)$. Or $\varphi(a) \neq 0_\K$ (car $a \notin \ker \varphi$) donc $\varphi(a)$ est inversible dans \K.
-		D'où $\lambda = \nicefrac{\varphi(x)}{\varphi(a)}$ et $x_k = x - \nicefrac{\varphi(x)}{\varphi(a)}$.
+		D'où $\lambda = \nicefrac{\varphi(x)}{\varphi(a)}$ et $x_k = x - \nicefrac{\varphi(x)}{\varphi(a)} \cdot a$.
 		
 		Ainsi, sous réserve d'existence, $\lambda$ et $x_k$ sont uniques.
 		
 		\textit{Synthèse} Posons $\displaystyle \left\{ \begin{matrix}
 			\lambda &=& \frac{\varphi(x)}{\varphi(a)} \\
-			x_k &=& x - \frac{\varphi(x)}{\varphi(a)}
+			x_k &=& x - \frac{\varphi(x)}{\varphi(a)} a
 		\end{matrix} \right.$
 		Nous avons bien
 		$x = x_k + \lambda \cdot a$,
