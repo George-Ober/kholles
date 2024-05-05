@@ -151,20 +151,28 @@
 \newcommand{\rient}{\ensuremath{]\!]} }
 
 % Régularité
-\newcommand{\regularite}[4]{\ensuremath{
-	\mathcal{#1}^{#2}
-	\notblank{#3}
+\newcommand{\regularite}[5]{\ensuremath{
+	\mathcal{#1}_{#2}^{#3}
+	\notblank{#4}
 		{
 			\!
 			\left(
-			#3,
-			\notblank{#4}{#4}{\mathbb{R}}
+			#4,
+			\notblank{#5}{#5}{\mathbb{R}}
 			\right)
 		}
 		{}
 }}
-\newcommand{\Cont}[3]{\regularite{C}{#1}{#2}{#3}}
+\newcommand{\Cont}[3]{\regularite{C}{}{#1}{#2}{#3}}
 \newcommand{\Deriv}[3]{\regularite{D}{#1}{#2}{#3}}
+\newcommand{\ContU}[2]{\regularite{C}{u}{0}{#1}{#2}}
+\newcommand{\ContM}[2]{\regularite{CM}{}{}{#1}{#2}}
+
+% norme infinie
+\newcommand{\norminf} [2] [{[a;b]}] {\ensuremath{
+	\left|\left| #2 \right|\right|
+	_{\infty, #1}
+}}
 
 % Espaces vectoriels
 \newcommand{\Vect}{\ensuremath{\text{Vect }}}

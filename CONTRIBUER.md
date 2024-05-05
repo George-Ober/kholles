@@ -67,13 +67,15 @@ Par exemple,
 
 - Les **relations binaires** \Rel
 
-- Les **limites** \arrowlim{varaible}{limite}, \textlim{variable}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
+- Les **limites** \arrowlim{variable}{limite}, \textlim{variable}{limite} *par exemple, u_n \arrowlim{n}{+\infty} 42*
 
 - Les **lettres utiles** \eps pour \varepsilon, \ph pour \varphi, \bda pour \lambda, et \e pour la constante d'Euler
 
 - Les **nombres entiers** \lient pour ouvrir un intervalle d'entier et \rient pour le fermer
 
-- Les **ensembles pour la régularité des fonctions** \Cont{nombre ou l'infini}{départ}{arrivée} et \Deriv (départ et arrivée sont facultatif, par exemple \Cont{\infty}{}{} ou \Deriv{1}{I}{})
+- Les **ensembles pour la régularité des fonctions** \Cont{nombre ou l'infini}{départ}{arrivée}, \Deriv{nombre ou l'infini}{départ}{arrivée}, \ContU{départ}{arrivée} et \ContM{départ}{arrivée} (départ et arrivée sont facultatif, par exemple \Cont{\infty}{}{} ou \Deriv{1}{I}{})
+
+- La **norme infinie** \norminf[ensemble]{fonction} (usuellement, \norminf{f})
 
 - Les **espaces vectoriels** \Vect pour l'accronyme de "sous-espace vectoriel engendré par", \ev[corps] pour "corps-espace vectoriel" (le corps est factultatif), \evs pour le pluriel, \sev pour 'sous-espace vectoriel', \sevs au pluriel, \rg pour rg  (en mode math) (le rang d'une application linéaire)
 

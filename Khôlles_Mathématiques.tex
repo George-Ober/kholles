@@ -5474,4 +5474,44 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 
 	Ainsi, $\hat{a} \circ \hat{b}$ est surjective, donc $\hat{a}$ est surjective, mais par l'accident de la dimension finie, $\hat{a}$ est bijective, donc c'est un automorphisme, donc toutes ses matrices associées sont inversibles. On effectue un même raisonnement pour l'inversibilité à gauche, en utilisant cette fois l'injectivité.
 \end{question_kholle}
+\pagebreak\section{Semaine 26}
+	
+	Cette semaine avais trois jours fériés : les khôlles furent annulées.
+\pagebreak\section{Semaine 27}
+	
+	\begin{question_kholle}
+		[{Soit $f \in \ContM{[a;b]}{}$. \\
+		L'ensemble $\{ |f(t)| \;|\; t \in [a;b] \}$ admet une borne supérieur notée $\norminf{f}$.}]
+		{Norme uniforme d'une fonction continue par morceaux}
+		
+		Montrons que sur chaque morceau, $f$ est bornée.
+		
+		Soit $\sigma = (x_i)_{0 \leqslant i \leqslant N} \in \mathcal{S}([a;b])$ adaptée à $f$.
+		Soit $i \in \lient 0; N-1 \rient$. Posons $f_i = f_{|]x_i;x_{i+1}[}$.
+		$f$ étant continue par morceaux, $\exists (l_i^+, l_{i-1}^-) \in \R^2 : \textlim{x}{x_i^+} f_i(x) = l_i^+ \wedge \textlim{x}{x_{i+1}^-} f_i(x) = l_{i+1}^-$.
+		Nous pouvons donc prolonger $f_i$ en $\tilde{f_i}$ par continuité en $x_i$ et en $x_{i+1}$.
+		Comme $f \in \Cont{0}{[a;b]}{}$, le théorème de Weierstrass s'applique : $\Im \tilde{f_i}$ est bornée (donc $f_i$ aussi). Ainsi $\norminf{f_i}$ est bien défini.
+		
+		\noindent $\{ |f(t)| \;|\; t \in [a;b] \}$ est : \begin{itemize}
+			\item une partie de \R
+			\item non vide car contenant $|f(x)|$.
+			\item majorée par $\max \left( \{\norminf{f_i} | i \in \lient 0; N-1 \rient\} \cup \{\norminf{f_i} | i \in \lient 0; N-1 \rient\} \right)$ (ensemble admettant bien un plus grand élément puisque fini)
+		\end{itemize}
+		Donc $\norminf{f}$ est bien définie.
+		\begin{figure}[H]
+			\centering
+			\begin{tikzpicture}
+				\draw[->] (-0.5, 0) -- (5, 0);
+				\draw[->] (0, -0.5) -- (0, 5);
+				\draw (4, -0.1) node[anchor=north] {$1$} -- (4, 0.1);
+				\draw (2, -0.1) node[anchor=north] {$\nicefrac{1}{2}$} -- (2, 0.1);
+				\draw (-0.1, 4) node[anchor=east] {$1$} -- (0.1, 4);
+				
+				\draw[red] (0, 0) -- (2, 4) -- (4, 0);
+				\filldraw[white, draw=red, densely dotted] (2, 3.95) circle (3pt);
+				\filldraw[red] (2, 0) circle (2pt);
+			\end{tikzpicture}
+			\caption{$\norminf{f}$ peut ne pas être atteinte}
+		\end{figure}
+	\end{question_kholle}
 \end{document}
