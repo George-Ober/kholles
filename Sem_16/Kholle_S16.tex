@@ -1,16 +1,67 @@
 \documentclass{article}
 
-\date{27 Janvier 2024}
+\date{8 Mai 2024}
 \usepackage[nb-sem=16, auteurs={Hugo Vangilluwen}]{../kholles}
 
 \begin{document}
 	\maketitle
 	
 	\begin{question_kholle}
+		{Unicité de la partie régulière d'un développement limité}
+		
+		Soit $f$ une fonction admettant un $DL_n(x_0)$ avec $n \in \N$ et $x_0 \in \mathcal{D}_f$. \\
+		Supposons que $f$ admette deux développements limités. C'est-à-dire qu'il existe $a \in \C^{n+1}$ et $b \in \C^{n+1}$ \tqs :
+		\begin{equation*}
+			\begin{aligned}
+				f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k (x - x_0)^k + o\left((x-x_0)^n\right) \\
+				f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k (x - x_0)^k + o\left((x-x_0)^n\right)
+			\end{aligned}
+		\end{equation*}
+		
+		Posons $u = x - x_0$ et  $\tilde{f}(u) = f(x_0+u)$ de sorte que les hypothèses sur $f$ se traduise par l'existence d'un $DL_n(0)$ pour $\tilde{f}$ :
+		\begin{equation*}
+			f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k u^k + o\left(u^n\right)
+			\text{ et }
+			f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k u^k + o\left(u^n\right)
+		\end{equation*}
+		Appliquons la définition d'un $DL_n(0)$. Il existe deux fonctions $\varepsilon_1$ et $\varepsilon_2$ définies sur $\mathcal{D}_{\tilde{f}}$ \tqs
+		\begin{equation*}
+			\begin{aligned}
+				\forall u \in \mathcal{D}_{\tilde{f}}, \ \tilde{f}(u) = \sum_{k=0}^{n} a_k u^k + u^n \varepsilon_1 \\
+				\forall u \in \mathcal{D}_{\tilde{f}}, \ \tilde{f}(u) = \sum_{k=0}^{n} b_k u^k + u^n \varepsilon_2 \\
+				\textlim{u}{0} \varepsilon_1(u) = 0 \text{ et } \textlim{u}{0} \varepsilon_2(u) = 0
+			\end{aligned}
+		\end{equation*}
+		Donc
+		\begin{equation*}
+			\forall u \in \mathcal{D}_{\tilde{f}}, \
+			\sum_{k=0}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
+		\end{equation*}
+		
+		Par l'absurde, supposons que $\exists k_0 \in \lient 0; n \rient : a_{k_0} \neq b_{k_0}$. Posons $k_1$ le plus petit entier dont les coefficients $a$ et $b$ sont différents :
+		\begin{equation*}
+			k_1 = \min \left\{ k \in \lient 0;n \rient \;|\; a_k \neq b_k \right\}
+		\end{equation*}
+		Nous obtenons alors
+		\begin{equation*}
+			\forall u \in \mathcal{D}_{\tilde{f}}, \
+			\sum_{k=0}^{k_1-1} \underbrace{(a_k - b_k)}_{=0} u^k + (a_{k_1} - b_{k_1}) u^{k_1} + \sum_{k=k_1+1}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
+		\end{equation*}
+		Multiplions par $u^{-k_1}$ puis calculons la limite en $u \rightarrow 0$.
+		D'un coté, pour $k > k_1$, nous avons $k - k_1 \leqslant 1$ donc $(a_k - b_k) u^{k-k_1} \arrowlim{u}{0} 0$.
+		De l'autre coté, $u^{n-k_1}$ tend vers $0$ ou $1$ selon si $k_1 < n$ ou $k_1 = n$. Et, par hypothèse, $\varepsilon_2(u) - \varepsilon_1(u) \arrowlim{u}{0}$.
+		Par unicité de la limite, $a_{k_1} - b_{k_1} = 0$. Ce qui contredit la définition de $k_1$.
+		
+		Par conséquent $\forall k \in \lient 0;n \rient, \ a_k = b_k$. Ainsi, la partie régulière d'un $DL$ est unique.
+	\end{question_kholle}
+	
+	\setnbquestion{6}
+	
+	\begin{question_kholle}
 		{Deux fonctions équivalentes au voisinage de $a$ ont le même signe sur un voisinage de $a$}
 		
 		Soient $f : \mathcal{D} \rightarrow \R$ et $g : \mathcal{D} \rightarrow \R$ telles que $f(x) \underset{x \rightarrow a}{\sim} g(x)$ avec $a \in \mathcal{D}$. \\
-		Appliquons la définition de l'équivalence pour $\epsilon \leftarrow \frac{1}{2}$, il existe un voisinage $V$ de $a$ tel que :
+		Appliquons la définition de l'équivalence pour $\varepsilon \leftarrow \frac{1}{2}$, il existe un voisinage $V$ de $a$ tel que :
 		\begin{equation*}
 			\forall x \in V \cap \mathcal{D},
 			| f(x) - g(x) | \leqslant \frac{1}{2} | g(x) |
