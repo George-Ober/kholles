@@ -14,11 +14,11 @@
 	\end{itemize}
 	]
 	{S'il existe un inverse à droite (ou à gauche) pour une matrice carrée, alors celle ci est inversible}
-	
-	
+
+
 	Supposons $\exists B \in \mathcal{M}_{n}(\mathbb{K}):A\times B = I_{n}$. Notons $(\hat{a}, \hat{b}) \in \mathcal{L}(\mathbb{K}^{n})$ les endomorphismes canoniquement associés à $A$ et à $B$.
-	
-	
+
+
 	\begin{align*}
 		\Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}(\hat{a} \circ \hat{b}) &= \mathrm{mat}(\hat{a} \circ  \hat{b}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \\
 		&= \mathrm{mat}(\hat{a}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \times_{\mathcal{M_{n}(\mathbb{K})}} \mathrm{mat}(\hat{b}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \\
@@ -26,10 +26,10 @@
 		&= I_{n} \\
 		&= \mathrm{mat}(\mathrm{Id}_{\mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) = \Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}(\mathrm{Id}_{\mathbb{K}^{n}})
 	\end{align*}
-	
-	
+
+
 	D'où, par injectivité de $\Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}$, $\hat{a} \circ \hat{b} = \mathrm{Id}_{\mathbb{K}^{n}}$.
-	
+
 	Ainsi, $\hat{a} \circ \hat{b}$ est surjective, donc $\hat{a}$ est surjective, mais par l'accident de la dimension finie, $\hat{a}$ est bijective, donc c'est un automorphisme, donc toutes ses matrices associées sont inversibles. On effectue un même raisonnement pour l'inversibilité à gauche, en utilisant cette fois l'injectivité.
 \end{question_kholle}
 \end{document}

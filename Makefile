@@ -20,6 +20,7 @@ ${final_output} : ${pdf_ouput}
 	done
 	@cat end_kholles.tex >> ${final_output}
 	pdflatex -synctex=1 -interaction=nonstopmode ${final_output} > /dev/null
+	pdflatex -synctex=1 -interaction=nonstopmode ${final_output} > /dev/null
 
 %.pdf : %.tex
 	cd $$(dirname $<) && pdflatex -synctex=1 -interaction=nonstopmode $$(basename $<) > /dev/null
