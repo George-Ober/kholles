@@ -7,20 +7,20 @@
 
 \maketitle
 
-\begin{question_kholle}{Calcul de $\int_0^{2\pi}e^{imt}dt$ en fonction de $m \in \Z$. En Déduire qu'une fonction polynomiale nulle sur un cercle centré en l'origine a tous ses coefficients nuls.}
+\begin{question_kholle}{Calcul de $\int_0^{2\pi}e^{imt} \mathrm d t$ en fonction de $m \in \Z$. En Déduire qu'une fonction polynomiale nulle sur un cercle centré en l'origine a tous ses coefficients nuls.}
 	Soit $m \in \Z$ fq. Calculons:
-	$$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt}dt$$
+	$$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t$$
 	Si $m \neq 0$:
 	\begin{align*}
-		\frac{1}{2 \pi} \int_0^{2\pi}e^{imt}dt &= \frac{1}{2 \pi} \Big[ \frac{e^{mt}}{im} \Big]_0^{2\pi}\\
+		\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t &= \frac{1}{2 \pi} \Big[ \frac{e^{mt}}{im} \Big]_0^{2\pi}\\
 		&= \frac{1}{2 \pi} \Big( \frac{1}{im} - \frac{1}{im} \Big) = 0
 	\end{align*}
 	Si $m = 0$:
 	$$
-		\frac{1}{2 \pi} \int_0^{2\pi}e^{imt}dt = \frac{1}{2 \pi} \int_0^{2\pi}dt = \frac{2 \pi}{2 \pi} = 1
+		\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t = \frac{1}{2 \pi} \int_0^{2\pi} \mathrm d t = \frac{2 \pi}{2 \pi} = 1
 	$$
 	\\
-	Donc $$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt}dt = 
+	Donc $$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t = 
 	\begin{cases}
 		1 \text{ si } m=0\\
 		0 \text{ si } m \neq 0
@@ -31,21 +31,21 @@
 	
 	Soient $(a_0, ..., a_n) \in \C^{n+1}$ les coefficients de $P(z) = \sum_{k=0}^n a_k z^k$, et $s\in \Z$, et $r \in \R_+^*$ fq. tels que P soit nulle lorsqu'elle est évaluée sur $\mathscr C(0,r)$
 	\begin{align*}
-		\frac{1}{2 \pi} \int_0^{2\pi} P(re^{it}) e^{-imt}dt &= \frac{1}{2 \pi} \int_0^{2\pi} \bigg (\sum_{k=0}^n a_k (re^{it})^k \bigg) e^{-imt}dt\\
-		&= \sum_{k=0}^n a_k r^k \underbrace{\int_0^{2\pi} \frac{e^{it(k-s)}}{2 \pi} dt}_{I_k}
+		\frac{1}{2 \pi} \int_0^{2\pi} P(re^{it}) e^{-imt} \mathrm d t &= \frac{1}{2 \pi} \int_0^{2\pi} \bigg (\sum_{k=0}^n a_k (re^{it})^k \bigg) e^{-imt} \mathrm d t\\
+		&= \sum_{k=0}^n a_k r^k \underbrace{\int_0^{2\pi} \frac{e^{it(k-s)}}{2 \pi}  \mathrm d t}_{I_k}
 	\end{align*}
 	On remarque que:
 	\begin{itemize}
-		\item Si $s \notin [[0, n]], \{k \in [[0, n]] \text{ }| \text{ } k = s\}$ = $\emptyset$, Donc $$\sum_{k \in [[0, n]]} a_k s^k I_k  = \sum_{\substack{k \in [[0, n]] \\ k = s}} a_k r^k  = 0$$
-		\item Si $s \in [[0, n]], \{k \in [[0, n]] \text{ }| \text{ } k = s\}$ = ${s}$, Donc $$\sum_{k \in [[0, n]]} a_k s^k I_k = \sum_{\substack{k \in [[0, n]] \\ k = s}} a_k s^k = a_s r^s \label{1}$$
+		\item Si $s \notin [ \! [0, n] \! ], \{k \in [ \! [0, n] \! ] \text{ }| \text{ } k = s\}$ = $\emptyset$, Donc $$\sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k  = \sum_{\substack{k \in [ \! [0, n] \! ] \\ k = s}} a_k r^k  = 0$$
+		\item Si $s \in [ \! [0, n] \! ], \{k \in [ \! [0, n] \! ] \text{ }| \text{ } k = s\}$ = ${s}$, Donc $$\sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k = \sum_{\substack{k \in [ \! [0, n] \! ] \\ k = s}} a_k s^k = a_s r^s \label{1}$$
 	\end{itemize}
-	Or, puisque $P$ s'annule sur le cercle de rayon $r$ et de centre $0$,  $\mathscr C(0,r)$, ces sommes sont aussi nulles. On en déduit, en particularisant pour un $s \in [[0, n]]$ fixé quelconque que:
+	Or, puisque $P$ s'annule sur le cercle de rayon $r$ et de centre $0$,  $\mathscr C(0,r)$, ces sommes sont aussi nulles. On en déduit, en particularisant pour un $s \in [ \! [0, n] \! ]$ fixé quelconque que:
 	$$
-		\sum_{k \in [[0, n]]} a_k s^k I_k = a_sr^s = 0 \implies a_s = 0
+		\sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k = a_sr^s = 0 \implies a_s = 0
 	$$
 	
 	Donc $$
-		(\exists r \in \R_+^* : \forall \theta \in \R, P(re^{i\theta})=0) \implies \forall s \in [[0, n]]
+		(\exists r \in \R_+^* : \forall \theta \in \R, P(re^{i\theta})=0) \implies \forall s \in [ \! [0, n] \! ]
 	$$
 	\\
 	Pour la preuve réciproque,  soit $n \in \N$ fq. Soient $(a_0,...,a_n) \in \{ 0 \} ^{n+1}$ les coefficients nuls de la fonction polynomiale $P \in \C[z]$ définie pour tout $z \in \C$.
