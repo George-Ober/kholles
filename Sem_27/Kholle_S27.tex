@@ -96,13 +96,13 @@
 		
 		Définissons $\chi \in \mathcal{E}({[a;b]}, \R)$ par
 		\begin{equation*}
-			\left| \begin{matrix}
+			\chi \left| \begin{array}{ccl}
 				[a;b] &\rightarrow& \R \\
-				x &\mapsto& \left\{ \begin{matrix}
+				x &\mapsto& \left\{ \begin{array}{ll}
 					f(x) &\text{ si } \exists n \in \N : \ x = a + n \eta' \\
 					f\left(a + \eta' \left( \lfloor \frac{x-a}{\eta'} \rfloor + \nicefrac{1}{2} \right) \right) &\text{ sinon }
-				\end{matrix} \right.
-			\end{matrix} \right.
+				\end{array} \right.
+			\end{array} \right.
 		\end{equation*}
 		Ceci est bien une fonction en escalier car $(a + k \eta')_{0 \leqslant k \leqslant N}$ est une subdivision adaptée. En effet, $\forall k \in \lient 0; N-1 \rient, \ f_{|]a+k\eta';a+(k+1)\eta'[} =f\left( a + \eta' \left( \lfloor \frac{x-a}{\eta'} \rfloor + \nicefrac{1}{2} \right) \right) \cdot \widetilde{1}_{]a+k\eta';a=(k+1)\eta'[}$.
 		
