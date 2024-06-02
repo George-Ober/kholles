@@ -38,3 +38,4 @@ Espérons qu'avec un peu plus d'expérience, on arrive à les rédiger bien plus
 - [ ] [Semaine 25](Sem_25/Kholle_S25.pdf)
 - [x] [Semaine 26](Sem_26/Kholle_S26.pdf)
 - [ ] [Semaine 27](Sem_27/Kholle_S27.pdf)
+- [ ] [Semaine 30](Sem_30/Kholle_S30.pdf)
