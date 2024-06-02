@@ -21,7 +21,7 @@
 	\end{proof}
 }
 \renewcommand{\setnbquestion}[1]{
-	\setcounter{subsection}{#1}
+	\setcounter{subsection}{\numexpr#1-1\relax}
 }
 
 \begin{document}
@@ -1744,20 +1744,20 @@ Le noyau, noté $\ker f$ est par définition égal à $f^{-1}(\{e_2\})$ c'est do
 
 \pagebreak\section{Semaine 7}
 
-\begin{question_kholle}{Calcul de $\int_0^{2\pi}e^{imt}dt$ en fonction de $m \in \Z$. En Déduire qu'une fonction polynomiale nulle sur un cercle centré en l'origine a tous ses coefficients nuls.}
+\begin{question_kholle}{Calcul de $\int_0^{2\pi}e^{imt} \mathrm d t$ en fonction de $m \in \Z$. En Déduire qu'une fonction polynomiale nulle sur un cercle centré en l'origine a tous ses coefficients nuls.}
 	Soit $m \in \Z$ fq. Calculons:
-	$$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt}dt$$
+	$$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t$$
 	Si $m \neq 0$:
 	\begin{align*}
-		\frac{1}{2 \pi} \int_0^{2\pi}e^{imt}dt &= \frac{1}{2 \pi} \Big[ \frac{e^{mt}}{im} \Big]_0^{2\pi}\\
+		\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t &= \frac{1}{2 \pi} \Big[ \frac{e^{mt}}{im} \Big]_0^{2\pi}\\
 		&= \frac{1}{2 \pi} \Big( \frac{1}{im} - \frac{1}{im} \Big) = 0
 	\end{align*}
 	Si $m = 0$:
 	$$
-		\frac{1}{2 \pi} \int_0^{2\pi}e^{imt}dt = \frac{1}{2 \pi} \int_0^{2\pi}dt = \frac{2 \pi}{2 \pi} = 1
+		\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t = \frac{1}{2 \pi} \int_0^{2\pi} \mathrm d t = \frac{2 \pi}{2 \pi} = 1
 	$$
 	\\
-	Donc $$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt}dt = 
+	Donc $$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t = 
 	\begin{cases}
 		1 \text{ si } m=0\\
 		0 \text{ si } m \neq 0
@@ -1768,21 +1768,21 @@ Le noyau, noté $\ker f$ est par définition égal à $f^{-1}(\{e_2\})$ c'est do
 	
 	Soient $(a_0, ..., a_n) \in \C^{n+1}$ les coefficients de $P(z) = \sum_{k=0}^n a_k z^k$, et $s\in \Z$, et $r \in \R_+^*$ fq. tels que P soit nulle lorsqu'elle est évaluée sur $\mathscr C(0,r)$
 	\begin{align*}
-		\frac{1}{2 \pi} \int_0^{2\pi} P(re^{it}) e^{-imt}dt &= \frac{1}{2 \pi} \int_0^{2\pi} \bigg (\sum_{k=0}^n a_k (re^{it})^k \bigg) e^{-imt}dt\\
-		&= \sum_{k=0}^n a_k r^k \underbrace{\int_0^{2\pi} \frac{e^{it(k-s)}}{2 \pi} dt}_{I_k}
+		\frac{1}{2 \pi} \int_0^{2\pi} P(re^{it}) e^{-imt} \mathrm d t &= \frac{1}{2 \pi} \int_0^{2\pi} \bigg (\sum_{k=0}^n a_k (re^{it})^k \bigg) e^{-imt} \mathrm d t\\
+		&= \sum_{k=0}^n a_k r^k \underbrace{\int_0^{2\pi} \frac{e^{it(k-s)}}{2 \pi}  \mathrm d t}_{I_k}
 	\end{align*}
 	On remarque que:
 	\begin{itemize}
-		\item Si $s \notin [[0, n]], \{k \in [[0, n]] \text{ }| \text{ } k = s\}$ = $\emptyset$, Donc $$\sum_{k \in [[0, n]]} a_k s^k I_k  = \sum_{\substack{k \in [[0, n]] \\ k = s}} a_k r^k  = 0$$
-		\item Si $s \in [[0, n]], \{k \in [[0, n]] \text{ }| \text{ } k = s\}$ = ${s}$, Donc $$\sum_{k \in [[0, n]]} a_k s^k I_k = \sum_{\substack{k \in [[0, n]] \\ k = s}} a_k s^k = a_s r^s \label{1}$$
+		\item Si $s \notin [ \! [0, n] \! ], \{k \in [ \! [0, n] \! ] \text{ }| \text{ } k = s\}$ = $\emptyset$, Donc $$\sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k  = \sum_{\substack{k \in [ \! [0, n] \! ] \\ k = s}} a_k r^k  = 0$$
+		\item Si $s \in [ \! [0, n] \! ], \{k \in [ \! [0, n] \! ] \text{ }| \text{ } k = s\}$ = ${s}$, Donc $$\sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k = \sum_{\substack{k \in [ \! [0, n] \! ] \\ k = s}} a_k s^k = a_s r^s \label{1}$$
 	\end{itemize}
-	Or, puisque $P$ s'annule sur le cercle de rayon $r$ et de centre $0$,  $\mathscr C(0,r)$, ces sommes sont aussi nulles. On en déduit, en particularisant pour un $s \in [[0, n]]$ fixé quelconque que:
+	Or, puisque $P$ s'annule sur le cercle de rayon $r$ et de centre $0$,  $\mathscr C(0,r)$, ces sommes sont aussi nulles. On en déduit, en particularisant pour un $s \in [ \! [0, n] \! ]$ fixé quelconque que:
 	$$
-		\sum_{k \in [[0, n]]} a_k s^k I_k = a_sr^s = 0 \implies a_s = 0
+		\sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k = a_sr^s = 0 \implies a_s = 0
 	$$
 	
 	Donc $$
-		(\exists r \in \R_+^* : \forall \theta \in \R, P(re^{i\theta})=0) \implies \forall s \in [[0, n]]
+		(\exists r \in \R_+^* : \forall \theta \in \R, P(re^{i\theta})=0) \implies \forall s \in [ \! [0, n] \! ]
 	$$
 	\\
 	Pour la preuve réciproque,  soit $n \in \N$ fq. Soient $(a_0,...,a_n) \in \{ 0 \} ^{n+1}$ les coefficients nuls de la fonction polynomiale $P \in \C[z]$ définie pour tout $z \in \C$.
@@ -3764,7 +3764,7 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		\end{equation*}
 		Multiplions par $u^{-k_1}$ puis calculons la limite en $u \rightarrow 0$.
 		D'un coté, pour $k > k_1$, nous avons $k - k_1 \leqslant 1$ donc $(a_k - b_k) u^{k-k_1} \arrowlim{u}{0} 0$.
-		De l'autre coté, $u^{n-k_1}$ tend vers $0$ ou $1$ selon si $k_1 < n$ ou $k_1 = n$. Et, par hypothèse, $\varepsilon_2(u) - \varepsilon_1(u) \arrowlim{u}{0}$.
+		De l'autre coté, $u^{n-k_1}$ tend vers $0$ ou $1$ selon si $k_1 < n$ ou $k_1 = n$. Et, par hypothèse, $\varepsilon_2(u) - \varepsilon_1(u) \arrowlim{u}{0} 0$.
 		Par unicité de la limite, $a_{k_1} - b_{k_1} = 0$. Ce qui contredit la définition de $k_1$.
 		
 		Par conséquent $\forall k \in \lient 0;n \rient, \ a_k = b_k$. Ainsi, la partie régulière d'un $DL$ est unique.
@@ -5622,13 +5622,13 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		
 		Définissons $\chi \in \mathcal{E}({[a;b]}, \R)$ par
 		\begin{equation*}
-			\left| \begin{matrix}
+			\chi \left| \begin{array}{ccl}
 				[a;b] &\rightarrow& \R \\
-				x &\mapsto& \left\{ \begin{matrix}
+				x &\mapsto& \left\{ \begin{array}{ll}
 					f(x) &\text{ si } \exists n \in \N : \ x = a + n \eta' \\
 					f\left(a + \eta' \left( \lfloor \frac{x-a}{\eta'} \rfloor + \nicefrac{1}{2} \right) \right) &\text{ sinon }
-				\end{matrix} \right.
-			\end{matrix} \right.
+				\end{array} \right.
+			\end{array} \right.
 		\end{equation*}
 		Ceci est bien une fonction en escalier car $(a + k \eta')_{0 \leqslant k \leqslant N}$ est une subdivision adaptée. En effet, $\forall k \in \lient 0; N-1 \rient, \ f_{|]a+k\eta';a+(k+1)\eta'[} =f\left( a + \eta' \left( \lfloor \frac{x-a}{\eta'} \rfloor + \nicefrac{1}{2} \right) \right) \cdot \widetilde{1}_{]a+k\eta';a=(k+1)\eta'[}$.
 		
@@ -5677,5 +5677,51 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		D'où $\left| f(f_i) - f(f_s) \right| \leqslant \varepsilon$.
 		
 		Ainsi, nous avons bien $\norminf{\psi - \varphi} \leqslant \varepsilon$.
+	\end{question_kholle}
+\pagebreak\section{Semaine 30}
+
+	\setnbquestion{7}
+	\begin{question_kholle}
+		{Dénombrement des surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$ et dans $\lient 1; 3 \rient$}
+
+		Soit $n \in \N^*$.
+
+		Il y a ${\left| \lient 1; 2 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 2^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
+		Seules les applications constantes $\widetilde{1}$ et $\widetilde{2}$ ne sont pas surjectives.
+		Il y a donc $2^n - 2$ surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
+
+		Il y a ${\left| \lient 1; 3 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 3^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$. Les applications non surjectives sont celles dont l'image n'est pas $\lient 1; 3 \rient$. C'est-à-dire, celles dont l'image est de cardinal 1 (les fonctions constantes $\widetilde{1}$, $\widetilde{2}$ et $\widetilde{3}$) et celles dont l'image est de cardinal 2. Ces dernières sont les surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$, $\{ 1; 3 \}$ et $\{ 2; 3 \}$. Comme ces trois ensembles ont la même taille, il y a $3 \times (2^n - 2)$ (voir résultat précédent) applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ dont l'image est de cardinal 2. Ainsi, le nombre de surjections de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ est $3^n - 3 - 3(2^n -2) = 3^n - 3 \times 2^n + 3$.
+	\end{question_kholle}
+
+	\begin{question_kholle}
+		[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$. \\
+		Alors $\left|F\right| = \frac{\left|E\right|}{k}$
+		\begin{quotation}
+			\textquotedblleft Pour compter les moutons, il faut compter les pattes puis diviser par quatre. \textquotedblright
+		\end{quotation}]
+		{Lemme des bergers}
+
+		Considérons la relation binaire définie sur $E$ par :
+		\begin{equation*}
+			\forall (x, y) \in E^2, x \sim y
+			\iff f(x) = f(y)
+		\end{equation*}
+		Elle est réflexive, transitive et symétrique donc c'est bien une relation d'équivalence.
+		Donc les classes d'équivalence réalise une partition de $E$.
+		Nous avons $\displaystyle E = \coprod_{C \in \nicefrac{E}{\sim}} C$ donc, en passant aux cardinaux, $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right|$.
+
+		Soit $x \in E$ \fq. Alors $\bar{x} = \left\{ y \in E \;|\; f(x) = f(y) \right\} = f^{-1}(f(\{x\}))$. Par hypothèse, tous les éléments de $F$ ont le même nombre $k$ d'antécédents, or $f({x})$ est un singleton d'élément de $F$ donc $\left|\bar{x}\right| = k$.
+		Ainsi $\forall C \in \nicefrac{E}{\sim}, \left|C\right| = k$.
+
+		Posons $\varphi \left|\begin{array}{ccc}
+			\nicefrac{E}{\sim} & \rightarrow & F \\
+			C & \mapsto & f(x) \text{ où } x \in C
+		\end{array}\right.$.
+		$\varphi$ est bien défini car si $(x, y) \in E$ vérifie $\bar{x} = \bar{y}$ alors $f(x) = f(y)$ donc l'image par $\varphi$ ne dépend pas du représentant de classe choisi.
+		$\varphi$ est surjective car soit $z \in F$, $f$ est surjective donc $\exists x_z \in E : f(x_z) = z$ et alors $\varphi(\bar{x_z}) = f(x_z) = z$.
+		$\varphi$ est surjective car soient $(C, C') \in \left( \nicefrac{E}{\sim} \right)^2, \varphi(C) = \varphi(C')$ alors $\exists (x, x') \in C \times C' : x \sim x'$, comme deux classes d'équivalence sont confondues ou disjointes, $C = C'$.
+		Ainsi $\varphi$ est une bijection donc $\left|F\right| = \left|\nicefrac{E}{\sim}\right|$.
+
+		Ainsi $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right| = \sum_{C \in \nicefrac{E}{\sim}} k = \left| \nicefrac{E}{\sim} \right| k = \left|F\right| k$.
 	\end{question_kholle}
 \end{document}

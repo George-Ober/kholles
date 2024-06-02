@@ -19,15 +19,15 @@ ${final_output} : ${pdf_ouput}
 		sed -e '/\\documentclass/,/\\maketitle/d' -e '/\\end{document}/,//d' Sem_$${nb}/Kholle_S$${nb}.tex >> ${final_output}; \
 	done
 	@cat end_kholles.tex >> ${final_output}
-	pdflatex -synctex=1 -interaction=nonstopmode ${final_output} > /dev/null
-	pdflatex -synctex=1 -interaction=nonstopmode ${final_output} > /dev/null
+	pdflatex -synctex=0 -draftmode -interaction=batchmode ${final_output} > /dev/null
+	pdflatex -synctex=1 -interaction=batchmode ${final_output}
 
 %.pdf : %.tex
 	cd $$(dirname $<) && pdflatex -synctex=1 -interaction=nonstopmode $$(basename $<) > /dev/null
 
 .PHONY : clean
 
-to_clean := *.log *.aux *.out *.synctex.gz
+to_clean := *.log *.aux *.out
 clean :
 	rm -f ${to_clean}
 	for folder in $(shell ls -d -- */); do \

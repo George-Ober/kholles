@@ -81,9 +81,9 @@ Par exemple,
 
 - Les **familles** quelconques \famille[variable muette]{nom de la famille}{ensemble indexant} ( \famille[k]{\sigma}{[\\![0;n]\\!]} por les fonctions symétriques élémentaires ), presque nulles \fpnulle[ensemble indexant (facultatif)]{nom de la famille}{ensemble de base} (par exemple \famille{\lambda}{E} pour une famille de vecteurs de E) et finies \ffinie[variable muette]{nom de la famille}{nombre d'éléments}{ensemble de base}
 
-- Pour les flemmards, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que', \ssi pour 'si et seulement si', \ii pour `_{i \in I}`, \bdak pour `(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}}`
+- Pour les **flemmards**, \fq pour 'fixé quelconque', \fqs pour 'fixés quelconques', \tq pour 'tel que' et \tqs pour '\tels que', \ssi pour 'si et seulement si', \ii pour `_{i \in I}`, \bdak pour `(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}}`
 
-- Si ils manquent des questions, la command \setnbquestion{} permet de fixer manuellement le numéro de la question
+- Si ils manquent des questions, la command \setnbquestion{} permet de fixer manuellement le **numéro de la question**.
 
 Et voilà !!!
 
