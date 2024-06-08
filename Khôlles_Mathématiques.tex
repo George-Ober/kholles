@@ -5714,12 +5714,12 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		Ainsi $\forall C \in \nicefrac{E}{\sim}, \left|C\right| = k$.
 
 		Posons $\varphi \left|\begin{array}{ccc}
-			\nicefrac{E}{\sim} & \rightarrow & F \\
-			C & \mapsto & f(x) \text{ où } x \in C
+			\nicefrac{E}{\sim} & \mapsto & F \\
+			C & \rightarrow & f(x) \text{ où } x \in C
 		\end{array}\right.$.
 		$\varphi$ est bien défini car si $(x, y) \in E$ vérifie $\bar{x} = \bar{y}$ alors $f(x) = f(y)$ donc l'image par $\varphi$ ne dépend pas du représentant de classe choisi.
 		$\varphi$ est surjective car soit $z \in F$, $f$ est surjective donc $\exists x_z \in E : f(x_z) = z$ et alors $\varphi(\bar{x_z}) = f(x_z) = z$.
-		$\varphi$ est surjective car soient $(C, C') \in \left( \nicefrac{E}{\sim} \right)^2, \varphi(C) = \varphi(C')$ alors $\exists (x, x') \in C \times C' : x \sim x'$, comme deux classes d'équivalence sont confondues ou disjointes, $C = C'$.
+		$\varphi$ est injective car soient $(C, C') \in \left( \nicefrac{E}{\sim} \right)^2, \varphi(C) = \varphi(C')$ alors $\exists (x, x') \in C \times C' : x \sim x'$, comme deux classes d'équivalence sont confondues ou disjointes, $C = C'$.
 		Ainsi $\varphi$ est une bijection donc $\left|F\right| = \left|\nicefrac{E}{\sim}\right|$.
 
 		Ainsi $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right| = \sum_{C \in \nicefrac{E}{\sim}} k = \left| \nicefrac{E}{\sim} \right| k = \left|F\right| k$.
