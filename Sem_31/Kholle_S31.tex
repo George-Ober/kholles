@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\date{8 juin 2024}
+\usepackage[nb-sem=30, auteurs={Hugo Vangilluwen}]{../kholles}
+
+\begin{document}
+	\maketitle
+	
+	Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omega, \proba)$ désigne un espace probabilisé fini.
+	
+	\begin{question_kholle}
+		[Soit $p \in \N^*$. Un $p$-partage de $E$ est un $p$-liste $(A_1, \ldots, A_p) \in \mathcal{P}(E)^p$ de parties de $E$ (éventuellement vide), deux à deux disjointes qui recouvrent $E$ c'est-à-dire \tq+* t:
+		\begin{equation}
+			\forall (i, j) \in \lient 1 ; p \rient,
+			i \neq j \implies A_i \cap A_j = \emptyset
+			\qquad \text{et} \qquad
+			\bigcup_{i=1}^{p} A_i = E
+		\end{equation}
+		
+		Soient $(n_1, \ldots n_p) \in \N^p$ \tqs $n = n_1 + \ldots + n_p$ est un $p$-partage de $E$ \tq
+		\begin{equation*}
+			\forall (i, j) \in \lient 1 ; p \rient, \
+			\left|A_i\right| = n_i
+		\end{equation*}
+		Le nombre de $p$-partage de type $(n_1, \ldots, n_p)$ est :
+		\begin{equation}
+			\frac{n!}{\displaystyle \prod_{i=1}^{p} n_i !}
+		\end{equation}
+		]
+		{$p$-partage d'un ensemble $E$ et leur dénombrement}
+		
+		Considérons les $p$-partages de type $(n_1, \ldots, n_p)$ et appliquons le principe des choix successifs :
+		\begin{equation*}
+			\left(
+				\underbrace{A_1}_{\binom{n}{n_1} \text{ choix}},
+				\underbrace{A_2}_{\binom{n}{n_2} \text{ choix}},
+				\underbrace{A_3}_{\binom{n}{n_3} \text{ choix}},
+				\ldots,
+				\underbrace{A_p}_{\binom{n}{n_p} \text{ choix}}
+			\right)
+		\end{equation*}
+		donc il y a
+		\begin{equation*}
+			\frac{ n! }{n_1! \cancel{(n-n_1)!} }
+			\frac{ \bcancel{(n-n_1)!} }{n_2! \cancel{(n-n_1-n_2)!} }
+			\frac{ \bcancel{(n-n_1-n_2)!} }{n_2! \cancel{(n-n_1-n_2-n_3)!} }
+			\ldots
+			\frac{ \bcancel{(n-(n_1+\ldots+n_{p-1})!} }{n_p! \underbrace{(n_1+\ldots+n_p)!}_{=0!} }
+		\end{equation*}
+		Donc, au total, il y a $\frac{n!}{n_1! n_2! \ldots n_p!}$ $p$-partages.
+	\end{question_kholle}
+	
+	\begin{question_kholle}
+		[Soit $B$ un évènement de probabilité non nulle.
+		L'application $\proba_B$
+		{\begin{equation}
+			\proba_B \left| \begin{array}{ccc}
+				\mathcal{P}(\Omega) & \mapsto & [0;1] \\
+				A & \rightarrow & \displaystyle \frac{\proba( A \cap B )}{\proba(B)}
+			\end{array} \right.
+		\end{equation}}
+		est une probabilité sur sur $\Omega$. ]
+		{Une probabilité conditionnelle est une probabilité}
+		
+		~\\
+		\begin{liste}
+			\item Soit $A \in \mathcal{P}(\Omega)$ \fq. \\
+			On a $\emptyset \subset A \cap B  \subset B$ donc par croissance de la probabilité, $0 = \proba(\emptyset) \leqslant \proba(A \cap B) \leqslant \proba(B)$.
+			En divisant par $\proba(B) \neq 0$, $0 \leqslant \proba_B(A) \leqslant 1$. Donc $\proba_B$ est \textit{bien définie}.
+			\item $\proba_B(\Omega)
+			= \frac{\proba(\Omega \cup B)}{\proba(B)}
+			= \frac{\proba(B)}{\proba(B)}
+			= 1$
+			\item Soient $(A, A') \in \mathcal{P}(\Omega)^2$ \fq* \tq* $A$ et $A'$ sont incompatibles.
+			\begin{equation}
+				\begin{aligned}
+					\proba_B(A \amalg A')
+					&= \frac{ \proba(B \cap (A \amalg A') ) }{ \proba(B) } \\
+					&= \frac{ \proba( (B \cap A) \amalg (B \cap A') ) }{ \proba(B) } \text{ car } (B \cap A) \cap (B \cap A') \subset A \cap A' = \emptyset \\
+					&= \frac{ \proba(B \cap A) + \proba(B \cap A') }{ \proba(B) } \\
+					&= \proba_B(A) + \proba_B(A')
+				\end{aligned}
+			\end{equation}
+		\end{liste}
+		Ainsi, $\proba_B$ est bien une probabilité sur $\Omega$.
+	\end{question_kholle}
+\end{document}

@@ -57,7 +57,7 @@ Par exemple,
 
 `kholles.sty` définit aussi des commandes sympas :
 
-- **L'environnement propositions** pour lister des propositions (bah oui) avec \item
+- **L'environnement propositions** pour lister des propositions (bah oui) avec \item et **l'environnement liste** pour faire une liste (waouh) de points
 
 - Les **ensembles usuels** \N, \Z, \Q, R, \C, \K, \PRIME, \cx{corps} pour
 
@@ -81,7 +81,9 @@ Par exemple,
 
 - Les **familles** quelconques \famille[variable muette]{nom de la famille}{ensemble indexant} ( \famille[k]{\sigma}{[\\![0;n]\\!]} por les fonctions symétriques élémentaires ), presque nulles \fpnulle[ensemble indexant (facultatif)]{nom de la famille}{ensemble de base} (par exemple \famille{\lambda}{E} pour une famille de vecteurs de E) et finies \ffinie[variable muette]{nom de la famille}{nombre d'éléments}{ensemble de base}
 
-- Pour les **flemmards**, \fq pour 'fixé quelconque' et \tq pour 'tel que' (ajouter . pour le féminin puis * pour le pluriel, par exemple, \fq.* pour 'fixées quelconques', \tq* pour 'tels que'); \ssi pour 'si et seulement si', \ii pour `_{i \in I}`, \bdak pour `(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}}`
+- Les **probabilités** \proba pour le P majuscule d'une probabilité
+
+- Pour les **flemmards**, \fq pour 'fixé quelconque' et \tq pour 'tel que' (ajouter '+' pour le féminin puis '\*' pour le pluriel, par exemple, \fq+* pour 'fixées quelconques', \tq* pour 'tels que'); \ssi pour 'si et seulement si', \ii pour `_{i \in I}`, \bdak pour `(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}}`
 
 - Si ils manquent des questions, la command \setnbquestion{} permet de fixer manuellement le **numéro de la question**.
 

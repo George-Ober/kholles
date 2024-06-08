@@ -43,6 +43,8 @@
 % changement de puces dans les listes
 \RequirePackage{enumitem}
 
+\RequirePackage{cancel}
+
 % paquets graphiques
 \RequirePackage{geometry}
 	\geometry{
@@ -109,6 +111,12 @@
 % liste de propositoins
 \newenvironment{propositions}{
 	\begin{enumerate}[label=$(\roman*)$, labelindent=0pt, leftmargin=!] % identique à leftmargin=\leftmargin
+}
+{
+	\end{enumerate}
+}
+\newenvironment{liste}{
+	\begin{enumerate}[label=$\bullet$, leftmargin=!] % identique à leftmargin=\leftmargin
 }
 {
 	\end{enumerate}
@@ -189,18 +197,15 @@
 \newcommand{\fpnulle}[3][I]{\ensuremath{\left(#2_i\right)\ii[#1] \in #3^{(#1)}} }
 \newcommand{\ffinie}[4][i]{\ensuremath{\left(#2_#1\right)_{#1 \in \lient 1 ; #3 \rient} \in #4^{#3}} }
 
+% Probabilités
+\newcommand{\proba}{\ensuremath{\mathbb P} }
+
 % flemmards
 \makeatletter
 \newcommand{\@mf}[2]{\IfBooleanT{#1}{#2}} % masculin / féminin
 \newcommand{\@sp}[1]{\IfBooleanT{#1}{s}} % singulier / pluriel
-\NewDocumentCommand{\fq}{t.s}{
-	fixé\@mf{#1}{e}\@sp{#2}
-	quelconque\@mf{#1}\@sp{#2}
-}
-\NewDocumentCommand{\tq}{t.s}{
-	tel\@mf{#1}{le}\@sp{#2}
-	que
-}
+\NewDocumentCommand{\fq}{t+s}{fixé\@mf{#1}{e}\@sp{#2} quelconque\@mf{#1}{e}\@sp{#2}}
+\NewDocumentCommand{\tq}{t+s}{tel\@mf{#1}{le}\@sp{#2} que}
 %\newcommand{\fq}{fixé quelconque}
 \newcommand{\fqs}{fixés quelconques} % Dépréciée
 %\newcommand{\tq}{tel que }
