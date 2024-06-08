@@ -26,8 +26,9 @@
 \RequirePackage{lmodern}
 \RequirePackage{relsize}
 
-% paquet de test
-\RequirePackage{etoolbox}
+% paquets de création de commande
+\RequirePackage{etoolbox} % pour les tests
+\RequirePackage{xparse}
 
 % paquets mathématiques
 \RequirePackage{amsmath}
@@ -80,7 +81,7 @@
 %J'ai ajouté ici une commande qui permet de créer une section avec son propre numéro avec  \DIV[42]{section}{Le titre}
 %Mais j'avoue que je ne connais pas bien la syntaxe pour la rajouter comme argument optionnel de l'environnement "question_kholle"
 
-\NewDocumentCommand{\DIV}{om}{%
+\NewDocumentCommand{\DIV}{om}{% Dépréciée
   \IfValueT{#1}{\setcounter{#2}{\numexpr#1-1\relax}}%
   \csname #2\endcsname
 }
@@ -189,9 +190,21 @@
 \newcommand{\ffinie}[4][i]{\ensuremath{\left(#2_#1\right)_{#1 \in \lient 1 ; #3 \rient} \in #4^{#3}} }
 
 % flemmards
-\newcommand{\fq}{fixé quelconque}
-\newcommand{\fqs}{fixés quelconques}
-\newcommand{\tq}{tel que }
-\newcommand{\tqs}{tels que }
+\makeatletter
+\newcommand{\@mf}[2]{\IfBooleanT{#1}{#2}} % masculin / féminin
+\newcommand{\@sp}[1]{\IfBooleanT{#1}{s}} % singulier / pluriel
+\NewDocumentCommand{\fq}{t.s}{
+	fixé\@mf{#1}{e}\@sp{#2}
+	quelconque\@mf{#1}\@sp{#2}
+}
+\NewDocumentCommand{\tq}{t.s}{
+	tel\@mf{#1}{le}\@sp{#2}
+	que
+}
+%\newcommand{\fq}{fixé quelconque}
+\newcommand{\fqs}{fixés quelconques} % Dépréciée
+%\newcommand{\tq}{tel que }
+\newcommand{\tqs}{tels que } % Dépréciée
 \newcommand{\ssi}{si et seulement si}
 \newcommand{\ii}[1][I]{_{i \in #1}}
+\makeatother
