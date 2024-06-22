@@ -1,0 +1,116 @@
+\documentclass{article}
+\usepackage{braket}
+
+\date{22 juin 2024}
+\usepackage[nb-sem=29, auteurs={George Ober}]{../kholles}
+
+\begin{document}
+\maketitle
+
+\begin{question_kholle}[{Le noyau d'un morphisme de groupe étant toujours un sous-groupe du groupe de départ, le groupe alterné d'indice $n \in \mathbb{N}^{*}$ est le sous groupe de $(\mathcal{S}_{n}, \circ)$ obtenu en considérant le noyau du morphisme signature.
+    $$
+    \mathcal{A}_{n}= \ker \varepsilon
+    $$
+    $\mathcal{A}_{n}$ est de cardinal $\frac{n!}{2}$
+    }]{Définition et cardinal du sous-groupe alternée $\mathcal{A}_n$}
+    
+    
+    Fixons $\tau = (1, 2)$
+    Considérons
+    $$\Phi \left|\begin{array}{ll} \mathcal{A}_{n} &\to \mathcal{S}_{n} \setminus \mathcal{A}_{n} \\ \sigma &\mapsto \sigma \circ \tau \end{array}\right.$$
+    \begin{itemize}
+        \item 
+        
+        $\Phi$ est bien définie: soit $\sigma \in \mathcal{A}_{n}$ fixée quelconque. Par propriété de morphisme de la signature, $\varepsilon(\sigma \circ \tau) = \varepsilon(\sigma) \times \varepsilon(\tau) = 1 \times (-1) = -1$ donc $\sigma \circ \tau \not\in \mathcal{A}_{n}$ donc $\Phi(\sigma) \in \mathcal{S}_{n}\setminus \mathcal{A}_{n}$
+        
+        \item De plus, $\Phi$ est bijective en considérant 
+$$\Psi\left|\begin{array}{ll} \mathcal{S}_{n}\setminus \mathcal{A}_{n} &\to \mathcal{A}_{n} \\ \sigma &\mapsto \sigma \circ  \tau \end{array}\right.$$
+$\Psi \circ \Phi = \mathrm{Id}_{\mathcal{A}_{n}}$ et $\Phi \circ \Psi = \mathrm{Id}_{\mathcal{S}_{n}\setminus \mathcal{A}_{n}}$
+    \end{itemize}
+    Ainsi,
+$$
+    \lvert \mathcal{A}_{n} \rvert  = \lvert \mathcal{S}_{n}\setminus \mathcal{A}_{n} \rvert  = \lvert \mathcal{S}_{n} \rvert - \lvert \mathcal{A}_{n} \rvert 
+$$
+    D'où $\lvert \mathcal{A}_{n} \rvert = \frac{\lvert \mathcal{S}_{n} \rvert}{2} = \frac{n!}{2}$
+\end{question_kholle}
+\begin{question_kholle}{Caractérisation des bases par le déterminant}
+    \begin{itemize}[label=$\star$]
+        \item Supposons que la famille $\mathcal{B'} =(u_{1}, \dots, u_{n}) \in E^{n}$ est une base de $E$.
+        $$\det_{\mathcal{B}}\mathcal{B'}\times \det_{\mathcal{B'}}\mathcal{B} = 1 \implies \det _{\mathcal{B}}\mathcal{B'} \neq 0$$
+        
+        \item Supposons qu'il existe une base $\mathcal{B}$ telle que $\det_{\mathcal{B}} \mathcal{B}' \neq 0$
+        Si $\mathcal{B}'$ était liée, le déterminant serait nul, donc en contraposant, $\mathcal{B}'$ n'est pas liée, et est de cardinal $n$, c'est une base.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{
+    Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie et $F \in \mathcal{L}_{\mathbb{K}}(E)$
+    $$\exists!\lambda \in \mathbb{K} : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
+    On appelle ce $\lambda$ \underline{le} déterminant de l'endomorphisme $f$.
+}]{Définition du déterminant d'un endomorphisme}
+    
+\begin{itemize}[label=$\lozenge$]
+    \item \underline{Existence}
+
+Soit $\mathcal{B}_{0}= (e_{1}, \dots, e_{n})$ une base de $E$ fixée.
+L'application
+$$
+\varphi \left|\begin{array}{ll} E^{n} &\to \mathbb{K} \\ (u_{1}, \dots, u_{n}) &\mapsto \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) \end{array}\right.
+$$
+est
+\begin{itemize}
+    \item Une forme n-linéaire :  soient $(u_{1}, \dots, u_{n}) \in E^{n}$ fixés quelconques $(u, v, \lambda) \in E^{2} \times \mathbb{K}$
+
+\begin{align*}
+\varphi (v+\lambda.w, u_{2}, \dots, u_{n})  & = \det_{\mathcal{B}_{0}}(f(v+\lambda.w), f(u_{2}), \dots, f(u_{n})) \\
+&= \det_{\mathcal{B}_{0}}(f(v)+ \lambda.f(w), f(u_{2}), \dots, f(u_{n})) \text{ par linéarité de }f\\
+&= \det_{\mathcal{B}_{0}}(f(v), f(u_{2}), \dots, f(u_{n})) + \lambda \times \det_{\mathcal{B}_{0}}(f(w), f(u_{2}), \dots, f(u_{n}))\\
+& \text{ par linéarité de } \det_{\mathcal{B}_{0}} \\
+&= \varphi(v, u_{2}, \dots, u_{n})+ \lambda \times \varphi(w, u_{2}, \dots, u_{n})
+\end{align*}
+
+Par conséquent, $\varphi$ est linéaire en son premier argument.
+On prouve de même que $\varphi$ est linéaire en ses $n-1$ autres arguments, ce qui montre sa $n$-linéarité.
+
+\item Alternée
+Soient $(u_{1}, \dots, u_{n}) \in E^{n}$ tels qu'il existe $(i, j) \in [ \! [ 1, n ] \!]^{2}$ tels que $i \neq j$ et $u_{i} = u_{j}$ alors on a aussi $f(u_{i}) = f(u_{j})$, si bien que le caractère alterné de $\det_{\mathcal{B}_{0}}$
+$$
+\varphi(u_{1}, \dots, u_{n})=\det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) = 0
+$$
+Donc $\varphi \in \land_{\mathbb{K}}^{n} = \text{Vect}\{ \det_{\mathcal{B}_{0}} \}$
+\end{itemize}
+Donc
+$$
+\exists \lambda_{\mathcal{B}_{0}}\in \mathbb{K}: \varphi = \lambda_{\mathcal{B}_{0}}.\det_{\mathcal{B_{0}}}
+$$
+d'où,
+$$
+\forall (u_{1}, \dots, u_{n}) \in E^{n}, \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n}))= \lambda_{\mathcal{B}_{0}}\times \det_{\mathcal{B_{0}}}(u_{1}, \dots, u_{n})
+$$
+Soit $\mathcal{B}$ une base de $E$ fixée quelconque. Nous savons que
+$$
+\det_{\mathcal{B}} = \det_{\mathcal{B}} \mathcal{B}_{0} . \det_{\mathcal{B}_{0}}
+$$
+Donc en multipliant la relation précédente par $\det_{\mathcal{B}}\mathcal{B}_{0}$,
+$$
+\forall (u_{1}, \dots, u_{n}) \in E^{n}, \underbrace{ \det_{\mathcal{B}}\mathcal{B}_{0} \times \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) }_{ \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n})) }= \lambda_{\mathcal{B}_{0}} \times \underbrace{ \det_{\mathcal{B}}\mathcal{B}_{0} \times \det_{\mathcal{B_{0}}}(u_{1}, \dots, u_{n}) }_{ \det_{\mathcal{B}}(u_{1}, \dots, u_{n}) }
+$$
+Par conséquent, $\lambda_{\mathcal{B}_{0}}$ convient pour toute base $\mathcal{B}$.
+
+\item \underline{Unicité}
+Soit $\lambda \in \mathbb{K}$ tel que
+$$
+\forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})
+$$
+Particularisons pour $\mathcal{B}\leftarrow \mathcal{B}_{0}$ et $(u_{1}, \dots, u_{n})\leftarrow \mathcal{B}_{0}$
+$$
+\det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n})) = \lambda \times \det_{\mathcal{B}_{0}}\mathcal{B}_{0} = \lambda \times 1
+$$
+Donc $\lambda = \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n}))$
+Or, en particularisant la relation définissant $\lambda_{\mathcal{B}_{0}}$ pour $(u_{1}, \dots, u_{n}) \leftarrow \mathcal{B}_{0}$
+$$
+\lambda_{\mathcal{B}_{0}} = \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n}))
+$$
+donc $\lambda = \lambda_{\mathcal{B}_{0}}$
+\end{itemize}
+\end{question_kholle}
+\end{document}
