@@ -5,6 +5,7 @@
 \documentclass{article}
 
 \usepackage{kholles}
+\usepackage{braket}
 
 \renewenvironment{question_kholle}[2][ ]
 {
@@ -2301,7 +2302,7 @@ Le noyau, noté $\ker f$ est par définition égal à $f^{-1}(\{e_2\})$ c'est do
 		
 		Ainsi,
 		\begin{equation}
-			E = \coprod_{s \in \Sol} \bar{s}
+			E = \bigsqcup_{s \in \Sol} \bar{s}
 		\end{equation}
 		
 	\end{question_kholle}
@@ -5678,130 +5679,857 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		
 		Ainsi, nous avons bien $\norminf{\psi - \varphi} \leqslant \varepsilon$.
 	\end{question_kholle}
+\pagebreak\section{Semaine 29}
+
+\begin{question_kholle}[{Le noyau d'un morphisme de groupe étant toujours un sous-groupe du groupe de départ, le groupe alterné d'indice $n \in \mathbb{N}^{*}$ est le sous groupe de $(\mathcal{S}_{n}, \circ)$ obtenu en considérant le noyau du morphisme signature.
+    $$
+    \mathcal{A}_{n}= \ker \varepsilon
+    $$
+    $\mathcal{A}_{n}$ est de cardinal $\frac{n!}{2}$
+    }]{Définition et cardinal du sous-groupe alternée $\mathcal{A}_n$}
+    
+    
+    Fixons $\tau = (1, 2)$
+    Considérons
+    $$\Phi \left|\begin{array}{ll} \mathcal{A}_{n} &\to \mathcal{S}_{n} \setminus \mathcal{A}_{n} \\ \sigma &\mapsto \sigma \circ \tau \end{array}\right.$$
+    \begin{itemize}
+        \item 
+        
+        $\Phi$ est bien définie: soit $\sigma \in \mathcal{A}_{n}$ fixée quelconque. Par propriété de morphisme de la signature, $\varepsilon(\sigma \circ \tau) = \varepsilon(\sigma) \times \varepsilon(\tau) = 1 \times (-1) = -1$ donc $\sigma \circ \tau \not\in \mathcal{A}_{n}$ donc $\Phi(\sigma) \in \mathcal{S}_{n}\setminus \mathcal{A}_{n}$
+        
+        \item De plus, $\Phi$ est bijective en considérant 
+$$\Psi\left|\begin{array}{ll} \mathcal{S}_{n}\setminus \mathcal{A}_{n} &\to \mathcal{A}_{n} \\ \sigma &\mapsto \sigma \circ  \tau \end{array}\right.$$
+$\Psi \circ \Phi = \mathrm{Id}_{\mathcal{A}_{n}}$ et $\Phi \circ \Psi = \mathrm{Id}_{\mathcal{S}_{n}\setminus \mathcal{A}_{n}}$
+    \end{itemize}
+    Ainsi,
+$$
+    \lvert \mathcal{A}_{n} \rvert  = \lvert \mathcal{S}_{n}\setminus \mathcal{A}_{n} \rvert  = \lvert \mathcal{S}_{n} \rvert - \lvert \mathcal{A}_{n} \rvert 
+$$
+    D'où $\lvert \mathcal{A}_{n} \rvert = \frac{\lvert \mathcal{S}_{n} \rvert}{2} = \frac{n!}{2}$
+\end{question_kholle}
+\begin{question_kholle}{Caractérisation des bases par le déterminant}
+    \begin{itemize}[label=$\star$]
+        \item Supposons que la famille $\mathcal{B'} =(u_{1}, \dots, u_{n}) \in E^{n}$ est une base de $E$.
+        $$\det_{\mathcal{B}}\mathcal{B'}\times \det_{\mathcal{B'}}\mathcal{B} = 1 \implies \det _{\mathcal{B}}\mathcal{B'} \neq 0$$
+        
+        \item Supposons qu'il existe une base $\mathcal{B}$ telle que $\det_{\mathcal{B}} \mathcal{B}' \neq 0$
+        Si $\mathcal{B}'$ était liée, le déterminant serait nul, donc en contraposant, $\mathcal{B}'$ n'est pas liée, et est de cardinal $n$, c'est une base.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{
+    Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie et $F \in \mathcal{L}_{\mathbb{K}}(E)$
+    $$\exists!\lambda \in \mathbb{K} : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
+    On appelle ce $\lambda$ \underline{le} déterminant de l'endomorphisme $f$.
+    }]{Définition du déterminant d'un endomorphisme}
+    
+    \begin{itemize}[label=$\lozenge$]
+        \item \underline{Existence}
+        
+        Soit $\mathcal{B}_{0}= (e_{1}, \dots, e_{n})$ une base de $E$ fixée.
+        L'application
+$$
+        \varphi \left|\begin{array}{ll} E^{n} &\to \mathbb{K} \\ (u_{1}, \dots, u_{n}) &\mapsto \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) \end{array}\right.
+$$
+        est
+        \begin{itemize}
+            \item Une forme n-linéaire :  soient $(u_{1}, \dots, u_{n}) \in E^{n}$ fixés quelconques $(u, v, \lambda) \in E^{2} \times \mathbb{K}$
+            
+            \begin{align*}
+                \varphi (v+\lambda.w, u_{2}, \dots, u_{n})  & = \det_{\mathcal{B}_{0}}(f(v+\lambda.w), f(u_{2}), \dots, f(u_{n})) \\
+                &= \det_{\mathcal{B}_{0}}(f(v)+ \lambda.f(w), f(u_{2}), \dots, f(u_{n})) \text{ par linéarité de }f\\
+                &= \det_{\mathcal{B}_{0}}(f(v), f(u_{2}), \dots, f(u_{n})) + \lambda \times \det_{\mathcal{B}_{0}}(f(w), f(u_{2}), \dots, f(u_{n}))\\
+                & \text{ par linéarité de } \det_{\mathcal{B}_{0}} \\
+                &= \varphi(v, u_{2}, \dots, u_{n})+ \lambda \times \varphi(w, u_{2}, \dots, u_{n})
+            \end{align*}
+            
+            Par conséquent, $\varphi$ est linéaire en son premier argument.
+            On prouve de même que $\varphi$ est linéaire en ses $n-1$ autres arguments, ce qui montre sa $n$-linéarité.
+            
+            \item Alternée
+            Soient $(u_{1}, \dots, u_{n}) \in E^{n}$ tels qu'il existe $(i, j) \in [ \! [ 1, n ] \!]^{2}$ tels que $i \neq j$ et $u_{i} = u_{j}$ alors on a aussi $f(u_{i}) = f(u_{j})$, si bien que le caractère alterné de $\det_{\mathcal{B}_{0}}$
+$$
+            \varphi(u_{1}, \dots, u_{n})=\det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) = 0
+$$
+            Donc $\varphi \in \land_{\mathbb{K}}^{n} = \text{Vect}\{ \det_{\mathcal{B}_{0}} \}$
+        \end{itemize}
+        Donc
+$$
+        \exists \lambda_{\mathcal{B}_{0}}\in \mathbb{K}: \varphi = \lambda_{\mathcal{B}_{0}}.\det_{\mathcal{B_{0}}}
+$$
+        d'où,
+$$
+        \forall (u_{1}, \dots, u_{n}) \in E^{n}, \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n}))= \lambda_{\mathcal{B}_{0}}\times \det_{\mathcal{B_{0}}}(u_{1}, \dots, u_{n})
+$$
+        Soit $\mathcal{B}$ une base de $E$ fixée quelconque. Nous savons que
+$$
+        \det_{\mathcal{B}} = \det_{\mathcal{B}} \mathcal{B}_{0} . \det_{\mathcal{B}_{0}}
+$$
+        Donc en multipliant la relation précédente par $\det_{\mathcal{B}}\mathcal{B}_{0}$,
+$$
+        \forall (u_{1}, \dots, u_{n}) \in E^{n}, \underbrace{ \det_{\mathcal{B}}\mathcal{B}_{0} \times \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) }_{ \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n})) }= \lambda_{\mathcal{B}_{0}} \times \underbrace{ \det_{\mathcal{B}}\mathcal{B}_{0} \times \det_{\mathcal{B_{0}}}(u_{1}, \dots, u_{n}) }_{ \det_{\mathcal{B}}(u_{1}, \dots, u_{n}) }
+$$
+        Par conséquent, $\lambda_{\mathcal{B}_{0}}$ convient pour toute base $\mathcal{B}$.
+        
+        \item \underline{Unicité}
+        Soit $\lambda \in \mathbb{K}$ tel que
+$$
+        \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})
+$$
+        Particularisons pour $\mathcal{B}\leftarrow \mathcal{B}_{0}$ et $(u_{1}, \dots, u_{n})\leftarrow \mathcal{B}_{0}$
+$$
+        \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n})) = \lambda \times \det_{\mathcal{B}_{0}}\mathcal{B}_{0} = \lambda \times 1
+$$
+        Donc $\lambda = \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n}))$
+        Or, en particularisant la relation définissant $\lambda_{\mathcal{B}_{0}}$ pour $(u_{1}, \dots, u_{n}) \leftarrow \mathcal{B}_{0}$
+$$
+        \lambda_{\mathcal{B}_{0}} = \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n}))
+$$
+        donc $\lambda = \lambda_{\mathcal{B}_{0}}$
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}
+    [{\begin{enumerate}
+        \item $\forall (f, g) \in \mathcal{L}_{\mathbb{K}}(E)^{2}, \det (f \circ g) = \det f \times \det g$
+        
+        \item $\forall f \in \mathcal{L}_{K}(E), f \in \mathcal{GL}_{\mathbb{K}}(E) \iff \det f \neq 0$
+    \end{enumerate}
+    }]{Démontrer que le déterminant est un morphisme de $(\mathcal{L}_{\mathbb{K}}(E), \circ)$ dans $(\mathbb{K}, \times)$, application à la caractérisation des automorphismes}
+    Fixons $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base de $E$
+    \begin{enumerate} 
+        \item Soient $(f, g) \in \mathcal{L}_{\mathbb{K}}(E)^{2}$ fixés quelconques.
+        
+        \begin{align*}
+            \det (f \circ  g) &= \det_{\mathcal{B}}((f \circ g)(e_{1}), \dots, (f \circ  g)(e_{n})) \\
+            &= \det_{\mathcal{B}}(f(g(e_{1})), \dots, f(g(e_{n}))) \\
+            &= \det f \times \det_{\mathcal{B}}(g(e_{1}), \dots, g(e_{n})) \text{ par définition du déterminant d'un endomorphisme} \\
+            &= \det f \times \det g \times \det_{\mathcal{B}}(e_{1}, \dots, e_{n}) \\
+            &= \det f \times \det g
+        \end{align*}
+        
+        
+        
+        \item Soit $f \in \mathcal{L}_{\mathbb{K}}(E)$
+        \begin{itemize}
+            \item Supposons $f \in \mathcal{GL}_{\mathbb{K}}(E)$
+            Appliquons la relation de morphisme pour $g \leftarrow f^{-1}$
+$$
+            \underbrace{ \det(f \circ  f^{-1}) }_{ = \det \mathrm{Id}_{E} } = \det f \times \det f^{-1}
+$$
+            Or, $\det \mathrm{Id}_{E}= \det_{\mathcal{B}}(e_{1}, \dots, e_{n}) = 1$ si bien que $\det f \times \det f^{-1} = 1$ on en déduit que $\det f \neq 0$ et d'autre part que $\det (f^{-1}) = \frac{1}{\det f}$
+            \item Supposons que $\det f \neq 0$
+            Par définition du déterminant d'un endomorphisme
+$$
+            \det_{\mathcal{B}}(f(e_{1}), \dots, f(e_{n})) = \det f \times \det_{\mathcal{B}}(e_{1}, \dots, e_{n}) = \det f
+$$
+            Donc $\det_{\mathcal{B}}(f(e_{1}), \dots, f(e_{n})) \neq 0$ si bien que $(f(e_{1}), \dots, f(e_{n}))$ est une base de $E$, donc $f$ envoie une base sur une base : c'est un automorphisme.
+        \end{itemize}
+    \end{enumerate}
+\end{question_kholle}
+\begin{question_kholle}[{Soit $A \in \mathcal{M}_{n}(\mathbb{K})$.
+    Alors $A \times (\mathrm{com} A)^{T} = (\mathrm{com}A)^{T}\times A = \det A \times I_{n}$
+    }]{Produit d'une matrice carrée par la transposée de sa comatrice.}
+    
+    \begin{itemize}[label=$\lozenge$]
+        \item Montrons que $A \times (\mathrm{com}A)^{T}=\det A \times I_{n}$
+        Soient $(i, j) \in [ \! [ 1, n ] \!]$ fixés quelconques
+        
+        \begin{align*}
+            [A \times (\mathrm{com}A)^{T}]_{i,j} &= \sum_{k=1}^{n}A_{i,k}[(\mathrm{com}A)^{T}]_{k,j} \\
+            &=\sum_{k=1}^{n}A_{i,k}(\mathrm{com}A)_{j,k} \\
+            &= \sum _{k=1}^{n}A_{i,k}\times (-1)^{k+j}\Delta_{j,k}
+        \end{align*}
+        
+        \begin{itemize}[label=$\star$]
+            \item Supposons que $i = j$ nous obtenons
+$$
+            [A\times(\mathrm{com}A)^{T}]_{i,i} = \sum_{k=1}^{n}A_{i,k}\times(-1)^{k+i}\Delta_{i,k} = \det A
+$$
+            D'après la formule du développement du déterminant de $A$ selon la $i$-ième ligne.
+            
+            \item Supposons que $i \neq j$
+            La formule peut être interprétée comme le développement selon la $i$-ième ligne du déterminant de la matrice obtenue à partir de $A$ en remplaçant sa $j$-ième ligne par sa $i$-ième ligne:
+            
+            \begin{align*}
+                \left[ A\times (\mathrm{com}A)^{T} \right] _{i,j} &= \sum_{k=1}^{n}A_{i,k}\times(-1)^{k+j}\Delta_{j,k} \\
+                &=\left| \begin{array}{c}
+                    L_{1} \\
+                    \hline 
+                    \vdots \\
+                    \hline
+                    L_{i-1} \\
+                    \hline 
+                    L_{i} \\
+                    \hline L_{i+1} \\
+                    \hline \vdots \\
+                    \hline L_{j-1} \\
+                    \hline L_{i} \\
+                    \hline L_{i+1} \\
+                    \hline \vdots \\
+                    \hline L_{n}
+                \end{array} \right|  \\
+                &=0
+            \end{align*}
+            
+            Car les lignes d'indice $i$ et $j$ sont identiques.
+            Ainsi, pour tout $(i, j) \in [ \! [ 1, n ] \!]^{2}, [A\times(\mathrm{com}A)^{T}]_{i,j}=\delta_{i,j}\times \det A$
+            Donc
+$$
+            [A\times(\mathrm{com}A)^{T}]_{i,j}=\det A\times I_{n}
+$$
+        \end{itemize}
+        \item On montre de même le produit dans l'autre sens.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{  Le système linéaire $AX=B$ d'inconnue $X \in \mathcal{M}_{n,1}(\mathbb{K})$ et de paramètre $B \in \mathcal{M}_{n,1}(\mathbb{K})$ est dit "de Cramer" s'il admet une unique solution, à savoir si $A$ est une matrice inversible. Dans ce cas, la solution peut être exprimée explicitement par la formule $A^{-1}B$ qui donne la formule dite de Cramer:
+    $$
+    \left( \frac{
+    \bigg| 
+    B\mid C_{2}\mid\dots \mid C_{n}
+    \bigg| 
+    }{\det A}, \dots, \frac{
+    \bigg|
+    C_{1} \mid
+    \dots \mid
+    C_{i-1}\mid
+    B \mid
+    C_{i+1}\mid
+    \dots \mid
+    C_{n}
+    \bigg|
+    }{\det A}, \dots, \frac{
+    \bigg| 
+    C_{1}\mid C_{2}\mid\dots \mid B
+    \bigg| 
+    }{\det A} \right)
+    $$
+    où $(C_{1}, \dots, C_{n}) \in \mathcal{M}_{n,1}(\mathbb{K})^{n}$ sont les colonnes de $A$.
+    }]{Formule de Cramer}
+    
+    Partons de l'expression de l'inverse avec la comatrice:
+    $$X = A^{-1}B= \frac{1}{\det A}(\mathrm{com}A)^{T} B$$
+    Soit $i \in [ \! [ 1, n ] \!]$.
+    
+    \begin{align*}
+        X_{i, 1} &= \frac{1}{\det A}[(\mathrm{com}A)^{T}B]_{i,j} \\
+        &= \frac{1}{\det A}\sum_{k=1}^{n}[(\mathrm{com}A)^{T}]_{i,k}B_{k,1} \\
+        &= \frac{1}{\det A}\sum_{k=1}^{n}(\mathrm{com}A)_{k,i}B_{k, 1} \\
+        &= \frac{1}{\det A}\sum_{k=1}^{n}(-1)^{k+i}\Delta_{k,i}B_{k, 1} \\
+        &\text{qui s'interprète comme le développement selon la $i$-ième colonne de la matrice} \\
+        &= \frac{1}{\det A}\Bigg|C_{1}\Bigg|\dots\Bigg|C_{i-1}\Bigg|B\Bigg|C_{i+1}\Bigg|\dots\Bigg|C_{n}\Bigg|
+    \end{align*}
+\end{question_kholle}
+\begin{question_kholle}{Calcul du déterminant de Vandermonde}
+Posons
+    $$
+\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \mathbb{K}^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{1\leqslant i < j \leqslant n}(a_{j} - a_{i})
+$$
+\begin{itemize}[label=$\lozenge$]
+    \item \underline{Initialisation} $n \leftarrow 2$
+Soient $(a_{0}, a_{1}) \in \mathbb{K}^{2}$
+$$
+\left| \begin{matrix}
+1 & 1 \\
+a_{0} & a_{1}
+\end{matrix}\right| = a_{1} - a_{0}
+$$
+
+
+
+\item \underline{Hérédité}, soit $n \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
+Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \mathbb{K}^{n+2}$ fixés quelconques.
+\begin{itemize}
+    \item Supposons que les éléments de $\left\{ a_{0}, \dots, a_{n+1} \right\}$ ne sont pas tous deux à deux distincts.
+    
+    Alors le déterminant à calculer possède deux colonnes identiques donc il est nul, et la formule avec laquelle il doit coïncider s'annule également, donc $\mathcal{P}(n+1)$ est vraie dans ce cas
+
+    \item Supposons que les éléments de $\left\{ a_{0} ,\dots, a_{n+1} \right\}$ sont tous distincts.
+Notons
+$$
+Q(X) = \left| \begin{matrix}
+1 & 1 & 1 & \dots  & 1 & 1 \\
+a_{0} & a_{1} & a_{2} & \dots & a_{n} & X \\
+a_{0}^{2} & a_{1}^{2} & a_{2}^{2} & \dots & a_{n}^{2} & X^{2} \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n} & X^{n} \\
+a_{0}^{n+1} & a_{1}^{n+1} & a_{2}^{n+1} & \dots & a_{n}^{n+1} & X^{n+1}
+\end{matrix} \right| 
+$$
+Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \mathbb{K}[X]$ (car $\mathbb{K}[X]$ est un anneau et donc stable par produit).
+De plus, en développant le déterminant $Q(X)$ selon sa dernière colonne, on observe d'une part que $\deg Q \leqslant n+1$ et d'autre part que le coefficient de $X^{n+1}$ est le cofacteur de $X^{n+1}$ qui est, d'après $\mathcal{P}(n)$
+$$
+\prod_{0\leqslant i<j \leqslant n}(a_{j}-a_{i})
+$$
+Et, comme tous les $a_{i}$ sont distincts, ce coefficient est non-nul, donc $\deg Q=n+1$
+
+De plus, $Q(a_{0})=0, Q(a_{1})=0, \dots, Q(a_{n})=0$ car le déterminant présente dans chacun des calculs deux colonnes égales. Nous en déduisons que $Q$ admet au moins $(n+1)$ racines deux à deux distinctes, or son degré est exactement $n+1$ donc
+- il n'y a aucune autre racine
+- elles sont toutes simples
+
+La forme factorisée de $Q$ est donc
+$$
+Q(X)=\underbrace{ \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) }_{ \text{coefficient dominant} } \times \underbrace{ \prod_{k=0}^{n}(X-a_{k})^{1} }_{ n+1 \text{ racines simples} }
+$$
+Donc 
+\begin{align*}
+V(a_{0}, a_{1},\dots, a_{n+1})&=Q(a_{n+1}) \\
+&=  \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \times  \prod_{k=0}^{n}(a_{n+1}-a_{k})  \\
+&= \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \prod_{\substack{0\leqslant i<j \\ j=n+1}}^{n}(a_{j}-a_{k}) \\
+&= \prod_{0\leqslant i < j \leqslant n+1} (a_{j}-a_{i})
+\end{align*}
+
+Donc $\mathcal{P}(n+1)$ est vraie
+\end{itemize}
+\end{itemize}
+\end{question_kholle}
 \pagebreak\section{Semaine 30}
 
-	\setnbquestion{7}
-	\begin{question_kholle}
-		{Dénombrement des surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$ et dans $\lient 1; 3 \rient$}
+\begin{question_kholle}{Inégalité de Cauchy-Schwartz dans un Espace préhilbertien réel, cas d'égalité}
+	Soit $E$ un $\mathbb{R}$-espace vectoriel, et $\braket{ \cdot | \cdot  }$ un produit scalaire sur $E$.
+	Soient $(x, y) \in E^{2}$
+	\begin{enumerate}
+		\item \begin{itemize}[label=$\star$]
+			\item Si $y=0$, l'inégalité est une égalité et est évidente
+			\item Sinon, posons
+			$$
+			P:\left|\begin{array}{ll} \mathbb{R} &\to \mathbb{R} \\ t &\mapsto \braket{ x+t.y | x+t.y } = t^{2} \|y\|^{2} + 2 t \braket{ x | y }  + \|x\|^{2} \end{array}\right.
+			$$
+			Puisque $\|y\|^{2} \neq 0$, P est un polynôme de degré $2$ à coefficientts réels et positif d'après le caractère positif du produit scalaire (on a donc $\forall t \in \mathbb{R}, P(t)\geqslant 0$)
+			Le discriminant de cette fonction polynômiale est $\Delta = 4 \braket{ x | y }^{2} - 4 \|x\|^{2}\|y\|^{2}$, qui est obligatoirement négatif ou nul puisque $P$ admet au mieux une racine double.
+			Donc $\braket{ x | y }^{2} - \|x\|^{2}\|y\|^{2} \leqslant 0$ donc en prenant la racine carrée $|\braket{ x | y }| \leqslant \|x\|\|y\|$.
+		\end{itemize}
+		\item \begin{itemize}[label=$\star$]
+			\item Supposons que $(x, y)$ est liée, sans perte de généralité, supposons $y = \lambda.x$ alors
+			$$
+			\lvert \braket{ x | \lambda.x } \rvert  = \lvert  \lambda \rvert  \braket{ x | x }  = \lvert  \lambda \rvert  \|x\|^{2} = \| x \| \| \lambda.x\|
+			$$
+			Donc l'inégalité est une égalité.
+			
+			\item Réciproquement, supposons que $\lvert  \braket{ x | y } \rvert = \| x\| \| y\|$
+			\begin{itemize}
+				\item Si $y = 0$ alors $(x, y)$ est liée
+				\item Sinon, $\Delta = 4(\braket{ x | y }^{2} - \|x\|\|y\|) = 0$
+				$P$ est un polynôme de degré $2$ de discriminant nul : il admet une racine double $\lambda$
+				Ainsi
+				$$
+				P(\lambda) = 0 \implies \braket{ x+\lambda.y | x+\lambda.y } = 0
+				$$
+				Donc $x+\lambda .y = 0_{E}$ d'après le caractère défini du produit scalaire.
+			\end{itemize}
+		\end{itemize}
+	\end{enumerate}
+\end{question_kholle}
+\begin{question_kholle}[{
+	L'application
+	$$
+	\chi \left|\begin{array}{ll} E &\to E^{*} \\ x &\mapsto \left|\begin{array}{ll} E &\to \mathbb{R} \\ y &\mapsto \braket{ x | y }  \end{array}\right. \end{array}\right.
+	$$ est un isomorphisme d'espaces vectoriels. $\chi$ est appelé l'isomorphisme canonique entre un espace vectoriel euclidien et son espace dual.	
+	}]{Isomorphisme entre un espace euclidien et l'espace de ses formes linéaires (Théorème de représentation de Riesz).}
+	\begin{itemize}[label=$\star$]
+		\item $\chi$ est bien définie car, $\forall x \in E$, par linéarité du produit scalaire en sa seconde variable, $\chi(x): \left|\begin{array}{ll} E &\to \mathbb{R} \\ y &\mapsto \braket{ x | y }  \end{array}\right.$ est une forme linaire sur $E$.
+		
+		
+		\item Soient $(x, x') \in E^{2}$ et $\lambda \in \mathbb{R}$ fixés quelconques
+		
+		
+		\begin{align*}
+			\forall y \in E,  \chi(x + \lambda .x')(y) &= \braket{ x+\lambda.x' | y }  \\
+			&= \braket{ x | y } + \lambda \times\braket{ x' | y }  \\ 
+			&= \chi(x)(y) + \lambda \times \chi(x')(y) \\
+			&= (\chi(x) + \lambda . \chi(x') )(y)
+		\end{align*}
+		
+		Donc $\chi(x+\lambda x') = \chi(x) + \lambda.\chi(x')$, donc $\chi$ est linéaire.
+		
+		\item Soit $x \in \ker \chi$ fixé quelconque.
+		Alors $\chi (x) = 0_{E^{*}}$
+		$$\forall y \in E, \braket{ x | y } = 0$$
+		Donc $x \in E^{\perp} = \{ 0_{E} \}$ donc $x = 0_{E}$
+		Donc $\chi$ est injective, or $E$ et $E^{*}$ sont de même dimension, donc $\chi$ est bijective.
+		Donc $\chi$ est un isomorphisme.
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Montrer que si $F$ est un sous-espace vectoriel de dimension finie d'un espace préhilbertien réel, $F^{\perp}$ est son supplémentaire orthogonal}
+	
+	
+	Soient $(E, \braket{ \cdot | \cdot })$ un espace préhilbertien réel, et $F$ un sous espace vectoriel de dimension finie.
+	Alors $F$ et $F^{\perp}$ sont supplémentaires orthogonaux, i.e. $E = F  \overset{\perp}{\oplus} F^{\perp}$
+	
+	
+	
+	En notant $r = \dim F$, fixons une base orthonormale $(e_{1}, \dots, e_{r})$ de $F$, possible car $F$ est un espace euclidien (dimension finie et muni du produit scalaire induit par $E$).
+	\begin{itemize}[label=$\lozenge$]
+		\item \underline{Analyse}
+		
+		Soit $x \in E$ fixé quelconque, supposons que $\exists (x_{\parallel}, x_{\perp}) \in F \times F^{\perp} = x_{\parallel}+x_{\perp}$
+		D'abord $$x_{\parallel} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \mathbb{R}^{r}: x_{\parallel}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
+		Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque
+		
+		\begin{align*}
+			\braket{ x | e_{j} } &=   \left\langle \sum_{i=1}^{r}\lambda_{i}.e_{i} + x_{\perp} \Bigg| e_{j}  \right\rangle   \\
+			&= \sum_{i=1}^{r}\lambda_{i}\times \underbrace{ \braket{ e_{i} | e_{j} } }_{ \delta_{ij} }  + \overbrace{ \braket{ \underbrace{ x_{\perp} }_{ \in F^{\perp} } | \underbrace{ e_{j} }_{ \in F } } }^{ =0 }  \\
+			&= \lambda_{j}
+		\end{align*}
+		
+		Ainsi, $$\left\{ \begin{array}{ll}
+			x_{\parallel} &= \sum_{i=1}^{r}\lambda_{i}.e_{i}= \sum_{i=1}^{r}\braket{ x | e_{i} } . e_{i} \\
+			x_{\perp}  &= x - x_{\parallel}
+		\end{array}\right.$$
+		
+		\item \underline{Synthèse}
+		
+		Posons donc 
+		$$\left\{ \begin{array}{ll}
+			x_{\parallel} &= \sum_{i=1}^{r} \braket{ x | e_{i} } .e_{i} \\
+			x_{\perp} &= x - x_{\parallel}
+		\end{array}\right. $$
+		\begin{itemize}[label=$\star$]
+			\item $(e_{1}, \dots, e_{r})$ est une base de $F$ donc $x_{\parallel} \in F$
+			\item $x_{\parallel}+x_{\perp} = x_{\parallel}+ (x - x_{\parallel}) = x$
+			\item Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque. Calculons $\braket{ x_{\perp} | e_{j} }$
+			
+			\begin{align*}
+				\braket{ x_{\perp} | e_{j} } &= \braket{ x | e_{j} }  - \left\langle  \sum_{i=0}^{r}\braket{ x | e_{i} } .e_{i} \Bigg|  e_{j} \right\rangle \\
+				&= \left\langle x | e_{j} \right\rangle - \sum_{i=0}^{r} \left\langle x | e_{i} \right\rangle\underbrace{  \left\langle e_{i} | e_{j} \right\rangle  }_{ \delta_{ij} } \\
+				&= \left\langle x | e_{j} \right\rangle  - \left\langle x | e_{j} \right\rangle  = 0
+			\end{align*}
+			
+			
+			Donc $x_{\perp} \in \{e_{1}, \dots, e_{r}\}^{\perp}$
+			Donc $x_{\perp} \in \text{Vect}\{ e_{1}, \dots, e_{r} \}^{\perp} = F^{\perp}$
+			
+		\end{itemize}
+	\end{itemize}
+	Ainsi, $F$ et $F^{\perp}$ sont supplémentaires orthogonaux.
+	
+	De plus
+	$$	\forall x \in E, x = \underbrace{ \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i} }_{ \in F } + \underbrace{x - \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i}  }_{ \in F^{\perp} }$$
+	Donc $$p_{F}^{\perp}(x) = \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i} $$
+	
+\end{question_kholle}
+\begin{question_kholle}[{On utilisera le produit scalaire $$
+	\left\langle P | Q \right\rangle  = \int_{0}^{1} P(u)Q(u) \, \mathrm du
+$$ }]{Orthonormalisation de la base canonique de $\mathbb{R}_2[X]$}
+	Partons de la base canonique de $\mathbb{R}_{2}[X]$.
+	\begin{itemize}[label=$\star$]
+		\item $P_{1} =X^{0}$ est un vecteur unitaire Avec ce produit scalaire
+		
+		\item Calcul du second vecteur
+$$
+		P_{2}' = X - \left\langle X | 1 \right\rangle.1 = X - \left( \int_{0}^{1} u \, \mathrm du \right) .1 = X-\frac{1}{2}
+$$
+		
+$$
+		P_{2} = \frac{P_{2}'}{\|P_{2}'\|} = \frac{P_{2}'}{\sqrt{ \left\langle P_{2}' | P_{2}' \right\rangle  }}= \frac{P_{2}'}{\sqrt{ \int_{0}^{1} \left( u-\frac{1}{2} \right)^{2} \, \mathrm du }}
+		= \frac{P_{2}'}{\sqrt{ \frac{1}{12} }}= \sqrt{ 12 }P_{2}'
+$$
+		Ce qui donne
+$$
+		P_{2}' = 2\sqrt{ 3 }X - \sqrt{ 3 }
+$$
+		
+		\item Enfin, 
+		
+		\begin{align*}
+			P_{3}' &= X^{2} - \left\langle X^{2} | 2\sqrt{ 3 }X-\sqrt{ 3 } \right\rangle.(2\sqrt{ 3 }X-\sqrt{ 3 })  - \left\langle X^{2} | 1 \right\rangle .1 \\
+			&= X^{2} - \left( \int_{0}^{1} 2\sqrt{ 3 }u^{3} - \sqrt{ 3 }u^{2} \, \mathrm du  \right).(2\sqrt{ 3 }X-\sqrt{ 3 })-\left( \int_{0}^{1} u^{2} \, \mathrm du  \right).1 \\
+			&= X^{2} - \frac{\sqrt{ 3 }}{6}(2\sqrt{ 3 }X - \sqrt{ 3 }) - \frac{1}{3} \\ \\
+			&=X^{2} -X + \frac{1}{6}
+		\end{align*}
+		
+		
+$$
+		P_{3} = \frac{P'_{3}}{\|P_{3}'\|}= \frac{P'_{3}}{\sqrt{ \left\langle P_{3} | P_{3} \right\rangle  }}= \frac{P'_{3}}{\sqrt{ \int_{0}^{1} \left( u^{2}-u +\frac{1}{6} \right)^{2} \, \mathrm du }}
+		= \frac{P_{3}'}{\sqrt{ \frac{1}{180} }} =6\sqrt{ 5 }P'_{3} = 6\sqrt{ 5 }\left( X^{2}-X + \frac{1}{6} \right)
+$$
+		
+		Donc une base orthonormée de $\mathbb{R}_{2}[X]$ muni de ce produit scalaire est
+$$
+		\left( 1, 2\sqrt{ 3 }X-\sqrt{ 3 }, 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
+$$
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace préhilbertien Réel.
+	Soient $F$ un sous espace vectoriel de dimension finie de $E$, et $x \in E$.
+	
+	L'ensemble $\{ \|x-z\| \mid z \in F \}$ admet une borne inférieure appelée distance de $x$ à $F$ et notée $d(x, F)$, qui est un plus petit élément, atteinte uniquement pour pour $z = p_{F}^{\perp}(x)$
+	}]{Distance d'un vecteur à un sous-espace vectoriel de dimension finie}
+	
+	$\{ \|x - z\| \mid z \in F \}$ est une partie de $\mathbb{R}$, non vide car elle contient $\|x\|$ pour $z \leftarrow 0_{F}$ d'éléments positifs ou nuls. Elle admet donc une borne inférieure
+	
+	$E$ est un espace euclidien, donc $E = F \overset{\perp}{\oplus} F^{\perp}$ donc $x$ se décompose selon ces supplémentaires orthogonaux
+	$$x = \underbrace{ p_{F}^{\perp}(x) }_{ \in F } + \underbrace{ x - p_{F}^{\perp}(x) }_{ \in F^{\perp} }$$
+	si bien que, pour tout $z \in F$
+	
+	\begin{align*}
+		\|x - z\|^{2} &=  \|p_{F}^{\perp}(x) - z + x - p_{F}^{\perp}(x)\|^{2} \\
+		&= \|p_{F}^{\perp}(x) - z \|^{2} + \|x - p_{F}^{\perp}(x)\|^{2} \text{ d'après le théorème de Pythagore} \\
+		& \geqslant \|x - p_{F}^{\perp}(x)\|^{2}
+	\end{align*}
+	
+	En prenant la racine carrée,
+	$$\forall z \in F, \| x  - z\| \geqslant \|x - p_{F}^{\perp }(x)\|$$
+	D'où $\| x - p_{F}^{\perp}(x)\|$ minore $\{ \| x - z\| \mid z \in F \}$ et donc sa borne inférieure.
+	
+	Or, en remonant le calcul précédent, il y a égalité pour $z = p_{F}^{\perp}(x)$ si bien que la borne inférieure est un plus petit élément, et vaut $d(x, F) = \|x-p_{F}^{\perp}(x)\|$
+	
+	De plus, si $z' \in F$ atteint ce plus petit élément on a
+	
+	\begin{align*}
+		\| x- z'\|^{2} &= \|p_{F}^{\perp}(x) - z' + x - p_{F}^{\perp}(x)\|^{2} \\
+		\| x - p_{F}^{\perp}(x)\|^{2} &= \|p_{F}^{\perp}(x) - z' \|^{2} + \|x - p_{F}^{\perp}(x)\|^{2} \\
+		0 &= \|p_{F}^{\perp}(x) - z' \|^{2}
+	\end{align*}
+	
+	Si bien que $p_{F}^{\perp}(x) - z' = 0_{E}$ d'après le caractère défini du produit scalaire.
+	Donc le plus petit élément $d(x, F) = \min\{ \|x-z\| \mid z \in F \}$ est uniquement atteint pour $z = p_{F}^{\perp}(x)$.
+\end{question_kholle}
+\begin{question_kholle}[{
+	Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace vectoriel euclidien, $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base orthonormée de $E$.
+	Soit $u = \sum_{i=1}^{n}u_{i}.e_{i}$ un vecteur de $E$.
+	Soient $(a_{1}, \dots, a_{n}) \in\mathbb{R}^{n} \setminus \{ 0_{\mathbb{R}^{n}} \}$, $\alpha \in \mathbb{R}$ et $H_{\alpha}$ l'hyperplan affine d'équation
+$$
+	\sum_{i=1}^{n}a_{i}x_{i}=\alpha
+$$
+	}]{Distance à un sous-espace affine}
+	Posons $a = \sum_{i=1}^{n}a_{i}.e_{i}$ $H_{0}$ est un hyperplan vectoriel et, $H_{0} = a^{\perp}$ et $H_{0}^{\perp}= \text{Vect}\{ a \}$
+	Introduisons $h_{\alpha} \in a^{\perp}$ tel que $H_{\alpha}= h_{\alpha}+H_{0}$ et souvenons nous que $h_{\alpha}=\frac{\alpha}{\| a\|^{2}}.a$
+	
+	Observons que l'égalité $H_{\alpha}=h_{\alpha}+H_{0}$ donne
+$$
+	\{ \|u-z\| \mid z \in H_{\alpha} \} = \{ \|u-(h_{\alpha}+z')\| \mid z' \in H_{0} \}= \{ \|(u - h_{\alpha})-z'\| \mid z' \in H_{0}\}
+$$
+	
+	or, d'après la caractérisation de la distance à un sous-espace quelconque, on a
+	\begin{itemize}[label=$\star$]
+		\item L'ensemble $\{ \|(u-h_{\alpha}) -z'\| \mid z' \in H_{0} \}$ admet une borne inférieure donc $\{ \| u - z\| \mid z \in H_{\alpha} \}$ aussi qui vaut $\mathrm{d}(u-h_{\alpha}, H_{0})$, ce qui prouve que $\mathrm{d}(u, H_{\alpha})$ est bien définie
+		
+		\item $\inf \{  \| (u - h_{\alpha}) - z'\| \mid z' \in H_{0} \}$ est un plus petit élément atteint pour l'unique valeur $z' = p_{H_{0}}^{\perp}(u-h_{\alpha})=p_{H_{0}}^{\perp}(u)$ car $h_{\alpha} \in H_{0}^{\perp}= \ker p_{H_{0}}^{\perp}$, donc $\mathrm{d(u, H_{\alpha})}=\inf \{  \|u-z\| \mid z \in H_{\alpha} \}$ est un plus petit élément atteint pour l'unique valeur $z = h_{\alpha}+p_{H_{0}}^{\perp}(u-h_{\alpha})= h_{\alpha}+ p_{H_{0}}^{\perp}(u)$
+$$
+		\mathrm{d}(u, H_{\alpha})= \| u - h_{\alpha}-p_{H_{0}}^{\perp}(u)\|
+$$
+	\end{itemize}
+	Or $u - p_{H_{0}}^{\perp}(u) = (\mathrm{Id}-p_{H_{0}}^{\perp})(u) = p_{H_{0}^{\perp}}^{\perp}(u) = \left\langle u | \frac{a}{\|a\|} \right\rangle. \frac{a}{\|a\|}$ car $H_{0}^{\perp} = \text{Vect}\{ a \}$ d'où, sachant aussi que $h_{\alpha}= \frac{\alpha}{\|a\|^{2}}.a$
+$$
+	\mathrm{d}(u, H_{\alpha})= \|p_{H_{0}^{\perp}}^{\perp}(u)-h_{\alpha}\|= \left\| \left\langle a | \frac{a}{\|a\|} \right\rangle. \frac{a}{\|a\|}- \frac{\alpha}{\|a\|^{2}}.a \right\|
+$$
+\end{question_kholle}
+\begin{question_kholle}
+	{Dénombrement des surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$ et dans $\lient 1; 3 \rient$}
+	
+	Soit $n \in \N^*$.
+	
+	Il y a ${\left| \lient 1; 2 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 2^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
+	Seules les applications constantes $\widetilde{1}$ et $\widetilde{2}$ ne sont pas surjectives.
+	Il y a donc $2^n - 2$ surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
+	
+	Il y a ${\left| \lient 1; 3 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 3^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$. Les applications non surjectives sont celles dont l'image n'est pas $\lient 1; 3 \rient$. C'est-à-dire, celles dont l'image est de cardinal 1 (les fonctions constantes $\widetilde{1}$, $\widetilde{2}$ et $\widetilde{3}$) et celles dont l'image est de cardinal 2. Ces dernières sont les surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$, $\{ 1; 3 \}$ et $\{ 2; 3 \}$. Comme ces trois ensembles ont la même taille, il y a $3 \times (2^n - 2)$ (voir résultat précédent) applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ dont l'image est de cardinal 2. Ainsi, le nombre de surjections de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ est $3^n - 3 - 3(2^n -2) = 3^n - 3 \times 2^n + 3$.
+\end{question_kholle}
 
-		Soit $n \in \N^*$.
-
-		Il y a ${\left| \lient 1; 2 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 2^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
-		Seules les applications constantes $\widetilde{1}$ et $\widetilde{2}$ ne sont pas surjectives.
-		Il y a donc $2^n - 2$ surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
-
-		Il y a ${\left| \lient 1; 3 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 3^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$. Les applications non surjectives sont celles dont l'image n'est pas $\lient 1; 3 \rient$. C'est-à-dire, celles dont l'image est de cardinal 1 (les fonctions constantes $\widetilde{1}$, $\widetilde{2}$ et $\widetilde{3}$) et celles dont l'image est de cardinal 2. Ces dernières sont les surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$, $\{ 1; 3 \}$ et $\{ 2; 3 \}$. Comme ces trois ensembles ont la même taille, il y a $3 \times (2^n - 2)$ (voir résultat précédent) applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ dont l'image est de cardinal 2. Ainsi, le nombre de surjections de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ est $3^n - 3 - 3(2^n -2) = 3^n - 3 \times 2^n + 3$.
-	\end{question_kholle}
-
-	\begin{question_kholle}
-		[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$. \\
-		Alors $\left|F\right| = \frac{\left|E\right|}{k}$
-		\begin{quotation}
-			\textquotedblleft Pour compter les moutons, il faut compter les pattes puis diviser par quatre. \textquotedblright
-		\end{quotation}]
-		{Lemme des bergers}
-
-		Considérons la relation binaire définie sur $E$ par :
-		\begin{equation*}
-			\forall (x, y) \in E^2, x \sim y
-			\iff f(x) = f(y)
-		\end{equation*}
-		Elle est réflexive, transitive et symétrique donc c'est bien une relation d'équivalence.
-		Donc les classes d'équivalence réalise une partition de $E$.
-		Nous avons $\displaystyle E = \coprod_{C \in \nicefrac{E}{\sim}} C$ donc, en passant aux cardinaux, $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right|$.
-
-		Soit $x \in E$ \fq. Alors $\bar{x} = \left\{ y \in E \;|\; f(x) = f(y) \right\} = f^{-1}(f(\{x\}))$. Par hypothèse, tous les éléments de $F$ ont le même nombre $k$ d'antécédents, or $f({x})$ est un singleton d'élément de $F$ donc $\left|\bar{x}\right| = k$.
-		Ainsi $\forall C \in \nicefrac{E}{\sim}, \left|C\right| = k$.
-
-		Posons $\varphi \left|\begin{array}{ccc}
-			\nicefrac{E}{\sim} & \mapsto & F \\
-			C & \rightarrow & f(x) \text{ où } x \in C
-		\end{array}\right.$.
-		$\varphi$ est bien défini car si $(x, y) \in E$ vérifie $\bar{x} = \bar{y}$ alors $f(x) = f(y)$ donc l'image par $\varphi$ ne dépend pas du représentant de classe choisi.
-		$\varphi$ est surjective car soit $z \in F$, $f$ est surjective donc $\exists x_z \in E : f(x_z) = z$ et alors $\varphi(\bar{x_z}) = f(x_z) = z$.
-		$\varphi$ est injective car soient $(C, C') \in \left( \nicefrac{E}{\sim} \right)^2, \varphi(C) = \varphi(C')$ alors $\exists (x, x') \in C \times C' : x \sim x'$, comme deux classes d'équivalence sont confondues ou disjointes, $C = C'$.
-		Ainsi $\varphi$ est une bijection donc $\left|F\right| = \left|\nicefrac{E}{\sim}\right|$.
-
-		Ainsi $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right| = \sum_{C \in \nicefrac{E}{\sim}} k = \left| \nicefrac{E}{\sim} \right| k = \left|F\right| k$.
-	\end{question_kholle}
+\begin{question_kholle}
+	[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$. \\
+	Alors $\left|F\right| = \frac{\left|E\right|}{k}$
+	\begin{quotation}
+		\textquotedblleft Pour compter les moutons, il faut compter les pattes puis diviser par quatre. \textquotedblright
+	\end{quotation}]
+	{Lemme des bergers}
+	
+	Considérons la relation binaire définie sur $E$ par :
+	\begin{equation*}
+		\forall (x, y) \in E^2, x \sim y
+		\iff f(x) = f(y)
+	\end{equation*}
+	Elle est réflexive, transitive et symétrique donc c'est bien une relation d'équivalence.
+	Donc les classes d'équivalence réalise une partition de $E$.
+	Nous avons $\displaystyle E = \bigsqcup_{C \in \nicefrac{E}{\sim}} C$ donc, en passant aux cardinaux, $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right|$.
+	
+	Soit $x \in E$ \fq. Alors $\bar{x} = \left\{ y \in E \;|\; f(x) = f(y) \right\} = f^{-1}(f(\{x\}))$. Par hypothèse, tous les éléments de $F$ ont le même nombre $k$ d'antécédents, or $f({x})$ est un singleton d'élément de $F$ donc $\left|\bar{x}\right| = k$.
+	Ainsi $\forall C \in \nicefrac{E}{\sim}, \left|C\right| = k$.
+	
+	Posons $\varphi \left|\begin{array}{ccc}
+		\nicefrac{E}{\sim} & \mapsto & F \\
+		C & \rightarrow & f(x) \text{ où } x \in C
+	\end{array}\right.$.
+	$\varphi$ est bien défini car si $(x, y) \in E$ vérifie $\bar{x} = \bar{y}$ alors $f(x) = f(y)$ donc l'image par $\varphi$ ne dépend pas du représentant de classe choisi.
+	$\varphi$ est surjective car soit $z \in F$, $f$ est surjective donc $\exists x_z \in E : f(x_z) = z$ et alors $\varphi(\bar{x_z}) = f(x_z) = z$.
+	$\varphi$ est injective car soient $(C, C') \in \left( \nicefrac{E}{\sim} \right)^2, \varphi(C) = \varphi(C')$ alors $\exists (x, x') \in C \times C' : x \sim x'$, comme deux classes d'équivalence sont confondues ou disjointes, $C = C'$.
+	Ainsi $\varphi$ est une bijection donc $\left|F\right| = \left|\nicefrac{E}{\sim}\right|$.
+	
+	Ainsi $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right| = \sum_{C \in \nicefrac{E}{\sim}} k = \left| \nicefrac{E}{\sim} \right| k = \left|F\right| k$.
+\end{question_kholle}
 \pagebreak\section{Semaine 31}
+
+Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omega, \proba)$ désigne un espace probabilisé fini.
+
+\begin{question_kholle}
+	[Soit $p \in \N^*$. Un $p$-partage de $E$ est un $p$-liste $(A_1, \ldots, A_p) \in \mathcal{P}(E)^p$ de parties de $E$ (éventuellement vide), deux à deux disjointes qui recouvrent $E$ c'est-à-dire \tq+* t:
+	\begin{equation}
+		\forall (i, j) \in \lient 1 ; p \rient,
+		i \neq j \implies A_i \cap A_j = \emptyset
+		\qquad \text{et} \qquad
+		\bigcup_{i=1}^{p} A_i = E
+	\end{equation}
 	
-	Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omega, \proba)$ désigne un espace probabilisé fini.
+	Soient $(n_1, \ldots n_p) \in \N^p$ \tqs $n = n_1 + \ldots + n_p$ est un $p$-partage de $E$ \tq
+	\begin{equation*}
+		\forall (i, j) \in \lient 1 ; p \rient, \
+		\left|A_i\right| = n_i
+	\end{equation*}
+	Le nombre de $p$-partage de type $(n_1, \ldots, n_p)$ est :
+	\begin{equation}
+		\frac{n!}{\displaystyle \prod_{i=1}^{p} n_i !}
+	\end{equation}
+	]
+	{$p$-partage d'un ensemble $E$ et leur dénombrement}
 	
-	\begin{question_kholle}
-		[Soit $p \in \N^*$. Un $p$-partage de $E$ est un $p$-liste $(A_1, \ldots, A_p) \in \mathcal{P}(E)^p$ de parties de $E$ (éventuellement vide), deux à deux disjointes qui recouvrent $E$ c'est-à-dire \tq+* t:
+	Considérons les $p$-partages de type $(n_1, \ldots, n_p)$ et appliquons le principe des choix successifs :
+	\begin{equation*}
+		\left(
+		\underbrace{A_1}_{\binom{n}{n_1} \text{ choix}},
+		\underbrace{A_2}_{\binom{n}{n_2} \text{ choix}},
+		\underbrace{A_3}_{\binom{n}{n_3} \text{ choix}},
+		\ldots,
+		\underbrace{A_p}_{\binom{n}{n_p} \text{ choix}}
+		\right)
+	\end{equation*}
+	donc il y a
+	\begin{equation*}
+		\frac{ n! }{n_1! \cancel{(n-n_1)!} }
+		\frac{ \bcancel{(n-n_1)!} }{n_2! \cancel{(n-n_1-n_2)!} }
+		\frac{ \bcancel{(n-n_1-n_2)!} }{n_2! \cancel{(n-n_1-n_2-n_3)!} }
+		\ldots
+		\frac{ \bcancel{(n-(n_1+\ldots+n_{p-1})!} }{n_p! \underbrace{(n_1+\ldots+n_p)!}_{=0!} }
+	\end{equation*}
+	Donc, au total, il y a $\frac{n!}{n_1! n_2! \ldots n_p!}$ $p$-partages.
+\end{question_kholle}
+
+\begin{question_kholle}
+	[Soit $B$ un évènement de probabilité non nulle.
+	L'application $\proba_B$
+	{\begin{equation}
+		\proba_B \left| \begin{array}{ccc}
+			\mathcal{P}(\Omega) & \mapsto & [0;1] \\
+			A & \rightarrow & \displaystyle \frac{\proba( A \cap B )}{\proba(B)}
+		\end{array} \right.
+	\end{equation}}
+	est une probabilité sur sur $\Omega$. ]
+	{Une probabilité conditionnelle est une probabilité}
+	
+	~\\
+	\begin{liste}
+		\item Soit $A \in \mathcal{P}(\Omega)$ \fq. \\
+		On a $\emptyset \subset A \cap B  \subset B$ donc par croissance de la probabilité, $0 = \proba(\emptyset) \leqslant \proba(A \cap B) \leqslant \proba(B)$.
+		En divisant par $\proba(B) \neq 0$, $0 \leqslant \proba_B(A) \leqslant 1$. Donc $\proba_B$ est \textit{bien définie}.
+		\item $\proba_B(\Omega)
+		= \frac{\proba(\Omega \cup B)}{\proba(B)}
+		= \frac{\proba(B)}{\proba(B)}
+		= 1$
+		\item Soient $(A, A') \in \mathcal{P}(\Omega)^2$ \fq* \tq* $A$ et $A'$ sont incompatibles.
 		\begin{equation}
-			\forall (i, j) \in \lient 1 ; p \rient,
-			i \neq j \implies A_i \cap A_j = \emptyset
-			\qquad \text{et} \qquad
-			\bigcup_{i=1}^{p} A_i = E
+			\begin{aligned}
+				\proba_B(A \sqcup A')
+				&= \frac{ \proba(B \cap (A \sqcup A') ) }{ \proba(B) } \\
+				&= \frac{ \proba( (B \cap A) \sqcup (B \cap A') ) }{ \proba(B) } \text{ car } (B \cap A) \cap (B \cap A') \subset A \cap A' = \emptyset \\
+				&= \frac{ \proba(B \cap A) + \proba(B \cap A') }{ \proba(B) } \\
+				&= \proba_B(A) + \proba_B(A')
+			\end{aligned}
 		\end{equation}
-		
-		Soient $(n_1, \ldots n_p) \in \N^p$ \tqs $n = n_1 + \ldots + n_p$ est un $p$-partage de $E$ \tq
-		\begin{equation*}
-			\forall (i, j) \in \lient 1 ; p \rient, \
-			\left|A_i\right| = n_i
-		\end{equation*}
-		Le nombre de $p$-partage de type $(n_1, \ldots, n_p)$ est :
-		\begin{equation}
-			\frac{n!}{\displaystyle \prod_{i=1}^{p} n_i !}
-		\end{equation}
-		]
-		{$p$-partage d'un ensemble $E$ et leur dénombrement}
-		
-		Considérons les $p$-partages de type $(n_1, \ldots, n_p)$ et appliquons le principe des choix successifs :
-		\begin{equation*}
-			\left(
-				\underbrace{A_1}_{\binom{n}{n_1} \text{ choix}},
-				\underbrace{A_2}_{\binom{n}{n_2} \text{ choix}},
-				\underbrace{A_3}_{\binom{n}{n_3} \text{ choix}},
-				\ldots,
-				\underbrace{A_p}_{\binom{n}{n_p} \text{ choix}}
-			\right)
-		\end{equation*}
-		donc il y a
-		\begin{equation*}
-			\frac{ n! }{n_1! \cancel{(n-n_1)!} }
-			\frac{ \bcancel{(n-n_1)!} }{n_2! \cancel{(n-n_1-n_2)!} }
-			\frac{ \bcancel{(n-n_1-n_2)!} }{n_2! \cancel{(n-n_1-n_2-n_3)!} }
-			\ldots
-			\frac{ \bcancel{(n-(n_1+\ldots+n_{p-1})!} }{n_p! \underbrace{(n_1+\ldots+n_p)!}_{=0!} }
-		\end{equation*}
-		Donc, au total, il y a $\frac{n!}{n_1! n_2! \ldots n_p!}$ $p$-partages.
-	\end{question_kholle}
+	\end{liste}
+	Ainsi, $\proba_B$ est bien une probabilité sur $\Omega$.
+\end{question_kholle}
+\begin{question_kholle}{Montrer que si $A$ et $B$ sont des événements indépendants, alors $A$ et $\overline{B}$ aussi}
+	Supposons donc que $0 \leqslant \proba(A) \leqslant 1$ et $0 \leqslant \proba(B) \leqslant 1$.
+	D'une part, $\{ B, \bar{B} \}$ constitue un système complet donc
 	
-	\begin{question_kholle}
-		[Soit $B$ un évènement de probabilité non nulle.
-		L'application $\proba_B$
-		{\begin{equation}
-			\proba_B \left| \begin{array}{ccc}
-				\mathcal{P}(\Omega) & \mapsto & [0;1] \\
-				A & \rightarrow & \displaystyle \frac{\proba( A \cap B )}{\proba(B)}
-			\end{array} \right.
-		\end{equation}}
-		est une probabilité sur sur $\Omega$. ]
-		{Une probabilité conditionnelle est une probabilité}
+	\begin{align*}
+		\proba(A) &= \proba(A \cap B) + \proba(A \cap \bar{B}) \\
+		\iff \proba(A)&= \proba(A) \proba(B) + \proba(A \cap \bar{B}) \\
+		\iff \proba(A) - \proba(A) \proba(B) &= \proba(A \cap \bar{B}) \\
+		\iff \proba(A)(1-\proba(B))&= \proba(A \cap \bar{B}) \\
+		\iff \proba(A) \proba(\bar{B})&= \proba(A \cap \bar{B})
+	\end{align*}
+	
+	Donc $A$ et $\bar B$ sont indépendants
+\end{question_kholle}
+\begin{question_kholle}{Formule des probabilités composées}
+	Soient $(A_{1}, \dots, A_{n})$, $n$ événements tels que $\proba\left( \bigcap_{i=1}^{n} A_{i} \right) \neq 0$
+	Pour $k \in [ \! [ 2, n ] \!]$ posons 
+	$$\mathcal{H}_{k} : " \proba\left( \bigcap_{i=1}^{n}A_{i} \right) = \proba(A_{1})\proba_{A_{1}}(A_{2})\proba_{A_{1} \cap A_{2}}(A_{3})\proba_{A_{1} \cap A_{2} \cap A_{3}}(A_{4})\dots \proba_{A_{1} \cap\dots \cap A_{k-1}}(A_{k})"$$
+	\begin{itemize}[label=$\star$]
 		
-		~\\
-		\begin{liste}
-			\item Soit $A \in \mathcal{P}(\Omega)$ \fq. \\
-			On a $\emptyset \subset A \cap B  \subset B$ donc par croissance de la probabilité, $0 = \proba(\emptyset) \leqslant \proba(A \cap B) \leqslant \proba(B)$.
-			En divisant par $\proba(B) \neq 0$, $0 \leqslant \proba_B(A) \leqslant 1$. Donc $\proba_B$ est \textit{bien définie}.
-			\item $\proba_B(\Omega)
-			= \frac{\proba(\Omega \cup B)}{\proba(B)}
-			= \frac{\proba(B)}{\proba(B)}
-			= 1$
-			\item Soient $(A, A') \in \mathcal{P}(\Omega)^2$ \fq* \tq* $A$ et $A'$ sont incompatibles.
-			\begin{equation}
-				\begin{aligned}
-					\proba_B(A \amalg A')
-					&= \frac{ \proba(B \cap (A \amalg A') ) }{ \proba(B) } \\
-					&= \frac{ \proba( (B \cap A) \amalg (B \cap A') ) }{ \proba(B) } \text{ car } (B \cap A) \cap (B \cap A') \subset A \cap A' = \emptyset \\
-					&= \frac{ \proba(B \cap A) + \proba(B \cap A') }{ \proba(B) } \\
-					&= \proba_B(A) + \proba_B(A')
-				\end{aligned}
-			\end{equation}
-		\end{liste}
-		Ainsi, $\proba_B$ est bien une probabilité sur $\Omega$.
-	\end{question_kholle}
+		
+		\item Initialisation, $k \leftarrow 2$
+		d'une part, $\bigcap_{i=1}^{n}A_{i} \subset A_{1}$, donc par croissance de $\proba$, $$0<\proba\left( \bigcap_{i=1}^{n}A_{i} \right) \leqslant \proba(A_{1})$$
+		Si bien que $\proba(A_{1}) \neq 0$ donc la probabilité conditionnelle $\proba_{A_{1}}$ a un sens.
+		D'où, par définition d'une probabilité conditionnelle:
+		$$\proba(A_{1} \cap A_{2}) = \proba(A_{1}) \proba_{A_{1}}(A_{2})$$
+		Donc $\mathcal{H}_{2}$ est vérifiée.
+		
+		\item Hérédité Soit $k \in [ \! [ 2, n - 1] \!]$ fixé quelconque tel que $\mathcal{H}_{k}$ est vérifiée.
+		
+		D'abord, remarquons que $\bigcap_{i=1}^{n}A_{i} \subset \bigcap_{i=1}^{k}A_{i}$ donc par croissance de $\proba$,
+		$$0 < \proba\left( \bigcap_{i=1}^{n}A_{i} \right)\leqslant \proba\left( \bigcap_{i=1}^{k}A_{i} \right)$$
+		Si bien que $\proba\left( \bigcap_{i=1}^{k} A_{i} \right) \neq 0$ donc la probabilité conditionnelle $\proba_{A_{1}\cap\dots \cap A_{k}}$  a un sens.
+		
+		
+		\begin{align*}
+			\proba\left( \bigcap_{i=1}^{k+1}A_{i} \right) 
+			&= \proba\left( \left( \bigcap_{i=1}^{k}A_{i} \right) \cap A_{k+1} \right) \\
+			&= \proba\left( \bigcap_{i=1}^{k}A_{i} \right)\proba_{\bigcap _{i=1}^{k}A_{i}}(A_{k+1}) \\
+			&= \proba(A_{1})\proba_{A_{1}}(A_{2})\proba_{A_{1}\cap A_{2}}(A_{3})\dots \proba_{A_{1} \cap \dots \cap A_{k-1}}(A_{k}) \proba_{A_{1} \cap \dots \cap A_{k}}(A_{k+1})
+		\end{align*}
+		Donc $\mathcal{H}_{k+1}$ est aussi vérifiée
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Formule des probabilités totales et formule de Bayes}
+	\begin{itemize}
+		\item Formule des probabilités totales
+		
+		Soit $(A_{1}, \dots A_{n})$ un système complet d'événements.
+		Comme ils sont incompatibles
+		$$\proba\left( \bigsqcup_{k=1}^{n} A_{k} \right)= \sum_{k=1}^{n}\proba(A_{k})$$
+		
+		Le système est de plus complet donc $\bigsqcup _{k=1}^{n} A_{k} = \Omega$. Donc $\sum_{k=1}^{n}\proba(A_{k}) = 1$.
+		
+		$(A_{1}, \dots , A_{n})$ sont aussi deux à deux incompatibles, donc $(B \cap A_{1}, \dots B \cap A_{n})$ aussi.
+		De plus $B = B \cap \Omega = B \cap \left( \bigsqcup_{k=1}^{n}A_{k} \right) = \bigsqcup_{k=1}^{n}(B \cap A_{k})$
+		Donc
+		$$\proba(B)= \proba\left( \bigsqcup_{k=1}^{n}(B \cap A_{k}) \right) = \sum_{k=1}^{n}\proba(B \cap A_{k})$$
+		De plus, en passant aux probabilités conditionnelles $(\proba_{A_{i}})_{1\leqslant i\leqslant n}$ on a 
+		
+		$$\proba(B) = \sum_{k=1}^{n}\proba(A_{k})\proba_{A_{k}}(B)$$
+		
+		\item Formule de Bayes
+		
+		Soient $A$ et $B$ deux événements de probabilité non nulle, on a alors :
+		$$\proba(A)\proba_{A}(B) = \proba(A \cap B) = \proba(B)\proba_{B}(A)$$
+		donc
+		
+		$$\proba_{A}(B) = \frac{\proba(B)\proba_{B}(A)}{\proba(A)}$$
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{
+	Soit $X$ une variable alétoire sur $\Omega$ et $g$ une fonction définie sur $X(\Omega)$.
+	La loi de probabilité $Y = g(X)$ est donnée par $Y(\Omega) = g(X(\Omega))$ et 
+	$$
+	\forall y \in Y(\Omega), \proba_{Y}(\{ y \})= \proba(Y=y) = \sum_{x \in g^{-1}(\{ y \})}\proba(X=x)= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(X=x)
+	$$
+	}]{Loi d'une fonction de $X$}
+	
+	Utilisons le système complet $(X = x)_{x \in X(\Omega)}$ associé à la variable aléatoire $X$ et la formule des probabilités totales
+	
+	\begin{align*}
+		\proba_{Y}(\{ y \}) = \proba(Y=y) &= \sum_{x \in X(\Omega)}\proba((Y=y) \cap (X=x)) \\
+		&= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba((g(X)=y) \cap (X=x)) + \sum_{\substack{x \in X(\Omega)\\ g(x)\neq y}}\proba((g(X)=y) \cap (X=x))
+	\end{align*}
+	
+	
+	Remarquons ainsi que
+	\begin{itemize}[label=$\star$]
+		\item Si $g(x) = y$
+		$$
+		\omega \in(X=x) \implies X(\omega)=x \implies g(X(\omega)) = g(x) \implies \omega \in (g(X) = y)
+		$$
+		De plus $(X = x) \subset (g(X)=y)$ donc $(g(X) = y) \cap(X=x)=(X=x)$
+		
+		\item Sinon, si $g(x) \neq y$
+		$$
+		\omega \in (X=x) \implies X(\omega) = x \implies g(X(\omega)) = g(x) \neq y \implies \omega \not\in (g(X) = y)
+		$$
+		Dans ce cas, $(g(X) = y) \cap (X = x) = \emptyset$
+		
+	\end{itemize}
+	Ainsi, 
+	
+	\begin{align*}
+		\proba_{y}(\{ y \}) &= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(\underbrace{ (g(X)=y) \cap (X=x) }_{ = (X=x) }) + \underbrace{ \sum_{\substack{x \in X(\Omega)\\ g(x)\neq y}}\proba((g(X)=y) \cap (X=x)) }_{ =0 }\\
+		&= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(X=x) \\
+		&= \sum_{x \in g^{-1}(\{ y \})}\proba(X=x)
+	\end{align*}
+	
+	
+\end{question_kholle}
+\begin{question_kholle}{Si $X \geqslant 0$ presque sûrement, $\mathbf{E}(X) = 0 \iff X = 0$ presque sûrement}
+	Soit $X\geqslant 0$ presque sûrement
+	\begin{itemize}
+		\item Supposons que $\mathbf{E}(X) = 0$
+		Par hypothèse, l'évènement $(X<0)$ est négligeable donc
+		
+		\begin{align*}
+			\mathbf{E} (X) & = \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
+			&= \sum_{\omega \in (X = 0)} \underbrace{ X(\omega) }_{ = 0 } \proba(\{ \omega  \}) + \sum_{\omega \in (X<0)}X(\omega) \underbrace{ \proba(\{ \omega \}) }_{ =0 } + \sum_{\omega \in (X >0)} X(\omega)\proba(\{ \omega \}) \\
+			&= \sum_{\omega \in (X >0)} X(\omega)\proba(\{ \omega \})
+		\end{align*}
+		
+		Soit $\omega_{0} \in (X>0)$ fixé quelconque
+		La nullité de l'espérance donne
+		$$0 \leqslant X(\omega_{0})\proba(\{ \omega_{0} \}) \leqslant \sum_{\omega \in(X>0)}X(\omega) P(\{ \omega \})= \mathbf{E}(X) = 0$$
+		donc $X(\omega_{0})\proba(\{ \omega_{0} \}) = 0$, or $X(\omega_{0})>0$ donc $\proba(\{ \omega_{0} \})=0$
+		donc 
+		$$\proba(X>0) = \sum_{\omega_{0} \in (X>0)} \proba(\{ \omega_{0} \}) = 0$$
+		Donc  $(X>0)$ est négligeable, mais $(X<0)$ est négligeable aussi, donc
+		$$0\leqslant \proba((X>0) \cup (X<0))\leqslant \proba(X>0) + \proba(X<0)=0$$
+		donc l'évènement contraire de $(X>0) \cup (X<0)$, qui est $(X=0)$ est certain
+		
+		\item Supposons $X=0$ presque sûrement.
+		
+		\begin{align*}
+			\mathbf{E}(X) &= \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
+			&= \sum_{\omega \in (X = 0)} \underbrace{ X(\omega) }_{ =0 } \proba(\{ \omega \}) + \sum_{\omega \in (X \neq 0)} X(\omega) \underbrace{ \proba(\{ \omega \}) }_{ =0 } \\
+			&= 0
+		\end{align*}
+		
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Calcul de l'espérance et la variance d'une variable aléatoire suivant une loi binomiale}
+	Soit $n \in \mathbb{N}^*$ et $p \in [0, 1]$
+	Supposons que $X \hookrightarrow \mathcal{B}(n, p)$
+	
+	\begin{align*}
+		\mathbb{E}(X) &= \sum_{\omega \in X(\Omega)}\omega \proba(X = \omega) \\
+		& = \sum_{k=0}^{n}k\proba(X=k) \\
+		&= \sum_{k=0}^{n}k \binom{n}{k} p^{k}(1-p)^{n-k} \\
+		&= \sum_{k=0}^{n}k \frac{n!}{k! (n-k)!} p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n} \frac{(n-1)!}{(k-1)! ((n-1)-(k-1))!} p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n} \binom{n-1}{k-1} p^{k}(1-p)^{n-k} \\ \\
+		&= n \sum_{j=0}^{n-1} \binom{n-1}{j} p^{j+1}(1-p)^{n-1-j} \\
+		&= n p \sum_{j=0}^{n-1} \binom{n-1}{j} p^{j}(1-p)^{n-1-j} \\ \\
+		&= np (p + (1-p))^{n-1} = np
+	\end{align*}
+	Pour la variance, calculons d'abord $\mathbf{E}(X^{2})$
+	
+	\begin{align*}
+		\mathbf{E}(X^{2}) &= \sum _{k=0}^{n}k^{2} \proba(X=k^{2}) \\
+		&=  \sum_{k=1}^{n} k \underbrace{ k \binom{n}{k} }_{ n \binom{n-1}{k-1} }p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n} \underbrace{ k }_{ (k-1)+1 } \binom{n-1}{k-1} p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n}(k-1)\binom{n-1}{k-1}p^{k}(1-p)^{n-k}+ n \sum_{k=1}^{n}\binom{n-1}{k-1}p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=2}^{n}\underbrace{ (k-1)\binom{n-1}{k-1} }_{ (n-1)\binom{n-2}{k-2} } p^{k}(1-p)^{n-k} + n \sum_{k=1}^{n}\binom{n-1}{k-1}p^{k}(1-p)^{n-k} \\
+		&= n(n-1) \underbrace{ \sum_{i=0}^{n-2}\binom{n-2}{i}p^{i+2}(1-p)^{(n-2)-i}  }_{ \text{ en posant } i = k-2 }+ n \underbrace{ \sum_{i=0}^{n-1}\binom{n-1}{i}p^{i+1}(i-p)^{(n-1)-i} }_{ \text{en posant }i=k-1 } \\
+		&= n(n-1)p^{2}(p+(1-p))^{n-2} + np(p+(1-p))^{n-1} \\
+		&= n(n-1)p^{2}+np \\
+		&= np((n-1)p+1)
+	\end{align*}
+	
+	D'où,
+	$$
+	\mathbb{V}(X) = \mathbf{E}(X^{2}) - \mathbf{E}(X)^{2}=np((n-1)p+1)- n^{2} p ^{2}=np(1-p)
+	$$
+	
+	\textbf{Calcul alternatif de $\mathbf{E^2}$} En utilisant la formule de transfert pour $f \leftarrow (x \mapsto x(x-1))$
+	
+	
+	\begin{align*}
+		\mathbf{E}(X(X - 1)) &= \sum_{k=0}^{n}k(k-1)\proba(X=k) \\
+		&= \sum_{k=0}^{n}k(k-1)\binom{n}{k}p^{k}(1-p)^{n-k} \\
+		&= n(n-1) \sum_{k=2}^{n}\binom{n-2}{k-2}p^{k}(1-p)^{n-k} \\
+		&= n(n-1)p^{2} \sum_{j=0}^{n-2} \binom{n-2}{j}p^{j}(1-p)^{n-2-j} \\
+		&= n(n-1) p^{2} (p + (1-p))^{n-2} \\
+		&= n(n-1)p^{2}
+	\end{align*}
+	
+	Donc en remarquant que $$\mathbf{E}(X^{2}) = \mathbf{E}(X(X-1)+X) = \mathbf{E}(X(X-1))+\mathbf{E}(X)= n(n-1)p^{2} + np$$
+	Donc
+	$$\mathbb{V}(X) = \mathbf{E}(X^{2})- \mathbf{E}(X)^{2} = n(n-1)p^{2} + np - n^{2}p^{2} = np(1-p)$$
+	
+	
+\end{question_kholle}
 \end{document}
