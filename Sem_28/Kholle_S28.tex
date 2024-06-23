@@ -8,17 +8,17 @@
 \maketitle
 
 \begin{question_kholle}{Condition nécéssaire de convergence de $\sum_{n \geqslant n_0} u_n$}
-    Soit $u \in \mathbb{K}^{[ \! [ n_{0}, + \infty [ \![}$
+    Soit $u \in \K^{[ \! [ n_{0}, + \infty [ \![}$
     Si la série $\sum_{n\geqslant n_{0}}u_{n}$ converge, alors la suite $u$ converge vers $0$.
     
     Supposons que la série converge. Notons $(S_{n})_{n\geqslant n_{0}}$ la suite des sommes partielles.
 $$\forall n \in [ \! [ n_{0}+1, +\infty [ \![, u_{n} = S_{n} - S_{n-1}$$
     Puisque $S$ converge, on en déduit que $u$ converge vers $0$.
 \end{question_kholle}
-\begin{question_kholle}{Condition nécéssaire et suffisante de convergence de $\sum_{n\geqslant 0}q^{n}$ pour $q \in \mathbb{C}^{*}$ et calcul de la somme et du reste lorsqu'ils existent.}
+\begin{question_kholle}{Condition nécéssaire et suffisante de convergence de $\sum_{n\geqslant 0}q^{n}$ pour $q \in \C^{*}$ et calcul de la somme et du reste lorsqu'ils existent.}
     \begin{itemize}[label=$\star$]
         \item Supposons $\lvert q \rvert<1$
-        $$\forall n \in \mathbb{N}, S_{n} = \sum_{k=0}^{n}q^{k} = \frac{1-q^{n+1}}{1-q}$$
+        $$\forall n \in \N, S_{n} = \sum_{k=0}^{n}q^{k} = \frac{1-q^{n+1}}{1-q}$$
         De plus, $\lvert q^{n+1} \rvert=\lvert q \rvert^{n+1}= \left\{ \begin{array}{ll}0 \text{ si }q=0\\ e^{(n+1)\ln \lvert q \rvert} \text{ si }q\neq 0\end{array}\right.$
         
         \begin{align*}
@@ -36,7 +36,7 @@ $$\forall n \in [ \! [ n_{0}+1, +\infty [ \![, u_{n} = S_{n} - S_{n-1}$$
         
         \item Si $\lvert q \rvert=1$
         
-        $$\forall n \in \mathbb{N}, \lvert q \rvert ^{n} = 1^{n}=1 \xrightarrow[n \to \infty]{}1$$
+        $$\forall n \in \N, \lvert q \rvert ^{n} = 1^{n}=1 \xrightarrow[n \to \infty]{}1$$
         
         Ainsi, $\lvert q \rvert^{n}$ ne converge pas vers 0 donc $(q^{n})_{n\geqslant 0}$ ne converge pas vers 0, donc la série est grossièrement divergente.
         
@@ -45,7 +45,7 @@ $$\forall n \in [ \! [ n_{0}+1, +\infty [ \![, u_{n} = S_{n} - S_{n-1}$$
         Donc $(q^{n})_{n\geqslant 0}$ ne converge pas vers $0$. Donc la série est grossièrement divergenteê
     \end{itemize}
 \end{question_kholle}
-\begin{question_kholle}[{Soit $\alpha \in \mathbb{R}$
+\begin{question_kholle}[{Soit $\alpha \in \R$
     La série $\sum_{n\geqslant 1} \frac{1}{n^{\alpha}}$ converge $\iff \alpha >1$
     }]{Caractérisation de la convergence des séries de Riemann}
     \begin{itemize}[label=$\lozenge$]
@@ -56,7 +56,7 @@ $$\forall n \in [ \! [ n_{0}+1, +\infty [ \![, u_{n} = S_{n} - S_{n-1}$$
 $$
         \frac{1}{(n+1)^{\beta}}-\frac{1}{n^{\beta}}
 $$
-        en fonction de $\beta \in \mathbb{R}^{*}$
+        en fonction de $\beta \in \R^{*}$
         
         \begin{align*}
             \frac{1}{(n+1)^{\beta}} - \frac{1}{n^{\beta}} &= 
@@ -77,17 +77,17 @@ $$
             Or, $\left( \frac{1}{n^{\alpha-1}} \right)_{n\geqslant 1}$ converge pour $\alpha>1$ et diverge pour $\alpha \in ]0, 1[$.
             
             \item Si $\alpha = 1$
-            Appliquons la comparaison série intégrale pour $f \leftarrow (x \mapsto \frac{1}{x}) \left\{ \begin{array}{ll} \in \mathcal{C}^{0}([1, +\infty[, \mathbb{R})\\ \text{décroissante sur }[1, +\infty[ \end{array}\right.$
+            Appliquons la comparaison série intégrale pour $f \leftarrow (x \mapsto \frac{1}{x}) \left\{ \begin{array}{ll} \in \mathcal{C}^{0}([1, +\infty[, \R)\\ \text{décroissante sur }[1, +\infty[ \end{array}\right.$
             
-            $$\forall n \in \mathbb{N}^{*}, \int_{1}^{n+1}  \frac{\mathrm{d}u}{u} \leqslant  \sum_{k=1}^{n} \frac{1}{k}$$
+            $$\forall n \in \N^{*}, \int_{1}^{n+1}  \frac{\mathrm{d}u}{u} \leqslant  \sum_{k=1}^{n} \frac{1}{k}$$
             Ainsi,
-            $$\forall n \in \mathbb{N}^{*}, \underbrace{ \ln(n+1) }_{ \xrightarrow[n \to +\infty]{} +\infty } \leqslant \sum_{k=1}^{n} \frac{1}{k}$$
+            $$\forall n \in \N^{*}, \underbrace{ \ln(n+1) }_{ \xrightarrow[n \to +\infty]{} +\infty } \leqslant \sum_{k=1}^{n} \frac{1}{k}$$
             Donc la série diverge.
         \end{itemize}
     \end{itemize}
 \end{question_kholle}
 \begin{question_kholle}{Comparaison série-intégrale}
-    Soit $f:[n_{0}, +\infty[ \to \mathbb{R}$ une fonction continue et décroissante
+    Soit $f:[n_{0}, +\infty[ \to \R$ une fonction continue et décroissante
     Soit $j \in [ \! [ n_{0}, +\infty [\![$ fixé quelconque.
     
     \begin{align*}
@@ -114,7 +114,7 @@ $$
     
     D'où l'encadrement.
 \end{question_kholle}
-\begin{question_kholle}[{Soit $n_{0} \in \mathbb{N}$ et $f:[n_{0}, +\infty[ \to \mathbb{R}$ une fonction continue, décroissante et minorée par $m \in \mathbb{R}$
+\begin{question_kholle}[{Soit $n_{0} \in \N$ et $f:[n_{0}, +\infty[ \to \R$ une fonction continue, décroissante et minorée par $m \in \R$
     Alors la série de terme général
     $$\left( f(n)- \int_{n}^{n+1} f(u) \, \mathrm du  \right)_{n\geqslant n_{0}}$$
     est à termes positifs ou nuls et converge.}]{Pour $f$ continue sur $[n_0, +\infty[$, décroissante et minorée, $\sum_{n\geqslant n_{0}}\left( f(n)- \int_{n}^{n+1} f(u) \, \mathrm du  \right)$}
@@ -142,7 +142,7 @@ $$
     
     Donc $(S_{n}) n\geqslant n_{0}$ est majorée, et croissante, elle converge donc.
 \end{question_kholle}
-\begin{question_kholle}[{Soit $(a_{n})_{n\geqslant n_{0}} \in \mathbb{R}^{[ \! [ n_{0}, +\infty [ \![}$ une suite réelle.
+\begin{question_kholle}[{Soit $(a_{n})_{n\geqslant n_{0}} \in \R^{[ \! [ n_{0}, +\infty [ \![}$ une suite réelle.
     Si
     $$
     \left\{ \begin{array}{ll}
@@ -154,7 +154,7 @@ $$
     alors $\sum_{n\geqslant n_{0}}(-1)^{n}a_{n}$}]{Théorème des séries alternées}
     
     \begin{itemize}[label=$\lozenge$]
-        \item Traitons le cas $n_{0}\equiv 0 [2]$ il existe $p_{0} \in \mathbb{N}: n_{0}=2p_{0}$
+        \item Traitons le cas $n_{0}\equiv 0 [2]$ il existe $p_{0} \in \N: n_{0}=2p_{0}$
         \begin{itemize}[label=$\star$]
             \item  Les suites $(S_{2p})_{p\geqslant p_{0}}$ et $(S_{2p+1})_{p\geqslant p_{0}}$ sont adjacentes:
             
@@ -197,7 +197,7 @@ $$
         \item Le cas $n_0 \equiv 1 [2]$ se traite de la même manière
     \end{itemize}
 \end{question_kholle}
-\begin{question_kholle}[{Soit $u \in \mathbb{K}^{[ \! [ n_{0}, +\infty [ \![}$
+\begin{question_kholle}[{Soit $u \in \K^{[ \! [ n_{0}, +\infty [ \![}$
     Si la série $\sum_{n\geqslant n_{0}}u_{n}$ est absolument convergente, alors la série $\sum_{n\geqslant n_{0}}u_{n}$ est convergente.}]{L'absolue convergence implique la convergence}
     
     

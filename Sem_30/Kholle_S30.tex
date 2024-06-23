@@ -8,16 +8,16 @@
 \maketitle
 
 \begin{question_kholle}{Inégalité de Cauchy-Schwartz dans un Espace préhilbertien réel, cas d'égalité}
-	Soit $E$ un $\mathbb{R}$-espace vectoriel, et $\braket{ \cdot | \cdot  }$ un produit scalaire sur $E$.
+	Soit $E$ un $\R$-espace vectoriel, et $\braket{ \cdot | \cdot  }$ un produit scalaire sur $E$.
 	Soient $(x, y) \in E^{2}$
 	\begin{enumerate}
 		\item \begin{itemize}[label=$\star$]
 			\item Si $y=0$, l'inégalité est une égalité et est évidente
 			\item Sinon, posons
 			$$
-			P:\left|\begin{array}{ll} \mathbb{R} &\to \mathbb{R} \\ t &\mapsto \braket{ x+t.y | x+t.y } = t^{2} \|y\|^{2} + 2 t \braket{ x | y }  + \|x\|^{2} \end{array}\right.
+			P:\left|\begin{array}{ll} \R &\to \R \\ t &\mapsto \braket{ x+t.y | x+t.y } = t^{2} \|y\|^{2} + 2 t \braket{ x | y }  + \|x\|^{2} \end{array}\right.
 			$$
-			Puisque $\|y\|^{2} \neq 0$, P est un polynôme de degré $2$ à coefficientts réels et positif d'après le caractère positif du produit scalaire (on a donc $\forall t \in \mathbb{R}, P(t)\geqslant 0$)
+			Puisque $\|y\|^{2} \neq 0$, P est un polynôme de degré $2$ à coefficientts réels et positif d'après le caractère positif du produit scalaire (on a donc $\forall t \in \R, P(t)\geqslant 0$)
 			Le discriminant de cette fonction polynômiale est $\Delta = 4 \braket{ x | y }^{2} - 4 \|x\|^{2}\|y\|^{2}$, qui est obligatoirement négatif ou nul puisque $P$ admet au mieux une racine double.
 			Donc $\braket{ x | y }^{2} - \|x\|^{2}\|y\|^{2} \leqslant 0$ donc en prenant la racine carrée $|\braket{ x | y }| \leqslant \|x\|\|y\|$.
 		\end{itemize}
@@ -45,14 +45,17 @@
 \begin{question_kholle}[{
 	L'application
 	$$
-	\chi \left|\begin{array}{ll} E &\to E^{*} \\ x &\mapsto \left|\begin{array}{ll} E &\to \mathbb{R} \\ y &\mapsto \braket{ x | y }  \end{array}\right. \end{array}\right.
+	\chi \left|\begin{array}{ll}
+		E &\to E^{*} \\
+		x &\mapsto \left(\begin{array}{ll} E &\to \R 
+						\\ y &\mapsto \braket{ x | y }  \end{array}\right) \end{array}\right.
 	$$ est un isomorphisme d'espaces vectoriels. $\chi$ est appelé l'isomorphisme canonique entre un espace vectoriel euclidien et son espace dual.	
 	}]{Isomorphisme entre un espace euclidien et l'espace de ses formes linéaires (Théorème de représentation de Riesz).}
 	\begin{itemize}[label=$\star$]
-		\item $\chi$ est bien définie car, $\forall x \in E$, par linéarité du produit scalaire en sa seconde variable, $\chi(x): \left|\begin{array}{ll} E &\to \mathbb{R} \\ y &\mapsto \braket{ x | y }  \end{array}\right.$ est une forme linaire sur $E$.
+		\item $\chi$ est bien définie car, $\forall x \in E$, par linéarité du produit scalaire en sa seconde variable, $\chi(x): \left|\begin{array}{ll} E &\to \R \\ y &\mapsto \braket{ x | y }  \end{array}\right.$ est une forme linaire sur $E$.
 		
 		
-		\item Soient $(x, x') \in E^{2}$ et $\lambda \in \mathbb{R}$ fixés quelconques
+		\item Soient $(x, x') \in E^{2}$ et $\lambda \in \R$ fixés quelconques
 		
 		
 		\begin{align*}
@@ -85,7 +88,7 @@
 		\item \underline{Analyse}
 		
 		Soit $x \in E$ fixé quelconque, supposons que $\exists (x_{\parallel}, x_{\perp}) \in F \times F^{\perp} = x_{\parallel}+x_{\perp}$
-		D'abord $$x_{\parallel} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \mathbb{R}^{r}: x_{\parallel}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
+		D'abord $$x_{\parallel} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \R^{r}: x_{\parallel}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
 		Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque
 		
 		\begin{align*}
@@ -132,8 +135,8 @@
 \end{question_kholle}
 \begin{question_kholle}[{On utilisera le produit scalaire $$
 	\left\langle P | Q \right\rangle  = \int_{0}^{1} P(u)Q(u) \, \mathrm du
-$$ }]{Orthonormalisation de la base canonique de $\mathbb{R}_2[X]$}
-	Partons de la base canonique de $\mathbb{R}_{2}[X]$.
+$$ }]{Orthonormalisation de la base canonique de $\R_2[X]$}
+	Partons de la base canonique de $\R_{2}[X]$.
 	\begin{itemize}[label=$\star$]
 		\item $P_{1} =X^{0}$ est un vecteur unitaire Avec ce produit scalaire
 		
@@ -166,7 +169,7 @@ $$
 		= \frac{P_{3}'}{\sqrt{ \frac{1}{180} }} =6\sqrt{ 5 }P'_{3} = 6\sqrt{ 5 }\left( X^{2}-X + \frac{1}{6} \right)
 $$
 		
-		Donc une base orthonormée de $\mathbb{R}_{2}[X]$ muni de ce produit scalaire est
+		Donc une base orthonormée de $\R_{2}[X]$ muni de ce produit scalaire est
 $$
 		\left( 1, 2\sqrt{ 3 }X-\sqrt{ 3 }, 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
 $$
@@ -178,7 +181,7 @@ $$
 	L'ensemble $\{ \|x-z\| \mid z \in F \}$ admet une borne inférieure appelée distance de $x$ à $F$ et notée $d(x, F)$, qui est un plus petit élément, atteinte uniquement pour pour $z = p_{F}^{\perp}(x)$
 	}]{Distance d'un vecteur à un sous-espace vectoriel de dimension finie}
 	
-	$\{ \|x - z\| \mid z \in F \}$ est une partie de $\mathbb{R}$, non vide car elle contient $\|x\|$ pour $z \leftarrow 0_{F}$ d'éléments positifs ou nuls. Elle admet donc une borne inférieure
+	$\{ \|x - z\| \mid z \in F \}$ est une partie de $\R$, non vide car elle contient $\|x\|$ pour $z \leftarrow 0_{F}$ d'éléments positifs ou nuls. Elle admet donc une borne inférieure
 	
 	$E$ est un espace euclidien, donc $E = F \overset{\perp}{\oplus} F^{\perp}$ donc $x$ se décompose selon ces supplémentaires orthogonaux
 	$$x = \underbrace{ p_{F}^{\perp}(x) }_{ \in F } + \underbrace{ x - p_{F}^{\perp}(x) }_{ \in F^{\perp} }$$
@@ -210,7 +213,7 @@ $$
 \begin{question_kholle}[{
 	Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace vectoriel euclidien, $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base orthonormée de $E$.
 	Soit $u = \sum_{i=1}^{n}u_{i}.e_{i}$ un vecteur de $E$.
-	Soient $(a_{1}, \dots, a_{n}) \in\mathbb{R}^{n} \setminus \{ 0_{\mathbb{R}^{n}} \}$, $\alpha \in \mathbb{R}$ et $H_{\alpha}$ l'hyperplan affine d'équation
+	Soient $(a_{1}, \dots, a_{n}) \in\R^{n} \setminus \{ 0_{\R^{n}} \}$, $\alpha \in \R$ et $H_{\alpha}$ l'hyperplan affine d'équation
 $$
 	\sum_{i=1}^{n}a_{i}x_{i}=\alpha
 $$

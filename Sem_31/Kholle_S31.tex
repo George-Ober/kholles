@@ -196,21 +196,21 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 	
 	
 \end{question_kholle}
-\begin{question_kholle}{Si $X \geqslant 0$ presque sûrement, $\mathbf{E}(X) = 0 \iff X = 0$ presque sûrement}
+\begin{question_kholle}{Si $X \geqslant 0$ presque sûrement, $\esp(X) = 0 \iff X = 0$ presque sûrement}
 	Soit $X\geqslant 0$ presque sûrement
 	\begin{itemize}
-		\item Supposons que $\mathbf{E}(X) = 0$
+		\item Supposons que $\esp(X) = 0$
 		Par hypothèse, l'évènement $(X<0)$ est négligeable donc
 		
 		\begin{align*}
-			\mathbf{E} (X) & = \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
+			\esp (X) & = \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
 			&= \sum_{\omega \in (X = 0)} \underbrace{ X(\omega) }_{ = 0 } \proba(\{ \omega  \}) + \sum_{\omega \in (X<0)}X(\omega) \underbrace{ \proba(\{ \omega \}) }_{ =0 } + \sum_{\omega \in (X >0)} X(\omega)\proba(\{ \omega \}) \\
 			&= \sum_{\omega \in (X >0)} X(\omega)\proba(\{ \omega \})
 		\end{align*}
 		
 		Soit $\omega_{0} \in (X>0)$ fixé quelconque
 		La nullité de l'espérance donne
-		$$0 \leqslant X(\omega_{0})\proba(\{ \omega_{0} \}) \leqslant \sum_{\omega \in(X>0)}X(\omega) P(\{ \omega \})= \mathbf{E}(X) = 0$$
+		$$0 \leqslant X(\omega_{0})\proba(\{ \omega_{0} \}) \leqslant \sum_{\omega \in(X>0)}X(\omega) P(\{ \omega \})= \esp(X) = 0$$
 		donc $X(\omega_{0})\proba(\{ \omega_{0} \}) = 0$, or $X(\omega_{0})>0$ donc $\proba(\{ \omega_{0} \})=0$
 		donc 
 		$$\proba(X>0) = \sum_{\omega_{0} \in (X>0)} \proba(\{ \omega_{0} \}) = 0$$
@@ -221,7 +221,7 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		\item Supposons $X=0$ presque sûrement.
 		
 		\begin{align*}
-			\mathbf{E}(X) &= \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
+			\esp(X) &= \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
 			&= \sum_{\omega \in (X = 0)} \underbrace{ X(\omega) }_{ =0 } \proba(\{ \omega \}) + \sum_{\omega \in (X \neq 0)} X(\omega) \underbrace{ \proba(\{ \omega \}) }_{ =0 } \\
 			&= 0
 		\end{align*}
@@ -233,7 +233,7 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 	Supposons que $X \hookrightarrow \mathcal{B}(n, p)$
 	
 	\begin{align*}
-		\mathbb{E}(X) &= \sum_{\omega \in X(\Omega)}\omega \proba(X = \omega) \\
+		\esp(X) &= \sum_{\omega \in X(\Omega)}\omega \proba(X = \omega) \\
 		& = \sum_{k=0}^{n}k\proba(X=k) \\
 		&= \sum_{k=0}^{n}k \binom{n}{k} p^{k}(1-p)^{n-k} \\
 		&= \sum_{k=0}^{n}k \frac{n!}{k! (n-k)!} p^{k}(1-p)^{n-k} \\
@@ -243,10 +243,10 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		&= n p \sum_{j=0}^{n-1} \binom{n-1}{j} p^{j}(1-p)^{n-1-j} \\ \\
 		&= np (p + (1-p))^{n-1} = np
 	\end{align*}
-	Pour la variance, calculons d'abord $\mathbf{E}(X^{2})$
+	Pour la variance, calculons d'abord $\esp(X^{2})$
 	
 	\begin{align*}
-		\mathbf{E}(X^{2}) &= \sum _{k=0}^{n}k^{2} \proba(X=k^{2}) \\
+		\esp(X^{2}) &= \sum _{k=0}^{n}k^{2} \proba(X=k^{2}) \\
 		&=  \sum_{k=1}^{n} k \underbrace{ k \binom{n}{k} }_{ n \binom{n-1}{k-1} }p^{k}(1-p)^{n-k} \\
 		&= n \sum_{k=1}^{n} \underbrace{ k }_{ (k-1)+1 } \binom{n-1}{k-1} p^{k}(1-p)^{n-k} \\
 		&= n \sum_{k=1}^{n}(k-1)\binom{n-1}{k-1}p^{k}(1-p)^{n-k}+ n \sum_{k=1}^{n}\binom{n-1}{k-1}p^{k}(1-p)^{n-k} \\
@@ -259,14 +259,17 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 	
 	D'où,
 	$$
-	\mathbb{V}(X) = \mathbf{E}(X^{2}) - \mathbf{E}(X)^{2}=np((n-1)p+1)- n^{2} p ^{2}=np(1-p)
+	\variance(X) = \esp(X^{2}) - \esp(X)^{2}=np((n-1)p+1)- n^{2} p ^{2}=np(1-p)
 	$$
 	
-	\textbf{Calcul alternatif de $\mathbf{E^2}$} En utilisant la formule de transfert pour $f \leftarrow (x \mapsto x(x-1))$
+	\textbf{Calcul alternatif de $\mathbf{E^2}$} En utilisant la formule de transfert pour $f \leftarrow \left( \begin{matrix}
+		X(\Omega) &\to &\dots \\
+		x &\mapsto &x(x-1)
+	\end{matrix} \right)$
 	
 	
 	\begin{align*}
-		\mathbf{E}(X(X - 1)) &= \sum_{k=0}^{n}k(k-1)\proba(X=k) \\
+		\esp(X(X - 1)) &= \sum_{k=0}^{n}k(k-1)\proba(X=k) \\
 		&= \sum_{k=0}^{n}k(k-1)\binom{n}{k}p^{k}(1-p)^{n-k} \\
 		&= n(n-1) \sum_{k=2}^{n}\binom{n-2}{k-2}p^{k}(1-p)^{n-k} \\
 		&= n(n-1)p^{2} \sum_{j=0}^{n-2} \binom{n-2}{j}p^{j}(1-p)^{n-2-j} \\
@@ -274,9 +277,9 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		&= n(n-1)p^{2}
 	\end{align*}
 	
-	Donc en remarquant que $$\mathbf{E}(X^{2}) = \mathbf{E}(X(X-1)+X) = \mathbf{E}(X(X-1))+\mathbf{E}(X)= n(n-1)p^{2} + np$$
+	Donc en remarquant que $$\esp(X^{2}) = \esp(X(X-1)+X) = \esp(X(X-1))+\esp(X)= n(n-1)p^{2} + np$$
 	Donc
-	$$\mathbb{V}(X) = \mathbf{E}(X^{2})- \mathbf{E}(X)^{2} = n(n-1)p^{2} + np - n^{2}p^{2} = np(1-p)$$
+	$$\variance(X) = \esp(X^{2})- \esp(X)^{2} = n(n-1)p^{2} + np - n^{2}p^{2} = np(1-p)$$
 	
 	
 \end{question_kholle}

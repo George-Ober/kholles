@@ -5679,9 +5679,241 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		
 		Ainsi, nous avons bien $\norminf{\psi - \varphi} \leqslant \varepsilon$.
 	\end{question_kholle}
+\pagebreak\section{Semaine 28}
+
+\begin{question_kholle}{Condition nécéssaire de convergence de $\sum_{n \geqslant n_0} u_n$}
+    Soit $u \in \K^{[ \! [ n_{0}, + \infty [ \![}$
+    Si la série $\sum_{n\geqslant n_{0}}u_{n}$ converge, alors la suite $u$ converge vers $0$.
+    
+    Supposons que la série converge. Notons $(S_{n})_{n\geqslant n_{0}}$ la suite des sommes partielles.
+$$\forall n \in [ \! [ n_{0}+1, +\infty [ \![, u_{n} = S_{n} - S_{n-1}$$
+    Puisque $S$ converge, on en déduit que $u$ converge vers $0$.
+\end{question_kholle}
+\begin{question_kholle}{Condition nécéssaire et suffisante de convergence de $\sum_{n\geqslant 0}q^{n}$ pour $q \in \C^{*}$ et calcul de la somme et du reste lorsqu'ils existent.}
+    \begin{itemize}[label=$\star$]
+        \item Supposons $\lvert q \rvert<1$
+        $$\forall n \in \N, S_{n} = \sum_{k=0}^{n}q^{k} = \frac{1-q^{n+1}}{1-q}$$
+        De plus, $\lvert q^{n+1} \rvert=\lvert q \rvert^{n+1}= \left\{ \begin{array}{ll}0 \text{ si }q=0\\ e^{(n+1)\ln \lvert q \rvert} \text{ si }q\neq 0\end{array}\right.$
+        
+        \begin{align*}
+            \left\{ \begin{array}{ll}
+                0 \\
+                e^{(n+1)\ln \lvert q \rvert } 
+            \end{array}\right. \xrightarrow[n\to \infty]{} \left\{ \begin{array}{ll}
+                0 \\
+                0 
+            \end{array}\right.
+        \end{align*}
+        
+        Ainsi, $\sum_{n\geqslant 0}q^{n}$ converge et $\sum_{n=0}^{+\infty}q^{n}=\frac{1}{1-q}$
+        $$S_{n} = \frac{1-q^{n+1}}{1-q} \implies R_{n} = S_{n} - \sum_{n=0}^{+\infty}q^{n}= \frac{q^{n+1}}{1-q}$$
+        
+        \item Si $\lvert q \rvert=1$
+        
+        $$\forall n \in \N, \lvert q \rvert ^{n} = 1^{n}=1 \xrightarrow[n \to \infty]{}1$$
+        
+        Ainsi, $\lvert q \rvert^{n}$ ne converge pas vers 0 donc $(q^{n})_{n\geqslant 0}$ ne converge pas vers 0, donc la série est grossièrement divergente.
+        
+        \item Si $\lvert q \rvert>1$
+        $\lvert q \rvert^{n}=\exp(n \ln \lvert q \rvert) \xrightarrow[n\to +\infty]{} +\infty$
+        Donc $(q^{n})_{n\geqslant 0}$ ne converge pas vers $0$. Donc la série est grossièrement divergenteê
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{Soit $\alpha \in \R$
+    La série $\sum_{n\geqslant 1} \frac{1}{n^{\alpha}}$ converge $\iff \alpha >1$
+    }]{Caractérisation de la convergence des séries de Riemann}
+    \begin{itemize}[label=$\lozenge$]
+        \item Supposons $\alpha < 0$ alors, $\frac{1}{n^{\alpha}}=n^{\lvert \alpha \rvert} \xrightarrow[n\to +\infty]{}+\infty$ donc la série est grossièrement divergente.
+        \item Supposons $\alpha = 0$ alors $\frac{1}{n^{\alpha}}=1 \xrightarrow[n \to \infty]{} 1$ donc la série est grossièrement divergente.
+        \item Supposons $\alpha > 0$
+        Cherchons un équivalent de 
+$$
+        \frac{1}{(n+1)^{\beta}}-\frac{1}{n^{\beta}}
+$$
+        en fonction de $\beta \in \R^{*}$
+        
+        \begin{align*}
+            \frac{1}{(n+1)^{\beta}} - \frac{1}{n^{\beta}} &= 
+            \frac{1}{n^{\beta}}\left( \frac{1}{\left( 1+\frac{1}{n} \right)^{\beta}} - 1 \right) \\
+            &= \frac{1}{n^{\beta}}\left[ \left( 1+\frac{1}{n} \right)^{-\beta} - 1\right]  \\
+            &\underset{ \overset {\infty} {} } {\sim} \frac{1}{n^{\beta}} \times \left( -\frac{\beta}{n} \right) \\
+            &\underset{ \overset {\infty} {} } {\sim} - \frac{\beta}{n^{\beta+1}}
+        \end{align*}
+        
+        \begin{itemize}[label=$\star$]
+            \item Pour $\alpha \in ]0, +\infty[ \setminus \left\{ 1 \right\}$
+            Appliquons le calcul ci-dessus pour $\beta \leftarrow \alpha -1$ (autorisé car $\alpha \neq 1\implies \alpha-1 \neq 0$)
+            $$\frac{1}{(n+1)^{\alpha-1}}-\frac{1}{n^{\alpha-1}} \underset{ \overset {\infty} {} } {\sim}
+            -\frac{\alpha-1}{n^{\alpha}}$$
+            De plus, $\left( -\frac{\alpha-1}{n^{\alpha}} \right)_{n\geqslant 1}$ est de signe constant donc, d'après le critère d'équivalence, $\sum_{n\geqslant 1} \frac{-(\alpha -1)}{n^{\alpha}}$ est de même nature que la série téléscopique $\sum_{n\geqslant 1}(\frac{1}{(n+1)^{\alpha-1}}-\frac{1}{n^{\alpha-1}} )$. Or, la série téléscopique est de même nature que $\left( \frac{1}{n^{\alpha-1}} \right)_{n\geqslant 1}$.
+            
+            Donc par transitivité, puisque $\sum_{n\geqslant 1} \frac{1}{n^{\alpha}}$ est de même nature que $\sum_{n\geqslant 1} \frac{-(\alpha-1)}{n^{\alpha}}$, la série de Riemann est de même nature que $\left( \frac{1}{n^{\alpha-1}} \right)_{n\geqslant 1}$
+            Or, $\left( \frac{1}{n^{\alpha-1}} \right)_{n\geqslant 1}$ converge pour $\alpha>1$ et diverge pour $\alpha \in ]0, 1[$.
+            
+            \item Si $\alpha = 1$
+            Appliquons la comparaison série intégrale pour $f \leftarrow (x \mapsto \frac{1}{x}) \left\{ \begin{array}{ll} \in \mathcal{C}^{0}([1, +\infty[, \R)\\ \text{décroissante sur }[1, +\infty[ \end{array}\right.$
+            
+            $$\forall n \in \N^{*}, \int_{1}^{n+1}  \frac{\mathrm{d}u}{u} \leqslant  \sum_{k=1}^{n} \frac{1}{k}$$
+            Ainsi,
+            $$\forall n \in \N^{*}, \underbrace{ \ln(n+1) }_{ \xrightarrow[n \to +\infty]{} +\infty } \leqslant \sum_{k=1}^{n} \frac{1}{k}$$
+            Donc la série diverge.
+        \end{itemize}
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Comparaison série-intégrale}
+    Soit $f:[n_{0}, +\infty[ \to \R$ une fonction continue et décroissante
+    Soit $j \in [ \! [ n_{0}, +\infty [\![$ fixé quelconque.
+    
+    \begin{align*}
+        \forall t \in [k, k+1], f(k+1) &\leqslant f(t) \leqslant f(k) \\
+        \int_{k}^{k+1} f(k+1) \, \mathrm dt &\leqslant \int_{k}^{k+1} f(t) \, \mathrm dt \leqslant \int_{k}^{k+1}  f(k) \, \mathrm dt  \\
+        f(k+1) & \leqslant \int_{k}^{k+1} f(t) \, \mathrm dt \leqslant f(k)
+    \end{align*}
+    
+    Ainsi
+    
+    \begin{align*}
+        \sum_{k=n_{0}}^{n}\int_{k}^{k+1}f(t)  \, \mathrm dt  & \leqslant \sum_{k=n_{0}}^{n}f(t) \\
+        \int_{n_{0}}^{n+1} f(t) \, \mathrm dt & \leqslant \sum_{k=n_{0}}^{n}f(k)
+    \end{align*}
+    
+    
+    De même,
+    
+    \begin{align*}
+        \forall k \in [ \! [ n_{0}+1 , +\infty[ \![, f(k) & \leqslant\int_{k-1}^{k} f(t) \, \mathrm dt  \\
+        \sum_{k=n_{0}+1}^{n}f(k)  & \leqslant \sum_{k=n_{0}+1}^{n}\int_{k-1}^{k} f(t) \, \mathrm dt \\
+        \sum_{k=n_{0}}^{n} f(k)&\leqslant f(n_{0})+ \int_{n_{0}}^{n} f(t) \, \mathrm dt 
+    \end{align*}
+    
+    D'où l'encadrement.
+\end{question_kholle}
+\begin{question_kholle}[{Soit $n_{0} \in \N$ et $f:[n_{0}, +\infty[ \to \R$ une fonction continue, décroissante et minorée par $m \in \R$
+    Alors la série de terme général
+    $$\left( f(n)- \int_{n}^{n+1} f(u) \, \mathrm du  \right)_{n\geqslant n_{0}}$$
+    est à termes positifs ou nuls et converge.}]{Pour $f$ continue sur $[n_0, +\infty[$, décroissante et minorée, $\sum_{n\geqslant n_{0}}\left( f(n)- \int_{n}^{n+1} f(u) \, \mathrm du  \right)$}
+    
+    
+    Montrons que la suite $(S_{n})_{n\geqslant n_{0}}$ est majorée, et que la suite est à termes $\geqslant 0$
+    La décroissance de $f$ donne l'encadrement suivant
+    
+    $$\forall n \in [ \! [ n_{0} , +\infty[\![,  f(n) - \int_{n}^{n+1} f(t) \, \mathrm dt \geqslant 0$$
+    
+    La comparaison série intégrale s'applique donc à $f$ qui est décroissante et continue et donne
+    
+    \begin{align*}
+        \forall n \in [ \! [ n_{0}, +\infty [ \![ f(n+1)\leqslant \int_{n}^{n+1} f(t) \, \mathrm dt \leqslant f(n) &\implies -f(n+1) \geqslant -\int_{n}^{n+1} f(t) \, \mathrm dt \\
+        &\implies f(n) - f(n+1) \geqslant f(n) - \int_{ n}^{n+1} f(t) \, \mathrm dt \geqslant 0
+    \end{align*}
+    
+    En sommant sur $k \in [ \! [ n_{0}, n ] \!]$
+    
+    $$\sum_{k=n_{0}}^{n} (f(k) - f(k+1)) \geqslant  \sum_{k=n_{0}}^{n}\left( f(k) - \int_{k}^{k+1} f(t) \, \mathrm dt  \right) = S_{n}$$
+    
+    En reconnaissant un phénomène téléscopique
+    
+    $$S_{n} \leqslant f(n_{0})-f(n+1)\leqslant f(n_{0})-n$$
+    
+    Donc $(S_{n}) n\geqslant n_{0}$ est majorée, et croissante, elle converge donc.
+\end{question_kholle}
+\begin{question_kholle}[{Soit $(a_{n})_{n\geqslant n_{0}} \in \R^{[ \! [ n_{0}, +\infty [ \![}$ une suite réelle.
+    Si
+    $$
+    \left\{ \begin{array}{ll}
+        \forall n \in [ \! [ n_{0}, +\infty [\![, a_{n} \geqslant 0 \\
+        (a_{n})_{n\geqslant n_{0}} \text{ est décroissante} \\
+        \lim_{ n \to \infty } a_{n}=0
+    \end{array}\right.
+    $$
+    alors $\sum_{n\geqslant n_{0}}(-1)^{n}a_{n}$}]{Théorème des séries alternées}
+    
+    \begin{itemize}[label=$\lozenge$]
+        \item Traitons le cas $n_{0}\equiv 0 [2]$ il existe $p_{0} \in \N: n_{0}=2p_{0}$
+        \begin{itemize}[label=$\star$]
+            \item  Les suites $(S_{2p})_{p\geqslant p_{0}}$ et $(S_{2p+1})_{p\geqslant p_{0}}$ sont adjacentes:
+            
+            \begin{align*}
+                \forall p \in [ \! [ p_{0}, +\infty[ \![, S_{2(p+1)} - S_{2p} &= S_{2p+2}- S_{2p} \\
+                &= \sum_{k=2p_{0}}^{2p+2}(-1)^{k}a_{k} + \sum_{k=2p_{0}}^{2p}(-1)^{k}a_{k} \\
+                &= -a_{2p+1}+a_{2p+2} \leqslant 0 \text{ car }a\downarrow
+            \end{align*}
+            
+            \begin{align*}
+                S_{2(p+1)+1} - S_{2p+1} &= S_{2p+3} - S_{2p+1} = (-1)^{2p+2}a_{2p+2}+(-1)^{2p+3}a_{2p+3} = a_{2p+2}- a_{2p+3} \geqslant 0 \text{ car }a\downarrow
+            \end{align*}
+            
+            
+            Donc $(S_{2p})$ est décroissante et $(S_{2p+1})$ est croissante.
+            De plus
+$$
+            S_{2p+1} - S_{2p} = (-1)^{2p+2}a_{2p+1} = \underbrace{ -a_{2p+1} }_{ \xrightarrow[p \to \infty]{} 0 } \leqslant 0 \text{ car a positive}
+$$
+            Ainsi $(S_{2p})_{p\geqslant p_{0}}$ et $(S_{2p+1})_{p\geqslant p_{0}}$ sont adjacentes.
+            \item Donc d'après le théorème des suites adjacentes, $(S_{2p})$ et $(S_{2p+1})$ convergent vers une même limite $\ell$, si bien que $(S_{n})$ converge vers $\ell$.
+            
+            \item De plus, les suites $(S_{2p})_{p\geqslant p_{0}}$ et $(S_{2p+1})_{p\geqslant p_{0}}$ étant adjacentes, pour $n \geqslant n_{0}$ posons $R_{n} = \ell -S_{n}$
+            \begin{itemize}
+                \item Si $n \equiv 0 [2]$, $\exists p \in [ \! [ p_{0}, +\infty [ \![:n=2p$ donc, puisque $(S_{2p})$ est décroissante et $(S_{2p+1})$ est croissante, on a 
+$$
+                S_{2p+1}\leqslant \ell \leqslant S_{2p} \implies S_{2p+1} - S_{2p} \leqslant \ell - S_{2p} \leqslant 0 \implies \lvert R_{2p} \rvert = \lvert \ell - S_{2p} \rvert \leqslant a_{2p+1}
+$$
+                
+                \item Si $n \equiv 1 [2]$ $\exists p \in [ \! [ p_{0}, +\infty [ \![:n=2p+1$
+$$
+                S_{2p+1} \leqslant \ell \leqslant S_{2p+2} \implies 0 \leqslant \ell - S_{2p+1} \leqslant S_{2p+2} - S_{2p+1} = (-1)^{2p+2}a_{2p+2}= a_{2p+2}
+$$
+                donc $\lvert R_{2p+1} \rvert = \lvert \ell-S_{2p+1} \rvert \leqslant a_{2p+2}$
+            \end{itemize}
+        \end{itemize}
+        Bonus, par croissance de $(S_{2p+1})$ qui converge vers $\ell$, $S_{2p+1} \leqslant \ell$  donc $a_{2p_{0}}-a_{2p_{0} +1}\leqslant\ell$
+        Donc $\ell \geqslant 0$ qui est bien le signe du premier terme de la série $(-1)^{n_{0}}a_{n_{0}}$ car $n_{0}\equiv 0[2]$.
+        
+        \item Le cas $n_0 \equiv 1 [2]$ se traite de la même manière
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{Soit $u \in \K^{[ \! [ n_{0}, +\infty [ \![}$
+    Si la série $\sum_{n\geqslant n_{0}}u_{n}$ est absolument convergente, alors la série $\sum_{n\geqslant n_{0}}u_{n}$ est convergente.}]{L'absolue convergence implique la convergence}
+    
+    
+    
+    \begin{itemize}[label=$\lozenge$]
+        \item Supposons que $u$ est le terme général réel d'une série absolument convergente.
+        Posons, pour tout $n \in [ \! [ n_{0}, +\infty [ \![$, $u_{n}^{+}= \max(u_{n}, 0)$ et $u_{n}^{-}=- \min (u_{n}, 0)$
+        Avec ces notations, $u_{n}^{+}- u_{n}^{-} = u_{n}$ et $u_{n}^{+}+u_{n}^{-} = \lvert u_{n} \rvert$.
+$$
+        \forall n \in [ \! [ n_{0}, +\infty [ \![, u_{n}^{+}\geqslant 0 \text{ et } u_{n}^{-}\geqslant 0
+$$
+        
+$$
+        \left. \begin{array}{ll}
+            \forall n \geqslant n_{0}, 0\leqslant u_{n}^{+} \leqslant \lvert u_{n} \rvert = u_{n}^{+}+ u_{n}^{-} \\
+            \sum_{n\geqslant n_{0}} u_{n} \text{ est ACV} \implies \sum_{n\geqslant n_{0}} \lvert u_{n} \rvert  \text{ CV} \\
+            \forall n \geqslant n_{0}, u_{n}^{+}\geqslant 0 \text{ et } \lvert u_{n} \rvert \geqslant 0
+        \end{array}\right\}\implies \sum_{n\geqslant n_{0}}u_{n} ^{+}\text{ converge}
+$$
+        
+        On montre de même que $\sum_{n\geqslant n_{0}}u_{n}^{-}$ converge, donc, par structure vectorielle de l'ensemble des termes généraux de suites convergentes, $\sum_{ n\geqslant n_{0}}(u_{n}^{+} - u_{n}^{-})= \sum_{n\geqslant n_{0}}u_{n}$ converge
+        
+        \item Cas d'une série complexe,
+
+        Posons, $\forall n\geqslant n_{0}, x_{n} = \mathrm{Re}(u_{n})$ et $y_{n} = \mathrm{Im}(u_{n})$
+        Alors,
+$$
+        \left. \begin{array}{ll}
+            \forall n \geqslant n_{0}, \lvert x_{n} \rvert \leqslant \lvert \mathrm{Re}(u_{n}) \rvert \leqslant \lvert u_{n} \rvert  \\
+            \forall n\geqslant n_{0}, \lvert  x_{n} \rvert \geqslant 0 \text{ et } \lvert u_{n} \rvert \geqslant 0 \\
+            \sum_{n\geqslant n_{0}}u_{n} \text{ ACV } \implies \sum_{n\geqslant n_{0}}\lvert u_{n} \rvert \text{ CV }
+        \end{array}\right\}\implies \sum_{n\geqslant n_{0}}\lvert x_{n} \rvert \text{ converge}
+$$
+        Donc d'après le cas réel, $\sum_{n\geqslant n_{0}} x_{n}$ converge
+        On montre de même que $\sum_{n\geqslant n_{0}}y_{n}$ converge
+        Donc, par structure vectorielle, $\sum_{n\geqslant n_{0}}(x_{n}+ iy_{n})$ converge.
+        Donc $u_{n}$ est le terme général d'une série convergente.
+    \end{itemize}
+\end{question_kholle}
 \pagebreak\section{Semaine 29}
 
-\begin{question_kholle}[{Le noyau d'un morphisme de groupe étant toujours un sous-groupe du groupe de départ, le groupe alterné d'indice $n \in \mathbb{N}^{*}$ est le sous groupe de $(\mathcal{S}_{n}, \circ)$ obtenu en considérant le noyau du morphisme signature.
+\begin{question_kholle}[{Le noyau d'un morphisme de groupe étant toujours un sous-groupe du groupe de départ, le groupe alterné d'indice $n \in \N^{*}$ est le sous groupe de $(\mathcal{S}_{n}, \circ)$ obtenu en considérant le noyau du morphisme signature.
     $$
     \mathcal{A}_{n}= \ker \varepsilon
     $$
@@ -5717,8 +5949,8 @@ $$
     \end{itemize}
 \end{question_kholle}
 \begin{question_kholle}[{
-    Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie et $F \in \mathcal{L}_{\mathbb{K}}(E)$
-    $$\exists!\lambda \in \mathbb{K} : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
+    Soit $E$ un $\K$-espace vectoriel de dimension finie et $F \in \mathcal{L}_{\K}(E)$
+    $$\exists!\lambda \in \K : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
     On appelle ce $\lambda$ \underline{le} déterminant de l'endomorphisme $f$.
     }]{Définition du déterminant d'un endomorphisme}
     
@@ -5728,11 +5960,11 @@ $$
         Soit $\mathcal{B}_{0}= (e_{1}, \dots, e_{n})$ une base de $E$ fixée.
         L'application
 $$
-        \varphi \left|\begin{array}{ll} E^{n} &\to \mathbb{K} \\ (u_{1}, \dots, u_{n}) &\mapsto \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) \end{array}\right.
+        \varphi \left|\begin{array}{ll} E^{n} &\to \K \\ (u_{1}, \dots, u_{n}) &\mapsto \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) \end{array}\right.
 $$
         est
         \begin{itemize}
-            \item Une forme n-linéaire :  soient $(u_{1}, \dots, u_{n}) \in E^{n}$ fixés quelconques $(u, v, \lambda) \in E^{2} \times \mathbb{K}$
+            \item Une forme n-linéaire :  soient $(u_{1}, \dots, u_{n}) \in E^{n}$ fixés quelconques $(u, v, \lambda) \in E^{2} \times \K$
             
             \begin{align*}
                 \varphi (v+\lambda.w, u_{2}, \dots, u_{n})  & = \det_{\mathcal{B}_{0}}(f(v+\lambda.w), f(u_{2}), \dots, f(u_{n})) \\
@@ -5750,11 +5982,11 @@ $$
 $$
             \varphi(u_{1}, \dots, u_{n})=\det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) = 0
 $$
-            Donc $\varphi \in \land_{\mathbb{K}}^{n} = \text{Vect}\{ \det_{\mathcal{B}_{0}} \}$
+            Donc $\varphi \in \land_{\K}^{n} = \text{Vect}\{ \det_{\mathcal{B}_{0}} \}$
         \end{itemize}
         Donc
 $$
-        \exists \lambda_{\mathcal{B}_{0}}\in \mathbb{K}: \varphi = \lambda_{\mathcal{B}_{0}}.\det_{\mathcal{B_{0}}}
+        \exists \lambda_{\mathcal{B}_{0}}\in \K: \varphi = \lambda_{\mathcal{B}_{0}}.\det_{\mathcal{B_{0}}}
 $$
         d'où,
 $$
@@ -5771,7 +6003,7 @@ $$
         Par conséquent, $\lambda_{\mathcal{B}_{0}}$ convient pour toute base $\mathcal{B}$.
         
         \item \underline{Unicité}
-        Soit $\lambda \in \mathbb{K}$ tel que
+        Soit $\lambda \in \K$ tel que
 $$
         \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})
 $$
@@ -5789,14 +6021,14 @@ $$
 \end{question_kholle}
 \begin{question_kholle}
     [{\begin{enumerate}
-        \item $\forall (f, g) \in \mathcal{L}_{\mathbb{K}}(E)^{2}, \det (f \circ g) = \det f \times \det g$
+        \item $\forall (f, g) \in \mathcal{L}_{\K}(E)^{2}, \det (f \circ g) = \det f \times \det g$
         
-        \item $\forall f \in \mathcal{L}_{K}(E), f \in \mathcal{GL}_{\mathbb{K}}(E) \iff \det f \neq 0$
+        \item $\forall f \in \mathcal{L}_{K}(E), f \in \mathcal{GL}_{\K}(E) \iff \det f \neq 0$
     \end{enumerate}
-    }]{Démontrer que le déterminant est un morphisme de $(\mathcal{L}_{\mathbb{K}}(E), \circ)$ dans $(\mathbb{K}, \times)$, application à la caractérisation des automorphismes}
+    }]{Démontrer que le déterminant est un morphisme de $(\mathcal{L}_{\K}(E), \circ)$ dans $(\K, \times)$, application à la caractérisation des automorphismes}
     Fixons $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base de $E$
     \begin{enumerate} 
-        \item Soient $(f, g) \in \mathcal{L}_{\mathbb{K}}(E)^{2}$ fixés quelconques.
+        \item Soient $(f, g) \in \mathcal{L}_{\K}(E)^{2}$ fixés quelconques.
         
         \begin{align*}
             \det (f \circ  g) &= \det_{\mathcal{B}}((f \circ g)(e_{1}), \dots, (f \circ  g)(e_{n})) \\
@@ -5808,9 +6040,9 @@ $$
         
         
         
-        \item Soit $f \in \mathcal{L}_{\mathbb{K}}(E)$
+        \item Soit $f \in \mathcal{L}_{\K}(E)$
         \begin{itemize}
-            \item Supposons $f \in \mathcal{GL}_{\mathbb{K}}(E)$
+            \item Supposons $f \in \mathcal{GL}_{\K}(E)$
             Appliquons la relation de morphisme pour $g \leftarrow f^{-1}$
 $$
             \underbrace{ \det(f \circ  f^{-1}) }_{ = \det \mathrm{Id}_{E} } = \det f \times \det f^{-1}
@@ -5825,7 +6057,7 @@ $$
         \end{itemize}
     \end{enumerate}
 \end{question_kholle}
-\begin{question_kholle}[{Soit $A \in \mathcal{M}_{n}(\mathbb{K})$.
+\begin{question_kholle}[{Soit $A \in \mathcal{M}_{n}(\K)$.
     Alors $A \times (\mathrm{com} A)^{T} = (\mathrm{com}A)^{T}\times A = \det A \times I_{n}$
     }]{Produit d'une matrice carrée par la transposée de sa comatrice.}
     
@@ -5880,7 +6112,7 @@ $$
         \item On montre de même le produit dans l'autre sens.
     \end{itemize}
 \end{question_kholle}
-\begin{question_kholle}[{  Le système linéaire $AX=B$ d'inconnue $X \in \mathcal{M}_{n,1}(\mathbb{K})$ et de paramètre $B \in \mathcal{M}_{n,1}(\mathbb{K})$ est dit "de Cramer" s'il admet une unique solution, à savoir si $A$ est une matrice inversible. Dans ce cas, la solution peut être exprimée explicitement par la formule $A^{-1}B$ qui donne la formule dite de Cramer:
+\begin{question_kholle}[{  Le système linéaire $AX=B$ d'inconnue $X \in \mathcal{M}_{n,1}(\K)$ et de paramètre $B \in \mathcal{M}_{n,1}(\K)$ est dit "de Cramer" s'il admet une unique solution, à savoir si $A$ est une matrice inversible. Dans ce cas, la solution peut être exprimée explicitement par la formule $A^{-1}B$ qui donne la formule dite de Cramer:
     $$
     \left( \frac{
     \bigg| 
@@ -5902,7 +6134,7 @@ $$
     \bigg| 
     }{\det A} \right)
     $$
-    où $(C_{1}, \dots, C_{n}) \in \mathcal{M}_{n,1}(\mathbb{K})^{n}$ sont les colonnes de $A$.
+    où $(C_{1}, \dots, C_{n}) \in \mathcal{M}_{n,1}(\K)^{n}$ sont les colonnes de $A$.
     }]{Formule de Cramer}
     
     Partons de l'expression de l'inverse avec la comatrice:
@@ -5921,11 +6153,11 @@ $$
 \begin{question_kholle}{Calcul du déterminant de Vandermonde}
 Posons
     $$
-\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \mathbb{K}^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{1\leqslant i < j \leqslant n}(a_{j} - a_{i})
+\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \K^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{1\leqslant i < j \leqslant n}(a_{j} - a_{i})
 $$
 \begin{itemize}[label=$\lozenge$]
     \item \underline{Initialisation} $n \leftarrow 2$
-Soient $(a_{0}, a_{1}) \in \mathbb{K}^{2}$
+Soient $(a_{0}, a_{1}) \in \K^{2}$
 $$
 \left| \begin{matrix}
 1 & 1 \\
@@ -5935,8 +6167,8 @@ $$
 
 
 
-\item \underline{Hérédité}, soit $n \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
-Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \mathbb{K}^{n+2}$ fixés quelconques.
+\item \underline{Hérédité}, soit $n \in \N^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
+Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \K^{n+2}$ fixés quelconques.
 \begin{itemize}
     \item Supposons que les éléments de $\left\{ a_{0}, \dots, a_{n+1} \right\}$ ne sont pas tous deux à deux distincts.
     
@@ -5954,7 +6186,7 @@ a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n} & X^{n} \\
 a_{0}^{n+1} & a_{1}^{n+1} & a_{2}^{n+1} & \dots & a_{n}^{n+1} & X^{n+1}
 \end{matrix} \right| 
 $$
-Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \mathbb{K}[X]$ (car $\mathbb{K}[X]$ est un anneau et donc stable par produit).
+Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \K[X]$ (car $\K[X]$ est un anneau et donc stable par produit).
 De plus, en développant le déterminant $Q(X)$ selon sa dernière colonne, on observe d'une part que $\deg Q \leqslant n+1$ et d'autre part que le coefficient de $X^{n+1}$ est le cofacteur de $X^{n+1}$ qui est, d'après $\mathcal{P}(n)$
 $$
 \prod_{0\leqslant i<j \leqslant n}(a_{j}-a_{i})
@@ -5984,16 +6216,16 @@ Donc $\mathcal{P}(n+1)$ est vraie
 \pagebreak\section{Semaine 30}
 
 \begin{question_kholle}{Inégalité de Cauchy-Schwartz dans un Espace préhilbertien réel, cas d'égalité}
-	Soit $E$ un $\mathbb{R}$-espace vectoriel, et $\braket{ \cdot | \cdot  }$ un produit scalaire sur $E$.
+	Soit $E$ un $\R$-espace vectoriel, et $\braket{ \cdot | \cdot  }$ un produit scalaire sur $E$.
 	Soient $(x, y) \in E^{2}$
 	\begin{enumerate}
 		\item \begin{itemize}[label=$\star$]
 			\item Si $y=0$, l'inégalité est une égalité et est évidente
 			\item Sinon, posons
 			$$
-			P:\left|\begin{array}{ll} \mathbb{R} &\to \mathbb{R} \\ t &\mapsto \braket{ x+t.y | x+t.y } = t^{2} \|y\|^{2} + 2 t \braket{ x | y }  + \|x\|^{2} \end{array}\right.
+			P:\left|\begin{array}{ll} \R &\to \R \\ t &\mapsto \braket{ x+t.y | x+t.y } = t^{2} \|y\|^{2} + 2 t \braket{ x | y }  + \|x\|^{2} \end{array}\right.
 			$$
-			Puisque $\|y\|^{2} \neq 0$, P est un polynôme de degré $2$ à coefficientts réels et positif d'après le caractère positif du produit scalaire (on a donc $\forall t \in \mathbb{R}, P(t)\geqslant 0$)
+			Puisque $\|y\|^{2} \neq 0$, P est un polynôme de degré $2$ à coefficientts réels et positif d'après le caractère positif du produit scalaire (on a donc $\forall t \in \R, P(t)\geqslant 0$)
 			Le discriminant de cette fonction polynômiale est $\Delta = 4 \braket{ x | y }^{2} - 4 \|x\|^{2}\|y\|^{2}$, qui est obligatoirement négatif ou nul puisque $P$ admet au mieux une racine double.
 			Donc $\braket{ x | y }^{2} - \|x\|^{2}\|y\|^{2} \leqslant 0$ donc en prenant la racine carrée $|\braket{ x | y }| \leqslant \|x\|\|y\|$.
 		\end{itemize}
@@ -6021,14 +6253,17 @@ Donc $\mathcal{P}(n+1)$ est vraie
 \begin{question_kholle}[{
 	L'application
 	$$
-	\chi \left|\begin{array}{ll} E &\to E^{*} \\ x &\mapsto \left|\begin{array}{ll} E &\to \mathbb{R} \\ y &\mapsto \braket{ x | y }  \end{array}\right. \end{array}\right.
+	\chi \left|\begin{array}{ll}
+		E &\to E^{*} \\
+		x &\mapsto \left(\begin{array}{ll} E &\to \R 
+						\\ y &\mapsto \braket{ x | y }  \end{array}\right) \end{array}\right.
 	$$ est un isomorphisme d'espaces vectoriels. $\chi$ est appelé l'isomorphisme canonique entre un espace vectoriel euclidien et son espace dual.	
 	}]{Isomorphisme entre un espace euclidien et l'espace de ses formes linéaires (Théorème de représentation de Riesz).}
 	\begin{itemize}[label=$\star$]
-		\item $\chi$ est bien définie car, $\forall x \in E$, par linéarité du produit scalaire en sa seconde variable, $\chi(x): \left|\begin{array}{ll} E &\to \mathbb{R} \\ y &\mapsto \braket{ x | y }  \end{array}\right.$ est une forme linaire sur $E$.
+		\item $\chi$ est bien définie car, $\forall x \in E$, par linéarité du produit scalaire en sa seconde variable, $\chi(x): \left|\begin{array}{ll} E &\to \R \\ y &\mapsto \braket{ x | y }  \end{array}\right.$ est une forme linaire sur $E$.
 		
 		
-		\item Soient $(x, x') \in E^{2}$ et $\lambda \in \mathbb{R}$ fixés quelconques
+		\item Soient $(x, x') \in E^{2}$ et $\lambda \in \R$ fixés quelconques
 		
 		
 		\begin{align*}
@@ -6061,7 +6296,7 @@ Donc $\mathcal{P}(n+1)$ est vraie
 		\item \underline{Analyse}
 		
 		Soit $x \in E$ fixé quelconque, supposons que $\exists (x_{\parallel}, x_{\perp}) \in F \times F^{\perp} = x_{\parallel}+x_{\perp}$
-		D'abord $$x_{\parallel} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \mathbb{R}^{r}: x_{\parallel}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
+		D'abord $$x_{\parallel} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \R^{r}: x_{\parallel}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
 		Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque
 		
 		\begin{align*}
@@ -6108,8 +6343,8 @@ Donc $\mathcal{P}(n+1)$ est vraie
 \end{question_kholle}
 \begin{question_kholle}[{On utilisera le produit scalaire $$
 	\left\langle P | Q \right\rangle  = \int_{0}^{1} P(u)Q(u) \, \mathrm du
-$$ }]{Orthonormalisation de la base canonique de $\mathbb{R}_2[X]$}
-	Partons de la base canonique de $\mathbb{R}_{2}[X]$.
+$$ }]{Orthonormalisation de la base canonique de $\R_2[X]$}
+	Partons de la base canonique de $\R_{2}[X]$.
 	\begin{itemize}[label=$\star$]
 		\item $P_{1} =X^{0}$ est un vecteur unitaire Avec ce produit scalaire
 		
@@ -6142,7 +6377,7 @@ $$
 		= \frac{P_{3}'}{\sqrt{ \frac{1}{180} }} =6\sqrt{ 5 }P'_{3} = 6\sqrt{ 5 }\left( X^{2}-X + \frac{1}{6} \right)
 $$
 		
-		Donc une base orthonormée de $\mathbb{R}_{2}[X]$ muni de ce produit scalaire est
+		Donc une base orthonormée de $\R_{2}[X]$ muni de ce produit scalaire est
 $$
 		\left( 1, 2\sqrt{ 3 }X-\sqrt{ 3 }, 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
 $$
@@ -6154,7 +6389,7 @@ $$
 	L'ensemble $\{ \|x-z\| \mid z \in F \}$ admet une borne inférieure appelée distance de $x$ à $F$ et notée $d(x, F)$, qui est un plus petit élément, atteinte uniquement pour pour $z = p_{F}^{\perp}(x)$
 	}]{Distance d'un vecteur à un sous-espace vectoriel de dimension finie}
 	
-	$\{ \|x - z\| \mid z \in F \}$ est une partie de $\mathbb{R}$, non vide car elle contient $\|x\|$ pour $z \leftarrow 0_{F}$ d'éléments positifs ou nuls. Elle admet donc une borne inférieure
+	$\{ \|x - z\| \mid z \in F \}$ est une partie de $\R$, non vide car elle contient $\|x\|$ pour $z \leftarrow 0_{F}$ d'éléments positifs ou nuls. Elle admet donc une borne inférieure
 	
 	$E$ est un espace euclidien, donc $E = F \overset{\perp}{\oplus} F^{\perp}$ donc $x$ se décompose selon ces supplémentaires orthogonaux
 	$$x = \underbrace{ p_{F}^{\perp}(x) }_{ \in F } + \underbrace{ x - p_{F}^{\perp}(x) }_{ \in F^{\perp} }$$
@@ -6186,7 +6421,7 @@ $$
 \begin{question_kholle}[{
 	Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace vectoriel euclidien, $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base orthonormée de $E$.
 	Soit $u = \sum_{i=1}^{n}u_{i}.e_{i}$ un vecteur de $E$.
-	Soient $(a_{1}, \dots, a_{n}) \in\mathbb{R}^{n} \setminus \{ 0_{\mathbb{R}^{n}} \}$, $\alpha \in \mathbb{R}$ et $H_{\alpha}$ l'hyperplan affine d'équation
+	Soient $(a_{1}, \dots, a_{n}) \in\R^{n} \setminus \{ 0_{\R^{n}} \}$, $\alpha \in \R$ et $H_{\alpha}$ l'hyperplan affine d'équation
 $$
 	\sum_{i=1}^{n}a_{i}x_{i}=\alpha
 $$
@@ -6448,21 +6683,21 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 	
 	
 \end{question_kholle}
-\begin{question_kholle}{Si $X \geqslant 0$ presque sûrement, $\mathbf{E}(X) = 0 \iff X = 0$ presque sûrement}
+\begin{question_kholle}{Si $X \geqslant 0$ presque sûrement, $\esp(X) = 0 \iff X = 0$ presque sûrement}
 	Soit $X\geqslant 0$ presque sûrement
 	\begin{itemize}
-		\item Supposons que $\mathbf{E}(X) = 0$
+		\item Supposons que $\esp(X) = 0$
 		Par hypothèse, l'évènement $(X<0)$ est négligeable donc
 		
 		\begin{align*}
-			\mathbf{E} (X) & = \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
+			\esp (X) & = \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
 			&= \sum_{\omega \in (X = 0)} \underbrace{ X(\omega) }_{ = 0 } \proba(\{ \omega  \}) + \sum_{\omega \in (X<0)}X(\omega) \underbrace{ \proba(\{ \omega \}) }_{ =0 } + \sum_{\omega \in (X >0)} X(\omega)\proba(\{ \omega \}) \\
 			&= \sum_{\omega \in (X >0)} X(\omega)\proba(\{ \omega \})
 		\end{align*}
 		
 		Soit $\omega_{0} \in (X>0)$ fixé quelconque
 		La nullité de l'espérance donne
-		$$0 \leqslant X(\omega_{0})\proba(\{ \omega_{0} \}) \leqslant \sum_{\omega \in(X>0)}X(\omega) P(\{ \omega \})= \mathbf{E}(X) = 0$$
+		$$0 \leqslant X(\omega_{0})\proba(\{ \omega_{0} \}) \leqslant \sum_{\omega \in(X>0)}X(\omega) P(\{ \omega \})= \esp(X) = 0$$
 		donc $X(\omega_{0})\proba(\{ \omega_{0} \}) = 0$, or $X(\omega_{0})>0$ donc $\proba(\{ \omega_{0} \})=0$
 		donc 
 		$$\proba(X>0) = \sum_{\omega_{0} \in (X>0)} \proba(\{ \omega_{0} \}) = 0$$
@@ -6473,7 +6708,7 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		\item Supposons $X=0$ presque sûrement.
 		
 		\begin{align*}
-			\mathbf{E}(X) &= \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
+			\esp(X) &= \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
 			&= \sum_{\omega \in (X = 0)} \underbrace{ X(\omega) }_{ =0 } \proba(\{ \omega \}) + \sum_{\omega \in (X \neq 0)} X(\omega) \underbrace{ \proba(\{ \omega \}) }_{ =0 } \\
 			&= 0
 		\end{align*}
@@ -6485,7 +6720,7 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 	Supposons que $X \hookrightarrow \mathcal{B}(n, p)$
 	
 	\begin{align*}
-		\mathbb{E}(X) &= \sum_{\omega \in X(\Omega)}\omega \proba(X = \omega) \\
+		\esp(X) &= \sum_{\omega \in X(\Omega)}\omega \proba(X = \omega) \\
 		& = \sum_{k=0}^{n}k\proba(X=k) \\
 		&= \sum_{k=0}^{n}k \binom{n}{k} p^{k}(1-p)^{n-k} \\
 		&= \sum_{k=0}^{n}k \frac{n!}{k! (n-k)!} p^{k}(1-p)^{n-k} \\
@@ -6495,10 +6730,10 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		&= n p \sum_{j=0}^{n-1} \binom{n-1}{j} p^{j}(1-p)^{n-1-j} \\ \\
 		&= np (p + (1-p))^{n-1} = np
 	\end{align*}
-	Pour la variance, calculons d'abord $\mathbf{E}(X^{2})$
+	Pour la variance, calculons d'abord $\esp(X^{2})$
 	
 	\begin{align*}
-		\mathbf{E}(X^{2}) &= \sum _{k=0}^{n}k^{2} \proba(X=k^{2}) \\
+		\esp(X^{2}) &= \sum _{k=0}^{n}k^{2} \proba(X=k^{2}) \\
 		&=  \sum_{k=1}^{n} k \underbrace{ k \binom{n}{k} }_{ n \binom{n-1}{k-1} }p^{k}(1-p)^{n-k} \\
 		&= n \sum_{k=1}^{n} \underbrace{ k }_{ (k-1)+1 } \binom{n-1}{k-1} p^{k}(1-p)^{n-k} \\
 		&= n \sum_{k=1}^{n}(k-1)\binom{n-1}{k-1}p^{k}(1-p)^{n-k}+ n \sum_{k=1}^{n}\binom{n-1}{k-1}p^{k}(1-p)^{n-k} \\
@@ -6511,14 +6746,17 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 	
 	D'où,
 	$$
-	\mathbb{V}(X) = \mathbf{E}(X^{2}) - \mathbf{E}(X)^{2}=np((n-1)p+1)- n^{2} p ^{2}=np(1-p)
+	\variance(X) = \esp(X^{2}) - \esp(X)^{2}=np((n-1)p+1)- n^{2} p ^{2}=np(1-p)
 	$$
 	
-	\textbf{Calcul alternatif de $\mathbf{E^2}$} En utilisant la formule de transfert pour $f \leftarrow (x \mapsto x(x-1))$
+	\textbf{Calcul alternatif de $\mathbf{E^2}$} En utilisant la formule de transfert pour $f \leftarrow \left( \begin{matrix}
+		X(\Omega) &\to &\dots \\
+		x &\mapsto &x(x-1)
+	\end{matrix} \right)$
 	
 	
 	\begin{align*}
-		\mathbf{E}(X(X - 1)) &= \sum_{k=0}^{n}k(k-1)\proba(X=k) \\
+		\esp(X(X - 1)) &= \sum_{k=0}^{n}k(k-1)\proba(X=k) \\
 		&= \sum_{k=0}^{n}k(k-1)\binom{n}{k}p^{k}(1-p)^{n-k} \\
 		&= n(n-1) \sum_{k=2}^{n}\binom{n-2}{k-2}p^{k}(1-p)^{n-k} \\
 		&= n(n-1)p^{2} \sum_{j=0}^{n-2} \binom{n-2}{j}p^{j}(1-p)^{n-2-j} \\
@@ -6526,9 +6764,9 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		&= n(n-1)p^{2}
 	\end{align*}
 	
-	Donc en remarquant que $$\mathbf{E}(X^{2}) = \mathbf{E}(X(X-1)+X) = \mathbf{E}(X(X-1))+\mathbf{E}(X)= n(n-1)p^{2} + np$$
+	Donc en remarquant que $$\esp(X^{2}) = \esp(X(X-1)+X) = \esp(X(X-1))+\esp(X)= n(n-1)p^{2} + np$$
 	Donc
-	$$\mathbb{V}(X) = \mathbf{E}(X^{2})- \mathbf{E}(X)^{2} = n(n-1)p^{2} + np - n^{2}p^{2} = np(1-p)$$
+	$$\variance(X) = \esp(X^{2})- \esp(X)^{2} = n(n-1)p^{2} + np - n^{2}p^{2} = np(1-p)$$
 	
 	
 \end{question_kholle}

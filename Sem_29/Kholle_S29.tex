@@ -7,7 +7,7 @@
 \begin{document}
 \maketitle
 
-\begin{question_kholle}[{Le noyau d'un morphisme de groupe étant toujours un sous-groupe du groupe de départ, le groupe alterné d'indice $n \in \mathbb{N}^{*}$ est le sous groupe de $(\mathcal{S}_{n}, \circ)$ obtenu en considérant le noyau du morphisme signature.
+\begin{question_kholle}[{Le noyau d'un morphisme de groupe étant toujours un sous-groupe du groupe de départ, le groupe alterné d'indice $n \in \N^{*}$ est le sous groupe de $(\mathcal{S}_{n}, \circ)$ obtenu en considérant le noyau du morphisme signature.
     $$
     \mathcal{A}_{n}= \ker \varepsilon
     $$
@@ -43,8 +43,8 @@ $$
     \end{itemize}
 \end{question_kholle}
 \begin{question_kholle}[{
-    Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie et $F \in \mathcal{L}_{\mathbb{K}}(E)$
-    $$\exists!\lambda \in \mathbb{K} : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
+    Soit $E$ un $\K$-espace vectoriel de dimension finie et $F \in \mathcal{L}_{\K}(E)$
+    $$\exists!\lambda \in \K : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
     On appelle ce $\lambda$ \underline{le} déterminant de l'endomorphisme $f$.
     }]{Définition du déterminant d'un endomorphisme}
     
@@ -54,11 +54,11 @@ $$
         Soit $\mathcal{B}_{0}= (e_{1}, \dots, e_{n})$ une base de $E$ fixée.
         L'application
 $$
-        \varphi \left|\begin{array}{ll} E^{n} &\to \mathbb{K} \\ (u_{1}, \dots, u_{n}) &\mapsto \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) \end{array}\right.
+        \varphi \left|\begin{array}{ll} E^{n} &\to \K \\ (u_{1}, \dots, u_{n}) &\mapsto \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) \end{array}\right.
 $$
         est
         \begin{itemize}
-            \item Une forme n-linéaire :  soient $(u_{1}, \dots, u_{n}) \in E^{n}$ fixés quelconques $(u, v, \lambda) \in E^{2} \times \mathbb{K}$
+            \item Une forme n-linéaire :  soient $(u_{1}, \dots, u_{n}) \in E^{n}$ fixés quelconques $(u, v, \lambda) \in E^{2} \times \K$
             
             \begin{align*}
                 \varphi (v+\lambda.w, u_{2}, \dots, u_{n})  & = \det_{\mathcal{B}_{0}}(f(v+\lambda.w), f(u_{2}), \dots, f(u_{n})) \\
@@ -76,11 +76,11 @@ $$
 $$
             \varphi(u_{1}, \dots, u_{n})=\det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) = 0
 $$
-            Donc $\varphi \in \land_{\mathbb{K}}^{n} = \text{Vect}\{ \det_{\mathcal{B}_{0}} \}$
+            Donc $\varphi \in \land_{\K}^{n} = \text{Vect}\{ \det_{\mathcal{B}_{0}} \}$
         \end{itemize}
         Donc
 $$
-        \exists \lambda_{\mathcal{B}_{0}}\in \mathbb{K}: \varphi = \lambda_{\mathcal{B}_{0}}.\det_{\mathcal{B_{0}}}
+        \exists \lambda_{\mathcal{B}_{0}}\in \K: \varphi = \lambda_{\mathcal{B}_{0}}.\det_{\mathcal{B_{0}}}
 $$
         d'où,
 $$
@@ -97,7 +97,7 @@ $$
         Par conséquent, $\lambda_{\mathcal{B}_{0}}$ convient pour toute base $\mathcal{B}$.
         
         \item \underline{Unicité}
-        Soit $\lambda \in \mathbb{K}$ tel que
+        Soit $\lambda \in \K$ tel que
 $$
         \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})
 $$
@@ -115,14 +115,14 @@ $$
 \end{question_kholle}
 \begin{question_kholle}
     [{\begin{enumerate}
-        \item $\forall (f, g) \in \mathcal{L}_{\mathbb{K}}(E)^{2}, \det (f \circ g) = \det f \times \det g$
+        \item $\forall (f, g) \in \mathcal{L}_{\K}(E)^{2}, \det (f \circ g) = \det f \times \det g$
         
-        \item $\forall f \in \mathcal{L}_{K}(E), f \in \mathcal{GL}_{\mathbb{K}}(E) \iff \det f \neq 0$
+        \item $\forall f \in \mathcal{L}_{K}(E), f \in \mathcal{GL}_{\K}(E) \iff \det f \neq 0$
     \end{enumerate}
-    }]{Démontrer que le déterminant est un morphisme de $(\mathcal{L}_{\mathbb{K}}(E), \circ)$ dans $(\mathbb{K}, \times)$, application à la caractérisation des automorphismes}
+    }]{Démontrer que le déterminant est un morphisme de $(\mathcal{L}_{\K}(E), \circ)$ dans $(\K, \times)$, application à la caractérisation des automorphismes}
     Fixons $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base de $E$
     \begin{enumerate} 
-        \item Soient $(f, g) \in \mathcal{L}_{\mathbb{K}}(E)^{2}$ fixés quelconques.
+        \item Soient $(f, g) \in \mathcal{L}_{\K}(E)^{2}$ fixés quelconques.
         
         \begin{align*}
             \det (f \circ  g) &= \det_{\mathcal{B}}((f \circ g)(e_{1}), \dots, (f \circ  g)(e_{n})) \\
@@ -134,9 +134,9 @@ $$
         
         
         
-        \item Soit $f \in \mathcal{L}_{\mathbb{K}}(E)$
+        \item Soit $f \in \mathcal{L}_{\K}(E)$
         \begin{itemize}
-            \item Supposons $f \in \mathcal{GL}_{\mathbb{K}}(E)$
+            \item Supposons $f \in \mathcal{GL}_{\K}(E)$
             Appliquons la relation de morphisme pour $g \leftarrow f^{-1}$
 $$
             \underbrace{ \det(f \circ  f^{-1}) }_{ = \det \mathrm{Id}_{E} } = \det f \times \det f^{-1}
@@ -151,7 +151,7 @@ $$
         \end{itemize}
     \end{enumerate}
 \end{question_kholle}
-\begin{question_kholle}[{Soit $A \in \mathcal{M}_{n}(\mathbb{K})$.
+\begin{question_kholle}[{Soit $A \in \mathcal{M}_{n}(\K)$.
     Alors $A \times (\mathrm{com} A)^{T} = (\mathrm{com}A)^{T}\times A = \det A \times I_{n}$
     }]{Produit d'une matrice carrée par la transposée de sa comatrice.}
     
@@ -206,7 +206,7 @@ $$
         \item On montre de même le produit dans l'autre sens.
     \end{itemize}
 \end{question_kholle}
-\begin{question_kholle}[{  Le système linéaire $AX=B$ d'inconnue $X \in \mathcal{M}_{n,1}(\mathbb{K})$ et de paramètre $B \in \mathcal{M}_{n,1}(\mathbb{K})$ est dit "de Cramer" s'il admet une unique solution, à savoir si $A$ est une matrice inversible. Dans ce cas, la solution peut être exprimée explicitement par la formule $A^{-1}B$ qui donne la formule dite de Cramer:
+\begin{question_kholle}[{  Le système linéaire $AX=B$ d'inconnue $X \in \mathcal{M}_{n,1}(\K)$ et de paramètre $B \in \mathcal{M}_{n,1}(\K)$ est dit "de Cramer" s'il admet une unique solution, à savoir si $A$ est une matrice inversible. Dans ce cas, la solution peut être exprimée explicitement par la formule $A^{-1}B$ qui donne la formule dite de Cramer:
     $$
     \left( \frac{
     \bigg| 
@@ -228,7 +228,7 @@ $$
     \bigg| 
     }{\det A} \right)
     $$
-    où $(C_{1}, \dots, C_{n}) \in \mathcal{M}_{n,1}(\mathbb{K})^{n}$ sont les colonnes de $A$.
+    où $(C_{1}, \dots, C_{n}) \in \mathcal{M}_{n,1}(\K)^{n}$ sont les colonnes de $A$.
     }]{Formule de Cramer}
     
     Partons de l'expression de l'inverse avec la comatrice:
@@ -247,11 +247,11 @@ $$
 \begin{question_kholle}{Calcul du déterminant de Vandermonde}
 Posons
     $$
-\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \mathbb{K}^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{1\leqslant i < j \leqslant n}(a_{j} - a_{i})
+\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \K^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{1\leqslant i < j \leqslant n}(a_{j} - a_{i})
 $$
 \begin{itemize}[label=$\lozenge$]
     \item \underline{Initialisation} $n \leftarrow 2$
-Soient $(a_{0}, a_{1}) \in \mathbb{K}^{2}$
+Soient $(a_{0}, a_{1}) \in \K^{2}$
 $$
 \left| \begin{matrix}
 1 & 1 \\
@@ -261,8 +261,8 @@ $$
 
 
 
-\item \underline{Hérédité}, soit $n \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
-Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \mathbb{K}^{n+2}$ fixés quelconques.
+\item \underline{Hérédité}, soit $n \in \N^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
+Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \K^{n+2}$ fixés quelconques.
 \begin{itemize}
     \item Supposons que les éléments de $\left\{ a_{0}, \dots, a_{n+1} \right\}$ ne sont pas tous deux à deux distincts.
     
@@ -280,7 +280,7 @@ a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n} & X^{n} \\
 a_{0}^{n+1} & a_{1}^{n+1} & a_{2}^{n+1} & \dots & a_{n}^{n+1} & X^{n+1}
 \end{matrix} \right| 
 $$
-Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \mathbb{K}[X]$ (car $\mathbb{K}[X]$ est un anneau et donc stable par produit).
+Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \K[X]$ (car $\K[X]$ est un anneau et donc stable par produit).
 De plus, en développant le déterminant $Q(X)$ selon sa dernière colonne, on observe d'une part que $\deg Q \leqslant n+1$ et d'autre part que le coefficient de $X^{n+1}$ est le cofacteur de $X^{n+1}$ qui est, d'après $\mathcal{P}(n)$
 $$
 \prod_{0\leqslant i<j \leqslant n}(a_{j}-a_{i})
