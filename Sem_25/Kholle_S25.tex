@@ -101,37 +101,91 @@ $$}]{Lien composée des applications linéaires et produit des matrices les repr
 
 \begin{question_kholle}[
 	Soient $(E, F)$ deux $\mathbb{K}$-espaces vectoriels de dimension finie, $u \in \mathcal{L}_{\mathbb{K}}(E, F)$, $\mathcal{B}_{E}$ et $\mathcal{B}_{E}'$ deux bases de $E$, $\mathcal{B}_{F}$ et $\mathcal{B}_{F}'$ deux bases de $F$
-
-Posons $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})$ et $U' = \mathrm{mat}(u, \mathcal{B}_{E}', \mathcal{B}_{F}')$, $P = \mathcal{P}(\mathcal{B}_{E} \to \mathcal{B}_{E}')$, et $Q = \mathcal{P}(\mathcal{B}_{F} \to \mathcal{B}_{F}')$
-
-Alors 
-$$
-U' = Q^{-1} U P
-$$
-]{Preuve de la formule de changement de base pour une application linéaire, cas particulier d'un endomorphisme lu dans la même base au départ et à l'arrivée.}
 	
-
-Soit $X \in \mathcal{M}_{n, 1}(\mathbb{K})$, où $\dim E = n$.
-Posons $x = \Psi_{\mathcal{B}_{E}}^{-1}(X)$ et $Y = \Psi_{\mathcal{B}_{F}}(u(x))$.
-
-Puisque $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})$, $Y = UX$
-
-Posons $X' = \Psi_{\mathcal{B}_{E}'}(x)$et $Y' = \Psi_{\mathcal{B}_{F}'}(u(x))$.
-La formule pour le changement de base pour les vecteurs donne $X = PX'$ et $Y =QY'$
-Donc, puisque $U' = \mathrm{mat}(u, \mathcal{B}_{E}', \mathcal{B}_{F}')$
-
-\begin{align*}
-Y'  & = U' X' \\
-\implies Q^{-1}Y  & = U' P^{-1} X \\ 
-&\text{ puisque }Y=UX\\
-\implies Q^{-1}U X  & = U' P^{-1}X  \\
-&\text{ en particularisant pour }I_{n}\\
-\implies Q^{-1}U &= U' P^{-1} \\
-\implies U' &= Q^{-1}UP
-\end{align*}
-
+	Posons $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})$ et $U' = \mathrm{mat}(u, \mathcal{B}_{E}', \mathcal{B}_{F}')$, $P = \mathcal{P}(\mathcal{B}_{E} \to \mathcal{B}_{E}')$, et $Q = \mathcal{P}(\mathcal{B}_{F} \to \mathcal{B}_{F}')$
+	
+	Alors 
+$$
+	U' = Q^{-1} U P
+$$
+	]{Preuve de la formule de changement de base pour une application linéaire, cas particulier d'un endomorphisme lu dans la même base au départ et à l'arrivée.}
+	
+	
+	Soit $X \in \mathcal{M}_{n, 1}(\mathbb{K})$, où $\dim E = n$.
+	Posons $x = \Psi_{\mathcal{B}_{E}}^{-1}(X)$ et $Y = \Psi_{\mathcal{B}_{F}}(u(x))$.
+	
+	Puisque $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})$, $Y = UX$
+	
+	Posons $X' = \Psi_{\mathcal{B}_{E}'}(x)$et $Y' = \Psi_{\mathcal{B}_{F}'}(u(x))$.
+	La formule pour le changement de base pour les vecteurs donne $X = PX'$ et $Y =QY'$
+	Donc, puisque $U' = \mathrm{mat}(u, \mathcal{B}_{E}', \mathcal{B}_{F}')$
+	
+	\begin{align*}
+		Y'  & = U' X' \\
+		\implies Q^{-1}Y  & = U' P^{-1} X \\ 
+		&\text{ puisque }Y=UX\\
+		\implies Q^{-1}U X  & = U' P^{-1}X  \\
+		&\text{ en particularisant pour }I_{n}\\
+		\implies Q^{-1}U &= U' P^{-1} \\
+		\implies U' &= Q^{-1}UP
+	\end{align*}
+	
 \end{question_kholle}
 \begin{question_kholle}{Montrer que la trace de $AB$ est égale à la trace de $BA$ (deux matrices carrées), et application à la définition de la trace de deux endomorphismes}
+	Soient $(A, B) \in \mathcal{M}_{n, p}(\mathbb{K})\times \mathcal{M}_{p,n}(\mathbb{K})$. Alors $\mathrm{Tr}(AB)= \mathrm{Tr}(BA)$
+	
+	\begin{itemize}[label=$\lozenge$]
+		\item Preuve de l'égalité de la trace
+		\begin{align*}
+			\mathrm{Tr}(AB) = \sum_{i=1}^{n}[A\times B]_{i,i} = \sum_{i=1}^{n}\sum_{k=1}^{p}A_{i,k}B_{k,i}=\sum_{k=1}^{p}\sum_{i=1}^{n}B_{k, i}A_{i, k}= \sum_{k=1}^{p}[B\times A]_{kk}= \mathrm{Tr}(BA)
+		\end{align*}
+		
+		
+		\item Soit $E$ un espace vectoriel de dimension finie $u \in \mathcal{L}_{\mathbb{K}}(E)$. Soit $\mathcal{B}_{0}$ une base de $E$ fixée quelconque
+		Posons $\lambda = \mathrm{Tr}(\mathrm{mat}(u, \mathcal{B}_{0})$)
+		Soit $\mathcal{B}$ une autre base de $E$ fixée quelconque, considérons $P = \mathcal{P}(\mathcal{B}_{0} \to \mathcal{B})$ la matrice de passage de $\mathcal{B}_{0}$ à $\mathcal{B}$.
+		D'après la formule de changement de base
+$$
+		\mathrm{mat}(u, \mathcal{B}) = P^{-1} \times \mathrm{mat}(u, \mathcal{B}_{0})\times P
+$$
+		donc
+		
+		\begin{align*}
+			\mathrm{Tr}(\mathrm{mat}(u, \mathcal{B})) &= \mathrm{Tr}(P^{-1} \mathrm{mat}(u, \mathcal{B}_{0})P) \\
+			&= \mathrm{Tr}(\mathrm{mat}(u, \mathcal{B}_{0})P P^{-1}) \text{ d'après la preuve précédente} \\
+			&= \mathrm{Tr}(\mathrm{mat}(u, \mathcal{B}_{0}))
+		\end{align*}
+		
+		D'où l'existence de la trace $\lambda$ commune à toutes les matrices représentant $u$ dans la même base au départ et à l'arrivée.
+		On a évidemment unicité de ce scalaire, que l'on apelle la trace de l'endomorphisme $u$.
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Égalité rang trace pour un projecteur}
+	Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie $n \in \mathbb{N}^{*}$, et $p$ un projecteur de $E$.
+	
+	Puisque $p$ est un projecteur, on peut l'expliciter selon son image et son noyau
+	
+$$
+	p \left|\begin{matrix} E &= &\mathrm{Im}(p) &\oplus &\mathrm{Ker}(p) &\to &E \\ x &= &x_{I} &+ &x_{K} &\mapsto &x_{I} \end{matrix}\right.
+$$
+	Notons donc $r = \dim \mathrm{Im}(p) = \mathrm{rg}(p)$. Le théorème d'existence de base assure l'existence de $(e_{1}, \dots, e_{r})$ base de $\mathrm{Im}(p)$, de même, en notant $(e_{r+1}, \dots, e_{n})$ une base de $\mathrm{Ker}(p)$, puisque les espaces sont supplémentaires, on sait que $\mathcal{B}= (e_{1}, \dots, e_{r}, e_{r+1},\dots, e_{n})$ est une base de $E$.
+	
+	Ainsi
+$$
+	\mathrm{mat}(p, \mathcal{B}) = \left[ \begin{array}{cccc|ccc}
+		1 & 0 & \dots & 0 & 0 & \dots & 0 \\
+		0 & 1 & \dots & 0 & 0 & \dots & 0 \\
+		\vdots & \vdots & \ddots & \vdots  & \vdots & \ddots & \vdots \\
+		0 & 0 & \dots & 1 & 0 & \dots & 0\\
+		\hline 0 & 0 & \dots & 0 & 0 & \dots & 0 \\
+		\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+		0 & 0 & \dots & 0 & 0 & \dots & 0
+	\end{array} \right] = \left[ \begin{array}{c|c}
+		I_{r} & 0_{r, n-r} \\
+		\hline 0_{n-r, r} & 0_{n-r, n-r}
+	\end{array} \right] = J_{r}(n,n)
+$$
+	Donc $\mathrm{Tr}(p) = \mathrm{Tr}(\mathrm{mat}(p, \mathcal{B})) = r = \mathrm{rg}(p)$
 	
 \end{question_kholle}
 \end{document}
