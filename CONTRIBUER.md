@@ -79,13 +79,13 @@ Par exemple,
 
 - Les **espaces vectoriels** \Vect pour l'accronyme de "sous-espace vectoriel engendré par", \ev[corps] pour "corps-espace vectoriel" (le corps est factultatif), \evs pour le pluriel, \sev pour 'sous-espace vectoriel', \sevs au pluriel, \rg pour rg  (en mode math) (le rang d'une application linéaire)
 
-- Les **familles** quelconques \famille[variable muette]{nom de la famille}{ensemble indexant} ( \famille[k]{\sigma}{[\\![0;n]\\!]} por les fonctions symétriques élémentaires ), presque nulles \fpnulle[ensemble indexant (facultatif)]{nom de la famille}{ensemble de base} (par exemple \famille{\lambda}{E} pour une famille de vecteurs de E) et finies \ffinie[variable muette]{nom de la famille}{nombre d'éléments}{ensemble de base}
+- Les **familles** quelconques \famille[variable muette(i par défaut)]{nom de la famille}{ensemble indexant} ( \famille[k]{\sigma}{[\\![0;n]\\!]} por les fonctions symétriques élémentaires ), presque nulles \fpnulle[ensemble indexant (facultatif)]{nom de la famille}{ensemble de base} (par exemple \famille{\lambda}{E} pour une famille de vecteurs de E) et finies \ffinie[variable muette]{nom de la famille}{nombre d'éléments}{ensemble de base}
 
-- Les **probabilités** \proba pour le P majuscule d'une probabilité
+- Les **probabilités** \proba pour le P majuscule d'une probabilité, \esp pour le E majuscule de l'espérance et \variance pour le V majuscule de la variance
 
 - Pour les **flemmards**, \fq pour 'fixé quelconque' et \tq pour 'tel que' (ajouter '+' pour le féminin puis '\*' pour le pluriel, par exemple, \fq+* pour 'fixées quelconques', \tq* pour 'tels que'); \ssi pour 'si et seulement si', \ii pour `_{i \in I}`, \bdak pour `(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}}`
 
-- Si ils manquent des questions, la command \setnbquestion{} permet de fixer manuellement le **numéro de la question**.
+- Si il manque des questions, la command \setnbquestion{} permet de fixer manuellement le **numéro de la question**.
 
 Et voilà !!!
 

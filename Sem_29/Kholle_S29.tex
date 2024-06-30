@@ -1,0 +1,310 @@
+\documentclass{article}
+\usepackage{braket}
+
+\date{22 juin 2024}
+\usepackage[nb-sem=29, auteurs={George Ober}]{../kholles}
+
+\begin{document}
+\maketitle
+
+\begin{question_kholle}[{Le noyau d'un morphisme de groupe étant toujours un sous-groupe du groupe de départ, le groupe alterné d'indice $n \in \N^{*}$ est le sous groupe de $(\mathcal{S}_{n}, \circ)$ obtenu en considérant le noyau du morphisme signature.
+    $$
+    \mathcal{A}_{n}= \ker \varepsilon
+    $$
+    $\mathcal{A}_{n}$ est de cardinal $\frac{n!}{2}$
+    }]{Définition et cardinal du sous-groupe alternée $\mathcal{A}_n$}
+    
+    
+    Fixons $\tau = (1, 2)$
+    Considérons
+    $$\Phi \left|\begin{array}{ll} \mathcal{A}_{n} &\to \mathcal{S}_{n} \setminus \mathcal{A}_{n} \\ \sigma &\mapsto \sigma \circ \tau \end{array}\right.$$
+    \begin{itemize}
+        \item 
+        
+        $\Phi$ est bien définie: soit $\sigma \in \mathcal{A}_{n}$ fixée quelconque. Par propriété de morphisme de la signature, $\varepsilon(\sigma \circ \tau) = \varepsilon(\sigma) \times \varepsilon(\tau) = 1 \times (-1) = -1$ donc $\sigma \circ \tau \not\in \mathcal{A}_{n}$ donc $\Phi(\sigma) \in \mathcal{S}_{n}\setminus \mathcal{A}_{n}$
+        
+        \item De plus, $\Phi$ est bijective en considérant 
+$$\Psi\left|\begin{array}{ll} \mathcal{S}_{n}\setminus \mathcal{A}_{n} &\to \mathcal{A}_{n} \\ \sigma &\mapsto \sigma \circ  \tau \end{array}\right.$$
+$\Psi \circ \Phi = \mathrm{Id}_{\mathcal{A}_{n}}$ et $\Phi \circ \Psi = \mathrm{Id}_{\mathcal{S}_{n}\setminus \mathcal{A}_{n}}$
+    \end{itemize}
+    Ainsi,
+$$
+    \lvert \mathcal{A}_{n} \rvert  = \lvert \mathcal{S}_{n}\setminus \mathcal{A}_{n} \rvert  = \lvert \mathcal{S}_{n} \rvert - \lvert \mathcal{A}_{n} \rvert 
+$$
+    D'où $\lvert \mathcal{A}_{n} \rvert = \frac{\lvert \mathcal{S}_{n} \rvert}{2} = \frac{n!}{2}$
+\end{question_kholle}
+\begin{question_kholle}{Caractérisation des bases par le déterminant}
+    \begin{itemize}[label=$\star$]
+        \item Supposons que la famille $\mathcal{B'} =(u_{1}, \dots, u_{n}) \in E^{n}$ est une base de $E$.
+        $$\det_{\mathcal{B}}\mathcal{B'}\times \det_{\mathcal{B'}}\mathcal{B} = 1 \implies \det _{\mathcal{B}}\mathcal{B'} \neq 0$$
+        
+        \item Supposons qu'il existe une base $\mathcal{B}$ telle que $\det_{\mathcal{B}} \mathcal{B}' \neq 0$
+        Si $\mathcal{B}'$ était liée, le déterminant serait nul, donc en contraposant, $\mathcal{B}'$ n'est pas liée, et est de cardinal $n$, c'est une base.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{
+    Soit $E$ un $\K$-espace vectoriel de dimension finie et $F \in \mathcal{L}_{\K}(E)$
+    $$\exists!\lambda \in \K : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
+    On appelle ce $\lambda$ \underline{le} déterminant de l'endomorphisme $f$.
+    }]{Définition du déterminant d'un endomorphisme}
+    
+    \begin{itemize}[label=$\lozenge$]
+        \item \underline{Existence}
+        
+        Soit $\mathcal{B}_{0}= (e_{1}, \dots, e_{n})$ une base de $E$ fixée.
+        L'application
+$$
+        \varphi \left|\begin{array}{ll} E^{n} &\to \K \\ (u_{1}, \dots, u_{n}) &\mapsto \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) \end{array}\right.
+$$
+        est
+        \begin{itemize}
+            \item Une forme n-linéaire :  soient $(u_{1}, \dots, u_{n}) \in E^{n}$ fixés quelconques $(u, v, \lambda) \in E^{2} \times \K$
+            
+            \begin{align*}
+                \varphi (v+\lambda.w, u_{2}, \dots, u_{n})  & = \det_{\mathcal{B}_{0}}(f(v+\lambda.w), f(u_{2}), \dots, f(u_{n})) \\
+                &= \det_{\mathcal{B}_{0}}(f(v)+ \lambda.f(w), f(u_{2}), \dots, f(u_{n})) \text{ par linéarité de }f\\
+                &= \det_{\mathcal{B}_{0}}(f(v), f(u_{2}), \dots, f(u_{n})) + \lambda \times \det_{\mathcal{B}_{0}}(f(w), f(u_{2}), \dots, f(u_{n}))\\
+                & \text{ par linéarité de } \det_{\mathcal{B}_{0}} \\
+                &= \varphi(v, u_{2}, \dots, u_{n})+ \lambda \times \varphi(w, u_{2}, \dots, u_{n})
+            \end{align*}
+            
+            Par conséquent, $\varphi$ est linéaire en son premier argument.
+            On prouve de même que $\varphi$ est linéaire en ses $n-1$ autres arguments, ce qui montre sa $n$-linéarité.
+            
+            \item Alternée
+            Soient $(u_{1}, \dots, u_{n}) \in E^{n}$ tels qu'il existe $(i, j) \in [ \! [ 1, n ] \!]^{2}$ tels que $i \neq j$ et $u_{i} = u_{j}$ alors on a aussi $f(u_{i}) = f(u_{j})$, si bien que le caractère alterné de $\det_{\mathcal{B}_{0}}$
+$$
+            \varphi(u_{1}, \dots, u_{n})=\det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) = 0
+$$
+            Donc $\varphi \in \land_{\K}^{n} = \text{Vect}\{ \det_{\mathcal{B}_{0}} \}$
+        \end{itemize}
+        Donc
+$$
+        \exists \lambda_{\mathcal{B}_{0}}\in \K: \varphi = \lambda_{\mathcal{B}_{0}}.\det_{\mathcal{B_{0}}}
+$$
+        d'où,
+$$
+        \forall (u_{1}, \dots, u_{n}) \in E^{n}, \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n}))= \lambda_{\mathcal{B}_{0}}\times \det_{\mathcal{B_{0}}}(u_{1}, \dots, u_{n})
+$$
+        Soit $\mathcal{B}$ une base de $E$ fixée quelconque. Nous savons que
+$$
+        \det_{\mathcal{B}} = \det_{\mathcal{B}} \mathcal{B}_{0} . \det_{\mathcal{B}_{0}}
+$$
+        Donc en multipliant la relation précédente par $\det_{\mathcal{B}}\mathcal{B}_{0}$,
+$$
+        \forall (u_{1}, \dots, u_{n}) \in E^{n}, \underbrace{ \det_{\mathcal{B}}\mathcal{B}_{0} \times \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) }_{ \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n})) }= \lambda_{\mathcal{B}_{0}} \times \underbrace{ \det_{\mathcal{B}}\mathcal{B}_{0} \times \det_{\mathcal{B_{0}}}(u_{1}, \dots, u_{n}) }_{ \det_{\mathcal{B}}(u_{1}, \dots, u_{n}) }
+$$
+        Par conséquent, $\lambda_{\mathcal{B}_{0}}$ convient pour toute base $\mathcal{B}$.
+        
+        \item \underline{Unicité}
+        Soit $\lambda \in \K$ tel que
+$$
+        \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})
+$$
+        Particularisons pour $\mathcal{B}\leftarrow \mathcal{B}_{0}$ et $(u_{1}, \dots, u_{n})\leftarrow \mathcal{B}_{0}$
+$$
+        \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n})) = \lambda \times \det_{\mathcal{B}_{0}}\mathcal{B}_{0} = \lambda \times 1
+$$
+        Donc $\lambda = \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n}))$
+        Or, en particularisant la relation définissant $\lambda_{\mathcal{B}_{0}}$ pour $(u_{1}, \dots, u_{n}) \leftarrow \mathcal{B}_{0}$
+$$
+        \lambda_{\mathcal{B}_{0}} = \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n}))
+$$
+        donc $\lambda = \lambda_{\mathcal{B}_{0}}$
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}
+    [{\begin{enumerate}
+        \item $\forall (f, g) \in \mathcal{L}_{\K}(E)^{2}, \det (f \circ g) = \det f \times \det g$
+        
+        \item $\forall f \in \mathcal{L}_{K}(E), f \in \mathcal{GL}_{\K}(E) \iff \det f \neq 0$
+    \end{enumerate}
+    }]{Démontrer que le déterminant est un morphisme de $(\mathcal{L}_{\K}(E), \circ)$ dans $(\K, \times)$, application à la caractérisation des automorphismes}
+    Fixons $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base de $E$
+    \begin{enumerate} 
+        \item Soient $(f, g) \in \mathcal{L}_{\K}(E)^{2}$ fixés quelconques.
+        
+        \begin{align*}
+            \det (f \circ  g) &= \det_{\mathcal{B}}((f \circ g)(e_{1}), \dots, (f \circ  g)(e_{n})) \\
+            &= \det_{\mathcal{B}}(f(g(e_{1})), \dots, f(g(e_{n}))) \\
+            &= \det f \times \det_{\mathcal{B}}(g(e_{1}), \dots, g(e_{n})) \text{ par définition du déterminant d'un endomorphisme} \\
+            &= \det f \times \det g \times \det_{\mathcal{B}}(e_{1}, \dots, e_{n}) \\
+            &= \det f \times \det g
+        \end{align*}
+        
+        
+        
+        \item Soit $f \in \mathcal{L}_{\K}(E)$
+        \begin{itemize}
+            \item Supposons $f \in \mathcal{GL}_{\K}(E)$
+            Appliquons la relation de morphisme pour $g \leftarrow f^{-1}$
+$$
+            \underbrace{ \det(f \circ  f^{-1}) }_{ = \det \mathrm{Id}_{E} } = \det f \times \det f^{-1}
+$$
+            Or, $\det \mathrm{Id}_{E}= \det_{\mathcal{B}}(e_{1}, \dots, e_{n}) = 1$ si bien que $\det f \times \det f^{-1} = 1$ on en déduit que $\det f \neq 0$ et d'autre part que $\det (f^{-1}) = \frac{1}{\det f}$
+            \item Supposons que $\det f \neq 0$
+            Par définition du déterminant d'un endomorphisme
+$$
+            \det_{\mathcal{B}}(f(e_{1}), \dots, f(e_{n})) = \det f \times \det_{\mathcal{B}}(e_{1}, \dots, e_{n}) = \det f
+$$
+            Donc $\det_{\mathcal{B}}(f(e_{1}), \dots, f(e_{n})) \neq 0$ si bien que $(f(e_{1}), \dots, f(e_{n}))$ est une base de $E$, donc $f$ envoie une base sur une base : c'est un automorphisme.
+        \end{itemize}
+    \end{enumerate}
+\end{question_kholle}
+\begin{question_kholle}[{Soit $A \in \mathcal{M}_{n}(\K)$.
+    Alors $A \times (\mathrm{com} A)^{T} = (\mathrm{com}A)^{T}\times A = \det A \times I_{n}$
+    }]{Produit d'une matrice carrée par la transposée de sa comatrice.}
+    
+    \begin{itemize}[label=$\lozenge$]
+        \item Montrons que $A \times (\mathrm{com}A)^{T}=\det A \times I_{n}$
+        Soient $(i, j) \in [ \! [ 1, n ] \!]$ fixés quelconques
+        
+        \begin{align*}
+            [A \times (\mathrm{com}A)^{T}]_{i,j} &= \sum_{k=1}^{n}A_{i,k}[(\mathrm{com}A)^{T}]_{k,j} \\
+            &=\sum_{k=1}^{n}A_{i,k}(\mathrm{com}A)_{j,k} \\
+            &= \sum _{k=1}^{n}A_{i,k}\times (-1)^{k+j}\Delta_{j,k}
+        \end{align*}
+        
+        \begin{itemize}[label=$\star$]
+            \item Supposons que $i = j$ nous obtenons
+$$
+            [A\times(\mathrm{com}A)^{T}]_{i,i} = \sum_{k=1}^{n}A_{i,k}\times(-1)^{k+i}\Delta_{i,k} = \det A
+$$
+            D'après la formule du développement du déterminant de $A$ selon la $i$-ième ligne.
+            
+            \item Supposons que $i \neq j$
+            La formule peut être interprétée comme le développement selon la $i$-ième ligne du déterminant de la matrice obtenue à partir de $A$ en remplaçant sa $j$-ième ligne par sa $i$-ième ligne:
+            
+            \begin{align*}
+                \left[ A\times (\mathrm{com}A)^{T} \right] _{i,j} &= \sum_{k=1}^{n}A_{i,k}\times(-1)^{k+j}\Delta_{j,k} \\
+                &=\left| \begin{array}{c}
+                    L_{1} \\
+                    \hline 
+                    \vdots \\
+                    \hline
+                    L_{i-1} \\
+                    \hline 
+                    L_{i} \\
+                    \hline L_{i+1} \\
+                    \hline \vdots \\
+                    \hline L_{j-1} \\
+                    \hline L_{i} \\
+                    \hline L_{i+1} \\
+                    \hline \vdots \\
+                    \hline L_{n}
+                \end{array} \right|  \\
+                &=0
+            \end{align*}
+            
+            Car les lignes d'indice $i$ et $j$ sont identiques.
+            Ainsi, pour tout $(i, j) \in [ \! [ 1, n ] \!]^{2}, [A\times(\mathrm{com}A)^{T}]_{i,j}=\delta_{i,j}\times \det A$
+            Donc
+$$
+            [A\times(\mathrm{com}A)^{T}]_{i,j}=\det A\times I_{n}
+$$
+        \end{itemize}
+        \item On montre de même le produit dans l'autre sens.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{  Le système linéaire $AX=B$ d'inconnue $X \in \mathcal{M}_{n,1}(\K)$ et de paramètre $B \in \mathcal{M}_{n,1}(\K)$ est dit "de Cramer" s'il admet une unique solution, à savoir si $A$ est une matrice inversible. Dans ce cas, la solution peut être exprimée explicitement par la formule $A^{-1}B$ qui donne la formule dite de Cramer:
+    $$
+    \left( \frac{
+    \bigg| 
+    B\mid C_{2}\mid\dots \mid C_{n}
+    \bigg| 
+    }{\det A}, \dots, \frac{
+    \bigg|
+    C_{1} \mid
+    \dots \mid
+    C_{i-1}\mid
+    B \mid
+    C_{i+1}\mid
+    \dots \mid
+    C_{n}
+    \bigg|
+    }{\det A}, \dots, \frac{
+    \bigg| 
+    C_{1}\mid C_{2}\mid\dots \mid B
+    \bigg| 
+    }{\det A} \right)
+    $$
+    où $(C_{1}, \dots, C_{n}) \in \mathcal{M}_{n,1}(\K)^{n}$ sont les colonnes de $A$.
+    }]{Formule de Cramer}
+    
+    Partons de l'expression de l'inverse avec la comatrice:
+    $$X = A^{-1}B= \frac{1}{\det A}(\mathrm{com}A)^{T} B$$
+    Soit $i \in [ \! [ 1, n ] \!]$.
+    
+    \begin{align*}
+        X_{i, 1} &= \frac{1}{\det A}[(\mathrm{com}A)^{T}B]_{i,j} \\
+        &= \frac{1}{\det A}\sum_{k=1}^{n}[(\mathrm{com}A)^{T}]_{i,k}B_{k,1} \\
+        &= \frac{1}{\det A}\sum_{k=1}^{n}(\mathrm{com}A)_{k,i}B_{k, 1} \\
+        &= \frac{1}{\det A}\sum_{k=1}^{n}(-1)^{k+i}\Delta_{k,i}B_{k, 1} \\
+        &\text{qui s'interprète comme le développement selon la $i$-ième colonne de la matrice} \\
+        &= \frac{1}{\det A}\Bigg|C_{1}\Bigg|\dots\Bigg|C_{i-1}\Bigg|B\Bigg|C_{i+1}\Bigg|\dots\Bigg|C_{n}\Bigg|
+    \end{align*}
+\end{question_kholle}
+\begin{question_kholle}{Calcul du déterminant de Vandermonde}
+Posons
+    $$
+\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \K^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{1\leqslant i < j \leqslant n}(a_{j} - a_{i})
+$$
+\begin{itemize}[label=$\lozenge$]
+    \item \underline{Initialisation} $n \leftarrow 2$
+Soient $(a_{0}, a_{1}) \in \K^{2}$
+$$
+\left| \begin{matrix}
+1 & 1 \\
+a_{0} & a_{1}
+\end{matrix}\right| = a_{1} - a_{0}
+$$
+
+
+
+\item \underline{Hérédité}, soit $n \in \N^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
+Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \K^{n+2}$ fixés quelconques.
+\begin{itemize}
+    \item Supposons que les éléments de $\left\{ a_{0}, \dots, a_{n+1} \right\}$ ne sont pas tous deux à deux distincts.
+    
+    Alors le déterminant à calculer possède deux colonnes identiques donc il est nul, et la formule avec laquelle il doit coïncider s'annule également, donc $\mathcal{P}(n+1)$ est vraie dans ce cas
+
+    \item Supposons que les éléments de $\left\{ a_{0} ,\dots, a_{n+1} \right\}$ sont tous distincts.
+Notons
+$$
+Q(X) = \left| \begin{matrix}
+1 & 1 & 1 & \dots  & 1 & 1 \\
+a_{0} & a_{1} & a_{2} & \dots & a_{n} & X \\
+a_{0}^{2} & a_{1}^{2} & a_{2}^{2} & \dots & a_{n}^{2} & X^{2} \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n} & X^{n} \\
+a_{0}^{n+1} & a_{1}^{n+1} & a_{2}^{n+1} & \dots & a_{n}^{n+1} & X^{n+1}
+\end{matrix} \right| 
+$$
+Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \K[X]$ (car $\K[X]$ est un anneau et donc stable par produit).
+De plus, en développant le déterminant $Q(X)$ selon sa dernière colonne, on observe d'une part que $\deg Q \leqslant n+1$ et d'autre part que le coefficient de $X^{n+1}$ est le cofacteur de $X^{n+1}$ qui est, d'après $\mathcal{P}(n)$
+$$
+\prod_{0\leqslant i<j \leqslant n}(a_{j}-a_{i})
+$$
+Et, comme tous les $a_{i}$ sont distincts, ce coefficient est non-nul, donc $\deg Q=n+1$
+
+De plus, $Q(a_{0})=0, Q(a_{1})=0, \dots, Q(a_{n})=0$ car le déterminant présente dans chacun des calculs deux colonnes égales. Nous en déduisons que $Q$ admet au moins $(n+1)$ racines deux à deux distinctes, or son degré est exactement $n+1$ donc
+- il n'y a aucune autre racine
+- elles sont toutes simples
+
+La forme factorisée de $Q$ est donc
+$$
+Q(X)=\underbrace{ \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) }_{ \text{coefficient dominant} } \times \underbrace{ \prod_{k=0}^{n}(X-a_{k})^{1} }_{ n+1 \text{ racines simples} }
+$$
+Donc 
+\begin{align*}
+V(a_{0}, a_{1},\dots, a_{n+1})&=Q(a_{n+1}) \\
+&=  \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \times  \prod_{k=0}^{n}(a_{n+1}-a_{k})  \\
+&= \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \prod_{\substack{0\leqslant i<j \\ j=n+1}}^{n}(a_{j}-a_{k}) \\
+&= \prod_{0\leqslant i < j \leqslant n+1} (a_{j}-a_{i})
+\end{align*}
+
+Donc $\mathcal{P}(n+1)$ est vraie
+\end{itemize}
+\end{itemize}
+\end{question_kholle}
+\end{document}

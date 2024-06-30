@@ -5,6 +5,7 @@
 \documentclass{article}
 
 \usepackage{kholles}
+\usepackage{braket}
 
 \renewenvironment{question_kholle}[2][ ]
 {
@@ -2301,7 +2302,7 @@ Le noyau, noté $\ker f$ est par définition égal à $f^{-1}(\{e_2\})$ c'est do
 		
 		Ainsi,
 		\begin{equation}
-			E = \coprod_{s \in \Sol} \bar{s}
+			E = \bigsqcup_{s \in \Sol} \bar{s}
 		\end{equation}
 		
 	\end{question_kholle}
@@ -5529,279 +5530,1633 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 \end{question_kholle}
 \pagebreak\section{Semaine 26}
 	
-	Cette semaine avais trois jours fériés : les khôlles furent annulées.
+	%Cette semaine avait trois jours fériés : les khôlles furent annulées.
+\emph{La semaine décimée}
+\begin{verse}
+Sous les cieux printaniers de mai,\\
+Vient la semaine tant attendue,\\
+Où l'Ascension, d'un souffle léger,\\
+Réduit les cours, moments suspendus.\\
+\end{verse}
+\begin{verse}
+Les classes prépas, si intensives,\\
+Prennent une pause, presque inédite,\\
+Les jours se parent de l'harmonie,\\
+D'une trêve aux heures décrépites.\\
+\end{verse}
+\begin{verse}
+Trois jours, juste une poignée,\\
+Suffisent à briser la cadence,\\
+Les esprits se libèrent, apaisés,\\
+De l’ordinaire lourde exigence.\\
+\end{verse}
+\begin{verse}
+On appelle cette semaine, décimée,\\
+Une parenthèse dans la rigueur,\\
+Où les horloges semblent arrêter,\\
+Le temps, éphémère douceur.\\
+\end{verse}
+\begin{verse}
+Les étudiants, d'un souffle profond,\\
+Respirent la clémence du printemps,\\
+Ils laissent de côté leurs crayons,\\
+Pour goûter à l’instant présent.\\
+\end{verse}
+\begin{verse}
+Oh, douce pause, lumineuse évasion,\\
+Dans la frénésie de l’éducation,\\
+Tu offres un repos bien mérité,\\
+Avant de replonger dans la densité.\\
+\end{verse}
+\begin{verse}
+Que chaque année revienne encore,\\
+Cette semaine au charme éthéré,\\
+Bénie par l’Ascension d’alors,\\
+Une oasis dans l’immensité.\\
+\end{verse}
+
 \pagebreak\section{Semaine 27}
+
+\begin{question_kholle}
+	[{Soit $f \in \ContM{[a;b]}{}$. \\
+	L'ensemble $\{ |f(t)| \;|\; t \in [a;b] \}$ admet une borne supérieur notée $\norminf{f}$.}]
+	{Norme uniforme d'une fonction continue par morceaux}
 	
-	\begin{question_kholle}
-		[{Soit $f \in \ContM{[a;b]}{}$. \\
-		L'ensemble $\{ |f(t)| \;|\; t \in [a;b] \}$ admet une borne supérieur notée $\norminf{f}$.}]
-		{Norme uniforme d'une fonction continue par morceaux}
-		
-		Montrons que sur chaque morceau, $f$ est bornée.
-		
-		Soit $\sigma = (x_i)_{0 \leqslant i \leqslant N} \in \mathcal{S}([a;b])$ adaptée à $f$.
-		Soit $i \in \lient 0; N-1 \rient$. Posons $f_i = f_{|]x_i;x_{i+1}[}$.
-		$f$ étant continue par morceaux, $\exists (l_i^+, l_{i-1}^-) \in \R^2 : \textlim{x}{x_i^+} f_i(x) = l_i^+ \wedge \textlim{x}{x_{i+1}^-} f_i(x) = l_{i+1}^-$.
-		Nous pouvons donc prolonger $f_i$ en $\tilde{f_i}$ par continuité en $x_i$ et en $x_{i+1}$.
-		Comme $f \in \Cont{0}{[a;b]}{}$, le théorème de Weierstrass s'applique : $\Im \tilde{f_i}$ est bornée (donc $f_i$ aussi). Ainsi $\norminf{f_i}$ est bien défini.
-		
-		\noindent $\{ |f(t)| \;|\; t \in [a;b] \}$ est : \begin{itemize}
-			\item une partie de \R
-			\item non vide car contenant $|f(x)|$.
-			\item majorée par $\max \left( \{\norminf{f_i} | i \in \lient 0; N-1 \rient\} \cup \{\norminf{f_i} | i \in \lient 0; N-1 \rient\} \right)$ (ensemble admettant bien un plus grand élément puisque fini)
-		\end{itemize}
-		Donc $\norminf{f}$ est bien définie.
-		\begin{figure}[H]
-			\centering
-			\begin{tikzpicture}
-				\draw[->] (-0.5, 0) -- (5, 0);
-				\draw[->] (0, -0.5) -- (0, 5);
-				\draw (4, -0.1) node[anchor=north] {$1$} -- (4, 0.1);
-				\draw (2, -0.1) node[anchor=north] {$\nicefrac{1}{2}$} -- (2, 0.1);
-				\draw (-0.1, 4) node[anchor=east] {$1$} -- (0.1, 4);
-				
-				\draw[red] (0, 0) -- (2, 4) -- (4, 0);
-				\filldraw[white, draw=red, densely dotted] (2, 3.95) circle (3pt);
-				\filldraw[red] (2, 0) circle (2pt);
-			\end{tikzpicture}
-			\caption{$\norminf{f}$ peut ne pas être atteinte}
-		\end{figure}
-	\end{question_kholle}
+	Montrons que sur chaque morceau, $f$ est bornée.
 	
-	\begin{question_kholle}
-		[Soit {$f \in \Cont{0}{[a;b]}{}$}.
-		\begin{propositions}
-			\item $\forall \varepsilon \in \R_+^*, \
-			\exists \chi \in \mathcal{E}({[a;b]}, \R) :
-			\norminf{f - \chi} \leqslant \varepsilon$
-			\item $\forall \varepsilon \in \R_+^*, \
-			\exists (\varphi, \psi) \in \mathcal{E}({[a;b]}, \R)^2 :
-			\left\{ \begin{matrix}
-				\varphi \leqslant f \leqslant \psi \\
-				\norminf{\psi - \varphi} \leqslant \varepsilon
-			\end{matrix} \right.$
-		\end{propositions}]
-		{Lemme d'approximation uniforme d'un fonction continue sur un segment par une fonction en escalier}
-		
-		Soit $f \in \Cont{0}{[a;b]}{}$. Soit $\varepsilon \in \R_+^*$ \fq. \\
-		$(i)$ D'après le théorème de Heine, $f \in \ContU{[a;b]}{}$. Écrivons la définition de uniformément continue pour $\varepsilon$ :
-		\begin{equation*}
-			\exists \eta \in \R_ +^* : \ \forall (x, y) \in [a;b]^2, \
-			|x - y| \leqslant \eta \implies |f(x) - f(y)| \leqslant \varepsilon
-		\end{equation*}
-		
-		\begin{figure}[H]
-			\centering
-			\begin{tikzpicture}
-				\begin{axis}[
-					axis lines = center,
-					xlabel = $x$,
-					ylabel = {$f(x)$},
-					width=12cm,
-					height=5cm
-					]
-					\addplot[
-					domain=0:20,
-					samples=200,
-					color=green,
-					]
-					{2*cos((floor(x/2)*2+1)*45) + floor(x/2)+(1/2)};
-					\addplot[
-					domain=0:20,
-					samples=200,
-					color=red,
-					]
-					{2*cos(x*45) + x/2};
-				\end{axis}
-			\end{tikzpicture}
-			\caption{Fonction en escalier "approximant" une fonction continue}
-		\end{figure}
-		
-		\noindent Cherchons $N$ \tq $\frac{b - a}{N} \leqslant 2 \eta$. C'est-à-dire $N \geqslant \frac{b - a}{2 \eta}$.
-		Posons donc $N = \lceil \frac{b - a}{2 \eta} \rceil$ et $\eta' = \frac{b-a}{N}$ de sorte que $\eta' \leqslant 2\eta$.
-		
-		Définissons $\chi \in \mathcal{E}({[a;b]}, \R)$ par
-		\begin{equation*}
-			\chi \left| \begin{array}{ccl}
-				[a;b] &\rightarrow& \R \\
-				x &\mapsto& \left\{ \begin{array}{ll}
-					f(x) &\text{ si } \exists n \in \N : \ x = a + n \eta' \\
-					f\left(a + \eta' \left( \lfloor \frac{x-a}{\eta'} \rfloor + \nicefrac{1}{2} \right) \right) &\text{ sinon }
-				\end{array} \right.
+	Soit $\sigma = (x_i)_{0 \leqslant i \leqslant N} \in \mathcal{S}([a;b])$ adaptée à $f$.
+	Soit $i \in \lient 0; N-1 \rient$. Posons $f_i = f_{|]x_i;x_{i+1}[}$.
+	$f$ étant continue par morceaux, $\exists (l_i^+, l_{i-1}^-) \in \R^2 : \textlim{x}{x_i^+} f_i(x) = l_i^+ \wedge \textlim{x}{x_{i+1}^-} f_i(x) = l_{i+1}^-$.
+	Nous pouvons donc prolonger $f_i$ en $\tilde{f_i}$ par continuité en $x_i$ et en $x_{i+1}$.
+	Comme $f \in \Cont{0}{[a;b]}{}$, le théorème de Weierstrass s'applique : $\Im \tilde{f_i}$ est bornée (donc $f_i$ aussi). Ainsi $\norminf{f_i}$ est bien défini.
+	
+	\noindent $\{ |f(t)| \;|\; t \in [a;b] \}$ est : \begin{itemize}
+		\item une partie de \R
+		\item non vide car contenant $|f(x)|$.
+		\item majorée par $\max \left( \{\norminf{f_i} | i \in \lient 0; N-1 \rient\} \cup \{\norminf{f_i} | i \in \lient 0; N-1 \rient\} \right)$ (ensemble admettant bien un plus grand élément puisque fini)
+	\end{itemize}
+	Donc $\norminf{f}$ est bien définie.
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\draw[->] (-0.5, 0) -- (5, 0);
+			\draw[->] (0, -0.5) -- (0, 5);
+			\draw (4, -0.1) node[anchor=north] {$1$} -- (4, 0.1);
+			\draw (2, -0.1) node[anchor=north] {$\nicefrac{1}{2}$} -- (2, 0.1);
+			\draw (-0.1, 4) node[anchor=east] {$1$} -- (0.1, 4);
+			
+			\draw[red] (0, 0) -- (2, 4) -- (4, 0);
+			\filldraw[white, draw=red, densely dotted] (2, 3.95) circle (3pt);
+			\filldraw[red] (2, 0) circle (2pt);
+		\end{tikzpicture}
+		\caption{$\norminf{f}$ peut ne pas être atteinte}
+	\end{figure}
+\end{question_kholle}
+
+\begin{question_kholle}
+	[Soit {$f \in \Cont{0}{[a;b]}{}$}.
+	\begin{propositions}
+		\item $\forall \varepsilon \in \R_+^*, \
+		\exists \chi \in \mathcal{E}({[a;b]}, \R) :
+		\norminf{f - \chi} \leqslant \varepsilon$
+		\item $\forall \varepsilon \in \R_+^*, \
+		\exists (\varphi, \psi) \in \mathcal{E}({[a;b]}, \R)^2 :
+		\left\{ \begin{matrix}
+			\varphi \leqslant f \leqslant \psi \\
+			\norminf{\psi - \varphi} \leqslant \varepsilon
+		\end{matrix} \right.$
+	\end{propositions}]
+	{Lemme d'approximation uniforme d'un fonction continue sur un segment par une fonction en escalier}
+	
+	Soit $f \in \Cont{0}{[a;b]}{}$. Soit $\varepsilon \in \R_+^*$ \fq. \\
+	$(i)$ D'après le théorème de Heine, $f \in \ContU{[a;b]}{}$. Écrivons la définition de uniformément continue pour $\varepsilon$ :
+	\begin{equation*}
+		\exists \eta \in \R_ +^* : \ \forall (x, y) \in [a;b]^2, \
+		|x - y| \leqslant \eta \implies |f(x) - f(y)| \leqslant \varepsilon
+	\end{equation*}
+	
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				axis lines = center,
+				xlabel = $x$,
+				ylabel = {$f(x)$},
+				width=12cm,
+				height=5cm
+				]
+				\addplot[
+				domain=0:20,
+				samples=200,
+				color=green,
+				]
+				{2*cos((floor(x/2)*2+1)*45) + floor(x/2)+(1/2)};
+				\addplot[
+				domain=0:20,
+				samples=200,
+				color=red,
+				]
+				{2*cos(x*45) + x/2};
+			\end{axis}
+		\end{tikzpicture}
+		\caption{Fonction en escalier "approximant" une fonction continue}
+	\end{figure}
+	
+	\noindent Cherchons $N$ \tq $\frac{b - a}{N} \leqslant 2 \eta$. C'est-à-dire $N \geqslant \frac{b - a}{2 \eta}$.
+	Posons donc $N = \lceil \frac{b - a}{2 \eta} \rceil$ et $\eta' = \frac{b-a}{N}$ de sorte que $\eta' \leqslant 2\eta$.
+	
+	Définissons $\chi \in \mathcal{E}({[a;b]}, \R)$ par
+	\begin{equation*}
+		\chi \left| \begin{array}{ccl}
+			[a;b] &\rightarrow& \R \\
+			x &\mapsto& \left\{ \begin{array}{ll}
+				f(x) &\text{ si } \exists n \in \N : \ x = a + n \eta' \\
+				f\left(a + \eta' \left( \lfloor \frac{x-a}{\eta'} \rfloor + \nicefrac{1}{2} \right) \right) &\text{ sinon }
 			\end{array} \right.
-		\end{equation*}
-		Ceci est bien une fonction en escalier car $(a + k \eta')_{0 \leqslant k \leqslant N}$ est une subdivision adaptée. En effet, $\forall k \in \lient 0; N-1 \rient, \ f_{|]a+k\eta';a+(k+1)\eta'[} =f\left( a + \eta' \left( \lfloor \frac{x-a}{\eta'} \rfloor + \nicefrac{1}{2} \right) \right) \cdot \widetilde{1}_{]a+k\eta';a=(k+1)\eta'[}$.
-		
-		Soit $x \in [a; b]$.
-		Si $\exists n \in \N : \ x = a + n \eta'$ alors $|f(x) - \chi(x)| = 0$.
-		Sinon $0 \leqslant \frac{x - a} {\eta'} - \lfloor \frac{x-a}{\eta'} \rfloor \leqslant 1$.
-		D'où $0 \leqslant (x - a) - \eta' \lfloor \frac{x-a}{\eta'} \rfloor \leqslant \eta'$.
-		Donc, en enlevant $\nicefrac{\eta'}{2}$, $- \frac{\eta'}{2} \leqslant a + \eta' \left( \lfloor \frac{x-a}{2 \eta} \rfloor + \nicefrac{1}{2} \right) \leqslant \frac{\eta'}{2}$.
-		Par définition de $\eta'$, \ $- \eta \leqslant a + \eta' \left( \lfloor \frac{x-a}{2 \eta} \rfloor + \nicefrac{1}{2} \right) \leqslant \eta$.
-		Par définition de $\eta$, on a $|f(x) - f\left(a + 2 \eta \left( \lfloor \frac{x-a}{2 \eta} \rfloor + \nicefrac{1}{2} \right) \right)| \leqslant \varepsilon$.
-		
-		Ainsi, nous avons bien $\norminf{f - \chi} \leqslant \varepsilon$.
-		\bigbreak
-		
-		$(ii)$ Écrivons la définition de uniformément continue pour $\varepsilon$ :
-		\begin{equation*}
-			\exists \eta \in \R_ +^* : \ \forall (x, y) \in [a;b]^2, \
-			|x - y| \leqslant \eta \implies |f(x) - f(y)| \leqslant \varepsilon
-		\end{equation*}
-		Définissons $\varphi \in \mathcal{E}({[a;b]}, \R)$ par
-		\begin{equation*}
-			\left| \begin{matrix}
-				[a;b] &\rightarrow& \R \\
-				x &\mapsto& \left\{ \begin{matrix}
-					f(x) &\text{ si } \exists n \in \N : \ x = a + n \eta \\
-					\inf f\left( \; ]a + \eta \lfloor \frac{x-a}{\eta'} \rfloor; a + \eta \left( \lfloor \frac{x-a}{\eta'} \rfloor + 1 \right) [ \; \right) &\text{ sinon }
-				\end{matrix} \right.
+		\end{array} \right.
+	\end{equation*}
+	Ceci est bien une fonction en escalier car $(a + k \eta')_{0 \leqslant k \leqslant N}$ est une subdivision adaptée. En effet, $\forall k \in \lient 0; N-1 \rient, \ f_{|]a+k\eta';a+(k+1)\eta'[} =f\left( a + \eta' \left( \lfloor \frac{x-a}{\eta'} \rfloor + \nicefrac{1}{2} \right) \right) \cdot \widetilde{1}_{]a+k\eta';a=(k+1)\eta'[}$.
+	
+	Soit $x \in [a; b]$.
+	Si $\exists n \in \N : \ x = a + n \eta'$ alors $|f(x) - \chi(x)| = 0$.
+	Sinon $0 \leqslant \frac{x - a} {\eta'} - \lfloor \frac{x-a}{\eta'} \rfloor \leqslant 1$.
+	D'où $0 \leqslant (x - a) - \eta' \lfloor \frac{x-a}{\eta'} \rfloor \leqslant \eta'$.
+	Donc, en enlevant $\nicefrac{\eta'}{2}$, $- \frac{\eta'}{2} \leqslant a + \eta' \left( \lfloor \frac{x-a}{2 \eta} \rfloor + \nicefrac{1}{2} \right) \leqslant \frac{\eta'}{2}$.
+	Par définition de $\eta'$, \ $- \eta \leqslant a + \eta' \left( \lfloor \frac{x-a}{2 \eta} \rfloor + \nicefrac{1}{2} \right) \leqslant \eta$.
+	Par définition de $\eta$, on a $|f(x) - f\left(a + 2 \eta \left( \lfloor \frac{x-a}{2 \eta} \rfloor + \nicefrac{1}{2} \right) \right)| \leqslant \varepsilon$.
+	
+	Ainsi, nous avons bien $\norminf{f - \chi} \leqslant \varepsilon$.
+	\bigbreak
+	
+	$(ii)$ Écrivons la définition de uniformément continue pour $\varepsilon$ :
+	\begin{equation*}
+		\exists \eta \in \R_ +^* : \ \forall (x, y) \in [a;b]^2, \
+		|x - y| \leqslant \eta \implies |f(x) - f(y)| \leqslant \varepsilon
+	\end{equation*}
+	Définissons $\varphi \in \mathcal{E}({[a;b]}, \R)$ par
+	\begin{equation*}
+		\left| \begin{matrix}
+			[a;b] &\rightarrow& \R \\
+			x &\mapsto& \left\{ \begin{matrix}
+				f(x) &\text{ si } \exists n \in \N : \ x = a + n \eta \\
+				\inf f\left( \; ]a + \eta \lfloor \frac{x-a}{\eta'} \rfloor; a + \eta \left( \lfloor \frac{x-a}{\eta'} \rfloor + 1 \right) [ \; \right) &\text{ sinon }
 			\end{matrix} \right.
-		\end{equation*}
-		Définissons $\psi \in \mathcal{E}({[a;b]}, \R)$ par
-		\begin{equation*}
-			\left| \begin{matrix}
-				[a;b] &\rightarrow& \R \\
-				x &\mapsto& \left\{ \begin{matrix}
-					f(x) &\text{ si } \exists n \in \N : \ x = a + n \eta \\
-					\sup f\left( \; ] a + \eta \lfloor \frac{x-a}{\eta'} \rfloor; a + \eta \left( \lfloor \frac{x-a}{\eta'} \rfloor + 1\right)[ \; \right) &\text{ sinon }
-				\end{matrix} \right.
+		\end{matrix} \right.
+	\end{equation*}
+	Définissons $\psi \in \mathcal{E}({[a;b]}, \R)$ par
+	\begin{equation*}
+		\left| \begin{matrix}
+			[a;b] &\rightarrow& \R \\
+			x &\mapsto& \left\{ \begin{matrix}
+				f(x) &\text{ si } \exists n \in \N : \ x = a + n \eta \\
+				\sup f\left( \; ] a + \eta \lfloor \frac{x-a}{\eta'} \rfloor; a + \eta \left( \lfloor \frac{x-a}{\eta'} \rfloor + 1\right)[ \; \right) &\text{ sinon }
 			\end{matrix} \right.
-		\end{equation*}
-		Ces deux fonctions sont bien définies car $f_{|] a + \eta \lfloor \frac{x-a}{\eta'} \rfloor; a + \eta \left( \lfloor \frac{x-a}{\eta'} \rfloor + 1\right)[}$ est continue donc, d'après le théorème de Weiertraß, son image admet une borne inférieure et une borne supérieure.
-		Elle sont bien en escalier.
+		\end{matrix} \right.
+	\end{equation*}
+	Ces deux fonctions sont bien définies car $f_{|] a + \eta \lfloor \frac{x-a}{\eta'} \rfloor; a + \eta \left( \lfloor \frac{x-a}{\eta'} \rfloor + 1\right)[}$ est continue donc, d'après le théorème de Weiertraß, son image admet une borne inférieure et une borne supérieure.
+	Elle sont bien en escalier.
+	
+	Par définition des bornes inférieures et supérieures, nous avons $\varphi \leqslant f \leqslant \psi$.
+	De plus, pour $x \in [a;b]$ \fq, $f_{|] a + \eta \lfloor \frac{x-a}{\eta'} \rfloor; a + \eta \left( \lfloor \frac{x-a}{\eta'} \rfloor + 1\right)[}$ se prolonge par continuité et, d'après le théorème de Weiertraß, atteint ses bornes. Notons $f_i$ et $f_s$ les antécédents respectifs des bornes.
+	$(f_i, f_s) \in ] a + \eta \lfloor \frac{x-a}{\eta'} \rfloor; a + \eta \left( \lfloor \frac{x-a}{\eta'} \rfloor + 1\right)[ ^2$ donc $\left|f_i - f_s\right| \leqslant \eta$.
+	D'où $\left| f(f_i) - f(f_s) \right| \leqslant \varepsilon$.
+	
+	Ainsi, nous avons bien $\norminf{\psi - \varphi} \leqslant \varepsilon$.
+\end{question_kholle}
+\begin{question_kholle}[{Soit $f \in \mathcal{CM}([a, b], \mathbb{R})$
+	Posons
+	
+	\begin{align*}
+		\mathcal{E}^{-}(f)=\{ \varphi \in \mathcal{E}([a, b],\mathbb{R}) \mid \varphi \leqslant f \}&  
+		&\mathcal{E}^{+}(f)=\{ \varphi \in \mathcal{E}([a, b],\mathbb{R}) \mid \varphi \geqslant f \}
+	\end{align*}
+	
+	et 
+	
+	\begin{align*}
+		I^{-}(f)= \left\{ \int_{a}^{b} \varphi(u) \, \mathrm du \Bigg| \varphi \in \mathcal{E}^{-}(f)  \right\} 
+		& &
+		I^{+}(f)= \left\{ \int_{a}^{b} \varphi(u) \, \mathrm du \Bigg| \varphi \in \mathcal{E}^{+}(f)  \right\} 
+	\end{align*}
+	
+	Alors $\sup I^{-}(f) = \inf I^{+}(f)$ que l'on notera $\int_{a}^{b} f(u) \, \mathrm du$}]{Définition de l'intégrale de Darboux}
+	
+	\begin{itemize}[label=$\lozenge$]
+		\item Bonne définition des objets
+		\begin{itemize}[label=$\star$]
+			\item $I^{-}(f)$ est une partie de $\mathbb{R}$
+			\item Non vide car:
+$$
+			\forall x \in [a, b], f(x) \geqslant - \|f\|_{\infty, [a, b]} \implies \left( \int_{a}^{b} - \|f\|_{\infty,[a, b]} \, \mathrm dt  \right)  \in I^{-}(f)
+$$
+			\item majorée: soit $\varphi \in \mathcal{E}^{-}(f)$ fixé quelconque.
+			
+			\begin{align*}
+				\forall x \in [a, b], \varphi(x)\leqslant f(x) &\leqslant \|f\|_{\infty, [a, b]} \\
+				\implies \varphi &\leqslant \|f\|_{\infty[a, b]} \\
+				\implies \int_{a}^{b} \varphi(u) \, \mathrm du  & \leqslant  \int_{a}^{b} \|f\|_{\infty, [a, b]}  \, \mathrm dt
+			\end{align*}
+		\end{itemize}
 		
-		Par définition des bornes inférieures et supérieures, nous avons $\varphi \leqslant f \leqslant \psi$.
-		De plus, pour $x \in [a;b]$ \fq, $f_{|] a + \eta \lfloor \frac{x-a}{\eta'} \rfloor; a + \eta \left( \lfloor \frac{x-a}{\eta'} \rfloor + 1\right)[}$ se prolonge par continuité et, d'après le théorème de Weiertraß, atteint ses bornes. Notons $f_i$ et $f_s$ les antécédents respectifs des bornes.
-		$(f_i, f_s) \in ] a + \eta \lfloor \frac{x-a}{\eta'} \rfloor; a + \eta \left( \lfloor \frac{x-a}{\eta'} \rfloor + 1\right)[ ^2$ donc $\left|f_i - f_s\right| \leqslant \eta$.
-		D'où $\left| f(f_i) - f(f_s) \right| \leqslant \varepsilon$.
+		On procède de la même manière pour la borne inf de $I^{+}(f)$
 		
-		Ainsi, nous avons bien $\norminf{\psi - \varphi} \leqslant \varepsilon$.
-	\end{question_kholle}
+		\item De plus, $\sup I^{-}(f) \leqslant \inf I^{+}(f)$
+		
+		Soient $(\varphi, \psi) \in \mathcal{E}^{-}(f)\times \mathcal{E}^{+}(f)$ fixés quelconques
+		
+		
+		\begin{align*}
+			&\forall x \in [a, b], \varphi(x) \leqslant f(x) \leqslant \psi(x) \\
+			&\implies \forall \varphi \in \mathcal{E}^{-}(f), \varphi \leqslant \psi &\implies \psi \text{ majore } \mathcal{E}^{-}(f) \\
+			& &\implies \int_{a}^{b} \psi(u) \, \mathrm du  \text{ majore } I^{-} \\
+			& \implies \sup I^{-} \leqslant \int_{a}^{b} \psi(u) \, \mathrm du  \\
+			& \implies \forall \psi \in \mathcal{E}^{+}(f), \sup I^{-} \leqslant \int_{a}^{b} \psi(u)  \, \mathrm du & \implies \sup I^{-} \text{ minore } I^{-} \\
+			& & \implies \sup I^{-} \leqslant \inf I^{+}
+		\end{align*}
+		
+		
+		\item Soit $\varepsilon > 0$ fixé quelconque.
+		Appliquons le lemme d'approximation uniforme d'une fonction continue par morceaux par une fonction en escalier pour $\varepsilon \leftarrow \frac{\varepsilon}{b-a}$ quelconque:
+		
+$$
+		\exists (\varphi, \psi) \in \mathcal{E}([a, b], \mathbb{R})^{2} : \left\{ \begin{array}{ll}
+			\varphi \leqslant f \leqslant \psi \\
+			\|\varphi - \psi\| _{\infty, [a, b]} \leqslant \frac{\varepsilon}{b-a}
+		\end{array}\right.
+$$
+		
+		Cela implique nécessairement que $\varphi \in \mathcal{E}^{-}(f)$ et $\psi \in \mathcal{E}^{+}(f)$.
+		
+$$
+		\left\{ \begin{array}{ll}
+			\varphi \in \mathcal{E}^{-}(f) \\
+			\psi \in \mathcal{E}^{+}(f)
+		\end{array}\right. \implies \left\{ \begin{array}{ll}
+			\int_{a}^{b} \varphi (u) \, \mathrm du \leqslant \sup I^{-} \\
+			\int_{a}^{b} \psi(u) \, \mathrm du \geqslant \inf I^{+}
+		\end{array}\right.
+$$
+		
+		Donc
+		
+		\begin{align*}
+			\int_{a}^{b} \varphi(u) \, \mathrm du  \leqslant \sup I^{-} \leqslant \inf I^{+} \leqslant \int_{a}^{b} \psi(u) \, \mathrm du \\
+			\implies 0 \leqslant \inf I^{+} - \sup I^{-} \leqslant \int_{a}^{b} \psi(u) \, \mathrm du - \int_{a}^{b} \varphi(u) \, \mathrm du \\
+			\implies 0 \leqslant \inf I^{+} - \sup I^{-} \leqslant \int_{a}^{b} \psi(u) - \varphi(u) \, \mathrm du   \\
+			\implies 0 \leqslant \inf I^{+} - \sup I^{-} \leqslant \int_{a}^{b} \frac{\varepsilon}{b-a} \, \mathrm du  \\
+			\implies 0 \leqslant \inf I^{+} - \sup I^{-} \leqslant \frac{(b-a)\varepsilon}{b-a} = \varepsilon
+		\end{align*}
+		
+		
+		Donc en passant à la limite, on retrouve $\inf I^{+} - \sup I^{+} = 0$, d'où l'égalité attendue.
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Montrer qu'une fonction positive ou nulle, continue sur un segment et d'intégrale nulle sur ce segment est identique- ment nulle sur ce segment}
+	Par l'absurde supposons qu'il existe $f \in \mathcal{C}^{0}([a, b], \mathbb{R})$ telle que $\int_{a}^{b} f(u) \, \mathrm du = 0$ et $f \geqslant 0$ sur $[a, b]$ et $f \neq \tilde{0}$
+	Alors $\exists x_{0} \in [a, b]: f(x_{0}) \neq 0 \implies f(x_{0})>0$
+	Appliquons la définition de la continuité de $f$ en $x_{0}$ pour $\varepsilon \leftarrow \frac{f(x_{0})}{2}$
+$$
+	\exists \eta >0 : \forall x \in [a, b] \cap [x_{0}-\eta, x_{0}+\eta], \lvert f(x)-f(x_{0}) \rvert \leqslant \frac{f(x_{0})}{2}
+$$
+	donc
+$$
+	\forall x \in [a, b] \cap [x_{0}-\eta, x_{0}+\eta], f(x) \geqslant \frac{f(x_{0})}{2}>0
+$$
+	
+	\begin{itemize}
+		\item Ainsi, si $x_{0} \in ]a, b[$
+		
+		\begin{align*}
+			\int_{a}^{b} f(u) \, \mathrm du &=  \underbrace{ \int_{a}^{x_{0}-\eta} f(u) \, \mathrm du }_{ \geqslant 0 } + \int_{x_{0}-\eta}^{x_{0}+\eta} f(u) \, \mathrm du + \underbrace{ \int_{x_{0}+\eta}^{b} f(u) \, \mathrm du }_{ \geqslant 0 } \\
+			&\geqslant \int_{x_{0}-\eta}^{x_{0}+\eta}f(u)  \, \mathrm du \geqslant \int_{x_{0}-\eta}^{x_{0}+\eta} \frac{f(x_{0})}{2}  \, \mathrm du \geqslant 2 \eta \frac{f(x_{0})}{2} \geqslant \eta f(x_{0}) > 0
+		\end{align*}
+		
+		
+		\item Si $x_{0} \in \{ a, b \}$ on effectue le même raisonnement
+$$
+		\int_{a}^{a+\eta} f(u) \, \mathrm du \geqslant \frac{\eta f(x_{0})}{2} > 0
+$$
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Inégalité de Cauchy Schwartz pour les fonctions continues par morceaux}	
+	Soient $(f, g) \in \mathcal{CM}([a, b], \mathbb{R})^{2}$
+	Posons
+$$
+	\forall t \in \mathbb{R}, P(t) = \int_{a}^{b} (f+tg)^{2}(u) \, \mathrm du
+$$
+	\begin{align*}
+		P(t) = \int_{a}^{b} (f(u)+t\times g(u))^{2} \, \mathrm du &= 
+		\int_{a}^{b} f(u)^{2} + 2tg(u)f(u)+ t^{2} g(u)^{2} \, \mathrm du  \\
+		&= \int_{a}^{b} f(u)^{2} \, \mathrm du + 2t\int_{a}^{b} f(u)g(u) \, \mathrm du + t^{2} \int_{a}^{b} g(u)^{2} \, \mathrm du
+	\end{align*}
+	\begin{itemize}[label=$\lozenge$]
+		\item Si $\int_{a}^{b} g(u)^{2} \, \mathrm du = 0$, $P$ est un polynôme affine de signe positif (intégrale d'une fonction positive) donc sa pente est nulle, donc $\int_{a}^{b} f(u)g(u) \, \mathrm du =0$ donc l'inégalité de cauchy schwartz est vraie
+		
+		\item Sinon $P$ est un polynôme de degré $2$, positif ou nul, donc le discriminant $\Delta \leqslant 0$ et $\int_{a}^{b} g(u)^{2} \, \mathrm du \geqslant 0$
+		donc 
+$$
+		4\left( \int_{a}^{b} g(u)f(u) \, \mathrm du  \right)^{2} - 4 \int_{a}^{b} f^{2}(u) \, \mathrm du \int_{a}^{b} g^{2}(u) \, \mathrm du \leqslant 0
+$$
+		Ce qui prouve l'égalité attendue.
+	\end{itemize}
+	\begin{itemize}[label=$\lozenge$]
+		\item Supposons qu'il y a égalité dans l'inégalité de Cauchy-Schwartz, alors
+		\begin{itemize}
+			\item Si $\int_{a}^{b} g^{2}(u) \, \mathrm du \neq 0$
+$$
+			\Delta = 4\left( \int_{a}^{b} g(u)f(u) \, \mathrm du  \right)^{2} - 4 \int_{a}^{b} f^{2}(u) \, \mathrm du \int_{a}^{b} g^{2}(u) \, \mathrm du =0
+$$
+			Donc $P$ est un polynôme de degré 2 de discriminant nul : il admet une racine double $t_{0}$
+			Ainsi, 
+$$
+			P(t_{0}) = 0 \implies \int_{a}^{b} (f+t_{0}g)^{2}(u) \, \mathrm du = 0
+$$
+			Mais, $(f+t_{0}g)^{2}$ est une fonction positive, et continue sur $[a, b]$, donc elle est nulle sur $[a, b]$.
+			Donc $f+t_{0}g = \tilde{0}$ dong $(f, g)$ est liée.
+			
+			\item Sinon, si $\int_{a}^{b} g^{2}(u) \, \mathrm du = 0$, en remarquant que $g^{2}\geqslant 0$ sur $[a, b]$ et que $g^{2}$ est continue, on retrouve que $g = \tilde{0}$ et donc que $(f, g)$ est liée
+		\end{itemize}
+		\item Un calcul simple montre que s'il existe une relation de liaison entre deux fonctions continues par morceaux, il y a égalité dans l'inégalité.
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Théorème de convergence des sommes de Riemann}
+	$f \in \mathcal{C}^{0}([a, b], \mathbb{C}) a\leqslant b$ 
+	En notant $S(f, \sigma, \pi)$ la somme de Riemann de $f$ pour la subdivision pointée $(\sigma, \pi)$.
+$$
+	\forall \varepsilon >0, \exists \eta >0: \forall \left\{ \begin{array}{ll}
+		\sigma = (x_{i})_{0 \leqslant i \leqslant N} \in \mathcal{S}([a, b])  \\
+		\pi = (x_{i}')_{0\leqslant i\leqslant N-1} : x_{i}' \in [x_{i}, x_{i+1 }]
+	\end{array}\right. , \delta(\sigma) \leqslant \eta \implies \left\lvert  S(f, \sigma, \pi) - \int_{a}^{b} f(u) \, \mathrm du   \right\rvert \leqslant \varepsilon
+$$
+	
+	Soit $\sigma = (x_{j})_{0\leqslant j \leqslant N} \in \mathcal{S}([a, b])$ et $\pi = (x_{i}')_{0 \leqslant i \leqslant N - 1}$ une famille vérifiant $\forall i \in [ \! [ 0, N-1 ] \!], x_{i}' \in [x_{i}, x_{i+1}]$
+	
+	
+	\begin{align*}
+		\left\lvert  S(f, \sigma, \pi) - \int_{a}^{b} f(t) \, \mathrm dt   \right\rvert &= \left\lvert  \sum_{i=0}^{N-1}f(x_{i}')(x_{i+1}-x_{i}) - \sum_{i=0}^{N - 1}\int_{x_{i}}^{x_{i+1}} f(t) \, \mathrm dt   \right\rvert  \\
+		&= \left\lvert  \sum_{i=0}^{N-1}\int_{x_{i}}^{x_{i+1}} (f(x_{i}')-f(t)) \, \mathrm dt   \right\rvert  \\
+		&\leqslant \sum_{i=0}^{N-1}\left\lvert  \int_{x_{i}}^{x_{i+1}} (f(x_{i}')-f(t)) \, \mathrm dt   \right\rvert  \\
+		&\leqslant \sum_{i=0}^{N-1}\int_{x_{i}}^{x_{i+1}} \lvert f(x_{i}') - f(t) \rvert \, \mathrm dt
+	\end{align*}
+	
+	
+	Soit $\varepsilon > 0$ fixé quelconque, appliquons la continuité uniforme de $f$ pour $\varepsilon \leftarrow \frac{\varepsilon}{b-a}$
+$$
+	\exists \eta >0: \forall(x, y) \in [a, b], \lvert x-y \rvert \leqslant \eta \implies \lvert f(x)-f(y) \rvert \leqslant \frac{\varepsilon}{b-a}
+$$
+	Fixons un tel $\eta$. Soit $(\sigma, \pi)$ une subdivision pointée de $[a, b]$ fixée quelconque telle que $\delta(\sigma) \leqslant \eta$.
+	Soit $i \in [ \! [ 0, N-1 ] \!]$ fixé quelconque.
+$$
+	\forall t \in [x_{i}, x_{i+1}], \lvert x_{i}' - t \rvert  \underbrace{ \leqslant }_{ x_{i}\leqslant x_{i}' \leqslant x_{i+1} } \lvert x_{i}-x_{i+1} \rvert \leqslant \delta(\sigma) \leqslant \eta \implies \lvert f(x_{i}') - f(t) \rvert \leqslant \frac{\varepsilon}{b-a}
+$$
+	donc,
+$$
+	\int_{x_{i}}^{x_{i+1}} \lvert f(x_{i}')-f(t) \rvert  \, \mathrm dt \leqslant \int_{x_{i}}^{x_{i+1}} \frac{\varepsilon}{b-a} \, \mathrm dt = \frac{\varepsilon}{b-a}(x_{i+1}-x_{i})
+$$
+	donc
+$$
+	\left\lvert  S(f, \sigma, \pi) - \int_{a}^{b} f(t) \, \mathrm dt   \right\rvert \leqslant \sum_{i=0}^{N-1} \int_{x_{i}}^{x_{i+1}} \lvert f(x_{i}')-f(t) \rvert  \, \mathrm dt \leqslant \sum_{i=0}^{N-1} \frac{\varepsilon}{b-a}(x_{i+1}-x_{i})  = \frac{\varepsilon}{b-a} \underbrace{ \sum_{i=0}^{N-1}(x_{i+1}-x_{i}) }_{ b-a } = \varepsilon
+$$
+	donc 
+$$
+	\left\lvert  S(f, \sigma, \pi) - \int_{a}^{b} f(t) \, \mathrm dt   \right\rvert  \leqslant \varepsilon
+$$
+\end{question_kholle}
+
+\begin{question_kholle}{Inégalité triangulaire pour les fonctions continues par morceaux à valeurs complexes}
+	
+	Soit $f \in \mathcal{CM}([a, b], \mathbb{C})$ cela implique donc que $\lvert f \rvert \in \mathcal{CM}([a, b], \mathbb{C})$
+	D'après le lemme d'approximation uniforme d'une fonction par une fonction uniforme
+$$
+	\exists (\chi_{k})_{k \in \mathbb{N}} \in (\mathcal{E}([a, b], \mathbb{R}))^{\mathbb{N}} : \left\{ \begin{array}{ll}
+		\forall k \in \mathbb{N}, \|f-\chi_{k}\|_{\infty, [a, b]} \leqslant \frac{1}{2^{k}}  \\
+		\int_{a}^{b} \chi_{k}(u) \, \mathrm du \xrightarrow[k \to \infty]{} \int_{a}^{b} f(u) \, \mathrm du  
+	\end{array}\right.
+$$
+	
+$$
+	\forall k \in \mathbb{N}, \forall x \in [a, b], \lvert \lvert \chi_{k}(x) \rvert - \lvert f(x) \rvert  \rvert \leqslant \lvert f(x) - \chi_{k}(x) \rvert \leqslant \frac{1}{2^{k}}
+$$
+	donc
+$$
+	\|\lvert f \rvert - \lvert \chi_{k} \rvert \|_{\infty}\leqslant \frac{1}{2^{k}} \implies \int_{a}^{b} \lvert \chi_{k} \rvert (u) \, \mathrm du \xrightarrow[k \to \infty]{} \int_{a}^{b} \lvert f \rvert (u) \, \mathrm du 
+$$
+	Donc, d'après l'inégalité triangulaire continue pour les fonctions en escalier appliquée aux $\chi_{k}$
+$$
+	\underbrace{ \left\lvert  \int_{a}^{b} \chi_{k}(u) \, \mathrm du   \right\rvert }_{ \xrightarrow[k \to \infty]{} \left\lvert  \int_{a}^{b} f(u) \, \mathrm du   \right\rvert }  \leqslant \underbrace{ \int_{a}^{b} \lvert \chi_{k} \rvert (u) \, \mathrm du }_{ \xrightarrow[k \to \infty]{} \int_{a}^{b} \lvert f \rvert (u) \, \mathrm du  }  
+$$
+	donc par passage à la limite dans l'inégalité
+$$
+	\left\lvert  \int_{a}^{b} f(u) \, \mathrm du   \right\rvert  \leqslant \int_{a}^{b} |f(u)| \, \mathrm du
+$$
+\end{question_kholle}
+
+
+\begin{question_kholle}{Existence et unicité de la primitive de $f$ qui s'annule en $a$}
+	\begin{itemize}[label=$\lozenge$]
+		\item Notons d'abord que 
+$$
+		F_{a} \left|\begin{array}{ll} I &\to \mathbb{C} \\ t &\mapsto \int_{a}^{x} f(u) \, \mathrm du \end{array}\right.
+$$ est bien définie:
+$$
+		\left. \begin{array}{ll}
+			f \in \mathcal{C}^{0}(I, \mathbb{C}) \implies f \in \mathcal{CM}(I, \mathbb{C}) \\
+			\forall t \in I, [a, t] \subset I \text{ ou } [t, a] \subset I
+		\end{array}\right\} \implies \int_{a}^{b} f(u) \, \mathrm du \text{ est bien définie} 
+$$
+		
+		\item Montrons que $F_{a} \in \mathcal{D}^{1}(I, \mathbb{C})$ et $F_{a}' = f$
+		
+		\begin{align*}
+			\left\lvert  \frac{F_{a}(t)-F_{a}(t_{0})}{t-t_{0}} -f(t_{0}) \right\rvert  &= \left\lvert  \frac{1}{t-t_{0}}\int_{t_{0}}^{t} f(u) \, \mathrm du - f(t_{0})
+			\right\rvert  \\
+			& \leqslant \left\lvert  \frac{1}{\lvert t - t_{0} \rvert }\int_{t}^{t_{0}} \lvert f(u)-f(t_{0}) \rvert  \, \mathrm du   \right\rvert 
+		\end{align*}
+		
+		
+		Soit $\varepsilon > 0$ fixé quelconque. Appliquons la définition de la continuité de $f$ en $t_{0}$
+$$
+		\exists \eta > 0: \forall t \in I, \lvert  t  - t_{0} \rvert  \leqslant \eta \implies \lvert f(t)-f(t_{0}) \rvert \leqslant \varepsilon
+$$
+		
+		Soit $t \in I$ tel que $\lvert t - t_{0} \rvert \leqslant \eta$, alors $\forall u \in [t_{0}, t] \cup [t, t_{0}], \lvert f(u)-f(t_{0}) \rvert \leqslant \varepsilon$
+		\begin{itemize}[label=$\star$]
+			\item Si $t_{0} \leqslant t$
+$$
+			0 \leqslant \int_{t_{0}}^{t} \lvert f(u)-f(t_{0}) \rvert  \, \mathrm du \leqslant \int_{t_{0}}^{t} \varepsilon \, \mathrm du = \varepsilon \lvert t-t_{0} \rvert   
+$$
+			\item Si $t \leqslant t_{0}$
+$$
+			0 \leqslant - \int_{t_{0}}^{t} \lvert f(u)-f(t_{0}) \rvert  \, \mathrm du \leqslant \int_{t}^{t_{0}} \varepsilon \, \mathrm du = \varepsilon \lvert t - t_{0} \rvert 
+$$
+		\end{itemize}
+		Ainsi, on a montré que 
+$$
+		\left\lvert  \frac{F_{a}(t)-F_{a}(t_{0})}{t-t_{0}} -f(t_{0}) \right\rvert  \leqslant \varepsilon
+$$
+		d'où la convergence du taux d'accroissement.
+		Donc $F_{a} \in \mathcal{D}^{1}(I, \mathbb{C})$, et $F_{a}' = f$
+		Donc $F_{a}$ est une primitive de $f$ et $F_{a}(a) = \int_{a}^{a} f(u) \, \mathrm du = 0$
+		\item Soit $H$ une primitive qui s'annule en $a$.
+$H - F_{a} \in \mathcal{D}^{1}(I, \mathbb{C})$ et $(H - F_{a})' = H' - F_{a}' = f - f = \tilde{0}$
+		Ainsi, la dérivée de $H - F_{a}$ est nulle sur $I$, qui est un intervalle, donc
+$$
+		\exists c \in \mathbb{C}: \forall t \in I, H(t) - F_{a}(t) = c
+$$ et en particularisant en $a$, on montre que $H(a) - F_{a}(a) = 0 - 0 = 0$.
+		Donc $H - F_{a} = \tilde{0}$ donc $H = F_{a}$, ce qui montre l'unicité.
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Formule de Taylor avec reste intégral}
+	Posons
+$$
+	\mathcal{H}_{n} : \forall f \in \mathcal{C}^{n+1}(I, \mathbb{C}), f(x) = \sum_{k=0}^{n} \frac{(x-a)^{k}}{k!}f^{(k)}(a) +\int_{a}^{x} \frac{(x-u)^{n}}{n!}f^{(n+1)}(u) \, \mathrm du 
+$$
+	\begin{itemize}[label = $\lozenge$]
+		\item Initialisation $n \leftarrow 0$
+$$f(x) = f(a) + \int_{a}^{x} f'(u) \, \mathrm du$$ est effectivement vrai d'après le théorème fondamental du calcul intégral
+		
+		\item Hérédité: soit $n \in \mathbb{N}$ tel que $\mathcal{H}_{n}$ est vraie.
+		
+		Soit $f \in \mathcal{C}^{n+2}$, $f$ est en particulier de classe $\mathcal{C}^{n+1}$ donc en appliquant la propriété de récurrence:
+$$
+		f(x) = \sum_{k=0}^{n} \frac{(x-a)^{k}}{k!}f^{(k)}(a) + \int_{a}^{x} \frac{(x-u)^{n}}{n!}f^{(n+1)}(u) \, \mathrm du 
+$$
+		Intégrons le reste intégral par parties, les fonctions $u : t \mapsto f^{(n+1)}(t)$ et $v : t \mapsto - \frac{(b-t)^{n+1}}{(n+1)!}$ sont de classe $\mathcal{C}^{1}$ sur $I$, avec $u'(t) = f^{(n+2)}(t)$ et $v'(t)= \frac{(x-t)^{n}}{n!}$
+		
+		\begin{align*}
+			\int_{a}^{x} \frac{(x-u)^{n}}{n!}f^{(n+1)}(u) \, \mathrm du  &= \left[ -\frac{(x-u)^{n+1}}{(n+1)!}f^{(n+1)}(u) \right]  _{a}^{x} - \int_{a}^{x} - \frac{(x-u)^{n+1}}{(n+1)!}f^{(n+2)}(u) \, \mathrm du  \\
+			&= \frac{(x-a)^{n+1}}{(n+1)!}f^{(n+1)}(a)+ \int_{a}^{x} \frac{(x-u)^{n+1}}{(n+1)!}f^{(n+2)}(u) \, \mathrm du
+		\end{align*}
+		
+		donc
+$$
+		f(x) = \sum_{k=0}^{n+1} \frac{(x-a)^{k}}{k!}f^{(k)}(a) + \int_{a}^{x} \frac{(x-u)^{n+1}}{(n+1)!}f^{(n+2)}(u) \, \mathrm du
+$$
+		donc $\mathcal{H}_{n+1}$ est vérifiée.
+	\end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}{Calcul de $\lim_{ n \to \infty } \sum_{k=0}^{n} \frac{(-1)^{k}}{k}x^{k}$}
+	Appliquons la formule de Taylor, avec reste intégral pour
+	
+$$
+	\left\{ \begin{array}{ll}
+		f \leftarrow (x \mapsto \ln(1+x)) \in \mathcal{C^{\infty}} \\
+		n \leftarrow n \\
+		a\leftarrow 0 
+	\end{array}\right.
+$$
+	
+	
+	\begin{align*}
+		\left\lvert  \ln(1+x) - \sum_{k=0}^{n} \frac{f^{(k)}(0)}{k!}(x-0)^{k}   \right\rvert = \left\lvert  \int_{0}^{x} \frac{(x-t)^{n}}{n!}f(t) \, \mathrm dt   \right\rvert 
+	\end{align*}
+	
+	
+	Puisque $f^{(n)}(t) = \frac{(-1)^{n+1}}{(t+1)^{n}}(n-1)!$, on en déduit que $f^{(n)}(0) = (-1)^{n+1}(n-1)!$ et $\frac{f^{(n)}(0)}{n!}= \frac{(-1)^{n+1}}{n}$
+	
+	donc
+	
+	\begin{align*}
+		\left\lvert  \ln(1+x) - \sum_{k=0}^{n} \frac{(-1)^{k+1}}{k}x^{k}  \right\rvert  &= \left\lvert  \int_{0}^{x} \frac{(x-t)^{n}}{\cancel{ n! }}\times \frac{(-1)^{n} \times \cancel{ n! }}{(t+1)^{n+1}} \, \mathrm dx   \right\rvert \\
+		&\leqslant \int_{0}^{x} \left\lvert  \frac{(x-t)^{n}}{(t+1)^{n+1}}  \right\rvert  \, \mathrm dt \\
+		&\leqslant \left\| \frac{1}{t+1} \right\|_{\infty} \int_{0}^{x} (x-t) \, \mathrm dt \\
+		&\leqslant \frac{x^{n+1}}{n+1} \xrightarrow[x \to \infty]{}0
+	\end{align*}
+	
+	Ce qui prouve la convergence de la série $\sum_{n\geqslant 0} \frac{(-1)^{n}}{n}x^{n}$, et $\sum_{n=0}^{\infty} \frac{(-1)^{n}}{n}x^{n} = \ln(1+x)$
+	
+\end{question_kholle}
+
+\pagebreak\section{Semaine 28}
+
+\begin{question_kholle}{Condition nécéssaire de convergence de $\sum_{n \geqslant n_0} u_n$}
+    Soit $u \in \K^{[ \! [ n_{0}, + \infty [ \![}$
+    Si la série $\sum_{n\geqslant n_{0}}u_{n}$ converge, alors la suite $u$ converge vers $0$.
+    
+    Supposons que la série converge. Notons $(S_{n})_{n\geqslant n_{0}}$ la suite des sommes partielles.
+$$\forall n \in [ \! [ n_{0}+1, +\infty [ \![, u_{n} = S_{n} - S_{n-1}$$
+    Puisque $S$ converge, on en déduit que $u$ converge vers $0$.
+\end{question_kholle}
+\begin{question_kholle}{Condition nécéssaire et suffisante de convergence de $\sum_{n\geqslant 0}q^{n}$ pour $q \in \C^{*}$ et calcul de la somme et du reste lorsqu'ils existent.}
+    \begin{itemize}[label=$\star$]
+        \item Supposons $\lvert q \rvert<1$
+        $$\forall n \in \N, S_{n} = \sum_{k=0}^{n}q^{k} = \frac{1-q^{n+1}}{1-q}$$
+        De plus, $\lvert q^{n+1} \rvert=\lvert q \rvert^{n+1}= \left\{ \begin{array}{ll}0 \text{ si }q=0\\ e^{(n+1)\ln \lvert q \rvert} \text{ si }q\neq 0\end{array}\right.$
+        
+        \begin{align*}
+            \left\{ \begin{array}{ll}
+                0 \\
+                e^{(n+1)\ln \lvert q \rvert } 
+            \end{array}\right. \xrightarrow[n\to \infty]{} \left\{ \begin{array}{ll}
+                0 \\
+                0 
+            \end{array}\right.
+        \end{align*}
+        
+        Ainsi, $\sum_{n\geqslant 0}q^{n}$ converge et $\sum_{n=0}^{+\infty}q^{n}=\frac{1}{1-q}$
+        $$S_{n} = \frac{1-q^{n+1}}{1-q} \implies R_{n} = S_{n} - \sum_{n=0}^{+\infty}q^{n}= \frac{q^{n+1}}{1-q}$$
+        
+        \item Si $\lvert q \rvert=1$
+        
+        $$\forall n \in \N, \lvert q \rvert ^{n} = 1^{n}=1 \xrightarrow[n \to \infty]{}1$$
+        
+        Ainsi, $\lvert q \rvert^{n}$ ne converge pas vers 0 donc $(q^{n})_{n\geqslant 0}$ ne converge pas vers 0, donc la série est grossièrement divergente.
+        
+        \item Si $\lvert q \rvert>1$
+        $\lvert q \rvert^{n}=\exp(n \ln \lvert q \rvert) \xrightarrow[n\to +\infty]{} +\infty$
+        Donc $(q^{n})_{n\geqslant 0}$ ne converge pas vers $0$. Donc la série est grossièrement divergenteê
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{Soit $\alpha \in \R$
+    La série $\sum_{n\geqslant 1} \frac{1}{n^{\alpha}}$ converge $\iff \alpha >1$
+    }]{Caractérisation de la convergence des séries de Riemann}
+    \begin{itemize}[label=$\lozenge$]
+        \item Supposons $\alpha < 0$ alors, $\frac{1}{n^{\alpha}}=n^{\lvert \alpha \rvert} \xrightarrow[n\to +\infty]{}+\infty$ donc la série est grossièrement divergente.
+        \item Supposons $\alpha = 0$ alors $\frac{1}{n^{\alpha}}=1 \xrightarrow[n \to \infty]{} 1$ donc la série est grossièrement divergente.
+        \item Supposons $\alpha > 0$
+        Cherchons un équivalent de 
+$$
+        \frac{1}{(n+1)^{\beta}}-\frac{1}{n^{\beta}}
+$$
+        en fonction de $\beta \in \R^{*}$
+        
+        \begin{align*}
+            \frac{1}{(n+1)^{\beta}} - \frac{1}{n^{\beta}} &= 
+            \frac{1}{n^{\beta}}\left( \frac{1}{\left( 1+\frac{1}{n} \right)^{\beta}} - 1 \right) \\
+            &= \frac{1}{n^{\beta}}\left[ \left( 1+\frac{1}{n} \right)^{-\beta} - 1\right]  \\
+            &\underset{ \overset {\infty} {} } {\sim} \frac{1}{n^{\beta}} \times \left( -\frac{\beta}{n} \right) \\
+            &\underset{ \overset {\infty} {} } {\sim} - \frac{\beta}{n^{\beta+1}}
+        \end{align*}
+        
+        \begin{itemize}[label=$\star$]
+            \item Pour $\alpha \in ]0, +\infty[ \setminus \left\{ 1 \right\}$
+            Appliquons le calcul ci-dessus pour $\beta \leftarrow \alpha -1$ (autorisé car $\alpha \neq 1\implies \alpha-1 \neq 0$)
+            $$\frac{1}{(n+1)^{\alpha-1}}-\frac{1}{n^{\alpha-1}} \underset{ \overset {\infty} {} } {\sim}
+            -\frac{\alpha-1}{n^{\alpha}}$$
+            De plus, $\left( -\frac{\alpha-1}{n^{\alpha}} \right)_{n\geqslant 1}$ est de signe constant donc, d'après le critère d'équivalence, $\sum_{n\geqslant 1} \frac{-(\alpha -1)}{n^{\alpha}}$ est de même nature que la série téléscopique $\sum_{n\geqslant 1}(\frac{1}{(n+1)^{\alpha-1}}-\frac{1}{n^{\alpha-1}} )$. Or, la série téléscopique est de même nature que $\left( \frac{1}{n^{\alpha-1}} \right)_{n\geqslant 1}$.
+            
+            Donc par transitivité, puisque $\sum_{n\geqslant 1} \frac{1}{n^{\alpha}}$ est de même nature que $\sum_{n\geqslant 1} \frac{-(\alpha-1)}{n^{\alpha}}$, la série de Riemann est de même nature que $\left( \frac{1}{n^{\alpha-1}} \right)_{n\geqslant 1}$
+            Or, $\left( \frac{1}{n^{\alpha-1}} \right)_{n\geqslant 1}$ converge pour $\alpha>1$ et diverge pour $\alpha \in ]0, 1[$.
+            
+            \item Si $\alpha = 1$
+            Appliquons la comparaison série intégrale pour $f \leftarrow (x \mapsto \frac{1}{x}) \left\{ \begin{array}{ll} \in \mathcal{C}^{0}([1, +\infty[, \R)\\ \text{décroissante sur }[1, +\infty[ \end{array}\right.$
+            
+            $$\forall n \in \N^{*}, \int_{1}^{n+1}  \frac{\mathrm{d}u}{u} \leqslant  \sum_{k=1}^{n} \frac{1}{k}$$
+            Ainsi,
+            $$\forall n \in \N^{*}, \underbrace{ \ln(n+1) }_{ \xrightarrow[n \to +\infty]{} +\infty } \leqslant \sum_{k=1}^{n} \frac{1}{k}$$
+            Donc la série diverge.
+        \end{itemize}
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Comparaison série-intégrale}
+    Soit $f:[n_{0}, +\infty[ \to \R$ une fonction continue et décroissante
+    Soit $j \in [ \! [ n_{0}, +\infty [\![$ fixé quelconque.
+    
+    \begin{align*}
+        \forall t \in [k, k+1], f(k+1) &\leqslant f(t) \leqslant f(k) \\
+        \int_{k}^{k+1} f(k+1) \, \mathrm dt &\leqslant \int_{k}^{k+1} f(t) \, \mathrm dt \leqslant \int_{k}^{k+1}  f(k) \, \mathrm dt  \\
+        f(k+1) & \leqslant \int_{k}^{k+1} f(t) \, \mathrm dt \leqslant f(k)
+    \end{align*}
+    
+    Ainsi
+    
+    \begin{align*}
+        \sum_{k=n_{0}}^{n}\int_{k}^{k+1}f(t)  \, \mathrm dt  & \leqslant \sum_{k=n_{0}}^{n}f(t) \\
+        \int_{n_{0}}^{n+1} f(t) \, \mathrm dt & \leqslant \sum_{k=n_{0}}^{n}f(k)
+    \end{align*}
+    
+    
+    De même,
+    
+    \begin{align*}
+        \forall k \in [ \! [ n_{0}+1 , +\infty[ \![, f(k) & \leqslant\int_{k-1}^{k} f(t) \, \mathrm dt  \\
+        \sum_{k=n_{0}+1}^{n}f(k)  & \leqslant \sum_{k=n_{0}+1}^{n}\int_{k-1}^{k} f(t) \, \mathrm dt \\
+        \sum_{k=n_{0}}^{n} f(k)&\leqslant f(n_{0})+ \int_{n_{0}}^{n} f(t) \, \mathrm dt 
+    \end{align*}
+    
+    D'où l'encadrement.
+\end{question_kholle}
+\begin{question_kholle}[{Soit $n_{0} \in \N$ et $f:[n_{0}, +\infty[ \to \R$ une fonction continue, décroissante et minorée par $m \in \R$
+    Alors la série de terme général
+    $$\left( f(n)- \int_{n}^{n+1} f(u) \, \mathrm du  \right)_{n\geqslant n_{0}}$$
+    est à termes positifs ou nuls et converge.}]{Pour $f$ continue sur $[n_0, +\infty[$, décroissante et minorée, $\sum_{n\geqslant n_{0}}\left( f(n)- \int_{n}^{n+1} f(u) \, \mathrm du  \right)$}
+    
+    
+    Montrons que la suite $(S_{n})_{n\geqslant n_{0}}$ est majorée, et que la suite est à termes $\geqslant 0$
+    La décroissance de $f$ donne l'encadrement suivant
+    
+    $$\forall n \in [ \! [ n_{0} , +\infty[\![,  f(n) - \int_{n}^{n+1} f(t) \, \mathrm dt \geqslant 0$$
+    
+    La comparaison série intégrale s'applique donc à $f$ qui est décroissante et continue et donne
+    
+    \begin{align*}
+        \forall n \in [ \! [ n_{0}, +\infty [ \![ f(n+1)\leqslant \int_{n}^{n+1} f(t) \, \mathrm dt \leqslant f(n) &\implies -f(n+1) \geqslant -\int_{n}^{n+1} f(t) \, \mathrm dt \\
+        &\implies f(n) - f(n+1) \geqslant f(n) - \int_{ n}^{n+1} f(t) \, \mathrm dt \geqslant 0
+    \end{align*}
+    
+    En sommant sur $k \in [ \! [ n_{0}, n ] \!]$
+    
+    $$\sum_{k=n_{0}}^{n} (f(k) - f(k+1)) \geqslant  \sum_{k=n_{0}}^{n}\left( f(k) - \int_{k}^{k+1} f(t) \, \mathrm dt  \right) = S_{n}$$
+    
+    En reconnaissant un phénomène téléscopique
+    
+    $$S_{n} \leqslant f(n_{0})-f(n+1)\leqslant f(n_{0})-n$$
+    
+    Donc $(S_{n}) n\geqslant n_{0}$ est majorée, et croissante, elle converge donc.
+\end{question_kholle}
+\begin{question_kholle}[{Soit $(a_{n})_{n\geqslant n_{0}} \in \R^{[ \! [ n_{0}, +\infty [ \![}$ une suite réelle.
+    Si
+    $$
+    \left\{ \begin{array}{ll}
+        \forall n \in [ \! [ n_{0}, +\infty [\![, a_{n} \geqslant 0 \\
+        (a_{n})_{n\geqslant n_{0}} \text{ est décroissante} \\
+        \lim_{ n \to \infty } a_{n}=0
+    \end{array}\right.
+    $$
+    alors $\sum_{n\geqslant n_{0}}(-1)^{n}a_{n}$}]{Théorème des séries alternées}
+    
+    \begin{itemize}[label=$\lozenge$]
+        \item Traitons le cas $n_{0}\equiv 0 [2]$ il existe $p_{0} \in \N: n_{0}=2p_{0}$
+        \begin{itemize}[label=$\star$]
+            \item  Les suites $(S_{2p})_{p\geqslant p_{0}}$ et $(S_{2p+1})_{p\geqslant p_{0}}$ sont adjacentes:
+            
+            \begin{align*}
+                \forall p \in [ \! [ p_{0}, +\infty[ \![, S_{2(p+1)} - S_{2p} &= S_{2p+2}- S_{2p} \\
+                &= \sum_{k=2p_{0}}^{2p+2}(-1)^{k}a_{k} + \sum_{k=2p_{0}}^{2p}(-1)^{k}a_{k} \\
+                &= -a_{2p+1}+a_{2p+2} \leqslant 0 \text{ car }a\downarrow
+            \end{align*}
+            
+            \begin{align*}
+                S_{2(p+1)+1} - S_{2p+1} &= S_{2p+3} - S_{2p+1} = (-1)^{2p+2}a_{2p+2}+(-1)^{2p+3}a_{2p+3} = a_{2p+2}- a_{2p+3} \geqslant 0 \text{ car }a\downarrow
+            \end{align*}
+            
+            
+            Donc $(S_{2p})$ est décroissante et $(S_{2p+1})$ est croissante.
+            De plus
+$$
+            S_{2p+1} - S_{2p} = (-1)^{2p+2}a_{2p+1} = \underbrace{ -a_{2p+1} }_{ \xrightarrow[p \to \infty]{} 0 } \leqslant 0 \text{ car a positive}
+$$
+            Ainsi $(S_{2p})_{p\geqslant p_{0}}$ et $(S_{2p+1})_{p\geqslant p_{0}}$ sont adjacentes.
+            \item Donc d'après le théorème des suites adjacentes, $(S_{2p})$ et $(S_{2p+1})$ convergent vers une même limite $\ell$, si bien que $(S_{n})$ converge vers $\ell$.
+            
+            \item De plus, les suites $(S_{2p})_{p\geqslant p_{0}}$ et $(S_{2p+1})_{p\geqslant p_{0}}$ étant adjacentes, pour $n \geqslant n_{0}$ posons $R_{n} = \ell -S_{n}$
+            \begin{itemize}
+                \item Si $n \equiv 0 [2]$, $\exists p \in [ \! [ p_{0}, +\infty [ \![:n=2p$ donc, puisque $(S_{2p})$ est décroissante et $(S_{2p+1})$ est croissante, on a 
+$$
+                S_{2p+1}\leqslant \ell \leqslant S_{2p} \implies S_{2p+1} - S_{2p} \leqslant \ell - S_{2p} \leqslant 0 \implies \lvert R_{2p} \rvert = \lvert \ell - S_{2p} \rvert \leqslant a_{2p+1}
+$$
+                
+                \item Si $n \equiv 1 [2]$ $\exists p \in [ \! [ p_{0}, +\infty [ \![:n=2p+1$
+$$
+                S_{2p+1} \leqslant \ell \leqslant S_{2p+2} \implies 0 \leqslant \ell - S_{2p+1} \leqslant S_{2p+2} - S_{2p+1} = (-1)^{2p+2}a_{2p+2}= a_{2p+2}
+$$
+                donc $\lvert R_{2p+1} \rvert = \lvert \ell-S_{2p+1} \rvert \leqslant a_{2p+2}$
+            \end{itemize}
+        \end{itemize}
+        Bonus, par croissance de $(S_{2p+1})$ qui converge vers $\ell$, $S_{2p+1} \leqslant \ell$  donc $a_{2p_{0}}-a_{2p_{0} +1}\leqslant\ell$
+        Donc $\ell \geqslant 0$ qui est bien le signe du premier terme de la série $(-1)^{n_{0}}a_{n_{0}}$ car $n_{0}\equiv 0[2]$.
+        
+        \item Le cas $n_0 \equiv 1 [2]$ se traite de la même manière
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{Soit $u \in \K^{[ \! [ n_{0}, +\infty [ \![}$
+    Si la série $\sum_{n\geqslant n_{0}}u_{n}$ est absolument convergente, alors la série $\sum_{n\geqslant n_{0}}u_{n}$ est convergente.}]{L'absolue convergence implique la convergence}
+    
+    
+    
+    \begin{itemize}[label=$\lozenge$]
+        \item Supposons que $u$ est le terme général réel d'une série absolument convergente.
+        Posons, pour tout $n \in [ \! [ n_{0}, +\infty [ \![$, $u_{n}^{+}= \max(u_{n}, 0)$ et $u_{n}^{-}=- \min (u_{n}, 0)$
+        Avec ces notations, $u_{n}^{+}- u_{n}^{-} = u_{n}$ et $u_{n}^{+}+u_{n}^{-} = \lvert u_{n} \rvert$.
+$$
+        \forall n \in [ \! [ n_{0}, +\infty [ \![, u_{n}^{+}\geqslant 0 \text{ et } u_{n}^{-}\geqslant 0
+$$
+        
+$$
+        \left. \begin{array}{ll}
+            \forall n \geqslant n_{0}, 0\leqslant u_{n}^{+} \leqslant \lvert u_{n} \rvert = u_{n}^{+}+ u_{n}^{-} \\
+            \sum_{n\geqslant n_{0}} u_{n} \text{ est ACV} \implies \sum_{n\geqslant n_{0}} \lvert u_{n} \rvert  \text{ CV} \\
+            \forall n \geqslant n_{0}, u_{n}^{+}\geqslant 0 \text{ et } \lvert u_{n} \rvert \geqslant 0
+        \end{array}\right\}\implies \sum_{n\geqslant n_{0}}u_{n} ^{+}\text{ converge}
+$$
+        
+        On montre de même que $\sum_{n\geqslant n_{0}}u_{n}^{-}$ converge, donc, par structure vectorielle de l'ensemble des termes généraux de suites convergentes, $\sum_{ n\geqslant n_{0}}(u_{n}^{+} - u_{n}^{-})= \sum_{n\geqslant n_{0}}u_{n}$ converge
+        
+        \item Cas d'une série complexe,
+
+        Posons, $\forall n\geqslant n_{0}, x_{n} = \mathrm{Re}(u_{n})$ et $y_{n} = \mathrm{Im}(u_{n})$
+        Alors,
+$$
+        \left. \begin{array}{ll}
+            \forall n \geqslant n_{0}, \lvert x_{n} \rvert \leqslant \lvert \mathrm{Re}(u_{n}) \rvert \leqslant \lvert u_{n} \rvert  \\
+            \forall n\geqslant n_{0}, \lvert  x_{n} \rvert \geqslant 0 \text{ et } \lvert u_{n} \rvert \geqslant 0 \\
+            \sum_{n\geqslant n_{0}}u_{n} \text{ ACV } \implies \sum_{n\geqslant n_{0}}\lvert u_{n} \rvert \text{ CV }
+        \end{array}\right\}\implies \sum_{n\geqslant n_{0}}\lvert x_{n} \rvert \text{ converge}
+$$
+        Donc d'après le cas réel, $\sum_{n\geqslant n_{0}} x_{n}$ converge
+        On montre de même que $\sum_{n\geqslant n_{0}}y_{n}$ converge
+        Donc, par structure vectorielle, $\sum_{n\geqslant n_{0}}(x_{n}+ iy_{n})$ converge.
+        Donc $u_{n}$ est le terme général d'une série convergente.
+    \end{itemize}
+\end{question_kholle}
+\pagebreak\section{Semaine 29}
+
+\begin{question_kholle}[{Le noyau d'un morphisme de groupe étant toujours un sous-groupe du groupe de départ, le groupe alterné d'indice $n \in \N^{*}$ est le sous groupe de $(\mathcal{S}_{n}, \circ)$ obtenu en considérant le noyau du morphisme signature.
+    $$
+    \mathcal{A}_{n}= \ker \varepsilon
+    $$
+    $\mathcal{A}_{n}$ est de cardinal $\frac{n!}{2}$
+    }]{Définition et cardinal du sous-groupe alternée $\mathcal{A}_n$}
+    
+    
+    Fixons $\tau = (1, 2)$
+    Considérons
+    $$\Phi \left|\begin{array}{ll} \mathcal{A}_{n} &\to \mathcal{S}_{n} \setminus \mathcal{A}_{n} \\ \sigma &\mapsto \sigma \circ \tau \end{array}\right.$$
+    \begin{itemize}
+        \item 
+        
+        $\Phi$ est bien définie: soit $\sigma \in \mathcal{A}_{n}$ fixée quelconque. Par propriété de morphisme de la signature, $\varepsilon(\sigma \circ \tau) = \varepsilon(\sigma) \times \varepsilon(\tau) = 1 \times (-1) = -1$ donc $\sigma \circ \tau \not\in \mathcal{A}_{n}$ donc $\Phi(\sigma) \in \mathcal{S}_{n}\setminus \mathcal{A}_{n}$
+        
+        \item De plus, $\Phi$ est bijective en considérant 
+$$\Psi\left|\begin{array}{ll} \mathcal{S}_{n}\setminus \mathcal{A}_{n} &\to \mathcal{A}_{n} \\ \sigma &\mapsto \sigma \circ  \tau \end{array}\right.$$
+$\Psi \circ \Phi = \mathrm{Id}_{\mathcal{A}_{n}}$ et $\Phi \circ \Psi = \mathrm{Id}_{\mathcal{S}_{n}\setminus \mathcal{A}_{n}}$
+    \end{itemize}
+    Ainsi,
+$$
+    \lvert \mathcal{A}_{n} \rvert  = \lvert \mathcal{S}_{n}\setminus \mathcal{A}_{n} \rvert  = \lvert \mathcal{S}_{n} \rvert - \lvert \mathcal{A}_{n} \rvert 
+$$
+    D'où $\lvert \mathcal{A}_{n} \rvert = \frac{\lvert \mathcal{S}_{n} \rvert}{2} = \frac{n!}{2}$
+\end{question_kholle}
+\begin{question_kholle}{Caractérisation des bases par le déterminant}
+    \begin{itemize}[label=$\star$]
+        \item Supposons que la famille $\mathcal{B'} =(u_{1}, \dots, u_{n}) \in E^{n}$ est une base de $E$.
+        $$\det_{\mathcal{B}}\mathcal{B'}\times \det_{\mathcal{B'}}\mathcal{B} = 1 \implies \det _{\mathcal{B}}\mathcal{B'} \neq 0$$
+        
+        \item Supposons qu'il existe une base $\mathcal{B}$ telle que $\det_{\mathcal{B}} \mathcal{B}' \neq 0$
+        Si $\mathcal{B}'$ était liée, le déterminant serait nul, donc en contraposant, $\mathcal{B}'$ n'est pas liée, et est de cardinal $n$, c'est une base.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{
+    Soit $E$ un $\K$-espace vectoriel de dimension finie et $F \in \mathcal{L}_{\K}(E)$
+    $$\exists!\lambda \in \K : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
+    On appelle ce $\lambda$ \underline{le} déterminant de l'endomorphisme $f$.
+    }]{Définition du déterminant d'un endomorphisme}
+    
+    \begin{itemize}[label=$\lozenge$]
+        \item \underline{Existence}
+        
+        Soit $\mathcal{B}_{0}= (e_{1}, \dots, e_{n})$ une base de $E$ fixée.
+        L'application
+$$
+        \varphi \left|\begin{array}{ll} E^{n} &\to \K \\ (u_{1}, \dots, u_{n}) &\mapsto \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) \end{array}\right.
+$$
+        est
+        \begin{itemize}
+            \item Une forme n-linéaire :  soient $(u_{1}, \dots, u_{n}) \in E^{n}$ fixés quelconques $(u, v, \lambda) \in E^{2} \times \K$
+            
+            \begin{align*}
+                \varphi (v+\lambda.w, u_{2}, \dots, u_{n})  & = \det_{\mathcal{B}_{0}}(f(v+\lambda.w), f(u_{2}), \dots, f(u_{n})) \\
+                &= \det_{\mathcal{B}_{0}}(f(v)+ \lambda.f(w), f(u_{2}), \dots, f(u_{n})) \text{ par linéarité de }f\\
+                &= \det_{\mathcal{B}_{0}}(f(v), f(u_{2}), \dots, f(u_{n})) + \lambda \times \det_{\mathcal{B}_{0}}(f(w), f(u_{2}), \dots, f(u_{n}))\\
+                & \text{ par linéarité de } \det_{\mathcal{B}_{0}} \\
+                &= \varphi(v, u_{2}, \dots, u_{n})+ \lambda \times \varphi(w, u_{2}, \dots, u_{n})
+            \end{align*}
+            
+            Par conséquent, $\varphi$ est linéaire en son premier argument.
+            On prouve de même que $\varphi$ est linéaire en ses $n-1$ autres arguments, ce qui montre sa $n$-linéarité.
+            
+            \item Alternée
+            Soient $(u_{1}, \dots, u_{n}) \in E^{n}$ tels qu'il existe $(i, j) \in [ \! [ 1, n ] \!]^{2}$ tels que $i \neq j$ et $u_{i} = u_{j}$ alors on a aussi $f(u_{i}) = f(u_{j})$, si bien que le caractère alterné de $\det_{\mathcal{B}_{0}}$
+$$
+            \varphi(u_{1}, \dots, u_{n})=\det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) = 0
+$$
+            Donc $\varphi \in \land_{\K}^{n} = \text{Vect}\{ \det_{\mathcal{B}_{0}} \}$
+        \end{itemize}
+        Donc
+$$
+        \exists \lambda_{\mathcal{B}_{0}}\in \K: \varphi = \lambda_{\mathcal{B}_{0}}.\det_{\mathcal{B_{0}}}
+$$
+        d'où,
+$$
+        \forall (u_{1}, \dots, u_{n}) \in E^{n}, \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n}))= \lambda_{\mathcal{B}_{0}}\times \det_{\mathcal{B_{0}}}(u_{1}, \dots, u_{n})
+$$
+        Soit $\mathcal{B}$ une base de $E$ fixée quelconque. Nous savons que
+$$
+        \det_{\mathcal{B}} = \det_{\mathcal{B}} \mathcal{B}_{0} . \det_{\mathcal{B}_{0}}
+$$
+        Donc en multipliant la relation précédente par $\det_{\mathcal{B}}\mathcal{B}_{0}$,
+$$
+        \forall (u_{1}, \dots, u_{n}) \in E^{n}, \underbrace{ \det_{\mathcal{B}}\mathcal{B}_{0} \times \det_{\mathcal{B}_{0}}(f(u_{1}), \dots, f(u_{n})) }_{ \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n})) }= \lambda_{\mathcal{B}_{0}} \times \underbrace{ \det_{\mathcal{B}}\mathcal{B}_{0} \times \det_{\mathcal{B_{0}}}(u_{1}, \dots, u_{n}) }_{ \det_{\mathcal{B}}(u_{1}, \dots, u_{n}) }
+$$
+        Par conséquent, $\lambda_{\mathcal{B}_{0}}$ convient pour toute base $\mathcal{B}$.
+        
+        \item \underline{Unicité}
+        Soit $\lambda \in \K$ tel que
+$$
+        \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})
+$$
+        Particularisons pour $\mathcal{B}\leftarrow \mathcal{B}_{0}$ et $(u_{1}, \dots, u_{n})\leftarrow \mathcal{B}_{0}$
+$$
+        \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n})) = \lambda \times \det_{\mathcal{B}_{0}}\mathcal{B}_{0} = \lambda \times 1
+$$
+        Donc $\lambda = \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n}))$
+        Or, en particularisant la relation définissant $\lambda_{\mathcal{B}_{0}}$ pour $(u_{1}, \dots, u_{n}) \leftarrow \mathcal{B}_{0}$
+$$
+        \lambda_{\mathcal{B}_{0}} = \det_{\mathcal{B}_{0}}(f(e_{1}), \dots, f(e_{n}))
+$$
+        donc $\lambda = \lambda_{\mathcal{B}_{0}}$
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}
+    [{\begin{enumerate}
+        \item $\forall (f, g) \in \mathcal{L}_{\K}(E)^{2}, \det (f \circ g) = \det f \times \det g$
+        
+        \item $\forall f \in \mathcal{L}_{K}(E), f \in \mathcal{GL}_{\K}(E) \iff \det f \neq 0$
+    \end{enumerate}
+    }]{Démontrer que le déterminant est un morphisme de $(\mathcal{L}_{\K}(E), \circ)$ dans $(\K, \times)$, application à la caractérisation des automorphismes}
+    Fixons $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base de $E$
+    \begin{enumerate} 
+        \item Soient $(f, g) \in \mathcal{L}_{\K}(E)^{2}$ fixés quelconques.
+        
+        \begin{align*}
+            \det (f \circ  g) &= \det_{\mathcal{B}}((f \circ g)(e_{1}), \dots, (f \circ  g)(e_{n})) \\
+            &= \det_{\mathcal{B}}(f(g(e_{1})), \dots, f(g(e_{n}))) \\
+            &= \det f \times \det_{\mathcal{B}}(g(e_{1}), \dots, g(e_{n})) \text{ par définition du déterminant d'un endomorphisme} \\
+            &= \det f \times \det g \times \det_{\mathcal{B}}(e_{1}, \dots, e_{n}) \\
+            &= \det f \times \det g
+        \end{align*}
+        
+        
+        
+        \item Soit $f \in \mathcal{L}_{\K}(E)$
+        \begin{itemize}
+            \item Supposons $f \in \mathcal{GL}_{\K}(E)$
+            Appliquons la relation de morphisme pour $g \leftarrow f^{-1}$
+$$
+            \underbrace{ \det(f \circ  f^{-1}) }_{ = \det \mathrm{Id}_{E} } = \det f \times \det f^{-1}
+$$
+            Or, $\det \mathrm{Id}_{E}= \det_{\mathcal{B}}(e_{1}, \dots, e_{n}) = 1$ si bien que $\det f \times \det f^{-1} = 1$ on en déduit que $\det f \neq 0$ et d'autre part que $\det (f^{-1}) = \frac{1}{\det f}$
+            \item Supposons que $\det f \neq 0$
+            Par définition du déterminant d'un endomorphisme
+$$
+            \det_{\mathcal{B}}(f(e_{1}), \dots, f(e_{n})) = \det f \times \det_{\mathcal{B}}(e_{1}, \dots, e_{n}) = \det f
+$$
+            Donc $\det_{\mathcal{B}}(f(e_{1}), \dots, f(e_{n})) \neq 0$ si bien que $(f(e_{1}), \dots, f(e_{n}))$ est une base de $E$, donc $f$ envoie une base sur une base : c'est un automorphisme.
+        \end{itemize}
+    \end{enumerate}
+\end{question_kholle}
+\begin{question_kholle}[{Soit $A \in \mathcal{M}_{n}(\K)$.
+    Alors $A \times (\mathrm{com} A)^{T} = (\mathrm{com}A)^{T}\times A = \det A \times I_{n}$
+    }]{Produit d'une matrice carrée par la transposée de sa comatrice.}
+    
+    \begin{itemize}[label=$\lozenge$]
+        \item Montrons que $A \times (\mathrm{com}A)^{T}=\det A \times I_{n}$
+        Soient $(i, j) \in [ \! [ 1, n ] \!]$ fixés quelconques
+        
+        \begin{align*}
+            [A \times (\mathrm{com}A)^{T}]_{i,j} &= \sum_{k=1}^{n}A_{i,k}[(\mathrm{com}A)^{T}]_{k,j} \\
+            &=\sum_{k=1}^{n}A_{i,k}(\mathrm{com}A)_{j,k} \\
+            &= \sum _{k=1}^{n}A_{i,k}\times (-1)^{k+j}\Delta_{j,k}
+        \end{align*}
+        
+        \begin{itemize}[label=$\star$]
+            \item Supposons que $i = j$ nous obtenons
+$$
+            [A\times(\mathrm{com}A)^{T}]_{i,i} = \sum_{k=1}^{n}A_{i,k}\times(-1)^{k+i}\Delta_{i,k} = \det A
+$$
+            D'après la formule du développement du déterminant de $A$ selon la $i$-ième ligne.
+            
+            \item Supposons que $i \neq j$
+            La formule peut être interprétée comme le développement selon la $i$-ième ligne du déterminant de la matrice obtenue à partir de $A$ en remplaçant sa $j$-ième ligne par sa $i$-ième ligne:
+            
+            \begin{align*}
+                \left[ A\times (\mathrm{com}A)^{T} \right] _{i,j} &= \sum_{k=1}^{n}A_{i,k}\times(-1)^{k+j}\Delta_{j,k} \\
+                &=\left| \begin{array}{c}
+                    L_{1} \\
+                    \hline 
+                    \vdots \\
+                    \hline
+                    L_{i-1} \\
+                    \hline 
+                    L_{i} \\
+                    \hline L_{i+1} \\
+                    \hline \vdots \\
+                    \hline L_{j-1} \\
+                    \hline L_{i} \\
+                    \hline L_{i+1} \\
+                    \hline \vdots \\
+                    \hline L_{n}
+                \end{array} \right|  \\
+                &=0
+            \end{align*}
+            
+            Car les lignes d'indice $i$ et $j$ sont identiques.
+            Ainsi, pour tout $(i, j) \in [ \! [ 1, n ] \!]^{2}, [A\times(\mathrm{com}A)^{T}]_{i,j}=\delta_{i,j}\times \det A$
+            Donc
+$$
+            [A\times(\mathrm{com}A)^{T}]_{i,j}=\det A\times I_{n}
+$$
+        \end{itemize}
+        \item On montre de même le produit dans l'autre sens.
+    \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{  Le système linéaire $AX=B$ d'inconnue $X \in \mathcal{M}_{n,1}(\K)$ et de paramètre $B \in \mathcal{M}_{n,1}(\K)$ est dit "de Cramer" s'il admet une unique solution, à savoir si $A$ est une matrice inversible. Dans ce cas, la solution peut être exprimée explicitement par la formule $A^{-1}B$ qui donne la formule dite de Cramer:
+    $$
+    \left( \frac{
+    \bigg| 
+    B\mid C_{2}\mid\dots \mid C_{n}
+    \bigg| 
+    }{\det A}, \dots, \frac{
+    \bigg|
+    C_{1} \mid
+    \dots \mid
+    C_{i-1}\mid
+    B \mid
+    C_{i+1}\mid
+    \dots \mid
+    C_{n}
+    \bigg|
+    }{\det A}, \dots, \frac{
+    \bigg| 
+    C_{1}\mid C_{2}\mid\dots \mid B
+    \bigg| 
+    }{\det A} \right)
+    $$
+    où $(C_{1}, \dots, C_{n}) \in \mathcal{M}_{n,1}(\K)^{n}$ sont les colonnes de $A$.
+    }]{Formule de Cramer}
+    
+    Partons de l'expression de l'inverse avec la comatrice:
+    $$X = A^{-1}B= \frac{1}{\det A}(\mathrm{com}A)^{T} B$$
+    Soit $i \in [ \! [ 1, n ] \!]$.
+    
+    \begin{align*}
+        X_{i, 1} &= \frac{1}{\det A}[(\mathrm{com}A)^{T}B]_{i,j} \\
+        &= \frac{1}{\det A}\sum_{k=1}^{n}[(\mathrm{com}A)^{T}]_{i,k}B_{k,1} \\
+        &= \frac{1}{\det A}\sum_{k=1}^{n}(\mathrm{com}A)_{k,i}B_{k, 1} \\
+        &= \frac{1}{\det A}\sum_{k=1}^{n}(-1)^{k+i}\Delta_{k,i}B_{k, 1} \\
+        &\text{qui s'interprète comme le développement selon la $i$-ième colonne de la matrice} \\
+        &= \frac{1}{\det A}\Bigg|C_{1}\Bigg|\dots\Bigg|C_{i-1}\Bigg|B\Bigg|C_{i+1}\Bigg|\dots\Bigg|C_{n}\Bigg|
+    \end{align*}
+\end{question_kholle}
+\begin{question_kholle}{Calcul du déterminant de Vandermonde}
+Posons
+    $$
+\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \K^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{1\leqslant i < j \leqslant n}(a_{j} - a_{i})
+$$
+\begin{itemize}[label=$\lozenge$]
+    \item \underline{Initialisation} $n \leftarrow 2$
+Soient $(a_{0}, a_{1}) \in \K^{2}$
+$$
+\left| \begin{matrix}
+1 & 1 \\
+a_{0} & a_{1}
+\end{matrix}\right| = a_{1} - a_{0}
+$$
+
+
+
+\item \underline{Hérédité}, soit $n \in \N^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
+Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \K^{n+2}$ fixés quelconques.
+\begin{itemize}
+    \item Supposons que les éléments de $\left\{ a_{0}, \dots, a_{n+1} \right\}$ ne sont pas tous deux à deux distincts.
+    
+    Alors le déterminant à calculer possède deux colonnes identiques donc il est nul, et la formule avec laquelle il doit coïncider s'annule également, donc $\mathcal{P}(n+1)$ est vraie dans ce cas
+
+    \item Supposons que les éléments de $\left\{ a_{0} ,\dots, a_{n+1} \right\}$ sont tous distincts.
+Notons
+$$
+Q(X) = \left| \begin{matrix}
+1 & 1 & 1 & \dots  & 1 & 1 \\
+a_{0} & a_{1} & a_{2} & \dots & a_{n} & X \\
+a_{0}^{2} & a_{1}^{2} & a_{2}^{2} & \dots & a_{n}^{2} & X^{2} \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n} & X^{n} \\
+a_{0}^{n+1} & a_{1}^{n+1} & a_{2}^{n+1} & \dots & a_{n}^{n+1} & X^{n+1}
+\end{matrix} \right| 
+$$
+Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \K[X]$ (car $\K[X]$ est un anneau et donc stable par produit).
+De plus, en développant le déterminant $Q(X)$ selon sa dernière colonne, on observe d'une part que $\deg Q \leqslant n+1$ et d'autre part que le coefficient de $X^{n+1}$ est le cofacteur de $X^{n+1}$ qui est, d'après $\mathcal{P}(n)$
+$$
+\prod_{0\leqslant i<j \leqslant n}(a_{j}-a_{i})
+$$
+Et, comme tous les $a_{i}$ sont distincts, ce coefficient est non-nul, donc $\deg Q=n+1$
+
+De plus, $Q(a_{0})=0, Q(a_{1})=0, \dots, Q(a_{n})=0$ car le déterminant présente dans chacun des calculs deux colonnes égales. Nous en déduisons que $Q$ admet au moins $(n+1)$ racines deux à deux distinctes, or son degré est exactement $n+1$ donc
+- il n'y a aucune autre racine
+- elles sont toutes simples
+
+La forme factorisée de $Q$ est donc
+$$
+Q(X)=\underbrace{ \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) }_{ \text{coefficient dominant} } \times \underbrace{ \prod_{k=0}^{n}(X-a_{k})^{1} }_{ n+1 \text{ racines simples} }
+$$
+Donc 
+\begin{align*}
+V(a_{0}, a_{1},\dots, a_{n+1})&=Q(a_{n+1}) \\
+&=  \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \times  \prod_{k=0}^{n}(a_{n+1}-a_{k})  \\
+&= \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \prod_{\substack{0\leqslant i<j \\ j=n+1}}^{n}(a_{j}-a_{k}) \\
+&= \prod_{0\leqslant i < j \leqslant n+1} (a_{j}-a_{i})
+\end{align*}
+
+Donc $\mathcal{P}(n+1)$ est vraie
+\end{itemize}
+\end{itemize}
+\end{question_kholle}
 \pagebreak\section{Semaine 30}
 
-	\setnbquestion{7}
-	\begin{question_kholle}
-		{Dénombrement des surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$ et dans $\lient 1; 3 \rient$}
+\begin{question_kholle}{Inégalité de Cauchy-Schwartz dans un Espace préhilbertien réel, cas d'égalité}
+	Soit $E$ un $\R$-espace vectoriel, et $\braket{ \cdot | \cdot  }$ un produit scalaire sur $E$.
+	Soient $(x, y) \in E^{2}$
+	\begin{enumerate}
+		\item \begin{itemize}[label=$\star$]
+			\item Si $y=0$, l'inégalité est une égalité et est évidente
+			\item Sinon, posons
+			$$
+			P:\left|\begin{array}{ll} \R &\to \R \\ t &\mapsto \braket{ x+t.y | x+t.y } = t^{2} \|y\|^{2} + 2 t \braket{ x | y }  + \|x\|^{2} \end{array}\right.
+			$$
+			Puisque $\|y\|^{2} \neq 0$, P est un polynôme de degré $2$ à coefficientts réels et positif d'après le caractère positif du produit scalaire (on a donc $\forall t \in \R, P(t)\geqslant 0$)
+			Le discriminant de cette fonction polynômiale est $\Delta = 4 \braket{ x | y }^{2} - 4 \|x\|^{2}\|y\|^{2}$, qui est obligatoirement négatif ou nul puisque $P$ admet au mieux une racine double.
+			Donc $\braket{ x | y }^{2} - \|x\|^{2}\|y\|^{2} \leqslant 0$ donc en prenant la racine carrée $|\braket{ x | y }| \leqslant \|x\|\|y\|$.
+		\end{itemize}
+		\item \begin{itemize}[label=$\star$]
+			\item Supposons que $(x, y)$ est liée, sans perte de généralité, supposons $y = \lambda.x$ alors
+			$$
+			\lvert \braket{ x | \lambda.x } \rvert  = \lvert  \lambda \rvert  \braket{ x | x }  = \lvert  \lambda \rvert  \|x\|^{2} = \| x \| \| \lambda.x\|
+			$$
+			Donc l'inégalité est une égalité.
+			
+			\item Réciproquement, supposons que $\lvert  \braket{ x | y } \rvert = \| x\| \| y\|$
+			\begin{itemize}
+				\item Si $y = 0$ alors $(x, y)$ est liée
+				\item Sinon, $\Delta = 4(\braket{ x | y }^{2} - \|x\|\|y\|) = 0$
+				$P$ est un polynôme de degré $2$ de discriminant nul : il admet une racine double $\lambda$
+				Ainsi
+				$$
+				P(\lambda) = 0 \implies \braket{ x+\lambda.y | x+\lambda.y } = 0
+				$$
+				Donc $x+\lambda .y = 0_{E}$ d'après le caractère défini du produit scalaire.
+			\end{itemize}
+		\end{itemize}
+	\end{enumerate}
+\end{question_kholle}
+\begin{question_kholle}[{
+	L'application
+	$$
+	\chi \left|\begin{array}{ll}
+		E &\to E^{*} \\
+		x &\mapsto \left(\begin{array}{ll} E &\to \R 
+						\\ y &\mapsto \braket{ x | y }  \end{array}\right) \end{array}\right.
+	$$ est un isomorphisme d'espaces vectoriels. $\chi$ est appelé l'isomorphisme canonique entre un espace vectoriel euclidien et son espace dual.	
+	}]{Isomorphisme entre un espace euclidien et l'espace de ses formes linéaires (Théorème de représentation de Riesz).}
+	\begin{itemize}[label=$\star$]
+		\item $\chi$ est bien définie car, $\forall x \in E$, par linéarité du produit scalaire en sa seconde variable, $\chi(x): \left|\begin{array}{ll} E &\to \R \\ y &\mapsto \braket{ x | y }  \end{array}\right.$ est une forme linaire sur $E$.
+		
+		
+		\item Soient $(x, x') \in E^{2}$ et $\lambda \in \R$ fixés quelconques
+		
+		
+		\begin{align*}
+			\forall y \in E,  \chi(x + \lambda .x')(y) &= \braket{ x+\lambda.x' | y }  \\
+			&= \braket{ x | y } + \lambda \times\braket{ x' | y }  \\ 
+			&= \chi(x)(y) + \lambda \times \chi(x')(y) \\
+			&= (\chi(x) + \lambda . \chi(x') )(y)
+		\end{align*}
+		
+		Donc $\chi(x+\lambda x') = \chi(x) + \lambda.\chi(x')$, donc $\chi$ est linéaire.
+		
+		\item Soit $x \in \ker \chi$ fixé quelconque.
+		Alors $\chi (x) = 0_{E^{*}}$
+		$$\forall y \in E, \braket{ x | y } = 0$$
+		Donc $x \in E^{\perp} = \{ 0_{E} \}$ donc $x = 0_{E}$
+		Donc $\chi$ est injective, or $E$ et $E^{*}$ sont de même dimension, donc $\chi$ est bijective.
+		Donc $\chi$ est un isomorphisme.
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Montrer que si $F$ est un sous-espace vectoriel de dimension finie d'un espace préhilbertien réel, $F^{\perp}$ est son supplémentaire orthogonal}
+	
+	
+	Soient $(E, \braket{ \cdot | \cdot })$ un espace préhilbertien réel, et $F$ un sous espace vectoriel de dimension finie.
+	Alors $F$ et $F^{\perp}$ sont supplémentaires orthogonaux, i.e. $E = F  \overset{\perp}{\oplus} F^{\perp}$
+	
+	
+	
+	En notant $r = \dim F$, fixons une base orthonormale $(e_{1}, \dots, e_{r})$ de $F$, possible car $F$ est un espace euclidien (dimension finie et muni du produit scalaire induit par $E$).
+	\begin{itemize}[label=$\lozenge$]
+		\item \underline{Analyse}
+		
+		Soit $x \in E$ fixé quelconque, supposons que $\exists (x_{\parallel}, x_{\perp}) \in F \times F^{\perp} = x_{\parallel}+x_{\perp}$
+		D'abord $$x_{\parallel} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \R^{r}: x_{\parallel}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
+		Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque
+		
+		\begin{align*}
+			\braket{ x | e_{j} } &=   \left\langle \sum_{i=1}^{r}\lambda_{i}.e_{i} + x_{\perp} \Bigg| e_{j}  \right\rangle   \\
+			&= \sum_{i=1}^{r}\lambda_{i}\times \underbrace{ \braket{ e_{i} | e_{j} } }_{ \delta_{ij} }  + \overbrace{ \braket{ \underbrace{ x_{\perp} }_{ \in F^{\perp} } | \underbrace{ e_{j} }_{ \in F } } }^{ =0 }  \\
+			&= \lambda_{j}
+		\end{align*}
+		
+		Ainsi, $$\left\{ \begin{array}{ll}
+			x_{\parallel} &= \sum_{i=1}^{r}\lambda_{i}.e_{i}= \sum_{i=1}^{r}\braket{ x | e_{i} } . e_{i} \\
+			x_{\perp}  &= x - x_{\parallel}
+		\end{array}\right.$$
+		
+		\item \underline{Synthèse}
+		
+		Posons donc 
+		$$\left\{ \begin{array}{ll}
+			x_{\parallel} &= \sum_{i=1}^{r} \braket{ x | e_{i} } .e_{i} \\
+			x_{\perp} &= x - x_{\parallel}
+		\end{array}\right. $$
+		\begin{itemize}[label=$\star$]
+			\item $(e_{1}, \dots, e_{r})$ est une base de $F$ donc $x_{\parallel} \in F$
+			\item $x_{\parallel}+x_{\perp} = x_{\parallel}+ (x - x_{\parallel}) = x$
+			\item Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque. Calculons $\braket{ x_{\perp} | e_{j} }$
+			
+			\begin{align*}
+				\braket{ x_{\perp} | e_{j} } &= \braket{ x | e_{j} }  - \left\langle  \sum_{i=0}^{r}\braket{ x | e_{i} } .e_{i} \Bigg|  e_{j} \right\rangle \\
+				&= \left\langle x | e_{j} \right\rangle - \sum_{i=0}^{r} \left\langle x | e_{i} \right\rangle\underbrace{  \left\langle e_{i} | e_{j} \right\rangle  }_{ \delta_{ij} } \\
+				&= \left\langle x | e_{j} \right\rangle  - \left\langle x | e_{j} \right\rangle  = 0
+			\end{align*}
+			
+			
+			Donc $x_{\perp} \in \{e_{1}, \dots, e_{r}\}^{\perp}$
+			Donc $x_{\perp} \in \text{Vect}\{ e_{1}, \dots, e_{r} \}^{\perp} = F^{\perp}$
+			
+		\end{itemize}
+	\end{itemize}
+	Ainsi, $F$ et $F^{\perp}$ sont supplémentaires orthogonaux.
+	
+	De plus
+	$$	\forall x \in E, x = \underbrace{ \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i} }_{ \in F } + \underbrace{x - \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i}  }_{ \in F^{\perp} }$$
+	Donc $$p_{F}^{\perp}(x) = \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i} $$
+	
+\end{question_kholle}
+\begin{question_kholle}[{On utilisera le produit scalaire $$
+	\left\langle P | Q \right\rangle  = \int_{0}^{1} P(u)Q(u) \, \mathrm du
+$$ }]{Orthonormalisation de la base canonique de $\R_2[X]$}
+	Partons de la base canonique de $\R_{2}[X]$.
+	\begin{itemize}[label=$\star$]
+		\item $P_{1} =X^{0}$ est un vecteur unitaire Avec ce produit scalaire
+		
+		\item Calcul du second vecteur
+$$
+		P_{2}' = X - \left\langle X | 1 \right\rangle.1 = X - \left( \int_{0}^{1} u \, \mathrm du \right) .1 = X-\frac{1}{2}
+$$
+		
+$$
+		P_{2} = \frac{P_{2}'}{\|P_{2}'\|} = \frac{P_{2}'}{\sqrt{ \left\langle P_{2}' | P_{2}' \right\rangle  }}= \frac{P_{2}'}{\sqrt{ \int_{0}^{1} \left( u-\frac{1}{2} \right)^{2} \, \mathrm du }}
+		= \frac{P_{2}'}{\sqrt{ \frac{1}{12} }}= \sqrt{ 12 }P_{2}'
+$$
+		Ce qui donne
+$$
+		P_{2}' = 2\sqrt{ 3 }X - \sqrt{ 3 }
+$$
+		
+		\item Enfin, 
+		
+		\begin{align*}
+			P_{3}' &= X^{2} - \left\langle X^{2} | 2\sqrt{ 3 }X-\sqrt{ 3 } \right\rangle.(2\sqrt{ 3 }X-\sqrt{ 3 })  - \left\langle X^{2} | 1 \right\rangle .1 \\
+			&= X^{2} - \left( \int_{0}^{1} 2\sqrt{ 3 }u^{3} - \sqrt{ 3 }u^{2} \, \mathrm du  \right).(2\sqrt{ 3 }X-\sqrt{ 3 })-\left( \int_{0}^{1} u^{2} \, \mathrm du  \right).1 \\
+			&= X^{2} - \frac{\sqrt{ 3 }}{6}(2\sqrt{ 3 }X - \sqrt{ 3 }) - \frac{1}{3} \\ \\
+			&=X^{2} -X + \frac{1}{6}
+		\end{align*}
+		
+		
+$$
+		P_{3} = \frac{P'_{3}}{\|P_{3}'\|}= \frac{P'_{3}}{\sqrt{ \left\langle P_{3} | P_{3} \right\rangle  }}= \frac{P'_{3}}{\sqrt{ \int_{0}^{1} \left( u^{2}-u +\frac{1}{6} \right)^{2} \, \mathrm du }}
+		= \frac{P_{3}'}{\sqrt{ \frac{1}{180} }} =6\sqrt{ 5 }P'_{3} = 6\sqrt{ 5 }\left( X^{2}-X + \frac{1}{6} \right)
+$$
+		
+		Donc une base orthonormée de $\R_{2}[X]$ muni de ce produit scalaire est
+$$
+		\left( 1, 2\sqrt{ 3 }X-\sqrt{ 3 }, 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
+$$
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace préhilbertien Réel.
+	Soient $F$ un sous espace vectoriel de dimension finie de $E$, et $x \in E$.
+	
+	L'ensemble $\{ \|x-z\| \mid z \in F \}$ admet une borne inférieure appelée distance de $x$ à $F$ et notée $d(x, F)$, qui est un plus petit élément, atteinte uniquement pour pour $z = p_{F}^{\perp}(x)$
+	}]{Distance d'un vecteur à un sous-espace vectoriel de dimension finie}
+	
+	$\{ \|x - z\| \mid z \in F \}$ est une partie de $\R$, non vide car elle contient $\|x\|$ pour $z \leftarrow 0_{F}$ d'éléments positifs ou nuls. Elle admet donc une borne inférieure
+	
+	$E$ est un espace euclidien, donc $E = F \overset{\perp}{\oplus} F^{\perp}$ donc $x$ se décompose selon ces supplémentaires orthogonaux
+	$$x = \underbrace{ p_{F}^{\perp}(x) }_{ \in F } + \underbrace{ x - p_{F}^{\perp}(x) }_{ \in F^{\perp} }$$
+	si bien que, pour tout $z \in F$
+	
+	\begin{align*}
+		\|x - z\|^{2} &=  \|p_{F}^{\perp}(x) - z + x - p_{F}^{\perp}(x)\|^{2} \\
+		&= \|p_{F}^{\perp}(x) - z \|^{2} + \|x - p_{F}^{\perp}(x)\|^{2} \text{ d'après le théorème de Pythagore} \\
+		& \geqslant \|x - p_{F}^{\perp}(x)\|^{2}
+	\end{align*}
+	
+	En prenant la racine carrée,
+	$$\forall z \in F, \| x  - z\| \geqslant \|x - p_{F}^{\perp }(x)\|$$
+	D'où $\| x - p_{F}^{\perp}(x)\|$ minore $\{ \| x - z\| \mid z \in F \}$ et donc sa borne inférieure.
+	
+	Or, en remonant le calcul précédent, il y a égalité pour $z = p_{F}^{\perp}(x)$ si bien que la borne inférieure est un plus petit élément, et vaut $d(x, F) = \|x-p_{F}^{\perp}(x)\|$
+	
+	De plus, si $z' \in F$ atteint ce plus petit élément on a
+	
+	\begin{align*}
+		\| x- z'\|^{2} &= \|p_{F}^{\perp}(x) - z' + x - p_{F}^{\perp}(x)\|^{2} \\
+		\| x - p_{F}^{\perp}(x)\|^{2} &= \|p_{F}^{\perp}(x) - z' \|^{2} + \|x - p_{F}^{\perp}(x)\|^{2} \\
+		0 &= \|p_{F}^{\perp}(x) - z' \|^{2}
+	\end{align*}
+	
+	Si bien que $p_{F}^{\perp}(x) - z' = 0_{E}$ d'après le caractère défini du produit scalaire.
+	Donc le plus petit élément $d(x, F) = \min\{ \|x-z\| \mid z \in F \}$ est uniquement atteint pour $z = p_{F}^{\perp}(x)$.
+\end{question_kholle}
+\begin{question_kholle}[{
+	Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace vectoriel euclidien, $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base orthonormée de $E$.
+	Soit $u = \sum_{i=1}^{n}u_{i}.e_{i}$ un vecteur de $E$.
+	Soient $(a_{1}, \dots, a_{n}) \in\R^{n} \setminus \{ 0_{\R^{n}} \}$, $\alpha \in \R$ et $H_{\alpha}$ l'hyperplan affine d'équation
+$$
+	\sum_{i=1}^{n}a_{i}x_{i}=\alpha
+$$
+	}]{Distance à un sous-espace affine}
+	Posons $a = \sum_{i=1}^{n}a_{i}.e_{i}$ $H_{0}$ est un hyperplan vectoriel et, $H_{0} = a^{\perp}$ et $H_{0}^{\perp}= \text{Vect}\{ a \}$
+	Introduisons $h_{\alpha} \in a^{\perp}$ tel que $H_{\alpha}= h_{\alpha}+H_{0}$ et souvenons nous que $h_{\alpha}=\frac{\alpha}{\| a\|^{2}}.a$
+	
+	Observons que l'égalité $H_{\alpha}=h_{\alpha}+H_{0}$ donne
+$$
+	\{ \|u-z\| \mid z \in H_{\alpha} \} = \{ \|u-(h_{\alpha}+z')\| \mid z' \in H_{0} \}= \{ \|(u - h_{\alpha})-z'\| \mid z' \in H_{0}\}
+$$
+	
+	or, d'après la caractérisation de la distance à un sous-espace quelconque, on a
+	\begin{itemize}[label=$\star$]
+		\item L'ensemble $\{ \|(u-h_{\alpha}) -z'\| \mid z' \in H_{0} \}$ admet une borne inférieure donc $\{ \| u - z\| \mid z \in H_{\alpha} \}$ aussi qui vaut $\mathrm{d}(u-h_{\alpha}, H_{0})$, ce qui prouve que $\mathrm{d}(u, H_{\alpha})$ est bien définie
+		
+		\item $\inf \{  \| (u - h_{\alpha}) - z'\| \mid z' \in H_{0} \}$ est un plus petit élément atteint pour l'unique valeur $z' = p_{H_{0}}^{\perp}(u-h_{\alpha})=p_{H_{0}}^{\perp}(u)$ car $h_{\alpha} \in H_{0}^{\perp}= \ker p_{H_{0}}^{\perp}$, donc $\mathrm{d(u, H_{\alpha})}=\inf \{  \|u-z\| \mid z \in H_{\alpha} \}$ est un plus petit élément atteint pour l'unique valeur $z = h_{\alpha}+p_{H_{0}}^{\perp}(u-h_{\alpha})= h_{\alpha}+ p_{H_{0}}^{\perp}(u)$
+$$
+		\mathrm{d}(u, H_{\alpha})= \| u - h_{\alpha}-p_{H_{0}}^{\perp}(u)\|
+$$
+	\end{itemize}
+	Or $u - p_{H_{0}}^{\perp}(u) = (\mathrm{Id}-p_{H_{0}}^{\perp})(u) = p_{H_{0}^{\perp}}^{\perp}(u) = \left\langle u | \frac{a}{\|a\|} \right\rangle. \frac{a}{\|a\|}$ car $H_{0}^{\perp} = \text{Vect}\{ a \}$ d'où, sachant aussi que $h_{\alpha}= \frac{\alpha}{\|a\|^{2}}.a$
+$$
+	\mathrm{d}(u, H_{\alpha})= \|p_{H_{0}^{\perp}}^{\perp}(u)-h_{\alpha}\|= \left\| \left\langle a | \frac{a}{\|a\|} \right\rangle. \frac{a}{\|a\|}- \frac{\alpha}{\|a\|^{2}}.a \right\|
+$$
+\end{question_kholle}
+\begin{question_kholle}
+	{Dénombrement des surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$ et dans $\lient 1; 3 \rient$}
+	
+	Soit $n \in \N^*$.
+	
+	Il y a ${\left| \lient 1; 2 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 2^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
+	Seules les applications constantes $\widetilde{1}$ et $\widetilde{2}$ ne sont pas surjectives.
+	Il y a donc $2^n - 2$ surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
+	
+	Il y a ${\left| \lient 1; 3 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 3^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$. Les applications non surjectives sont celles dont l'image n'est pas $\lient 1; 3 \rient$. C'est-à-dire, celles dont l'image est de cardinal 1 (les fonctions constantes $\widetilde{1}$, $\widetilde{2}$ et $\widetilde{3}$) et celles dont l'image est de cardinal 2. Ces dernières sont les surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$, $\{ 1; 3 \}$ et $\{ 2; 3 \}$. Comme ces trois ensembles ont la même taille, il y a $3 \times (2^n - 2)$ (voir résultat précédent) applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ dont l'image est de cardinal 2. Ainsi, le nombre de surjections de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ est $3^n - 3 - 3(2^n -2) = 3^n - 3 \times 2^n + 3$.
+\end{question_kholle}
 
-		Soit $n \in \N^*$.
-
-		Il y a ${\left| \lient 1; 2 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 2^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
-		Seules les applications constantes $\widetilde{1}$ et $\widetilde{2}$ ne sont pas surjectives.
-		Il y a donc $2^n - 2$ surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
-
-		Il y a ${\left| \lient 1; 3 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 3^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$. Les applications non surjectives sont celles dont l'image n'est pas $\lient 1; 3 \rient$. C'est-à-dire, celles dont l'image est de cardinal 1 (les fonctions constantes $\widetilde{1}$, $\widetilde{2}$ et $\widetilde{3}$) et celles dont l'image est de cardinal 2. Ces dernières sont les surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$, $\{ 1; 3 \}$ et $\{ 2; 3 \}$. Comme ces trois ensembles ont la même taille, il y a $3 \times (2^n - 2)$ (voir résultat précédent) applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ dont l'image est de cardinal 2. Ainsi, le nombre de surjections de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ est $3^n - 3 - 3(2^n -2) = 3^n - 3 \times 2^n + 3$.
-	\end{question_kholle}
-
-	\begin{question_kholle}
-		[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$. \\
-		Alors $\left|F\right| = \frac{\left|E\right|}{k}$
-		\begin{quotation}
-			\textquotedblleft Pour compter les moutons, il faut compter les pattes puis diviser par quatre. \textquotedblright
-		\end{quotation}]
-		{Lemme des bergers}
-
-		Considérons la relation binaire définie sur $E$ par :
-		\begin{equation*}
-			\forall (x, y) \in E^2, x \sim y
-			\iff f(x) = f(y)
-		\end{equation*}
-		Elle est réflexive, transitive et symétrique donc c'est bien une relation d'équivalence.
-		Donc les classes d'équivalence réalise une partition de $E$.
-		Nous avons $\displaystyle E = \coprod_{C \in \nicefrac{E}{\sim}} C$ donc, en passant aux cardinaux, $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right|$.
-
-		Soit $x \in E$ \fq. Alors $\bar{x} = \left\{ y \in E \;|\; f(x) = f(y) \right\} = f^{-1}(f(\{x\}))$. Par hypothèse, tous les éléments de $F$ ont le même nombre $k$ d'antécédents, or $f({x})$ est un singleton d'élément de $F$ donc $\left|\bar{x}\right| = k$.
-		Ainsi $\forall C \in \nicefrac{E}{\sim}, \left|C\right| = k$.
-
-		Posons $\varphi \left|\begin{array}{ccc}
-			\nicefrac{E}{\sim} & \mapsto & F \\
-			C & \rightarrow & f(x) \text{ où } x \in C
-		\end{array}\right.$.
-		$\varphi$ est bien défini car si $(x, y) \in E$ vérifie $\bar{x} = \bar{y}$ alors $f(x) = f(y)$ donc l'image par $\varphi$ ne dépend pas du représentant de classe choisi.
-		$\varphi$ est surjective car soit $z \in F$, $f$ est surjective donc $\exists x_z \in E : f(x_z) = z$ et alors $\varphi(\bar{x_z}) = f(x_z) = z$.
-		$\varphi$ est injective car soient $(C, C') \in \left( \nicefrac{E}{\sim} \right)^2, \varphi(C) = \varphi(C')$ alors $\exists (x, x') \in C \times C' : x \sim x'$, comme deux classes d'équivalence sont confondues ou disjointes, $C = C'$.
-		Ainsi $\varphi$ est une bijection donc $\left|F\right| = \left|\nicefrac{E}{\sim}\right|$.
-
-		Ainsi $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right| = \sum_{C \in \nicefrac{E}{\sim}} k = \left| \nicefrac{E}{\sim} \right| k = \left|F\right| k$.
-	\end{question_kholle}
+\begin{question_kholle}
+	[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$. \\
+	Alors $\left|F\right| = \frac{\left|E\right|}{k}$
+	\begin{quotation}
+		\textquotedblleft Pour compter les moutons, il faut compter les pattes puis diviser par quatre. \textquotedblright
+	\end{quotation}]
+	{Lemme des bergers}
+	
+	Considérons la relation binaire définie sur $E$ par :
+	\begin{equation*}
+		\forall (x, y) \in E^2, x \sim y
+		\iff f(x) = f(y)
+	\end{equation*}
+	Elle est réflexive, transitive et symétrique donc c'est bien une relation d'équivalence.
+	Donc les classes d'équivalence réalise une partition de $E$.
+	Nous avons $\displaystyle E = \bigsqcup_{C \in \nicefrac{E}{\sim}} C$ donc, en passant aux cardinaux, $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right|$.
+	
+	Soit $x \in E$ \fq. Alors $\bar{x} = \left\{ y \in E \;|\; f(x) = f(y) \right\} = f^{-1}(f(\{x\}))$. Par hypothèse, tous les éléments de $F$ ont le même nombre $k$ d'antécédents, or $f({x})$ est un singleton d'élément de $F$ donc $\left|\bar{x}\right| = k$.
+	Ainsi $\forall C \in \nicefrac{E}{\sim}, \left|C\right| = k$.
+	
+	Posons $\varphi \left|\begin{array}{ccc}
+		\nicefrac{E}{\sim} & \mapsto & F \\
+		C & \rightarrow & f(x) \text{ où } x \in C
+	\end{array}\right.$.
+	$\varphi$ est bien défini car si $(x, y) \in E$ vérifie $\bar{x} = \bar{y}$ alors $f(x) = f(y)$ donc l'image par $\varphi$ ne dépend pas du représentant de classe choisi.
+	$\varphi$ est surjective car soit $z \in F$, $f$ est surjective donc $\exists x_z \in E : f(x_z) = z$ et alors $\varphi(\bar{x_z}) = f(x_z) = z$.
+	$\varphi$ est injective car soient $(C, C') \in \left( \nicefrac{E}{\sim} \right)^2, \varphi(C) = \varphi(C')$ alors $\exists (x, x') \in C \times C' : x \sim x'$, comme deux classes d'équivalence sont confondues ou disjointes, $C = C'$.
+	Ainsi $\varphi$ est une bijection donc $\left|F\right| = \left|\nicefrac{E}{\sim}\right|$.
+	
+	Ainsi $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right| = \sum_{C \in \nicefrac{E}{\sim}} k = \left| \nicefrac{E}{\sim} \right| k = \left|F\right| k$.
+\end{question_kholle}
 \pagebreak\section{Semaine 31}
+
+Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omega, \proba)$ désigne un espace probabilisé fini.
+
+\begin{question_kholle}
+	[Soit $p \in \N^*$. Un $p$-partage de $E$ est un $p$-liste $(A_1, \ldots, A_p) \in \mathcal{P}(E)^p$ de parties de $E$ (éventuellement vide), deux à deux disjointes qui recouvrent $E$ c'est-à-dire \tq+* t:
+	\begin{equation}
+		\forall (i, j) \in \lient 1 ; p \rient,
+		i \neq j \implies A_i \cap A_j = \emptyset
+		\qquad \text{et} \qquad
+		\bigcup_{i=1}^{p} A_i = E
+	\end{equation}
 	
-	Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omega, \proba)$ désigne un espace probabilisé fini.
+	Soient $(n_1, \ldots n_p) \in \N^p$ \tqs $n = n_1 + \ldots + n_p$ est un $p$-partage de $E$ \tq
+	\begin{equation*}
+		\forall (i, j) \in \lient 1 ; p \rient, \
+		\left|A_i\right| = n_i
+	\end{equation*}
+	Le nombre de $p$-partage de type $(n_1, \ldots, n_p)$ est :
+	\begin{equation}
+		\frac{n!}{\displaystyle \prod_{i=1}^{p} n_i !}
+	\end{equation}
+	]
+	{$p$-partage d'un ensemble $E$ et leur dénombrement}
 	
-	\begin{question_kholle}
-		[Soit $p \in \N^*$. Un $p$-partage de $E$ est un $p$-liste $(A_1, \ldots, A_p) \in \mathcal{P}(E)^p$ de parties de $E$ (éventuellement vide), deux à deux disjointes qui recouvrent $E$ c'est-à-dire \tq+* t:
+	Considérons les $p$-partages de type $(n_1, \ldots, n_p)$ et appliquons le principe des choix successifs :
+	\begin{equation*}
+		\left(
+		\underbrace{A_1}_{\binom{n}{n_1} \text{ choix}},
+		\underbrace{A_2}_{\binom{n}{n_2} \text{ choix}},
+		\underbrace{A_3}_{\binom{n}{n_3} \text{ choix}},
+		\ldots,
+		\underbrace{A_p}_{\binom{n}{n_p} \text{ choix}}
+		\right)
+	\end{equation*}
+	donc il y a
+	\begin{equation*}
+		\frac{ n! }{n_1! \cancel{(n-n_1)!} }
+		\frac{ \bcancel{(n-n_1)!} }{n_2! \cancel{(n-n_1-n_2)!} }
+		\frac{ \bcancel{(n-n_1-n_2)!} }{n_2! \cancel{(n-n_1-n_2-n_3)!} }
+		\ldots
+		\frac{ \bcancel{(n-(n_1+\ldots+n_{p-1})!} }{n_p! \underbrace{(n_1+\ldots+n_p)!}_{=0!} }
+	\end{equation*}
+	Donc, au total, il y a $\frac{n!}{n_1! n_2! \ldots n_p!}$ $p$-partages.
+\end{question_kholle}
+
+\begin{question_kholle}
+	[Soit $B$ un évènement de probabilité non nulle.
+	L'application $\proba_B$
+	{\begin{equation}
+		\proba_B \left| \begin{array}{ccc}
+			\mathcal{P}(\Omega) & \mapsto & [0;1] \\
+			A & \rightarrow & \displaystyle \frac{\proba( A \cap B )}{\proba(B)}
+		\end{array} \right.
+	\end{equation}}
+	est une probabilité sur sur $\Omega$. ]
+	{Une probabilité conditionnelle est une probabilité}
+	
+	~\\
+	\begin{liste}
+		\item Soit $A \in \mathcal{P}(\Omega)$ \fq. \\
+		On a $\emptyset \subset A \cap B  \subset B$ donc par croissance de la probabilité, $0 = \proba(\emptyset) \leqslant \proba(A \cap B) \leqslant \proba(B)$.
+		En divisant par $\proba(B) \neq 0$, $0 \leqslant \proba_B(A) \leqslant 1$. Donc $\proba_B$ est \textit{bien définie}.
+		\item $\proba_B(\Omega)
+		= \frac{\proba(\Omega \cup B)}{\proba(B)}
+		= \frac{\proba(B)}{\proba(B)}
+		= 1$
+		\item Soient $(A, A') \in \mathcal{P}(\Omega)^2$ \fq* \tq* $A$ et $A'$ sont incompatibles.
 		\begin{equation}
-			\forall (i, j) \in \lient 1 ; p \rient,
-			i \neq j \implies A_i \cap A_j = \emptyset
-			\qquad \text{et} \qquad
-			\bigcup_{i=1}^{p} A_i = E
+			\begin{aligned}
+				\proba_B(A \sqcup A')
+				&= \frac{ \proba(B \cap (A \sqcup A') ) }{ \proba(B) } \\
+				&= \frac{ \proba( (B \cap A) \sqcup (B \cap A') ) }{ \proba(B) } \text{ car } (B \cap A) \cap (B \cap A') \subset A \cap A' = \emptyset \\
+				&= \frac{ \proba(B \cap A) + \proba(B \cap A') }{ \proba(B) } \\
+				&= \proba_B(A) + \proba_B(A')
+			\end{aligned}
 		\end{equation}
-		
-		Soient $(n_1, \ldots n_p) \in \N^p$ \tqs $n = n_1 + \ldots + n_p$ est un $p$-partage de $E$ \tq
-		\begin{equation*}
-			\forall (i, j) \in \lient 1 ; p \rient, \
-			\left|A_i\right| = n_i
-		\end{equation*}
-		Le nombre de $p$-partage de type $(n_1, \ldots, n_p)$ est :
-		\begin{equation}
-			\frac{n!}{\displaystyle \prod_{i=1}^{p} n_i !}
-		\end{equation}
-		]
-		{$p$-partage d'un ensemble $E$ et leur dénombrement}
-		
-		Considérons les $p$-partages de type $(n_1, \ldots, n_p)$ et appliquons le principe des choix successifs :
-		\begin{equation*}
-			\left(
-				\underbrace{A_1}_{\binom{n}{n_1} \text{ choix}},
-				\underbrace{A_2}_{\binom{n}{n_2} \text{ choix}},
-				\underbrace{A_3}_{\binom{n}{n_3} \text{ choix}},
-				\ldots,
-				\underbrace{A_p}_{\binom{n}{n_p} \text{ choix}}
-			\right)
-		\end{equation*}
-		donc il y a
-		\begin{equation*}
-			\frac{ n! }{n_1! \cancel{(n-n_1)!} }
-			\frac{ \bcancel{(n-n_1)!} }{n_2! \cancel{(n-n_1-n_2)!} }
-			\frac{ \bcancel{(n-n_1-n_2)!} }{n_2! \cancel{(n-n_1-n_2-n_3)!} }
-			\ldots
-			\frac{ \bcancel{(n-(n_1+\ldots+n_{p-1})!} }{n_p! \underbrace{(n_1+\ldots+n_p)!}_{=0!} }
-		\end{equation*}
-		Donc, au total, il y a $\frac{n!}{n_1! n_2! \ldots n_p!}$ $p$-partages.
-	\end{question_kholle}
+	\end{liste}
+	Ainsi, $\proba_B$ est bien une probabilité sur $\Omega$.
+\end{question_kholle}
+\begin{question_kholle}{Montrer que si $A$ et $B$ sont des événements indépendants, alors $A$ et $\overline{B}$ aussi}
+	Supposons donc que $0 \leqslant \proba(A) \leqslant 1$ et $0 \leqslant \proba(B) \leqslant 1$.
+	D'une part, $\{ B, \bar{B} \}$ constitue un système complet donc
 	
-	\begin{question_kholle}
-		[Soit $B$ un évènement de probabilité non nulle.
-		L'application $\proba_B$
-		{\begin{equation}
-			\proba_B \left| \begin{array}{ccc}
-				\mathcal{P}(\Omega) & \mapsto & [0;1] \\
-				A & \rightarrow & \displaystyle \frac{\proba( A \cap B )}{\proba(B)}
-			\end{array} \right.
-		\end{equation}}
-		est une probabilité sur sur $\Omega$. ]
-		{Une probabilité conditionnelle est une probabilité}
+	\begin{align*}
+		\proba(A) &= \proba(A \cap B) + \proba(A \cap \bar{B}) \\
+		\iff \proba(A)&= \proba(A) \proba(B) + \proba(A \cap \bar{B}) \\
+		\iff \proba(A) - \proba(A) \proba(B) &= \proba(A \cap \bar{B}) \\
+		\iff \proba(A)(1-\proba(B))&= \proba(A \cap \bar{B}) \\
+		\iff \proba(A) \proba(\bar{B})&= \proba(A \cap \bar{B})
+	\end{align*}
+	
+	Donc $A$ et $\bar B$ sont indépendants
+\end{question_kholle}
+\begin{question_kholle}{Formule des probabilités composées}
+	Soient $(A_{1}, \dots, A_{n})$, $n$ événements tels que $\proba\left( \bigcap_{i=1}^{n} A_{i} \right) \neq 0$
+	Pour $k \in [ \! [ 2, n ] \!]$ posons 
+	$$\mathcal{H}_{k} : " \proba\left( \bigcap_{i=1}^{n}A_{i} \right) = \proba(A_{1})\proba_{A_{1}}(A_{2})\proba_{A_{1} \cap A_{2}}(A_{3})\proba_{A_{1} \cap A_{2} \cap A_{3}}(A_{4})\dots \proba_{A_{1} \cap\dots \cap A_{k-1}}(A_{k})"$$
+	\begin{itemize}[label=$\star$]
 		
-		~\\
-		\begin{liste}
-			\item Soit $A \in \mathcal{P}(\Omega)$ \fq. \\
-			On a $\emptyset \subset A \cap B  \subset B$ donc par croissance de la probabilité, $0 = \proba(\emptyset) \leqslant \proba(A \cap B) \leqslant \proba(B)$.
-			En divisant par $\proba(B) \neq 0$, $0 \leqslant \proba_B(A) \leqslant 1$. Donc $\proba_B$ est \textit{bien définie}.
-			\item $\proba_B(\Omega)
-			= \frac{\proba(\Omega \cup B)}{\proba(B)}
-			= \frac{\proba(B)}{\proba(B)}
-			= 1$
-			\item Soient $(A, A') \in \mathcal{P}(\Omega)^2$ \fq* \tq* $A$ et $A'$ sont incompatibles.
-			\begin{equation}
-				\begin{aligned}
-					\proba_B(A \amalg A')
-					&= \frac{ \proba(B \cap (A \amalg A') ) }{ \proba(B) } \\
-					&= \frac{ \proba( (B \cap A) \amalg (B \cap A') ) }{ \proba(B) } \text{ car } (B \cap A) \cap (B \cap A') \subset A \cap A' = \emptyset \\
-					&= \frac{ \proba(B \cap A) + \proba(B \cap A') }{ \proba(B) } \\
-					&= \proba_B(A) + \proba_B(A')
-				\end{aligned}
-			\end{equation}
-		\end{liste}
-		Ainsi, $\proba_B$ est bien une probabilité sur $\Omega$.
-	\end{question_kholle}
+		
+		\item Initialisation, $k \leftarrow 2$
+		d'une part, $\bigcap_{i=1}^{n}A_{i} \subset A_{1}$, donc par croissance de $\proba$, $$0<\proba\left( \bigcap_{i=1}^{n}A_{i} \right) \leqslant \proba(A_{1})$$
+		Si bien que $\proba(A_{1}) \neq 0$ donc la probabilité conditionnelle $\proba_{A_{1}}$ a un sens.
+		D'où, par définition d'une probabilité conditionnelle:
+		$$\proba(A_{1} \cap A_{2}) = \proba(A_{1}) \proba_{A_{1}}(A_{2})$$
+		Donc $\mathcal{H}_{2}$ est vérifiée.
+		
+		\item Hérédité Soit $k \in [ \! [ 2, n - 1] \!]$ fixé quelconque tel que $\mathcal{H}_{k}$ est vérifiée.
+		
+		D'abord, remarquons que $\bigcap_{i=1}^{n}A_{i} \subset \bigcap_{i=1}^{k}A_{i}$ donc par croissance de $\proba$,
+		$$0 < \proba\left( \bigcap_{i=1}^{n}A_{i} \right)\leqslant \proba\left( \bigcap_{i=1}^{k}A_{i} \right)$$
+		Si bien que $\proba\left( \bigcap_{i=1}^{k} A_{i} \right) \neq 0$ donc la probabilité conditionnelle $\proba_{A_{1}\cap\dots \cap A_{k}}$  a un sens.
+		
+		
+		\begin{align*}
+			\proba\left( \bigcap_{i=1}^{k+1}A_{i} \right) 
+			&= \proba\left( \left( \bigcap_{i=1}^{k}A_{i} \right) \cap A_{k+1} \right) \\
+			&= \proba\left( \bigcap_{i=1}^{k}A_{i} \right)\proba_{\bigcap _{i=1}^{k}A_{i}}(A_{k+1}) \\
+			&= \proba(A_{1})\proba_{A_{1}}(A_{2})\proba_{A_{1}\cap A_{2}}(A_{3})\dots \proba_{A_{1} \cap \dots \cap A_{k-1}}(A_{k}) \proba_{A_{1} \cap \dots \cap A_{k}}(A_{k+1})
+		\end{align*}
+		Donc $\mathcal{H}_{k+1}$ est aussi vérifiée
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Formule des probabilités totales et formule de Bayes}
+	\begin{itemize}
+		\item Formule des probabilités totales
+		
+		Soit $(A_{1}, \dots A_{n})$ un système complet d'événements.
+		Comme ils sont incompatibles
+		$$\proba\left( \bigsqcup_{k=1}^{n} A_{k} \right)= \sum_{k=1}^{n}\proba(A_{k})$$
+		
+		Le système est de plus complet donc $\bigsqcup _{k=1}^{n} A_{k} = \Omega$. Donc $\sum_{k=1}^{n}\proba(A_{k}) = 1$.
+		
+		$(A_{1}, \dots , A_{n})$ sont aussi deux à deux incompatibles, donc $(B \cap A_{1}, \dots B \cap A_{n})$ aussi.
+		De plus $B = B \cap \Omega = B \cap \left( \bigsqcup_{k=1}^{n}A_{k} \right) = \bigsqcup_{k=1}^{n}(B \cap A_{k})$
+		Donc
+		$$\proba(B)= \proba\left( \bigsqcup_{k=1}^{n}(B \cap A_{k}) \right) = \sum_{k=1}^{n}\proba(B \cap A_{k})$$
+		De plus, en passant aux probabilités conditionnelles $(\proba_{A_{i}})_{1\leqslant i\leqslant n}$ on a 
+		
+		$$\proba(B) = \sum_{k=1}^{n}\proba(A_{k})\proba_{A_{k}}(B)$$
+		
+		\item Formule de Bayes
+		
+		Soient $A$ et $B$ deux événements de probabilité non nulle, on a alors :
+		$$\proba(A)\proba_{A}(B) = \proba(A \cap B) = \proba(B)\proba_{B}(A)$$
+		donc
+		
+		$$\proba_{A}(B) = \frac{\proba(B)\proba_{B}(A)}{\proba(A)}$$
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[{
+	Soit $X$ une variable alétoire sur $\Omega$ et $g$ une fonction définie sur $X(\Omega)$.
+	La loi de probabilité $Y = g(X)$ est donnée par $Y(\Omega) = g(X(\Omega))$ et 
+	$$
+	\forall y \in Y(\Omega), \proba_{Y}(\{ y \})= \proba(Y=y) = \sum_{x \in g^{-1}(\{ y \})}\proba(X=x)= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(X=x)
+	$$
+	}]{Loi d'une fonction de $X$}
+	
+	Utilisons le système complet $(X = x)_{x \in X(\Omega)}$ associé à la variable aléatoire $X$ et la formule des probabilités totales
+	
+	\begin{align*}
+		\proba_{Y}(\{ y \}) = \proba(Y=y) &= \sum_{x \in X(\Omega)}\proba((Y=y) \cap (X=x)) \\
+		&= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba((g(X)=y) \cap (X=x)) + \sum_{\substack{x \in X(\Omega)\\ g(x)\neq y}}\proba((g(X)=y) \cap (X=x))
+	\end{align*}
+	
+	
+	Remarquons ainsi que
+	\begin{itemize}[label=$\star$]
+		\item Si $g(x) = y$
+		$$
+		\omega \in(X=x) \implies X(\omega)=x \implies g(X(\omega)) = g(x) \implies \omega \in (g(X) = y)
+		$$
+		De plus $(X = x) \subset (g(X)=y)$ donc $(g(X) = y) \cap(X=x)=(X=x)$
+		
+		\item Sinon, si $g(x) \neq y$
+		$$
+		\omega \in (X=x) \implies X(\omega) = x \implies g(X(\omega)) = g(x) \neq y \implies \omega \not\in (g(X) = y)
+		$$
+		Dans ce cas, $(g(X) = y) \cap (X = x) = \emptyset$
+		
+	\end{itemize}
+	Ainsi, 
+	
+	\begin{align*}
+		\proba_{y}(\{ y \}) &= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(\underbrace{ (g(X)=y) \cap (X=x) }_{ = (X=x) }) + \underbrace{ \sum_{\substack{x \in X(\Omega)\\ g(x)\neq y}}\proba((g(X)=y) \cap (X=x)) }_{ =0 }\\
+		&= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(X=x) \\
+		&= \sum_{x \in g^{-1}(\{ y \})}\proba(X=x)
+	\end{align*}
+	
+	
+\end{question_kholle}
+\begin{question_kholle}{Si $X \geqslant 0$ presque sûrement, $\esp(X) = 0 \iff X = 0$ presque sûrement}
+	Soit $X\geqslant 0$ presque sûrement
+	\begin{itemize}
+		\item Supposons que $\esp(X) = 0$
+		Par hypothèse, l'évènement $(X<0)$ est négligeable donc
+		
+		\begin{align*}
+			\esp (X) & = \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
+			&= \sum_{\omega \in (X = 0)} \underbrace{ X(\omega) }_{ = 0 } \proba(\{ \omega  \}) + \sum_{\omega \in (X<0)}X(\omega) \underbrace{ \proba(\{ \omega \}) }_{ =0 } + \sum_{\omega \in (X >0)} X(\omega)\proba(\{ \omega \}) \\
+			&= \sum_{\omega \in (X >0)} X(\omega)\proba(\{ \omega \})
+		\end{align*}
+		
+		Soit $\omega_{0} \in (X>0)$ fixé quelconque
+		La nullité de l'espérance donne
+		$$0 \leqslant X(\omega_{0})\proba(\{ \omega_{0} \}) \leqslant \sum_{\omega \in(X>0)}X(\omega) P(\{ \omega \})= \esp(X) = 0$$
+		donc $X(\omega_{0})\proba(\{ \omega_{0} \}) = 0$, or $X(\omega_{0})>0$ donc $\proba(\{ \omega_{0} \})=0$
+		donc 
+		$$\proba(X>0) = \sum_{\omega_{0} \in (X>0)} \proba(\{ \omega_{0} \}) = 0$$
+		Donc  $(X>0)$ est négligeable, mais $(X<0)$ est négligeable aussi, donc
+		$$0\leqslant \proba((X>0) \cup (X<0))\leqslant \proba(X>0) + \proba(X<0)=0$$
+		donc l'évènement contraire de $(X>0) \cup (X<0)$, qui est $(X=0)$ est certain
+		
+		\item Supposons $X=0$ presque sûrement.
+		
+		\begin{align*}
+			\esp(X) &= \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
+			&= \sum_{\omega \in (X = 0)} \underbrace{ X(\omega) }_{ =0 } \proba(\{ \omega \}) + \sum_{\omega \in (X \neq 0)} X(\omega) \underbrace{ \proba(\{ \omega \}) }_{ =0 } \\
+			&= 0
+		\end{align*}
+		
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Calcul de l'espérance et la variance d'une variable aléatoire suivant une loi binomiale}
+	Soit $n \in \mathbb{N}^*$ et $p \in [0, 1]$
+	Supposons que $X \hookrightarrow \mathcal{B}(n, p)$
+	
+	\begin{align*}
+		\esp(X) &= \sum_{\omega \in X(\Omega)}\omega \proba(X = \omega) \\
+		& = \sum_{k=0}^{n}k\proba(X=k) \\
+		&= \sum_{k=0}^{n}k \binom{n}{k} p^{k}(1-p)^{n-k} \\
+		&= \sum_{k=0}^{n}k \frac{n!}{k! (n-k)!} p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n} \frac{(n-1)!}{(k-1)! ((n-1)-(k-1))!} p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n} \binom{n-1}{k-1} p^{k}(1-p)^{n-k} \\ \\
+		&= n \sum_{j=0}^{n-1} \binom{n-1}{j} p^{j+1}(1-p)^{n-1-j} \\
+		&= n p \sum_{j=0}^{n-1} \binom{n-1}{j} p^{j}(1-p)^{n-1-j} \\ \\
+		&= np (p + (1-p))^{n-1} = np
+	\end{align*}
+	Pour la variance, calculons d'abord $\esp(X^{2})$
+	
+	\begin{align*}
+		\esp(X^{2}) &= \sum _{k=0}^{n}k^{2} \proba(X=k^{2}) \\
+		&=  \sum_{k=1}^{n} k \underbrace{ k \binom{n}{k} }_{ n \binom{n-1}{k-1} }p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n} \underbrace{ k }_{ (k-1)+1 } \binom{n-1}{k-1} p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n}(k-1)\binom{n-1}{k-1}p^{k}(1-p)^{n-k}+ n \sum_{k=1}^{n}\binom{n-1}{k-1}p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=2}^{n}\underbrace{ (k-1)\binom{n-1}{k-1} }_{ (n-1)\binom{n-2}{k-2} } p^{k}(1-p)^{n-k} + n \sum_{k=1}^{n}\binom{n-1}{k-1}p^{k}(1-p)^{n-k} \\
+		&= n(n-1) \underbrace{ \sum_{i=0}^{n-2}\binom{n-2}{i}p^{i+2}(1-p)^{(n-2)-i}  }_{ \text{ en posant } i = k-2 }+ n \underbrace{ \sum_{i=0}^{n-1}\binom{n-1}{i}p^{i+1}(i-p)^{(n-1)-i} }_{ \text{en posant }i=k-1 } \\
+		&= n(n-1)p^{2}(p+(1-p))^{n-2} + np(p+(1-p))^{n-1} \\
+		&= n(n-1)p^{2}+np \\
+		&= np((n-1)p+1)
+	\end{align*}
+	
+	D'où,
+	$$
+	\variance(X) = \esp(X^{2}) - \esp(X)^{2}=np((n-1)p+1)- n^{2} p ^{2}=np(1-p)
+	$$
+	
+	\textbf{Calcul alternatif de $\mathbf{E^2}$} En utilisant la formule de transfert pour $f \leftarrow \left( \begin{matrix}
+		X(\Omega) &\to &\dots \\
+		x &\mapsto &x(x-1)
+	\end{matrix} \right)$
+	
+	
+	\begin{align*}
+		\esp(X(X - 1)) &= \sum_{k=0}^{n}k(k-1)\proba(X=k) \\
+		&= \sum_{k=0}^{n}k(k-1)\binom{n}{k}p^{k}(1-p)^{n-k} \\
+		&= n(n-1) \sum_{k=2}^{n}\binom{n-2}{k-2}p^{k}(1-p)^{n-k} \\
+		&= n(n-1)p^{2} \sum_{j=0}^{n-2} \binom{n-2}{j}p^{j}(1-p)^{n-2-j} \\
+		&= n(n-1) p^{2} (p + (1-p))^{n-2} \\
+		&= n(n-1)p^{2}
+	\end{align*}
+	
+	Donc en remarquant que $$\esp(X^{2}) = \esp(X(X-1)+X) = \esp(X(X-1))+\esp(X)= n(n-1)p^{2} + np$$
+	Donc
+	$$\variance(X) = \esp(X^{2})- \esp(X)^{2} = n(n-1)p^{2} + np - n^{2}p^{2} = np(1-p)$$
+	
+	
+\end{question_kholle}
 \end{document}

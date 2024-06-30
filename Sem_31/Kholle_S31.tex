@@ -1,87 +1,300 @@
 \documentclass{article}
 
-\date{8 juin 2024}
-\usepackage[nb-sem=30, auteurs={Hugo Vangilluwen}]{../kholles}
+\date{30 juin 2024}
+\usepackage[nb-sem=31, auteurs={Hugo Vangilluwen, George Ober}]{../kholles}
 
 \begin{document}
-	\maketitle
+\maketitle
+
+Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omega, \proba)$ désigne un espace probabilisé fini.
+
+\begin{question_kholle}
+	[Soit $p \in \N^*$. Un $p$-partage de $E$ est un $p$-liste $(A_1, \ldots, A_p) \in \mathcal{P}(E)^p$ de parties de $E$ (éventuellement vide), deux à deux disjointes qui recouvrent $E$ c'est-à-dire \tq+* t:
+	\begin{equation}
+		\forall (i, j) \in \lient 1 ; p \rient,
+		i \neq j \implies A_i \cap A_j = \emptyset
+		\qquad \text{et} \qquad
+		\bigcup_{i=1}^{p} A_i = E
+	\end{equation}
 	
-	Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omega, \proba)$ désigne un espace probabilisé fini.
+	Soient $(n_1, \ldots n_p) \in \N^p$ \tqs $n = n_1 + \ldots + n_p$ est un $p$-partage de $E$ \tq
+	\begin{equation*}
+		\forall (i, j) \in \lient 1 ; p \rient, \
+		\left|A_i\right| = n_i
+	\end{equation*}
+	Le nombre de $p$-partage de type $(n_1, \ldots, n_p)$ est :
+	\begin{equation}
+		\frac{n!}{\displaystyle \prod_{i=1}^{p} n_i !}
+	\end{equation}
+	]
+	{$p$-partage d'un ensemble $E$ et leur dénombrement}
 	
-	\begin{question_kholle}
-		[Soit $p \in \N^*$. Un $p$-partage de $E$ est un $p$-liste $(A_1, \ldots, A_p) \in \mathcal{P}(E)^p$ de parties de $E$ (éventuellement vide), deux à deux disjointes qui recouvrent $E$ c'est-à-dire \tq+* t:
+	Considérons les $p$-partages de type $(n_1, \ldots, n_p)$ et appliquons le principe des choix successifs :
+	\begin{equation*}
+		\left(
+		\underbrace{A_1}_{\binom{n}{n_1} \text{ choix}},
+		\underbrace{A_2}_{\binom{n}{n_2} \text{ choix}},
+		\underbrace{A_3}_{\binom{n}{n_3} \text{ choix}},
+		\ldots,
+		\underbrace{A_p}_{\binom{n}{n_p} \text{ choix}}
+		\right)
+	\end{equation*}
+	donc il y a
+	\begin{equation*}
+		\frac{ n! }{n_1! \cancel{(n-n_1)!} }
+		\frac{ \bcancel{(n-n_1)!} }{n_2! \cancel{(n-n_1-n_2)!} }
+		\frac{ \bcancel{(n-n_1-n_2)!} }{n_2! \cancel{(n-n_1-n_2-n_3)!} }
+		\ldots
+		\frac{ \bcancel{(n-(n_1+\ldots+n_{p-1})!} }{n_p! \underbrace{(n_1+\ldots+n_p)!}_{=0!} }
+	\end{equation*}
+	Donc, au total, il y a $\frac{n!}{n_1! n_2! \ldots n_p!}$ $p$-partages.
+\end{question_kholle}
+
+\begin{question_kholle}
+	[Soit $B$ un évènement de probabilité non nulle.
+	L'application $\proba_B$
+	{\begin{equation}
+		\proba_B \left| \begin{array}{ccc}
+			\mathcal{P}(\Omega) & \mapsto & [0;1] \\
+			A & \rightarrow & \displaystyle \frac{\proba( A \cap B )}{\proba(B)}
+		\end{array} \right.
+	\end{equation}}
+	est une probabilité sur sur $\Omega$. ]
+	{Une probabilité conditionnelle est une probabilité}
+	
+	~\\
+	\begin{liste}
+		\item Soit $A \in \mathcal{P}(\Omega)$ \fq. \\
+		On a $\emptyset \subset A \cap B  \subset B$ donc par croissance de la probabilité, $0 = \proba(\emptyset) \leqslant \proba(A \cap B) \leqslant \proba(B)$.
+		En divisant par $\proba(B) \neq 0$, $0 \leqslant \proba_B(A) \leqslant 1$. Donc $\proba_B$ est \textit{bien définie}.
+		\item $\proba_B(\Omega)
+		= \frac{\proba(\Omega \cup B)}{\proba(B)}
+		= \frac{\proba(B)}{\proba(B)}
+		= 1$
+		\item Soient $(A, A') \in \mathcal{P}(\Omega)^2$ \fq* \tq* $A$ et $A'$ sont incompatibles.
 		\begin{equation}
-			\forall (i, j) \in \lient 1 ; p \rient,
-			i \neq j \implies A_i \cap A_j = \emptyset
-			\qquad \text{et} \qquad
-			\bigcup_{i=1}^{p} A_i = E
+			\begin{aligned}
+				\proba_B(A \sqcup A')
+				&= \frac{ \proba(B \cap (A \sqcup A') ) }{ \proba(B) } \\
+				&= \frac{ \proba( (B \cap A) \sqcup (B \cap A') ) }{ \proba(B) } \text{ car } (B \cap A) \cap (B \cap A') \subset A \cap A' = \emptyset \\
+				&= \frac{ \proba(B \cap A) + \proba(B \cap A') }{ \proba(B) } \\
+				&= \proba_B(A) + \proba_B(A')
+			\end{aligned}
+		\end{equation}
+	\end{liste}
+	Ainsi, $\proba_B$ est bien une probabilité sur $\Omega$.
+\end{question_kholle}
+
+\begin{question_kholle}{Si $A$ et $B$ sont des événements indépendants, alors $A$ et $\overline{B}$ aussi}
+	Supposons donc que $0 \leqslant \proba(A) \leqslant 1$ et $0 \leqslant \proba(B) \leqslant 1$.
+	D'une part, $\{ B, \bar{B} \}$ constitue un système complet donc
+	
+	\begin{align*}
+		\proba(A) &= \proba(A \cap B) + \proba(A \cap \bar{B}) \\
+		\iff \proba(A)&= \proba(A) \proba(B) + \proba(A \cap \bar{B}) \\
+		\iff \proba(A) - \proba(A) \proba(B) &= \proba(A \cap \bar{B}) \\
+		\iff \proba(A)(1-\proba(B))&= \proba(A \cap \bar{B}) \\
+		\iff \proba(A) \proba\left(\bar{B}\right)&= \proba(A \cap \bar{B})
+	\end{align*}
+	
+	Donc $A$ et $\bar B$ sont indépendants
+\end{question_kholle}
+
+\begin{question_kholle}[
+	\begin{equation}
+		\forall n \in \N^*, \
+		\forall A \in \mathcal{P}(\Omega)^n, \
+		\proba\left( \bigcap_{i=1}^{k}A_{i} \right) =
+		\proba(A_{1}) \proba_{A_{1}}(A_{2}) \proba_{A_{1} \cap A_{2}}(A_{3}) \dots \proba_{A_{1} \cap \dots \cap A_{n-1}}(A_{n})
+	\end{equation}
+	]{Formule des probabilités composées}
+	Procédons par récurrence.
+	Soient $(A_{1}, \dots, A_{n})$, $n$ événements tels que $\proba\left( \bigcap_{i=1}^{n} A_{i} \right) \neq 0$.
+	Pour tout $k \in \lient 2, n \rient$, posons 
+	$$\mathcal{H}_{k} : " \proba\left( \bigcap_{i=1}^{k}A_{i} \right) = \proba(A_{1})\proba_{A_{1}}(A_{2})\proba_{A_{1} \cap A_{2}}(A_{3})\proba_{A_{1} \cap A_{2} \cap A_{3}}(A_{4})\dots \proba_{A_{1} \cap\dots \cap A_{k-1}}(A_{k})"$$
+	
+	\begin{itemize}[label=$\star$]
+
+		\item Initialisation, $k \leftarrow 2$
+		d'une part, $\bigcap_{i=1}^{n}A_{i} \subset A_{1}$, donc par croissance de $\proba$, $$0<\proba\left( \bigcap_{i=1}^{n}A_{i} \right) \leqslant \proba(A_{1})$$
+		Si bien que $\proba(A_{1}) \neq 0$ donc la probabilité conditionnelle $\proba_{A_{1}}$ a un sens.
+		D'où, par définition d'une probabilité conditionnelle:
+		$$\proba(A_{1} \cap A_{2}) = \proba(A_{1}) \proba_{A_{1}}(A_{2})$$
+		Donc $\mathcal{H}_{2}$ est vérifiée.
+		
+		\item Hérédité, Soit $k \in [ \! [ 2, n - 1] \!]$ fixé quelconque tel que $\mathcal{H}_{k}$ est vérifiée.
+		
+		D'abord, remarquons que $\bigcap_{i=1}^{n}A_{i} \subset \bigcap_{i=1}^{k}A_{i}$ donc par croissance de $\proba$,
+		$$0 < \proba\left( \bigcap_{i=1}^{n}A_{i} \right)\leqslant \proba\left( \bigcap_{i=1}^{k}A_{i} \right)$$
+		Si bien que $\proba\left( \bigcap_{i=1}^{k} A_{i} \right) \neq 0$ donc la probabilité conditionnelle $\proba_{A_{1}\cap\dots \cap A_{k}}$  a un sens.
+		
+		
+		\begin{align*}
+			\proba\left( \bigcap_{i=1}^{k+1}A_{i} \right) 
+			&= \proba\left( \left( \bigcap_{i=1}^{k}A_{i} \right) \cap A_{k+1} \right) \\
+			&= \proba\left( \bigcap_{i=1}^{k}A_{i} \right)\proba_{\bigcap _{i=1}^{k}A_{i}}(A_{k+1}) \\
+			&= \proba(A_{1})\proba_{A_{1}}(A_{2})\proba_{A_{1}\cap A_{2}}(A_{3})\dots \proba_{A_{1} \cap \dots \cap A_{k-1}}(A_{k}) \proba_{A_{1} \cap \dots \cap A_{k}}(A_{k+1})
+		\end{align*}
+		Donc $\mathcal{H}_{k+1}$ est aussi vérifiée
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Formule des probabilités totales et formule de Bayes}
+	
+		\underline{Formule des probabilités totales}
+		
+		Soit $(A_{1}, \dots A_{n})$ un système complet d'événements.
+		Comme ils sont incompatibles
+		$$\proba\left( \bigsqcup_{k=1}^{n} A_{k} \right)= \sum_{k=1}^{n}\proba(A_{k})$$
+		
+		Le système est de plus complet donc $\bigsqcup _{k=1}^{n} A_{k} = \Omega$. Donc $\sum_{k=1}^{n}\proba(A_{k}) = 1$.
+		
+		$(A_{1}, \dots , A_{n})$ sont aussi deux à deux incompatibles, donc $(B \cap A_{1}, \dots B \cap A_{n})$ aussi.
+		De plus $B = B \cap \Omega = B \cap \left( \bigsqcup_{k=1}^{n}A_{k} \right) = \bigsqcup_{k=1}^{n}(B \cap A_{k})$.
+		Donc
+		$$\proba(B)= \proba\left( \bigsqcup_{k=1}^{n}(B \cap A_{k}) \right) = \sum_{k=1}^{n}\proba(B \cap A_{k})$$
+		De plus, en passant aux probabilités conditionnelles $\left(\proba_{A_{i}}\right)_{1\leqslant i\leqslant n}$ on a 
+		
+		\begin{equation}
+			\proba(B) = \sum_{k=1}^{n}\proba(A_{k})\proba_{A_{k}}(B)
 		\end{equation}
 		
-		Soient $(n_1, \ldots n_p) \in \N^p$ \tqs $n = n_1 + \ldots + n_p$ est un $p$-partage de $E$ \tq
-		\begin{equation*}
-			\forall (i, j) \in \lient 1 ; p \rient, \
-			\left|A_i\right| = n_i
-		\end{equation*}
-		Le nombre de $p$-partage de type $(n_1, \ldots, n_p)$ est :
+		\underline{Formule de Bayes}
+		
+		Soient $A$ et $B$ deux événements de probabilité non nulle, on a alors :
+		$$\proba(A)\proba_{A}(B) = \proba(A \cap B) = \proba(B)\proba_{B}(A)$$
+		donc
+		
 		\begin{equation}
-			\frac{n!}{\displaystyle \prod_{i=1}^{p} n_i !}
+			\proba_{A}(B) = \frac{\proba(B)\proba_{B}(A)}{\proba(A)}
 		\end{equation}
-		]
-		{$p$-partage d'un ensemble $E$ et leur dénombrement}
-		
-		Considérons les $p$-partages de type $(n_1, \ldots, n_p)$ et appliquons le principe des choix successifs :
-		\begin{equation*}
-			\left(
-				\underbrace{A_1}_{\binom{n}{n_1} \text{ choix}},
-				\underbrace{A_2}_{\binom{n}{n_2} \text{ choix}},
-				\underbrace{A_3}_{\binom{n}{n_3} \text{ choix}},
-				\ldots,
-				\underbrace{A_p}_{\binom{n}{n_p} \text{ choix}}
-			\right)
-		\end{equation*}
-		donc il y a
-		\begin{equation*}
-			\frac{ n! }{n_1! \cancel{(n-n_1)!} }
-			\frac{ \bcancel{(n-n_1)!} }{n_2! \cancel{(n-n_1-n_2)!} }
-			\frac{ \bcancel{(n-n_1-n_2)!} }{n_2! \cancel{(n-n_1-n_2-n_3)!} }
-			\ldots
-			\frac{ \bcancel{(n-(n_1+\ldots+n_{p-1}))!} }{n_p! \underbrace{(n_1+\ldots+n_p)!}_{=0!} }
-		\end{equation*}
-		Donc, au total, il y a $\frac{n!}{n_1! n_2! \ldots n_p!}$ $p$-partages.
-	\end{question_kholle}
+\end{question_kholle}
+
+\begin{question_kholle}[{
+	Soit $X$ une variable alétoire sur $\Omega$ et $g$ une fonction définie sur $X(\Omega)$.
+	La loi de probabilité $Y = g(X)$ est donnée par $Y(\Omega) = g(X(\Omega))$ et
+	\begin{equation}
+		\forall y \in Y(\Omega), \proba_{Y}(\{ y \})= \proba(Y=y) = \sum_{x \in g^{-1}(\{ y \})}\proba(X=x)= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(X=x)
+	\end{equation}
+	}]{Loi d'une fonction de $X$}
 	
-	\begin{question_kholle}
-		[Soit $B$ un évènement de probabilité non nulle.
-		L'application $\proba_B$
-		{\begin{equation}
-			\proba_B \left| \begin{array}{ccc}
-				\mathcal{P}(\Omega) & \mapsto & [0;1] \\
-				A & \rightarrow & \displaystyle \frac{\proba( A \cap B )}{\proba(B)}
-			\end{array} \right.
-		\end{equation}}
-		est une probabilité sur sur $\Omega$. ]
-		{Une probabilité conditionnelle est une probabilité}
+	Utilisons le système complet $(X = x)_{x \in X(\Omega)}$ associé à la variable aléatoire $X$ et la formule des probabilités totales
+	
+	\begin{align*}
+		\proba_{Y}(\{ y \}) = \proba(Y=y) &= \sum_{x \in X(\Omega)}\proba((Y=y) \cap (X=x)) \\
+		&= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba((g(X)=y) \cap (X=x)) + \sum_{\substack{x \in X(\Omega)\\ g(x)\neq y}}\proba((g(X)=y) \cap (X=x))
+	\end{align*}
+	
+	
+	Remarquons ainsi que
+	\begin{itemize}[label=$\star$]
+		\item Si $g(x) = y$
+		$$
+		\omega \in(X=x) \implies X(\omega)=x \implies g(X(\omega)) = g(x) \implies \omega \in (g(X) = y)
+		$$
+		D'où $(X = x) \subset (g(X)=y)$ donc $(g(X) = y) \cap(X=x)=(X=x)$
 		
-		~\\
-		\begin{liste}
-			\item Soit $A \in \mathcal{P}(\Omega)$ \fq. \\
-			On a $\emptyset \subset A \cap B  \subset B$ donc par croissance de la probabilité, $0 = \proba(\emptyset) \leqslant \proba(A \cap B) \leqslant \proba(B)$.
-			En divisant par $\proba(B) \neq 0$, $0 \leqslant \proba_B(A) \leqslant 1$. Donc $\proba_B$ est \textit{bien définie}.
-			\item $\proba_B(\Omega)
-			= \frac{\proba(\Omega \cup B)}{\proba(B)}
-			= \frac{\proba(B)}{\proba(B)}
-			= 1$
-			\item Soient $(A, A') \in \mathcal{P}(\Omega)^2$ \fq* \tq* $A$ et $A'$ sont incompatibles.
-			\begin{equation}
-				\begin{aligned}
-					\proba_B(A \amalg A')
-					&= \frac{ \proba(B \cap (A \amalg A') ) }{ \proba(B) } \\
-					&= \frac{ \proba( (B \cap A) \amalg (B \cap A') ) }{ \proba(B) } \text{ car } (B \cap A) \cap (B \cap A') \subset A \cap A' = \emptyset \\
-					&= \frac{ \proba(B \cap A) + \proba(B \cap A') }{ \proba(B) } \\
-					&= \proba_B(A) + \proba_B(A')
-				\end{aligned}
-			\end{equation}
-		\end{liste}
-		Ainsi, $\proba_B$ est bien une probabilité sur $\Omega$.
-	\end{question_kholle}
+		\item Sinon, si $g(x) \neq y$
+		$$
+		\omega \in (X=x) \implies X(\omega) = x \implies g(X(\omega)) = g(x) \neq y \implies \omega \not\in (g(X) = y)
+		$$
+		Dans ce cas, $(g(X) = y) \cap (X = x) = \emptyset$
+		
+	\end{itemize}
+	Ainsi, 
+	
+	\begin{align*}
+		\proba_{y}(\{ y \}) &= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(\underbrace{ (g(X)=y) \cap (X=x) }_{ = (X=x) }) + \underbrace{ \sum_{\substack{x \in X(\Omega)\\ g(x)\neq y}}\proba((g(X)=y) \cap (X=x)) }_{ =0 }\\
+		&= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(X=x) \\
+		&= \sum_{x \in g^{-1}(\{ y \})}\proba(X=x)
+	\end{align*}
+	
+	
+\end{question_kholle}
+\begin{question_kholle}{Si $X \geqslant 0$ presque sûrement, $\esp(X) = 0 \iff X = 0$ presque sûrement}
+	Soit $X\geqslant 0$ presque sûrement
+	\begin{itemize}
+		\item Supposons que $\esp(X) = 0$
+		Par hypothèse, l'évènement $(X<0)$ est négligeable donc
+		
+		\begin{align*}
+			\esp (X) & = \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
+			&= \sum_{\omega \in (X = 0)} \underbrace{ X(\omega) }_{ = 0 } \proba(\{ \omega  \}) + \sum_{\omega \in (X<0)}X(\omega) \underbrace{ \proba(\{ \omega \}) }_{ =0 } + \sum_{\omega \in (X >0)} X(\omega)\proba(\{ \omega \}) \\
+			&= \sum_{\omega \in (X >0)} X(\omega)\proba(\{ \omega \})
+		\end{align*}
+		
+		Soit $\omega_{0} \in (X>0)$ fixé quelconque
+		La nullité de l'espérance donne
+		$$0 \leqslant X(\omega_{0})\proba(\{ \omega_{0} \}) \leqslant \sum_{\omega \in(X>0)}X(\omega) P(\{ \omega \})= \esp(X) = 0$$
+		donc $X(\omega_{0})\proba(\{ \omega_{0} \}) = 0$, or $X(\omega_{0})>0$ donc $\proba(\{ \omega_{0} \})=0$
+		donc 
+		$$\proba(X>0) = \sum_{\omega_{0} \in (X>0)} \proba(\{ \omega_{0} \}) = 0$$
+		Donc  $(X>0)$ est négligeable, mais $(X<0)$ est négligeable aussi, donc
+		$$0\leqslant \proba((X>0) \cup (X<0))\leqslant \proba(X>0) + \proba(X<0)=0$$
+		Ainsi l'évènement contraire de $(X>0) \cup (X<0)$, qui est $(X=0)$ est certain.
+		
+		\item Supposons $X=0$ presque sûrement.
+		
+		\begin{align*}
+			\esp(X) &= \sum_{\omega \in \Omega}X(\omega)\proba(\{ \omega \}) \\
+			&= \sum_{\omega \in (X = 0)} \underbrace{ X(\omega) }_{ =0 } \proba(\{ \omega \}) + \sum_{\omega \in (X \neq 0)} X(\omega) \underbrace{ \proba(\{ \omega \}) }_{ =0 } \\
+			&= 0
+		\end{align*}
+		
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Calcul de l'espérance et la variance d'une variable aléatoire suivant une loi binomiale}
+	Soit $n \in \mathbb{N}^*$ et $p \in [0, 1]$.
+	Supposons que $X \hookrightarrow \mathcal{B}(n, p)$.
+	
+	\begin{align*}
+		\esp(X) &= \sum_{\omega \in X(\Omega)}\omega \proba(X = \omega) \\
+		& = \sum_{k=0}^{n}k\proba(X=k) \\
+		&= \sum_{k=0}^{n}k \binom{n}{k} p^{k}(1-p)^{n-k} \\
+		&= \sum_{k=0}^{n}k \frac{n!}{k! (n-k)!} p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n} \frac{(n-1)!}{(k-1)! ((n-1)-(k-1))!} p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n} \binom{n-1}{k-1} p^{k}(1-p)^{n-k} \\ \\
+		&= n \sum_{j=0}^{n-1} \binom{n-1}{j} p^{j+1}(1-p)^{n-1-j} \\
+		&= n p \sum_{j=0}^{n-1} \binom{n-1}{j} p^{j}(1-p)^{n-1-j} \\ \\
+		&= np (p + (1-p))^{n-1} = np
+	\end{align*}
+	Pour la variance, calculons d'abord $\esp(X^{2})$
+	
+	\begin{align*}
+		\esp(X^{2}) &= \sum _{k=0}^{n}k^{2} \proba(X=k^{2}) \\
+		&=  \sum_{k=1}^{n} k \underbrace{ k \binom{n}{k} }_{ n \binom{n-1}{k-1} }p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n} \underbrace{ k }_{ (k-1)+1 } \binom{n-1}{k-1} p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=1}^{n}(k-1)\binom{n-1}{k-1}p^{k}(1-p)^{n-k}+ n \sum_{k=1}^{n}\binom{n-1}{k-1}p^{k}(1-p)^{n-k} \\
+		&= n \sum_{k=2}^{n}\underbrace{ (k-1)\binom{n-1}{k-1} }_{ (n-1)\binom{n-2}{k-2} } p^{k}(1-p)^{n-k} + n \sum_{k=1}^{n}\binom{n-1}{k-1}p^{k}(1-p)^{n-k} \\
+		&= n(n-1) \underbrace{ \sum_{i=0}^{n-2}\binom{n-2}{i}p^{i+2}(1-p)^{(n-2)-i}  }_{ \text{ en posant } i = k-2 }+ n \underbrace{ \sum_{i=0}^{n-1}\binom{n-1}{i}p^{i+1}(i-p)^{(n-1)-i} }_{ \text{en posant }i=k-1 } \\
+		&= n(n-1)p^{2}(p+(1-p))^{n-2} + np(p+(1-p))^{n-1} \\
+		&= n(n-1)p^{2}+np \\
+		&= np((n-1)p+1)
+	\end{align*}
+	
+	D'où,
+	$$
+	\variance(X) = \esp(X^{2}) - \esp(X)^{2}=np((n-1)p+1)- n^{2} p ^{2}=np(1-p)
+	$$
+	
+	\noindent \textbf{Calcul alternatif de $\mathbf{E^2}$} En utilisant la formule de transfert pour $f \leftarrow \left( \begin{matrix}
+		X(\Omega) = \lient 0; n \rient &\to &\lient 0; n(n-1) \rient \\
+		x &\mapsto &x(x-1)
+	\end{matrix} \right)$
+	
+	
+	\begin{align*}
+		\esp(X(X - 1)) &= \sum_{k=0}^{n}k(k-1)\proba(X=k) \\
+		&= \sum_{k=0}^{n}k(k-1)\binom{n}{k}p^{k}(1-p)^{n-k} \\
+		&= n(n-1) \sum_{k=2}^{n}\binom{n-2}{k-2}p^{k}(1-p)^{n-k} \\
+		&= n(n-1)p^{2} \sum_{j=0}^{n-2} \binom{n-2}{j}p^{j}(1-p)^{n-2-j} \\
+		&= n(n-1) p^{2} (p + (1-p))^{n-2} \\
+		&= n(n-1)p^{2}
+	\end{align*}
+	
+	Donc en remarquant que $$\esp(X^{2}) = \esp(X(X-1)+X) = \esp(X(X-1))+\esp(X)= n(n-1)p^{2} + np$$
+	Donc
+	$$\variance(X) = \esp(X^{2})- \esp(X)^{2} = n(n-1)p^{2} + np - n^{2}p^{2} = np(1-p)$$
+	
+	
+\end{question_kholle}
 \end{document}

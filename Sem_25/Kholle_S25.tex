@@ -14,11 +14,11 @@
 	\end{itemize}
 	]
 	{S'il existe un inverse à droite (ou à gauche) pour une matrice carrée, alors celle ci est inversible}
-
-
+	
+	
 	Supposons $\exists B \in \mathcal{M}_{n}(\mathbb{K}):A\times B = I_{n}$. Notons $(\hat{a}, \hat{b}) \in \mathcal{L}(\mathbb{K}^{n})$ les endomorphismes canoniquement associés à $A$ et à $B$.
-
-
+	
+	
 	\begin{align*}
 		\Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}(\hat{a} \circ \hat{b}) &= \mathrm{mat}(\hat{a} \circ  \hat{b}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \\
 		&= \mathrm{mat}(\hat{a}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \times_{\mathcal{M_{n}(\mathbb{K})}} \mathrm{mat}(\hat{b}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \\
@@ -26,10 +26,166 @@
 		&= I_{n} \\
 		&= \mathrm{mat}(\mathrm{Id}_{\mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) = \Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}(\mathrm{Id}_{\mathbb{K}^{n}})
 	\end{align*}
-
-
+	
+	
 	D'où, par injectivité de $\Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}$, $\hat{a} \circ \hat{b} = \mathrm{Id}_{\mathbb{K}^{n}}$.
-
+	
 	Ainsi, $\hat{a} \circ \hat{b}$ est surjective, donc $\hat{a}$ est surjective, mais par l'accident de la dimension finie, $\hat{a}$ est bijective, donc c'est un automorphisme, donc toutes ses matrices associées sont inversibles. On effectue un même raisonnement pour l'inversibilité à gauche, en utilisant cette fois l'injectivité.
+\end{question_kholle}
+
+\begin{question_kholle}
+	[{Soient $E, F, G$, trois $\mathbb{K}$-espaces vectoriels de dimension finie $(p, q, r) \in (\mathbb{N}^{*})^{3}$
+$\mathcal{B}_{E}, \mathcal{B}_{F}, \mathcal{B}_{G}$ des bases respectives de ces trois espaces vectoriels, et  $u \in \mathcal{L}_{\mathbb{K}}(E, F)$ $v \in \mathcal{L}_{\mathbb{K}}(F, G)$.
+	
+	Alors 
+$$
+	\mathrm{mat}(v \circ u, \mathcal{B}_{E}, \mathcal{B}_{G}) = \mathrm{mat}(v, \mathcal{B}_{F}, \mathcal{B}_{G}) \times \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})
+$$}]{Lien composée des applications linéaires et produit des matrices les représentant vis-à-vis de certaines bases}
+	
+	Posons $W = \mathrm{mat}(v \circ u, \mathcal{B}_{E}, \mathcal{B}_{G}) \in \mathcal{M}_{r, p}(\mathbb{K})$, $V=\mathrm{mat}(v, \mathcal{B}_{F}, \mathcal{B}_{G}) \in \mathcal{M}_{r, q}(\mathbb{K})$, $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F}) \in \mathcal{M}_{q, p}(\mathbb{K})$
+	
+	Donc $V \times U$ a un sens et $V \times U \in \mathcal{M}_{r, p}(\mathbb{K})$
+	
+	Pour montrer l'égalité matricielle, nous allons utiliser la propriété suivante:
+	
+	Soient $(M, M') \in \mathcal{M}_{r, p}(\mathbb{K})^{2}$ telles que $\forall X \in \mathcal{M}_{p, 1}(\mathbb{K}): MX = M'X$, alors $M = M'$. (Cela se prouve facilement en particularisant pour les matrices de la base canonique de $\mathcal{M}_{p,1}(\mathbb{K})$)
+	
+	Soit $X \in \mathcal{M}_{p, 1}(\mathbb{K})$, montrons que $W \times X = V \times U \times X$
+	Posons $x \in E$ de sorte que $X = \mathrm{mat}(X, \mathcal{B}_{E})$
+	
+	\begin{align*}
+		WX &= \mathrm{mat}(v \circ  u, \mathcal{B}_{E}, \mathcal{B}_{G})\times \mathrm{ mat}(x, \mathcal{B}_{E}) \\
+		&= \mathrm{mat}((v \circ  u)(x), \mathcal{B}_{G}) \\
+		&= \mathrm{mat}(v(u(x)), \mathcal{B}_{G}) \\
+		&= \mathrm{mat}(v, \mathcal{B}_{F}, \mathcal{B}_{G}) \times \mathrm{mat}(u(x), \mathcal{B}_{F}) \\
+		&\text{ d'après l'expression matricielle de l'image d'un vecteur par une application linéaire}\\
+		&= V \times \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})\times \mathrm{ mat }(x, \mathcal{B}_{E}) \\
+		&= V\times U\times X
+	\end{align*}
+	
+	Ce qui prouve l'égalité matricielle
+\end{question_kholle}
+
+\begin{question_kholle}[{	Soit $H$ un $\mathbb{K}$-espace vectoriel de dimension $d \in \mathbb{N}^{*}$.
+	$\mathcal{B}_{H}$, une base de $H$ et $(h_{1}, \dots, h_{d})$, $d$ vecteurs de $H$.
+	
+	$$
+	(h_{1}, \dots, h_{d}) \text{ base de }H \iff \mathrm{mat}((h_{1}, \dots, h_{d}), \mathcal{B}_{H})\in GL_{n}(\mathbb{K})
+	$$
+	}]{Montrer qu'une famille de $d$ vecteurs d'un espace de dimension $d$ est une base si et seulement si la matrice de ces vecteurs dans une base (donc dans toute) est inversible.}
+	
+	Notons $(e_{1}, \dots, e_{d})$ la base de $H$
+	Cherchons à interpréter $\mathrm{mat}((h_{1}, \dots, h_{d}), \mathcal{B}_{H})$ comme la matrice d'une application linéaire.
+	Notons $u$ l'unique endomorphisme de $H$ dans $H$ tel que $\forall i \in[ \! [ 1, d ] \!] , u(e_{i}) = h_{i}$
+	
+	\begin{align*}
+		\mathrm{mat}(u, \mathcal{B}_{H}) &= \bigg[ \begin{array}{c|c|c|c}
+			\mathrm{mat}(u(e_{1}), \mathcal{B}_{H}) & \mathrm{mat}(u(e_{2}), \mathcal{B}_{H}) & \dots & \mathrm{mat}(u(e_{d}), \mathcal{B}_{H})
+		\end{array} \bigg]  \\
+		&= \bigg[ \begin{array}{c|c|c|c}
+			\mathrm{mat}(h_{1}, \mathcal{B}_{H}) & \mathrm{mat}(h_{2}, \mathcal{B}_{H}) & \dots & \mathrm{mat}(h_{d}, \mathcal{B}_{H})
+		\end{array} \bigg]  \\
+		&= \mathrm{mat}((h_{1}, \dots, h_{d}), \mathcal{B}_{H}) 
+	\end{align*}
+	
+	Si bien que
+	
+	\begin{align*}
+		(h_{1}, \dots, h_{d}) \text{ base de }H &\iff (u(e_{1}), \dots, u(e_{d})) \text{ base de }H \\
+		&\iff u \in \mathcal{GL}_{\mathbb{K}}(H) \\
+		&\iff \mathrm{mat}(u, \mathcal{B}_{H}) \in GL_{d}(\mathbb{K}) \\
+		& \iff \mathrm{mat}((h_{1}, \dots, h_{d}), \mathcal{B}_{H}) \in GL_{d}(\mathbb{K})
+	\end{align*}
+	
+\end{question_kholle}
+
+\begin{question_kholle}[
+	Soient $(E, F)$ deux $\mathbb{K}$-espaces vectoriels de dimension finie, $u \in \mathcal{L}_{\mathbb{K}}(E, F)$, $\mathcal{B}_{E}$ et $\mathcal{B}_{E}'$ deux bases de $E$, $\mathcal{B}_{F}$ et $\mathcal{B}_{F}'$ deux bases de $F$
+	
+	Posons $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})$ et $U' = \mathrm{mat}(u, \mathcal{B}_{E}', \mathcal{B}_{F}')$, $P = \mathcal{P}(\mathcal{B}_{E} \to \mathcal{B}_{E}')$, et $Q = \mathcal{P}(\mathcal{B}_{F} \to \mathcal{B}_{F}')$
+	
+	Alors 
+$$
+	U' = Q^{-1} U P
+$$
+	]{Preuve de la formule de changement de base pour une application linéaire, cas particulier d'un endomorphisme lu dans la même base au départ et à l'arrivée.}
+	
+	
+	Soit $X \in \mathcal{M}_{n, 1}(\mathbb{K})$, où $\dim E = n$.
+	Posons $x = \Psi_{\mathcal{B}_{E}}^{-1}(X)$ et $Y = \Psi_{\mathcal{B}_{F}}(u(x))$.
+	
+	Puisque $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})$, $Y = UX$
+	
+	Posons $X' = \Psi_{\mathcal{B}_{E}'}(x)$et $Y' = \Psi_{\mathcal{B}_{F}'}(u(x))$.
+	La formule pour le changement de base pour les vecteurs donne $X = PX'$ et $Y =QY'$
+	Donc, puisque $U' = \mathrm{mat}(u, \mathcal{B}_{E}', \mathcal{B}_{F}')$
+	
+	\begin{align*}
+		Y'  & = U' X' \\
+		\implies Q^{-1}Y  & = U' P^{-1} X \\ 
+		&\text{ puisque }Y=UX\\
+		\implies Q^{-1}U X  & = U' P^{-1}X  \\
+		&\text{ en particularisant pour }I_{n}\\
+		\implies Q^{-1}U &= U' P^{-1} \\
+		\implies U' &= Q^{-1}UP
+	\end{align*}
+	
+\end{question_kholle}
+\begin{question_kholle}{Montrer que la trace de $AB$ est égale à la trace de $BA$ (deux matrices carrées), et application à la définition de la trace de deux endomorphismes}
+	Soient $(A, B) \in \mathcal{M}_{n, p}(\mathbb{K})\times \mathcal{M}_{p,n}(\mathbb{K})$. Alors $\mathrm{Tr}(AB)= \mathrm{Tr}(BA)$
+	
+	\begin{itemize}[label=$\lozenge$]
+		\item Preuve de l'égalité de la trace
+		\begin{align*}
+			\mathrm{Tr}(AB) = \sum_{i=1}^{n}[A\times B]_{i,i} = \sum_{i=1}^{n}\sum_{k=1}^{p}A_{i,k}B_{k,i}=\sum_{k=1}^{p}\sum_{i=1}^{n}B_{k, i}A_{i, k}= \sum_{k=1}^{p}[B\times A]_{kk}= \mathrm{Tr}(BA)
+		\end{align*}
+		
+		
+		\item Soit $E$ un espace vectoriel de dimension finie $u \in \mathcal{L}_{\mathbb{K}}(E)$. Soit $\mathcal{B}_{0}$ une base de $E$ fixée quelconque
+		Posons $\lambda = \mathrm{Tr}(\mathrm{mat}(u, \mathcal{B}_{0})$)
+		Soit $\mathcal{B}$ une autre base de $E$ fixée quelconque, considérons $P = \mathcal{P}(\mathcal{B}_{0} \to \mathcal{B})$ la matrice de passage de $\mathcal{B}_{0}$ à $\mathcal{B}$.
+		D'après la formule de changement de base
+$$
+		\mathrm{mat}(u, \mathcal{B}) = P^{-1} \times \mathrm{mat}(u, \mathcal{B}_{0})\times P
+$$
+		donc
+		
+		\begin{align*}
+			\mathrm{Tr}(\mathrm{mat}(u, \mathcal{B})) &= \mathrm{Tr}(P^{-1} \mathrm{mat}(u, \mathcal{B}_{0})P) \\
+			&= \mathrm{Tr}(\mathrm{mat}(u, \mathcal{B}_{0})P P^{-1}) \text{ d'après la preuve précédente} \\
+			&= \mathrm{Tr}(\mathrm{mat}(u, \mathcal{B}_{0}))
+		\end{align*}
+		
+		D'où l'existence de la trace $\lambda$ commune à toutes les matrices représentant $u$ dans la même base au départ et à l'arrivée.
+		On a évidemment unicité de ce scalaire, que l'on apelle la trace de l'endomorphisme $u$.
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Égalité rang trace pour un projecteur}
+	Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie $n \in \mathbb{N}^{*}$, et $p$ un projecteur de $E$.
+	
+	Puisque $p$ est un projecteur, on peut l'expliciter selon son image et son noyau
+	
+$$
+	p \left|\begin{matrix} E &= &\mathrm{Im}(p) &\oplus &\mathrm{Ker}(p) &\to &E \\ x &= &x_{I} &+ &x_{K} &\mapsto &x_{I} \end{matrix}\right.
+$$
+	Notons donc $r = \dim \mathrm{Im}(p) = \mathrm{rg}(p)$. Le théorème d'existence de base assure l'existence de $(e_{1}, \dots, e_{r})$ base de $\mathrm{Im}(p)$, de même, en notant $(e_{r+1}, \dots, e_{n})$ une base de $\mathrm{Ker}(p)$, puisque les espaces sont supplémentaires, on sait que $\mathcal{B}= (e_{1}, \dots, e_{r}, e_{r+1},\dots, e_{n})$ est une base de $E$.
+	
+	Ainsi
+$$
+	\mathrm{mat}(p, \mathcal{B}) = \left[ \begin{array}{cccc|ccc}
+		1 & 0 & \dots & 0 & 0 & \dots & 0 \\
+		0 & 1 & \dots & 0 & 0 & \dots & 0 \\
+		\vdots & \vdots & \ddots & \vdots  & \vdots & \ddots & \vdots \\
+		0 & 0 & \dots & 1 & 0 & \dots & 0\\
+		\hline 0 & 0 & \dots & 0 & 0 & \dots & 0 \\
+		\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+		0 & 0 & \dots & 0 & 0 & \dots & 0
+	\end{array} \right] = \left[ \begin{array}{c|c}
+		I_{r} & 0_{r, n-r} \\
+		\hline 0_{n-r, r} & 0_{n-r, n-r}
+	\end{array} \right] = J_{r}(n,n)
+$$
+	Donc $\mathrm{Tr}(p) = \mathrm{Tr}(\mathrm{mat}(p, \mathcal{B})) = r = \mathrm{rg}(p)$
+	
 \end{question_kholle}
 \end{document}
