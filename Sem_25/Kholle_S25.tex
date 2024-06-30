@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\date{27 Avril 2024}
+\date{1 Juillet 2024}
 \usepackage[nb-sem=25, auteurs={George Ober}]{../kholles}
 
 \begin{document}
@@ -38,9 +38,10 @@
 $\mathcal{B}_{E}, \mathcal{B}_{F}, \mathcal{B}_{G}$ des bases respectives de ces trois espaces vectoriels, et  $u \in \mathcal{L}_{\mathbb{K}}(E, F)$ $v \in \mathcal{L}_{\mathbb{K}}(F, G)$.
 	
 	Alors 
-$$
-	\mathrm{mat}(v \circ u, \mathcal{B}_{E}, \mathcal{B}_{G}) = \mathrm{mat}(v, \mathcal{B}_{F}, \mathcal{B}_{G}) \times \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})
-$$}]{Lien composée des applications linéaires et produit des matrices les représentant vis-à-vis de certaines bases}
+	\begin{equation}
+		\mathrm{mat}(v \circ u, \mathcal{B}_{E}, \mathcal{B}_{G}) = \mathrm{mat}(v, \mathcal{B}_{F}, \mathcal{B}_{G}) \times \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})
+	\end{equation}
+	}]{Lien composée des applications linéaires et produit des matrices les représentant vis-à-vis de certaines bases}
 	
 	Posons $W = \mathrm{mat}(v \circ u, \mathcal{B}_{E}, \mathcal{B}_{G}) \in \mathcal{M}_{r, p}(\mathbb{K})$, $V=\mathrm{mat}(v, \mathcal{B}_{F}, \mathcal{B}_{G}) \in \mathcal{M}_{r, q}(\mathbb{K})$, $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F}) \in \mathcal{M}_{q, p}(\mathbb{K})$
 	
@@ -50,8 +51,8 @@ $$}]{Lien composée des applications linéaires et produit des matrices les repr
 	
 	Soient $(M, M') \in \mathcal{M}_{r, p}(\mathbb{K})^{2}$ telles que $\forall X \in \mathcal{M}_{p, 1}(\mathbb{K}): MX = M'X$, alors $M = M'$. (Cela se prouve facilement en particularisant pour les matrices de la base canonique de $\mathcal{M}_{p,1}(\mathbb{K})$)
 	
-	Soit $X \in \mathcal{M}_{p, 1}(\mathbb{K})$, montrons que $W \times X = V \times U \times X$
-	Posons $x \in E$ de sorte que $X = \mathrm{mat}(X, \mathcal{B}_{E})$
+	Soit $X \in \mathcal{M}_{p, 1}(\mathbb{K})$, montrons que $W \times X = V \times U \times X$.
+	Posons $x \in E$ de sorte que $X = \mathrm{mat}(x, \mathcal{B}_{E})$.
 	
 	\begin{align*}
 		WX &= \mathrm{mat}(v \circ  u, \mathcal{B}_{E}, \mathcal{B}_{G})\times \mathrm{ mat}(x, \mathcal{B}_{E}) \\
@@ -69,9 +70,9 @@ $$}]{Lien composée des applications linéaires et produit des matrices les repr
 \begin{question_kholle}[{	Soit $H$ un $\mathbb{K}$-espace vectoriel de dimension $d \in \mathbb{N}^{*}$.
 	$\mathcal{B}_{H}$, une base de $H$ et $(h_{1}, \dots, h_{d})$, $d$ vecteurs de $H$.
 	
-	$$
-	(h_{1}, \dots, h_{d}) \text{ base de }H \iff \mathrm{mat}((h_{1}, \dots, h_{d}), \mathcal{B}_{H})\in GL_{n}(\mathbb{K})
-	$$
+	\begin{equation}
+		(h_{1}, \dots, h_{d}) \text{ base de }H \iff \mathrm{mat}((h_{1}, \dots, h_{d}), \mathcal{B}_{H})\in GL_{n}(\mathbb{K})
+	\end{equation}
 	}]{Montrer qu'une famille de $d$ vecteurs d'un espace de dimension $d$ est une base si et seulement si la matrice de ces vecteurs dans une base (donc dans toute) est inversible.}
 	
 	Notons $(e_{1}, \dots, e_{d})$ la base de $H$
@@ -105,9 +106,9 @@ $$}]{Lien composée des applications linéaires et produit des matrices les repr
 	Posons $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})$ et $U' = \mathrm{mat}(u, \mathcal{B}_{E}', \mathcal{B}_{F}')$, $P = \mathcal{P}(\mathcal{B}_{E} \to \mathcal{B}_{E}')$, et $Q = \mathcal{P}(\mathcal{B}_{F} \to \mathcal{B}_{F}')$
 	
 	Alors 
-$$
-	U' = Q^{-1} U P
-$$
+	\begin{equation}
+		U' = Q^{-1} U P
+	\end{equation}
 	]{Preuve de la formule de changement de base pour une application linéaire, cas particulier d'un endomorphisme lu dans la même base au départ et à l'arrivée.}
 	
 	
@@ -131,6 +132,7 @@ $$
 	\end{align*}
 	
 \end{question_kholle}
+
 \begin{question_kholle}{Montrer que la trace de $AB$ est égale à la trace de $BA$ (deux matrices carrées), et application à la définition de la trace de deux endomorphismes}
 	Soient $(A, B) \in \mathcal{M}_{n, p}(\mathbb{K})\times \mathcal{M}_{p,n}(\mathbb{K})$. Alors $\mathrm{Tr}(AB)= \mathrm{Tr}(BA)$
 	
@@ -160,6 +162,7 @@ $$
 		On a évidemment unicité de ce scalaire, que l'on apelle la trace de l'endomorphisme $u$.
 	\end{itemize}
 \end{question_kholle}
+
 \begin{question_kholle}{Égalité rang trace pour un projecteur}
 	Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie $n \in \mathbb{N}^{*}$, et $p$ un projecteur de $E$.
 	
@@ -187,5 +190,147 @@ $$
 $$
 	Donc $\mathrm{Tr}(p) = \mathrm{Tr}(\mathrm{mat}(p, \mathcal{B})) = r = \mathrm{rg}(p)$
 	
+\end{question_kholle}
+
+\begin{question_kholle}[{
+	Soit $(n, p) \in \left(\N^*\right)^2$.
+	Soit $A \in \mathcal{M}_{n, p}(\mathbb{K})$. Posons $r = \mathrm{rg} A$.
+	\begin{equation}
+		\exists (P, Q) \in GL_n(\K) \times GL_p(\K): \
+		A = P J_r Q
+	\end{equation}
+	où $J_r$ (avec $r \in \lient 0; \min(n,p) \rient$) est la notation raccourcie de $J_r(n, p)$ définie par
+	\begin{equation*}
+		J_r(n, p)
+		= \left[ \begin{array}{c|c}
+			I_r & 0_{r, p-r} \\
+			\hline
+			0_{n-r, r} & 0_{n-r, p-r}
+		\end{array} \right]
+		= \left[ \begin{array}{cccc|ccc}
+			1 & 0 & \dots & 0 & 0 & \dots & 0 \\
+			0 & 1 & \dots & 0 & 0 & \dots & 0 \\
+			\vdots & \vdots & \ddots & \vdots  & \vdots & \ddots & \vdots \\
+			0 & 0 & \dots & 1 & 0 & \dots & 0\\
+			\hline 0 & 0 & \dots & 0 & 0 & \dots & 0 \\
+			\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & \dots & 0 & 0 & \dots & 0
+		\end{array} \right]
+	\end{equation*}
+	}]
+	{Décomposition $P J_r Q$}
+	
+	Commençons par démontrer le lemme suivant, $\forall r \in \lient 0; \min(n,p) \rient, \ \mathrm{rg}(J_r(n, p)) = r$
+	\begin{equation*}
+		\mathrm{rg}(J_r(n, p))
+		= \dim \; \Vect \left\{
+			\begin{bmatrix}
+				1 \\ 0 \\ 0 \\ 0 \\ \vdots \\ 0 \\ 0 \\ 0
+			\end{bmatrix} ,
+			\begin{bmatrix}
+				0 \\ 1 \\ 0 \\ 0 \\ \vdots \\ 0 \\ 0 \\ 0
+			\end{bmatrix} ,
+			\ldots ,
+			\begin{bmatrix}
+			0 \\ \vdots \\ 0 \\ 1 \\ 0 \\ \vdots \\ 0
+			\end{bmatrix} ,
+			0_{n, 1},
+			\ldots,
+			0_{n, 1}
+		\right\}
+		= \dim \; \Vect \hspace{-10mm} \underbrace{ \left\{
+			E^{1,1},
+			E^{2,1},
+			\ldots,
+			E^{r,1}
+		\right\} }
+		_{ \begin{array}{c}
+			\text{sous-famille de la base canonique de} \\
+			\mathcal{M}_{n,1}(\K) \text{ donc famille libre}
+		\end{array} } \hspace{-10mm}
+		= r
+	\end{equation*}
+	
+	\bigbreak \bigbreak
+	Notons  $\hat{a}$ l'application linéaire de $\K^p$ dans $\K^n$ canoniquement associée à $A$ de sorte que $A = \mathrm{mat}(\hat{a}, \mathcal{B}_{c, \K^p}, \mathcal{B}_{c, \K^n})$. Nous devons chercher deux bases $\mathcal{B}_1$ de $\K^p$ et $\mathcal{B}_2$ de $\K^n$ \tq+*
+	$$
+		\mathrm{mat}(\hat{a}, \mathcal{B}_1, \mathcal{B}_2)
+		= \left[ \begin{array}{cccc|ccc}
+			1 & 0 & \ldots & 0 & 0 & \ldots & 0 \\
+			0 & \ddots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+			\vdots & \ddots & \ddots & 0 & \vdots & \ddots & \vdots \\
+			0 & \ldots & 0 & 1 & 0 & \ldots & 0 \\
+			\hline
+			0 & \ldots & \ldots & 0 & 0 & \ldots & 0 \\
+			\vdots & \ddots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+			0 & \ldots & \ldots & 0 & 0 & \ldots & 0
+		\end{array} \right]
+		= J_r
+	$$
+	
+	Le théorème du rang appliqué à $\hat{a}$ donne $\dim \K^p = \mathrm{rg} \hat{a} + \dim \ker \hat{a}$. Or $\mathrm{rg} \hat{a} = \mathrm{rg} A = r$. Donc $\dim \ker \hat{a} = p - r$.
+	Fixons $E_1$ un sous-espace de $\K^p$ supplémentaire de $\ker \hat{a}$ ainsi $\K^p = E_1 \oplus \ker \hat{a}$ et $\dim E_1 = \dim \K^p - \dim \ker \hat{a} = p - (p-r) = r$.
+	
+	Choisissons $\left(f_1, \ldots, f_r\right)$ une base de $E_1$ et $\left(f_{r+1}, \ldots, f_p\right)$ une base $\ker \hat{a}$.
+	Posons $\mathcal{B}_1 = \left(f_1, \ldots, f_r, f_{r+1}, \ldots f_p\right)$ ce qui est bien une base car $E_1$ et $\ker \hat{a}$ sont supplémentaires.
+	
+	$\Im \hat{a}
+	= \Vect \left\{\hat{a}(f_1), \ldots, \hat{a}(f_r), \underbrace{\hat{a}(f_{r+1})}_{= 0_{\K^n}}, \ldots, \underbrace{\hat{a}(f_p)}_{= 0_{\K^n}}\right\}
+	= \Vect \left\{\hat{a}(f_1), \ldots, \hat{a}(f_r)\right\}$. Donc $\left(\hat{a}(f_1), \ldots, \hat{a}(f_r)\right)$ est un famile génératrice de cardinal $r$ de $\Im \hat{a}$ qui est un espace de dimension $r$. Donc $\left(\hat{a}(f_1), \ldots, \hat{a}(f_r)\right)$ est une base de $\Im \hat{a}$.
+	
+	D'après le théorème de la base incomplète dans $\K^n$, il existe une famille $\left(g_{r+1}, \ldots, g_n\right) \in \left(\K^n\right)^{n-r}$ \tq+ $\left(\hat{a}(f_1), \ldots, \hat{a}(f_r), g_{r+1}, \ldots, g_n\right)$ est une base de $\K^n$ que l'on notera $\mathcal{B}_2$.
+	
+	Ainsi
+	\begin{equation*}
+		\mathrm{mat}(\hat{a}, \mathcal{B}_1, \mathcal{B}_2)
+		= \left[ \begin{array}{c|c}
+			I_r & 0_{r, p-r} \\
+			\hline
+			0_{n-r, r} & 0_{n-r, p-r}
+		\end{array} \right]
+		= J_r(n, p)
+	\end{equation*}
+	
+	Posons $P = \mathcal{P} \left( \mathcal{B}_{c, \K^n} \to \mathcal{B}_2 \right) \in GL_n(\K)$ et $Q = \mathcal{P} \left( \mathcal{B}_2 \to \mathcal{B}_{c, \K^p} \right) \in GL_p(\K)$.
+	Appliquons la formule de changement de base :
+	$\mathrm{mat}(\hat{a}, \mathcal{B}_{c, \K^p}, \mathcal{B}_{c, \K^n})
+	= \mathcal{P} \left( \mathcal{B}_{c, \K^n} \to \mathcal{B}_2 \right)
+	\times \mathrm{mat}(\hat{a}, \mathcal{B}_1, \mathcal{B}_2)
+	\times \mathcal{P} \left( \mathcal{B}_1 \to \mathcal{B}_{c, \K^p} \right)$.
+	Ainsi
+	\begin{equation*}
+		A = P \times J_r(n, p) \times Q
+	\end{equation*}
+\end{question_kholle}
+
+\begin{question_kholle}[{
+	Soient $(A, B) \in \mathcal{M}_{n, p}(\mathbb{K})^2$. $A$ est équivalente à $B$ s'il existe $(P, Q) \in GL_n(\K) \times GL_p(\K)$ \tq* $B = Q^{-1} A P$.
+	
+	Montrons que deux matrices sont équivalentes \ssi elles ont le mêmes rangs, que "être équivalente à" est une relation d'équivalence, qu'il y a $\min(n, p) + 1$ classes et que $\left(J_r(n, p)\right)_{r \in \lient 0; \min(n, p) \rient}$ est un système de représentants de classes.
+	}]
+	{Deux matrices sont équivalentes \ssi elles ont le mêmes rangs. Système de représentants des classes de la relation d'équivalence "être équivalente à"}
+	
+	Notons $\sim$ la relation "être équivalente à".
+	
+	$\sim$ est :
+	\begin{liste}
+		\item réflexive car $\forall A \in \mathcal{M}_{n, p}(\K), A = I_n^{-1} A I_p$ et $(I_n, I_p) \in Gl_n(\K) \times Gl_p(\K)$.
+		\item symétrique car soit $(A, B) \in \mathcal{M}_{n, p}(\K)^2$ \tq+* $A \sim B$.
+		Alors $\exists (Q, P) \in GL_n(\K) \times GL_p(\K) : B = Q^{-1} A P$.D'où $A = Q B P^{-1}$.
+		Donc $A = \left(Q^{-1}\right)^{-1} B p^{-1}$.
+		Or $\left(Q^{-1}, P^{-1}\right) \in GL_n(\K) \times GL_p(\K)$. Ainsi $B \sim A$.
+		\item transitive car soient $A, B, C) \in \mathcal{M}_{n, p}(\K)^3$ \tq+* $A \sim B$ et $B \sim C$.
+		Alors $\exists (P, Q) \in GL_n(\K) \times GL_p(\K) : B = Q^{-1} A P$ et $\exists (S, R) \in GL_n(\K) \times GL_p(\K) : C = S^{-1} B R$.
+		D'où $C = S^{-1} \left(Q^{-1} A P\right) R = (QS)^{-1} A (PR)$.
+		Or $(QS, PR) \in GL_n(\K) \times GL_p(\K)$.
+		Donc $A \sim C$.
+	\end{liste}
+	
+	Soient $(A, B) \in \mathcal{M}_{n, p}(\K)^2$ \tq+* $\mathrm{rg}(A) = \mathrm{rg}(B) = r$.
+	La multiplication par une matrice à droite et à gauche par des matrices inversibles ne modifie pas le rang donc, d'après la décomposition $P J_r Q$, $J_r \sim A$ et $J_r \sim B$.
+	Par symétrie et par transitivité, $A \sim B$.
+	
+	Ainsi, $\left(J_r(n, p)\right)_{r \in \lient 0; \min(n, p) \rient}$ est bien un système de représentants de classes.
+	Cette famille a pour cardinal $\min(n, p) + 1$.
 \end{question_kholle}
 \end{document}
