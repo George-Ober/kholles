@@ -1,13 +1,19 @@
 \documentclass{article}
 \usepackage{braket}
 
-\date{2 juin 2024}
+\date{22 juin 2024}
 \usepackage[nb-sem=30, auteurs={Hugo Vangilluwen, George Ober}]{../kholles}
 
 \begin{document}
 \maketitle
 
-\begin{question_kholle}{Inégalité de Cauchy-Schwartz dans un Espace préhilbertien réel, cas d'égalité}
+\begin{question_kholle}[{
+	\begin{equation}
+		\forall (x, y) \in E^2, \
+		\left| \braket{ x | y } \right| \leqslant \|x\|\|y\|
+	\end{equation}
+	Il y a égalité \ssi $x$ et $y$ sont liés.
+	}]{Inégalité de Cauchy-Schwartz dans un espace préhilbertien réel, cas d'égalité}
 	Soit $E$ un $\R$-espace vectoriel, et $\braket{ \cdot | \cdot  }$ un produit scalaire sur $E$.
 	Soient $(x, y) \in E^{2}$
 	\begin{enumerate}
@@ -42,15 +48,17 @@
 		\end{itemize}
 	\end{enumerate}
 \end{question_kholle}
+
 \begin{question_kholle}[{
 	L'application
-	$$
-	\chi \left|\begin{array}{ll}
+	\begin{equation}
+		\chi \left|\begin{array}{ll}
 		E &\to E^{*} \\
 		x &\mapsto \left(\begin{array}{ll} E &\to \R 
 						\\ y &\mapsto \braket{ x | y }  \end{array}\right) \end{array}\right.
-	$$ est un isomorphisme d'espaces vectoriels. $\chi$ est appelé l'isomorphisme canonique entre un espace vectoriel euclidien et son espace dual.	
-	}]{Isomorphisme entre un espace euclidien et l'espace de ses formes linéaires (Théorème de représentation de Riesz).}
+	\end{equation}
+	est un isomorphisme d'espaces vectoriels. $\chi$ est appelé l'isomorphisme canonique entre un espace vectoriel euclidien et son espace dual.	
+	}]{Isomorphisme entre un espace euclidien et l'espace de ses formes linéaires (Théorème de représentation de Riesz)}
 	\begin{itemize}[label=$\star$]
 		\item $\chi$ est bien définie car, $\forall x \in E$, par linéarité du produit scalaire en sa seconde variable, $\chi(x): \left|\begin{array}{ll} E &\to \R \\ y &\mapsto \braket{ x | y }  \end{array}\right.$ est une forme linaire sur $E$.
 		
@@ -75,11 +83,15 @@
 		Donc $\chi$ est un isomorphisme.
 	\end{itemize}
 \end{question_kholle}
-\begin{question_kholle}{Montrer que si $F$ est un sous-espace vectoriel de dimension finie d'un espace préhilbertien réel, $F^{\perp}$ est son supplémentaire orthogonal}
+
+\begin{question_kholle}{Si $F$ est un sous-espace vectoriel de dimension finie d'un espace préhilbertien réel, $F^{\perp}$ est son supplémentaire orthogonal}
 	
 	
 	Soient $(E, \braket{ \cdot | \cdot })$ un espace préhilbertien réel, et $F$ un sous espace vectoriel de dimension finie.
-	Alors $F$ et $F^{\perp}$ sont supplémentaires orthogonaux, i.e. $E = F  \overset{\perp}{\oplus} F^{\perp}$
+	Alors $F$ et $F^{\perp}$ sont supplémentaires orthogonaux, i.e.
+	\begin{equation}
+		E = F  \overset{\perp}{\oplus} F^{\perp}
+	\end{equation}
 	
 	
 	
@@ -87,8 +99,8 @@
 	\begin{itemize}[label=$\lozenge$]
 		\item \underline{Analyse}
 		
-		Soit $x \in E$ fixé quelconque, supposons que $\exists (x_{\parallel}, x_{\perp}) \in F \times F^{\perp} = x_{\parallel}+x_{\perp}$
-		D'abord $$x_{\parallel} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \R^{r}: x_{\parallel}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
+		Soit $x \in E$ fixé quelconque, supposons que $\exists (x_{\sslash}, x_{\perp}) \in F \times F^{\perp} = x_{\sslash}+x_{\perp}$
+		D'abord $$x_{\sslash} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \R^{r}: x_{\sslash}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
 		Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque
 		
 		\begin{align*}
@@ -98,20 +110,20 @@
 		\end{align*}
 		
 		Ainsi, $$\left\{ \begin{array}{ll}
-			x_{\parallel} &= \sum_{i=1}^{r}\lambda_{i}.e_{i}= \sum_{i=1}^{r}\braket{ x | e_{i} } . e_{i} \\
-			x_{\perp}  &= x - x_{\parallel}
+			x_{\sslash} &= \sum_{i=1}^{r}\lambda_{i}.e_{i}= \sum_{i=1}^{r}\braket{ x | e_{i} } . e_{i} \\
+			x_{\perp}  &= x - x_{\sslash}
 		\end{array}\right.$$
 		
 		\item \underline{Synthèse}
 		
 		Posons donc 
 		$$\left\{ \begin{array}{ll}
-			x_{\parallel} &= \sum_{i=1}^{r} \braket{ x | e_{i} } .e_{i} \\
-			x_{\perp} &= x - x_{\parallel}
+			x_{\sslash} &= \sum_{i=1}^{r} \braket{ x | e_{i} } .e_{i} \\
+			x_{\perp} &= x - x_{\sslash}
 		\end{array}\right. $$
 		\begin{itemize}[label=$\star$]
-			\item $(e_{1}, \dots, e_{r})$ est une base de $F$ donc $x_{\parallel} \in F$
-			\item $x_{\parallel}+x_{\perp} = x_{\parallel}+ (x - x_{\parallel}) = x$
+			\item $(e_{1}, \dots, e_{r})$ est une base de $F$ donc $x_{\sslash} \in F$
+			\item $x_{\sslash}+x_{\perp} = x_{\sslash}+ (x - x_{\sslash}) = x$
 			\item Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque. Calculons $\braket{ x_{\perp} | e_{j} }$
 			
 			\begin{align*}
@@ -133,12 +145,13 @@
 	Donc $$p_{F}^{\perp}(x) = \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i} $$
 	
 \end{question_kholle}
+
 \begin{question_kholle}[{On utilisera le produit scalaire $$
 	\left\langle P | Q \right\rangle  = \int_{0}^{1} P(u)Q(u) \, \mathrm du
 $$ }]{Orthonormalisation de la base canonique de $\R_2[X]$}
 	Partons de la base canonique de $\R_{2}[X]$.
 	\begin{itemize}[label=$\star$]
-		\item $P_{1} =X^{0}$ est un vecteur unitaire Avec ce produit scalaire
+		\item $P_{1} =X^{0}$ est un vecteur unitaire avec ce produit scalaire
 		
 		\item Calcul du second vecteur
 $$
@@ -171,10 +184,11 @@ $$
 		
 		Donc une base orthonormée de $\R_{2}[X]$ muni de ce produit scalaire est
 $$
-		\left( 1, 2\sqrt{ 3 }X-\sqrt{ 3 }, 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
+		\left( 1, \ 2\sqrt{ 3 }X-\sqrt{ 3 }, \ 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
 $$
 	\end{itemize}
 \end{question_kholle}
+
 \begin{question_kholle}[{Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace préhilbertien Réel.
 	Soient $F$ un sous espace vectoriel de dimension finie de $E$, et $x \in E$.
 	
@@ -210,6 +224,7 @@ $$
 	Si bien que $p_{F}^{\perp}(x) - z' = 0_{E}$ d'après le caractère défini du produit scalaire.
 	Donc le plus petit élément $d(x, F) = \min\{ \|x-z\| \mid z \in F \}$ est uniquement atteint pour $z = p_{F}^{\perp}(x)$.
 \end{question_kholle}
+
 \begin{question_kholle}[{
 	Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace vectoriel euclidien, $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base orthonormée de $E$.
 	Soit $u = \sum_{i=1}^{n}u_{i}.e_{i}$ un vecteur de $E$.
@@ -240,6 +255,7 @@ $$
 	\mathrm{d}(u, H_{\alpha})= \|p_{H_{0}^{\perp}}^{\perp}(u)-h_{\alpha}\|= \left\| \left\langle a | \frac{a}{\|a\|} \right\rangle. \frac{a}{\|a\|}- \frac{\alpha}{\|a\|^{2}}.a \right\|
 $$
 \end{question_kholle}
+
 \begin{question_kholle}
 	{Dénombrement des surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$ et dans $\lient 1; 3 \rient$}
 	
@@ -253,7 +269,7 @@ $$
 \end{question_kholle}
 
 \begin{question_kholle}
-	[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$. \\
+	[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$.
 	Alors $\left|F\right| = \frac{\left|E\right|}{k}$
 	\begin{quotation}
 		\textquotedblleft Pour compter les moutons, il faut compter les pattes puis diviser par quatre. \textquotedblright

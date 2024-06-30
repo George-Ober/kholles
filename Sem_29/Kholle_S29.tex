@@ -1,5 +1,4 @@
 \documentclass{article}
-\usepackage{braket}
 
 \date{22 juin 2024}
 \usepackage[nb-sem=29, auteurs={George Ober}]{../kholles}
@@ -11,7 +10,7 @@
     $$
     \mathcal{A}_{n}= \ker \varepsilon
     $$
-    $\mathcal{A}_{n}$ est de cardinal $\frac{n!}{2}$
+    $\mathcal{A}_{n}$ est de cardinal $\frac{n!}{2}$.
     }]{Définition et cardinal du sous-groupe alternée $\mathcal{A}_n$}
     
     
@@ -33,7 +32,9 @@ $$
 $$
     D'où $\lvert \mathcal{A}_{n} \rvert = \frac{\lvert \mathcal{S}_{n} \rvert}{2} = \frac{n!}{2}$
 \end{question_kholle}
+
 \begin{question_kholle}{Caractérisation des bases par le déterminant}
+	~\\
     \begin{itemize}[label=$\star$]
         \item Supposons que la famille $\mathcal{B'} =(u_{1}, \dots, u_{n}) \in E^{n}$ est une base de $E$.
         $$\det_{\mathcal{B}}\mathcal{B'}\times \det_{\mathcal{B'}}\mathcal{B} = 1 \implies \det _{\mathcal{B}}\mathcal{B'} \neq 0$$
@@ -42,9 +43,11 @@ $$
         Si $\mathcal{B}'$ était liée, le déterminant serait nul, donc en contraposant, $\mathcal{B}'$ n'est pas liée, et est de cardinal $n$, c'est une base.
     \end{itemize}
 \end{question_kholle}
+
 \begin{question_kholle}[{
     Soit $E$ un $\K$-espace vectoriel de dimension finie et $F \in \mathcal{L}_{\K}(E)$
-    $$\exists!\lambda \in \K : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
+    $$\exists!\lambda \in \K : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \
+    \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
     On appelle ce $\lambda$ \underline{le} déterminant de l'endomorphisme $f$.
     }]{Définition du déterminant d'un endomorphisme}
     
@@ -114,12 +117,12 @@ $$
     \end{itemize}
 \end{question_kholle}
 \begin{question_kholle}
-    [{\begin{enumerate}
-        \item $\forall (f, g) \in \mathcal{L}_{\K}(E)^{2}, \det (f \circ g) = \det f \times \det g$
+    [{\begin{propositions}
+        \item $\forall (f, g) \in \mathcal{L}_{\K}(E)^{2}, \ \det (f \circ g) = \det f \times \det g$
         
-        \item $\forall f \in \mathcal{L}_{K}(E), f \in \mathcal{GL}_{\K}(E) \iff \det f \neq 0$
-    \end{enumerate}
-    }]{Démontrer que le déterminant est un morphisme de $(\mathcal{L}_{\K}(E), \circ)$ dans $(\K, \times)$, application à la caractérisation des automorphismes}
+        \item $\forall f \in \mathcal{L}_{K}(E), \ f \in \mathcal{GL}_{\K}(E) \iff \det f \neq 0$
+    \end{propositions}
+    }]{Le déterminant est un morphisme de $(\mathcal{L}_{\K}(E), \circ)$ dans $(\K, \times)$, application à la caractérisation des automorphismes}
     Fixons $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base de $E$
     \begin{enumerate} 
         \item Soient $(f, g) \in \mathcal{L}_{\K}(E)^{2}$ fixés quelconques.
@@ -152,7 +155,12 @@ $$
     \end{enumerate}
 \end{question_kholle}
 \begin{question_kholle}[{Soit $A \in \mathcal{M}_{n}(\K)$.
-    Alors $A \times (\mathrm{com} A)^{T} = (\mathrm{com}A)^{T}\times A = \det A \times I_{n}$
+    Alors
+    \begin{equation}
+    	A \times (\mathrm{com} A)^{T}
+    	= (\mathrm{com}A)^{T}\times A
+    	= \det A \times I_{n}
+    \end{equation}
     }]{Produit d'une matrice carrée par la transposée de sa comatrice.}
     
     \begin{itemize}[label=$\lozenge$]
@@ -207,8 +215,8 @@ $$
     \end{itemize}
 \end{question_kholle}
 \begin{question_kholle}[{  Le système linéaire $AX=B$ d'inconnue $X \in \mathcal{M}_{n,1}(\K)$ et de paramètre $B \in \mathcal{M}_{n,1}(\K)$ est dit "de Cramer" s'il admet une unique solution, à savoir si $A$ est une matrice inversible. Dans ce cas, la solution peut être exprimée explicitement par la formule $A^{-1}B$ qui donne la formule dite de Cramer:
-    $$
-    \left( \frac{
+    \begin{equation}
+    	\left( \frac{
     \bigg| 
     B\mid C_{2}\mid\dots \mid C_{n}
     \bigg| 
@@ -227,7 +235,7 @@ $$
     C_{1}\mid C_{2}\mid\dots \mid B
     \bigg| 
     }{\det A} \right)
-    $$
+    \end{equation}
     où $(C_{1}, \dots, C_{n}) \in \mathcal{M}_{n,1}(\K)^{n}$ sont les colonnes de $A$.
     }]{Formule de Cramer}
     
@@ -244,67 +252,79 @@ $$
         &= \frac{1}{\det A}\Bigg|C_{1}\Bigg|\dots\Bigg|C_{i-1}\Bigg|B\Bigg|C_{i+1}\Bigg|\dots\Bigg|C_{n}\Bigg|
     \end{align*}
 \end{question_kholle}
-\begin{question_kholle}{Calcul du déterminant de Vandermonde}
-Posons
-    $$
-\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \K^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{1\leqslant i < j \leqslant n}(a_{j} - a_{i})
-$$
-\begin{itemize}[label=$\lozenge$]
-    \item \underline{Initialisation} $n \leftarrow 2$
-Soient $(a_{0}, a_{1}) \in \K^{2}$
-$$
-\left| \begin{matrix}
-1 & 1 \\
-a_{0} & a_{1}
-\end{matrix}\right| = a_{1} - a_{0}
-$$
 
-
-
-\item \underline{Hérédité}, soit $n \in \N^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
-Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \K^{n+2}$ fixés quelconques.
-\begin{itemize}
-    \item Supposons que les éléments de $\left\{ a_{0}, \dots, a_{n+1} \right\}$ ne sont pas tous deux à deux distincts.
-    
-    Alors le déterminant à calculer possède deux colonnes identiques donc il est nul, et la formule avec laquelle il doit coïncider s'annule également, donc $\mathcal{P}(n+1)$ est vraie dans ce cas
-
-    \item Supposons que les éléments de $\left\{ a_{0} ,\dots, a_{n+1} \right\}$ sont tous distincts.
-Notons
-$$
-Q(X) = \left| \begin{matrix}
-1 & 1 & 1 & \dots  & 1 & 1 \\
-a_{0} & a_{1} & a_{2} & \dots & a_{n} & X \\
-a_{0}^{2} & a_{1}^{2} & a_{2}^{2} & \dots & a_{n}^{2} & X^{2} \\
-\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n} & X^{n} \\
-a_{0}^{n+1} & a_{1}^{n+1} & a_{2}^{n+1} & \dots & a_{n}^{n+1} & X^{n+1}
-\end{matrix} \right| 
-$$
-Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \K[X]$ (car $\K[X]$ est un anneau et donc stable par produit).
-De plus, en développant le déterminant $Q(X)$ selon sa dernière colonne, on observe d'une part que $\deg Q \leqslant n+1$ et d'autre part que le coefficient de $X^{n+1}$ est le cofacteur de $X^{n+1}$ qui est, d'après $\mathcal{P}(n)$
-$$
-\prod_{0\leqslant i<j \leqslant n}(a_{j}-a_{i})
-$$
-Et, comme tous les $a_{i}$ sont distincts, ce coefficient est non-nul, donc $\deg Q=n+1$
-
-De plus, $Q(a_{0})=0, Q(a_{1})=0, \dots, Q(a_{n})=0$ car le déterminant présente dans chacun des calculs deux colonnes égales. Nous en déduisons que $Q$ admet au moins $(n+1)$ racines deux à deux distinctes, or son degré est exactement $n+1$ donc
-- il n'y a aucune autre racine
-- elles sont toutes simples
-
-La forme factorisée de $Q$ est donc
-$$
-Q(X)=\underbrace{ \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) }_{ \text{coefficient dominant} } \times \underbrace{ \prod_{k=0}^{n}(X-a_{k})^{1} }_{ n+1 \text{ racines simples} }
-$$
-Donc 
-\begin{align*}
-V(a_{0}, a_{1},\dots, a_{n+1})&=Q(a_{n+1}) \\
-&=  \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \times  \prod_{k=0}^{n}(a_{n+1}-a_{k})  \\
-&= \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \prod_{\substack{0\leqslant i<j \\ j=n+1}}^{n}(a_{j}-a_{k}) \\
-&= \prod_{0\leqslant i < j \leqslant n+1} (a_{j}-a_{i})
-\end{align*}
-
-Donc $\mathcal{P}(n+1)$ est vraie
-\end{itemize}
-\end{itemize}
+\begin{question_kholle}[
+	\begin{equation}
+		\forall n \in \N, \forall a \in \K^\N, \
+		V(a_0, a_1, \dots, a_n)
+		= \left| \begin{matrix}
+			1 & 1 & 1 & \dots  & 1 \\
+			a_{0} & a_{1} & a_{2} & \dots & a_{n} \\
+			a_{0}^{2} & a_{1}^{2} & a_{2}^{2} & \dots & a_{n}^{2} \\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n}
+		\end{matrix} \right|
+		= \prod_{0 \leqslant i < j \leqslant n}(a_{j} - a_{i})
+	\end{equation}
+	]{Calcul du déterminant de Vandermonde}
+	Posons
+	$$
+	\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \K^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{0 \leqslant i < j \leqslant n}(a_{j} - a_{i})
+	$$
+	\begin{itemize}[label=$\lozenge$]
+	    \item \underline{Initialisation} $n \leftarrow 2$
+		Soient $(a_{0}, a_{1}) \in \K^{2}$
+		$$
+		\left| \begin{matrix}
+		1 & 1 \\
+		a_{0} & a_{1}
+		\end{matrix}\right| = a_{1} - a_{0}
+		$$
+		
+		\item \underline{Hérédité}, soit $n \in \N^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
+		Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \K^{n+2}$ fixés quelconques.
+		\begin{itemize}
+		    \item Supposons que les éléments de $\left\{ a_{0}, \dots, a_{n+1} \right\}$ ne sont pas tous deux à deux distincts.
+		    
+		    Alors le déterminant à calculer possède deux colonnes identiques donc il est nul, et la formule avec laquelle il doit coïncider s'annule également, donc $\mathcal{P}(n+1)$ est vraie dans ce cas
+		
+		    \item Supposons que les éléments de $\left\{ a_{0} ,\dots, a_{n+1} \right\}$ sont tous distincts.
+			Notons
+			$$
+			Q(X) = \left| \begin{matrix}
+			1 & 1 & 1 & \dots  & 1 & 1 \\
+			a_{0} & a_{1} & a_{2} & \dots & a_{n} & X \\
+			a_{0}^{2} & a_{1}^{2} & a_{2}^{2} & \dots & a_{n}^{2} & X^{2} \\
+			\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+			a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n} & X^{n} \\
+			a_{0}^{n+1} & a_{1}^{n+1} & a_{2}^{n+1} & \dots & a_{n}^{n+1} & X^{n+1}
+			\end{matrix} \right|
+			$$
+			Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \K[X]$ (car $\K[X]$ est un anneau et donc stable par produit).
+			De plus, en développant le déterminant $Q(X)$ selon sa dernière colonne, on observe d'une part que $\deg Q \leqslant n+1$ et d'autre part que le coefficient de $X^{n+1}$ est le cofacteur de $X^{n+1}$ qui est, d'après $\mathcal{P}(n)$
+			$$
+			\prod_{0\leqslant i<j \leqslant n}(a_{j}-a_{i})
+			$$
+			Et, comme tous les $a_{i}$ sont distincts, ce coefficient est non-nul, donc $\deg Q=n+1$
+			
+			De plus, $Q(a_{0})=0, Q(a_{1})=0, \dots, Q(a_{n})=0$ car le déterminant présente dans chacun des calculs deux colonnes égales. Nous en déduisons que $Q$ admet au moins $(n+1)$ racines deux à deux distinctes, or son degré est exactement $n+1$ donc
+			- il n'y a aucune autre racine
+			- elles sont toutes simples
+			
+			La forme factorisée de $Q$ est donc
+			$$
+			Q(X)=\underbrace{ \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) }_{ \text{coefficient dominant} } \times \underbrace{ \prod_{k=0}^{n}(X-a_{k})^{1} }_{ n+1 \text{ racines simples} }
+			$$
+			Donc 
+			\begin{align*}
+				V(a_{0}, a_{1},\dots, a_{n+1})&=Q(a_{n+1}) \\
+				&=  \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \times  \prod_{k=0}^{n}(a_{n+1}-a_{k})  \\
+				&= \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \prod_{\substack{0\leqslant i<j \\ j=n+1}}^{n}(a_{j}-a_{k}) \\
+				&= \prod_{0\leqslant i < j \leqslant n+1} (a_{j}-a_{i})
+			\end{align*}
+			
+			Donc $\mathcal{P}(n+1)$ est vraie
+		\end{itemize}
+	\end{itemize}
 \end{question_kholle}
 \end{document}

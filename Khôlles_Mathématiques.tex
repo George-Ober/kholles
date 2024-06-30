@@ -1190,6 +1190,98 @@ Le noyau, noté $\ker f$ est par définition égal à $f^{-1}(\{e_2\})$ c'est do
 \textbf{Application 2:} Pour tout $n \in \mathbb{N}$, $\phi _{n}\left|\begin{array}{ll} (\mathbb{C}^{*},\times) &\to (\mathbb{C}^{*},\times) \\ z &\mapsto z^{n} \end{array}\right.$ est un morphisme de groupes. Son noyau, $\ker \phi _n = \{ z \in \mathbb{C}^{*} | z^{n} = 1 \} = \mathbb{U}_{n}$. D'après l'application 1, $\ker \phi_{n}$ est un sous groupe de $(\mathbb{C}^{*}, \times)$. Donc $(\mathbb{U}_{n}, \times)$ est un sous groupe de $(\mathbb{C}^{*},\times)$.
 \pagebreak\section{Semaine 5}
 
+\begin{question_kholle}{Montrer que l'ensemble des similitudes directes du plan complexe est un groupe pour la composition} 
+	Montrons donc que $(S, \circ)$ est un sous groupe de $(\mathcal{S}(\mathbb{C}), \circ)$
+	\begin{itemize}[label=$\lozenge$]
+		\item D'une part, $S \subset \mathcal{S}(\mathbb{C})$. Or l'ensemble des permutations $(\mathcal{S}(\mathbb{C}), \circ)$ est un groupe. En effet, les similitudes sont des bijections de $\mathbb{C} \to \mathbb{C}$.
+		\item De plus, $S$ est non vide, par exemple l'application $\mathrm{Id(\mathbb{C}})$ est une similitude pour $a \leftarrow 1$ et $b \leftarrow 1$.
+		\item Prenons finalement $a$ et $c$ dans $\mathbb{C}^*$ puis $b$ et $d$ dans $\mathbb{C}$. et posons les deux applications suivantes:
+		\begin{align*}
+			s \left| \begin{array}{ll}
+				\mathbb{C} &\to \mathbb{C} \\
+				z &\mapsto a z + b
+			\end{array}\right.
+			\text{ et }
+			s' \left| \begin{array}{ll}
+				\mathbb{C} &\to \mathbb{C} \\
+				z &\mapsto a z + b
+			\end{array}\right.
+		\end{align*}
+		Ainsi, comme toute similitude directe est une bijection, en particulier $s'$ en est une, et
+		\begin{align*}
+			s'^{-1} \left| \begin{array}{ll}
+				\mathbb{C} &\to \mathbb{C} \\
+				z &\mapsto \frac{z}{c} - \frac{d}{c}
+			\end{array}\right.
+		\end{align*}
+		Soit $z \in \mathbb{C}$ fixé quelconque:
+		\begin{align*}
+			(s \circ s'^{-1})(z) &= s(s'^{-1}(z)) \\
+			&= s\left(\frac{z}{c} - \frac{d}{c}\right)\\
+			&= a\left(\frac{z}{c} - \frac{d}{c}\right) + b\\
+			&= \frac{a}{c}z + \left( b - \frac{ad}{c} \right)
+		\end{align*}
+		Qui est une similitude directe, puisque $\frac{a}{c} \neq  0$ donc $s \circ s'^{-1} \in S$. Donc $(S, \circ)$ est bien un sous-groupe de $(\mathcal{S}(\mathbb{C}), \circ)$.
+	\end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}{Classifier et interpréter une similitude directe donnée sous la forme $z \mapsto a z + b$ sur un exemple, donner l'expression complexe d'une similitude dont on connaît les éléments caractéristiques.}
+	Soient $(a, b) \in \mathbb{C}^*$ fixés quelconques. Posons la similitude
+	\begin{align*}
+		s \left| \begin{array}{ll}
+			\mathbb{C} &\to \mathbb{C} \\
+			z &\mapsto a z + b
+		\end{array}\right.
+	\end{align*}
+	\begin{itemize}[label=$\lozenge$]
+		\item Si $a = 1$, c'est la translation de vecteur d'affixe $b$
+		\item Si $a \neq 1$, $s$ admet un unique point fixe appelé "centre de la similitude" $\omega = \frac{b}{1-b}$
+		\begin{itemize}[label=$\star$]
+			\item Si $a \in \mathbb{R}^*$, $s$ est l'homotétie de centre $\omega$ et de rapport $a$.
+			\item Si $a \in (\mathbb{C}^* \setminus \mathbb{R})$, $s$ est la composée de
+			\begin{itemize}
+				\item La rotation de centre $\omega$ et d'angle $\alpha$, où $\alpha$ est un argument de $a$.
+				\item L'homotétie de centre $\omega$ et de rapport $|a|$. 
+			\end{itemize}
+			On nommera alors $|a|$ le rapport de $s$ et $\alpha$ une mesure de l'angle de $s$.
+		\end{itemize}
+	\end{itemize}
+	\textbf{Exemple} : Prenons la similitude $s: z \mapsto (1 - i) z - 1$.
+	\begin{align*}
+		s(z) = z &\iff (1 - i)z - 1 = z\\
+		&\iff -iz = 1\\
+		&\iff z = i
+	\end{align*}
+	De plus,
+	\begin{align*}
+		(1 - i)z - 1 = \sqrt{2}e^{-i \frac{\pi}{4}}z - 1
+	\end{align*}
+	On en déduit donc que $s$ est la similitude directe de centre d'affixe $i$, de rapport $\sqrt{2}$, et d'angle $-\frac{\pi}{4}$.
+\end{question_kholle}
+\begin{question_kholle}{Montrer qu'une combinaison linéaire de deux fonctions bornées (respectivement lipschitziennes) est bornée (resp. lipschitzienne)}
+	Soit $I$ un intervalle réel.
+	
+	Soient $f$ et $g$ deux fonctions de $I$ dans $\mathbb{R}$. Soient $(\lambda, \mu) \in \mathbb{R}^2$
+	\begin{itemize}[label=$\lozenge$]
+		\item Si $f$ et $g$ sont respectivement bornées par $A$ et par $B$.
+		Soit $x \in I$.
+		\begin{align*}
+			\Big| (\lambda.f + \mu.g)(x) \Big| &= \Big| \lambda.f(x) + \mu.g(x) \Big| \\
+			&\leqslant \big| \lambda \big|  \big|f(x)\big| + \big| \mu \big|  \big| g(x) \big| \\
+			&\leqslant \big| \lambda \big| A + \big| \mu \big| B
+		\end{align*}
+		Donc $\lambda.f + \mu.g$ est bornée.
+		\item Si $f$ et $g$ sont respectivement $K$ et $L$ lipschitziennes.
+		Soient $(x, y) \in I^2$.
+		\begin{align*}
+			\Big| (\lambda.f + \mu.g)(x) - (\lambda.f + \mu.g)(y)\Big| &= \Big| \lambda.f(x) + \mu.g(x) - \lambda.f(y) - \mu.g(y) \Big| \\
+			&= \Big| \lambda(f(x) - f(y)) + \mu(g(x) - g(y)) \Big| \\
+			&\leqslant \Big| \lambda  \Big|  \Big| f(x) - f(y) \Big| + \Big| \mu \Big|  \Big|g(x) - g(y) \Big|  \\
+			&\leqslant \Big| \lambda  \Big|  K \Big| x-y \Big| + \Big| \mu  \Big| L  \Big| x - y \Big|  \\
+			& \leqslant (|\lambda| K + |\mu|L ) |x - y|
+		\end{align*}
+	\end{itemize}
+\end{question_kholle}
 \pagebreak\section{Semaine 6}
 
 
@@ -5510,11 +5602,11 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 	\end{itemize}
 	]
 	{S'il existe un inverse à droite (ou à gauche) pour une matrice carrée, alors celle ci est inversible}
-
-
+	
+	
 	Supposons $\exists B \in \mathcal{M}_{n}(\mathbb{K}):A\times B = I_{n}$. Notons $(\hat{a}, \hat{b}) \in \mathcal{L}(\mathbb{K}^{n})$ les endomorphismes canoniquement associés à $A$ et à $B$.
-
-
+	
+	
 	\begin{align*}
 		\Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}(\hat{a} \circ \hat{b}) &= \mathrm{mat}(\hat{a} \circ  \hat{b}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \\
 		&= \mathrm{mat}(\hat{a}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \times_{\mathcal{M_{n}(\mathbb{K})}} \mathrm{mat}(\hat{b}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) \\
@@ -5522,11 +5614,167 @@ Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
 		&= I_{n} \\
 		&= \mathrm{mat}(\mathrm{Id}_{\mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}, \mathcal{B}_{\text{can } \mathbb{K}^{n}}) = \Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}(\mathrm{Id}_{\mathbb{K}^{n}})
 	\end{align*}
-
-
+	
+	
 	D'où, par injectivité de $\Phi_{\mathcal{B}_{\text{can } \mathbb{K}^{n}}}$, $\hat{a} \circ \hat{b} = \mathrm{Id}_{\mathbb{K}^{n}}$.
-
+	
 	Ainsi, $\hat{a} \circ \hat{b}$ est surjective, donc $\hat{a}$ est surjective, mais par l'accident de la dimension finie, $\hat{a}$ est bijective, donc c'est un automorphisme, donc toutes ses matrices associées sont inversibles. On effectue un même raisonnement pour l'inversibilité à gauche, en utilisant cette fois l'injectivité.
+\end{question_kholle}
+
+\begin{question_kholle}
+	[{Soient $E, F, G$, trois $\mathbb{K}$-espaces vectoriels de dimension finie $(p, q, r) \in (\mathbb{N}^{*})^{3}$
+$\mathcal{B}_{E}, \mathcal{B}_{F}, \mathcal{B}_{G}$ des bases respectives de ces trois espaces vectoriels, et  $u \in \mathcal{L}_{\mathbb{K}}(E, F)$ $v \in \mathcal{L}_{\mathbb{K}}(F, G)$.
+	
+	Alors 
+$$
+	\mathrm{mat}(v \circ u, \mathcal{B}_{E}, \mathcal{B}_{G}) = \mathrm{mat}(v, \mathcal{B}_{F}, \mathcal{B}_{G}) \times \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})
+$$}]{Lien composée des applications linéaires et produit des matrices les représentant vis-à-vis de certaines bases}
+	
+	Posons $W = \mathrm{mat}(v \circ u, \mathcal{B}_{E}, \mathcal{B}_{G}) \in \mathcal{M}_{r, p}(\mathbb{K})$, $V=\mathrm{mat}(v, \mathcal{B}_{F}, \mathcal{B}_{G}) \in \mathcal{M}_{r, q}(\mathbb{K})$, $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F}) \in \mathcal{M}_{q, p}(\mathbb{K})$
+	
+	Donc $V \times U$ a un sens et $V \times U \in \mathcal{M}_{r, p}(\mathbb{K})$
+	
+	Pour montrer l'égalité matricielle, nous allons utiliser la propriété suivante:
+	
+	Soient $(M, M') \in \mathcal{M}_{r, p}(\mathbb{K})^{2}$ telles que $\forall X \in \mathcal{M}_{p, 1}(\mathbb{K}): MX = M'X$, alors $M = M'$. (Cela se prouve facilement en particularisant pour les matrices de la base canonique de $\mathcal{M}_{p,1}(\mathbb{K})$)
+	
+	Soit $X \in \mathcal{M}_{p, 1}(\mathbb{K})$, montrons que $W \times X = V \times U \times X$
+	Posons $x \in E$ de sorte que $X = \mathrm{mat}(X, \mathcal{B}_{E})$
+	
+	\begin{align*}
+		WX &= \mathrm{mat}(v \circ  u, \mathcal{B}_{E}, \mathcal{B}_{G})\times \mathrm{ mat}(x, \mathcal{B}_{E}) \\
+		&= \mathrm{mat}((v \circ  u)(x), \mathcal{B}_{G}) \\
+		&= \mathrm{mat}(v(u(x)), \mathcal{B}_{G}) \\
+		&= \mathrm{mat}(v, \mathcal{B}_{F}, \mathcal{B}_{G}) \times \mathrm{mat}(u(x), \mathcal{B}_{F}) \\
+		&\text{ d'après l'expression matricielle de l'image d'un vecteur par une application linéaire}\\
+		&= V \times \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})\times \mathrm{ mat }(x, \mathcal{B}_{E}) \\
+		&= V\times U\times X
+	\end{align*}
+	
+	Ce qui prouve l'égalité matricielle
+\end{question_kholle}
+
+\begin{question_kholle}[{	Soit $H$ un $\mathbb{K}$-espace vectoriel de dimension $d \in \mathbb{N}^{*}$.
+	$\mathcal{B}_{H}$, une base de $H$ et $(h_{1}, \dots, h_{d})$, $d$ vecteurs de $H$.
+	
+	$$
+	(h_{1}, \dots, h_{d}) \text{ base de }H \iff \mathrm{mat}((h_{1}, \dots, h_{d}), \mathcal{B}_{H})\in GL_{n}(\mathbb{K})
+	$$
+	}]{Montrer qu'une famille de $d$ vecteurs d'un espace de dimension $d$ est une base si et seulement si la matrice de ces vecteurs dans une base (donc dans toute) est inversible.}
+	
+	Notons $(e_{1}, \dots, e_{d})$ la base de $H$
+	Cherchons à interpréter $\mathrm{mat}((h_{1}, \dots, h_{d}), \mathcal{B}_{H})$ comme la matrice d'une application linéaire.
+	Notons $u$ l'unique endomorphisme de $H$ dans $H$ tel que $\forall i \in[ \! [ 1, d ] \!] , u(e_{i}) = h_{i}$
+	
+	\begin{align*}
+		\mathrm{mat}(u, \mathcal{B}_{H}) &= \bigg[ \begin{array}{c|c|c|c}
+			\mathrm{mat}(u(e_{1}), \mathcal{B}_{H}) & \mathrm{mat}(u(e_{2}), \mathcal{B}_{H}) & \dots & \mathrm{mat}(u(e_{d}), \mathcal{B}_{H})
+		\end{array} \bigg]  \\
+		&= \bigg[ \begin{array}{c|c|c|c}
+			\mathrm{mat}(h_{1}, \mathcal{B}_{H}) & \mathrm{mat}(h_{2}, \mathcal{B}_{H}) & \dots & \mathrm{mat}(h_{d}, \mathcal{B}_{H})
+		\end{array} \bigg]  \\
+		&= \mathrm{mat}((h_{1}, \dots, h_{d}), \mathcal{B}_{H}) 
+	\end{align*}
+	
+	Si bien que
+	
+	\begin{align*}
+		(h_{1}, \dots, h_{d}) \text{ base de }H &\iff (u(e_{1}), \dots, u(e_{d})) \text{ base de }H \\
+		&\iff u \in \mathcal{GL}_{\mathbb{K}}(H) \\
+		&\iff \mathrm{mat}(u, \mathcal{B}_{H}) \in GL_{d}(\mathbb{K}) \\
+		& \iff \mathrm{mat}((h_{1}, \dots, h_{d}), \mathcal{B}_{H}) \in GL_{d}(\mathbb{K})
+	\end{align*}
+	
+\end{question_kholle}
+
+\begin{question_kholle}[
+	Soient $(E, F)$ deux $\mathbb{K}$-espaces vectoriels de dimension finie, $u \in \mathcal{L}_{\mathbb{K}}(E, F)$, $\mathcal{B}_{E}$ et $\mathcal{B}_{E}'$ deux bases de $E$, $\mathcal{B}_{F}$ et $\mathcal{B}_{F}'$ deux bases de $F$
+	
+	Posons $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})$ et $U' = \mathrm{mat}(u, \mathcal{B}_{E}', \mathcal{B}_{F}')$, $P = \mathcal{P}(\mathcal{B}_{E} \to \mathcal{B}_{E}')$, et $Q = \mathcal{P}(\mathcal{B}_{F} \to \mathcal{B}_{F}')$
+	
+	Alors 
+$$
+	U' = Q^{-1} U P
+$$
+	]{Preuve de la formule de changement de base pour une application linéaire, cas particulier d'un endomorphisme lu dans la même base au départ et à l'arrivée.}
+	
+	
+	Soit $X \in \mathcal{M}_{n, 1}(\mathbb{K})$, où $\dim E = n$.
+	Posons $x = \Psi_{\mathcal{B}_{E}}^{-1}(X)$ et $Y = \Psi_{\mathcal{B}_{F}}(u(x))$.
+	
+	Puisque $U = \mathrm{mat}(u, \mathcal{B}_{E}, \mathcal{B}_{F})$, $Y = UX$
+	
+	Posons $X' = \Psi_{\mathcal{B}_{E}'}(x)$et $Y' = \Psi_{\mathcal{B}_{F}'}(u(x))$.
+	La formule pour le changement de base pour les vecteurs donne $X = PX'$ et $Y =QY'$
+	Donc, puisque $U' = \mathrm{mat}(u, \mathcal{B}_{E}', \mathcal{B}_{F}')$
+	
+	\begin{align*}
+		Y'  & = U' X' \\
+		\implies Q^{-1}Y  & = U' P^{-1} X \\ 
+		&\text{ puisque }Y=UX\\
+		\implies Q^{-1}U X  & = U' P^{-1}X  \\
+		&\text{ en particularisant pour }I_{n}\\
+		\implies Q^{-1}U &= U' P^{-1} \\
+		\implies U' &= Q^{-1}UP
+	\end{align*}
+	
+\end{question_kholle}
+\begin{question_kholle}{Montrer que la trace de $AB$ est égale à la trace de $BA$ (deux matrices carrées), et application à la définition de la trace de deux endomorphismes}
+	Soient $(A, B) \in \mathcal{M}_{n, p}(\mathbb{K})\times \mathcal{M}_{p,n}(\mathbb{K})$. Alors $\mathrm{Tr}(AB)= \mathrm{Tr}(BA)$
+	
+	\begin{itemize}[label=$\lozenge$]
+		\item Preuve de l'égalité de la trace
+		\begin{align*}
+			\mathrm{Tr}(AB) = \sum_{i=1}^{n}[A\times B]_{i,i} = \sum_{i=1}^{n}\sum_{k=1}^{p}A_{i,k}B_{k,i}=\sum_{k=1}^{p}\sum_{i=1}^{n}B_{k, i}A_{i, k}= \sum_{k=1}^{p}[B\times A]_{kk}= \mathrm{Tr}(BA)
+		\end{align*}
+		
+		
+		\item Soit $E$ un espace vectoriel de dimension finie $u \in \mathcal{L}_{\mathbb{K}}(E)$. Soit $\mathcal{B}_{0}$ une base de $E$ fixée quelconque
+		Posons $\lambda = \mathrm{Tr}(\mathrm{mat}(u, \mathcal{B}_{0})$)
+		Soit $\mathcal{B}$ une autre base de $E$ fixée quelconque, considérons $P = \mathcal{P}(\mathcal{B}_{0} \to \mathcal{B})$ la matrice de passage de $\mathcal{B}_{0}$ à $\mathcal{B}$.
+		D'après la formule de changement de base
+$$
+		\mathrm{mat}(u, \mathcal{B}) = P^{-1} \times \mathrm{mat}(u, \mathcal{B}_{0})\times P
+$$
+		donc
+		
+		\begin{align*}
+			\mathrm{Tr}(\mathrm{mat}(u, \mathcal{B})) &= \mathrm{Tr}(P^{-1} \mathrm{mat}(u, \mathcal{B}_{0})P) \\
+			&= \mathrm{Tr}(\mathrm{mat}(u, \mathcal{B}_{0})P P^{-1}) \text{ d'après la preuve précédente} \\
+			&= \mathrm{Tr}(\mathrm{mat}(u, \mathcal{B}_{0}))
+		\end{align*}
+		
+		D'où l'existence de la trace $\lambda$ commune à toutes les matrices représentant $u$ dans la même base au départ et à l'arrivée.
+		On a évidemment unicité de ce scalaire, que l'on apelle la trace de l'endomorphisme $u$.
+	\end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Égalité rang trace pour un projecteur}
+	Soit $E$ un $\mathbb{K}$-espace vectoriel de dimension finie $n \in \mathbb{N}^{*}$, et $p$ un projecteur de $E$.
+	
+	Puisque $p$ est un projecteur, on peut l'expliciter selon son image et son noyau
+	
+$$
+	p \left|\begin{matrix} E &= &\mathrm{Im}(p) &\oplus &\mathrm{Ker}(p) &\to &E \\ x &= &x_{I} &+ &x_{K} &\mapsto &x_{I} \end{matrix}\right.
+$$
+	Notons donc $r = \dim \mathrm{Im}(p) = \mathrm{rg}(p)$. Le théorème d'existence de base assure l'existence de $(e_{1}, \dots, e_{r})$ base de $\mathrm{Im}(p)$, de même, en notant $(e_{r+1}, \dots, e_{n})$ une base de $\mathrm{Ker}(p)$, puisque les espaces sont supplémentaires, on sait que $\mathcal{B}= (e_{1}, \dots, e_{r}, e_{r+1},\dots, e_{n})$ est une base de $E$.
+	
+	Ainsi
+$$
+	\mathrm{mat}(p, \mathcal{B}) = \left[ \begin{array}{cccc|ccc}
+		1 & 0 & \dots & 0 & 0 & \dots & 0 \\
+		0 & 1 & \dots & 0 & 0 & \dots & 0 \\
+		\vdots & \vdots & \ddots & \vdots  & \vdots & \ddots & \vdots \\
+		0 & 0 & \dots & 1 & 0 & \dots & 0\\
+		\hline 0 & 0 & \dots & 0 & 0 & \dots & 0 \\
+		\vdots & \vdots & \ddots & \vdots & \vdots & \ddots & \vdots \\
+		0 & 0 & \dots & 0 & 0 & \dots & 0
+	\end{array} \right] = \left[ \begin{array}{c|c}
+		I_{r} & 0_{r, n-r} \\
+		\hline 0_{n-r, r} & 0_{n-r, n-r}
+	\end{array} \right] = J_{r}(n,n)
+$$
+	Donc $\mathrm{Tr}(p) = \mathrm{Tr}(\mathrm{mat}(p, \mathcal{B})) = r = \mathrm{rg}(p)$
+	
 \end{question_kholle}
 \pagebreak\section{Semaine 26}
 	
@@ -6306,7 +6554,7 @@ $$
     $$
     \mathcal{A}_{n}= \ker \varepsilon
     $$
-    $\mathcal{A}_{n}$ est de cardinal $\frac{n!}{2}$
+    $\mathcal{A}_{n}$ est de cardinal $\frac{n!}{2}$.
     }]{Définition et cardinal du sous-groupe alternée $\mathcal{A}_n$}
     
     
@@ -6328,7 +6576,9 @@ $$
 $$
     D'où $\lvert \mathcal{A}_{n} \rvert = \frac{\lvert \mathcal{S}_{n} \rvert}{2} = \frac{n!}{2}$
 \end{question_kholle}
+
 \begin{question_kholle}{Caractérisation des bases par le déterminant}
+	~\\
     \begin{itemize}[label=$\star$]
         \item Supposons que la famille $\mathcal{B'} =(u_{1}, \dots, u_{n}) \in E^{n}$ est une base de $E$.
         $$\det_{\mathcal{B}}\mathcal{B'}\times \det_{\mathcal{B'}}\mathcal{B} = 1 \implies \det _{\mathcal{B}}\mathcal{B'} \neq 0$$
@@ -6337,9 +6587,11 @@ $$
         Si $\mathcal{B}'$ était liée, le déterminant serait nul, donc en contraposant, $\mathcal{B}'$ n'est pas liée, et est de cardinal $n$, c'est une base.
     \end{itemize}
 \end{question_kholle}
+
 \begin{question_kholle}[{
     Soit $E$ un $\K$-espace vectoriel de dimension finie et $F \in \mathcal{L}_{\K}(E)$
-    $$\exists!\lambda \in \K : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
+    $$\exists!\lambda \in \K : \forall \mathcal{B} \text{ base de }E, \forall (u_{1}, \dots, u_{n})\in E^{n}, \
+    \det_{\mathcal{B}}(f(u_{1}), \dots, f(u_{n}))=\lambda \times \det_{\mathcal{B}}(u_{1}, \dots, u_{n})$$
     On appelle ce $\lambda$ \underline{le} déterminant de l'endomorphisme $f$.
     }]{Définition du déterminant d'un endomorphisme}
     
@@ -6409,12 +6661,12 @@ $$
     \end{itemize}
 \end{question_kholle}
 \begin{question_kholle}
-    [{\begin{enumerate}
-        \item $\forall (f, g) \in \mathcal{L}_{\K}(E)^{2}, \det (f \circ g) = \det f \times \det g$
+    [{\begin{propositions}
+        \item $\forall (f, g) \in \mathcal{L}_{\K}(E)^{2}, \ \det (f \circ g) = \det f \times \det g$
         
-        \item $\forall f \in \mathcal{L}_{K}(E), f \in \mathcal{GL}_{\K}(E) \iff \det f \neq 0$
-    \end{enumerate}
-    }]{Démontrer que le déterminant est un morphisme de $(\mathcal{L}_{\K}(E), \circ)$ dans $(\K, \times)$, application à la caractérisation des automorphismes}
+        \item $\forall f \in \mathcal{L}_{K}(E), \ f \in \mathcal{GL}_{\K}(E) \iff \det f \neq 0$
+    \end{propositions}
+    }]{Le déterminant est un morphisme de $(\mathcal{L}_{\K}(E), \circ)$ dans $(\K, \times)$, application à la caractérisation des automorphismes}
     Fixons $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base de $E$
     \begin{enumerate} 
         \item Soient $(f, g) \in \mathcal{L}_{\K}(E)^{2}$ fixés quelconques.
@@ -6447,7 +6699,12 @@ $$
     \end{enumerate}
 \end{question_kholle}
 \begin{question_kholle}[{Soit $A \in \mathcal{M}_{n}(\K)$.
-    Alors $A \times (\mathrm{com} A)^{T} = (\mathrm{com}A)^{T}\times A = \det A \times I_{n}$
+    Alors
+    \begin{equation}
+    	A \times (\mathrm{com} A)^{T}
+    	= (\mathrm{com}A)^{T}\times A
+    	= \det A \times I_{n}
+    \end{equation}
     }]{Produit d'une matrice carrée par la transposée de sa comatrice.}
     
     \begin{itemize}[label=$\lozenge$]
@@ -6502,8 +6759,8 @@ $$
     \end{itemize}
 \end{question_kholle}
 \begin{question_kholle}[{  Le système linéaire $AX=B$ d'inconnue $X \in \mathcal{M}_{n,1}(\K)$ et de paramètre $B \in \mathcal{M}_{n,1}(\K)$ est dit "de Cramer" s'il admet une unique solution, à savoir si $A$ est une matrice inversible. Dans ce cas, la solution peut être exprimée explicitement par la formule $A^{-1}B$ qui donne la formule dite de Cramer:
-    $$
-    \left( \frac{
+    \begin{equation}
+    	\left( \frac{
     \bigg| 
     B\mid C_{2}\mid\dots \mid C_{n}
     \bigg| 
@@ -6522,7 +6779,7 @@ $$
     C_{1}\mid C_{2}\mid\dots \mid B
     \bigg| 
     }{\det A} \right)
-    $$
+    \end{equation}
     où $(C_{1}, \dots, C_{n}) \in \mathcal{M}_{n,1}(\K)^{n}$ sont les colonnes de $A$.
     }]{Formule de Cramer}
     
@@ -6539,72 +6796,90 @@ $$
         &= \frac{1}{\det A}\Bigg|C_{1}\Bigg|\dots\Bigg|C_{i-1}\Bigg|B\Bigg|C_{i+1}\Bigg|\dots\Bigg|C_{n}\Bigg|
     \end{align*}
 \end{question_kholle}
-\begin{question_kholle}{Calcul du déterminant de Vandermonde}
-Posons
-    $$
-\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \K^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{1\leqslant i < j \leqslant n}(a_{j} - a_{i})
-$$
-\begin{itemize}[label=$\lozenge$]
-    \item \underline{Initialisation} $n \leftarrow 2$
-Soient $(a_{0}, a_{1}) \in \K^{2}$
-$$
-\left| \begin{matrix}
-1 & 1 \\
-a_{0} & a_{1}
-\end{matrix}\right| = a_{1} - a_{0}
-$$
 
-
-
-\item \underline{Hérédité}, soit $n \in \N^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
-Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \K^{n+2}$ fixés quelconques.
-\begin{itemize}
-    \item Supposons que les éléments de $\left\{ a_{0}, \dots, a_{n+1} \right\}$ ne sont pas tous deux à deux distincts.
-    
-    Alors le déterminant à calculer possède deux colonnes identiques donc il est nul, et la formule avec laquelle il doit coïncider s'annule également, donc $\mathcal{P}(n+1)$ est vraie dans ce cas
-
-    \item Supposons que les éléments de $\left\{ a_{0} ,\dots, a_{n+1} \right\}$ sont tous distincts.
-Notons
-$$
-Q(X) = \left| \begin{matrix}
-1 & 1 & 1 & \dots  & 1 & 1 \\
-a_{0} & a_{1} & a_{2} & \dots & a_{n} & X \\
-a_{0}^{2} & a_{1}^{2} & a_{2}^{2} & \dots & a_{n}^{2} & X^{2} \\
-\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
-a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n} & X^{n} \\
-a_{0}^{n+1} & a_{1}^{n+1} & a_{2}^{n+1} & \dots & a_{n}^{n+1} & X^{n+1}
-\end{matrix} \right| 
-$$
-Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \K[X]$ (car $\K[X]$ est un anneau et donc stable par produit).
-De plus, en développant le déterminant $Q(X)$ selon sa dernière colonne, on observe d'une part que $\deg Q \leqslant n+1$ et d'autre part que le coefficient de $X^{n+1}$ est le cofacteur de $X^{n+1}$ qui est, d'après $\mathcal{P}(n)$
-$$
-\prod_{0\leqslant i<j \leqslant n}(a_{j}-a_{i})
-$$
-Et, comme tous les $a_{i}$ sont distincts, ce coefficient est non-nul, donc $\deg Q=n+1$
-
-De plus, $Q(a_{0})=0, Q(a_{1})=0, \dots, Q(a_{n})=0$ car le déterminant présente dans chacun des calculs deux colonnes égales. Nous en déduisons que $Q$ admet au moins $(n+1)$ racines deux à deux distinctes, or son degré est exactement $n+1$ donc
-- il n'y a aucune autre racine
-- elles sont toutes simples
-
-La forme factorisée de $Q$ est donc
-$$
-Q(X)=\underbrace{ \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) }_{ \text{coefficient dominant} } \times \underbrace{ \prod_{k=0}^{n}(X-a_{k})^{1} }_{ n+1 \text{ racines simples} }
-$$
-Donc 
-\begin{align*}
-V(a_{0}, a_{1},\dots, a_{n+1})&=Q(a_{n+1}) \\
-&=  \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \times  \prod_{k=0}^{n}(a_{n+1}-a_{k})  \\
-&= \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \prod_{\substack{0\leqslant i<j \\ j=n+1}}^{n}(a_{j}-a_{k}) \\
-&= \prod_{0\leqslant i < j \leqslant n+1} (a_{j}-a_{i})
-\end{align*}
-
-Donc $\mathcal{P}(n+1)$ est vraie
-\end{itemize}
-\end{itemize}
+\begin{question_kholle}[
+	\begin{equation}
+		\forall n \in \N, \forall a \in \K^\N, \
+		V(a_0, a_1, \dots, a_n)
+		= \left| \begin{matrix}
+			1 & 1 & 1 & \dots  & 1 \\
+			a_{0} & a_{1} & a_{2} & \dots & a_{n} \\
+			a_{0}^{2} & a_{1}^{2} & a_{2}^{2} & \dots & a_{n}^{2} \\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n}
+		\end{matrix} \right|
+		= \prod_{0 \leqslant i < j \leqslant n}(a_{j} - a_{i})
+	\end{equation}
+	]{Calcul du déterminant de Vandermonde}
+	Posons
+	$$
+	\mathcal{P}(n) : \forall (a_{0},\dots,a_{n}) \in \K^{n+1}, V(a_{0}, \dots, a_{n}) = \prod_{0 \leqslant i < j \leqslant n}(a_{j} - a_{i})
+	$$
+	\begin{itemize}[label=$\lozenge$]
+	    \item \underline{Initialisation} $n \leftarrow 2$
+		Soient $(a_{0}, a_{1}) \in \K^{2}$
+		$$
+		\left| \begin{matrix}
+		1 & 1 \\
+		a_{0} & a_{1}
+		\end{matrix}\right| = a_{1} - a_{0}
+		$$
+		
+		\item \underline{Hérédité}, soit $n \in \N^{*}$ fixé quelconque tel que $\mathcal{P}(n)$ est vraie.
+		Soient $(a_{0}, a_{1}, \dots, a_{n+1}) \in \K^{n+2}$ fixés quelconques.
+		\begin{itemize}
+		    \item Supposons que les éléments de $\left\{ a_{0}, \dots, a_{n+1} \right\}$ ne sont pas tous deux à deux distincts.
+		    
+		    Alors le déterminant à calculer possède deux colonnes identiques donc il est nul, et la formule avec laquelle il doit coïncider s'annule également, donc $\mathcal{P}(n+1)$ est vraie dans ce cas
+		
+		    \item Supposons que les éléments de $\left\{ a_{0} ,\dots, a_{n+1} \right\}$ sont tous distincts.
+			Notons
+			$$
+			Q(X) = \left| \begin{matrix}
+			1 & 1 & 1 & \dots  & 1 & 1 \\
+			a_{0} & a_{1} & a_{2} & \dots & a_{n} & X \\
+			a_{0}^{2} & a_{1}^{2} & a_{2}^{2} & \dots & a_{n}^{2} & X^{2} \\
+			\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+			a_{0}^{n} & a_{1}^{n} & a_{2}^{n} & \dots & a_{n}^{n} & X^{n} \\
+			a_{0}^{n+1} & a_{1}^{n+1} & a_{2}^{n+1} & \dots & a_{n}^{n+1} & X^{n+1}
+			\end{matrix} \right|
+			$$
+			Sachant que le déterminant d'une matrice est une somme de produits de coefficients de la matrice, puisque tous les coefficients du déterminant $Q(X)$ sont des polynômes en $X$, $Q(X) \in \K[X]$ (car $\K[X]$ est un anneau et donc stable par produit).
+			De plus, en développant le déterminant $Q(X)$ selon sa dernière colonne, on observe d'une part que $\deg Q \leqslant n+1$ et d'autre part que le coefficient de $X^{n+1}$ est le cofacteur de $X^{n+1}$ qui est, d'après $\mathcal{P}(n)$
+			$$
+			\prod_{0\leqslant i<j \leqslant n}(a_{j}-a_{i})
+			$$
+			Et, comme tous les $a_{i}$ sont distincts, ce coefficient est non-nul, donc $\deg Q=n+1$
+			
+			De plus, $Q(a_{0})=0, Q(a_{1})=0, \dots, Q(a_{n})=0$ car le déterminant présente dans chacun des calculs deux colonnes égales. Nous en déduisons que $Q$ admet au moins $(n+1)$ racines deux à deux distinctes, or son degré est exactement $n+1$ donc
+			- il n'y a aucune autre racine
+			- elles sont toutes simples
+			
+			La forme factorisée de $Q$ est donc
+			$$
+			Q(X)=\underbrace{ \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) }_{ \text{coefficient dominant} } \times \underbrace{ \prod_{k=0}^{n}(X-a_{k})^{1} }_{ n+1 \text{ racines simples} }
+			$$
+			Donc 
+			\begin{align*}
+				V(a_{0}, a_{1},\dots, a_{n+1})&=Q(a_{n+1}) \\
+				&=  \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \times  \prod_{k=0}^{n}(a_{n+1}-a_{k})  \\
+				&= \left( \prod_{0\leqslant i < j \leqslant n} (a_{j}-a_{i})\right) \prod_{\substack{0\leqslant i<j \\ j=n+1}}^{n}(a_{j}-a_{k}) \\
+				&= \prod_{0\leqslant i < j \leqslant n+1} (a_{j}-a_{i})
+			\end{align*}
+			
+			Donc $\mathcal{P}(n+1)$ est vraie
+		\end{itemize}
+	\end{itemize}
 \end{question_kholle}
 \pagebreak\section{Semaine 30}
 
-\begin{question_kholle}{Inégalité de Cauchy-Schwartz dans un Espace préhilbertien réel, cas d'égalité}
+\begin{question_kholle}[{
+	\begin{equation}
+		\forall (x, y) \in E^2, \
+		\left| \braket{ x | y } \right| \leqslant \|x\|\|y\|
+	\end{equation}
+	Il y a égalité \ssi $x$ et $y$ sont liés.
+	}]{Inégalité de Cauchy-Schwartz dans un espace préhilbertien réel, cas d'égalité}
 	Soit $E$ un $\R$-espace vectoriel, et $\braket{ \cdot | \cdot  }$ un produit scalaire sur $E$.
 	Soient $(x, y) \in E^{2}$
 	\begin{enumerate}
@@ -6639,15 +6914,17 @@ Donc $\mathcal{P}(n+1)$ est vraie
 		\end{itemize}
 	\end{enumerate}
 \end{question_kholle}
+
 \begin{question_kholle}[{
 	L'application
-	$$
-	\chi \left|\begin{array}{ll}
+	\begin{equation}
+		\chi \left|\begin{array}{ll}
 		E &\to E^{*} \\
 		x &\mapsto \left(\begin{array}{ll} E &\to \R 
 						\\ y &\mapsto \braket{ x | y }  \end{array}\right) \end{array}\right.
-	$$ est un isomorphisme d'espaces vectoriels. $\chi$ est appelé l'isomorphisme canonique entre un espace vectoriel euclidien et son espace dual.	
-	}]{Isomorphisme entre un espace euclidien et l'espace de ses formes linéaires (Théorème de représentation de Riesz).}
+	\end{equation}
+	est un isomorphisme d'espaces vectoriels. $\chi$ est appelé l'isomorphisme canonique entre un espace vectoriel euclidien et son espace dual.	
+	}]{Isomorphisme entre un espace euclidien et l'espace de ses formes linéaires (Théorème de représentation de Riesz)}
 	\begin{itemize}[label=$\star$]
 		\item $\chi$ est bien définie car, $\forall x \in E$, par linéarité du produit scalaire en sa seconde variable, $\chi(x): \left|\begin{array}{ll} E &\to \R \\ y &\mapsto \braket{ x | y }  \end{array}\right.$ est une forme linaire sur $E$.
 		
@@ -6672,11 +6949,15 @@ Donc $\mathcal{P}(n+1)$ est vraie
 		Donc $\chi$ est un isomorphisme.
 	\end{itemize}
 \end{question_kholle}
-\begin{question_kholle}{Montrer que si $F$ est un sous-espace vectoriel de dimension finie d'un espace préhilbertien réel, $F^{\perp}$ est son supplémentaire orthogonal}
+
+\begin{question_kholle}{Si $F$ est un sous-espace vectoriel de dimension finie d'un espace préhilbertien réel, $F^{\perp}$ est son supplémentaire orthogonal}
 	
 	
 	Soient $(E, \braket{ \cdot | \cdot })$ un espace préhilbertien réel, et $F$ un sous espace vectoriel de dimension finie.
-	Alors $F$ et $F^{\perp}$ sont supplémentaires orthogonaux, i.e. $E = F  \overset{\perp}{\oplus} F^{\perp}$
+	Alors $F$ et $F^{\perp}$ sont supplémentaires orthogonaux, i.e.
+	\begin{equation}
+		E = F  \overset{\perp}{\oplus} F^{\perp}
+	\end{equation}
 	
 	
 	
@@ -6684,8 +6965,8 @@ Donc $\mathcal{P}(n+1)$ est vraie
 	\begin{itemize}[label=$\lozenge$]
 		\item \underline{Analyse}
 		
-		Soit $x \in E$ fixé quelconque, supposons que $\exists (x_{\parallel}, x_{\perp}) \in F \times F^{\perp} = x_{\parallel}+x_{\perp}$
-		D'abord $$x_{\parallel} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \R^{r}: x_{\parallel}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
+		Soit $x \in E$ fixé quelconque, supposons que $\exists (x_{\sslash}, x_{\perp}) \in F \times F^{\perp} = x_{\sslash}+x_{\perp}$
+		D'abord $$x_{\sslash} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \R^{r}: x_{\sslash}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
 		Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque
 		
 		\begin{align*}
@@ -6695,20 +6976,20 @@ Donc $\mathcal{P}(n+1)$ est vraie
 		\end{align*}
 		
 		Ainsi, $$\left\{ \begin{array}{ll}
-			x_{\parallel} &= \sum_{i=1}^{r}\lambda_{i}.e_{i}= \sum_{i=1}^{r}\braket{ x | e_{i} } . e_{i} \\
-			x_{\perp}  &= x - x_{\parallel}
+			x_{\sslash} &= \sum_{i=1}^{r}\lambda_{i}.e_{i}= \sum_{i=1}^{r}\braket{ x | e_{i} } . e_{i} \\
+			x_{\perp}  &= x - x_{\sslash}
 		\end{array}\right.$$
 		
 		\item \underline{Synthèse}
 		
 		Posons donc 
 		$$\left\{ \begin{array}{ll}
-			x_{\parallel} &= \sum_{i=1}^{r} \braket{ x | e_{i} } .e_{i} \\
-			x_{\perp} &= x - x_{\parallel}
+			x_{\sslash} &= \sum_{i=1}^{r} \braket{ x | e_{i} } .e_{i} \\
+			x_{\perp} &= x - x_{\sslash}
 		\end{array}\right. $$
 		\begin{itemize}[label=$\star$]
-			\item $(e_{1}, \dots, e_{r})$ est une base de $F$ donc $x_{\parallel} \in F$
-			\item $x_{\parallel}+x_{\perp} = x_{\parallel}+ (x - x_{\parallel}) = x$
+			\item $(e_{1}, \dots, e_{r})$ est une base de $F$ donc $x_{\sslash} \in F$
+			\item $x_{\sslash}+x_{\perp} = x_{\sslash}+ (x - x_{\sslash}) = x$
 			\item Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque. Calculons $\braket{ x_{\perp} | e_{j} }$
 			
 			\begin{align*}
@@ -6730,12 +7011,13 @@ Donc $\mathcal{P}(n+1)$ est vraie
 	Donc $$p_{F}^{\perp}(x) = \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i} $$
 	
 \end{question_kholle}
+
 \begin{question_kholle}[{On utilisera le produit scalaire $$
 	\left\langle P | Q \right\rangle  = \int_{0}^{1} P(u)Q(u) \, \mathrm du
 $$ }]{Orthonormalisation de la base canonique de $\R_2[X]$}
 	Partons de la base canonique de $\R_{2}[X]$.
 	\begin{itemize}[label=$\star$]
-		\item $P_{1} =X^{0}$ est un vecteur unitaire Avec ce produit scalaire
+		\item $P_{1} =X^{0}$ est un vecteur unitaire avec ce produit scalaire
 		
 		\item Calcul du second vecteur
 $$
@@ -6768,10 +7050,11 @@ $$
 		
 		Donc une base orthonormée de $\R_{2}[X]$ muni de ce produit scalaire est
 $$
-		\left( 1, 2\sqrt{ 3 }X-\sqrt{ 3 }, 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
+		\left( 1, \ 2\sqrt{ 3 }X-\sqrt{ 3 }, \ 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
 $$
 	\end{itemize}
 \end{question_kholle}
+
 \begin{question_kholle}[{Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace préhilbertien Réel.
 	Soient $F$ un sous espace vectoriel de dimension finie de $E$, et $x \in E$.
 	
@@ -6807,6 +7090,7 @@ $$
 	Si bien que $p_{F}^{\perp}(x) - z' = 0_{E}$ d'après le caractère défini du produit scalaire.
 	Donc le plus petit élément $d(x, F) = \min\{ \|x-z\| \mid z \in F \}$ est uniquement atteint pour $z = p_{F}^{\perp}(x)$.
 \end{question_kholle}
+
 \begin{question_kholle}[{
 	Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace vectoriel euclidien, $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base orthonormée de $E$.
 	Soit $u = \sum_{i=1}^{n}u_{i}.e_{i}$ un vecteur de $E$.
@@ -6837,6 +7121,7 @@ $$
 	\mathrm{d}(u, H_{\alpha})= \|p_{H_{0}^{\perp}}^{\perp}(u)-h_{\alpha}\|= \left\| \left\langle a | \frac{a}{\|a\|} \right\rangle. \frac{a}{\|a\|}- \frac{\alpha}{\|a\|^{2}}.a \right\|
 $$
 \end{question_kholle}
+
 \begin{question_kholle}
 	{Dénombrement des surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$ et dans $\lient 1; 3 \rient$}
 	
@@ -6850,7 +7135,7 @@ $$
 \end{question_kholle}
 
 \begin{question_kholle}
-	[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$. \\
+	[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$.
 	Alors $\left|F\right| = \frac{\left|E\right|}{k}$
 	\begin{quotation}
 		\textquotedblleft Pour compter les moutons, il faut compter les pattes puis diviser par quatre. \textquotedblright
@@ -6960,7 +7245,8 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 	\end{liste}
 	Ainsi, $\proba_B$ est bien une probabilité sur $\Omega$.
 \end{question_kholle}
-\begin{question_kholle}{Montrer que si $A$ et $B$ sont des événements indépendants, alors $A$ et $\overline{B}$ aussi}
+
+\begin{question_kholle}{Si $A$ et $B$ sont des événements indépendants, alors $A$ et $\overline{B}$ aussi}
 	Supposons donc que $0 \leqslant \proba(A) \leqslant 1$ et $0 \leqslant \proba(B) \leqslant 1$.
 	D'une part, $\{ B, \bar{B} \}$ constitue un système complet donc
 	
@@ -6969,18 +7255,27 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		\iff \proba(A)&= \proba(A) \proba(B) + \proba(A \cap \bar{B}) \\
 		\iff \proba(A) - \proba(A) \proba(B) &= \proba(A \cap \bar{B}) \\
 		\iff \proba(A)(1-\proba(B))&= \proba(A \cap \bar{B}) \\
-		\iff \proba(A) \proba(\bar{B})&= \proba(A \cap \bar{B})
+		\iff \proba(A) \proba\left(\bar{B}\right)&= \proba(A \cap \bar{B})
 	\end{align*}
 	
 	Donc $A$ et $\bar B$ sont indépendants
 \end{question_kholle}
-\begin{question_kholle}{Formule des probabilités composées}
-	Soient $(A_{1}, \dots, A_{n})$, $n$ événements tels que $\proba\left( \bigcap_{i=1}^{n} A_{i} \right) \neq 0$
-	Pour $k \in [ \! [ 2, n ] \!]$ posons 
-	$$\mathcal{H}_{k} : " \proba\left( \bigcap_{i=1}^{n}A_{i} \right) = \proba(A_{1})\proba_{A_{1}}(A_{2})\proba_{A_{1} \cap A_{2}}(A_{3})\proba_{A_{1} \cap A_{2} \cap A_{3}}(A_{4})\dots \proba_{A_{1} \cap\dots \cap A_{k-1}}(A_{k})"$$
+
+\begin{question_kholle}[
+	\begin{equation}
+		\forall n \in \N^*, \
+		\forall A \in \mathcal{P}(\Omega)^n, \
+		\proba\left( \bigcap_{i=1}^{k}A_{i} \right) =
+		\proba(A_{1}) \proba_{A_{1}}(A_{2}) \proba_{A_{1} \cap A_{2}}(A_{3}) \dots \proba_{A_{1} \cap \dots \cap A_{n-1}}(A_{n})
+	\end{equation}
+	]{Formule des probabilités composées}
+	Procédons par récurrence.
+	Soient $(A_{1}, \dots, A_{n})$, $n$ événements tels que $\proba\left( \bigcap_{i=1}^{n} A_{i} \right) \neq 0$.
+	Pour tout $k \in \lient 2, n \rient$, posons 
+	$$\mathcal{H}_{k} : " \proba\left( \bigcap_{i=1}^{k}A_{i} \right) = \proba(A_{1})\proba_{A_{1}}(A_{2})\proba_{A_{1} \cap A_{2}}(A_{3})\proba_{A_{1} \cap A_{2} \cap A_{3}}(A_{4})\dots \proba_{A_{1} \cap\dots \cap A_{k-1}}(A_{k})"$$
+	
 	\begin{itemize}[label=$\star$]
-		
-		
+
 		\item Initialisation, $k \leftarrow 2$
 		d'une part, $\bigcap_{i=1}^{n}A_{i} \subset A_{1}$, donc par croissance de $\proba$, $$0<\proba\left( \bigcap_{i=1}^{n}A_{i} \right) \leqslant \proba(A_{1})$$
 		Si bien que $\proba(A_{1}) \neq 0$ donc la probabilité conditionnelle $\proba_{A_{1}}$ a un sens.
@@ -6988,7 +7283,7 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		$$\proba(A_{1} \cap A_{2}) = \proba(A_{1}) \proba_{A_{1}}(A_{2})$$
 		Donc $\mathcal{H}_{2}$ est vérifiée.
 		
-		\item Hérédité Soit $k \in [ \! [ 2, n - 1] \!]$ fixé quelconque tel que $\mathcal{H}_{k}$ est vérifiée.
+		\item Hérédité, Soit $k \in [ \! [ 2, n - 1] \!]$ fixé quelconque tel que $\mathcal{H}_{k}$ est vérifiée.
 		
 		D'abord, remarquons que $\bigcap_{i=1}^{n}A_{i} \subset \bigcap_{i=1}^{k}A_{i}$ donc par croissance de $\proba$,
 		$$0 < \proba\left( \bigcap_{i=1}^{n}A_{i} \right)\leqslant \proba\left( \bigcap_{i=1}^{k}A_{i} \right)$$
@@ -7005,8 +7300,8 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 	\end{itemize}
 \end{question_kholle}
 \begin{question_kholle}{Formule des probabilités totales et formule de Bayes}
-	\begin{itemize}
-		\item Formule des probabilités totales
+	
+		\underline{Formule des probabilités totales}
 		
 		Soit $(A_{1}, \dots A_{n})$ un système complet d'événements.
 		Comme ils sont incompatibles
@@ -7015,28 +7310,32 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		Le système est de plus complet donc $\bigsqcup _{k=1}^{n} A_{k} = \Omega$. Donc $\sum_{k=1}^{n}\proba(A_{k}) = 1$.
 		
 		$(A_{1}, \dots , A_{n})$ sont aussi deux à deux incompatibles, donc $(B \cap A_{1}, \dots B \cap A_{n})$ aussi.
-		De plus $B = B \cap \Omega = B \cap \left( \bigsqcup_{k=1}^{n}A_{k} \right) = \bigsqcup_{k=1}^{n}(B \cap A_{k})$
+		De plus $B = B \cap \Omega = B \cap \left( \bigsqcup_{k=1}^{n}A_{k} \right) = \bigsqcup_{k=1}^{n}(B \cap A_{k})$.
 		Donc
 		$$\proba(B)= \proba\left( \bigsqcup_{k=1}^{n}(B \cap A_{k}) \right) = \sum_{k=1}^{n}\proba(B \cap A_{k})$$
-		De plus, en passant aux probabilités conditionnelles $(\proba_{A_{i}})_{1\leqslant i\leqslant n}$ on a 
+		De plus, en passant aux probabilités conditionnelles $\left(\proba_{A_{i}}\right)_{1\leqslant i\leqslant n}$ on a 
 		
-		$$\proba(B) = \sum_{k=1}^{n}\proba(A_{k})\proba_{A_{k}}(B)$$
+		\begin{equation}
+			\proba(B) = \sum_{k=1}^{n}\proba(A_{k})\proba_{A_{k}}(B)
+		\end{equation}
 		
-		\item Formule de Bayes
+		\underline{Formule de Bayes}
 		
 		Soient $A$ et $B$ deux événements de probabilité non nulle, on a alors :
 		$$\proba(A)\proba_{A}(B) = \proba(A \cap B) = \proba(B)\proba_{B}(A)$$
 		donc
 		
-		$$\proba_{A}(B) = \frac{\proba(B)\proba_{B}(A)}{\proba(A)}$$
-	\end{itemize}
+		\begin{equation}
+			\proba_{A}(B) = \frac{\proba(B)\proba_{B}(A)}{\proba(A)}
+		\end{equation}
 \end{question_kholle}
+
 \begin{question_kholle}[{
 	Soit $X$ une variable alétoire sur $\Omega$ et $g$ une fonction définie sur $X(\Omega)$.
-	La loi de probabilité $Y = g(X)$ est donnée par $Y(\Omega) = g(X(\Omega))$ et 
-	$$
-	\forall y \in Y(\Omega), \proba_{Y}(\{ y \})= \proba(Y=y) = \sum_{x \in g^{-1}(\{ y \})}\proba(X=x)= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(X=x)
-	$$
+	La loi de probabilité $Y = g(X)$ est donnée par $Y(\Omega) = g(X(\Omega))$ et
+	\begin{equation}
+		\forall y \in Y(\Omega), \proba_{Y}(\{ y \})= \proba(Y=y) = \sum_{x \in g^{-1}(\{ y \})}\proba(X=x)= \sum_{\substack{x \in X(\Omega)\\ g(x)=y}}\proba(X=x)
+	\end{equation}
 	}]{Loi d'une fonction de $X$}
 	
 	Utilisons le système complet $(X = x)_{x \in X(\Omega)}$ associé à la variable aléatoire $X$ et la formule des probabilités totales
@@ -7053,7 +7352,7 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		$$
 		\omega \in(X=x) \implies X(\omega)=x \implies g(X(\omega)) = g(x) \implies \omega \in (g(X) = y)
 		$$
-		De plus $(X = x) \subset (g(X)=y)$ donc $(g(X) = y) \cap(X=x)=(X=x)$
+		D'où $(X = x) \subset (g(X)=y)$ donc $(g(X) = y) \cap(X=x)=(X=x)$
 		
 		\item Sinon, si $g(x) \neq y$
 		$$
@@ -7092,7 +7391,7 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 		$$\proba(X>0) = \sum_{\omega_{0} \in (X>0)} \proba(\{ \omega_{0} \}) = 0$$
 		Donc  $(X>0)$ est négligeable, mais $(X<0)$ est négligeable aussi, donc
 		$$0\leqslant \proba((X>0) \cup (X<0))\leqslant \proba(X>0) + \proba(X<0)=0$$
-		donc l'évènement contraire de $(X>0) \cup (X<0)$, qui est $(X=0)$ est certain
+		Ainsi l'évènement contraire de $(X>0) \cup (X<0)$, qui est $(X=0)$ est certain.
 		
 		\item Supposons $X=0$ presque sûrement.
 		
@@ -7105,8 +7404,8 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 	\end{itemize}
 \end{question_kholle}
 \begin{question_kholle}{Calcul de l'espérance et la variance d'une variable aléatoire suivant une loi binomiale}
-	Soit $n \in \mathbb{N}^*$ et $p \in [0, 1]$
-	Supposons que $X \hookrightarrow \mathcal{B}(n, p)$
+	Soit $n \in \mathbb{N}^*$ et $p \in [0, 1]$.
+	Supposons que $X \hookrightarrow \mathcal{B}(n, p)$.
 	
 	\begin{align*}
 		\esp(X) &= \sum_{\omega \in X(\Omega)}\omega \proba(X = \omega) \\
@@ -7138,8 +7437,8 @@ Pour cette semaine, $E$ est un ensemble fini de cardianl $n \in \N^*$ et $(\Omeg
 	\variance(X) = \esp(X^{2}) - \esp(X)^{2}=np((n-1)p+1)- n^{2} p ^{2}=np(1-p)
 	$$
 	
-	\textbf{Calcul alternatif de $\mathbf{E^2}$} En utilisant la formule de transfert pour $f \leftarrow \left( \begin{matrix}
-		X(\Omega) &\to &\dots \\
+	\noindent \textbf{Calcul alternatif de $\mathbf{E^2}$} En utilisant la formule de transfert pour $f \leftarrow \left( \begin{matrix}
+		X(\Omega) = \lient 0; n \rient &\to &\lient 0; n(n-1) \rient \\
 		x &\mapsto &x(x-1)
 	\end{matrix} \right)$
 	
