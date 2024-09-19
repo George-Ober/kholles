@@ -4,106 +4,106 @@
 \usepackage[nb-sem=22, auteurs={Hugo Vangilluwen, George Ober, Kylian Boyet}]{../kholles}
 
 \begin{document}
-	\maketitle
+\maketitle
 
-	Pour cette semaine, \K désigne un corps commutatif, $E$ et $F$ des \K\!\!-espaces vectoriels, $E'$ et $F'$ des sous-espaces vectoriels respectivement de $E$ et de $F$, $I$ un ensemble quelconque non vide.
+Pour cette semaine, \K désigne un corps commutatif, $E$ et $F$ des \K\!\!-espaces vectoriels, $E'$ et $F'$ des sous-espaces vectoriels respectivement de $E$ et de $F$, $I$ un ensemble quelconque non vide.
 
-	\begin{question_kholle}
-		[Une famille est liée si et seulement si l'un de ses vecteurs est une combinaison linéaires d'autres vecteurs de la famille.
+\begin{question_kholle}
+	[Une famille est liée si et seulement si l'un de ses vecteurs est une combinaison linéaires d'autres vecteurs de la famille.
 		\begin{equation}
 			(x_i)_{i \in I} \text{ est liée}
 			\iff \exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
 			x_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i
 		\end{equation}]
-		{Caractérisation d'une famille liée}
+	{Caractérisation d'une famille liée}
 
-		Supposons que $(x_i)_{i \in I}$ est liée. \\
-		Par définition, $\displaystyle \exists (\mu_i) \K^{(I)} :
+	Supposons que $(x_i)_{i \in I}$ est liée. \\
+	Par définition, $\displaystyle \exists (\mu_i) \K^{(I)} :
 		\left\{ \begin{array}{ccc}
-			\sum_{i \in I} \mu_i x_i &= 0_E \\
-			(\mu_i)_{i \in I} &\neq (0_\K)_{i \in I}
+			\sum_{i \in I} \mu_i x_i & = 0_E                 \\
+			(\mu_i)_{i \in I}        & \neq (0_\K)_{i \in I}
 		\end{array} \right.$ \\
-		Donc $\exists i_0 \in I : \mu_{i_0} \neq 0_\K$. Fixons un tel $i_0$. \\
-		$\displaystyle \mu_{i_0} x_{i_0} + \sum_{i \in I \setminus \{i_0\}} \mu_i x_i = 0_E$ \\
-		Or $\mu_{i_0} \neq 0$, donc $\displaystyle x_{i_0} = \sum_{i \in I \setminus \{i_0\}} \left( \mu_{i_0}^{-1} \times (-\mu_i) \right) \ldotp x_i$. \\
-		En posant $\lambda_i = \mu_{i_0}^{-1} \times (-\mu_i)$, on obtient $x_{i_0} = \displaystyle \sum_{i \in I \setminus \{i_0\}} \lambda_i \ldotp x_i$.
+	Donc $\exists i_0 \in I : \mu_{i_0} \neq 0_\K$. Fixons un tel $i_0$. \\
+	$\displaystyle \mu_{i_0} x_{i_0} + \sum_{i \in I \setminus \{i_0\}} \mu_i x_i = 0_E$ \\
+	Or $\mu_{i_0} \neq 0$, donc $\displaystyle x_{i_0} = \sum_{i \in I \setminus \{i_0\}} \left( \mu_{i_0}^{-1} \times (-\mu_i) \right) \ldotp x_i$. \\
+	En posant $\lambda_i = \mu_{i_0}^{-1} \times (-\mu_i)$, on obtient $x_{i_0} = \displaystyle \sum_{i \in I \setminus \{i_0\}} \lambda_i \ldotp x_i$.
 
-		Supposons maintenant que $\exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
+	Supposons maintenant que $\exists i_0 \in I : \exists (\lambda_i)_{i \in I\setminus\{i_0\}} \in \K^{\left( I \setminus \{i_0\} \right)} :
 		x_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i$. \\
-		Alors $-x_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i = 0_E$.
-		Posons $\mu_{i_0} = - 1_\K$ et $\forall i \in I \!\setminus\! \{i_0\}, \mu_i = \lambda_i$.
-		Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i = 0_\K$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
-		Donc $(\mu_i)_{i \in I}$ est liée.
-	\end{question_kholle}
+	Alors $-x_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i = 0_E$.
+	Posons $\mu_{i_0} = - 1_\K$ et $\forall i \in I \!\setminus\! \{i_0\}, \mu_i = \lambda_i$.
+	Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i = 0_\K$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
+	Donc $(\mu_i)_{i \in I}$ est liée.
+\end{question_kholle}
 
-	\begin{question_kholle}
-		[Soit $\mathcal{F}$ une famille de vecteurs de $E$. Les propositions suivantes sont équivalentes :
+\begin{question_kholle}
+	[Soit $\mathcal{F}$ une famille de vecteurs de $E$. Les propositions suivantes sont équivalentes :
 		\begin{propositions}
 			\item $\mathcal{F}$ est une base.
 			\item Tout vecteur de $E$ se décompose de manière unique dans $\mathcal{F}$.
 			\item $\mathcal{F}$ est génératrice minimale (au sens de l'inclusion)
 			\item $\mathcal{F}$ est libre maximale (au sens de l'inclusion)
 		\end{propositions}]
-		{Caractérisations d'une base}
+	{Caractérisations d'une base}
 
-		Notons $(e_i)_{i \in I}$ la famille $\mathcal{F}$.
+	Notons $(e_i)_{i \in I}$ la famille $\mathcal{F}$.
 
 
-		$(i) \implies (ii)$ Supposons que $\mathcal{F}$ est une base de $E$. \\
-		Soit $x \in E$ \fq. Montrons que $x$ s'écrit de manière unique comme une combinaison linéaire des vecteurs de $\mathcal{F}$. \\
-		$\mathcal{F}$ est une base donc elle est une famille génératrice et libre de $E$. La propriété génératrice donne, par définition, l'existence d'une telle écriture tandis que la propriété libre donne l'unicité d'une telle écriture.
+	$(i) \implies (ii)$ Supposons que $\mathcal{F}$ est une base de $E$. \\
+	Soit $x \in E$ \fq. Montrons que $x$ s'écrit de manière unique comme une combinaison linéaire des vecteurs de $\mathcal{F}$. \\
+	$\mathcal{F}$ est une base donc elle est une famille génératrice et libre de $E$. La propriété génératrice donne, par définition, l'existence d'une telle écriture tandis que la propriété libre donne l'unicité d'une telle écriture.
 
-		$(ii) \implies (iii)$ Supposons que tout vecteur de $E$ s'écrit de manière unique comme une combinaison linéaire de vecteurs de $\mathcal{F}$. \\
-		L'existence d'un telle décomposition permet d'affirmer que $\mathcal{F}$ est génératrice. \\
-		Supposons que $\mathcal{F}$ ne soit pas génératrice minimale c'est-à-dire qu'il existe une famille $\mathcal{F}'$ de vecteurs de $E$ telle que $\mathcal{F}' \subsetneq \mathcal{F}$ et $\mathcal{F}'$ engendre $E$. \\
-		Alors $\exists i_0 \in I : e_{i_0} \notin \mathcal{F}'$. Comme $\mathcal{F}'$ est génératrice, $\exists (\lambda_i)_{i \in I \setminus \{i_0\}} \in \K^{(I \setminus \{i_0\})} : e_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp e_i$.
-		Donc \begin{equation*}
-			\begin{aligned}
-				e_{i_0} &= 0_\K \ldotp e_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp e_i \\
-				e_{i_0} &= 1_\K \ldotp e_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} 0_\K \ldotp e_i
-			\end{aligned}
-		\end{equation*}
-		$e_{i_0}$ peut donc s'écrire de deux manières différentes au moins comme combinaison linéaire de vecteurs de $\mathcal{F}$ ce qui contredit le caractère libre de $\mathcal{F}$. \\
-		Par conséquent, $\mathcal{F}$ est génératrice et minimale parmi les familles génératrices.
+	$(ii) \implies (iii)$ Supposons que tout vecteur de $E$ s'écrit de manière unique comme une combinaison linéaire de vecteurs de $\mathcal{F}$. \\
+	L'existence d'un telle décomposition permet d'affirmer que $\mathcal{F}$ est génératrice. \\
+	Supposons que $\mathcal{F}$ ne soit pas génératrice minimale c'est-à-dire qu'il existe une famille $\mathcal{F}'$ de vecteurs de $E$ telle que $\mathcal{F}' \subsetneq \mathcal{F}$ et $\mathcal{F}'$ engendre $E$. \\
+	Alors $\exists i_0 \in I : e_{i_0} \notin \mathcal{F}'$. Comme $\mathcal{F}'$ est génératrice, $\exists (\lambda_i)_{i \in I \setminus \{i_0\}} \in \K^{(I \setminus \{i_0\})} : e_{i_0} = \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp e_i$.
+	Donc \begin{equation*}
+		\begin{aligned}
+			e_{i_0} & = 0_\K \ldotp e_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp e_i \\
+			e_{i_0} & = 1_\K \ldotp e_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} 0_\K \ldotp e_i
+		\end{aligned}
+	\end{equation*}
+	$e_{i_0}$ peut donc s'écrire de deux manières différentes au moins comme combinaison linéaire de vecteurs de $\mathcal{F}$ ce qui contredit le caractère libre de $\mathcal{F}$. \\
+	Par conséquent, $\mathcal{F}$ est génératrice et minimale parmi les familles génératrices.
 
-		$(iii) \implies (iv)$ Supposons que $\mathcal{F}$ est une famille génératrice minimale.
-		Par l'absurde, supposons que $\mathcal{F}$ est liée. Alors il existe un $i_0 \in I$ tel que $e_{i_0}$ s'écrit comme une combinaison linéaire d'autres vecteurs de $\mathcal{F}$ donc $(e_i)_{i \in I \setminus \{i_0\}}$ est génératrice de $E$ . Or cette famille est strictement incluse dans $\mathcal{F}$ ce qui contredit la propriété de génératrice minimale. \\
-		Donc $\mathcal{F}$ est libre. \\
-		Par l'absurde, supposons que $\mathcal{F}$ n'est pas libre maximale c'est-à-dire qu'il existe une famille $\mathcal{F}'$ de vecteurs de $E$ telle que $\mathcal{F} \subsetneq \mathcal{F}'$ et $\mathcal{F}'$ est libre. \\
-		Alors $\exists x \in \mathcal{F}' : x \notin \mathcal{F}$. Or $\mathcal{F}$ est génératrice d'où :
-		\begin{equation*}
-			\exists \bdak :
-			x = \sum_{i \in I} \lambda_i \ldotp x_i
-			= 0_\K \ldotp x + \sum_{i \in I} \lambda_i \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
-		\end{equation*}
-		Puisque $x \in \mathcal{F}'$,
-		\begin{equation*}
-			\exists \bdak :
-			x = 1_\K \ldotp x + \sum_{i \in I} 0_\K \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
-		\end{equation*}
-		Donc $x$ s'écrit de deux manières différentes au moins comme combinaison linéaire de vecteurs $\mathcal{F}'$, ce qui contredit la liberté de $\mathcal{F}'$. \\
-		Par conséquent, $\mathcal{F}$ est libre maximale.
+	$(iii) \implies (iv)$ Supposons que $\mathcal{F}$ est une famille génératrice minimale.
+	Par l'absurde, supposons que $\mathcal{F}$ est liée. Alors il existe un $i_0 \in I$ tel que $e_{i_0}$ s'écrit comme une combinaison linéaire d'autres vecteurs de $\mathcal{F}$ donc $(e_i)_{i \in I \setminus \{i_0\}}$ est génératrice de $E$ . Or cette famille est strictement incluse dans $\mathcal{F}$ ce qui contredit la propriété de génératrice minimale. \\
+	Donc $\mathcal{F}$ est libre. \\
+	Par l'absurde, supposons que $\mathcal{F}$ n'est pas libre maximale c'est-à-dire qu'il existe une famille $\mathcal{F}'$ de vecteurs de $E$ telle que $\mathcal{F} \subsetneq \mathcal{F}'$ et $\mathcal{F}'$ est libre. \\
+	Alors $\exists x \in \mathcal{F}' : x \notin \mathcal{F}$. Or $\mathcal{F}$ est génératrice d'où :
+	\begin{equation*}
+		\exists \bdak :
+		x = \sum_{i \in I} \lambda_i \ldotp x_i
+		= 0_\K \ldotp x + \sum_{i \in I} \lambda_i \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
+	\end{equation*}
+	Puisque $x \in \mathcal{F}'$,
+	\begin{equation*}
+		\exists \bdak :
+		x = 1_\K \ldotp x + \sum_{i \in I} 0_\K \ldotp x_i + \sum_{\substack{y \in \mathcal{F}' \\ y \notin \mathcal{F} \\ y \neq x}} 0_\K \ldotp y
+	\end{equation*}
+	Donc $x$ s'écrit de deux manières différentes au moins comme combinaison linéaire de vecteurs $\mathcal{F}'$, ce qui contredit la liberté de $\mathcal{F}'$. \\
+	Par conséquent, $\mathcal{F}$ est libre maximale.
 
-		$(iv) \implies (i)$ Supposons que $\mathcal{F}$ est une famille libre maximale. \\
-		Par hypothèse même, $\mathcal{F}$ est libre.
-		Par l'absurde, supposons que $\mathcal{F}$ n'est pas génératrice. Alors il existe $x \in E$ tel que $x \notin \Vect \mathcal{F}$. Donc $\mathcal{F} \wedge \{x\}$ est libre et contient strictement $\mathcal{F}$, ce qui contredit la propriété de liberté maximale. \\
-		Par conséquent, $\mathcal{F}$ est aussi génératrice, donc une base.
+	$(iv) \implies (i)$ Supposons que $\mathcal{F}$ est une famille libre maximale. \\
+	Par hypothèse même, $\mathcal{F}$ est libre.
+	Par l'absurde, supposons que $\mathcal{F}$ n'est pas génératrice. Alors il existe $x \in E$ tel que $x \notin \Vect \mathcal{F}$. Donc $\mathcal{F} \wedge \{x\}$ est libre et contient strictement $\mathcal{F}$, ce qui contredit la propriété de liberté maximale. \\
+	Par conséquent, $\mathcal{F}$ est aussi génératrice, donc une base.
 
-		\begin{equation*}
-			\begin{matrix}
-				(i) &\!\!\!\implies\!\!\!& (ii) \\
-				\Uparrow & & \Downarrow \\
-				(iv) &\!\!\!\impliedby\!\!\!& (iii) \\
-			\end{matrix}
-		\end{equation*}
-	\end{question_kholle}
+	\begin{equation*}
+		\begin{matrix}
+			(i)      & \!\!\!\implies\!\!\!   & (ii)       \\
+			\Uparrow &                        & \Downarrow \\
+			(iv)     & \!\!\!\impliedby\!\!\! & (iii)      \\
+		\end{matrix}
+	\end{equation*}
+\end{question_kholle}
 
-	\begin{question_kholle}
-		[Soit $f \in \mathcal{L}_\K(E, F)$.
+\begin{question_kholle}
+	[Soit $f \in \mathcal{L}_\K(E, F)$.
 		\begin{equation}
 			\begin{aligned}
-				\ker f &= \left\{ x \in E \;|\; f(x) = 0_F \right\} = f^{-1} (\{0_F\}) \\
-				\Im f &= \left\{ y \in F \;|\; \exists x \in E : f(x) = y \right\}
+				\ker f & = \left\{ x \in E \;|\; f(x) = 0_F \right\} = f^{-1} (\{0_F\}) \\
+				\Im f  & = \left\{ y \in F \;|\; \exists x \in E : f(x) = y \right\}
 			\end{aligned}
 		\end{equation}
 		Nous démontrerons le résultat plus général suivant :
@@ -111,96 +111,96 @@
 			\item $f(E')$ est un \sev de $F$.
 			\item $f^{-1}(F')$ est un \sev de $E$.
 		\end{propositions}
-		]
-		{Le noyau et l'image d'une application linéaire sont des \sevs}
+	]
+	{Le noyau et l'image d'une application linéaire sont des \sevs}
 
-		$(i)$ $0_E \in E'$ et $f(0_E) = 0_F$ donc $0_F \in f(E')$ d'où $f(E') \neq \emptyset$ \\
-		Soit $(\alpha, \beta, y, y') \in \K^2 \times f(E')^2$ \fqs. \\
-		Par définition, $\exists (x, x') \in E'^2 : f(x) = y \wedge f(x') = y$.
-		\begin{equation*}
-			\begin{aligned}
-				\alpha y + \beta y'
-				&= \alpha f(x) + \beta f(x') \\
-				&= f( \alpha x + \beta x' ) \quad \text{ car } f \in \mathcal{L}_\K(E, F) \\
-				&\in f(E') \quad \text{ car } \alpha x + \beta x' \in E' \text{ puisque } E' \text{ est un \sev}
-			\end{aligned}
-		\end{equation*}
-		Donc $f(E')$ est un \sev.
+	$(i)$ $0_E \in E'$ et $f(0_E) = 0_F$ donc $0_F \in f(E')$ d'où $f(E') \neq \emptyset$ \\
+	Soit $(\alpha, \beta, y, y') \in \K^2 \times f(E')^2$ \fqs. \\
+	Par définition, $\exists (x, x') \in E'^2 : f(x) = y \wedge f(x') = y$.
+	\begin{equation*}
+		\begin{aligned}
+			\alpha y + \beta y'
+			 & = \alpha f(x) + \beta f(x')                                                                     \\
+			 & = f( \alpha x + \beta x' ) \quad \text{ car } f \in \mathcal{L}_\K(E, F)                        \\
+			 & \in f(E') \quad \text{ car } \alpha x + \beta x' \in E' \text{ puisque } E' \text{ est un \sev}
+		\end{aligned}
+	\end{equation*}
+	Donc $f(E')$ est un \sev.
 
-		$(ii)$ $0_F \in F'$ et $f(0_E) = 0_F$ donc $0_E \in f^{-1}(F')$ d'où $f(F') \neq \emptyset$ \\
-		Soit $(\alpha, \beta, x, x') \in \K^2 \times f^{-1}(F')^2$ \fqs. \\
-		Par définition, $\exists (y, y') \in F'^2 : f(x) = y \wedge f(x') = y$. \\
-		Or $F'$ est \sev donc $\alpha y + \beta y' \in F'$. $f \in \mathcal{L}_\K(E, F)$ d'où $f(\alpha x + \beta x') = \alpha y + \beta y'$. Donc $\alpha x + \beta x' \in f^{-1}(F')$. \\
-		Ainsi, $f^{-1}(F')$ est un \sev.
+	$(ii)$ $0_F \in F'$ et $f(0_E) = 0_F$ donc $0_E \in f^{-1}(F')$ d'où $f(F') \neq \emptyset$ \\
+	Soit $(\alpha, \beta, x, x') \in \K^2 \times f^{-1}(F')^2$ \fqs. \\
+	Par définition, $\exists (y, y') \in F'^2 : f(x) = y \wedge f(x') = y$. \\
+	Or $F'$ est \sev donc $\alpha y + \beta y' \in F'$. $f \in \mathcal{L}_\K(E, F)$ d'où $f(\alpha x + \beta x') = \alpha y + \beta y'$. Donc $\alpha x + \beta x' \in f^{-1}(F')$. \\
+	Ainsi, $f^{-1}(F')$ est un \sev.
 
-		En appliquant pour $E' = E$ et $F' = \{0_F\}$, nous obtenons que $\ker f$ et $\Im f$ sont des \sevs.
-	\end{question_kholle}
-
-
-	\begin{question_kholle}
-		[{Soient $(E,F)$ deux $\mathbb{K}$-espaces vectoriels $f \in \mathcal{L}_\K(E, F)$, $\mathcal{F}=(x_{i})_{i\in I}$ une base de $E$.
-
-		Alors \begin{equation}
-			\text{Vect} \!\!\!\! \underbrace{ f(\mathcal{F}) }_{ \left\{ f(x_{i}) \mid i \in I \right\}  } = f(\Vect\mathcal{ F})
-		\end{equation}
-		}]
-		{L’image par une application linéaire d’une partie génératrice engendre l’image de l’application linéaire}
-		Soit $y \in \text{Vect}f(\mathcal{F})$
-		Alors $\exists (\lambda_{i})_{i \in I} \in \mathbb{K}^{(I)}$ tel que $y = \sum_{i \in I} \lambda_{i}f(x_{i})$
-		Mais
-		\begin{align*}
-			y & =  \sum_{i \in I} \lambda_{i}f(x_{i}) \\
-			& = f\left( \sum _{i \in I} \lambda _{i} x_{i} \right) \implies y \in f(\text{Vect}{\mathcal{F}})
-		\end{align*}
+	En appliquant pour $E' = E$ et $F' = \{0_F\}$, nous obtenons que $\ker f$ et $\Im f$ sont des \sevs.
+\end{question_kholle}
 
 
-		Réciproquement soit $y \in f(\text{Vect}{\mathcal{F}})$ fq.
-		$$\exists x \in \text{Vect} \mathcal{F} : f(x) = y \implies \exists (x_{i})_{i \in I} : x = \sum_{i \in I} \lambda_{i}x_{i}$$
-		Donc:
+\begin{question_kholle}
+	[{Soient $(E,F)$ deux $\mathbb{K}$-espaces vectoriels $f \in \mathcal{L}_\K(E, F)$, $\mathcal{F}=(x_{i})_{i\in I}$ une base de $E$.
 
-		\begin{align*}
-			y = f(x)  & = f\left( \sum_{i \in I} \lambda_{i} x_{i} \right) \\
-			& = \sum _{i \in I} \lambda_{i} f(x_{i}) \in \text{Vect} f ( \mathcal F)
-		\end{align*}
-	\end{question_kholle}
+				Alors \begin{equation}
+					\text{Vect} \!\!\!\! \underbrace{ f(\mathcal{F}) }_{ \left\{ f(x_{i}) \mid i \in I \right\}  } = f(\Vect\mathcal{ F})
+				\end{equation}
+			}]
+	{L’image par une application linéaire d’une partie génératrice engendre l’image de l’application linéaire}
+	Soit $y \in \text{Vect}f(\mathcal{F})$
+	Alors $\exists (\lambda_{i})_{i \in I} \in \mathbb{K}^{(I)}$ tel que $y = \sum_{i \in I} \lambda_{i}f(x_{i})$
+	Mais
+	\begin{align*}
+		y & =  \sum_{i \in I} \lambda_{i}f(x_{i})                                                           \\
+		  & = f\left( \sum _{i \in I} \lambda _{i} x_{i} \right) \implies y \in f(\text{Vect}{\mathcal{F}})
+	\end{align*}
 
-	\begin{question_kholle}
-		[Nous donnerons les caractérisations au fur et à mesure de la démonstration.]
-		{Caractérisation inj/surj/bij d'une application linéaire par l'image d'une base de l'espace de départ.}
-		Soient donc pour la suite, $f \in \mathcal{L}_\K(E,F)$, $\mathcal{B} = (e_i)_{i\in I}$ une base de $E$, $\mathcal{B}' = (e'_i)\ii$ une base de $F$,$\mathcal{F} = (x_i)_{i\in I}$ une famille libre de $E$ et $\mathcal{G} = (y_i)_{i \in I}$ une famille génératrice de $E$, ces objets servent ici de notation et seront utilisés indépendamment lors de la preuve. \\ \\
-		Montrons que l'image d'une base $\mathcal{B}$ par une application injective est une famille libre $\mathcal{F}$. \\
-		Supposons $f$ injective, donc pour $\bdak$,
-		\[
+
+	Réciproquement soit $y \in f(\text{Vect}{\mathcal{F}})$ fq.
+	$$\exists x \in \text{Vect} \mathcal{F} : f(x) = y \implies \exists (x_{i})_{i \in I} : x = \sum_{i \in I} \lambda_{i}x_{i}$$
+	Donc:
+
+	\begin{align*}
+		y = f(x) & = f\left( \sum_{i \in I} \lambda_{i} x_{i} \right)                     \\
+		         & = \sum _{i \in I} \lambda_{i} f(x_{i}) \in \text{Vect} f ( \mathcal F)
+	\end{align*}
+\end{question_kholle}
+
+\begin{question_kholle}
+	[Nous donnerons les caractérisations au fur et à mesure de la démonstration.]
+	{Caractérisation inj/surj/bij d'une application linéaire par l'image d'une base de l'espace de départ.}
+	Soient donc pour la suite, $f \in \mathcal{L}_\K(E,F)$, $\mathcal{B} = (e_i)_{i\in I}$ une base de $E$, $\mathcal{B}' = (e'_i)\ii$ une base de $F$,$\mathcal{F} = (x_i)_{i\in I}$ une famille libre de $E$ et $\mathcal{G} = (y_i)_{i \in I}$ une famille génératrice de $E$, ces objets servent ici de notation et seront utilisés indépendamment lors de la preuve. \\ \\
+	Montrons que l'image d'une base $\mathcal{B}$ par une application injective est une famille libre $\mathcal{F}$. \\
+	Supposons $f$ injective, donc pour $\bdak$,
+	\[
 		0_F = \sum_{i\in  I}\bda_i f(e_i) = f \left( \sum_{i\in  I} \bda_i e_i \right) \ \overset{f \text{ inj}}{\implies} \ \sum_{i\in  I} \bda_i e_i = 0_E \ \overset{\mathcal{B} \text{ base donc libre}}{\implies} \ (\bda _i)_{i\in  I} = \widetilde{0_\K},
-		\]
-		donc $f(\mathcal{B})= \mathcal{F}$ libre. \\
-		Supposons qu'il existe $\mathcal{B}$ telle que $f(\mathcal{B})$ soit libre, montrons qu'alors $f$ est injective. \\
-		Soit $x \in \ker f$ :
-		\[
+	\]
+	donc $f(\mathcal{B})= \mathcal{F}$ libre. \\
+	Supposons qu'il existe $\mathcal{B}$ telle que $f(\mathcal{B})$ soit libre, montrons qu'alors $f$ est injective. \\
+	Soit $x \in \ker f$ :
+	\[
 		\exists \ \bdak \ : \ 0_F = f(x) = f\left( \sum\ii \bda_i e_i \right) =\sum \ii \bda _i f(e_i) \  \overset{f(\mathcal{B}) \text{ libre}}{\implies} \ (\bda _i)_{i\in  I} = \widetilde{0_\K},
-		\]
-		donc $x = 0_E$ donc $\ker f = \{0_E\}$ et $f$ injective. \\ \\
-		Montrons que l'image d'une base $\mathcal{B}$ par une application surjective est une famille génératrice $\mathcal{G}$. \\
-		Supposons $f$ surjective. Ainsi, $\Im f = F$, or $\mathcal{B}$ est une base donc est génératrice donc :
-		\[
+	\]
+	donc $x = 0_E$ donc $\ker f = \{0_E\}$ et $f$ injective. \\ \\
+	Montrons que l'image d'une base $\mathcal{B}$ par une application surjective est une famille génératrice $\mathcal{G}$. \\
+	Supposons $f$ surjective. Ainsi, $\Im f = F$, or $\mathcal{B}$ est une base donc est génératrice donc :
+	\[
 		\Vect f(\mathcal{B}) = f\left( \Vect \mathcal{B} \right) = f( E) = \Im f = F,
-		\]
-		donc $f(\mathcal{B}) = \mathcal{G}$ est génératrice. \\
-		Supposons qu'il existe $\mathcal{B}$ telle que $f(\mathcal{B})$ soit génératrice, montrons que $f$ est surjective. \\
-		On a ainsi,
-		\[
+	\]
+	donc $f(\mathcal{B}) = \mathcal{G}$ est génératrice. \\
+	Supposons qu'il existe $\mathcal{B}$ telle que $f(\mathcal{B})$ soit génératrice, montrons que $f$ est surjective. \\
+	On a ainsi,
+	\[
 		F = \Vect f(\mathcal{B}) = f \left( \Vect \mathcal{B} \right) = f(E) = \Im f,
-		\]
-		donc $f$ surjective. \\ \\
-		Montrons que l'image d'une base $\mathcal{B}$ par un isomorphisme est une base $\mathcal{B}'$. \\
-		Supposons que $f$ soit un isomorphisme. $f$ est injective et $\mathcal{B}$ est une base donc $f(\mathcal{B})$ est libre. $f$ est surjective et $\mathcal{B}$ est une base donc $f(\mathcal{B})$ est génératrice. Ainsi, $f(\mathcal{B})=\mathcal{B}'$ est une base. \\
-		Réciproquement, supposons qu'il existe $\mathcal{B}$ telle que $f(\mathcal{B})=\mathcal{B}'$ soit une base, montrons que $f$ est un isomorphisme.\\
-		$\mathcal{B}'$ est une base donc est libre donc $f$ est injective. $\mathcal{B}'$ est une base donc est génératrice donc $f$ est surjective.
-		Ainsi, $f$ est un isomorphisme.
-	\end{question_kholle}
+	\]
+	donc $f$ surjective. \\ \\
+	Montrons que l'image d'une base $\mathcal{B}$ par un isomorphisme est une base $\mathcal{B}'$. \\
+	Supposons que $f$ soit un isomorphisme. $f$ est injective et $\mathcal{B}$ est une base donc $f(\mathcal{B})$ est libre. $f$ est surjective et $\mathcal{B}$ est une base donc $f(\mathcal{B})$ est génératrice. Ainsi, $f(\mathcal{B})=\mathcal{B}'$ est une base. \\
+	Réciproquement, supposons qu'il existe $\mathcal{B}$ telle que $f(\mathcal{B})=\mathcal{B}'$ soit une base, montrons que $f$ est un isomorphisme.\\
+	$\mathcal{B}'$ est une base donc est libre donc $f$ est injective. $\mathcal{B}'$ est une base donc est génératrice donc $f$ est surjective.
+	Ainsi, $f$ est un isomorphisme.
+\end{question_kholle}
 
-	\begin{question_kholle}
-		[Il existe une unique application linéaire de $E$ dans $F$ qui envoie une base donnée de $E$ sur une famille de $F$ imposée. \\
+\begin{question_kholle}
+	[Il existe une unique application linéaire de $E$ dans $F$ qui envoie une base donnée de $E$ sur une famille de $F$ imposée. \\
 		Soient $(e_i)\ii$ une base de $E$ et $(y_i)\ii$ une famille de $F$.
 		\begin{equation}
 			\exists ! f \in \mathcal{L}_\K(E, F) : \forall i \in I, f(e_i) = y_i
@@ -208,42 +208,42 @@
 		Nous pouvons expliciter une telle application :
 		\begin{equation}
 			f \left| \;\; \begin{matrix}
-				E & \rightarrow & F \\
-				\displaystyle \sum\ii \lambda_i \ldotp e_i & \mapsto & \displaystyle \sum\ii \lambda_i \ldotp y_i
+				E                                          & \rightarrow & F                                          \\
+				\displaystyle \sum\ii \lambda_i \ldotp e_i & \mapsto     & \displaystyle \sum\ii \lambda_i \ldotp y_i
 			\end{matrix} \right.
 		\end{equation}]
-		{Caractérisation d'une application linéaire par l'image d'une base}
-		~\newline
-		\underline{Analyse} Supposons qu'il existe $f \in \mathcal{L}_\K(E, F)$ \tq $\forall i \in I, f(e_i) = y_i$. \\
-		Tout vecteur de $E$ peut se décomposer de manière unique dans la base $(e_i)\ii$, ce qui détermine son image. Ainsi, $f$ est unique.
-		\newline
+	{Caractérisation d'une application linéaire par l'image d'une base}
+	~\newline
+	\underline{Analyse} Supposons qu'il existe $f \in \mathcal{L}_\K(E, F)$ \tq $\forall i \in I, f(e_i) = y_i$. \\
+	Tout vecteur de $E$ peut se décomposer de manière unique dans la base $(e_i)\ii$, ce qui détermine son image. Ainsi, $f$ est unique.
+	\newline
 
-		\noindent \underline{Synthèse} Posons une telle application $f$. \\
-		\begin{itemize}
-			\item $(e_i)\ii$ est une base donc $(\lambda_i)\ii$ est presque nulle et unique donc $\sum\ii \lambda_i \ldotp y_i$ existe et unique.
-			Ainsi, $f$ est bien définie.
-			\item Soient $(\alpha, \beta, x, x') \in \K^2 \times E^2$ \fqs. Notons $(\lambda_i)\ii$ et $(\lambda'_i)\ii$ les coordonnées de $x$ et $x'$ dans $(e_i)\ii$.
-			\begin{equation*}
-				\begin{aligned}
-					f( \alpha x + \beta x' )
-					&= f\left( \alpha \sum\ii \lambda_i \ldotp e_i + \beta \sum\ii \lambda'_i \ldotp e_i \right) \\
-					&= f\left( \sum\ii \left( \alpha \lambda_i + \beta \lambda'_i \right) \ldotp e_i \right) \\
-					&= \sum\ii \left( \alpha \lambda_i + \beta \lambda'_i \right) \ldotp y_i \quad \text{ par définiton de } f \\
-					&= \alpha \sum\ii \lambda_i y_i + \beta \sum\ii \lambda'_i y_i \\
-					&= \alpha f(x) + \beta f(x')
-				\end{aligned}
-			\end{equation*}
-			Donc $f$ est linéaire.
-			\item Soit $j \in I$ \fq.
-			\begin{equation*}
-				\begin{aligned}
-					f(e_j)
-					&= f \left(\sum\ii \delta_{i,j} \ldotp e_i \right) \\
-					&= \sum\ii \delta_{i,j} \ldotp y_i \\
-					&= y_j
-				\end{aligned}
-			\end{equation*}
-		\end{itemize}
-	\end{question_kholle}
+	\noindent \underline{Synthèse} Posons une telle application $f$. \\
+	\begin{itemize}
+		\item $(e_i)\ii$ est une base donc $(\lambda_i)\ii$ est presque nulle et unique donc $\sum\ii \lambda_i \ldotp y_i$ existe et unique.
+		      Ainsi, $f$ est bien définie.
+		\item Soient $(\alpha, \beta, x, x') \in \K^2 \times E^2$ \fqs. Notons $(\lambda_i)\ii$ et $(\lambda'_i)\ii$ les coordonnées de $x$ et $x'$ dans $(e_i)\ii$.
+		      \begin{equation*}
+			      \begin{aligned}
+				      f( \alpha x + \beta x' )
+				       & = f\left( \alpha \sum\ii \lambda_i \ldotp e_i + \beta \sum\ii \lambda'_i \ldotp e_i \right)               \\
+				       & = f\left( \sum\ii \left( \alpha \lambda_i + \beta \lambda'_i \right) \ldotp e_i \right)                   \\
+				       & = \sum\ii \left( \alpha \lambda_i + \beta \lambda'_i \right) \ldotp y_i \quad \text{ par définiton de } f \\
+				       & = \alpha \sum\ii \lambda_i y_i + \beta \sum\ii \lambda'_i y_i                                             \\
+				       & = \alpha f(x) + \beta f(x')
+			      \end{aligned}
+		      \end{equation*}
+		      Donc $f$ est linéaire.
+		\item Soit $j \in I$ \fq.
+		      \begin{equation*}
+			      \begin{aligned}
+				      f(e_j)
+				       & = f \left(\sum\ii \delta_{i,j} \ldotp e_i \right) \\
+				       & = \sum\ii \delta_{i,j} \ldotp y_i                 \\
+				       & = y_j
+			      \end{aligned}
+		      \end{equation*}
+	\end{itemize}
+\end{question_kholle}
 
 \end{document}

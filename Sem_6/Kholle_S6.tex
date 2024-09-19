@@ -12,60 +12,60 @@
 \maketitle
 
 
-\begin{question_kholle}{Montrer que si $f$ est impaire et bijective, alors $f^{-1}$ est aussi impaire. Donnez un/des exemples.} 
-	Soit $f: I \to F$, avec $I,F$ deux parties non-vides de $\mathbb{R}$, une telle fonction et notons $f^{-1}$ sa bijection réciproque. Si $f$ est impaire sur $I$, alors pour tout $x\in I$, $-x\in I$, ainsi $I$ est centré en $0$ et on a : 
-	
+\begin{question_kholle}{Montrer que si $f$ est impaire et bijective, alors $f^{-1}$ est aussi impaire. Donnez un/des exemples.}
+	Soit $f: I \to F$, avec $I,F$ deux parties non-vides de $\mathbb{R}$, une telle fonction et notons $f^{-1}$ sa bijection réciproque. Si $f$ est impaire sur $I$, alors pour tout $x\in I$, $-x\in I$, ainsi $I$ est centré en $0$ et on a :
+
 	\begin{equation*}
-	    \forall x \in I, \ f(-x) = -f(x).
+		\forall x \in I, \ f(-x) = -f(x).
 	\end{equation*}
-	
-	Ainsi, prenons $y\in F$, alors $-y \in F$ par imparité et bijectivité de $f$. On a donc : 
-	
+
+	Ainsi, prenons $y\in F$, alors $-y \in F$ par imparité et bijectivité de $f$. On a donc :
+
 	\begin{eqnarray*}
 		f^{-1}(-y) & = & f^{-1}(-f(f^{-1}(y))) \\
-			& = & f^{-1}(f(-f^{-1}(y))) \\
-		    & = & -f^{-1}(y).
+		& = & f^{-1}(f(-f^{-1}(y))) \\
+		& = & -f^{-1}(y).
 	\end{eqnarray*}
-	
+
 	\
-	
+
 	D'où l'imparité de $f^{-1}$.
-	
+
 	\
-	
+
 	Pour ce qui est de l'exemple, prenons notre fonction bijective impaire préférée, la fonction $\textstyle \sin |_{\left[ -\frac{\pi}{2}, \frac{\pi}{2}\right] }^{[-1,1]}$ que l'on notera $\widetilde{\sin}$. Sa bijection réciproque est bien entendu $\textstyle \arcsin : [-1,1] \to \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$.
-	
-	De la même manière que dans la démonstration du cas général, prenons $y\in [-1, 1]$, comme $[-1,1]$ est centré en $0$, $-y\in [-1,1]$, on a dès lors : 
-	
+
+	De la même manière que dans la démonstration du cas général, prenons $y\in [-1, 1]$, comme $[-1,1]$ est centré en $0$, $-y\in [-1,1]$, on a dès lors :
+
 	\begin{eqnarray*}
 		\arcsin(-y) & = & \arcsin(-\widetilde{\sin}(\arcsin(y))) \\
-			& = & \arcsin(\widetilde{\sin}(-\arcsin(y))) \\
-		    & = & -\arcsin(y).
+		& = & \arcsin(\widetilde{\sin}(-\arcsin(y))) \\
+		& = & -\arcsin(y).
 	\end{eqnarray*}
 \end{question_kholle}
 
-\begin{question_kholle}{Limite (et preuve) lorsque $x$ tend vers $+\infty$ de $\frac{(\ln x)^{\alpha}}{x^{\beta}}$ pour $\alpha ,\beta \in \left( \mathbb{R}_+^*\right) ^2$.} 
+\begin{question_kholle}{Limite (et preuve) lorsque $x$ tend vers $+\infty$ de $\frac{(\ln x)^{\alpha}}{x^{\beta}}$ pour $\alpha ,\beta \in \left( \mathbb{R}_+^*\right) ^2$.}
 
-	Premièrement, posons : 
-	
+	Premièrement, posons :
+
 	\begin{equation*}
-	    \forall  (x,\alpha,\beta)\in [1,+\infty[ \times \left( \mathbb{R}_+^*\right) ^2, \quad  f_{\alpha,\beta}(x)=\frac{(\ln x)^{\alpha}}{x^{\beta}}.
+		\forall  (x,\alpha,\beta)\in [1,+\infty[ \times \left( \mathbb{R}_+^*\right) ^2, \quad  f_{\alpha,\beta}(x)=\frac{(\ln x)^{\alpha}}{x^{\beta}}.
 	\end{equation*}
-	
-	Deuxièmement, montrons que : 
+
+	Deuxièmement, montrons que :
 	\[ \frac{\ln (x)}{x^2}\xrightarrow[n \to +\infty ]{} 0. \]
-	
-	Soit $x \in [1,+\infty[ \ = \mathcal{A}$. Nous savons que la fonction $\ln$ est concave sur $\mathbb{R}_+^*$, donc en particulier sur $\mathcal{A}$. Ainsi, $\ln$ est en dessous de toutes ses tangentes, d'où : 
-	\[ 
-	\forall x \in \mathcal{A}, \quad 0 \; \leq \; \ln (x) \; \leq \; x-1.
+
+	Soit $x \in [1,+\infty[ \ = \mathcal{A}$. Nous savons que la fonction $\ln$ est concave sur $\mathbb{R}_+^*$, donc en particulier sur $\mathcal{A}$. Ainsi, $\ln$ est en dessous de toutes ses tangentes, d'où :
+	\[
+		\forall x \in \mathcal{A}, \quad 0 \; \leq \; \ln (x) \; \leq \; x-1.
 	\]
-	
+
 	\newpage
-	
-	Illustration de l'inégalité : 
-	
+
+	Illustration de l'inégalité :
+
 	\
-	
+
 	\begin{center}
 		\definecolor{ttttff}{rgb}{0.2,0.2,1}
 		\definecolor{ffttww}{rgb}{1,0.2,0.4}
@@ -85,33 +85,33 @@
 			\draw (12.46,5.36) node[anchor=north west] {y = x-1};
 			\draw (9.62,5.22) node[anchor=north west] {y = ln(x)};
 		\end{tikzpicture}
-		
+
 		\
-		
-		\textbf{Figure 1.} $\ln$ en rouge et la première bissectrice en bleu. 
+
+		\textbf{Figure 1.} $\ln$ en rouge et la première bissectrice en bleu.
 	\end{center}
-	
+
 	\
-	
-	On peut alors diviser par $x^2$ (car $x \neq 0$): 
-	
+
+	On peut alors diviser par $x^2$ (car $x \neq 0$):
+
 	\
-	
+
 	\[
 		\forall x \in \mathcal{A},\quad 0 \; \leq \; \underset{f_{1,2}(x)}{\underbrace{\frac{\ln (x)}{x^2}}} \; \leq \; \underset{\xrightarrow[x\to+\infty]{} \ 0}{\underbrace{\frac{1}{x}}} - \underset{\xrightarrow[x\to+\infty]{} \ 0}{\underbrace{\frac{1}{x^2}}}.
 	\]
-	
+
 	\
-	
+
 	Donc par théorème d'encadrement $f_{1,2}(x)\xrightarrow[x\to+\infty]{} 0$.
-	
+
 	\
-	
-	Dernièrement, le cas général. Soit $x\in \mathcal{A}$ et soient $(\alpha,\beta)\in \left( \mathbb{R}_+^* \right)^2$. On fait une preuve directe. 
-	
+
+	Dernièrement, le cas général. Soit $x\in \mathcal{A}$ et soient $(\alpha,\beta)\in \left( \mathbb{R}_+^* \right)^2$. On fait une preuve directe.
+
 	\begin{eqnarray*}
-	    \frac{(\ln (x))^\alpha}{x^\beta} & = & \left( \frac{\ln (x)}{x^{\frac{\beta}{\alpha}}} \right)^\alpha \\[1.5ex]
-	    & = & \underset{\underset{\text{par produit}}{\xrightarrow[x\to+\infty]{} \ 0}}{\underbrace{\underset{c^{\underline{te}} \ \text{(définie!)}}{\underbrace{\left( \frac{2\alpha}{\beta} \right)^\alpha}} \cdot \underset{\underset{\text{par composition des limites}}{\xrightarrow[x\to+\infty]{} \ 0}}{\underbrace{\left[ \underset{\underset{\text{d'après le dernier point}}{\xrightarrow[x\to+\infty]{} \ 0}}{\underbrace{ \frac{\ln \left( x^{\frac{\beta}{2 \alpha}} \right) }{\left( x^{\frac{\beta}{2\alpha}} \right)^2} }}\right]^\alpha}}}}.
+		\frac{(\ln (x))^\alpha}{x^\beta} & = & \left( \frac{\ln (x)}{x^{\frac{\beta}{\alpha}}} \right)^\alpha \\[1.5ex]
+		& = & \underset{\underset{\text{par produit}}{\xrightarrow[x\to+\infty]{} \ 0}}{\underbrace{\underset{c^{\underline{te}} \ \text{(définie!)}}{\underbrace{\left( \frac{2\alpha}{\beta} \right)^\alpha}} \cdot \underset{\underset{\text{par composition des limites}}{\xrightarrow[x\to+\infty]{} \ 0}}{\underbrace{\left[ \underset{\underset{\text{d'après le dernier point}}{\xrightarrow[x\to+\infty]{} \ 0}}{\underbrace{ \frac{\ln \left( x^{\frac{\beta}{2 \alpha}} \right) }{\left( x^{\frac{\beta}{2\alpha}} \right)^2} }}\right]^\alpha}}}}.
 	\end{eqnarray*}
 
 \end{question_kholle}
@@ -120,91 +120,91 @@
 
 %-------------------------------------------------------------
 
-\begin{question_kholle}{Limite en $0$ de $\frac{1-\cos (x)}{x^2}$ et limite en $+\infty$ suivant $n$ de $\frac{\left(q^n \right)^\alpha}{(n!)^\beta}$ pour $q\in \mathbb{R}$ et $(\alpha,\beta)\in \left( \mathbb{R}_+^* \right)^2.$} 
+\begin{question_kholle}{Limite en $0$ de $\frac{1-\cos (x)}{x^2}$ et limite en $+\infty$ suivant $n$ de $\frac{\left(q^n \right)^\alpha}{(n!)^\beta}$ pour $q\in \mathbb{R}$ et $(\alpha,\beta)\in \left( \mathbb{R}_+^* \right)^2.$}
 
 	\
-	
+
 	Montrons que $\frac{1-\cos (x)}{x^2} \xrightarrow[x\to 0]{} \frac{1}{2}$.
-	
+
 	\
-	
-	On fait toujours une preuve directe. 
+
+	On fait toujours une preuve directe.
 	\begin{eqnarray*}
-	    \lim_{x\to0} \ \frac{1-\cos (x)}{x^2} & = & \lim_{x\to0} \ \frac{1-\cos \left( \frac{2x}{2}\right) }{x^2} \\[1ex]
-	    & = & \lim_{x\to0} \ \frac{1-\left( 1-2\sin ^2 \left( \frac{x}{2}\right) \right) }{x^2} \\[1ex]
-	    & = &  \lim_{x\to0} \ \frac{2\sin ^2 \left( \frac{x}{2}\right) }{4 \left( \frac{x}{2}\right) ^2} \\[1ex]
-	    & = & \lim_{x\to0} \ \underset{\underset{\text{par produit}}{\xrightarrow[x\to 0]{} \ \frac{1}{2}}}{\underbrace{\underset{c^{\underline{te}}}{\underbrace{\frac{1}{2}}} \cdot \underset{\underset{\text{par composition}}{\xrightarrow[x\to 0]{} \ 1}}{\underbrace{\left[\underset{\underset{\text{limite usuelle}}{\xrightarrow[x\to 0]{} \ 1}}{\underbrace{\frac{\sin \left( \frac{x}{2}\right) }{\left( \frac{x}{2}\right)} }} \right] ^2}}}} \\[1ex]
-	    & = & \frac{1}{2}
+		\lim_{x\to0} \ \frac{1-\cos (x)}{x^2} & = & \lim_{x\to0} \ \frac{1-\cos \left( \frac{2x}{2}\right) }{x^2} \\[1ex]
+		& = & \lim_{x\to0} \ \frac{1-\left( 1-2\sin ^2 \left( \frac{x}{2}\right) \right) }{x^2} \\[1ex]
+		& = &  \lim_{x\to0} \ \frac{2\sin ^2 \left( \frac{x}{2}\right) }{4 \left( \frac{x}{2}\right) ^2} \\[1ex]
+		& = & \lim_{x\to0} \ \underset{\underset{\text{par produit}}{\xrightarrow[x\to 0]{} \ \frac{1}{2}}}{\underbrace{\underset{c^{\underline{te}}}{\underbrace{\frac{1}{2}}} \cdot \underset{\underset{\text{par composition}}{\xrightarrow[x\to 0]{} \ 1}}{\underbrace{\left[\underset{\underset{\text{limite usuelle}}{\xrightarrow[x\to 0]{} \ 1}}{\underbrace{\frac{\sin \left( \frac{x}{2}\right) }{\left( \frac{x}{2}\right)} }} \right] ^2}}}} \\[1ex]
+		& = & \frac{1}{2}
 	\end{eqnarray*}
-	
+
 	\
-	
-	
-	
+
+
+
 	\
-	
+
 	Trouvons la limite, sous réserve d'existence, de $\frac{\left(q^n \right)^\alpha}{(n!)^\beta}$ pour $q\in \mathbb{R}$ et $(\alpha,\beta)\in \left( \mathbb{R}_+^* \right)^2$ suivant $n$ en $+\infty$.
-	
+
 	\
-	
+
 	Remarquons que si $q\leq0$, il est \textbf{\textit{nécessaire}} d'avoir $\alpha\in\mathbb{Z}^*$ sinon l'expression n'a tout simplement \textbf{\textit{aucun sens}}. De fait, on supposera $q>0$ tout le long, les cas $q<0$ se font naturellement (convergence pour $q\in \mathbb{R_-}$).
-	
+
 	\
-	
+
 	Soit donc $0<q<1$, ce cas est immédiat, $\left( \left(q^n \right)^\alpha\right)_{n\in\mathbb{N}}=\left( \left(q^\alpha \right)^n\right)_{n\in\mathbb{N}}$, donc il s'agit de la suite géométrique de raison $q^\alpha \in ]0,1[$ et de premier terme $q^{\min_{I}(n)\alpha}$ ($\min_{I}(n)$, avec $I$ une partie non vide de $\mathbb{N}$, car la suite ne démarre pas forcément à $0$), donc elle converge vers $0$.
-	
+
 	\
-	
-	Si $q\geq 1$, on montre le cas trivial $\alpha = \beta =1$ : 
+
+	Si $q\geq 1$, on montre le cas trivial $\alpha = \beta =1$ :
 	\[
-	\forall n\in [\![ \lfloor q \rfloor +1,+\infty [\![, \quad 0 \leq \frac{q^n}{n!} = \underset{=\ \lambda \text{ (une constante)}}{\underbrace{\frac{q}{1} \times \frac{q}{2} \times \dots \times \frac{q}{\lfloor q \rfloor} }}\times \underset{\leq 1}{\underbrace{\frac{q}{\lfloor q\rfloor +1}}} \times \dots \times \underset{\leq1}{\underbrace{\frac{q}{n-1}}} \times \frac{q}{n} \leq \underset{\xrightarrow[n\to +\infty]{} \ 0}{\underbrace{\frac{\lambda q}{n}}}
+		\forall n\in [\![ \lfloor q \rfloor +1,+\infty [\![, \quad 0 \leq \frac{q^n}{n!} = \underset{=\ \lambda \text{ (une constante)}}{\underbrace{\frac{q}{1} \times \frac{q}{2} \times \dots \times \frac{q}{\lfloor q \rfloor} }}\times \underset{\leq 1}{\underbrace{\frac{q}{\lfloor q\rfloor +1}}} \times \dots \times \underset{\leq1}{\underbrace{\frac{q}{n-1}}} \times \frac{q}{n} \leq \underset{\xrightarrow[n\to +\infty]{} \ 0}{\underbrace{\frac{\lambda q}{n}}}
 	\]
-	
+
 	\
-	
+
 	Par théorème d'existence de limite par encadrement, $\left( \frac{q^n}{n!} \right)_{n\in \mathbb{N}}$ converge et sa limite est $0$.
-	
+
 	\
-	
+
 	Soient $(\alpha,\beta)\in \mathbb{R}^*_+$, montrons le cas général pour $q\geq 1$.
-	
+
 	\[
-	\forall n \in \mathbb{N}, \quad \frac{(q^n)^\alpha}{(n!)\beta} = \left( \frac{\left(q^{\frac{\alpha}{\beta}}\right)^n}{n!} \right)^\beta = \underset{\underset{\text{par composition des limites }(\beta>0)}{\xrightarrow[n\to +\infty]{} 0}}{\underbrace{\left( \underset{\underset{\text{c'est le cas trivial}}{\xrightarrow[n\to +\infty]{} 0}}{\underbrace{\frac{\left(q^{\frac{\alpha}{\beta}}\right)^n}{n!}}} \right)^\beta}}
+		\forall n \in \mathbb{N}, \quad \frac{(q^n)^\alpha}{(n!)\beta} = \left( \frac{\left(q^{\frac{\alpha}{\beta}}\right)^n}{n!} \right)^\beta = \underset{\underset{\text{par composition des limites }(\beta>0)}{\xrightarrow[n\to +\infty]{} 0}}{\underbrace{\left( \underset{\underset{\text{c'est le cas trivial}}{\xrightarrow[n\to +\infty]{} 0}}{\underbrace{\frac{\left(q^{\frac{\alpha}{\beta}}\right)^n}{n!}}} \right)^\beta}}
 	\]
-	
+
 \end{question_kholle}
 
 \begin{question_kholle}{Présentation exhaustive de la fonction $\arcsin$.}
-	Premièrement, ladite fonction est la bijection réciproque de la fonction $\widetilde{\sin}$ (voir \textbf{1}.). D'où : 
+	Premièrement, ladite fonction est la bijection réciproque de la fonction $\widetilde{\sin}$ (voir \textbf{1}.). D'où :
 	\begin{equation*}
-		\arcsin = \left\{  
+		\arcsin = \left\{
 		\begin{array}{c c c}
-		[-1,1] & \to & [-\frac{\pi}{2} , \frac{\pi}{2}] \\ [1ex]
-		x & \mapsto & \left( \widetilde{\sin} \right)^{-1}(x)
-		\end{array} 
+			[-1,1] & \to     & [-\frac{\pi}{2} , \frac{\pi}{2}]        \\ [1ex]
+			x      & \mapsto & \left( \widetilde{\sin} \right)^{-1}(x)
+		\end{array}
 		\right.
 	\end{equation*}
-	
+
 	\
-	
-	Ainsi, pour $x\in [-1,1]$, $\arcsin (x)$ est l'unique solution de l'équation d'inconnue $\theta \in \textstyle \left[-\frac{\pi}{2} , \frac{\pi}{2}\right]$, $\sin(\theta) = x$. 
-	
+
+	Ainsi, pour $x\in [-1,1]$, $\arcsin (x)$ est l'unique solution de l'équation d'inconnue $\theta \in \textstyle \left[-\frac{\pi}{2} , \frac{\pi}{2}\right]$, $\sin(\theta) = x$.
+
 	\
-	
-	\noindent Il découle alors naturellement des propriétés héréditairement acquises de $\widetilde{\sin}$ : 
-	
+
+	\noindent Il découle alors naturellement des propriétés héréditairement acquises de $\widetilde{\sin}$ :
+
 	\begin{enumerate}
-	    \item $\arcsin$ est impaire.
-	    \item $\arcsin$ est strictement croissante sur $[-1,1]$.
-	    \item $\arcsin \in \mathcal{C}^0\left([-1,1],[-\frac{\pi}{2} , \frac{\pi}{2}] \right)$.
-	    \item $\arcsin \in \mathcal{D}^1\left(]-1,1[,\left]-\frac{\pi}{2} , \frac{\pi}{2}\right[ \right)$.
-	    \item $\arcsin'(x) = \frac{1}{\sqrt{1-x^2}}$ pour tout $x\in]-1,1[$.
-	    \item $\arcsin$ admet deux demi-tangentes verticales en $-1$ et $1$.
+		\item $\arcsin$ est impaire.
+		\item $\arcsin$ est strictement croissante sur $[-1,1]$.
+		\item $\arcsin \in \mathcal{C}^0\left([-1,1],[-\frac{\pi}{2} , \frac{\pi}{2}] \right)$.
+		\item $\arcsin \in \mathcal{D}^1\left(]-1,1[,\left]-\frac{\pi}{2} , \frac{\pi}{2}\right[ \right)$.
+		\item $\arcsin'(x) = \frac{1}{\sqrt{1-x^2}}$ pour tout $x\in]-1,1[$.
+		\item $\arcsin$ admet deux demi-tangentes verticales en $-1$ et $1$.
 	\end{enumerate}
-	
+
 	\
-	
-	Graphe de $\arcsin$ : 
+
+	Graphe de $\arcsin$ :
 	\begin{center}
 		\definecolor{ffttww}{rgb}{1,0.2,0.4}
 		\definecolor{ttzzff}{rgb}{0.2,0.6,1}
@@ -234,57 +234,56 @@
 			\draw [->] (1,1.57) -- (1,1.16);
 			\draw [->] (1.57,1) -- (1.12,1);
 		\end{tikzpicture}
-		
+
 		\
-		
+
 		\textbf{Figure 2.} $\arcsin$ en bleu, $\widetilde{\sin}$ en vert et la première bissectrice en rouge.
 	\end{center}
-	
+
 	\
-	
-	On a aussi, grâce au taux d'accroissement en 0 d'$\arcsin$ : 
+
+	On a aussi, grâce au taux d'accroissement en 0 d'$\arcsin$ :
 	\[
 		\lim_{x\to0} \frac{\arcsin(x)}{x} \ = \ 1.
 	\]
-	
+
 	\
-	
-	Puis finalement (visible sur le graphe) : 
+
+	Puis finalement (visible sur le graphe) :
 	\[
 		\forall x \in [0,1], \quad \arcsin(x) \geq x.
 	\]
 \end{question_kholle}
 
-\begin{question_kholle}{Présentation exhaustive de la fonction $\arccos$.} 
+\begin{question_kholle}{Présentation exhaustive de la fonction $\arccos$.}
 
-	Premièrement, ladite fonction est la bijection réciproque de la fonction $\cos |_{[0,\pi]}^{[-1,1]} := \widetilde{\cos}$. D'où : 
+	Premièrement, ladite fonction est la bijection réciproque de la fonction $\cos |_{[0,\pi]}^{[-1,1]} := \widetilde{\cos}$. D'où :
 	\begin{equation*}
-		\arccos = \left\{  
+		\arccos = \left\{
 		\begin{array}{c c c}
-		[-1,1] & \to & [0 , \pi] \\ [1ex]
-		x & \mapsto & \left( \widetilde{\cos} \right)^{-1}(x)
-		
-		\end{array} 
+			[-1,1] & \to     & [0 , \pi]                               \\ [1ex]
+			x      & \mapsto & \left( \widetilde{\cos} \right)^{-1}(x)
+		\end{array}
 		\right.
 	\end{equation*}
-	
+
 	\
-	
+
 	Ainsi, pour $x\in [-1,1]$, $\arccos (x)$ est l'unique solution de l'équation d'inconnue $\theta \in \textstyle [0 ,\pi]$, $\cos(\theta) = x$.
-	
-	\noindent Il découle alors naturellement des propriétés héréditairement acquises de $\widetilde{\cos}$ : 
-	
+
+	\noindent Il découle alors naturellement des propriétés héréditairement acquises de $\widetilde{\cos}$ :
+
 	\begin{enumerate}
-	    \item $\arccos$ est strictement décroissante sur $[-1,1]$.
-	    \item $\arccos \in \mathcal{C}^0\left([-1,1],[0 , \pi] \right)$.
-	    \item $\arccos \in \mathcal{D}^1\left(]-1,1[,]0 ,\pi [ \right)$.
-	    \item $\arccos'(x) = -\frac{1}{\sqrt{1-x^2}}$ pour tout $x\in]-1,1[$.
-	    \item $\arccos$ admet deux demi-tangentes verticales en $-1$ et $1$.
+		\item $\arccos$ est strictement décroissante sur $[-1,1]$.
+		\item $\arccos \in \mathcal{C}^0\left([-1,1],[0 , \pi] \right)$.
+		\item $\arccos \in \mathcal{D}^1\left(]-1,1[,]0 ,\pi [ \right)$.
+		\item $\arccos'(x) = -\frac{1}{\sqrt{1-x^2}}$ pour tout $x\in]-1,1[$.
+		\item $\arccos$ admet deux demi-tangentes verticales en $-1$ et $1$.
 	\end{enumerate}
-	
+
 	\
-	
-	Graphe de $\arccos$ : 
+
+	Graphe de $\arccos$ :
 	\begin{center}
 		\definecolor{cczzff}{rgb}{0.8,0.6,1.0}
 		\definecolor{qqffqq}{rgb}{0.0,1.0,0.0}
@@ -314,48 +313,48 @@
 			\draw [->] (1.0,0.0) -- (1.0,0.41498464079523883);
 			\draw [->] (3.141592653589793,-1.0) -- (2.697204793458636,-1.0);
 		\end{tikzpicture}
-	
+
 		\
-	
+
 		\textbf{Figure 3.} $\arccos$ en vert, $\widetilde{\cos}$ en violet, la première bissectrice en rouge et $y = \frac{\pi}{2} - x$ en rose.
 	\end{center}
 
 \end{question_kholle}
 
-\begin{question_kholle}{Présentation exhaustive de la fonction $\arctan$.} 
+\begin{question_kholle}{Présentation exhaustive de la fonction $\arctan$.}
 
 	\
-	
-	Premièrement, ladite fonction est la bijection réciproque de la fonction $\tan |_{\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ }:=\widetilde{\tan}$. D'où : 
-	\begin{center}
-	
-	$\arctan = \left\{  
-	\begin{array}{c c c}
-	\mathbb{R} & \to & \left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ \\ [1ex]
-	x & \mapsto & \left( \widetilde{\tan} \right)^{-1}(x)
-	\end{array} 
-	\right.
-	$
-	\end{center}
-	
+
+	Premièrement, ladite fonction est la bijection réciproque de la fonction $\tan |_{\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ }:=\widetilde{\tan}$. D'où :
+				\begin{center}
+
+					$\arctan = \left\{
+						\begin{array}{c c c}
+							\mathbb{R} & \to     & \left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ \\ [1ex]
+							x          & \mapsto & \left( \widetilde{\tan} \right)^{-1}(x)
+						\end{array}
+						\right.
+					$
+				\end{center}
+
+				\
+
+				Ainsi, pour $x\in \mathbb{R}$, $\arctan (x)$ est l'unique solution de l'équation d'inconnue $\theta \in \textstyle \left] -\frac{\pi}{2}, \frac{\pi}{2}\right[$, $\tan(\theta) = x$.
+
 	\
-	
-	Ainsi, pour $x\in \mathbb{R}$, $\arctan (x)$ est l'unique solution de l'équation d'inconnue $\theta \in \textstyle \left] -\frac{\pi}{2}, \frac{\pi}{2}\right[$, $\tan(\theta) = x$. 
-	
-	\
-	
-	\noindent Il découle alors naturellement des propriétés héréditairement acquises de $\widetilde{\tan}$ : 
-	
+
+	\noindent Il découle alors naturellement des propriétés héréditairement acquises de $\widetilde{\tan}$ :
+
 	\begin{enumerate}
-	    \item $\arctan$ est impaire.
-	    \item $\arctan \in \mathcal{C}^0\left(\mathbb{R},\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ \right)$.
-	    \item $\arctan \in \mathcal{D}^1\left(\mathbb{R},\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ \right)$.
-	    \item $\arctan'(x) = \frac{1}{1+x^2}$ pour tout $x\in\mathbb{R}$.
+		\item $\arctan$ est impaire.
+		\item $\arctan \in \mathcal{C}^0\left(\mathbb{R},\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ \right)$.
+		\item $\arctan \in \mathcal{D}^1\left(\mathbb{R},\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ \right)$.
+		\item $\arctan'(x) = \frac{1}{1+x^2}$ pour tout $x\in\mathbb{R}$.
 	\end{enumerate}
-	
+
 	\newpage
-	
-	Graphe de $\arctan$ : 
+
+	Graphe de $\arctan$ :
 	\begin{center}
 		\definecolor{ffqqqq}{rgb}{1.0,0.0,0.0}
 		\definecolor{qqffqq}{rgb}{0.0,1.0,0.0}
@@ -394,35 +393,35 @@
 				\draw[color=black] (-1.4946010002661654,2.322253966034747) node {};
 			\end{scriptsize}
 		\end{tikzpicture}
-		
+
 		\
-		
+
 		\textbf{Figure 4.} $\arctan$ en vert, $\widetilde{\tan}$ en bleu, la première bissectrice en rouge, et les fonctions $y = \pm \frac{\pi}{2}$ et $x = \pm \frac{\pi}{2}$ en noir.
 	\end{center}
-	
+
 	\
-	
-	On a aussi (visible sur le graphe) : 
+
+	On a aussi (visible sur le graphe) :
 	\[
 		\forall x \in \mathbb{R}_+, \quad \arctan(x) \leq x.
 	\]
-	
-	Et enfin : 
+
+	Et enfin :
 	\[
-		\forall x \in \mathbb{R}^*, \quad \arctan(x) + \arctan \left( \frac{1}{x} \right) = 
+		\forall x \in \mathbb{R}^*, \quad \arctan(x) + \arctan \left( \frac{1}{x} \right) =
 		\left\{ \begin{array}{cl}
-		\frac{\pi}{2} & \text{si } x \ > \ 0 \\
-		-\frac{\pi}{2} & \text{si } x \ < \ 0.
+			\frac{\pi}{2}  & \text{si } x \ > \ 0  \\
+			-\frac{\pi}{2} & \text{si } x \ < \ 0.
 		\end{array} \right.
 	\]
 
 \end{question_kholle}
 
 %-------------------------------------------------------------
-\begin{question_kholle}{$2$ preuves de $\arcsin(x) + \arccos(x) =\frac{\pi}{2}$ sur $[-1,1]$, dont une basée sur une interprétation géométrique du cercle trigonométrique.} 
+\begin{question_kholle}{$2$ preuves de $\arcsin(x) + \arccos(x) =\frac{\pi}{2}$ sur $[-1,1]$, dont une basée sur une interprétation géométrique du cercle trigonométrique.}
 
-	L'interprétation géométrique sur $[0,1]$, celle sur $[-1,0]$ est laissée au lecteur car il s'agit du même principe modulo des détails : 
-	
+	L'interprétation géométrique sur $[0,1]$, celle sur $[-1,0]$ est laissée au lecteur car il s'agit du même principe modulo des détails :
+
 	\begin{center}
 		\definecolor{eqbqff}{rgb}{0.8784313725490196,0.6901960784313725,1.0}
 		\definecolor{xfqqff}{rgb}{0.4980392156862745,0.0,1.0}
@@ -478,28 +477,28 @@
 				\draw [fill=uuuuuu] (0.9396926207859084,-0.0) circle (1.5pt);
 			\end{scriptsize}
 		\end{tikzpicture}
-		
+
 		\
-		
+
 		\textbf{Figure 5.}
 	\end{center}
-	
+
 	\
-	
-	Preuve formelle : 
-	
+
+	Preuve formelle :
+
 	\
-	
-	Soit $x\in [-1,1]$. Posons  $\varphi \ = \ \arcsin(x) \in \left[-\frac{\pi}{2},\frac{\pi}{2}\right]$. Ainsi : 
-	
+
+	Soit $x\in [-1,1]$. Posons  $\varphi \ = \ \arcsin(x) \in \left[-\frac{\pi}{2},\frac{\pi}{2}\right]$. Ainsi :
+
 	\[
 		\arcsin(x) + \arccos(x) \ = \ \varphi + \arccos(\sin(\varphi)) \ = \ \varphi + \arccos \left( \cos \left( \frac{\pi}{2}- \varphi \right) \right),
 	\]
-	
+
 	\
-	
+
 	or $\varphi \in \left[-\frac{\pi}{2},\frac{\pi}{2}\right]$ donc
-	$\frac{\pi}{2}- \varphi \in [0,\pi]$ d'où $\arccos \left( \cos \left( \frac{\pi}{2}- \varphi \right) \right) = \frac{\pi}{2}- \varphi$ si bien que : 
+	$\frac{\pi}{2}- \varphi \in [0,\pi]$ d'où $\arccos \left( \cos \left( \frac{\pi}{2}- \varphi \right) \right) = \frac{\pi}{2}- \varphi$ si bien que :
 	\[
 		\arcsin(x) + \arccos(x) \ = \  \varphi +\frac{\pi}{2} - \varphi \ = \ \frac{\pi}{2}.
 	\]
@@ -508,54 +507,54 @@
 
 \begin{question_kholle}{Présentation analytique rapide des fonctions \(\cosh\) et \(\sinh \).}
 	~\smallbreak
-	
+
 	\begin{itemize}[label=$\bullet$]
 		\item Domaine de définition et symétries.
-		\newline
-		$\sinh$ et $\cosh$ sont définies sur $\mathbb{R}$. 
-		\newline
-		De plus, 
-		\newline
-		$(i)$ $\forall x \in \mathbb{R}$, $-x\in \mathbb{R}$, 
-		\newline
-		$(ii)$ $\forall x \in \mathbb{R}$, 
-		$
-			\left\{ \begin{array}{c c c c c c c}
-			\sinh (-x) & = & \frac{e^{-x} - e^{x}}{2} & = & - \frac{e^x - e^{-x}}{2} & = & -\sinh(x) \\
-			\text{et} & & & & & & \\ 
-			\cosh (-x) & = & \frac{e^{-x} + e^{-(-x)}}{2} & = &  \frac{e^x + e^{-x}}{2} & = & \cosh(x).
-			\end{array} 
-			\right.
-		$
-		\newline
-		Donc $\sinh$ et $\cosh$ sont respectivement impaire et paire.
-		\newline
-		Nous les étudierons sur $\mathbb{R}_+$ et pour les obtenir les graphes $(\mathcal{C}_{\sinh} \text{ et } \mathcal{C}_{\cosh})$ de ces fonctions sur $\mathbb{R}$ à partir de ceux $(\mathcal{C}_{\sinh}^+ \text{ et } \mathcal{C}_{\cosh}^+)$ obtenus sur $\mathbb{R}_+$, nous le complèterons en traçant les images de ces graphes par la symétrie centrale $s$ de centre $O$ et par la réflexion $r$ d'axe $\left( O, \overrightarrow{\jmath} \right)$ : 
-		\[
-			\mathcal{C}_{\sinh} = \mathcal{C}_{\sinh}^+ \cup s \left( \mathcal{C}_{\sinh}^+ \right) \qquad \text{ et } \qquad \mathcal{C}_{\cosh} = \mathcal{C}_{\cosh}^+ \cup r \left( \mathcal{C}_{\cosh}^+ \right)
-		\]
-		
-		\
-		
+		      \newline
+		      $\sinh$ et $\cosh$ sont définies sur $\mathbb{R}$.
+		      \newline
+		      De plus,
+		      \newline
+		      $(i)$ $\forall x \in \mathbb{R}$, $-x\in \mathbb{R}$,
+		      \newline
+		      $(ii)$ $\forall x \in \mathbb{R}$,
+		      $
+			      \left\{ \begin{array}{c c c c c c c}
+				      \sinh (-x) & = & \frac{e^{-x} - e^{x}}{2}     & = & - \frac{e^x - e^{-x}}{2} & = & -\sinh(x) \\
+				      \text{et}  &   &                              &   &                          &   &           \\
+				      \cosh (-x) & = & \frac{e^{-x} + e^{-(-x)}}{2} & = & \frac{e^x + e^{-x}}{2}   & = & \cosh(x).
+			      \end{array}
+			      \right.
+		      $
+		      \newline
+		      Donc $\sinh$ et $\cosh$ sont respectivement impaire et paire.
+		      \newline
+		      Nous les étudierons sur $\mathbb{R}_+$ et pour les obtenir les graphes $(\mathcal{C}_{\sinh} \text{ et } \mathcal{C}_{\cosh})$ de ces fonctions sur $\mathbb{R}$ à partir de ceux $(\mathcal{C}_{\sinh}^+ \text{ et } \mathcal{C}_{\cosh}^+)$ obtenus sur $\mathbb{R}_+$, nous le complèterons en traçant les images de ces graphes par la symétrie centrale $s$ de centre $O$ et par la réflexion $r$ d'axe $\left( O, \overrightarrow{\jmath} \right)$ :
+		      \[
+			      \mathcal{C}_{\sinh} = \mathcal{C}_{\sinh}^+ \cup s \left( \mathcal{C}_{\sinh}^+ \right) \qquad \text{ et } \qquad \mathcal{C}_{\cosh} = \mathcal{C}_{\cosh}^+ \cup r \left( \mathcal{C}_{\cosh}^+ \right)
+		      \]
+
+		      \
+
 		\item Variations : triviales.
-		
-		\
-		
+
+		      \
+
 		\item Branches infinies en $+\infty$ et position relative de $\mathcal{C}_{\sinh}$ et $\mathcal{C}_{\cosh}$.
-		
-		\[
-			\frac{\cosh(x)}{x} = \underset{\xrightarrow[x\to +\infty]{} \ +\infty}{\underbrace{\frac{e^{x}}{x}}} + \underset{\xrightarrow[x\to +\infty]{} \ 0}{\underbrace{\frac{e^{-x}}{x}}} \xrightarrow[x\to +\infty]{} \ +\infty
-		\]
-		Donc le graphe de $\cosh$ admet une branche parabolique de direction asymptotique $\left( O, \overrightarrow{\jmath}\right)$.
-		\newline
-		On a : 
-		\[
-			\forall x \in \mathbb{R}, \quad \cosh(x) - \sinh(x) = e^{-x} \xrightarrow[x\to +\infty]{} 0^+
-		\]
-		Donc les graphes des deux fonctions se rapprochent l'un de l'autre arbitrairement près lorsque $x \to +\infty$, et le graphe de $\cosh$ est au-dessus de celui de $\sinh$.
-		
-		\
-		
+
+		      \[
+			      \frac{\cosh(x)}{x} = \underset{\xrightarrow[x\to +\infty]{} \ +\infty}{\underbrace{\frac{e^{x}}{x}}} + \underset{\xrightarrow[x\to +\infty]{} \ 0}{\underbrace{\frac{e^{-x}}{x}}} \xrightarrow[x\to +\infty]{} \ +\infty
+		      \]
+		      Donc le graphe de $\cosh$ admet une branche parabolique de direction asymptotique $\left( O, \overrightarrow{\jmath}\right)$.
+		      \newline
+		      On a :
+		      \[
+			      \forall x \in \mathbb{R}, \quad \cosh(x) - \sinh(x) = e^{-x} \xrightarrow[x\to +\infty]{} 0^+
+		      \]
+		      Donc les graphes des deux fonctions se rapprochent l'un de l'autre arbitrairement près lorsque $x \to +\infty$, et le graphe de $\cosh$ est au-dessus de celui de $\sinh$.
+
+		      \
+
 		\item Tangente au graphe de $\sinh$ à l'origine et position relative.
 	\end{itemize}
 

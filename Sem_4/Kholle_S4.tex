@@ -9,241 +9,241 @@
 
 \maketitle
 \begin{question_kholle}[{Considérons l'équation algébrique de degré 2:
-    $$az^{2}+bz+c=0$$
-    Où $z\in L$ est l'inconnue et $(a,b,c)\in\mathbb{C}^*\times\mathbb{C}^2$ sont des paramètres. Posons $\Delta = b^{2}-4ac$ que l'on appelle le discriminant de l'équation.
-    \begin{itemize}
-        \item Si $\Delta=0$, l'équation admet une unique solution dite double qui est $-\frac b{2a}$ et la forme factorisée du trinôme est
-        $$
-        az^2+bz+c = a \left( z + \frac b {2a} \right)^2
-        $$
-        \item Si $\Delta\neq0$, notons $\delta$ une racine carrée de $\Delta$, l'équation admet deux solutions distinctes $\frac{-b-\delta}{2a}$ et $\frac{-b+\delta}{2a}$ dites simples et la forme factorisée du trinôme est
-        $$
-        az^2+bz+c = a\left(z - \frac{-b-\delta}{2a}\right)\left(z - \frac{-b+\delta}{2a}\right)
-        $$
-    \end{itemize}
-    }]{Résolution des équations algébriques de degré $2$ dans $\C$ et algorithme de recherche d'une racine carrée sous forme cartésienne (sur un exemple explicite).}
-    La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
-    
-    La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
-    
-    \begin{align*}
-        az^{2}+bz+c = a\left[ \underbrace{ z^{2}+\frac{b}{a}z }_{ \text{But: Absorber ces termes dans un carré} }+\frac{c}{a} \right] &= a\left[ z^{2}+2\frac{b}{2a}z +\frac{b^{2}}{4a^{2}}-\frac{b^{2}}{4a^{2}}+\frac{c}{a} \right]\\
-        &=a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}}{4a^{2}}+\frac{c}{a} \right]  \\
-        &=a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}-4ac}{4a^{2}}\right]  \\
-        &=a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{\Delta}{4a^{2}}\right] 
-    \end{align*}
-    \begin{itemize}
-        \item Si $\Delta = 0$
-        $$
-        az^{2}+bz+c = a\left( z-\frac{-b}{2a} \right)^{2}
-        $$
-        de sorte que 
-        $$
-        az^{2}+bz+c = 0 \iff a\left( z-\frac{-b}{2a} \right)^{2} = 0 \iff z = -\frac{b}{2a}
-        $$
-        
-        \item Sinon
-        \begin{align*}
-            az^{2}+bz+c = a \left[ \left( z+\frac{b}{2a} \right)^{2}-\left( \frac{\delta}{2a} \right)^{2} \right] &= a \left( z + \frac{b}{2a}-\frac{\delta}{2a} \right)\left( z+\frac{b}{2a}+\frac{\delta}{2a} \right)\\ &= a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right)
-        \end{align*}
-        de sorte que
-        
-        \begin{align*}
-            az^{2}+bz+c =0 &\iff a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right) = 0\\ \\
-            &\iff \left\{ \begin{array}{ll}
-                z -  \frac{-z-\delta}{2a}  = 0 \\
-                \text{ou} \\
-                z- \frac{-z+\delta}{2a} =0
-            \end{array}\right. \\
-            &\iff \left\{ \begin{array}{ll}
-                z = \frac{-z-\delta}{2a}  \\ \text{ou} \\
-                z = \frac{-z+\delta}{2a} 
-            \end{array}\right.
-        \end{align*}
-        
-    \end{itemize}
+				$$az^{2}+bz+c=0$$
+				Où $z\in L$ est l'inconnue et $(a,b,c)\in\mathbb{C}^*\times\mathbb{C}^2$ sont des paramètres. Posons $\Delta = b^{2}-4ac$ que l'on appelle le discriminant de l'équation.
+				\begin{itemize}
+					\item Si $\Delta=0$, l'équation admet une unique solution dite double qui est $-\frac b{2a}$ et la forme factorisée du trinôme est
+					      $$
+						      az^2+bz+c = a \left( z + \frac b {2a} \right)^2
+					      $$
+					\item Si $\Delta\neq0$, notons $\delta$ une racine carrée de $\Delta$, l'équation admet deux solutions distinctes $\frac{-b-\delta}{2a}$ et $\frac{-b+\delta}{2a}$ dites simples et la forme factorisée du trinôme est
+					      $$
+						      az^2+bz+c = a\left(z - \frac{-b-\delta}{2a}\right)\left(z - \frac{-b+\delta}{2a}\right)
+					      $$
+				\end{itemize}
+			}]{Résolution des équations algébriques de degré $2$ dans $\C$ et algorithme de recherche d'une racine carrée sous forme cartésienne (sur un exemple explicite).}
+	La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
+
+	La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
+
+	\begin{align*}
+		az^{2}+bz+c = a\left[ \underbrace{ z^{2}+\frac{b}{a}z }_{ \text{But: Absorber ces termes dans un carré} }+\frac{c}{a} \right] & = a\left[ z^{2}+2\frac{b}{2a}z +\frac{b^{2}}{4a^{2}}-\frac{b^{2}}{4a^{2}}+\frac{c}{a} \right] \\
+		                                                                                                                              & =a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}}{4a^{2}}+\frac{c}{a} \right]        \\
+		                                                                                                                              & =a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}-4ac}{4a^{2}}\right]                 \\
+		                                                                                                                              & =a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{\Delta}{4a^{2}}\right]
+	\end{align*}
+	\begin{itemize}
+		\item Si $\Delta = 0$
+		      $$
+			      az^{2}+bz+c = a\left( z-\frac{-b}{2a} \right)^{2}
+		      $$
+		      de sorte que
+		      $$
+			      az^{2}+bz+c = 0 \iff a\left( z-\frac{-b}{2a} \right)^{2} = 0 \iff z = -\frac{b}{2a}
+		      $$
+
+		\item Sinon
+		      \begin{align*}
+			      az^{2}+bz+c = a \left[ \left( z+\frac{b}{2a} \right)^{2}-\left( \frac{\delta}{2a} \right)^{2} \right] & = a \left( z + \frac{b}{2a}-\frac{\delta}{2a} \right)\left( z+\frac{b}{2a}+\frac{\delta}{2a} \right) \\ &= a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right)
+		      \end{align*}
+		      de sorte que
+
+		      \begin{align*}
+			      az^{2}+bz+c =0 & \iff a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right) = 0 \\ \\
+			                     & \iff \left\{ \begin{array}{ll}
+				                                    z -  \frac{-z-\delta}{2a}  = 0 \\
+				                                    \text{ou}                      \\
+				                                    z- \frac{-z+\delta}{2a} =0
+			                                    \end{array}\right.                                                \\
+			                     & \iff \left\{ \begin{array}{ll}
+				                                    z = \frac{-z-\delta}{2a} \\ \text{ou} \\
+				                                    z = \frac{-z+\delta}{2a}
+			                                    \end{array}\right.
+		      \end{align*}
+
+	\end{itemize}
 \end{question_kholle}
 \begin{question_kholle}
-    [{L'exponentielle complexe a pour image $\mathbb{C}^{*}$ et, pour tout $z_{0} \in \mathbb{C}^{*}$,
-    $$
-    \exp_{\mathbb{C}}^{-1}(\{ z_{0} \}) = \{ \ln \lvert z_{0} \rvert +i\theta_{0} +2ik\pi \mid k \in \mathbb{Z}\}
-    $$
-    où $\theta_{0} \in \arg(z_{0})$}]{Résolution de $e^z = z_0$ où $z_0 \in \C^*$}
-    
-    La propriété, pour tout $z \in \mathbb{C}$, $\lvert e^{z} \rvert = \lvert e^{\mathrm{Re}(z)} \rvert>0$ montre que $0 \not\in \exp_{\mathbb{C}}(\mathbb{C})$.
-    
-    $z_{0}\neq 0$ donc $\exists \theta_{0} \in \arg(z_{0}): z_{0} = \lvert z_{0} \rvert e^{i\theta_{0}}$.
-    Résolvons l'équation d'inconnue $z \in \mathbb{C}$
-    
-    \begin{align*}
-        \exp_{\mathbb{C}}(z) = z_{0}  & \iff e^{\mathrm{Re}(z)}e^{i\mathrm{Im}(z)} = \lvert z_{0} \rvert e^{i\theta_{0}} \\
-        & \iff \left\{ \begin{array}{ll}
-            e^{\mathrm{Re}(z)} = \lvert z_{0} \rvert  \\
-            \text{et} \\
-            \mathrm{Im}(z) \equiv \theta_{0} [2\pi]
-        \end{array}\right. \\
-        & \iff \left\{ \begin{array}{ll}
-            \mathrm{Re}(z)  = \ln \lvert  z_{0} \rvert  \\
-            \text{et} \\
-            \mathrm{Im}(z) \equiv \theta_{0} [2\pi]
-        \end{array}\right. \\
-        &\iff z \in \left\{ \ln \lvert z_{0} \rvert +i \theta_{0} +2ik\pi \mid k \in \mathbb{Z} \right\} 
-    \end{align*}
-    
+	[{L'exponentielle complexe a pour image $\mathbb{C}^{*}$ et, pour tout $z_{0} \in \mathbb{C}^{*}$,
+				$$
+					\exp_{\mathbb{C}}^{-1}(\{ z_{0} \}) = \{ \ln \lvert z_{0} \rvert +i\theta_{0} +2ik\pi \mid k \in \mathbb{Z}\}
+				$$
+				où $\theta_{0} \in \arg(z_{0})$}]{Résolution de $e^z = z_0$ où $z_0 \in \C^*$}
+
+	La propriété, pour tout $z \in \mathbb{C}$, $\lvert e^{z} \rvert = \lvert e^{\mathrm{Re}(z)} \rvert>0$ montre que $0 \not\in \exp_{\mathbb{C}}(\mathbb{C})$.
+
+	$z_{0}\neq 0$ donc $\exists \theta_{0} \in \arg(z_{0}): z_{0} = \lvert z_{0} \rvert e^{i\theta_{0}}$.
+	Résolvons l'équation d'inconnue $z \in \mathbb{C}$
+
+	\begin{align*}
+		\exp_{\mathbb{C}}(z) = z_{0} & \iff e^{\mathrm{Re}(z)}e^{i\mathrm{Im}(z)} = \lvert z_{0} \rvert e^{i\theta_{0}}                \\
+		                             & \iff \left\{ \begin{array}{ll}
+			                                            e^{\mathrm{Re}(z)} = \lvert z_{0} \rvert \\
+			                                            \text{et}                                \\
+			                                            \mathrm{Im}(z) \equiv \theta_{0} [2\pi]
+		                                            \end{array}\right.                                   \\
+		                             & \iff \left\{ \begin{array}{ll}
+			                                            \mathrm{Re}(z)  = \ln \lvert  z_{0} \rvert \\
+			                                            \text{et}                                  \\
+			                                            \mathrm{Im}(z) \equiv \theta_{0} [2\pi]
+		                                            \end{array}\right.                                         \\
+		                             & \iff z \in \left\{ \ln \lvert z_{0} \rvert +i \theta_{0} +2ik\pi \mid k \in \mathbb{Z} \right\}
+	\end{align*}
+
 \end{question_kholle}
 \begin{question_kholle}{Montrer l'unicité de l'élément neutre et du symétrique d'un élément sous des hypothèses sur la loi à préciser.}
-    \begin{itemize}[label=$\lozenge$]
-        \item Unicité de l'élément neutre bilatère
-        
-        Soient $(e_{1}, e_{2}) \in E^{2}$ fixés quelconques tels que $\left\{ \begin{array}{ll} \forall x \in E, x * e_{1} = e_{1} * x = x \\ \forall x \in E, x*e_{2}=e_{2}*x = x\end{array}\right.$
-        Particularisons la première relation pour $x \leftarrow e_{2}$:
-        $$
-        e_{2}*e_{1} = e_{1}*e_{2} = e_{2}
-        $$
-        En particularisant, de même la deuxième relation pour $x \leftarrow e_{1}$
-        $$
-        e_{1}*e_{2} = e_{2}*e_{1} = e_{2}
-        $$
-        D'où, par transitivité de l'égalité : $e_{1} = e_{2}$
-        
-        \item Unicité du symétrique sous réserve d'existence (LCI associative d'unité $e$)
-        Soit $a \in E$ symétrisable
-        $$
-        \exists z \in E : a * z = z*a = e
-        $$
-        Fixons un tel $z$ pour la suite de la preuve
-        \begin{itemize}
-            \item L'ensemble $\{ y \in E \mid a * y = y * a = e \}$ n'est pas vide puisqu'il contient $z$.
-            
-            \item Soit $b \in \{ y \in E \mid a * y = y * a = e \}$ fixé quelconque.
-            Alors
-            \begin{align*}
-                a * b = e &\implies z * ( a * b ) = z * e\\
-                &\implies \underbrace{ z*a }_{ e } * b = z * e \text{ par associativité}\\
-                &\implies b = z
-            \end{align*}
-        \end{itemize}
-        Donc l'ensemble $\{ y \in E \mid a * y = y * a = e \}$ contient au plus un élément neutre, qui est $z$.
-    \end{itemize}
+	\begin{itemize}[label=$\lozenge$]
+		\item Unicité de l'élément neutre bilatère
+
+		      Soient $(e_{1}, e_{2}) \in E^{2}$ fixés quelconques tels que $\left\{ \begin{array}{ll} \forall x \in E, x * e_{1} = e_{1} * x = x \\ \forall x \in E, x*e_{2}=e_{2}*x = x\end{array}\right.$
+		      Particularisons la première relation pour $x \leftarrow e_{2}$:
+		      $$
+			      e_{2}*e_{1} = e_{1}*e_{2} = e_{2}
+		      $$
+		      En particularisant, de même la deuxième relation pour $x \leftarrow e_{1}$
+		      $$
+			      e_{1}*e_{2} = e_{2}*e_{1} = e_{2}
+		      $$
+		      D'où, par transitivité de l'égalité : $e_{1} = e_{2}$
+
+		\item Unicité du symétrique sous réserve d'existence (LCI associative d'unité $e$)
+		      Soit $a \in E$ symétrisable
+		      $$
+			      \exists z \in E : a * z = z*a = e
+		      $$
+		      Fixons un tel $z$ pour la suite de la preuve
+		      \begin{itemize}
+			      \item L'ensemble $\{ y \in E \mid a * y = y * a = e \}$ n'est pas vide puisqu'il contient $z$.
+
+			      \item Soit $b \in \{ y \in E \mid a * y = y * a = e \}$ fixé quelconque.
+			            Alors
+			            \begin{align*}
+				            a * b = e & \implies z * ( a * b ) = z * e                                          \\
+				                      & \implies \underbrace{ z*a }_{ e } * b = z * e \text{ par associativité} \\
+				                      & \implies b = z
+			            \end{align*}
+		      \end{itemize}
+		      Donc l'ensemble $\{ y \in E \mid a * y = y * a = e \}$ contient au plus un élément neutre, qui est $z$.
+	\end{itemize}
 \end{question_kholle}
 \begin{question_kholle}[{Soit $(G, *)$ un groupe, et $H$ une partie de $G$ $$
-    H\text{ est un sous groupe de }G \iff \left\{ \begin{array}{ll}
-        H \neq \emptyset \\
-        \forall (x, y) \in H^{2}, x * y^{-1} \in H
-    \end{array}\right.
-    $$}]{Preuve de la caractérisation d'un sous-groupe, application au fait que $(\mathbb U _n, \times)$ est un sous-groupe de $(\mathbb U, \times)$.}
-    \begin{itemize}[label=$\star$]
-        \item Supposons que $H$ est un sous groupe de $G$
-        Par définition d'un sous groupe, $H \neq \emptyset$.
-        
-        Soient $(x, y) \in H^{2}$ fixés quelconques
-        $H$ est un sous groupe, donc $y$ est symétrisable dans $H$ : $y^{-1} \in H$
-        De plus, c'est un groupe, donc stable pour la loi $*$, donc $x*y^{-1} \in H$
-        
-        \item Supposons que $\left\{ \begin{array}{ll}H \neq \emptyset &(1) \\\forall (x, y) \in H^{2}, x * y^{-1} \in H & (2)\end{array}\right.$
-        \begin{itemize}[label=$\lozenge$]
-            \item $H$ est non vide par hypothèse
-            \item Puisque $H \neq \emptyset$, $\exists x \in H$
-            Ainsi, $x * x^{-1} \in H$ donc $e \in H$
-            \item Soient $(x, y) \in H^{2}$ fixés quelconques.
-            $y \in H$ permet d'appliquer (2) pour $x \leftarrow y$ et $y \leftarrow e$:
-            $$
-            e * y^{-1} \in H
-            $$
-            Donc $y^{-1} \in H$. Tout élément est symétrisable dans $H$
-            \item Soient $(x, y) \in H^{2}$ fixés quelconques. On a montré que $y$ est symétrisable dans H, donc en appliquant (2) pour $x \leftarrow x$ et $y \leftarrow y^{-1}$:
-            $$
-            x * (y^{-1})^{-1} \in H \implies x* y \in H
-            $$
-            Donc $H$ est stable pour la loi $H$.
-        \end{itemize}
-        Donc $H$ est un sous groupe de $G$.
-    \end{itemize}
+					H\text{ est un sous groupe de }G \iff \left\{ \begin{array}{ll}
+						H \neq \emptyset \\
+						\forall (x, y) \in H^{2}, x * y^{-1} \in H
+					\end{array}\right.
+				$$}]{Preuve de la caractérisation d'un sous-groupe, application au fait que $(\mathbb U _n, \times)$ est un sous-groupe de $(\mathbb U, \times)$.}
+	\begin{itemize}[label=$\star$]
+		\item Supposons que $H$ est un sous groupe de $G$
+		      Par définition d'un sous groupe, $H \neq \emptyset$.
+
+		      Soient $(x, y) \in H^{2}$ fixés quelconques
+		      $H$ est un sous groupe, donc $y$ est symétrisable dans $H$ : $y^{-1} \in H$
+		      De plus, c'est un groupe, donc stable pour la loi $*$, donc $x*y^{-1} \in H$
+
+		\item Supposons que $\left\{ \begin{array}{ll}H \neq \emptyset &(1) \\\forall (x, y) \in H^{2}, x * y^{-1} \in H & (2)\end{array}\right.$
+		      \begin{itemize}[label=$\lozenge$]
+			      \item $H$ est non vide par hypothèse
+			      \item Puisque $H \neq \emptyset$, $\exists x \in H$
+			            Ainsi, $x * x^{-1} \in H$ donc $e \in H$
+			      \item Soient $(x, y) \in H^{2}$ fixés quelconques.
+			            $y \in H$ permet d'appliquer (2) pour $x \leftarrow y$ et $y \leftarrow e$:
+			            $$
+				            e * y^{-1} \in H
+			            $$
+			            Donc $y^{-1} \in H$. Tout élément est symétrisable dans $H$
+			      \item Soient $(x, y) \in H^{2}$ fixés quelconques. On a montré que $y$ est symétrisable dans H, donc en appliquant (2) pour $x \leftarrow x$ et $y \leftarrow y^{-1}$:
+			            $$
+				            x * (y^{-1})^{-1} \in H \implies x* y \in H
+			            $$
+			            Donc $H$ est stable pour la loi $H$.
+		      \end{itemize}
+		      Donc $H$ est un sous groupe de $G$.
+	\end{itemize}
 \end{question_kholle}
 \textbf{Application aux racines n-ièmes de l'unité}
 
 Soit $n \in \mathbb{N}^{*}$ fixé quelconque
 \begin{itemize}[label=$\star$]
-    \item $\forall z \in \mathbb{U}_{n}, z^{n} = 1$ donc $1 = \lvert  z^{n} \rvert = \lvert z \rvert^{n}$. Or $\lvert z \rvert \geqslant 0$ donc $\lvert z \rvert = 1$, si bien que $\mathbb{U}_{n} \subset \mathbb{U}$
-    
-    \item $\mathbb{U}_{n} \neq \emptyset$ car $1 \in \mathbb{U}_{n}$
-    
-    \item Soient $(z_{1}, z_{2}) \in \mathbb{U}_{n}$ fixés quelconques.
-    Calculons
-    $$
-    (z_{1}z_{2}^{-1})^{n} = \left( \frac{z_{1}}{z_{2}} \right)^{n} = \frac{z_{1}^{n}}{z_{2}^{n}} = \frac{1}{1} = 1
-    $$
+	\item $\forall z \in \mathbb{U}_{n}, z^{n} = 1$ donc $1 = \lvert  z^{n} \rvert = \lvert z \rvert^{n}$. Or $\lvert z \rvert \geqslant 0$ donc $\lvert z \rvert = 1$, si bien que $\mathbb{U}_{n} \subset \mathbb{U}$
+
+	\item $\mathbb{U}_{n} \neq \emptyset$ car $1 \in \mathbb{U}_{n}$
+
+	\item Soient $(z_{1}, z_{2}) \in \mathbb{U}_{n}$ fixés quelconques.
+	      Calculons
+	      $$
+		      (z_{1}z_{2}^{-1})^{n} = \left( \frac{z_{1}}{z_{2}} \right)^{n} = \frac{z_{1}^{n}}{z_{2}^{n}} = \frac{1}{1} = 1
+	      $$
 \end{itemize}
 Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n, \times})$ est un sous groupe de $(\mathbb{U}, \times)$.
 
 \begin{question_kholle}{Si $\varphi$ est un morphisme de groupes de $G_1$ de neutre $e_1$ dans $G_2$ de neutre $e_2$, calculer $\varphi(e_1)$ et $\varphi(x^{-1})$}
-    \begin{itemize}[label=$\star$]
-        \item Soit $f$ un morphisme de groupe de $(G_{1}, *_{1})$ dans $(G_{2}, *_{2})$
-        
-        D'une part $f(e_{1} *_{1} e_{1}) = f(e_{1})$
-        D'autre part, par propriété de morphisme, $f(e_{1} *_{1} e_{1}) =f(e_{1})*_{2} f(e_{1})$
-        Donc
-        $$
-        f(e_{1}) *_{2} f(e_{1}) = f(e_{1})
-        $$
-        Si l'on compose à gauche par $f(e_{1})^{-1}$
-        
-        \begin{align*}
-            f(e_{1})^{-1} *_{2} f(e_{1}) *_{2} f(e_{1}) &= f(e_{1})^{-1} *_{2}f(e_{1}) \\
-            \implies f(e_{1}) &= e_{2}
-        \end{align*}
-        
-        
-        \item Soit $x \in G_{1}$ fixé quelconque
-        $$
-        f(x)*_{2}f(x^{-1}) = f(x*_{1}x^{-1})=f(e_{1}) = e_{2}
-        $$
-        Composons les deux membres à gauche par $f(x)^{-1}$
-        $$
-        f(x)^{-1} *_{2} f(x)*_{2}f(x^{-1}) = f(x)^{-1} *_{2} * e_{2}
-        $$
-        Donc
-        $$
-        f(x^{-1}) = f(x)^{-1}
-        $$
-        
-    \end{itemize}
+	\begin{itemize}[label=$\star$]
+		\item Soit $f$ un morphisme de groupe de $(G_{1}, *_{1})$ dans $(G_{2}, *_{2})$
+
+		      D'une part $f(e_{1} *_{1} e_{1}) = f(e_{1})$
+		      D'autre part, par propriété de morphisme, $f(e_{1} *_{1} e_{1}) =f(e_{1})*_{2} f(e_{1})$
+		      Donc
+		      $$
+			      f(e_{1}) *_{2} f(e_{1}) = f(e_{1})
+		      $$
+		      Si l'on compose à gauche par $f(e_{1})^{-1}$
+
+		      \begin{align*}
+			      f(e_{1})^{-1} *_{2} f(e_{1}) *_{2} f(e_{1}) & = f(e_{1})^{-1} *_{2}f(e_{1}) \\
+			      \implies f(e_{1})                           & = e_{2}
+		      \end{align*}
+
+
+		\item Soit $x \in G_{1}$ fixé quelconque
+		      $$
+			      f(x)*_{2}f(x^{-1}) = f(x*_{1}x^{-1})=f(e_{1}) = e_{2}
+		      $$
+		      Composons les deux membres à gauche par $f(x)^{-1}$
+		      $$
+			      f(x)^{-1} *_{2} f(x)*_{2}f(x^{-1}) = f(x)^{-1} *_{2} * e_{2}
+		      $$
+		      Donc
+		      $$
+			      f(x^{-1}) = f(x)^{-1}
+		      $$
+
+	\end{itemize}
 \end{question_kholle}
 \begin{question_kholle}{Montrer que l'image d'un sous-groupe par un morphisme de groupes est un sous-groupe du groupe d'arrivée}
-    Soit $f$ un morphisme de groupe de $(G_{1},*_{1})$ dans $(G_{2}, *_{2})$. Notons $e_{1}$ et $e_{2}$ les neutres respectifs de $G_{1}$ et $G_{2}$.
-    
-    Soit $H_{1}$ un sous groupe de $G_{1}$ fixé quelconque
-    \begin{itemize}[label=$\star$]
-        \item $f(H_{1})$ est par définition une partie de $G_{2}$
-        \item $f(H_{1}) \neq \emptyset$ car $H_{1}$ est un groupe, qui contient $e_{1}$ $f(e_{1}) = e_{2}$ donc $e_{2} \in f(H_{1})$
-        \item Soient $(g_{2},h_{2}) \in f(H_{1})^{2}$ fixés quelconques
-        alors $\exists (g_{1}, h_{1}) \in H_{1} : f(g_{1})= g_{2}, f(h_{1})=h_{2}$
-        donc
-        $$
-        g_{2}*_{2}h_{2}^{-1} = f(g_{1}) *_{2} f(h_{1}^{-1}) = f(\underbrace{ g_{1} *_{1} h_{1}^{-1} }_{ \in H_{1} \text{ car sous groupe de }G_{1} })
-        $$
-        Donc $g_{2} *_{2} h_{2}^{-1} \in f(H_{1})$
-        Donc $f(H_{1})$ est un sous groupe de $G_{2}$
-    \end{itemize}
+	Soit $f$ un morphisme de groupe de $(G_{1},*_{1})$ dans $(G_{2}, *_{2})$. Notons $e_{1}$ et $e_{2}$ les neutres respectifs de $G_{1}$ et $G_{2}$.
+
+	Soit $H_{1}$ un sous groupe de $G_{1}$ fixé quelconque
+	\begin{itemize}[label=$\star$]
+		\item $f(H_{1})$ est par définition une partie de $G_{2}$
+		\item $f(H_{1}) \neq \emptyset$ car $H_{1}$ est un groupe, qui contient $e_{1}$ $f(e_{1}) = e_{2}$ donc $e_{2} \in f(H_{1})$
+		\item Soient $(g_{2},h_{2}) \in f(H_{1})^{2}$ fixés quelconques
+		      alors $\exists (g_{1}, h_{1}) \in H_{1} : f(g_{1})= g_{2}, f(h_{1})=h_{2}$
+		      donc
+		      $$
+			      g_{2}*_{2}h_{2}^{-1} = f(g_{1}) *_{2} f(h_{1}^{-1}) = f(\underbrace{ g_{1} *_{1} h_{1}^{-1} }_{ \in H_{1} \text{ car sous groupe de }G_{1} })
+		      $$
+		      Donc $g_{2} *_{2} h_{2}^{-1} \in f(H_{1})$
+		      Donc $f(H_{1})$ est un sous groupe de $G_{2}$
+	\end{itemize}
 \end{question_kholle}
 
 \begin{question_kholle}{Montrer que l'image réciproque par un morphisme de groupes d'un sous-groupe est toujours un sous-groupe du groupe de départ, }
-    Soit $f$ un morphisme de groupe de $(G_{1},*_{1})$ dans $(G_{2}, *_{2})$. Notons $e_{1}$ et $e_{2}$ les neutres respectifs de $G_{1}$ et $G_{2}$.
-    
-    Soit $H_{2}$ un sous groupe de $G_{2}$ fixé quelconque
-    \begin{itemize}[label=$\star$]
-        \item $f^{-1}(H_{2})$ est par définition une partie de $G_{1}$
-        \item $f(H_{2}) \neq \emptyset$ car $H_{2}$ est un groupe, qui contient $e_{2}$ $f(e_{1}) = e_{2}$ donc $e_{1} \in f^{-1}(H_{2})$
-        \item Soient $(g_{1},h_{1}) \in f^{-1}(H_{2})^{2}$ fixés quelconques
-        alors $f(g_{1}) \in H_{2}$ et $f(h_{1}) \in H_{2}$
-        donc
-        $$
-        f(g_{1} *_{1} h_{1}^{-1}) = \underbrace{ f(g_{1}) }_{ \in H_{2} }*_{2}\underbrace{ f(h_{1})^{-1} }_{ \in H_{2} } \in H_{2} \text{ car c'est un sous groupe}$$
-        Donc $f(g_{1} *_{1} h_{1}^{-1}) \in H_{2}$ donc $g_{1} *_{1} h_{1}^{-1} \in f^{-1}(H_{2})$
-    \end{itemize}
-    Donc $f^{-1}(H_{2})$ est un sous groupe de $G_{1}$
+	Soit $f$ un morphisme de groupe de $(G_{1},*_{1})$ dans $(G_{2}, *_{2})$. Notons $e_{1}$ et $e_{2}$ les neutres respectifs de $G_{1}$ et $G_{2}$.
+
+	Soit $H_{2}$ un sous groupe de $G_{2}$ fixé quelconque
+	\begin{itemize}[label=$\star$]
+		\item $f^{-1}(H_{2})$ est par définition une partie de $G_{1}$
+		\item $f(H_{2}) \neq \emptyset$ car $H_{2}$ est un groupe, qui contient $e_{2}$ $f(e_{1}) = e_{2}$ donc $e_{1} \in f^{-1}(H_{2})$
+		\item Soient $(g_{1},h_{1}) \in f^{-1}(H_{2})^{2}$ fixés quelconques
+		      alors $f(g_{1}) \in H_{2}$ et $f(h_{1}) \in H_{2}$
+		      donc
+		      $$
+			      f(g_{1} *_{1} h_{1}^{-1}) = \underbrace{ f(g_{1}) }_{ \in H_{2} }*_{2}\underbrace{ f(h_{1})^{-1} }_{ \in H_{2} } \in H_{2} \text{ car c'est un sous groupe}$$
+		      Donc $f(g_{1} *_{1} h_{1}^{-1}) \in H_{2}$ donc $g_{1} *_{1} h_{1}^{-1} \in f^{-1}(H_{2})$
+	\end{itemize}
+	Donc $f^{-1}(H_{2})$ est un sous groupe de $G_{1}$
 \end{question_kholle}
-    
+
 \textbf{Application 1:} Le noyau d'un morphisme est un sous-groupe
 
 Le noyau, noté $\ker f$ est par définition égal à $f^{-1}(\{e_2\})$ c'est donc un sous groupe de $G_1$

@@ -48,37 +48,37 @@
 
 % paquets graphiques
 \RequirePackage{geometry}
-	\geometry{
-		a4paper,
-		top=2cm,
-		bottom=2cm,
-		right=3cm,
-		left=3cm
-	}
+\geometry{
+	a4paper,
+	top=2cm,
+	bottom=2cm,
+	right=3cm,
+	left=3cm
+}
 \RequirePackage{hyperref}
-	\hypersetup{
-		colorlinks=true,
-		linkcolor=blue,
-		filecolor=magenta,
-		urlcolor=cyan,
-		pdftitle={Khôlles de Mathémtiques},
-		pdfauthor={\authors}
-	}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,
+	urlcolor=cyan,
+	pdftitle={Khôlles de Mathémtiques},
+	pdfauthor={\authors}
+}
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
-	\usetikzlibrary{shapes.geometric}
-	\usetikzlibrary{arrows.meta, arrows}
-	\usetikzlibrary{math} % pour les variables
-	\usetikzlibrary{hobby} % pour les courbes
-	\usetikzlibrary{shapes, shapes.misc}
-	\usetikzlibrary{patterns, patterns.meta}
-	\usetikzlibrary{intersections, angles, quotes}
-	\usetikzlibrary{calc, trees, positioning, fit}
-	% toutes les couleurs possibles : black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow
-	\usetikzlibrary {bending,positioning}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{arrows.meta, arrows}
+\usetikzlibrary{math} % pour les variables
+\usetikzlibrary{hobby} % pour les courbes
+\usetikzlibrary{shapes, shapes.misc}
+\usetikzlibrary{patterns, patterns.meta}
+\usetikzlibrary{intersections, angles, quotes}
+\usetikzlibrary{calc, trees, positioning, fit}
+% toutes les couleurs possibles : black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow
+\usetikzlibrary {bending,positioning}
 \RequirePackage{pgfplots}
-	\usepgfplotslibrary{fillbetween}
-	\pgfplotsset{compat=1.15,width=10cm}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.15,width=10cm}
 \RequirePackage{float}
 
 %À faire : trouver une manière de pouvoir choisir manuellement le chiffre de la question de kholle
@@ -86,8 +86,8 @@
 %Mais j'avoue que je ne connais pas bien la syntaxe pour la rajouter comme argument optionnel de l'environnement "question_kholle"
 
 \NewDocumentCommand{\DIV}{om}{% Dépréciée
-  \IfValueT{#1}{\setcounter{#2}{\numexpr#1-1\relax}}%
-  \csname #2\endcsname
+	\IfValueT{#1}{\setcounter{#2}{\numexpr#1-1\relax}}%
+	\csname #2\endcsname
 }
 
 \newcommand{\setnbquestion}[1]{
@@ -99,28 +99,28 @@
 {
 	\section{\texorpdfstring{#2}{}}
 	\notblank{#1}
-		{
-			\noindent #1
-			\bigbreak
-		}
-		{}
+	{
+		\noindent #1
+		\bigbreak
+	}
+	{}
 	\begin{proof}
-}
-{
+		}
+		{
 	\end{proof}
 }
 
 % liste de propositoins
 \newenvironment{propositions}{
 	\begin{enumerate}[label=$(\roman*)$, labelindent=0pt, leftmargin=!] % identique à leftmargin=\leftmargin
-}
-{
+		}
+		{
 	\end{enumerate}
 }
 \newenvironment{liste}{
 	\begin{enumerate}[label=$\bullet$, leftmargin=!] % identique à leftmargin=\leftmargin
-}
-{
+		}
+		{
 	\end{enumerate}
 }
 
@@ -144,6 +144,10 @@
 \newcommand{\PRIME}{\ensuremath{\mathcal P} }
 \newcommand{\cx}[1]{\ensuremath{#1[X]}}
 
+% Propriété
+\newcommand{\prop}{\ensuremath{\mathcal P}}
+\newcommand{\mathquote}[1]{\ensuremath{\frquote{\text{#1}}}}
+
 % Relation binaire
 \newcommand{\Rel}{\ensuremath{\mathcal R} }
 
@@ -163,8 +167,8 @@
 
 % Régularité
 \newcommand{\regularite}[5]{\ensuremath{
-	\mathcal{#1}_{#2}^{#3}
-	\notblank{#4}
+		\mathcal{#1}_{#2}^{#3}
+		\notblank{#4}
 		{
 			\!
 			\left(
@@ -173,7 +177,7 @@
 			\right)
 		}
 		{}
-}}
+	}}
 \newcommand{\Cont}[3]{\regularite{C}{}{#1}{#2}{#3}}
 \newcommand{\Deriv}[3]{\regularite{D}{#1}{#2}{#3}}
 \newcommand{\ContU}[2]{\regularite{C}{u}{0}{#1}{#2}}
@@ -181,8 +185,8 @@
 
 % norme infinie
 \newcommand{\norminf} [2] [{[a;b]}] {\ensuremath{
-	\left|\left| #2 \right|\right|
-	_{\infty, #1}
+\left|\left| #2 \right|\right|
+_{\infty, #1}
 }}
 
 % Espaces vectoriels

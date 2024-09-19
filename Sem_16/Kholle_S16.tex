@@ -4,125 +4,125 @@
 \usepackage[nb-sem=16, auteurs={Hugo Vangilluwen}]{../kholles}
 
 \begin{document}
-	\maketitle
-	
-	\begin{question_kholle}
-		{Unicité de la partie régulière d'un développement limité}
-		
-		Soit $f$ une fonction admettant un $DL_n(x_0)$ avec $n \in \N$ et $x_0 \in \mathcal{D}_f$. \\
-		Supposons que $f$ admette deux développements limités. C'est-à-dire qu'il existe $a \in \C^{n+1}$ et $b \in \C^{n+1}$ \tqs :
-		\begin{equation*}
-			\begin{aligned}
-				f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k (x - x_0)^k + o\left((x-x_0)^n\right) \\
-				f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k (x - x_0)^k + o\left((x-x_0)^n\right)
-			\end{aligned}
-		\end{equation*}
-		
-		Posons $u = x - x_0$ et  $\tilde{f}(u) = f(x_0+u)$ de sorte que les hypothèses sur $f$ se traduise par l'existence d'un $DL_n(0)$ pour $\tilde{f}$ :
-		\begin{equation*}
-			f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k u^k + o\left(u^n\right)
-			\text{ et }
-			f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k u^k + o\left(u^n\right)
-		\end{equation*}
-		Appliquons la définition d'un $DL_n(0)$. Il existe deux fonctions $\varepsilon_1$ et $\varepsilon_2$ définies sur $\mathcal{D}_{\tilde{f}}$ \tqs
-		\begin{equation*}
-			\begin{aligned}
-				\forall u \in \mathcal{D}_{\tilde{f}}, \ \tilde{f}(u) = \sum_{k=0}^{n} a_k u^k + u^n \varepsilon_1 \\
-				\forall u \in \mathcal{D}_{\tilde{f}}, \ \tilde{f}(u) = \sum_{k=0}^{n} b_k u^k + u^n \varepsilon_2 \\
-				\textlim{u}{0} \varepsilon_1(u) = 0 \text{ et } \textlim{u}{0} \varepsilon_2(u) = 0
-			\end{aligned}
-		\end{equation*}
-		Donc
-		\begin{equation*}
-			\forall u \in \mathcal{D}_{\tilde{f}}, \
-			\sum_{k=0}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
-		\end{equation*}
-		
-		Par l'absurde, supposons que $\exists k_0 \in \lient 0; n \rient : a_{k_0} \neq b_{k_0}$. Posons $k_1$ le plus petit entier dont les coefficients $a$ et $b$ sont différents :
-		\begin{equation*}
-			k_1 = \min \left\{ k \in \lient 0;n \rient \;|\; a_k \neq b_k \right\}
-		\end{equation*}
-		Nous obtenons alors
-		\begin{equation*}
-			\forall u \in \mathcal{D}_{\tilde{f}}, \
-			\sum_{k=0}^{k_1-1} \underbrace{(a_k - b_k)}_{=0} u^k + (a_{k_1} - b_{k_1}) u^{k_1} + \sum_{k=k_1+1}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
-		\end{equation*}
-		Multiplions par $u^{-k_1}$ puis calculons la limite en $u \rightarrow 0$.
-		D'un coté, pour $k > k_1$, nous avons $k - k_1 \leqslant 1$ donc $(a_k - b_k) u^{k-k_1} \arrowlim{u}{0} 0$.
-		De l'autre coté, $u^{n-k_1}$ tend vers $0$ ou $1$ selon si $k_1 < n$ ou $k_1 = n$. Et, par hypothèse, $\varepsilon_2(u) - \varepsilon_1(u) \arrowlim{u}{0} 0$.
-		Par unicité de la limite, $a_{k_1} - b_{k_1} = 0$. Ce qui contredit la définition de $k_1$.
-		
-		Par conséquent $\forall k \in \lient 0;n \rient, \ a_k = b_k$. Ainsi, la partie régulière d'un $DL$ est unique.
-	\end{question_kholle}
-	
-	\setnbquestion{6}
-	
-	\begin{question_kholle}
-		{Deux fonctions équivalentes au voisinage de $a$ ont le même signe sur un voisinage de $a$}
-		
-		Soient $f : \mathcal{D} \rightarrow \R$ et $g : \mathcal{D} \rightarrow \R$ telles que $f(x) \underset{x \rightarrow a}{\sim} g(x)$ avec $a \in \mathcal{D}$. \\
-		Appliquons la définition de l'équivalence pour $\varepsilon \leftarrow \frac{1}{2}$, il existe un voisinage $V$ de $a$ tel que :
-		\begin{equation*}
-			\forall x \in V \cap \mathcal{D},
-			| f(x) - g(x) | \leqslant \frac{1}{2} | g(x) |
-		\end{equation*}
-	
-		Fixons un tel voisinage $V$.
-		Nous obtenons :
-		\begin{equation*}
-			\forall x \in V \cap \mathcal{D},
-			\underbrace{g(x) - \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
-			\leqslant f(x) \leqslant
-			\underbrace{g(x) + \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
-		\end{equation*}
-	
-		Ainsi $f(x)$ et $g(x)$ ont le même signe sur $V \cap \mathcal{D}$.
-	\end{question_kholle}
+\maketitle
 
-	\begin{question_kholle}
-		[ Soient $f \in \Cont{\infty}{\mathcal{D}}{}$ et $a \in \overset{\circ}{\mathcal{D}}$. Supposons que $E_0 = \left\{ p \in \N^* \setminus \{1\} \;|\; f^{(p)}(a) \neq 0 \right\}$ est non vide. \\
+\begin{question_kholle}
+	{Unicité de la partie régulière d'un développement limité}
+
+	Soit $f$ une fonction admettant un $DL_n(x_0)$ avec $n \in \N$ et $x_0 \in \mathcal{D}_f$. \\
+	Supposons que $f$ admette deux développements limités. C'est-à-dire qu'il existe $a \in \C^{n+1}$ et $b \in \C^{n+1}$ \tqs :
+	\begin{equation*}
+		\begin{aligned}
+			f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k (x - x_0)^k + o\left((x-x_0)^n\right) \\
+			f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k (x - x_0)^k + o\left((x-x_0)^n\right)
+		\end{aligned}
+	\end{equation*}
+
+	Posons $u = x - x_0$ et  $\tilde{f}(u) = f(x_0+u)$ de sorte que les hypothèses sur $f$ se traduise par l'existence d'un $DL_n(0)$ pour $\tilde{f}$ :
+	\begin{equation*}
+		f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k u^k + o\left(u^n\right)
+		\text{ et }
+		f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k u^k + o\left(u^n\right)
+	\end{equation*}
+	Appliquons la définition d'un $DL_n(0)$. Il existe deux fonctions $\varepsilon_1$ et $\varepsilon_2$ définies sur $\mathcal{D}_{\tilde{f}}$ \tqs
+	\begin{equation*}
+		\begin{aligned}
+			\forall u \in \mathcal{D}_{\tilde{f}}, \ \tilde{f}(u) = \sum_{k=0}^{n} a_k u^k + u^n \varepsilon_1 \\
+			\forall u \in \mathcal{D}_{\tilde{f}}, \ \tilde{f}(u) = \sum_{k=0}^{n} b_k u^k + u^n \varepsilon_2 \\
+			\textlim{u}{0} \varepsilon_1(u) = 0 \text{ et } \textlim{u}{0} \varepsilon_2(u) = 0
+		\end{aligned}
+	\end{equation*}
+	Donc
+	\begin{equation*}
+		\forall u \in \mathcal{D}_{\tilde{f}}, \
+		\sum_{k=0}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
+	\end{equation*}
+
+	Par l'absurde, supposons que $\exists k_0 \in \lient 0; n \rient : a_{k_0} \neq b_{k_0}$. Posons $k_1$ le plus petit entier dont les coefficients $a$ et $b$ sont différents :
+	\begin{equation*}
+		k_1 = \min \left\{ k \in \lient 0;n \rient \;|\; a_k \neq b_k \right\}
+	\end{equation*}
+	Nous obtenons alors
+	\begin{equation*}
+		\forall u \in \mathcal{D}_{\tilde{f}}, \
+		\sum_{k=0}^{k_1-1} \underbrace{(a_k - b_k)}_{=0} u^k + (a_{k_1} - b_{k_1}) u^{k_1} + \sum_{k=k_1+1}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
+	\end{equation*}
+	Multiplions par $u^{-k_1}$ puis calculons la limite en $u \rightarrow 0$.
+	D'un coté, pour $k > k_1$, nous avons $k - k_1 \leqslant 1$ donc $(a_k - b_k) u^{k-k_1} \arrowlim{u}{0} 0$.
+	De l'autre coté, $u^{n-k_1}$ tend vers $0$ ou $1$ selon si $k_1 < n$ ou $k_1 = n$. Et, par hypothèse, $\varepsilon_2(u) - \varepsilon_1(u) \arrowlim{u}{0} 0$.
+	Par unicité de la limite, $a_{k_1} - b_{k_1} = 0$. Ce qui contredit la définition de $k_1$.
+
+	Par conséquent $\forall k \in \lient 0;n \rient, \ a_k = b_k$. Ainsi, la partie régulière d'un $DL$ est unique.
+\end{question_kholle}
+
+\setnbquestion{6}
+
+\begin{question_kholle}
+	{Deux fonctions équivalentes au voisinage de $a$ ont le même signe sur un voisinage de $a$}
+
+	Soient $f : \mathcal{D} \rightarrow \R$ et $g : \mathcal{D} \rightarrow \R$ telles que $f(x) \underset{x \rightarrow a}{\sim} g(x)$ avec $a \in \mathcal{D}$. \\
+	Appliquons la définition de l'équivalence pour $\varepsilon \leftarrow \frac{1}{2}$, il existe un voisinage $V$ de $a$ tel que :
+	\begin{equation*}
+		\forall x \in V \cap \mathcal{D},
+		| f(x) - g(x) | \leqslant \frac{1}{2} | g(x) |
+	\end{equation*}
+
+	Fixons un tel voisinage $V$.
+	Nous obtenons :
+	\begin{equation*}
+		\forall x \in V \cap \mathcal{D},
+		\underbrace{g(x) - \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
+		\leqslant f(x) \leqslant
+		\underbrace{g(x) + \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
+	\end{equation*}
+
+	Ainsi $f(x)$ et $g(x)$ ont le même signe sur $V \cap \mathcal{D}$.
+\end{question_kholle}
+
+\begin{question_kholle}
+	[ Soient $f \in \Cont{\infty}{\mathcal{D}}{}$ et $a \in \overset{\circ}{\mathcal{D}}$. Supposons que $E_0 = \left\{ p \in \N^* \setminus \{1\} \;|\; f^{(p)}(a) \neq 0 \right\}$ est non vide. \\
 		Posons $p_0 = \min E_0$. \\
 		$f$ admet un extremum local en $a$ si et seulement si $f'(a) = 0$ et $p_0$ est pair. \\
 		$f$ admet un point d'inflexion en $a$ si et seulement si $p_0$ est impair. ]
-		{Condition nécessaire et suffisante pour qu'une fonction \Cont{\infty}{}{} admette un extremum local ou un point d'inflexion}
-		
-		Soient de tels objets. Traitons le cas de l'extremum local.
-		
-		\noindent $f \in \Cont{\infty}{}{}$ donc, la formule Taylor-Young donne un $DL_{p_0}(a)$ de $f$ :
-		\begin{equation*}
-			f(x) \underset{x \rightarrow a}{=}
-			\sum_{k=0}^{p_0} \frac{f^{(k)}(a)}{k!} (x-a)^k + o \left( (x-a)^{p_0} \right)
-		\end{equation*}
-		
-		En développant :
-		\begin{equation*}
-			f(x) \underset{x \rightarrow a}{=}
-			f(a) + \underbrace{f'(a)(x-a)}_{= 0} + \underbrace{\ldots + \frac{f^{(p_0-1)}(a)}{(p_0-1)!} (x-a)^{p_0-1}}_{= 0 \text{ par défintion de }p_0} + \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0} + o \left( (x-a)^{p_0} \right)
-		\end{equation*}
-		
-		Ainsi (car $f^{(p_0)}(a) \neq 0$)
-		\begin{equation}
-			f(x) - f(a) \underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
-		\end{equation}
-		Au voisinage de $a$, $f(x) - f(a)$ et $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ ont le même signe.
-		\\
-		
-		Supposons que $f$ admette un extremum local en $a$.
-		Or $a \in \overset{\circ}{\mathcal{D}}$ et $f$ est dérivable en 0, donc $f'(a) = 0$.
-		Comme $f$ admette un extremum local en $a$, $f(x) - f(a)$ est de signe constant au voisinage de $a$.
-		Donc $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$.
-		Par conséquent, $p_0$ est pair.
-		\\
-		
-		Réciproquement, supposons que $f'(a) = 0$ et que $p_0$ est pair. $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$. Donc $f(x) - f(a)$ est de signe constant au voisinage de $a$. Ainsi, $a$ est un extremum local de $f$.
-		\\
-		
-		Traitons le cas du point d'inflexion. La formule de Taylor-Young donne :
-		\begin{equation}
-			f(x) - \underbrace{\left( f(a) + (x-a)f'(a) \right)}_{\text{tangente en } (a,f(a))}
-			\underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
-		\end{equation}
-		Le signe de l'écart courbe/tangente en $a$ est donc celui de $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$. Ce qui conclut de la même manière que l'extremum local.
-	\end{question_kholle}
-	
+	{Condition nécessaire et suffisante pour qu'une fonction \Cont{\infty}{}{} admette un extremum local ou un point d'inflexion}
+
+	Soient de tels objets. Traitons le cas de l'extremum local.
+
+	\noindent $f \in \Cont{\infty}{}{}$ donc, la formule Taylor-Young donne un $DL_{p_0}(a)$ de $f$ :
+	\begin{equation*}
+		f(x) \underset{x \rightarrow a}{=}
+		\sum_{k=0}^{p_0} \frac{f^{(k)}(a)}{k!} (x-a)^k + o \left( (x-a)^{p_0} \right)
+	\end{equation*}
+
+	En développant :
+	\begin{equation*}
+		f(x) \underset{x \rightarrow a}{=}
+		f(a) + \underbrace{f'(a)(x-a)}_{= 0} + \underbrace{\ldots + \frac{f^{(p_0-1)}(a)}{(p_0-1)!} (x-a)^{p_0-1}}_{= 0 \text{ par défintion de }p_0} + \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0} + o \left( (x-a)^{p_0} \right)
+	\end{equation*}
+
+	Ainsi (car $f^{(p_0)}(a) \neq 0$)
+	\begin{equation}
+		f(x) - f(a) \underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
+	\end{equation}
+	Au voisinage de $a$, $f(x) - f(a)$ et $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ ont le même signe.
+	\\
+
+	Supposons que $f$ admette un extremum local en $a$.
+	Or $a \in \overset{\circ}{\mathcal{D}}$ et $f$ est dérivable en 0, donc $f'(a) = 0$.
+	Comme $f$ admette un extremum local en $a$, $f(x) - f(a)$ est de signe constant au voisinage de $a$.
+	Donc $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$.
+	Par conséquent, $p_0$ est pair.
+	\\
+
+	Réciproquement, supposons que $f'(a) = 0$ et que $p_0$ est pair. $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$. Donc $f(x) - f(a)$ est de signe constant au voisinage de $a$. Ainsi, $a$ est un extremum local de $f$.
+	\\
+
+	Traitons le cas du point d'inflexion. La formule de Taylor-Young donne :
+	\begin{equation}
+		f(x) - \underbrace{\left( f(a) + (x-a)f'(a) \right)}_{\text{tangente en } (a,f(a))}
+		\underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
+	\end{equation}
+	Le signe de l'écart courbe/tangente en $a$ est donc celui de $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$. Ce qui conclut de la même manière que l'extremum local.
+\end{question_kholle}
+
 \end{document}
