@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\date{17 avril 2024}
+\date{29 septembre 2024}
 \usepackage[nb-sem=3, auteurs={George Ober}]{../kholles}
 
 
@@ -8,23 +8,23 @@
 
 \maketitle
 
+\allowdisplaybreaks[4]
 \begin{question_kholle}
-  [{Pour tout $(z_{1}, z_{2})\in \mathbb{C}^{2}$,
+  [Pour tout $(z_{1}, z_{2})\in \mathbb{C}^{2}$,\begin{propositions}
 
-  (i) $\lvert z_{1}+z_{2} \rvert \leqslant \lvert z_{1} \rvert + \lvert z_{2} \rvert$
+      \item $\lvert z_{1}+z_{2} \rvert \leqslant \lvert z_{1} \rvert + \lvert z_{2} \rvert$
 
-  (ii) $\bigg| \lvert z_{1} \rvert-\lvert z_{2} \rvert \bigg|\leqslant \lvert z_{1}-z_{2} \rvert$
+      \item $\bigg| \lvert z_{1} \rvert-\lvert z_{2} \rvert \bigg|\leqslant \lvert z_{1}-z_{2} \rvert$
 
-  }]
+    \end{propositions}]
   {Preuve de l'inégalité triangulaire et de l'inégalité montrant que le module est 1-lipschitzien + dessin et interprétation géométrique}
   Soient $(z_1,z_2) \in \C^2$ fixés quelconques.
   \begin{itemize}[label=$\lozenge$]
     \item
 
-          Si $z_{2} = 0$ l'inégalité est évidente
-          Sinon, $z_{2} \neq 0$ alors $\lvert z_{1}+z_{2} \rvert \leqslant \lvert z_{1} \rvert + \lvert z_{2} \rvert \iff \left| 1+\frac{z_{1}}{z_{2}} \right|\leqslant 1 + \left\lvert  \frac{z_{1}}{z_{2}}  \right\rvert$.
+          Si $z_{2} = 0$ l'inégalité est évidente.\\
+          Sinon, $z_{2} \neq 0$ alors $\lvert z_{1}+z_{2} \rvert \leqslant \lvert z_{1} \rvert + \lvert z_{2} \rvert \iff \left| 1+\frac{z_{1}}{z_{2}} \right|\leqslant 1 + \left\lvert  \frac{z_{1}}{z_{2}}  \right\rvert$.\\
           Posons $u = \frac{z_{1}}{z_{2}}$
-
           \begin{align*}
             \lvert 1+u \rvert ^{2} - (1+\lvert u \rvert )^{2} & = (1+u)(\overline{1+u})-(1+2\lvert u \rvert +\lvert u \rvert ^{2})     \\
                                                               & = (1+u)(1+ \overline u) - 1 - 2\lvert u \rvert  - \lvert u \rvert ^{2} \\
@@ -44,23 +44,35 @@
           $$
             \bigg| \lvert z_{1} \rvert-\lvert z_{2} \rvert \bigg|\leqslant \lvert z_{1}-z_{2} \rvert
           $$
+          \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+              \draw [->] (-0.5,0) -- (10,0);
+              \draw [->] (0,-0.5) -- (0,4);
+              \draw [-Stealth][line width=1.5] (0,0) -- (10,4) node[midway, above left] {$z_1+z_2$};
+              \draw [-Stealth][color=purple,line width=1.5] (0,0) -- (7,1) node[midway, above left] {$z_1$};
+              \draw [-Stealth][color=teal,line width=1.5] (7,1) -- (10,4) node[midway, below right] {$z_2$};
+            \end{tikzpicture}
+            \caption{Interprétation géométrique de l'inégalité triangulaire.}
+          \end{figure}
   \end{itemize}
+
 \end{question_kholle}
 \begin{question_kholle}{Caractérisation du cas d'égalité de l'inégalité triangulaire dans $\mathbb C$}
+  \;\\
   \begin{itemize}[label=$\star$]
     \item ($\implies$) Supposons qu'il y ait égalité dans l'inégalité triangulaire
           \begin{itemize}[label=$\lozenge$]
             \item Si $z_{2} = 0$ alors $z_{1}$ et $z_{2}$ sont positivement liés
-            \item Sinon $\lvert 1+u \rvert ^{2} - (1+\lvert u \rvert )^{2}  = 0$ donc $\mathrm{Re}(u) - \lvert u \rvert = 0$ Donc $u \in \mathbb{R}_{+}$ mais $z_{1} = uz_{2}$.
-                  Donc $z_{1}$ et $z_{2}$ sont positivement liés.
+            \item Sinon, $\lvert 1+u \rvert ^{2} - (1+\lvert u \rvert )^{2}  = 0$ donc $\mathrm{Re}(u) - \lvert u \rvert = 0$.\\
+                  Donc $u \in \mathbb{R}_{+}$, et comme $z_{1} = uz_{2}$, alors $z_{1}$ et $z_{2}$ sont positivement liés.
           \end{itemize}
-    \item ($\impliedby$) Supposons que $z_{1}$ et $z_{2}$ sont positivement liés. Alors il existe $\lambda \in \mathbb{R}_{+}$ tel que $z_{1} = \lambda z_{2}$
-
-          Si $z_{1} = \lambda z_{2}$
+    \item ($\impliedby$) Supposons que $z_{1}$ et $z_{2}$ sont positivement liés. Alors il existe $\lambda \in \mathbb{R}_{+}$ tel que $z_{1} = \lambda z_{2}$.
+          Si $z_{1} = \lambda z_{2}$,
           $$
             \lvert z_{1}+z_{2} \rvert  = \lvert (\lambda+1) z_{2} \rvert  = \lvert \lambda + 1  \rvert \lvert z_{2} \rvert = (\lambda+1)\lvert z_{2} \rvert = \lambda \lvert z_{2} \rvert +\lvert z_{2} \rvert  = \lvert \lambda z_{2} \rvert +\lvert z_{2} \rvert = \lvert z_{1} \rvert + \lvert z_{2} \rvert
           $$
-          Donc l'inégalité est une égalité
+          Donc l'inégalité est une égalité.
 
           Si $z_{2} = \lambda z_{1}$, en échangeant les rôles joués par $z_{1}$ et $z_{2}$ on obtient que l'inégalité est une égalité.
   \end{itemize}
@@ -74,7 +86,6 @@
                                                & = \mathrm{Re} \left(\sum_{k=0}^{n} e^{i k \theta}\right)                                          \\
                                                & = \mathrm{Re} \left( \sum_{k=0}^{n} (e^{i \theta})^{k} \right) \text{ par les formules de moivre} \\
   \end{align*}
-
   Ainsi, si $e^{i\theta} = 1 \iff \theta \equiv 0 [2\pi]$,
   $$
     C_{n}(\theta) = \mathrm{Re}\left( \sum_{k=0}^{n}(1)^{k} \right) = \mathrm{Re}(n+1) = n+1
@@ -116,11 +127,12 @@ $$
 $$
 \begin{question_kholle}
   [{Soient $n \in \mathbb{N}, (a_{0}, \dots, a_{n})\in\mathbb{C}^{n+1}$ et $z_{0} \in \mathbb{C}$ Posons pour tout $z \in \mathbb{C}, P(z) = \sum_{k=0}^{n}a_{k}z^{k}$
-
-  (i) Si $P(z_{0}) = 0$, alors $\exists Q \in\mathbb{C}[z]:\forall z \in \mathbb{C}, P(z)=(z-z_{0})Q(z)$}]
+  \begin{propositions}
+    \item Si $P(z_{0}) = 0$, alors $\exists Q \in\mathbb{C}[z]:\forall z \in \mathbb{C}, P(z)=(z-z_{0})Q(z)$
+  \end{propositions}
+  }]
   {Si $z_0$ est racine de la fonction polynômiale $P$, alors $P$ se factorise par $(z-z_0)$}
   Soit $z \in \mathbb{C}$ fixé quelconque,
-
   \begin{align*}
     P(z) & = P(z) - P(z_{0})                                                                                                        \\
          & = \sum_{k=0}^{n}a_{k}z^{k} - \sum_{k=0}^{n}a_{k}z_{0}^{k}                                                                \\
@@ -133,19 +145,20 @@ $$
 \end{question_kholle}
 \begin{question_kholle}
   [{Soient $n \in \mathbb{N}, (a_{0}, \dots, a_{n})\in\mathbb{C}^{n+1}$ et $z_{0} \in \mathbb{C}$ Posons pour tout $z \in \mathbb{C}, P(z) = \sum_{k=0}^{n}a_{k}z^{k}$
-
-  (ii) Si $\exists p \in \mathbb{N}^{*}: \exists(z_{1},\dots ,z_{p})\in\mathbb{C}^{p}$ deux à deux distincts tels que $\forall k \in [ \! [ 1, p ] \!], P(z_{k}) = 0$ alors, $\exists Q \in \mathbb{C}[x]:\forall z \in \mathbb{C}, P(z) = Q(z) \times \prod_{k=1}^{p}(z-z_{k})$.
+  \begin{propositions}
+    \item Si $\exists p \in \mathbb{N}^{*}: \exists(z_{1},\dots ,z_{p})\in\mathbb{C}^{p}$ deux à deux distincts tels que $\forall k \in [ \! [ 1, p ] \!], P(z_{k}) = 0$ alors, $\exists Q \in \mathbb{C}[x]:\forall z \in \mathbb{C}, P(z) = Q(z) \times \prod_{k=1}^{p}(z-z_{k})$.
+  \end{propositions}
   }]
   {Si $z_1, \dots , z_n$ sont $n$ racines distinctes de la fonction polynômiale $P$ de degré $n$, alors $P(z)$ se factorise en ... }
   Considérons la propriété $\mathcal{P}(\cdot)$ définie pour tout $p \in \mathbb{N}^{*}$ par
-  $$
+  \begin{multline*}
     \mathcal{P}(p) : \forall P \in \mathbb{C}[z], (\exists (z_{1}, \dots, z_{p}) \in \mathbb{C}^{p}, \text{ 2 à 2 distincts }: \forall i \in [ \! [ 1, p ] \!], P(z_{i}) = 0)\\
     \implies \exists Q \in \mathbb{C}[z]: P(z) = Q(z) \prod_{i=1}^{p}(z-z_{i})
-  $$
+  \end{multline*}
   \begin{itemize}[label=$\lozenge$]
     \item $\mathcal{P}(1)$ est vraie d'après la preuve précédente.
-    \item Soit $p \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(p)$ est vraie.
-          Soit $P \in \mathbb{C}[z]$ fq tq $\exists (z_{1}, \dots, z_{p+1}) \in \mathbb{C} ^{p+1}$ deux à deux distincts tels que $\forall i \in [ \! [ 1, p + 1 ] \!], P(z_{i}) = 0$.
+    \item Soit $p \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(p)$ est vraie.\\
+          Soit $P \in \mathbb{C}[z]$ fixés quelconques tels que $\exists (z_{1}, \dots, z_{p+1}) \in \mathbb{C} ^{p+1}$ deux à deux distincts tels que $\forall i \in [ \! [ 1, p + 1 ] \!], P(z_{i}) = 0$.\\
           Appliquons $\mathcal{P}(p)$ à $P \in \mathbb{C}[z]$ dont $(z_{1}, \dots, z_{p})$ sont les $p$ racines deux à deux distinctes.
 
           $$\exists Q_{1} \in \mathbb{C}[z]:\forall z \in \mathbb{C}, P(z) = Q_{1}(z)\prod_{i=1}^{p}(z-z_{i})$$
@@ -192,6 +205,7 @@ $$
           $$
   \end{itemize}
 \end{question_kholle}
+\pagebreak
 \begin{question_kholle}[{
   Pour tout $n \in \mathbb N ^{*} \setminus \{ 1 \}$,
   $$
@@ -250,52 +264,58 @@ $$
     \item \underline{Localisation géométrique}
           \begin{itemize}[label=$\star$]
             \item $\mathbb U _3$ est l'ensemble des sommets du triangle équilatéral inscrit dans le cercle unité, et dont $1$ est l'un des sommets
-                  \begin{figure}[!h]
-                    \centering
-                    \begin{tikzpicture}[
-                        dot/.style={draw,fill,circle,inner sep=1pt}
-                      ]
-                      \draw[->] (-2,0) -- (2,0) node[below] {$\Re$};
-                      \draw[->] (0,-2) -- (0,2) node[left] {$\Im$};
-                      \draw[help lines] (0,0) circle (1);
-
-                      \node[dot,label={below right:$O$}] (O) at (0,0) {};
-                      \foreach \i in {1,...,3} {
-                          \node[dot,label={\i*360/3-(\i==3)*45:$e^\frac{2 \times {\i} i \pi}{3}$}] (w\i) at (\i*360/3:1) {};
-                          \draw[->] (O) -- (w\i);
-                        }
-                      \draw[->] (0:.3) arc (0:360/3:.3);
-                      \node at (360/3/2:.5) {$\alpha$};
-                    \end{tikzpicture}
-                  \end{figure}
 
             \item $\mathbb U _4$ est l'ensemble des sommets du carré inscrit dans le cercle unité et dont 1 est l'un des sommets. Le côté du carré vaut $\lvert 1 - i\rvert = \sqrt 2$.
             \item $\mathbb U _5$ est l'ensemble des sommets du pentagone régulier inscrit dans le cercle unité et dont 1 est l'un des sommets.
                   \begin{figure}[!h]
-                    \centering
-                    \begin{tikzpicture}[
-                        dot/.style={draw,fill,circle,inner sep=1pt}
-                      ]
-                      \draw[->] (-2,0) -- (2,0) node[below] {$\Re$};
-                      \draw[->] (0,-2) -- (0,2) node[left] {$\Im$};
-                      \draw[help lines] (0,0) circle (1);
+                    \hfill
+                    \begin{minipage}{.45\textwidth}
+                      \centering
+                      \begin{tikzpicture}[
+                          dot/.style={draw,fill,circle,inner sep=1pt}
+                        ]
+                        \draw[->] (-2,0) -- (2,0) node[above] {$\Re$};
+                        \draw[->] (0,-2) -- (0,2) node[left] {$\Im$};
+                        \draw[help lines] (0,0) circle (1);
 
-                      \node[dot,label={below right:$O$}] (O) at (0,0) {};
-                      \foreach \i in {1,...,5} {
-                          \node[dot,label={\i*360/5-(\i==5)*45:$e^\frac{2 \times {\i} i \pi}{5}$}] (w\i) at (\i*360/5:1) {};
-                          \draw[->] (O) -- (w\i);
-                        }
-                      \draw[->] (0:.3) arc (0:360/5:.3);
-                      \node at (360/5/2:.5) {$\alpha$};
-                    \end{tikzpicture}
+                        \node[dot,label={below right:$O$}] (O) at (0,0) {};
+                        \foreach \i in {1,...,3} {
+                            \node[dot,label={\i*360/3-(\i==3)*45:$e^\frac{2 \times {\i} i \pi}{3}$}] (w\i) at (\i*360/3:1) {};
+                            \draw[->] (O) -- (w\i);
+                          }
+                        \draw[->] (0:.3) arc (0:360/3:.3);
+                        \node at (360/3/2:.5) {$\alpha$};
+                      \end{tikzpicture}
+                      \caption{Racines cubiques de l'unité.}
+                    \end{minipage}
+                    \begin{minipage}{.45\textwidth}
+                      \centering
+                      \begin{tikzpicture}[
+                          dot/.style={draw,fill,circle,inner sep=1pt}
+                        ]
+                        \draw[->] (-2,0) -- (2,0) node[above] {$\Re$};
+                        \draw[->] (0,-2) -- (0,2) node[left] {$\Im$};
+                        \draw[help lines] (0,0) circle (1);
+
+                        \node[dot,label={below right:$O$}] (O) at (0,0) {};
+                        \foreach \i in {1,...,5} {
+                            \node[dot,label={\i*360/5-(\i==5)*45:$e^\frac{2 \times {\i} i \pi}{5}$}] (w\i) at (\i*360/5:1) {};
+                            \draw[->] (O) -- (w\i);
+                          }
+                        \draw[->] (0:.3) arc (0:360/5:.3);
+                        \node at (360/5/2:.5) {$\alpha$};
+                      \end{tikzpicture}
+                      \caption{Racines $5^{\mathrm{èmes}}$ de l'unité.}
+                    \end{minipage}
                   \end{figure}
           \end{itemize}
   \end{itemize}
 
 \end{question_kholle}
 \begin{question_kholle}{Somme et Produit des racines $n$-ièmes}
+  \;\\
   \begin{itemize}[label=$\lozenge$]
-    \item \textbf{Méthode 1} En utilisant les relations coefficients racines.
+    \item \textbf{Méthode 1} : En utilisant les relations coefficients racines.
 
           $\mathbb{U}_{n}$ sont les n racines disctinctes de $z^{n}-1$
           $$S_{n} = - \frac{1}{\text{coefficient dominant}}\times(\text{coefficient de }z^{n-1} \text{ dans }z^{n}-1)= \left\{ \begin{array}{ll}
@@ -306,7 +326,7 @@ $$
             P_{n} = (-1)^{n} \frac{\text{coefficient constant}}{\text{coefficient dominant}} = (-1) ^{n}\times \frac{-1}{1} = (-1)^{n+1}
           $$
 
-    \item \textbf{Méthode 2} Manipulation des symboles sommatoires
+    \item \textbf{Méthode 2} : Manipulation des symboles sommatoires
 
           \begin{align*}
             S_{n} = \sum_{\omega \in \mathbb{U}_{n}}\omega & = \sum_{k=0}^{n-1}\omega_{0}^{k}                                                                    \\
@@ -316,7 +336,7 @@ $$
                                                                        \end{array}\right.
           \end{align*}
 
-          Puisqu'on ne peut appliquer la formule de la somme des termes d'une suite géométrique seulement si la raison $\omega_{0} = 1 \iff e^{\frac{2i\pi}{n}} = 1 \iff \frac{2\pi}{n} \equiv 0 [2\pi] \iff n = 1$
+          Puisqu'on ne peut appliquer la formule de la somme des termes d'une suite géométrique seulement si $\omega_{0} = 1 \iff e^{\frac{2i\pi}{n}} = 1 \iff \frac{2\pi}{n} \equiv 0 [2\pi] \iff n = 1$
 
           De même
 
