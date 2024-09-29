@@ -37,71 +37,71 @@
 
 \section{Calcul de $\int_0^{2\pi}e^{imt}dt$ en fonction de $m\in \mathbb{Z}$. En déduire qu'une fonction polynomiale nulle sur un cercle centré en l'origine a tous ses coefficients nuls.}
 \begin{proof}
-	Soit $m\in \mathbb{Z}$ et $n\in \mathbb{N}^*$, on pose :
-	$$
-		I_m = \int_0^{2\pi}e^{imt}dt.
-	$$
-	Bien sûr, $I_0=2\pi$ et pour tout $m\neq 0$, $I_m=0$. \\
-	Soit alors le polynôme $P \in \mathbb{C}_n [z]$, de coefficients les $a_k\in \mathbb{R}, \text{ pour }  k\in [\![ 0,n ]\!]$ , s'annulant sur le cercle $\Omega (O,r)$, centré en l'origine $(O)$, et de rayon $r\in \mathbb{R}^*$. De fait, soit $t\in \mathbb{R}$ et $s\in \mathbb{Z}$, on a :
+  Soit $m\in \mathbb{Z}$ et $n\in \mathbb{N}^*$, on pose :
+  $$
+    I_m = \int_0^{2\pi}e^{imt}dt.
+  $$
+  Bien sûr, $I_0=2\pi$ et pour tout $m\neq 0$, $I_m=0$. \\
+  Soit alors le polynôme $P \in \mathbb{C}_n [z]$, de coefficients les $a_k\in \mathbb{R}, \text{ pour }  k\in [\![ 0,n ]\!]$ , s'annulant sur le cercle $\Omega (O,r)$, centré en l'origine $(O)$, et de rayon $r\in \mathbb{R}^*$. De fait, soit $t\in \mathbb{R}$ et $s\in \mathbb{Z}$, on a :
 
-	\begin{eqnarray*}
-		P\left( re^{it}\right)  & = &  0 \\
-		P \left( re^{it}\right)  e^{-st}  & = &  0 \\
-		\int_0^{2\pi} P\left( re^{it}\right)e^{-st}dt  & = &  0 \\
-		\sum_{k\in [\![0,n]\!]} a_k r^k\int_0^{2\pi} e^{ikt}e^{-st}dt  & = &  0 \\
-		\sum_{k\in [\![0,n]\!]} a_k r^k\int_0^{2\pi} e^{i(k-s)t}dt  & = &  0.
-	\end{eqnarray*}
-	Mais pour tout polynôme :
-	\[
-		\sum_{k\in [\![ 0,n ]\!]} a_k r^k\int_0^{2\pi} e^{i(k-s)t}dt  =  \left\{ \begin{array}{cl}
-			2\pi a_s r^s & \text{si } \ s \in [\![ 0,n ]\!]                     \\
-			0            & \text{si } \ s\in \mathbb{Z}\backslash [\![ 0,n ]\!]
-		\end{array} \right.
-	\]
-	En particulier, en combinant les deux :
-	\[
-		\forall s \in  [\![ 0,n ]\!], \quad 2\pi a_s r^s = 0 \implies a_s =0,
-	\]
-	car $2\pi r^s \neq 0$, d'où $P=\widetilde{0}$ sur tout $\mathbb{C}$.
+  \begin{eqnarray*}
+    P\left( re^{it}\right)  & = &  0 \\
+    P \left( re^{it}\right)  e^{-st}  & = &  0 \\
+    \int_0^{2\pi} P\left( re^{it}\right)e^{-st}dt  & = &  0 \\
+    \sum_{k\in [\![0,n]\!]} a_k r^k\int_0^{2\pi} e^{ikt}e^{-st}dt  & = &  0 \\
+    \sum_{k\in [\![0,n]\!]} a_k r^k\int_0^{2\pi} e^{i(k-s)t}dt  & = &  0.
+  \end{eqnarray*}
+  Mais pour tout polynôme :
+  \[
+    \sum_{k\in [\![ 0,n ]\!]} a_k r^k\int_0^{2\pi} e^{i(k-s)t}dt  =  \left\{ \begin{array}{cl}
+      2\pi a_s r^s & \text{si } \ s \in [\![ 0,n ]\!]                     \\
+      0            & \text{si } \ s\in \mathbb{Z}\backslash [\![ 0,n ]\!]
+    \end{array} \right.
+  \]
+  En particulier, en combinant les deux :
+  \[
+    \forall s \in  [\![ 0,n ]\!], \quad 2\pi a_s r^s = 0 \implies a_s =0,
+  \]
+  car $2\pi r^s \neq 0$, d'où $P=\widetilde{0}$ sur tout $\mathbb{C}$.
 \end{proof}
 
 %\newpage
 
 \section{Technique de l'intégration par parties.}
 \begin{proof}
-	Soient $u,v\in \mathcal{D}^1 (I,J)$, deux fonctions définies, continues et dérivables sur $I$ à valeurs dans $J$, deux intervalles non-triviaux de $\mathbb{R}$. Soient $a,b\in \mathbb{R}$, $a<b$ et $I=[a,b]$. De manière générale :
-	\[
-		\int_{[a,b]}(uv)'(x)dx = [(uv)(x)]_a^b.
-	\]
-	Mais aussi :
-	\[
-		\int_{[a,b]}(uv)'(x)dx = \int_{[a,b]}(u'v)(x) + (v'u)(x)dx = \int_{[a,b]}(u'v)(x)dx + \int_{[a,b]}(v'u)(x)dx.
-	\]
-	Donc finalement :
-	\[
-		\int_{[a,b]}(u'v)(x)dx + \int_{[a,b]}(v'u)(x)dx = [(uv)(x)]_a^b.
-	\]
-	Ce qui s'écrit aussi,
-	\[
-		\int_{[a,b]}(u'v)(x)dx = [(uv)(x)]_a^b -\int_{[a,b]}(v'u)(x)dx.
-	\]
+  Soient $u,v\in \mathcal{D}^1 (I,J)$, deux fonctions définies, continues et dérivables sur $I$ à valeurs dans $J$, deux intervalles non-triviaux de $\mathbb{R}$. Soient $a,b\in \mathbb{R}$, $a<b$ et $I=[a,b]$. De manière générale :
+  \[
+    \int_{[a,b]}(uv)'(x)dx = [(uv)(x)]_a^b.
+  \]
+  Mais aussi :
+  \[
+    \int_{[a,b]}(uv)'(x)dx = \int_{[a,b]}(u'v)(x) + (v'u)(x)dx = \int_{[a,b]}(u'v)(x)dx + \int_{[a,b]}(v'u)(x)dx.
+  \]
+  Donc finalement :
+  \[
+    \int_{[a,b]}(u'v)(x)dx + \int_{[a,b]}(v'u)(x)dx = [(uv)(x)]_a^b.
+  \]
+  Ce qui s'écrit aussi,
+  \[
+    \int_{[a,b]}(u'v)(x)dx = [(uv)(x)]_a^b -\int_{[a,b]}(v'u)(x)dx.
+  \]
 \end{proof}
 
 \section{Technique du changement de variable.}
 \begin{proof}
-	Soient $(f',\varphi') \in \mathcal{C}^0 (I,\mathbb{R}) \times \mathcal{C}^0 (J,I) $, deux fonctions définies et continues sur $I$ et $J$ à valeurs dans $\mathbb{R}$ et $I$. $I,J$ deux intervalles non-triviaux de $\mathbb{R}$. Soient $a,b\in \mathbb{R}$, $a<b$ et $J=[a,b]$. D'après le théorème fondamental de l'analyse, $f'$ et $\varphi'$ admettent des primitives sur $I$ et $J$, on note $f$ une primitive de $f'$ et $\varphi$ une primitive de $\varphi'$, ainsi il est possible de calculer de la manière suivante (les notations ont un sens) :
-	\[
-		\int_{\varphi ([a,b])} f'(t)dt = [f(t)]_{\varphi ([a,b])}.
-	\]
-	On suppose $\varphi(b) > \varphi(a)$, quitte à les inverser, ainsi :
-	\[
-		\int_{[\varphi(a),\varphi(b)]} f'(t)dt = f(\varphi(b))-f(\varphi(a)) = f\circ\varphi (b) - f\circ\varphi (a) = [f\circ\varphi (t)]_{[a,b]} = \int_{[a,b]} (f'\circ\varphi)(t)\varphi'(t)dt
-	\]
+  Soient $(f',\varphi') \in \mathcal{C}^0 (I,\mathbb{R}) \times \mathcal{C}^0 (J,I) $, deux fonctions définies et continues sur $I$ et $J$ à valeurs dans $\mathbb{R}$ et $I$. $I,J$ deux intervalles non-triviaux de $\mathbb{R}$. Soient $a,b\in \mathbb{R}$, $a<b$ et $J=[a,b]$. D'après le théorème fondamental de l'analyse, $f'$ et $\varphi'$ admettent des primitives sur $I$ et $J$, on note $f$ une primitive de $f'$ et $\varphi$ une primitive de $\varphi'$, ainsi il est possible de calculer de la manière suivante (les notations ont un sens) :
+  \[
+    \int_{\varphi ([a,b])} f'(t)dt = [f(t)]_{\varphi ([a,b])}.
+  \]
+  On suppose $\varphi(b) > \varphi(a)$, quitte à les inverser, ainsi :
+  \[
+    \int_{[\varphi(a),\varphi(b)]} f'(t)dt = f(\varphi(b))-f(\varphi(a)) = f\circ\varphi (b) - f\circ\varphi (a) = [f\circ\varphi (t)]_{[a,b]} = \int_{[a,b]} (f'\circ\varphi)(t)\varphi'(t)dt
+  \]
 \end{proof}
 
 \section{Montrer que, pour $f$ $T$-périodique sur $\mathbb{R}$, pour tout $a\in\mathbb{R}$, $\int_a^{a+T}f(t)dt = \int_0^Tf(t)dt$}.
 \begin{proof}
-	\text{plus tard}
+  \text{plus tard}
 \end{proof}
 
 \section{Résolution de $a_1y'+a_0y=b$ sur $J$ par équivalence avec la méthoded du facteur intégrant sous l'hypothèse $\forall t \in I, a_1(t)\neq 0$. On précisera les hypothèses analytiques sur $a_0, a_1$ et $b$.}

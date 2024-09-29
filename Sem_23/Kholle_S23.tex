@@ -9,59 +9,59 @@
 Pour cette semaine, \K désigne un corps commutatif, $E$ et $F$ des \K\!\!-espaces vectoriels, $E'$ et $F'$ des sous-espaces vectoriels respectivement de $E$ et de $F$, $I$ un ensemble quelconque non vide.
 
 \begin{question_kholle}
-	{L'ensemble des automorphisme d'un espace vectoriel muni de la loi de composition forme un groupe}
+  {L'ensemble des automorphisme d'un espace vectoriel muni de la loi de composition forme un groupe}
 
-	Montrons que $(\mathcal{GL}_\K(E), \circ)$ est un sous-groupe de $(\mathcal{S}(E), \circ)$.
-	\begin{itemize}
-		\item $\mathcal{GL}_\K(E) \subset \mathcal{S}(E)$ et $(\mathcal{S}(E), \circ)$ est bien un groupe.
-		\item $\mathcal{GL}_\K(E) \neq \emptyset$ puisque $Id_E \in \mathcal{GL}_\K$.
-		\item Soit $(f, g) \in \mathcal{GL}(E)$. Montrons que $f \circ g^{-1} \in \mathcal{GL}(E)$. \\
-		      Soit $(\alpha, \beta, x, y) \in \K^2 \times E^2$ \fqs. \\
-		      \begin{equation*}
-			      \begin{aligned}
-				      \left(f \circ g^{-1}\right) \left(\alpha x + \beta y\right)
-				       & = f \left( g^{-1} \left(\alpha x + \beta y\right) \right)                                                                             \\
-				       & = f \left( g^{-1} \left(\alpha g^{-1}(g(x)) + \beta g^{-1}(g(y))\right) \right)                                                       \\
-				       & = f \left( g^{-1} \left( \alpha g\left(g^{-1}(x)\right) + \beta g\left(g^{-1}(y)\right) \right) \right)                               \\
-				       & = f \left( g^{-1} \left( g \left( \alpha g^{-1}(x) + \beta g^{-1}(y) \right) \right) \right) \quad \text{car } g \text{ est linéaire} \\
-				       & = f \left( \alpha g^{-1}(x) + \beta g^{-1}(y) \right)                                                                                 \\
-				       & = \alpha f \left( g^{-1}(x) \right) + \beta f \left( g^{-1}(y) \right)                                                                \\
-				       & = \alpha \left(f \circ g^{-1}\right) (x) + \beta \left(f \circ g^{-1}\right) (y)
-			      \end{aligned}
-		      \end{equation*}
-	\end{itemize}
+  Montrons que $(\mathcal{GL}_\K(E), \circ)$ est un sous-groupe de $(\mathcal{S}(E), \circ)$.
+  \begin{itemize}
+    \item $\mathcal{GL}_\K(E) \subset \mathcal{S}(E)$ et $(\mathcal{S}(E), \circ)$ est bien un groupe.
+    \item $\mathcal{GL}_\K(E) \neq \emptyset$ puisque $Id_E \in \mathcal{GL}_\K$.
+    \item Soit $(f, g) \in \mathcal{GL}(E)$. Montrons que $f \circ g^{-1} \in \mathcal{GL}(E)$. \\
+          Soit $(\alpha, \beta, x, y) \in \K^2 \times E^2$ \fqs. \\
+          \begin{equation*}
+            \begin{aligned}
+              \left(f \circ g^{-1}\right) \left(\alpha x + \beta y\right)
+               & = f \left( g^{-1} \left(\alpha x + \beta y\right) \right)                                                                             \\
+               & = f \left( g^{-1} \left(\alpha g^{-1}(g(x)) + \beta g^{-1}(g(y))\right) \right)                                                       \\
+               & = f \left( g^{-1} \left( \alpha g\left(g^{-1}(x)\right) + \beta g\left(g^{-1}(y)\right) \right) \right)                               \\
+               & = f \left( g^{-1} \left( g \left( \alpha g^{-1}(x) + \beta g^{-1}(y) \right) \right) \right) \quad \text{car } g \text{ est linéaire} \\
+               & = f \left( \alpha g^{-1}(x) + \beta g^{-1}(y) \right)                                                                                 \\
+               & = \alpha f \left( g^{-1}(x) \right) + \beta f \left( g^{-1}(y) \right)                                                                \\
+               & = \alpha \left(f \circ g^{-1}\right) (x) + \beta \left(f \circ g^{-1}\right) (y)
+            \end{aligned}
+          \end{equation*}
+  \end{itemize}
 \end{question_kholle}
 
 \begin{question_kholle}
-	[Soit $\ffinie{E}{p}{E}$ $p$ \sev de E avec $p \in \N^*$ \fq. \\
-		Par définition, cette famille est en somme directe si tout vecteur de $E_1 + E_2 + \ldots + E_p$ peut s'écrire comme une somme unique d'élément de $E_1 \times E_2 \times \ldots \times E_p$. Formellement :
-		\begin{equation}
-			\forall x \in \sum_{i=1}^{p} E_i,
-			\exists ! x \in \! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i :
-			x = \sum_{i=1}^{p} x_i
-		\end{equation}
-		Nous allons démontrer que $E_1, E_2, \ldots$ et $E_p$ sont en somme directe \ssi
-		{\begin{equation}
-				\forall x \in \! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i,
-				\left( \sum_{i=1}^{p} x_i = 0_E \implies \forall i \in [\![1;p]\!], x_i = 0_E \right)
-			\end{equation}}]
-	{Caractérisation de la somme directe de $p$ \sevs}
+  [Soit $\ffinie{E}{p}{E}$ $p$ \sev de E avec $p \in \N^*$ \fq. \\
+    Par définition, cette famille est en somme directe si tout vecteur de $E_1 + E_2 + \ldots + E_p$ peut s'écrire comme une somme unique d'élément de $E_1 \times E_2 \times \ldots \times E_p$. Formellement :
+    \begin{equation}
+      \forall x \in \sum_{i=1}^{p} E_i,
+      \exists ! x \in \! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i :
+      x = \sum_{i=1}^{p} x_i
+    \end{equation}
+    Nous allons démontrer que $E_1, E_2, \ldots$ et $E_p$ sont en somme directe \ssi
+    {\begin{equation}
+        \forall x \in \! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i,
+        \left( \sum_{i=1}^{p} x_i = 0_E \implies \forall i \in [\![1;p]\!], x_i = 0_E \right)
+      \end{equation}}]
+  {Caractérisation de la somme directe de $p$ \sevs}
 
-	Supposons que $E_1, E_2, \ldots E_p$ sont en somme directe. \\
-	Soient $x \in \!\! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$ \fqs \tqs $x_1 + x_2 + \ldots + x_p = 0_E$. \\
-	Or $0_E = \underbrace{0_E}_{\in E_1} + \underbrace{0_E}_{\in E_2} + \ldots + \underbrace{0_E}_{\in E_p}$.
-	Par unicité de l'écriture de x comme somme d'éléments de $\overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$, $\forall i \in [\![]1;p\!], x_i = 0_E$.
+  Supposons que $E_1, E_2, \ldots E_p$ sont en somme directe. \\
+  Soient $x \in \!\! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$ \fqs \tqs $x_1 + x_2 + \ldots + x_p = 0_E$. \\
+  Or $0_E = \underbrace{0_E}_{\in E_1} + \underbrace{0_E}_{\in E_2} + \ldots + \underbrace{0_E}_{\in E_p}$.
+  Par unicité de l'écriture de x comme somme d'éléments de $\overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$, $\forall i \in [\![]1;p\!], x_i = 0_E$.
 
-	Supposons maintenant l'équation de la caractérisation. \\
-	Soit $x \in \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$ \tq $x$ puisse s'écrire comme somme de $x' \!\! \in \!\! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$ et somme de $x'' \!\! \in \!\! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$. Montrons que $x' = x''$.
-	\begin{equation*}
-		\sum_{i=1}^{p} x'_i = x = \sum_{i=1}^{p} x''_i
-	\end{equation*}
-	Donc
-	\begin{equation*}
-		\sum_{i=1}^{p} \left( x''_i -x''_i \right) = 0_E
-	\end{equation*}
-	D'après l'équation de la caractérisation, $\forall i \in [\![1;p]\!], x'_i - x''_i = 0_E$. \\
-	Donc $\forall i \in [\![1;p]\!], x'_i = x''_i$
+  Supposons maintenant l'équation de la caractérisation. \\
+  Soit $x \in \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$ \tq $x$ puisse s'écrire comme somme de $x' \!\! \in \!\! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$ et somme de $x'' \!\! \in \!\! \overset{p}{\underset{i=1}{\mathlarger{\mathlarger{\times}}}} E_i$. Montrons que $x' = x''$.
+  \begin{equation*}
+    \sum_{i=1}^{p} x'_i = x = \sum_{i=1}^{p} x''_i
+  \end{equation*}
+  Donc
+  \begin{equation*}
+    \sum_{i=1}^{p} \left( x''_i -x''_i \right) = 0_E
+  \end{equation*}
+  D'après l'équation de la caractérisation, $\forall i \in [\![1;p]\!], x'_i - x''_i = 0_E$. \\
+  Donc $\forall i \in [\![1;p]\!], x'_i = x''_i$
 \end{question_kholle}
 \end{document}

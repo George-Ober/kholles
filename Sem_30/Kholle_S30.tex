@@ -8,295 +8,295 @@
 \maketitle
 
 \begin{question_kholle}[{
-				\begin{equation}
-					\forall (x, y) \in E^2, \
-					\left| \braket{ x | y } \right| \leqslant \|x\|\|y\|
-				\end{equation}
-				Il y a égalité \ssi $x$ et $y$ sont liés.
-			}]{Inégalité de Cauchy-Schwartz dans un espace préhilbertien réel, cas d'égalité}
-	Soit $E$ un $\R$-espace vectoriel, et $\braket{ \cdot | \cdot  }$ un produit scalaire sur $E$.
-	Soient $(x, y) \in E^{2}$
-	\begin{enumerate}
-		\item \begin{itemize}[label=$\star$]
-			      \item Si $y=0$, l'inégalité est une égalité et est évidente
-			      \item Sinon, posons
-			            $$
-				            P:\left|\begin{array}{ll} \R &\to \R \\ t &\mapsto \braket{ x+t.y | x+t.y } = t^{2} \|y\|^{2} + 2 t \braket{ x | y }  + \|x\|^{2} \end{array}\right.
-			            $$
-			            Puisque $\|y\|^{2} \neq 0$, P est un polynôme de degré $2$ à coefficientts réels et positif d'après le caractère positif du produit scalaire (on a donc $\forall t \in \R, P(t)\geqslant 0$)
-			            Le discriminant de cette fonction polynômiale est $\Delta = 4 \braket{ x | y }^{2} - 4 \|x\|^{2}\|y\|^{2}$, qui est obligatoirement négatif ou nul puisque $P$ admet au mieux une racine double.
-			            Donc $\braket{ x | y }^{2} - \|x\|^{2}\|y\|^{2} \leqslant 0$ donc en prenant la racine carrée $|\braket{ x | y }| \leqslant \|x\|\|y\|$.
-		      \end{itemize}
-		\item \begin{itemize}[label=$\star$]
-			      \item Supposons que $(x, y)$ est liée, sans perte de généralité, supposons $y = \lambda.x$ alors
-			            $$
-				            \lvert \braket{ x | \lambda.x } \rvert  = \lvert  \lambda \rvert  \braket{ x | x }  = \lvert  \lambda \rvert  \|x\|^{2} = \| x \| \| \lambda.x\|
-			            $$
-			            Donc l'inégalité est une égalité.
+        \begin{equation}
+          \forall (x, y) \in E^2, \
+          \left| \braket{ x | y } \right| \leqslant \|x\|\|y\|
+        \end{equation}
+        Il y a égalité \ssi $x$ et $y$ sont liés.
+      }]{Inégalité de Cauchy-Schwartz dans un espace préhilbertien réel, cas d'égalité}
+  Soit $E$ un $\R$-espace vectoriel, et $\braket{ \cdot | \cdot  }$ un produit scalaire sur $E$.
+  Soient $(x, y) \in E^{2}$
+  \begin{enumerate}
+    \item \begin{itemize}[label=$\star$]
+            \item Si $y=0$, l'inégalité est une égalité et est évidente
+            \item Sinon, posons
+                  $$
+                    P:\left|\begin{array}{ll} \R &\to \R \\ t &\mapsto \braket{ x+t.y | x+t.y } = t^{2} \|y\|^{2} + 2 t \braket{ x | y }  + \|x\|^{2} \end{array}\right.
+                  $$
+                  Puisque $\|y\|^{2} \neq 0$, P est un polynôme de degré $2$ à coefficientts réels et positif d'après le caractère positif du produit scalaire (on a donc $\forall t \in \R, P(t)\geqslant 0$)
+                  Le discriminant de cette fonction polynômiale est $\Delta = 4 \braket{ x | y }^{2} - 4 \|x\|^{2}\|y\|^{2}$, qui est obligatoirement négatif ou nul puisque $P$ admet au mieux une racine double.
+                  Donc $\braket{ x | y }^{2} - \|x\|^{2}\|y\|^{2} \leqslant 0$ donc en prenant la racine carrée $|\braket{ x | y }| \leqslant \|x\|\|y\|$.
+          \end{itemize}
+    \item \begin{itemize}[label=$\star$]
+            \item Supposons que $(x, y)$ est liée, sans perte de généralité, supposons $y = \lambda.x$ alors
+                  $$
+                    \lvert \braket{ x | \lambda.x } \rvert  = \lvert  \lambda \rvert  \braket{ x | x }  = \lvert  \lambda \rvert  \|x\|^{2} = \| x \| \| \lambda.x\|
+                  $$
+                  Donc l'inégalité est une égalité.
 
-			      \item Réciproquement, supposons que $\lvert  \braket{ x | y } \rvert = \| x\| \| y\|$
-			            \begin{itemize}
-				            \item Si $y = 0$ alors $(x, y)$ est liée
-				            \item Sinon, $\Delta = 4(\braket{ x | y }^{2} - \|x\|\|y\|) = 0$
-				                  $P$ est un polynôme de degré $2$ de discriminant nul : il admet une racine double $\lambda$
-				                  Ainsi
-				                  $$
-					                  P(\lambda) = 0 \implies \braket{ x+\lambda.y | x+\lambda.y } = 0
-				                  $$
-				                  Donc $x+\lambda .y = 0_{E}$ d'après le caractère défini du produit scalaire.
-			            \end{itemize}
-		      \end{itemize}
-	\end{enumerate}
+            \item Réciproquement, supposons que $\lvert  \braket{ x | y } \rvert = \| x\| \| y\|$
+                  \begin{itemize}
+                    \item Si $y = 0$ alors $(x, y)$ est liée
+                    \item Sinon, $\Delta = 4(\braket{ x | y }^{2} - \|x\|\|y\|) = 0$
+                          $P$ est un polynôme de degré $2$ de discriminant nul : il admet une racine double $\lambda$
+                          Ainsi
+                          $$
+                            P(\lambda) = 0 \implies \braket{ x+\lambda.y | x+\lambda.y } = 0
+                          $$
+                          Donc $x+\lambda .y = 0_{E}$ d'après le caractère défini du produit scalaire.
+                  \end{itemize}
+          \end{itemize}
+  \end{enumerate}
 \end{question_kholle}
 
 \begin{question_kholle}[{
-				L'application
-				\begin{equation}
-					\chi \left|\begin{array}{ll}
-						E & \to E^{*}                                                      \\
-						x & \mapsto \left(\begin{array}{ll} E & \to \R
+        L'application
+        \begin{equation}
+          \chi \left|\begin{array}{ll}
+            E & \to E^{*}                                                      \\
+            x & \mapsto \left(\begin{array}{ll} E & \to \R
              \\ y &\mapsto \braket{ x | y }\end{array}\right)\end{array}\right.
-				\end{equation}
-				est un isomorphisme d'espaces vectoriels. $\chi$ est appelé l'isomorphisme canonique entre un espace vectoriel euclidien et son espace dual.
-			}]{Isomorphisme entre un espace euclidien et l'espace de ses formes linéaires (Théorème de représentation de Riesz)}
-	\begin{itemize}[label=$\star$]
-		\item $\chi$ est bien définie car, $\forall x \in E$, par linéarité du produit scalaire en sa seconde variable, $\chi(x): \left|\begin{array}{ll} E &\to \R \\ y &\mapsto \braket{ x | y }  \end{array}\right.$ est une forme linaire sur $E$.
+        \end{equation}
+        est un isomorphisme d'espaces vectoriels. $\chi$ est appelé l'isomorphisme canonique entre un espace vectoriel euclidien et son espace dual.
+      }]{Isomorphisme entre un espace euclidien et l'espace de ses formes linéaires (Théorème de représentation de Riesz)}
+  \begin{itemize}[label=$\star$]
+    \item $\chi$ est bien définie car, $\forall x \in E$, par linéarité du produit scalaire en sa seconde variable, $\chi(x): \left|\begin{array}{ll} E &\to \R \\ y &\mapsto \braket{ x | y }  \end{array}\right.$ est une forme linaire sur $E$.
 
 
-		\item Soient $(x, x') \in E^{2}$ et $\lambda \in \R$ fixés quelconques
+    \item Soient $(x, x') \in E^{2}$ et $\lambda \in \R$ fixés quelconques
 
 
-		      \begin{align*}
-			      \forall y \in E,  \chi(x + \lambda .x')(y) & = \braket{ x+\lambda.x' | y }                        \\
-			                                                 & = \braket{ x | y } + \lambda \times\braket{ x' | y } \\
-			                                                 & = \chi(x)(y) + \lambda \times \chi(x')(y)            \\
-			                                                 & = (\chi(x) + \lambda . \chi(x') )(y)
-		      \end{align*}
+          \begin{align*}
+            \forall y \in E,  \chi(x + \lambda .x')(y) & = \braket{ x+\lambda.x' | y }                        \\
+                                                       & = \braket{ x | y } + \lambda \times\braket{ x' | y } \\
+                                                       & = \chi(x)(y) + \lambda \times \chi(x')(y)            \\
+                                                       & = (\chi(x) + \lambda . \chi(x') )(y)
+          \end{align*}
 
-		      Donc $\chi(x+\lambda x') = \chi(x) + \lambda.\chi(x')$, donc $\chi$ est linéaire.
+          Donc $\chi(x+\lambda x') = \chi(x) + \lambda.\chi(x')$, donc $\chi$ est linéaire.
 
-		\item Soit $x \in \ker \chi$ fixé quelconque.
-		      Alors $\chi (x) = 0_{E^{*}}$
-		      $$\forall y \in E, \braket{ x | y } = 0$$
-		      Donc $x \in E^{\perp} = \{ 0_{E} \}$ donc $x = 0_{E}$
-		      Donc $\chi$ est injective, or $E$ et $E^{*}$ sont de même dimension, donc $\chi$ est bijective.
-		      Donc $\chi$ est un isomorphisme.
-	\end{itemize}
+    \item Soit $x \in \ker \chi$ fixé quelconque.
+          Alors $\chi (x) = 0_{E^{*}}$
+          $$\forall y \in E, \braket{ x | y } = 0$$
+          Donc $x \in E^{\perp} = \{ 0_{E} \}$ donc $x = 0_{E}$
+          Donc $\chi$ est injective, or $E$ et $E^{*}$ sont de même dimension, donc $\chi$ est bijective.
+          Donc $\chi$ est un isomorphisme.
+  \end{itemize}
 \end{question_kholle}
 
 \begin{question_kholle}{Si $F$ est un sous-espace vectoriel de dimension finie d'un espace préhilbertien réel, $F^{\perp}$ est son supplémentaire orthogonal}
 
 
-	Soient $(E, \braket{ \cdot | \cdot })$ un espace préhilbertien réel, et $F$ un sous espace vectoriel de dimension finie.
-	Alors $F$ et $F^{\perp}$ sont supplémentaires orthogonaux, i.e.
-	\begin{equation}
-		E = F  \overset{\perp}{\oplus} F^{\perp}
-	\end{equation}
+  Soient $(E, \braket{ \cdot | \cdot })$ un espace préhilbertien réel, et $F$ un sous espace vectoriel de dimension finie.
+  Alors $F$ et $F^{\perp}$ sont supplémentaires orthogonaux, i.e.
+  \begin{equation}
+    E = F  \overset{\perp}{\oplus} F^{\perp}
+  \end{equation}
 
 
 
-	En notant $r = \dim F$, fixons une base orthonormale $(e_{1}, \dots, e_{r})$ de $F$, possible car $F$ est un espace euclidien (dimension finie et muni du produit scalaire induit par $E$).
-	\begin{itemize}[label=$\lozenge$]
-		\item \underline{Analyse}
+  En notant $r = \dim F$, fixons une base orthonormale $(e_{1}, \dots, e_{r})$ de $F$, possible car $F$ est un espace euclidien (dimension finie et muni du produit scalaire induit par $E$).
+  \begin{itemize}[label=$\lozenge$]
+    \item \underline{Analyse}
 
-		      Soit $x \in E$ fixé quelconque, supposons que $\exists (x_{\sslash}, x_{\perp}) \in F \times F^{\perp} = x_{\sslash}+x_{\perp}$
-		      D'abord $$x_{\sslash} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \R^{r}: x_{\sslash}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
-		      Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque
+          Soit $x \in E$ fixé quelconque, supposons que $\exists (x_{\sslash}, x_{\perp}) \in F \times F^{\perp} = x_{\sslash}+x_{\perp}$
+          D'abord $$x_{\sslash} \in F \implies \exists (\lambda_{1}, \dots, \lambda_{r}) \in \R^{r}: x_{\sslash}= \sum_{i=1}^{r}\lambda_{i}.e_{i}$$
+          Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque
 
-		      \begin{align*}
-			      \braket{ x | e_{j} } & =   \left\langle \sum_{i=1}^{r}\lambda_{i}.e_{i} + x_{\perp} \Bigg| e_{j}  \right\rangle                                                                                                                 \\
-			                           & = \sum_{i=1}^{r}\lambda_{i}\times \underbrace{ \braket{ e_{i} | e_{j} } }_{ \delta_{ij} }  + \overbrace{ \braket{ \underbrace{ x_{\perp} }_{ \in F^{\perp} } | \underbrace{ e_{j} }_{ \in F } } }^{ =0 } \\
-			                           & = \lambda_{j}
-		      \end{align*}
+          \begin{align*}
+            \braket{ x | e_{j} } & =   \left\langle \sum_{i=1}^{r}\lambda_{i}.e_{i} + x_{\perp} \Bigg| e_{j}  \right\rangle                                                                                                                 \\
+                                 & = \sum_{i=1}^{r}\lambda_{i}\times \underbrace{ \braket{ e_{i} | e_{j} } }_{ \delta_{ij} }  + \overbrace{ \braket{ \underbrace{ x_{\perp} }_{ \in F^{\perp} } | \underbrace{ e_{j} }_{ \in F } } }^{ =0 } \\
+                                 & = \lambda_{j}
+          \end{align*}
 
-		      Ainsi, $$\left\{ \begin{array}{ll}
-				      x_{\sslash} & = \sum_{i=1}^{r}\lambda_{i}.e_{i}= \sum_{i=1}^{r}\braket{ x | e_{i} } . e_{i} \\
-				      x_{\perp}   & = x - x_{\sslash}
-			      \end{array}\right.$$
+          Ainsi, $$\left\{ \begin{array}{ll}
+              x_{\sslash} & = \sum_{i=1}^{r}\lambda_{i}.e_{i}= \sum_{i=1}^{r}\braket{ x | e_{i} } . e_{i} \\
+              x_{\perp}   & = x - x_{\sslash}
+            \end{array}\right.$$
 
-		\item \underline{Synthèse}
+    \item \underline{Synthèse}
 
-		      Posons donc
-		      $$\left\{ \begin{array}{ll}
-				      x_{\sslash} & = \sum_{i=1}^{r} \braket{ x | e_{i} } .e_{i} \\
-				      x_{\perp}   & = x - x_{\sslash}
-			      \end{array}\right. $$
-		      \begin{itemize}[label=$\star$]
-			      \item $(e_{1}, \dots, e_{r})$ est une base de $F$ donc $x_{\sslash} \in F$
-			      \item $x_{\sslash}+x_{\perp} = x_{\sslash}+ (x - x_{\sslash}) = x$
-			      \item Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque. Calculons $\braket{ x_{\perp} | e_{j} }$
+          Posons donc
+          $$\left\{ \begin{array}{ll}
+              x_{\sslash} & = \sum_{i=1}^{r} \braket{ x | e_{i} } .e_{i} \\
+              x_{\perp}   & = x - x_{\sslash}
+            \end{array}\right. $$
+          \begin{itemize}[label=$\star$]
+            \item $(e_{1}, \dots, e_{r})$ est une base de $F$ donc $x_{\sslash} \in F$
+            \item $x_{\sslash}+x_{\perp} = x_{\sslash}+ (x - x_{\sslash}) = x$
+            \item Soit $j \in [ \! [ 1, r ] \!]$ fixé quelconque. Calculons $\braket{ x_{\perp} | e_{j} }$
 
-			            \begin{align*}
-				            \braket{ x_{\perp} | e_{j} } & = \braket{ x | e_{j} }  - \left\langle  \sum_{i=0}^{r}\braket{ x | e_{i} } .e_{i} \Bigg|  e_{j} \right\rangle                                                         \\
-				                                         & = \left\langle x | e_{j} \right\rangle - \sum_{i=0}^{r} \left\langle x | e_{i} \right\rangle\underbrace{  \left\langle e_{i} | e_{j} \right\rangle  }_{ \delta_{ij} } \\
-				                                         & = \left\langle x | e_{j} \right\rangle  - \left\langle x | e_{j} \right\rangle  = 0
-			            \end{align*}
+                  \begin{align*}
+                    \braket{ x_{\perp} | e_{j} } & = \braket{ x | e_{j} }  - \left\langle  \sum_{i=0}^{r}\braket{ x | e_{i} } .e_{i} \Bigg|  e_{j} \right\rangle                                                         \\
+                                                 & = \left\langle x | e_{j} \right\rangle - \sum_{i=0}^{r} \left\langle x | e_{i} \right\rangle\underbrace{  \left\langle e_{i} | e_{j} \right\rangle  }_{ \delta_{ij} } \\
+                                                 & = \left\langle x | e_{j} \right\rangle  - \left\langle x | e_{j} \right\rangle  = 0
+                  \end{align*}
 
 
-			            Donc $x_{\perp} \in \{e_{1}, \dots, e_{r}\}^{\perp}$
-			            Donc $x_{\perp} \in \text{Vect}\{ e_{1}, \dots, e_{r} \}^{\perp} = F^{\perp}$
+                  Donc $x_{\perp} \in \{e_{1}, \dots, e_{r}\}^{\perp}$
+                  Donc $x_{\perp} \in \text{Vect}\{ e_{1}, \dots, e_{r} \}^{\perp} = F^{\perp}$
 
-		      \end{itemize}
-	\end{itemize}
-	Ainsi, $F$ et $F^{\perp}$ sont supplémentaires orthogonaux.
+          \end{itemize}
+  \end{itemize}
+  Ainsi, $F$ et $F^{\perp}$ sont supplémentaires orthogonaux.
 
-	De plus
-	$$	\forall x \in E, x = \underbrace{ \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i} }_{ \in F } + \underbrace{x - \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i}  }_{ \in F^{\perp} }$$
-	Donc $$p_{F}^{\perp}(x) = \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i} $$
+  De plus
+  $$	\forall x \in E, x = \underbrace{ \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i} }_{ \in F } + \underbrace{x - \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i}  }_{ \in F^{\perp} }$$
+  Donc $$p_{F}^{\perp}(x) = \sum_{i=1}^{r}\left\langle x | e_{i} \right\rangle .e_{i} $$
 
 \end{question_kholle}
 
 \begin{question_kholle}[{On utilisera le produit scalaire $$
-					\left\langle P | Q \right\rangle  = \int_{0}^{1} P(u)Q(u) \, \mathrm du
-				$$ }]{Orthonormalisation de la base canonique de $\R_2[X]$}
-	Partons de la base canonique de $\R_{2}[X]$.
-	\begin{itemize}[label=$\star$]
-		\item $P_{1} =X^{0}$ est un vecteur unitaire avec ce produit scalaire
+          \left\langle P | Q \right\rangle  = \int_{0}^{1} P(u)Q(u) \, \mathrm du
+        $$ }]{Orthonormalisation de la base canonique de $\R_2[X]$}
+  Partons de la base canonique de $\R_{2}[X]$.
+  \begin{itemize}[label=$\star$]
+    \item $P_{1} =X^{0}$ est un vecteur unitaire avec ce produit scalaire
 
-		\item Calcul du second vecteur
-		      $$
-			      P_{2}' = X - \left\langle X | 1 \right\rangle.1 = X - \left( \int_{0}^{1} u \, \mathrm du \right) .1 = X-\frac{1}{2}
-		      $$
+    \item Calcul du second vecteur
+          $$
+            P_{2}' = X - \left\langle X | 1 \right\rangle.1 = X - \left( \int_{0}^{1} u \, \mathrm du \right) .1 = X-\frac{1}{2}
+          $$
 
-		      $$
-			      P_{2} = \frac{P_{2}'}{\|P_{2}'\|} = \frac{P_{2}'}{\sqrt{ \left\langle P_{2}' | P_{2}' \right\rangle  }}= \frac{P_{2}'}{\sqrt{ \int_{0}^{1} \left( u-\frac{1}{2} \right)^{2} \, \mathrm du }}
-			      = \frac{P_{2}'}{\sqrt{ \frac{1}{12} }}= \sqrt{ 12 }P_{2}'
-		      $$
-		      Ce qui donne
-		      $$
-			      P_{2}' = 2\sqrt{ 3 }X - \sqrt{ 3 }
-		      $$
+          $$
+            P_{2} = \frac{P_{2}'}{\|P_{2}'\|} = \frac{P_{2}'}{\sqrt{ \left\langle P_{2}' | P_{2}' \right\rangle  }}= \frac{P_{2}'}{\sqrt{ \int_{0}^{1} \left( u-\frac{1}{2} \right)^{2} \, \mathrm du }}
+            = \frac{P_{2}'}{\sqrt{ \frac{1}{12} }}= \sqrt{ 12 }P_{2}'
+          $$
+          Ce qui donne
+          $$
+            P_{2}' = 2\sqrt{ 3 }X - \sqrt{ 3 }
+          $$
 
-		\item Enfin,
+    \item Enfin,
 
-		      \begin{align*}
-			      P_{3}' & = X^{2} - \left\langle X^{2} | 2\sqrt{ 3 }X-\sqrt{ 3 } \right\rangle.(2\sqrt{ 3 }X-\sqrt{ 3 })  - \left\langle X^{2} | 1 \right\rangle .1                            \\
-			             & = X^{2} - \left( \int_{0}^{1} 2\sqrt{ 3 }u^{3} - \sqrt{ 3 }u^{2} \, \mathrm du  \right).(2\sqrt{ 3 }X-\sqrt{ 3 })-\left( \int_{0}^{1} u^{2} \, \mathrm du  \right).1 \\
-			             & = X^{2} - \frac{\sqrt{ 3 }}{6}(2\sqrt{ 3 }X - \sqrt{ 3 }) - \frac{1}{3}                                                                                              \\ \\
-			             & =X^{2} -X + \frac{1}{6}
-		      \end{align*}
+          \begin{align*}
+            P_{3}' & = X^{2} - \left\langle X^{2} | 2\sqrt{ 3 }X-\sqrt{ 3 } \right\rangle.(2\sqrt{ 3 }X-\sqrt{ 3 })  - \left\langle X^{2} | 1 \right\rangle .1                            \\
+                   & = X^{2} - \left( \int_{0}^{1} 2\sqrt{ 3 }u^{3} - \sqrt{ 3 }u^{2} \, \mathrm du  \right).(2\sqrt{ 3 }X-\sqrt{ 3 })-\left( \int_{0}^{1} u^{2} \, \mathrm du  \right).1 \\
+                   & = X^{2} - \frac{\sqrt{ 3 }}{6}(2\sqrt{ 3 }X - \sqrt{ 3 }) - \frac{1}{3}                                                                                              \\ \\
+                   & =X^{2} -X + \frac{1}{6}
+          \end{align*}
 
 
-		      $$
-			      P_{3} = \frac{P'_{3}}{\|P_{3}'\|}= \frac{P'_{3}}{\sqrt{ \left\langle P_{3} | P_{3} \right\rangle  }}= \frac{P'_{3}}{\sqrt{ \int_{0}^{1} \left( u^{2}-u +\frac{1}{6} \right)^{2} \, \mathrm du }}
-			      = \frac{P_{3}'}{\sqrt{ \frac{1}{180} }} =6\sqrt{ 5 }P'_{3} = 6\sqrt{ 5 }\left( X^{2}-X + \frac{1}{6} \right)
-		      $$
+          $$
+            P_{3} = \frac{P'_{3}}{\|P_{3}'\|}= \frac{P'_{3}}{\sqrt{ \left\langle P_{3} | P_{3} \right\rangle  }}= \frac{P'_{3}}{\sqrt{ \int_{0}^{1} \left( u^{2}-u +\frac{1}{6} \right)^{2} \, \mathrm du }}
+            = \frac{P_{3}'}{\sqrt{ \frac{1}{180} }} =6\sqrt{ 5 }P'_{3} = 6\sqrt{ 5 }\left( X^{2}-X + \frac{1}{6} \right)
+          $$
 
-		      Donc une base orthonormée de $\R_{2}[X]$ muni de ce produit scalaire est
-		      $$
-			      \left( 1, \ 2\sqrt{ 3 }X-\sqrt{ 3 }, \ 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
-		      $$
-	\end{itemize}
+          Donc une base orthonormée de $\R_{2}[X]$ muni de ce produit scalaire est
+          $$
+            \left( 1, \ 2\sqrt{ 3 }X-\sqrt{ 3 }, \ 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
+          $$
+  \end{itemize}
 \end{question_kholle}
 
 \begin{question_kholle}[{Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace préhilbertien Réel.
-				Soient $F$ un sous espace vectoriel de dimension finie de $E$, et $x \in E$.
+        Soient $F$ un sous espace vectoriel de dimension finie de $E$, et $x \in E$.
 
-				L'ensemble $\{ \|x-z\| \mid z \in F \}$ admet une borne inférieure appelée distance de $x$ à $F$ et notée $d(x, F)$, qui est un plus petit élément, atteinte uniquement pour pour $z = p_{F}^{\perp}(x)$
-			}]{Distance d'un vecteur à un sous-espace vectoriel de dimension finie}
+        L'ensemble $\{ \|x-z\| \mid z \in F \}$ admet une borne inférieure appelée distance de $x$ à $F$ et notée $d(x, F)$, qui est un plus petit élément, atteinte uniquement pour pour $z = p_{F}^{\perp}(x)$
+      }]{Distance d'un vecteur à un sous-espace vectoriel de dimension finie}
 
-	$\{ \|x - z\| \mid z \in F \}$ est une partie de $\R$, non vide car elle contient $\|x\|$ pour $z \leftarrow 0_{F}$ d'éléments positifs ou nuls. Elle admet donc une borne inférieure
+  $\{ \|x - z\| \mid z \in F \}$ est une partie de $\R$, non vide car elle contient $\|x\|$ pour $z \leftarrow 0_{F}$ d'éléments positifs ou nuls. Elle admet donc une borne inférieure
 
-	$E$ est un espace euclidien, donc $E = F \overset{\perp}{\oplus} F^{\perp}$ donc $x$ se décompose selon ces supplémentaires orthogonaux
-	$$x = \underbrace{ p_{F}^{\perp}(x) }_{ \in F } + \underbrace{ x - p_{F}^{\perp}(x) }_{ \in F^{\perp} }$$
-	si bien que, pour tout $z \in F$
+  $E$ est un espace euclidien, donc $E = F \overset{\perp}{\oplus} F^{\perp}$ donc $x$ se décompose selon ces supplémentaires orthogonaux
+  $$x = \underbrace{ p_{F}^{\perp}(x) }_{ \in F } + \underbrace{ x - p_{F}^{\perp}(x) }_{ \in F^{\perp} }$$
+  si bien que, pour tout $z \in F$
 
-	\begin{align*}
-		\|x - z\|^{2} & =  \|p_{F}^{\perp}(x) - z + x - p_{F}^{\perp}(x)\|^{2}                                                  \\
-		              & = \|p_{F}^{\perp}(x) - z \|^{2} + \|x - p_{F}^{\perp}(x)\|^{2} \text{ d'après le théorème de Pythagore} \\
-		              & \geqslant \|x - p_{F}^{\perp}(x)\|^{2}
-	\end{align*}
+  \begin{align*}
+    \|x - z\|^{2} & =  \|p_{F}^{\perp}(x) - z + x - p_{F}^{\perp}(x)\|^{2}                                                  \\
+                  & = \|p_{F}^{\perp}(x) - z \|^{2} + \|x - p_{F}^{\perp}(x)\|^{2} \text{ d'après le théorème de Pythagore} \\
+                  & \geqslant \|x - p_{F}^{\perp}(x)\|^{2}
+  \end{align*}
 
-	En prenant la racine carrée,
-	$$\forall z \in F, \| x  - z\| \geqslant \|x - p_{F}^{\perp }(x)\|$$
-	D'où $\| x - p_{F}^{\perp}(x)\|$ minore $\{ \| x - z\| \mid z \in F \}$ et donc sa borne inférieure.
+  En prenant la racine carrée,
+  $$\forall z \in F, \| x  - z\| \geqslant \|x - p_{F}^{\perp }(x)\|$$
+  D'où $\| x - p_{F}^{\perp}(x)\|$ minore $\{ \| x - z\| \mid z \in F \}$ et donc sa borne inférieure.
 
-	Or, en remonant le calcul précédent, il y a égalité pour $z = p_{F}^{\perp}(x)$ si bien que la borne inférieure est un plus petit élément, et vaut $d(x, F) = \|x-p_{F}^{\perp}(x)\|$
+  Or, en remonant le calcul précédent, il y a égalité pour $z = p_{F}^{\perp}(x)$ si bien que la borne inférieure est un plus petit élément, et vaut $d(x, F) = \|x-p_{F}^{\perp}(x)\|$
 
-	De plus, si $z' \in F$ atteint ce plus petit élément on a
+  De plus, si $z' \in F$ atteint ce plus petit élément on a
 
-	\begin{align*}
-		\| x- z'\|^{2}                & = \|p_{F}^{\perp}(x) - z' + x - p_{F}^{\perp}(x)\|^{2}          \\
-		\| x - p_{F}^{\perp}(x)\|^{2} & = \|p_{F}^{\perp}(x) - z' \|^{2} + \|x - p_{F}^{\perp}(x)\|^{2} \\
-		0                             & = \|p_{F}^{\perp}(x) - z' \|^{2}
-	\end{align*}
+  \begin{align*}
+    \| x- z'\|^{2}                & = \|p_{F}^{\perp}(x) - z' + x - p_{F}^{\perp}(x)\|^{2}          \\
+    \| x - p_{F}^{\perp}(x)\|^{2} & = \|p_{F}^{\perp}(x) - z' \|^{2} + \|x - p_{F}^{\perp}(x)\|^{2} \\
+    0                             & = \|p_{F}^{\perp}(x) - z' \|^{2}
+  \end{align*}
 
-	Si bien que $p_{F}^{\perp}(x) - z' = 0_{E}$ d'après le caractère défini du produit scalaire.
-	Donc le plus petit élément $d(x, F) = \min\{ \|x-z\| \mid z \in F \}$ est uniquement atteint pour $z = p_{F}^{\perp}(x)$.
+  Si bien que $p_{F}^{\perp}(x) - z' = 0_{E}$ d'après le caractère défini du produit scalaire.
+  Donc le plus petit élément $d(x, F) = \min\{ \|x-z\| \mid z \in F \}$ est uniquement atteint pour $z = p_{F}^{\perp}(x)$.
 \end{question_kholle}
 
 \begin{question_kholle}[{
-	Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace vectoriel euclidien, $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base orthonormée de $E$.
-	Soit $u = \sum_{i=1}^{n}u_{i}.e_{i}$ un vecteur de $E$.
-	Soient $(a_{1}, \dots, a_{n}) \in\R^{n} \setminus \{ 0_{\R^{n}} \}$, $\alpha \in \R$ et $H_{\alpha}$ l'hyperplan affine d'équation
-	$$
-		\sum_{i=1}^{n}a_{i}x_{i}=\alpha
-	$$
-	}]{Distance à un sous-espace affine}
-	Posons $a = \sum_{i=1}^{n}a_{i}.e_{i}$ $H_{0}$ est un hyperplan vectoriel et, $H_{0} = a^{\perp}$ et $H_{0}^{\perp}= \text{Vect}\{ a \}$
-	Introduisons $h_{\alpha} \in a^{\perp}$ tel que $H_{\alpha}= h_{\alpha}+H_{0}$ et souvenons nous que $h_{\alpha}=\frac{\alpha}{\| a\|^{2}}.a$
+  Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace vectoriel euclidien, $\mathcal{B}=(e_{1}, \dots, e_{n})$ une base orthonormée de $E$.
+  Soit $u = \sum_{i=1}^{n}u_{i}.e_{i}$ un vecteur de $E$.
+  Soient $(a_{1}, \dots, a_{n}) \in\R^{n} \setminus \{ 0_{\R^{n}} \}$, $\alpha \in \R$ et $H_{\alpha}$ l'hyperplan affine d'équation
+  $$
+    \sum_{i=1}^{n}a_{i}x_{i}=\alpha
+  $$
+  }]{Distance à un sous-espace affine}
+  Posons $a = \sum_{i=1}^{n}a_{i}.e_{i}$ $H_{0}$ est un hyperplan vectoriel et, $H_{0} = a^{\perp}$ et $H_{0}^{\perp}= \text{Vect}\{ a \}$
+  Introduisons $h_{\alpha} \in a^{\perp}$ tel que $H_{\alpha}= h_{\alpha}+H_{0}$ et souvenons nous que $h_{\alpha}=\frac{\alpha}{\| a\|^{2}}.a$
 
-	Observons que l'égalité $H_{\alpha}=h_{\alpha}+H_{0}$ donne
-	$$
-		\{ \|u-z\| \mid z \in H_{\alpha} \} = \{ \|u-(h_{\alpha}+z')\| \mid z' \in H_{0} \}= \{ \|(u - h_{\alpha})-z'\| \mid z' \in H_{0}\}
-	$$
+  Observons que l'égalité $H_{\alpha}=h_{\alpha}+H_{0}$ donne
+  $$
+    \{ \|u-z\| \mid z \in H_{\alpha} \} = \{ \|u-(h_{\alpha}+z')\| \mid z' \in H_{0} \}= \{ \|(u - h_{\alpha})-z'\| \mid z' \in H_{0}\}
+  $$
 
-	or, d'après la caractérisation de la distance à un sous-espace quelconque, on a
-	\begin{itemize}[label=$\star$]
-		\item L'ensemble $\{ \|(u-h_{\alpha}) -z'\| \mid z' \in H_{0} \}$ admet une borne inférieure donc $\{ \| u - z\| \mid z \in H_{\alpha} \}$ aussi qui vaut $\mathrm{d}(u-h_{\alpha}, H_{0})$, ce qui prouve que $\mathrm{d}(u, H_{\alpha})$ est bien définie
+  or, d'après la caractérisation de la distance à un sous-espace quelconque, on a
+  \begin{itemize}[label=$\star$]
+    \item L'ensemble $\{ \|(u-h_{\alpha}) -z'\| \mid z' \in H_{0} \}$ admet une borne inférieure donc $\{ \| u - z\| \mid z \in H_{\alpha} \}$ aussi qui vaut $\mathrm{d}(u-h_{\alpha}, H_{0})$, ce qui prouve que $\mathrm{d}(u, H_{\alpha})$ est bien définie
 
-		\item $\inf \{  \| (u - h_{\alpha}) - z'\| \mid z' \in H_{0} \}$ est un plus petit élément atteint pour l'unique valeur $z' = p_{H_{0}}^{\perp}(u-h_{\alpha})=p_{H_{0}}^{\perp}(u)$ car $h_{\alpha} \in H_{0}^{\perp}= \ker p_{H_{0}}^{\perp}$, donc $\mathrm{d(u, H_{\alpha})}=\inf \{  \|u-z\| \mid z \in H_{\alpha} \}$ est un plus petit élément atteint pour l'unique valeur $z = h_{\alpha}+p_{H_{0}}^{\perp}(u-h_{\alpha})= h_{\alpha}+ p_{H_{0}}^{\perp}(u)$
-		      $$
-			      \mathrm{d}(u, H_{\alpha})= \| u - h_{\alpha}-p_{H_{0}}^{\perp}(u)\|
-		      $$
-	\end{itemize}
-	Or $u - p_{H_{0}}^{\perp}(u) = (\mathrm{Id}-p_{H_{0}}^{\perp})(u) = p_{H_{0}^{\perp}}^{\perp}(u) = \left\langle u | \frac{a}{\|a\|} \right\rangle. \frac{a}{\|a\|}$ car $H_{0}^{\perp} = \text{Vect}\{ a \}$ d'où, sachant aussi que $h_{\alpha}= \frac{\alpha}{\|a\|^{2}}.a$
-	$$
-		\mathrm{d}(u, H_{\alpha})= \|p_{H_{0}^{\perp}}^{\perp}(u)-h_{\alpha}\|= \left\| \left\langle a | \frac{a}{\|a\|} \right\rangle. \frac{a}{\|a\|}- \frac{\alpha}{\|a\|^{2}}.a \right\|
-	$$
+    \item $\inf \{  \| (u - h_{\alpha}) - z'\| \mid z' \in H_{0} \}$ est un plus petit élément atteint pour l'unique valeur $z' = p_{H_{0}}^{\perp}(u-h_{\alpha})=p_{H_{0}}^{\perp}(u)$ car $h_{\alpha} \in H_{0}^{\perp}= \ker p_{H_{0}}^{\perp}$, donc $\mathrm{d(u, H_{\alpha})}=\inf \{  \|u-z\| \mid z \in H_{\alpha} \}$ est un plus petit élément atteint pour l'unique valeur $z = h_{\alpha}+p_{H_{0}}^{\perp}(u-h_{\alpha})= h_{\alpha}+ p_{H_{0}}^{\perp}(u)$
+          $$
+            \mathrm{d}(u, H_{\alpha})= \| u - h_{\alpha}-p_{H_{0}}^{\perp}(u)\|
+          $$
+  \end{itemize}
+  Or $u - p_{H_{0}}^{\perp}(u) = (\mathrm{Id}-p_{H_{0}}^{\perp})(u) = p_{H_{0}^{\perp}}^{\perp}(u) = \left\langle u | \frac{a}{\|a\|} \right\rangle. \frac{a}{\|a\|}$ car $H_{0}^{\perp} = \text{Vect}\{ a \}$ d'où, sachant aussi que $h_{\alpha}= \frac{\alpha}{\|a\|^{2}}.a$
+  $$
+    \mathrm{d}(u, H_{\alpha})= \|p_{H_{0}^{\perp}}^{\perp}(u)-h_{\alpha}\|= \left\| \left\langle a | \frac{a}{\|a\|} \right\rangle. \frac{a}{\|a\|}- \frac{\alpha}{\|a\|^{2}}.a \right\|
+  $$
 \end{question_kholle}
 
 \begin{question_kholle}
-	{Dénombrement des surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$ et dans $\lient 1; 3 \rient$}
+  {Dénombrement des surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$ et dans $\lient 1; 3 \rient$}
 
-	Soit $n \in \N^*$.
+  Soit $n \in \N^*$.
 
-	Il y a ${\left| \lient 1; 2 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 2^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
-	Seules les applications constantes $\widetilde{1}$ et $\widetilde{2}$ ne sont pas surjectives.
-	Il y a donc $2^n - 2$ surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
+  Il y a ${\left| \lient 1; 2 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 2^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
+  Seules les applications constantes $\widetilde{1}$ et $\widetilde{2}$ ne sont pas surjectives.
+  Il y a donc $2^n - 2$ surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$.
 
-	Il y a ${\left| \lient 1; 3 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 3^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$. Les applications non surjectives sont celles dont l'image n'est pas $\lient 1; 3 \rient$. C'est-à-dire, celles dont l'image est de cardinal 1 (les fonctions constantes $\widetilde{1}$, $\widetilde{2}$ et $\widetilde{3}$) et celles dont l'image est de cardinal 2. Ces dernières sont les surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$, $\{ 1; 3 \}$ et $\{ 2; 3 \}$. Comme ces trois ensembles ont la même taille, il y a $3 \times (2^n - 2)$ (voir résultat précédent) applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ dont l'image est de cardinal 2. Ainsi, le nombre de surjections de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ est $3^n - 3 - 3(2^n -2) = 3^n - 3 \times 2^n + 3$.
+  Il y a ${\left| \lient 1; 3 \rient \right|} ^ {\left| \lient 1; n \rient \right|} = 3^n$ applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$. Les applications non surjectives sont celles dont l'image n'est pas $\lient 1; 3 \rient$. C'est-à-dire, celles dont l'image est de cardinal 1 (les fonctions constantes $\widetilde{1}$, $\widetilde{2}$ et $\widetilde{3}$) et celles dont l'image est de cardinal 2. Ces dernières sont les surjections de $\lient 1; n \rient$ dans $\lient 1; 2 \rient$, $\{ 1; 3 \}$ et $\{ 2; 3 \}$. Comme ces trois ensembles ont la même taille, il y a $3 \times (2^n - 2)$ (voir résultat précédent) applications de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ dont l'image est de cardinal 2. Ainsi, le nombre de surjections de $\lient 1; n \rient$ dans $\lient 1; 3 \rient$ est $3^n - 3 - 3(2^n -2) = 3^n - 3 \times 2^n + 3$.
 \end{question_kholle}
 
 \begin{question_kholle}
-	[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$.
-		Alors $\left|F\right| = \frac{\left|E\right|}{k}$
-		\begin{quotation}
-			\textquotedblleft Pour compter les moutons, il faut compter les pattes puis diviser par quatre. \textquotedblright
-		\end{quotation}]
-	{Lemme des bergers}
+  [Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$.
+    Alors $\left|F\right| = \frac{\left|E\right|}{k}$
+    \begin{quotation}
+      \textquotedblleft Pour compter les moutons, il faut compter les pattes puis diviser par quatre. \textquotedblright
+    \end{quotation}]
+  {Lemme des bergers}
 
-	Considérons la relation binaire définie sur $E$ par :
-	\begin{equation*}
-		\forall (x, y) \in E^2, x \sim y
-		\iff f(x) = f(y)
-	\end{equation*}
-	Elle est réflexive, transitive et symétrique donc c'est bien une relation d'équivalence.
-	Donc les classes d'équivalence réalise une partition de $E$.
-	Nous avons $\displaystyle E = \bigsqcup_{C \in \nicefrac{E}{\sim}} C$ donc, en passant aux cardinaux, $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right|$.
+  Considérons la relation binaire définie sur $E$ par :
+  \begin{equation*}
+    \forall (x, y) \in E^2, x \sim y
+    \iff f(x) = f(y)
+  \end{equation*}
+  Elle est réflexive, transitive et symétrique donc c'est bien une relation d'équivalence.
+  Donc les classes d'équivalence réalise une partition de $E$.
+  Nous avons $\displaystyle E = \bigsqcup_{C \in \nicefrac{E}{\sim}} C$ donc, en passant aux cardinaux, $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right|$.
 
-	Soit $x \in E$ \fq. Alors $\bar{x} = \left\{ y \in E \;|\; f(x) = f(y) \right\} = f^{-1}(f(\{x\}))$. Par hypothèse, tous les éléments de $F$ ont le même nombre $k$ d'antécédents, or $f({x})$ est un singleton d'élément de $F$ donc $\left|\bar{x}\right| = k$.
-	Ainsi $\forall C \in \nicefrac{E}{\sim}, \left|C\right| = k$.
+  Soit $x \in E$ \fq. Alors $\bar{x} = \left\{ y \in E \;|\; f(x) = f(y) \right\} = f^{-1}(f(\{x\}))$. Par hypothèse, tous les éléments de $F$ ont le même nombre $k$ d'antécédents, or $f({x})$ est un singleton d'élément de $F$ donc $\left|\bar{x}\right| = k$.
+  Ainsi $\forall C \in \nicefrac{E}{\sim}, \left|C\right| = k$.
 
-	Posons $\varphi \left|\begin{array}{ccc}
-			\nicefrac{E}{\sim} & \mapsto     & F                        \\
-			C                  & \rightarrow & f(x) \text{ où } x \in C
-		\end{array}\right.$.
-	$\varphi$ est bien défini car si $(x, y) \in E$ vérifie $\bar{x} = \bar{y}$ alors $f(x) = f(y)$ donc l'image par $\varphi$ ne dépend pas du représentant de classe choisi.
-	$\varphi$ est surjective car soit $z \in F$, $f$ est surjective donc $\exists x_z \in E : f(x_z) = z$ et alors $\varphi(\bar{x_z}) = f(x_z) = z$.
-	$\varphi$ est injective car soient $(C, C') \in \left( \nicefrac{E}{\sim} \right)^2, \varphi(C) = \varphi(C')$ alors $\exists (x, x') \in C \times C' : x \sim x'$, comme deux classes d'équivalence sont confondues ou disjointes, $C = C'$.
-	Ainsi $\varphi$ est une bijection donc $\left|F\right| = \left|\nicefrac{E}{\sim}\right|$.
+  Posons $\varphi \left|\begin{array}{ccc}
+      \nicefrac{E}{\sim} & \mapsto     & F                        \\
+      C                  & \rightarrow & f(x) \text{ où } x \in C
+    \end{array}\right.$.
+  $\varphi$ est bien défini car si $(x, y) \in E$ vérifie $\bar{x} = \bar{y}$ alors $f(x) = f(y)$ donc l'image par $\varphi$ ne dépend pas du représentant de classe choisi.
+  $\varphi$ est surjective car soit $z \in F$, $f$ est surjective donc $\exists x_z \in E : f(x_z) = z$ et alors $\varphi(\bar{x_z}) = f(x_z) = z$.
+  $\varphi$ est injective car soient $(C, C') \in \left( \nicefrac{E}{\sim} \right)^2, \varphi(C) = \varphi(C')$ alors $\exists (x, x') \in C \times C' : x \sim x'$, comme deux classes d'équivalence sont confondues ou disjointes, $C = C'$.
+  Ainsi $\varphi$ est une bijection donc $\left|F\right| = \left|\nicefrac{E}{\sim}\right|$.
 
-	Ainsi $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right| = \sum_{C \in \nicefrac{E}{\sim}} k = \left| \nicefrac{E}{\sim} \right| k = \left|F\right| k$.
+  Ainsi $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right| = \sum_{C \in \nicefrac{E}{\sim}} k = \left| \nicefrac{E}{\sim} \right| k = \left|F\right| k$.
 \end{question_kholle}
 \end{document}

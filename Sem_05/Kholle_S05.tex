@@ -9,95 +9,95 @@
 \maketitle
 
 \begin{question_kholle}{Montrer que l'ensemble des similitudes directes du plan complexe est un groupe pour la composition}
-	Montrons donc que $(S, \circ)$ est un sous groupe de $(\mathcal{S}(\mathbb{C}), \circ)$
-	\begin{itemize}[label=$\lozenge$]
-		\item D'une part, $S \subset \mathcal{S}(\mathbb{C})$. Or l'ensemble des permutations $(\mathcal{S}(\mathbb{C}), \circ)$ est un groupe. En effet, les similitudes sont des bijections de $\mathbb{C} \to \mathbb{C}$.
-		\item De plus, $S$ est non vide, par exemple l'application $\mathrm{Id(\mathbb{C}})$ est une similitude pour $a \leftarrow 1$ et $b \leftarrow 1$.
-		\item Prenons finalement $a$ et $c$ dans $\mathbb{C}^*$ puis $b$ et $d$ dans $\mathbb{C}$. et posons les deux applications suivantes:
-		      \begin{align*}
-			      s \left| \begin{array}{ll}
-				               \mathbb{C} & \to \mathbb{C}  \\
-				               z          & \mapsto a z + b
-			               \end{array}\right.
-			      \text{ et }
-			      s' \left| \begin{array}{ll}
-				                \mathbb{C} & \to \mathbb{C}  \\
-				                z          & \mapsto a z + b
-			                \end{array}\right.
-		      \end{align*}
-		      Ainsi, comme toute similitude directe est une bijection, en particulier $s'$ en est une, et
-		      \begin{align*}
-			      s'^{-1} \left| \begin{array}{ll}
-				                     \mathbb{C} & \to \mathbb{C}                    \\
-				                     z          & \mapsto \frac{z}{c} - \frac{d}{c}
-			                     \end{array}\right.
-		      \end{align*}
-		      Soit $z \in \mathbb{C}$ fixé quelconque:
-		      \begin{align*}
-			      (s \circ s'^{-1})(z) & = s(s'^{-1}(z))                                  \\
-			                           & = s\left(\frac{z}{c} - \frac{d}{c}\right)        \\
-			                           & = a\left(\frac{z}{c} - \frac{d}{c}\right) + b    \\
-			                           & = \frac{a}{c}z + \left( b - \frac{ad}{c} \right)
-		      \end{align*}
-		      Qui est une similitude directe, puisque $\frac{a}{c} \neq  0$ donc $s \circ s'^{-1} \in S$. Donc $(S, \circ)$ est bien un sous-groupe de $(\mathcal{S}(\mathbb{C}), \circ)$.
-	\end{itemize}
+  Montrons donc que $(S, \circ)$ est un sous groupe de $(\mathcal{S}(\mathbb{C}), \circ)$
+  \begin{itemize}[label=$\lozenge$]
+    \item D'une part, $S \subset \mathcal{S}(\mathbb{C})$. Or l'ensemble des permutations $(\mathcal{S}(\mathbb{C}), \circ)$ est un groupe. En effet, les similitudes sont des bijections de $\mathbb{C} \to \mathbb{C}$.
+    \item De plus, $S$ est non vide, par exemple l'application $\mathrm{Id(\mathbb{C}})$ est une similitude pour $a \leftarrow 1$ et $b \leftarrow 1$.
+    \item Prenons finalement $a$ et $c$ dans $\mathbb{C}^*$ puis $b$ et $d$ dans $\mathbb{C}$. et posons les deux applications suivantes:
+          \begin{align*}
+            s \left| \begin{array}{ll}
+                       \mathbb{C} & \to \mathbb{C}  \\
+                       z          & \mapsto a z + b
+                     \end{array}\right.
+            \text{ et }
+            s' \left| \begin{array}{ll}
+                        \mathbb{C} & \to \mathbb{C}  \\
+                        z          & \mapsto a z + b
+                      \end{array}\right.
+          \end{align*}
+          Ainsi, comme toute similitude directe est une bijection, en particulier $s'$ en est une, et
+          \begin{align*}
+            s'^{-1} \left| \begin{array}{ll}
+                             \mathbb{C} & \to \mathbb{C}                    \\
+                             z          & \mapsto \frac{z}{c} - \frac{d}{c}
+                           \end{array}\right.
+          \end{align*}
+          Soit $z \in \mathbb{C}$ fixé quelconque:
+          \begin{align*}
+            (s \circ s'^{-1})(z) & = s(s'^{-1}(z))                                  \\
+                                 & = s\left(\frac{z}{c} - \frac{d}{c}\right)        \\
+                                 & = a\left(\frac{z}{c} - \frac{d}{c}\right) + b    \\
+                                 & = \frac{a}{c}z + \left( b - \frac{ad}{c} \right)
+          \end{align*}
+          Qui est une similitude directe, puisque $\frac{a}{c} \neq  0$ donc $s \circ s'^{-1} \in S$. Donc $(S, \circ)$ est bien un sous-groupe de $(\mathcal{S}(\mathbb{C}), \circ)$.
+  \end{itemize}
 \end{question_kholle}
 
 \begin{question_kholle}{Classifier et interpréter une similitude directe donnée sous la forme $z \mapsto a z + b$ sur un exemple, donner l'expression complexe d'une similitude dont on connaît les éléments caractéristiques.}
-	Soient $(a, b) \in \mathbb{C}^*$ fixés quelconques. Posons la similitude
-	\begin{align*}
-		s \left| \begin{array}{ll}
-			         \mathbb{C} & \to \mathbb{C}  \\
-			         z          & \mapsto a z + b
-		         \end{array}\right.
-	\end{align*}
-	\begin{itemize}[label=$\lozenge$]
-		\item Si $a = 1$, c'est la translation de vecteur d'affixe $b$
-		\item Si $a \neq 1$, $s$ admet un unique point fixe appelé "centre de la similitude" $\omega = \frac{b}{1-b}$
-		      \begin{itemize}[label=$\star$]
-			      \item Si $a \in \mathbb{R}^*$, $s$ est l'homotétie de centre $\omega$ et de rapport $a$.
-			      \item Si $a \in (\mathbb{C}^* \setminus \mathbb{R})$, $s$ est la composée de
-			            \begin{itemize}
-				            \item La rotation de centre $\omega$ et d'angle $\alpha$, où $\alpha$ est un argument de $a$.
-				            \item L'homotétie de centre $\omega$ et de rapport $|a|$.
-			            \end{itemize}
-			            On nommera alors $|a|$ le rapport de $s$ et $\alpha$ une mesure de l'angle de $s$.
-		      \end{itemize}
-	\end{itemize}
-	\textbf{Exemple} : Prenons la similitude $s: z \mapsto (1 - i) z - 1$.
-	\begin{align*}
-		s(z) = z & \iff (1 - i)z - 1 = z \\
-		         & \iff -iz = 1          \\
-		         & \iff z = i
-	\end{align*}
-	De plus,
-	\begin{align*}
-		(1 - i)z - 1 = \sqrt{2}e^{-i \frac{\pi}{4}}z - 1
-	\end{align*}
-	On en déduit donc que $s$ est la similitude directe de centre d'affixe $i$, de rapport $\sqrt{2}$, et d'angle $-\frac{\pi}{4}$.
+  Soient $(a, b) \in \mathbb{C}^*$ fixés quelconques. Posons la similitude
+  \begin{align*}
+    s \left| \begin{array}{ll}
+               \mathbb{C} & \to \mathbb{C}  \\
+               z          & \mapsto a z + b
+             \end{array}\right.
+  \end{align*}
+  \begin{itemize}[label=$\lozenge$]
+    \item Si $a = 1$, c'est la translation de vecteur d'affixe $b$
+    \item Si $a \neq 1$, $s$ admet un unique point fixe appelé "centre de la similitude" $\omega = \frac{b}{1-b}$
+          \begin{itemize}[label=$\star$]
+            \item Si $a \in \mathbb{R}^*$, $s$ est l'homotétie de centre $\omega$ et de rapport $a$.
+            \item Si $a \in (\mathbb{C}^* \setminus \mathbb{R})$, $s$ est la composée de
+                  \begin{itemize}
+                    \item La rotation de centre $\omega$ et d'angle $\alpha$, où $\alpha$ est un argument de $a$.
+                    \item L'homotétie de centre $\omega$ et de rapport $|a|$.
+                  \end{itemize}
+                  On nommera alors $|a|$ le rapport de $s$ et $\alpha$ une mesure de l'angle de $s$.
+          \end{itemize}
+  \end{itemize}
+  \textbf{Exemple} : Prenons la similitude $s: z \mapsto (1 - i) z - 1$.
+  \begin{align*}
+    s(z) = z & \iff (1 - i)z - 1 = z \\
+             & \iff -iz = 1          \\
+             & \iff z = i
+  \end{align*}
+  De plus,
+  \begin{align*}
+    (1 - i)z - 1 = \sqrt{2}e^{-i \frac{\pi}{4}}z - 1
+  \end{align*}
+  On en déduit donc que $s$ est la similitude directe de centre d'affixe $i$, de rapport $\sqrt{2}$, et d'angle $-\frac{\pi}{4}$.
 \end{question_kholle}
 \begin{question_kholle}{Montrer qu'une combinaison linéaire de deux fonctions bornées (respectivement lipschitziennes) est bornée (resp. lipschitzienne)}
-	Soit $I$ un intervalle réel.
+  Soit $I$ un intervalle réel.
 
-	Soient $f$ et $g$ deux fonctions de $I$ dans $\mathbb{R}$. Soient $(\lambda, \mu) \in \mathbb{R}^2$
-	\begin{itemize}[label=$\lozenge$]
-		\item Si $f$ et $g$ sont respectivement bornées par $A$ et par $B$.
-		      Soit $x \in I$.
-		      \begin{align*}
-			      \Big| (\lambda.f + \mu.g)(x) \Big| & = \Big| \lambda.f(x) + \mu.g(x) \Big|                                             \\
-			                                         & \leqslant \big| \lambda \big|  \big|f(x)\big| + \big| \mu \big|  \big| g(x) \big| \\
-			                                         & \leqslant \big| \lambda \big| A + \big| \mu \big| B
-		      \end{align*}
-		      Donc $\lambda.f + \mu.g$ est bornée.
-		\item Si $f$ et $g$ sont respectivement $K$ et $L$ lipschitziennes.
-		      Soient $(x, y) \in I^2$.
-		      \begin{align*}
-			      \Big| (\lambda.f + \mu.g)(x) - (\lambda.f + \mu.g)(y)\Big| & = \Big| \lambda.f(x) + \mu.g(x) - \lambda.f(y) - \mu.g(y) \Big|                                   \\
-			                                                                 & = \Big| \lambda(f(x) - f(y)) + \mu(g(x) - g(y)) \Big|                                             \\
-			                                                                 & \leqslant \Big| \lambda  \Big|  \Big| f(x) - f(y) \Big| + \Big| \mu \Big|  \Big|g(x) - g(y) \Big| \\
-			                                                                 & \leqslant \Big| \lambda  \Big|  K \Big| x-y \Big| + \Big| \mu  \Big| L  \Big| x - y \Big|         \\
-			                                                                 & \leqslant (|\lambda| K + |\mu|L ) |x - y|
-		      \end{align*}
-	\end{itemize}
+  Soient $f$ et $g$ deux fonctions de $I$ dans $\mathbb{R}$. Soient $(\lambda, \mu) \in \mathbb{R}^2$
+  \begin{itemize}[label=$\lozenge$]
+    \item Si $f$ et $g$ sont respectivement bornées par $A$ et par $B$.
+          Soit $x \in I$.
+          \begin{align*}
+            \Big| (\lambda.f + \mu.g)(x) \Big| & = \Big| \lambda.f(x) + \mu.g(x) \Big|                                             \\
+                                               & \leqslant \big| \lambda \big|  \big|f(x)\big| + \big| \mu \big|  \big| g(x) \big| \\
+                                               & \leqslant \big| \lambda \big| A + \big| \mu \big| B
+          \end{align*}
+          Donc $\lambda.f + \mu.g$ est bornée.
+    \item Si $f$ et $g$ sont respectivement $K$ et $L$ lipschitziennes.
+          Soient $(x, y) \in I^2$.
+          \begin{align*}
+            \Big| (\lambda.f + \mu.g)(x) - (\lambda.f + \mu.g)(y)\Big| & = \Big| \lambda.f(x) + \mu.g(x) - \lambda.f(y) - \mu.g(y) \Big|                                   \\
+                                                                       & = \Big| \lambda(f(x) - f(y)) + \mu(g(x) - g(y)) \Big|                                             \\
+                                                                       & \leqslant \Big| \lambda  \Big|  \Big| f(x) - f(y) \Big| + \Big| \mu \Big|  \Big|g(x) - g(y) \Big| \\
+                                                                       & \leqslant \Big| \lambda  \Big|  K \Big| x-y \Big| + \Big| \mu  \Big| L  \Big| x - y \Big|         \\
+                                                                       & \leqslant (|\lambda| K + |\mu|L ) |x - y|
+          \end{align*}
+  \end{itemize}
 \end{question_kholle}
 \end{document}

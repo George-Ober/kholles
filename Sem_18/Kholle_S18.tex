@@ -6,246 +6,246 @@
 \maketitle
 
 \begin{question_kholle}
-	{L'ensemble des nombres premiers est infini}
-	
-	Notons l'ensemble des nombres premiers $\PRIME = \left\{ n \in \N \;|\; \left| \mathcal{D}(n) \cup \N \right| = 2 \right\}$
-	Par l'absurde, supposons que \PRIME est fini. \\
-	Posons $\displaystyle m = 1 + \prod_{p \in \PRIME} p \in \N$. \\
-	Comme $2 \in \PRIME$, $m \geqslant 2$. Donc $m$ admet un diviseur premier, $\exists q \in \PRIME : q \;|\; m$. Donc $q \wedge m = q$. \\
-	Par ailleurs, $\displaystyle m = 1 + q \left( \prod_{\tiny \begin{matrix} p \in \PRIME \\ p \neq q \end{matrix}} p \right)$. Donc $\displaystyle m - q \left( \prod_{\tiny \begin{matrix} p \in \PRIME \\ p \neq q \end{matrix}} p \right) = 1$. D'après le théorème de Bézout, $q \wedge m = 1$. \\
-	Donc $q = 1$ ce qui est une contradiction avec $q \in \PRIME$.
+  {L'ensemble des nombres premiers est infini}
+  
+  Notons l'ensemble des nombres premiers $\PRIME = \left\{ n \in \N \;|\; \left| \mathcal{D}(n) \cup \N \right| = 2 \right\}$
+  Par l'absurde, supposons que \PRIME est fini. \\
+  Posons $\displaystyle m = 1 + \prod_{p \in \PRIME} p \in \N$. \\
+  Comme $2 \in \PRIME$, $m \geqslant 2$. Donc $m$ admet un diviseur premier, $\exists q \in \PRIME : q \;|\; m$. Donc $q \wedge m = q$. \\
+  Par ailleurs, $\displaystyle m = 1 + q \left( \prod_{\tiny \begin{matrix} p \in \PRIME \\ p \neq q \end{matrix}} p \right)$. Donc $\displaystyle m - q \left( \prod_{\tiny \begin{matrix} p \in \PRIME \\ p \neq q \end{matrix}} p \right) = 1$. D'après le théorème de Bézout, $q \wedge m = 1$. \\
+  Donc $q = 1$ ce qui est une contradiction avec $q \in \PRIME$.
 \end{question_kholle}
 
 \begin{question_kholle}
-	[Soit $n \in \N^*, p \in \PRIME, k_0 \in \N$.
-		\begin{equation}
-			\nu_p(n) = k_0 \iff
-			\exists m \in \Z : \left\{ \begin{matrix}
-				n = p^{k_0} m \\
-				m \wedge p = 1
-			\end{matrix} \right.
-		\end{equation}
-	]
-	{Caractérisation de la valuation \textit{p}-adique}
-	
-	$\implies$ Supposons que $\nu_p(n) = k_0$. \\
-	Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{k_0} \;|\; n$.
-	Notons $m \in \Z$ le quotient de la division euclidienne de $n$ par $p^{k_0}$. Nous avons $n = p^{k_0} m$. \\
-	Comme $m \wedge p \in \mathcal{D}(p) \cap \N$, $m \wedge p \in \left\{1,p\right\}$.
-	Par l'absurde, supposons que $m \wedge p = p$.
-	\begin{equation*}
-		\begin{aligned}
-			p \;|\; m
-			 & \implies \exists m' \in \Z : m = p m'                                                     \\
-			 & \implies \exists m' \in \Z : n = p p^{k_0} m' = p^{k_0+1} m'                              \\
-			 & \implies k_0 + 1 \in \left\{ k \in \N \;|\; p^k | n \right\}                              \\
-			 & \implies k_0 + 1 \leqslant \max \left\{ k \in \N \;|\; p^k | n \right\} = \nu_p(n) = k_0
-		\end{aligned}
-	\end{equation*}
-	Ce qui est une contradiction donc $m \wedge p = 1$.
-	
-	$\impliedby$ Supposons $\exists m \in \Z : \left\{ \begin{matrix}
-			n = p^{k_0} m \\
-			m \wedge p = 1
-		\end{matrix} \right.$ \\
-	Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{\nu_p(n)} \;|\; p^{k_0} m$. Or $m \wedge p = 1$ donc $m \wedge p^{\nu_p(n)} = 1$.
-	D'après le théorème de Gauss, $p_{\nu_p(n)} \;|\; p^{k_0}$. Donc $\exists \alpha \in \Z : \alpha p_{\nu_p(n)} = p^{k_0}$
-	\begin{equation*}
-		\begin{aligned}
-			\alpha p_{\nu_p(n)} = p^{k_0}
-			 & \implies p^{k_0} - \alpha p_{\nu_p(n)} = 0                                                            \\
-			 & \implies p^{k_0} \left( 1 - \alpha p^{\nu_p(n) - k_0} \right) = 0 \text{ car } k_0 \leqslant \nu_p(n) \\
-			 & \implies \alpha p^{\nu_p(n) - k_0} = 1 \text{ car \Z est intègre}                                     \\
-			 & \implies p^{\nu_p(n) - k_0} \in \mathcal{D}(1) \cap \N                                                \\
-			 & \implies p^{\nu_p(n) - k_0} = 1                                                                       \\
-			 & \implies \nu_p(n) - k_0 = 0                                                                           \\
-			 & \implies \nu_p(n) = k_0                                                                               \\
-		\end{aligned}
-	\end{equation*}
+  [Soit $n \in \N^*, p \in \PRIME, k_0 \in \N$.
+    \begin{equation}
+      \nu_p(n) = k_0 \iff
+      \exists m \in \Z : \left\{ \begin{matrix}
+        n = p^{k_0} m \\
+        m \wedge p = 1
+      \end{matrix} \right.
+    \end{equation}
+  ]
+  {Caractérisation de la valuation \textit{p}-adique}
+  
+  $\implies$ Supposons que $\nu_p(n) = k_0$. \\
+  Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{k_0} \;|\; n$.
+  Notons $m \in \Z$ le quotient de la division euclidienne de $n$ par $p^{k_0}$. Nous avons $n = p^{k_0} m$. \\
+  Comme $m \wedge p \in \mathcal{D}(p) \cap \N$, $m \wedge p \in \left\{1,p\right\}$.
+  Par l'absurde, supposons que $m \wedge p = p$.
+  \begin{equation*}
+    \begin{aligned}
+      p \;|\; m
+       & \implies \exists m' \in \Z : m = p m'                                                     \\
+       & \implies \exists m' \in \Z : n = p p^{k_0} m' = p^{k_0+1} m'                              \\
+       & \implies k_0 + 1 \in \left\{ k \in \N \;|\; p^k | n \right\}                              \\
+       & \implies k_0 + 1 \leqslant \max \left\{ k \in \N \;|\; p^k | n \right\} = \nu_p(n) = k_0
+    \end{aligned}
+  \end{equation*}
+  Ce qui est une contradiction donc $m \wedge p = 1$.
+  
+  $\impliedby$ Supposons $\exists m \in \Z : \left\{ \begin{matrix}
+      n = p^{k_0} m \\
+      m \wedge p = 1
+    \end{matrix} \right.$ \\
+  Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{\nu_p(n)} \;|\; p^{k_0} m$. Or $m \wedge p = 1$ donc $m \wedge p^{\nu_p(n)} = 1$.
+  D'après le théorème de Gauss, $p_{\nu_p(n)} \;|\; p^{k_0}$. Donc $\exists \alpha \in \Z : \alpha p_{\nu_p(n)} = p^{k_0}$
+  \begin{equation*}
+    \begin{aligned}
+      \alpha p_{\nu_p(n)} = p^{k_0}
+       & \implies p^{k_0} - \alpha p_{\nu_p(n)} = 0                                                            \\
+       & \implies p^{k_0} \left( 1 - \alpha p^{\nu_p(n) - k_0} \right) = 0 \text{ car } k_0 \leqslant \nu_p(n) \\
+       & \implies \alpha p^{\nu_p(n) - k_0} = 1 \text{ car \Z est intègre}                                     \\
+       & \implies p^{\nu_p(n) - k_0} \in \mathcal{D}(1) \cap \N                                                \\
+       & \implies p^{\nu_p(n) - k_0} = 1                                                                       \\
+       & \implies \nu_p(n) - k_0 = 0                                                                           \\
+       & \implies \nu_p(n) = k_0                                                                               \\
+    \end{aligned}
+  \end{equation*}
 \end{question_kholle}
 
 \begin{question_kholle}
-	[\begin{equation}
-			\forall (a, b) \in \Z^2, \
-			a|b \ \iff \ \forall p \in \PRIME, \ \nu _p (a) \leq \nu _p (b)
-		\end{equation}]
-	{Caractérisation de $a | b$ par les valuations $p$-adiques et preuve de leur propriété de morphisme.}
-	Premièrement, montrons que la valuation $p$-adique est un morphisme de $(\Z ^* , \times)$ dans $(\N ,+)$. \\
-	Soient de tels entiers relatifs $a,b$. \\
-	\[
-		\exists \ m,n \in (\Z ^*)^2 \ : \ \left(\left(a = p^{\nu _p (a)}m\right) \ \wedge \ (m\wedge p = 1)\right) \ \wedge \ \left(\left(b = p^{\nu _p (b)}n\right) \ \wedge \ (n\wedge p = 1)\right),
-	\]
-	donc $ab = p^{\nu _p (a) + \nu _p (b)}mn$ et $mn \wedge p = 1$, par la réciproque de la caractérisation des valuations $p$-adiques :
-	\[
-		\nu _p (ab) = \nu _p (a) + \nu _p (b).
-	\]
-	Prouvons le sens réciproque de la susdite caractérisation.  Supposons le membre de droite. \\
-	D'après le théorème de décomposition en facteurs premiers,
-	\[
-		|b| = \prod_{p\in \PRIME} p^{\nu _p (b)} = \prod_{p\in \PRIME} p^{\nu _p (a)}(p^{\nu _p (b) - \nu _p (a)}) = \prod_{p\in \PRIME}  p^{\nu _p (a)} \prod_{p\in \PRIME} p^{\nu _p (b) - \nu _p (a)}= |a|\prod_{p\in \PRIME} p^{\nu _p (b) - \nu _p (a)},
-	\]
-	la première manipulation se justifie par hypothèse et la seconde peut se justifier par le calcul.\\
-	Ainsi, $|a| | |b|$ donc $a|b$. \\
-	Prouvons le sens direct. Supposons le membre de gauche.  \\
-	Soit $p \in \PRIME$. Il existe $k\in \Z$ tel que $ak = b $ car $a |b$. Ainsi,
-	\[
-		\nu _p (b) = \nu _p (ak) = \nu _p (a) + \nu _p (k) \geq \nu _p (a).
-	\]
-	Ce qui suffit.
+  [\begin{equation}
+      \forall (a, b) \in \Z^2, \
+      a|b \ \iff \ \forall p \in \PRIME, \ \nu _p (a) \leq \nu _p (b)
+    \end{equation}]
+  {Caractérisation de $a | b$ par les valuations $p$-adiques et preuve de leur propriété de morphisme.}
+  Premièrement, montrons que la valuation $p$-adique est un morphisme de $(\Z ^* , \times)$ dans $(\N ,+)$. \\
+  Soient de tels entiers relatifs $a,b$. \\
+  \[
+    \exists \ m,n \in (\Z ^*)^2 \ : \ \left(\left(a = p^{\nu _p (a)}m\right) \ \wedge \ (m\wedge p = 1)\right) \ \wedge \ \left(\left(b = p^{\nu _p (b)}n\right) \ \wedge \ (n\wedge p = 1)\right),
+  \]
+  donc $ab = p^{\nu _p (a) + \nu _p (b)}mn$ et $mn \wedge p = 1$, par la réciproque de la caractérisation des valuations $p$-adiques :
+  \[
+    \nu _p (ab) = \nu _p (a) + \nu _p (b).
+  \]
+  Prouvons le sens réciproque de la susdite caractérisation.  Supposons le membre de droite. \\
+  D'après le théorème de décomposition en facteurs premiers,
+  \[
+    |b| = \prod_{p\in \PRIME} p^{\nu _p (b)} = \prod_{p\in \PRIME} p^{\nu _p (a)}(p^{\nu _p (b) - \nu _p (a)}) = \prod_{p\in \PRIME}  p^{\nu _p (a)} \prod_{p\in \PRIME} p^{\nu _p (b) - \nu _p (a)}= |a|\prod_{p\in \PRIME} p^{\nu _p (b) - \nu _p (a)},
+  \]
+  la première manipulation se justifie par hypothèse et la seconde peut se justifier par le calcul.\\
+  Ainsi, $|a| | |b|$ donc $a|b$. \\
+  Prouvons le sens direct. Supposons le membre de gauche.  \\
+  Soit $p \in \PRIME$. Il existe $k\in \Z$ tel que $ak = b $ car $a |b$. Ainsi,
+  \[
+    \nu _p (b) = \nu _p (ak) = \nu _p (a) + \nu _p (k) \geq \nu _p (a).
+  \]
+  Ce qui suffit.
 \end{question_kholle}
 
 \begin{question_kholle}
-	[Le pgcd comme produit des $p$ à la puissance du minimum des $\nu _p$ et le ppcm comme le produit des  $p$ à la puissance du maximum des $\nu _p$.
-		\begin{equation}
-			\begin{aligned}
-				a \wedge b & = \prod_{p\in \PRIME} p^{\min (\nu _p (a),\nu_p (b))} \\
-				a \vee b   & = \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
-			\end{aligned}
-		\end{equation}]
-	{Expression du pgcd et du ppcm à partir des décomposition en facteurs premiers de $a$ et $b$.}
-	Prouvons la formule du pgcd et déduisons-en la formule du ppcm. \\
-	Soient $(a,b)\in (\Z ^*)^2$. Soit $p \in \PRIME $. Il faut et il suffit de montrer que $\nu_p (a \wedge b) = \min (\nu_p(a), \nu_p(b))$ pour obtenir le résultat. On a $a\wedge b | a$ et $a \wedge b | b$ donc d'après la caractérisation de la divisibilité par les valuations $p$-adiques, $\nu_p (a \wedge b) \leq \nu _p (a)$ et $\nu _p (a\wedge b) \leq \nu _p (b)$ donc $\nu _p (a\wedge b) \leq \min (\nu _p(a), \nu_p (b)).$ \\
-	Posons $m = \min (\nu _p(a), \nu_p (b))$. On a
-	\[
-		|a| = \prod_{q \in \PRIME} q ^{\nu _q (a)} = p^m \left( (p^{\nu_p (a)- m})\prod_{q \in \PRIME \backslash \{p\}} q ^{\nu _q (a)} \right),
-	\]
-	car par définition, $m \leq \nu _p (a)$, donc $p^m | a$, on montrerait de même que $p^m |b$, donc par définition, $p^m | a\wedge b$, donc une nouvelle fois en appliquant la caractérisation de la divisibilité par les valuations $p$-adiques, $m \leq \nu_p ( a\wedge b)$. Finalement, $\nu_p (a\wedge b) = m$. \\
-	On en déduit la formule du ppcm :
-	\[
-		|a||b| = (a \wedge b) (a \vee b) \ \implies \ a\vee b = \prod_{p\in \PRIME} p^{\nu _p(a) + \nu _p(b) - \min (\nu _p (a),\nu_p (b))} =  \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
-	\]
-	
+  [Le pgcd comme produit des $p$ à la puissance du minimum des $\nu _p$ et le ppcm comme le produit des  $p$ à la puissance du maximum des $\nu _p$.
+    \begin{equation}
+      \begin{aligned}
+        a \wedge b & = \prod_{p\in \PRIME} p^{\min (\nu _p (a),\nu_p (b))} \\
+        a \vee b   & = \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
+      \end{aligned}
+    \end{equation}]
+  {Expression du pgcd et du ppcm à partir des décomposition en facteurs premiers de $a$ et $b$.}
+  Prouvons la formule du pgcd et déduisons-en la formule du ppcm. \\
+  Soient $(a,b)\in (\Z ^*)^2$. Soit $p \in \PRIME $. Il faut et il suffit de montrer que $\nu_p (a \wedge b) = \min (\nu_p(a), \nu_p(b))$ pour obtenir le résultat. On a $a\wedge b | a$ et $a \wedge b | b$ donc d'après la caractérisation de la divisibilité par les valuations $p$-adiques, $\nu_p (a \wedge b) \leq \nu _p (a)$ et $\nu _p (a\wedge b) \leq \nu _p (b)$ donc $\nu _p (a\wedge b) \leq \min (\nu _p(a), \nu_p (b)).$ \\
+  Posons $m = \min (\nu _p(a), \nu_p (b))$. On a
+  \[
+    |a| = \prod_{q \in \PRIME} q ^{\nu _q (a)} = p^m \left( (p^{\nu_p (a)- m})\prod_{q \in \PRIME \backslash \{p\}} q ^{\nu _q (a)} \right),
+  \]
+  car par définition, $m \leq \nu _p (a)$, donc $p^m | a$, on montrerait de même que $p^m |b$, donc par définition, $p^m | a\wedge b$, donc une nouvelle fois en appliquant la caractérisation de la divisibilité par les valuations $p$-adiques, $m \leq \nu_p ( a\wedge b)$. Finalement, $\nu_p (a\wedge b) = m$. \\
+  On en déduit la formule du ppcm :
+  \[
+    |a||b| = (a \wedge b) (a \vee b) \ \implies \ a\vee b = \prod_{p\in \PRIME} p^{\nu _p(a) + \nu _p(b) - \min (\nu _p (a),\nu_p (b))} =  \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
+  \]
+  
 \end{question_kholle}
 
 \begin{question_kholle}
-	[Petit Th. de Fermat :
-	{\begin{enumerate}[label=($\roman*$)]
-		\item $\forall a \in \Z , \ a^p \equiv a \mod p$ \\
-		      $\ \forall x \in \Z / p\Z, \ x^p = x $
-		\item $\forall a \in \Z, \ p\not | a, \ \implies \ a^{p-1} \equiv 1 \mod p$ \\
-		      $\ \forall x \in \Z / p\Z, \ x^{p-1} = 1 $
-	\end{enumerate}}]
-	{Pour $p$ premier, $(a+b)^p \equiv a^p + b^p \mod p$, en déduire le petit Th. de Fermat (2 versions), expression du résultat dans $\Z / p\Z$.}
-	Soient $a,b$ de tels entiers relatifs et soit $p$ un nombre premier. Calculons,
-	\[
-		(a + b )^p  = \sum_{k = 0}^p \binom{p}{k}a^{p-k}b^k  = a^p + b^p + \sum_{k = 1}^{p-1} \binom{p}{k}a^{p-k}b^k \equiv a^p + b^p \mod p,
-	\]
-	car $\forall k \in [\![1,p-1 ]\!], \ p | \binom{p}{k}$ (élémentaire), d'où le résultat. \\
-	Dans $\Z /p\Z$, ce résultat s'énonce comme suit :
-	\[
-		\forall (x,y) \in \Z /p\Z ^2, \ (x+y)^p = x^p + y^p.
-	\]
-	En guise d'application, démontrons le petit Th. de Fermat énoncé plus haut. \\
-	Démonstration du $(i)$. Considérons le prédicat $\PRIME ( \cdot)$ défini sur $\N$  par :
-	\[
-		\PRIME (a) : "a^p \equiv a \mod p".
-	\]
-	Initialisation : Pour $a = 0$, rien à faire, donc $\PRIME (0)$ est vrai. \\
-	Hérédité : Soit $a\in \N$ \tq $\ \PRIME (a)$. Calculons,
-	\[
-		(a+1)^p  \equiv a^p + 1 \mod p \overset{\PRIME (a)}{\equiv} a + 1 \mod p,
-	\]
-	donc $\PRIME (a+1)$ vrai. \\
-	Par Th. de récurrence sur $\N$, $\PRIME(a)$ est vrai pour tout $a\in \N$. \\
-	Il faut maintenant étendre le résultat à $\Z$. Soit $p\in \PRIME \backslash \{2\}$, ainsi $p$ est impair. Soit $a\in \Z \backslash \N$. Calculons,
-	\[
-		a^p\equiv (-|a|)^p \mod p \equiv - |a|^p \mod p \overset{\underset{\text{pour }a \gets |a|}{\text{Th. de Fermat}}}{\equiv} - |a| \mod p \equiv a \mod p  .
-	\]
-	Si $p =2$, $\ a^2 \equiv |a|^2 \mod 2 \equiv |a| \mod 2 \equiv -|a| \mod 2 \equiv a \mod 2$. \\
-	Le $(ii)$, soit $a\in \Z$ tel que $p \not | a$.
-	\[
-		(p\not | a)\wedge (p\in \PRIME) \implies p\wedge a = 1,
-	\]
-	d'après le $(i)$, $\ p | a^p -a \ \implies \ p| a(a^{p-1} -1) \ \overset{\text{Th. de Gauss}}{\implies}  \ p| a^{p-1} -1 \ \implies \ a^{p-1} \equiv 1 \mod p$. \\
-	Les écritures dans $\Z /p \Z$ ne posent pas de problème.s, ce qui conclut.
+  [Petit Th. de Fermat :
+  {\begin{enumerate}[label=($\roman*$)]
+    \item $\forall a \in \Z , \ a^p \equiv a \mod p$ \\
+          $\ \forall x \in \Z / p\Z, \ x^p = x $
+    \item $\forall a \in \Z, \ p\not | a, \ \implies \ a^{p-1} \equiv 1 \mod p$ \\
+          $\ \forall x \in \Z / p\Z, \ x^{p-1} = 1 $
+  \end{enumerate}}]
+  {Pour $p$ premier, $(a+b)^p \equiv a^p + b^p \mod p$, en déduire le petit Th. de Fermat (2 versions), expression du résultat dans $\Z / p\Z$.}
+  Soient $a,b$ de tels entiers relatifs et soit $p$ un nombre premier. Calculons,
+  \[
+    (a + b )^p  = \sum_{k = 0}^p \binom{p}{k}a^{p-k}b^k  = a^p + b^p + \sum_{k = 1}^{p-1} \binom{p}{k}a^{p-k}b^k \equiv a^p + b^p \mod p,
+  \]
+  car $\forall k \in [\![1,p-1 ]\!], \ p | \binom{p}{k}$ (élémentaire), d'où le résultat. \\
+  Dans $\Z /p\Z$, ce résultat s'énonce comme suit :
+  \[
+    \forall (x,y) \in \Z /p\Z ^2, \ (x+y)^p = x^p + y^p.
+  \]
+  En guise d'application, démontrons le petit Th. de Fermat énoncé plus haut. \\
+  Démonstration du $(i)$. Considérons le prédicat $\PRIME ( \cdot)$ défini sur $\N$  par :
+  \[
+    \PRIME (a) : "a^p \equiv a \mod p".
+  \]
+  Initialisation : Pour $a = 0$, rien à faire, donc $\PRIME (0)$ est vrai. \\
+  Hérédité : Soit $a\in \N$ \tq $\ \PRIME (a)$. Calculons,
+  \[
+    (a+1)^p  \equiv a^p + 1 \mod p \overset{\PRIME (a)}{\equiv} a + 1 \mod p,
+  \]
+  donc $\PRIME (a+1)$ vrai. \\
+  Par Th. de récurrence sur $\N$, $\PRIME(a)$ est vrai pour tout $a\in \N$. \\
+  Il faut maintenant étendre le résultat à $\Z$. Soit $p\in \PRIME \backslash \{2\}$, ainsi $p$ est impair. Soit $a\in \Z \backslash \N$. Calculons,
+  \[
+    a^p\equiv (-|a|)^p \mod p \equiv - |a|^p \mod p \overset{\underset{\text{pour }a \gets |a|}{\text{Th. de Fermat}}}{\equiv} - |a| \mod p \equiv a \mod p  .
+  \]
+  Si $p =2$, $\ a^2 \equiv |a|^2 \mod 2 \equiv |a| \mod 2 \equiv -|a| \mod 2 \equiv a \mod 2$. \\
+  Le $(ii)$, soit $a\in \Z$ tel que $p \not | a$.
+  \[
+    (p\not | a)\wedge (p\in \PRIME) \implies p\wedge a = 1,
+  \]
+  d'après le $(i)$, $\ p | a^p -a \ \implies \ p| a(a^{p-1} -1) \ \overset{\text{Th. de Gauss}}{\implies}  \ p| a^{p-1} -1 \ \implies \ a^{p-1} \equiv 1 \mod p$. \\
+  Les écritures dans $\Z /p \Z$ ne posent pas de problème.s, ce qui conclut.
 \end{question_kholle}
 
 \begin{question_kholle}
-	[]
-	{$\Z /n\Z$ est un corps si et seulement si $n$ est premier.}
-	Montrons le sens réciproque, supposons $n\in \PRIME$. \\
-	Soit $x\in \Z/n\Z$ tel que $x \neq \overline{0}$. \\
-	$\exists \ a \in [\![0,p-1]\!]\ : \ c = \overline{a}$, $\ I =[\![0, p-1]\!]$ étant un système de représentant des classes. \\
-	Comme $a\in I, \ n\not | a$, or $n \in \PRIME$, donc $n \wedge a = 1$. Par Bezout, il existe $u,v \in \Z^2$ tels que $au +nv =1$, donc $u$ est l'inverse de $a$ modulo $n$ donc $a\in \Z/n\Z ^\times$, dès lors, tout élément non nul de $\Z/n\Z$ est inversible, or c'est un anneau commutatif, donc c'est un corps. \\ \\
-	Montrons le sens direct en raisonnant par contraposition, supposons $n\not \in \PRIME$. \\
-	Comme $n$ n'est pas premier et est plus grand que $2$, il admet un diviseur, $d$, dans $I\backslash \{0,1\} = J$. Notons $d'$ le quotient de la division euclidienne de $n$ par $d$, on a alors $a = dd'$ et $d'\in J$. Donc $\overline{d}\overline{d'}=\overline{0}$ et comme $d,d' \in J$, on a $d,d' \neq 0$, donc $\overline{d}$ est un diviseur de zéro de $\Z/n\Z$, donc $\overline{d}$ est un élément non nul de $\Z/n\Z$ non inversible, donc $\Z/n\Z$ n'est pas un corps. En contraposant ce que nous venons de démontrer on a le résulat. Ce qui conclut.
+  []
+  {$\Z /n\Z$ est un corps si et seulement si $n$ est premier.}
+  Montrons le sens réciproque, supposons $n\in \PRIME$. \\
+  Soit $x\in \Z/n\Z$ tel que $x \neq \overline{0}$. \\
+  $\exists \ a \in [\![0,p-1]\!]\ : \ c = \overline{a}$, $\ I =[\![0, p-1]\!]$ étant un système de représentant des classes. \\
+  Comme $a\in I, \ n\not | a$, or $n \in \PRIME$, donc $n \wedge a = 1$. Par Bezout, il existe $u,v \in \Z^2$ tels que $au +nv =1$, donc $u$ est l'inverse de $a$ modulo $n$ donc $a\in \Z/n\Z ^\times$, dès lors, tout élément non nul de $\Z/n\Z$ est inversible, or c'est un anneau commutatif, donc c'est un corps. \\ \\
+  Montrons le sens direct en raisonnant par contraposition, supposons $n\not \in \PRIME$. \\
+  Comme $n$ n'est pas premier et est plus grand que $2$, il admet un diviseur, $d$, dans $I\backslash \{0,1\} = J$. Notons $d'$ le quotient de la division euclidienne de $n$ par $d$, on a alors $a = dd'$ et $d'\in J$. Donc $\overline{d}\overline{d'}=\overline{0}$ et comme $d,d' \in J$, on a $d,d' \neq 0$, donc $\overline{d}$ est un diviseur de zéro de $\Z/n\Z$, donc $\overline{d}$ est un élément non nul de $\Z/n\Z$ non inversible, donc $\Z/n\Z$ n'est pas un corps. En contraposant ce que nous venons de démontrer on a le résulat. Ce qui conclut.
 \end{question_kholle}
 
 \begin{question_kholle}
-	{Les éléments inversibles d'un anneau $A$ forment un groupe multiplicatif noté $\left( A^\times, \times \right)$}
-	
-	Soit $(A, +, \times)$ un anneau. \\
-	Un élément inversible (ou unité) est un élément de $A$ symétrisable pour la loi $\times$. Posons l'ensemble des éléments inversibles $A^\times = \left\{ a \in A \;|\; \exists b \in A : a \times b = b \times a = 1_A \right\}$.
-	
-	\begin{itemize}[label=$\star$, leftmargin=.5cm]
-		\item Montrons que la LCI $\times$ se restreint bien à $A^\times$ en un LCI $\times_{A^\times}$. \\
-		      Soient $(a_1, a_2) \in {A^\times}^2$.
-		      Par défintion de $A^\times$, $\exists (b_1, b_2) \in A^2 : a_1 \times b_1 = b_1 \times a_1 = 1_A \text{ et } a_2 \times b_2 = b_2 \times a_2 = 1_A$.
-		      \begin{equation*}
-			      \left( a_1 \times a_2 \right) \times \left( b_2 \times b_1 \right)
-			      \underbrace{=}_{\text{loi associative}} a_1 \times \underbrace{a_2 \times b_2}_{= ~ 1_A} \times b_1
-			      = a_1 \times b_1
-			      = 1_A
-		      \end{equation*}
-		      \begin{equation*}
-			      \left( b_2 \times b_1 \right) \times \left( a_1 \times a_2 \right)
-			      \underbrace{=}_{\text{loi associative}} b_2 \times \underbrace{b_1 \times a_1}_{= ~ 1_A} \times a_2
-			      = b_2 \times a_2
-			      = 1_A
-		      \end{equation*}
-		      Donc $\left( a_1 \times a_2 \right) \in A^\times$.
-		      
-		\item La loi $\times$ est associative donc la loi $\times_{A^\times}$ l'est aussi.
-		      
-		\item $1_A$ vérifie $1_A \times 1_A = 1_A$ donc $1_A \in A^\times$. \\
-		      De plus, $\forall a \in A^\times, 1_A \times_{A^\times} a = a \times_{A^\times} 1_A = a$ donc $\times_{A^\times}$ admet $1_A$ comme élément neutre.
-		      
-		\item Soit $a \in A^\times$. Par définition de $A^\times$, $\exists b \in A : a \times b = b \times a = 1_A$. \\
-		      D'où $b \in A^\times$. En pensant les égalités ci-dessus dans $A^\times$,
-		      \begin{equation*}
-			      a \times_{A^\times} b = b \times_{A^\times} a = 1_A
-		      \end{equation*}
-		      Donc $a$ est inversible dans $A^\times$.
-	\end{itemize}
-	
-	Ainsi, $\left( A^\times, \times_{A^\times} \right)$ est un groupe.
+  {Les éléments inversibles d'un anneau $A$ forment un groupe multiplicatif noté $\left( A^\times, \times \right)$}
+  
+  Soit $(A, +, \times)$ un anneau. \\
+  Un élément inversible (ou unité) est un élément de $A$ symétrisable pour la loi $\times$. Posons l'ensemble des éléments inversibles $A^\times = \left\{ a \in A \;|\; \exists b \in A : a \times b = b \times a = 1_A \right\}$.
+  
+  \begin{itemize}[label=$\star$, leftmargin=.5cm]
+    \item Montrons que la LCI $\times$ se restreint bien à $A^\times$ en un LCI $\times_{A^\times}$. \\
+          Soient $(a_1, a_2) \in {A^\times}^2$.
+          Par défintion de $A^\times$, $\exists (b_1, b_2) \in A^2 : a_1 \times b_1 = b_1 \times a_1 = 1_A \text{ et } a_2 \times b_2 = b_2 \times a_2 = 1_A$.
+          \begin{equation*}
+            \left( a_1 \times a_2 \right) \times \left( b_2 \times b_1 \right)
+            \underbrace{=}_{\text{loi associative}} a_1 \times \underbrace{a_2 \times b_2}_{= ~ 1_A} \times b_1
+            = a_1 \times b_1
+            = 1_A
+          \end{equation*}
+          \begin{equation*}
+            \left( b_2 \times b_1 \right) \times \left( a_1 \times a_2 \right)
+            \underbrace{=}_{\text{loi associative}} b_2 \times \underbrace{b_1 \times a_1}_{= ~ 1_A} \times a_2
+            = b_2 \times a_2
+            = 1_A
+          \end{equation*}
+          Donc $\left( a_1 \times a_2 \right) \in A^\times$.
+          
+    \item La loi $\times$ est associative donc la loi $\times_{A^\times}$ l'est aussi.
+          
+    \item $1_A$ vérifie $1_A \times 1_A = 1_A$ donc $1_A \in A^\times$. \\
+          De plus, $\forall a \in A^\times, 1_A \times_{A^\times} a = a \times_{A^\times} 1_A = a$ donc $\times_{A^\times}$ admet $1_A$ comme élément neutre.
+          
+    \item Soit $a \in A^\times$. Par définition de $A^\times$, $\exists b \in A : a \times b = b \times a = 1_A$. \\
+          D'où $b \in A^\times$. En pensant les égalités ci-dessus dans $A^\times$,
+          \begin{equation*}
+            a \times_{A^\times} b = b \times_{A^\times} a = 1_A
+          \end{equation*}
+          Donc $a$ est inversible dans $A^\times$.
+  \end{itemize}
+  
+  Ainsi, $\left( A^\times, \times_{A^\times} \right)$ est un groupe.
 \end{question_kholle}
 
 \begin{question_kholle}
-	{L'image directe par un morphisme d'anneau d'un sous-anneau de l'anneau de départ est un sous anneau de l'anneau d'arrivée. De même pour l'image réciproque.}
-	
-	Soient $\left(A,+,\times\right)$ et $\left(B,+,\times\right)$ deux anneaux et $f : A \rightarrow B$ un morphisme d'anneau.
-	
-	\noindent Soit $A'$ un sous-anneau de $A$. Montrons que $f(A')$ est un sous-anneau de $B$.
-	\begin{itemize}[label=$\star$, leftmargin=.5cm]
-		\item Par définition de $f$, $f(A') \subset B$ et $(B,+,\times)$ est un anneau.
-		\item Soient $(u,v) \in f(A')^2$. Alors $\exists (a,b) \in A'^2 : f(a) = u \text{ et } f(b) = v$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
-		      \begin{equation*}
-			      u - v = f(a) - f(b) = f(a - b)
-		      \end{equation*}
-		      Comme $A'$ est un sous-anneau, $a - b \in A'$. Donc $u - v \in f(A')$. \\
-		      De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
-		      \begin{equation*}
-			      u \times v = f(a) \times f(b) = f(a \times b)
-		      \end{equation*}
-		      Comme $A'$ est un sous-anneau, $a \times b \in A'$. Donc $u \times v \in f(A')$.
-		\item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $A'$ est un sous-anneau donc $1_A \in A'$. D'où $1_B \in f(A')$.
-	\end{itemize}
-	
-	\noindent Soit $B'$ un sous-anneau de $B$. Montrons que $f^{-1}(B')$ est un sous-anneau de $A$.
-	\begin{itemize}[label=$\star$, leftmargin=.5cm]
-		\item Par définition de $f$, $f^{-1}(B') \subset A$ et $(A,+,\times)$ est un anneau.
-		\item Soient $(a,b) \in f^{-1}(B')^2$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
-		      \begin{equation*}
-			      f(a - b) = \underbrace{f(a)}_{\in B'} - \underbrace{f(b)}_{\in B'} \in B'
-		      \end{equation*}
-		      Donc $a - b \in f^{-1}(B')$. \\
-		      De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
-		      \begin{equation*}
-			      f(a b) = \underbrace{f(a)}_{\in B'} \underbrace{f(b)}_{\in B'} \in B'
-		      \end{equation*}
-		      Donc $a b \in f^{-1}(B')$.
-		\item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $B'$ est un sous-anneau donc $1_B \in B'$. D'où $1_A \in f^{-1}(B')$.
-	\end{itemize}
+  {L'image directe par un morphisme d'anneau d'un sous-anneau de l'anneau de départ est un sous anneau de l'anneau d'arrivée. De même pour l'image réciproque.}
+  
+  Soient $\left(A,+,\times\right)$ et $\left(B,+,\times\right)$ deux anneaux et $f : A \rightarrow B$ un morphisme d'anneau.
+  
+  \noindent Soit $A'$ un sous-anneau de $A$. Montrons que $f(A')$ est un sous-anneau de $B$.
+  \begin{itemize}[label=$\star$, leftmargin=.5cm]
+    \item Par définition de $f$, $f(A') \subset B$ et $(B,+,\times)$ est un anneau.
+    \item Soient $(u,v) \in f(A')^2$. Alors $\exists (a,b) \in A'^2 : f(a) = u \text{ et } f(b) = v$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
+          \begin{equation*}
+            u - v = f(a) - f(b) = f(a - b)
+          \end{equation*}
+          Comme $A'$ est un sous-anneau, $a - b \in A'$. Donc $u - v \in f(A')$. \\
+          De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
+          \begin{equation*}
+            u \times v = f(a) \times f(b) = f(a \times b)
+          \end{equation*}
+          Comme $A'$ est un sous-anneau, $a \times b \in A'$. Donc $u \times v \in f(A')$.
+    \item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $A'$ est un sous-anneau donc $1_A \in A'$. D'où $1_B \in f(A')$.
+  \end{itemize}
+  
+  \noindent Soit $B'$ un sous-anneau de $B$. Montrons que $f^{-1}(B')$ est un sous-anneau de $A$.
+  \begin{itemize}[label=$\star$, leftmargin=.5cm]
+    \item Par définition de $f$, $f^{-1}(B') \subset A$ et $(A,+,\times)$ est un anneau.
+    \item Soient $(a,b) \in f^{-1}(B')^2$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
+          \begin{equation*}
+            f(a - b) = \underbrace{f(a)}_{\in B'} - \underbrace{f(b)}_{\in B'} \in B'
+          \end{equation*}
+          Donc $a - b \in f^{-1}(B')$. \\
+          De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
+          \begin{equation*}
+            f(a b) = \underbrace{f(a)}_{\in B'} \underbrace{f(b)}_{\in B'} \in B'
+          \end{equation*}
+          Donc $a b \in f^{-1}(B')$.
+    \item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $B'$ est un sous-anneau donc $1_B \in B'$. D'où $1_A \in f^{-1}(B')$.
+  \end{itemize}
 \end{question_kholle}
 \end{document}
