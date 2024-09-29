@@ -15,7 +15,7 @@ ${final_output} : ${pdf_ouput}
 	@echo Écriture du fichier ${final_output} ...
 	@cat begin_kholles.tex > ${final_output}
 	@for nb in ${nb_weeks}; do \
-		echo '\pagebreak\section{Semaine '$${nb}'}' >> ${final_output}; \
+		echo '\pagebreak\section{Semaine '`echo $$nb | sed 's/^0*//'`'}' >> ${final_output}; \
 		sed -e '/\\documentclass/,/\\maketitle/d' -e '/\\end{document}/,//d' Sem_$${nb}/Kholle_S$${nb}.tex >> ${final_output}; \
 	done
 	@cat end_kholles.tex >> ${final_output}
