@@ -143,37 +143,28 @@ $$
 
   Donc en posant $Q(z) = \sum_{k=1}^{n}a_{k}\left( \sum _{j=0}^{k-1}z^{j}z_{0}^{k-1-j} \right), \in \mathbb{C}[z]$, on a montré que $P$ se factorise.
 \end{question_kholle}
-\begin{question_kholle}
-  [{Soient $n \in \mathbb{N}, (a_{0}, \dots, a_{n})\in\mathbb{C}^{n+1}$ et $z_{0} \in \mathbb{C}$ Posons pour tout $z \in \mathbb{C}, P(z) = \sum_{k=0}^{n}a_{k}z^{k}$
-  \begin{propositions}
-    \item Si $\exists p \in \mathbb{N}^{*}: \exists(z_{1},\dots ,z_{p})\in\mathbb{C}^{p}$ deux à deux distincts tels que $\forall k \in [ \! [ 1, p ] \!], P(z_{k}) = 0$ alors, $\exists Q \in \mathbb{C}[x]:\forall z \in \mathbb{C}, P(z) = Q(z) \times \prod_{k=1}^{p}(z-z_{k})$.
-  \end{propositions}
-  }]
-  {Si $z_1, \dots , z_n$ sont $n$ racines distinctes de la fonction polynômiale $P$ de degré $n$, alors $P(z)$ se factorise en ... }
-  Considérons la propriété $\mathcal{P}(\cdot)$ définie pour tout $p \in \mathbb{N}^{*}$ par
-  \begin{multline*}
-    \mathcal{P}(p) : \forall P \in \mathbb{C}[z], (\exists (z_{1}, \dots, z_{p}) \in \mathbb{C}^{p}, \text{ 2 à 2 distincts }: \forall i \in [ \! [ 1, p ] \!], P(z_{i}) = 0)\\
-    \implies \exists Q \in \mathbb{C}[z]: P(z) = Q(z) \prod_{i=1}^{p}(z-z_{i})
-  \end{multline*}
-  \begin{itemize}[label=$\lozenge$]
-    \item $\mathcal{P}(1)$ est vraie d'après la preuve précédente.
-    \item Soit $p \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(p)$ est vraie.\\
-          Soit $P \in \mathbb{C}[z]$ fixés quelconques tels que $\exists (z_{1}, \dots, z_{p+1}) \in \mathbb{C} ^{p+1}$ deux à deux distincts tels que $\forall i \in [ \! [ 1, p + 1 ] \!], P(z_{i}) = 0$.\\
-          Appliquons $\mathcal{P}(p)$ à $P \in \mathbb{C}[z]$ dont $(z_{1}, \dots, z_{p})$ sont les $p$ racines deux à deux distinctes.
-
-          $$\exists Q_{1} \in \mathbb{C}[z]:\forall z \in \mathbb{C}, P(z) = Q_{1}(z)\prod_{i=1}^{p}(z-z_{i})$$
-          Évaluons cette expression en $z_{p+1}$
-          $$\underbrace{ P(z_{p+1}) }_{ =0 } = Q_{1}(z_{p+1}) \prod_{i=1}^{p}\underbrace{ (z_{p+1}-z_{i}) }_{ \neq 0 \text{ car distincts} }$$
-          Donc $Q_{1}(z_{p+1}) = 0$, ce qui permet d'appliquer (i) pour $P \leftarrow Q_{1}$, $z_{0} \leftarrow z_{p+1}$.
-          $$
-            \exists Q \in \mathbb{C}[z]:\forall z \in \mathbb{C}, Q_{1}(z)=(z-z_{p+1})Q(z)
-          $$
-          Donc
-          $$
-            \forall z \in \mathbb{C}, P(z) = (z-z_{p+1})Q(z) \prod_{i=1}^{p}(z-z_{i}) = Q(z) \prod_{i=1}^{p+1}(z-z_{i})
-          $$
-          Donc $\mathcal{P}(p+1)$ est vraie.
-  \end{itemize}
+\begin{question_kholle}{Si $z_1, \dots , z_n$ sont $n$ racines distinctes de la fonction polynômiale $P$ de degré $n$, alors $P(z)$ se factorise en ... }
+  Soient $n\in\N$ et $(a_0,\dots,a_n)\in\C^n\times\C^*$ fixés quelconques. Posons, pour tout $z\in\C$,
+  \begin{align}\label{eqn:S3:5.1}
+    P(z)=\sum_{k=0}^{n}{a_kz^k}
+  \end{align}
+  Supposons que $(z_1,\dots,z_n)\in\C^n$ sont $n$ racines deux à deux distinctes de la fonction polynomiale $P$. Alors, il existe $Q\in\C[z]$ tel que pour tout $z\in\C$,
+  \begin{align*}
+    P(z)=Q(z)\prod_{i=1}^{n}{(z-z_i)}
+  \end{align*}
+  On note $d$ le degré de $Q$ et $(b_0, b_d)\in\C^d\times\C^*$ ses coefficients. On a alors
+  \begin{align*}
+    Q(z)=\sum_{k=0}^{d}{b_dz^d}
+  \end{align*}
+  Ainsi, $P(z)$ s'écrit
+  \begin{align}\label{eqn:S3:5.2}
+    P(z)=\sum_{k=0}^{d}{b_dz^d}\prod_{i=1}^{n}{(z-z_i)} = b_dz^{n+d} + \textit{termes de degré inférieur à $n+d$.}
+  \end{align}
+  Par unicité des coefficients d'une fonction polynomiale, $n+d=n$ (sinon, $z^{n+d}$ aurait un coefficient $b_d$ non nul à droite mais un coefficient nul à gauche).\\
+  Donc $d=0$ d'où $Q$ est une fonction constante de valeur $b_d=b_0$, et en identifiant les termes en $z^n$ de \eqref{eqn:S3:5.1} et \eqref{eqn:S3:5.2}, on obtient $a_n=b_0$. Ainsi, pour tout $z\in\C$,
+  \begin{align*}
+    P(z)=a_n\prod_{i=1}^{n}{(z-z_i)}
+  \end{align*}
 \end{question_kholle}
 \begin{question_kholle}{Calculer le module et un argument de $z=1+ e^{i \theta}$ en fonction de $\theta \in [0, 2 \pi[$}
   Soit $\theta \in [0, 2\pi[$
@@ -204,6 +195,8 @@ $$
             \end{array}\right.
           $$
   \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}{Résolution des équations algébriques de degré 2 dans \C et algorithme de recherche d'une racine carrée sous forme cartésienne (sur un exemple explicite).}
 \end{question_kholle}
 \pagebreak
 \begin{question_kholle}[{
@@ -310,8 +303,8 @@ $$
                   \end{figure}
           \end{itemize}
   \end{itemize}
-
 \end{question_kholle}
+\pagebreak
 \begin{question_kholle}{Somme et Produit des racines $n$-ièmes}
   \;\\
   \begin{itemize}[label=$\lozenge$]
@@ -348,6 +341,39 @@ $$
                                                                                                                                          \end{array}\right.
             \\ &= (-1)^{n-1}
           \end{align*}
+  \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}
+  [{Soient $n \in \mathbb{N}, (a_{0}, \dots, a_{n})\in\mathbb{C}^{n+1}$ et $z_{0} \in \mathbb{C}$.\\
+  Posons pour tout $z \in \mathbb{C}, P(z) = \sum_{k=0}^{n}a_{k}z^{k}$.
+  \begin{propositions}
+    \item Si $\exists p \in \mathbb{N}^{*}: \exists(z_{1},\dots ,z_{p})\in\mathbb{C}^{p}$ deux à deux distincts tels que $\forall k \in [ \! [ 1, p ] \!], P(z_{k}) = 0$ alors, $\exists Q \in \mathbb{C}[x]:\forall z \in \mathbb{C}, P(z) = Q(z) \times \prod_{k=1}^{p}(z-z_{k})$.
+  \end{propositions}
+  }]
+  {\textit{[non demandée]} Factorisation d'une fonction polynomiale connaissant $p$ racines.}
+  Considérons la propriété $\mathcal{P}(\cdot)$ définie pour tout $p \in \mathbb{N}^{*}$ par
+  \begin{multline*}
+    \mathcal{P}(p) : \forall P \in \mathbb{C}[z], (\exists (z_{1}, \dots, z_{p}) \in \mathbb{C}^{p}, \text{ 2 à 2 distincts }: \forall i \in [ \! [ 1, p ] \!], P(z_{i}) = 0)\\
+    \implies \exists Q \in \mathbb{C}[z]: P(z) = Q(z) \prod_{i=1}^{p}(z-z_{i})
+  \end{multline*}
+  \begin{itemize}[label=$\lozenge$]
+    \item $\mathcal{P}(1)$ est vraie d'après la preuve précédente.
+    \item Soit $p \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{P}(p)$ est vraie.\\
+          Soit $P \in \mathbb{C}[z]$ fixés quelconques tels que $\exists (z_{1}, \dots, z_{p+1}) \in \mathbb{C} ^{p+1}$ deux à deux distincts tels que $\forall i \in [ \! [ 1, p + 1 ] \!], P(z_{i}) = 0$.\\
+          Appliquons $\mathcal{P}(p)$ à $P \in \mathbb{C}[z]$ dont $(z_{1}, \dots, z_{p})$ sont les $p$ racines deux à deux distinctes.
+
+          $$\exists Q_{1} \in \mathbb{C}[z]:\forall z \in \mathbb{C}, P(z) = Q_{1}(z)\prod_{i=1}^{p}(z-z_{i})$$
+          Évaluons cette expression en $z_{p+1}$
+          $$\underbrace{ P(z_{p+1}) }_{ =0 } = Q_{1}(z_{p+1}) \prod_{i=1}^{p}\underbrace{ (z_{p+1}-z_{i}) }_{ \neq 0 \text{ car distincts} }$$
+          Donc $Q_{1}(z_{p+1}) = 0$, ce qui permet d'appliquer (i) pour $P \leftarrow Q_{1}$, $z_{0} \leftarrow z_{p+1}$.
+          $$
+            \exists Q \in \mathbb{C}[z]:\forall z \in \mathbb{C}, Q_{1}(z)=(z-z_{p+1})Q(z)
+          $$
+          Donc
+          $$
+            \forall z \in \mathbb{C}, P(z) = (z-z_{p+1})Q(z) \prod_{i=1}^{p}(z-z_{i}) = Q(z) \prod_{i=1}^{p+1}(z-z_{i})
+          $$
+          Donc $\mathcal{P}(p+1)$ est vraie.
   \end{itemize}
 \end{question_kholle}
 \end{document}
