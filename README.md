@@ -2,7 +2,7 @@
 
 Bienvenue très chers camarades sereins.
 
-Ce projet est maintenu par Kylian, Jérémie, George, et Hugo de la MP1.
+Ce projet est maintenu par Kylian, Jérémie, George, Hugo et Félix de la MP1.
 
 Quand on arrivera à s'organiser, ce _repo_ sera "Lendroit" où l'on publiera nos résolutions des questions de Cours pour les Khôlles de Maths.
 
@@ -31,7 +31,7 @@ Espérons qu'avec un peu plus d'expérience, on arrive à les rédiger bien plus
 - [x] [Semaine 18](Sem_18/Kholle_S18.pdf)
 - [x] [Semaine 19](Sem_19/Kholle_S19.pdf)
 - [x] [Semaine 20](Sem_20/Kholle_S20.pdf)
-- [ ] [Semaine 21](Sem_21/Kholle_Sem21.pdf)
+- [ ] [Semaine 21](Sem_21/Kholle_S21.pdf)
 - [x] [Semaine 22](Sem_22/Kholle_S22.pdf)
 - [ ] [Semaine 23](Sem_23/Kholle_S23.pdf)
 - [x] [Semaine 24](Sem_24/Kholle_S24.pdf)
