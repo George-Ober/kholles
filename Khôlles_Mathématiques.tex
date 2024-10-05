@@ -824,8 +824,62 @@ $$
           $$
   \end{itemize}
 \end{question_kholle}
-\begin{question_kholle}{Résolution des équations algébriques de degré 2 dans \C et algorithme de recherche d'une racine carrée sous forme cartésienne (sur un exemple explicite).}
+\begin{question_kholle}[{Considérons l'équation algébrique de degré 2:
+        $$az^{2}+bz+c=0$$
+        Où $z\in L$ est l'inconnue et $(a,b,c)\in\mathbb{C}^*\times\mathbb{C}^2$ sont des paramètres. Posons $\Delta = b^{2}-4ac$ que l'on appelle le discriminant de l'équation.
+        \begin{itemize}
+          \item Si $\Delta=0$, l'équation admet une unique solution dite double qui est $-\frac b{2a}$ et la forme factorisée du trinôme est
+                $$
+                  az^2+bz+c = a \left( z + \frac b {2a} \right)^2
+                $$
+          \item Si $\Delta\neq0$, notons $\delta$ une racine carrée de $\Delta$, l'équation admet deux solutions distinctes $\frac{-b-\delta}{2a}$ et $\frac{-b+\delta}{2a}$ dites simples et la forme factorisée du trinôme est
+                $$
+                  az^2+bz+c = a\left(z - \frac{-b-\delta}{2a}\right)\left(z - \frac{-b+\delta}{2a}\right)
+                $$
+        \end{itemize}
+      }]{Résolution des équations algébriques de degré $2$ dans $\C$ et algorithme de recherche d'une racine carrée sous forme cartésienne (sur un exemple explicite).}
+  La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
+
+  La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
+
+  \begin{align*}
+    az^{2}+bz+c = a\left[ \underbrace{ z^{2}+\frac{b}{a}z }_{ \text{But: Absorber ces termes dans un carré} }+\frac{c}{a} \right] & = a\left[ z^{2}+2\frac{b}{2a}z +\frac{b^{2}}{4a^{2}}-\frac{b^{2}}{4a^{2}}+\frac{c}{a} \right] \\
+                                                                                                                                  & =a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}}{4a^{2}}+\frac{c}{a} \right]        \\
+                                                                                                                                  & =a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}-4ac}{4a^{2}}\right]                 \\
+                                                                                                                                  & =a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{\Delta}{4a^{2}}\right]
+  \end{align*}
+  \begin{itemize}
+    \item Si $\Delta = 0$
+          $$
+            az^{2}+bz+c = a\left( z-\frac{-b}{2a} \right)^{2}
+          $$
+          de sorte que
+          $$
+            az^{2}+bz+c = 0 \iff a\left( z-\frac{-b}{2a} \right)^{2} = 0 \iff z = -\frac{b}{2a}
+          $$
+
+    \item Sinon
+          \begin{align*}
+            az^{2}+bz+c = a \left[ \left( z+\frac{b}{2a} \right)^{2}-\left( \frac{\delta}{2a} \right)^{2} \right] & = a \left( z + \frac{b}{2a}-\frac{\delta}{2a} \right)\left( z+\frac{b}{2a}+\frac{\delta}{2a} \right) \\ &= a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right)
+          \end{align*}
+          de sorte que
+
+          \begin{align*}
+            az^{2}+bz+c =0 & \iff a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right) = 0 \\ \\
+                           & \iff \left\{ \begin{array}{ll}
+                                            z -  \frac{-z-\delta}{2a}  = 0 \\
+                                            \text{ou}                      \\
+                                            z- \frac{-z+\delta}{2a} =0
+                                          \end{array}\right.                                                \\
+                           & \iff \left\{ \begin{array}{ll}
+                                            z = \frac{-z-\delta}{2a} \\ \text{ou} \\
+                                            z = \frac{-z+\delta}{2a}
+                                          \end{array}\right.
+          \end{align*}
+
+  \end{itemize}
 \end{question_kholle}
+
 \pagebreak
 \begin{question_kholle}[{
   Pour tout $n \in \mathbb N ^{*} \setminus \{ 1 \}$,
@@ -1005,60 +1059,57 @@ $$
   \end{itemize}
 \end{question_kholle}
 \pagebreak\section{Semaine 4}
-\begin{question_kholle}[{Considérons l'équation algébrique de degré 2:
-        $$az^{2}+bz+c=0$$
-        Où $z\in L$ est l'inconnue et $(a,b,c)\in\mathbb{C}^*\times\mathbb{C}^2$ sont des paramètres. Posons $\Delta = b^{2}-4ac$ que l'on appelle le discriminant de l'équation.
-        \begin{itemize}
-          \item Si $\Delta=0$, l'équation admet une unique solution dite double qui est $-\frac b{2a}$ et la forme factorisée du trinôme est
-                $$
-                  az^2+bz+c = a \left( z + \frac b {2a} \right)^2
-                $$
-          \item Si $\Delta\neq0$, notons $\delta$ une racine carrée de $\Delta$, l'équation admet deux solutions distinctes $\frac{-b-\delta}{2a}$ et $\frac{-b+\delta}{2a}$ dites simples et la forme factorisée du trinôme est
-                $$
-                  az^2+bz+c = a\left(z - \frac{-b-\delta}{2a}\right)\left(z - \frac{-b+\delta}{2a}\right)
-                $$
-        \end{itemize}
-      }]{Résolution des équations algébriques de degré $2$ dans $\C$ et algorithme de recherche d'une racine carrée sous forme cartésienne (sur un exemple explicite).}
-  La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
-
-  La preuve est immédiate à partir de la forme canonique du trinôme du second degré :
-
-  \begin{align*}
-    az^{2}+bz+c = a\left[ \underbrace{ z^{2}+\frac{b}{a}z }_{ \text{But: Absorber ces termes dans un carré} }+\frac{c}{a} \right] & = a\left[ z^{2}+2\frac{b}{2a}z +\frac{b^{2}}{4a^{2}}-\frac{b^{2}}{4a^{2}}+\frac{c}{a} \right] \\
-                                                                                                                                  & =a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}}{4a^{2}}+\frac{c}{a} \right]        \\
-                                                                                                                                  & =a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{b^{2}-4ac}{4a^{2}}\right]                 \\
-                                                                                                                                  & =a \left[ \left( z+\frac{b}{2a} \right)^{2} - \frac{\Delta}{4a^{2}}\right]
-  \end{align*}
-  \begin{itemize}
-    \item Si $\Delta = 0$
-          $$
-            az^{2}+bz+c = a\left( z-\frac{-b}{2a} \right)^{2}
-          $$
-          de sorte que
-          $$
-            az^{2}+bz+c = 0 \iff a\left( z-\frac{-b}{2a} \right)^{2} = 0 \iff z = -\frac{b}{2a}
-          $$
-
-    \item Sinon
-          \begin{align*}
-            az^{2}+bz+c = a \left[ \left( z+\frac{b}{2a} \right)^{2}-\left( \frac{\delta}{2a} \right)^{2} \right] & = a \left( z + \frac{b}{2a}-\frac{\delta}{2a} \right)\left( z+\frac{b}{2a}+\frac{\delta}{2a} \right) \\ &= a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right)
-          \end{align*}
-          de sorte que
-
-          \begin{align*}
-            az^{2}+bz+c =0 & \iff a \left( z - \frac{-z+\delta}{2a} \right)\left( z- \frac{-z - \delta}{2a} \right) = 0 \\ \\
-                           & \iff \left\{ \begin{array}{ll}
-                                            z -  \frac{-z-\delta}{2a}  = 0 \\
-                                            \text{ou}                      \\
-                                            z- \frac{-z+\delta}{2a} =0
-                                          \end{array}\right.                                                \\
-                           & \iff \left\{ \begin{array}{ll}
-                                            z = \frac{-z-\delta}{2a} \\ \text{ou} \\
-                                            z = \frac{-z+\delta}{2a}
-                                          \end{array}\right.
-          \end{align*}
-
+\begin{question_kholle}{Montrer que l'ensemble des similitudes directes du plan complexe est un groupe pour la composition (la preuve de la bijectivité des similitudes fait partie de la question).}
+  Soient $s$ et $s'$ deux similitudes directes. Alors, il existe $(a,a',b,b')\in(\C^*)^2\times \C^2$ tels que
+  \[
+    s:z\longmapsto az+b \quad\text{ et }\quad s':z\longmapsto a'z+b'
+  \]
+  \begin{itemize}[label=$\star$]
+    \item $s\circ s': z\longmapsto a(a'z+b')+b = \underbrace{aa'}_{\in\C^*}z+\underbrace{ab'+b}_{\in\C}$ donc $s\circ s'$ est une similitude directe.\\
+          Ainsi, la composition est une LCI sur l'ensemble des similitudes directes.
+    \item La composition est associative
+    \item La composition admet $id_{\C}:z\longmapsto 1z+0$ (qui est une similitude) comme neutre.
+    \item Les similitudes directes sont des bijection du plan complexe car si $f$ est une similitude directe ($f:z\longmapsto az+b$ avec $(a,b)\in\C*\times\C$), pour tout $u\in\C$, l'équation d'inconnue $z\in\C$
+          \[
+            f(z)=z \iff az+b=u \iff z=\frac{1}{a}u-\frac{b}{a}
+          \]
+          admet une unique solution. De plus, la bijection réciproque $f^{-1}$ d'une similitude directe $f$ (vérifiant $f\circ f^{-1} = f^{-1}\circ f = id_{\C}$) est une similitude directe.\\
+          Ainsi, toute similitude directe est symétrisable pour la loi de composition.
   \end{itemize}
+  L'ensemble des similitudes directes du plan complexe muni de la loi de composition est donc bien un groupe.
+\end{question_kholle}
+\begin{question_kholle}{Classifier et interpréter une similitude directe donnée sous la forme $z \mapsto a z + b$ sur un exemple, donner l'expression complexe d'une similitude dont on connaît les éléments caractéristiques.}
+  Soient $(a, b) \in \mathbb{C}^*$ fixés quelconques. Posons la similitude
+  \begin{align*}
+    s \left| \begin{array}{ll}
+               \mathbb{C} & \to \mathbb{C}  \\
+               z          & \mapsto a z + b
+             \end{array}\right.
+  \end{align*}
+  \begin{itemize}[label=$\lozenge$]
+    \item Si $a = 1$, c'est la translation de vecteur d'affixe $b$
+    \item Si $a \neq 1$, $s$ admet un unique point fixe appelé «~centre de la similitude~» $\omega = \frac{b}{1-b}$
+          \begin{itemize}[label=$\star$]
+            \item Si $a \in \mathbb{R}^*$, $s$ est l'homotétie de centre $\omega$ et de rapport $a$.
+            \item Si $a \in (\mathbb{C}^* \setminus \mathbb{R})$, $s$ est la composée de
+                  \begin{itemize}
+                    \item La rotation de centre $\omega$ et d'angle $\alpha$, où $\alpha$ est un argument de $a$.
+                    \item L'homotétie de centre $\omega$ et de rapport $|a|$.
+                  \end{itemize}
+                  On nommera alors $|a|$ le rapport de $s$ et $\alpha$ une mesure de l'angle de $s$.
+          \end{itemize}
+  \end{itemize}
+  \textbf{Exemple} : Prenons la similitude $s: z \mapsto (1 - i) z - 1$.
+  \begin{align*}
+    s(z) = z & \iff (1 - i)z - 1 = z \\
+             & \iff -iz = 1          \\
+             & \iff z = i
+  \end{align*}
+  De plus,
+  \begin{align*}
+    (1 - i)z - 1 = \sqrt{2}e^{-i \frac{\pi}{4}}z - 1
+  \end{align*}
+  On en déduit donc que $s$ est la similitude directe de centre d'affixe $i$, de rapport $\sqrt{2}$, et d'angle $-\frac{\pi}{4}$.
 \end{question_kholle}
 \begin{question_kholle}
   [{L'exponentielle complexe a pour image $\mathbb{C}^{*}$ et, pour tout $z_{0} \in \mathbb{C}^{*}$,
@@ -1078,7 +1129,7 @@ $$
                                                   e^{\mathrm{Re}(z)} = \lvert z_{0} \rvert \\
                                                   \text{et}                                \\
                                                   \mathrm{Im}(z) \equiv \theta_{0} [2\pi]
-                                                \end{array}\right.                                   \\
+                                                \end{array}\right.                                    \\
                                  & \iff \left\{ \begin{array}{ll}
                                                   \mathrm{Re}(z)  = \ln \lvert  z_{0} \rvert \\
                                                   \text{et}                                  \\
@@ -1089,6 +1140,7 @@ $$
 
 \end{question_kholle}
 \begin{question_kholle}{Montrer l'unicité de l'élément neutre et du symétrique d'un élément sous des hypothèses sur la loi à préciser.}
+  \;\\
   \begin{itemize}[label=$\lozenge$]
     \item Unicité de l'élément neutre bilatère
 
@@ -1129,6 +1181,7 @@ $$
             \forall (x, y) \in H^{2}, x * y^{-1} \in H
           \end{array}\right.
         $$}]{Preuve de la caractérisation d'un sous-groupe, application au fait que $(\mathbb U _n, \times)$ est un sous-groupe de $(\mathbb U, \times)$.}
+  \;\\
   \begin{itemize}[label=$\star$]
     \item Supposons que $H$ est un sous groupe de $G$
           Par définition d'un sous groupe, $H \neq \emptyset$.
@@ -1174,6 +1227,7 @@ Soit $n \in \mathbb{N}^{*}$ fixé quelconque
 Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n, \times})$ est un sous groupe de $(\mathbb{U}, \times)$.
 
 \begin{question_kholle}{Si $\varphi$ est un morphisme de groupes de $G_1$ de neutre $e_1$ dans $G_2$ de neutre $e_2$, calculer $\varphi(e_1)$ et $\varphi(x^{-1})$}
+  \;\\
   \begin{itemize}[label=$\star$]
     \item Soit $f$ un morphisme de groupe de $(G_{1}, *_{1})$ dans $(G_{2}, *_{2})$
 
@@ -1206,7 +1260,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
   \end{itemize}
 \end{question_kholle}
-\begin{question_kholle}{Montrer que l'image d'un sous-groupe par un morphisme de groupes est un sous-groupe du groupe d'arrivée}
+\begin{question_kholle}{Montrer que l'image directe d'un sous-groupe par un morphisme de groupes est un sous-groupe du groupe d'arrivée}
   Soit $f$ un morphisme de groupe de $(G_{1},*_{1})$ dans $(G_{2}, *_{2})$. Notons $e_{1}$ et $e_{2}$ les neutres respectifs de $G_{1}$ et $G_{2}$.
 
   Soit $H_{1}$ un sous groupe de $G_{1}$ fixé quelconque
@@ -1246,6 +1300,41 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 Le noyau, noté $\ker f$ est par définition égal à $f^{-1}(\{e_2\})$ c'est donc un sous groupe de $G_1$
 
 \textbf{Application 2:} Pour tout $n \in \mathbb{N}$, $\phi _{n}\left|\begin{array}{ll} (\mathbb{C}^{*},\times) &\to (\mathbb{C}^{*},\times) \\ z &\mapsto z^{n} \end{array}\right.$ est un morphisme de groupes. Son noyau, $\ker \phi _n = \{ z \in \mathbb{C}^{*} | z^{n} = 1 \} = \mathbb{U}_{n}$. D'après l'application 1, $\ker \phi_{n}$ est un sous groupe de $(\mathbb{C}^{*}, \times)$. Donc $(\mathbb{U}_{n}, \times)$ est un sous groupe de $(\mathbb{C}^{*},\times)$.
+
+\begin{question_kholle}{\textit{[non demandée]} Montrer que l'ensemble des similitudes directes du plan complexe est un groupe pour la composition (démonstration alternative)}
+  Montrons donc que $(S, \circ)$ est un sous groupe de $(\mathcal{S}(\mathbb{C}), \circ)$
+  \begin{itemize}[label=$\lozenge$]
+    \item D'une part, $S \subset \mathcal{S}(\mathbb{C})$. Or l'ensemble des permutations $(\mathcal{S}(\mathbb{C}), \circ)$ est un groupe. En effet, les similitudes sont des bijections de $\mathbb{C} \to \mathbb{C}$.
+    \item De plus, $S$ est non vide, par exemple l'application $\mathrm{Id(\mathbb{C}})$ est une similitude pour $a \leftarrow 1$ et $b \leftarrow 1$.
+    \item Prenons finalement $a$ et $c$ dans $\mathbb{C}^*$ puis $b$ et $d$ dans $\mathbb{C}$, et posons les deux applications suivantes:
+          \begin{align*}
+            s \left| \begin{array}{ll}
+                       \mathbb{C} & \to \mathbb{C}  \\
+                       z          & \mapsto a z + b
+                     \end{array}\right.
+            \text{ et }
+            s' \left| \begin{array}{ll}
+                        \mathbb{C} & \to \mathbb{C}  \\
+                        z          & \mapsto a z + b
+                      \end{array}\right.
+          \end{align*}
+          Ainsi, comme toute similitude directe est une bijection, en particulier $s'$ en est une, et
+          \begin{align*}
+            s'^{-1} \left| \begin{array}{ll}
+                             \mathbb{C} & \to \mathbb{C}                    \\
+                             z          & \mapsto \frac{z}{c} - \frac{d}{c}
+                           \end{array}\right.
+          \end{align*}
+          Soit $z \in \mathbb{C}$ fixé quelconque:
+          \begin{align*}
+            (s \circ s'^{-1})(z) & = s(s'^{-1}(z))                                  \\
+                                 & = s\left(\frac{z}{c} - \frac{d}{c}\right)        \\
+                                 & = a\left(\frac{z}{c} - \frac{d}{c}\right) + b    \\
+                                 & = \frac{a}{c}z + \left( b - \frac{ad}{c} \right)
+          \end{align*}
+          Qui est une similitude directe, puisque $\frac{a}{c} \neq  0$ donc $s \circ s'^{-1} \in S$. Donc $(S, \circ)$ est bien un sous-groupe de $(\mathcal{S}(\mathbb{C}), \circ)$.
+  \end{itemize}
+\end{question_kholle}
 \pagebreak\section{Semaine 5}
 
 \begin{question_kholle}{Montrer que l'ensemble des similitudes directes du plan complexe est un groupe pour la composition}
