@@ -1090,11 +1090,11 @@ $$
     \item Si $a = 1$, c'est la translation de vecteur d'affixe $b$.
     \item Si $a \neq 1$, $s$ admet un unique point fixe appelé «~centre de la similitude~» $\omega = \frac{b}{1-a}$
           \begin{itemize}[label=$\star$]
-            \item Si $a \in \mathbb{R}^*$, $s$ est l'homotétie de centre $\omega$ et de rapport $a$.
-            \item Si $a \in (\mathbb{C}^* \setminus \mathbb{R})$, $s$ est la composée de :
+            \item Si $a \in \mathbb{R}^*$, $s$ est l'homothétie de centre $\omega$ et de rapport $a$.
+            \item Si $a \in (\mathbb{C}^* \setminus \mathbb{R})$, $s$ est la composée commutative de :
                   \begin{itemize}
                     \item La rotation de centre $\omega$ et d'angle $\alpha$, où $\alpha$ est un argument de $a$.
-                    \item L'homotétie de centre $\omega$ et de rapport $|a|$.
+                    \item L'homothétie de centre $\omega$ et de rapport $|a|$.
                   \end{itemize}
                   On nommera alors $|a|$ le rapport de $s$ et $\alpha$ une mesure de l'angle de $s$.
           \end{itemize}
@@ -1170,7 +1170,7 @@ $$
                               & \implies b = z
                   \end{align*}
           \end{itemize}
-          Donc l'ensemble $\{ y \in E \mid a * y = y * a = e \}$ contient au plus un élément neutre, qui est $z$.
+          Donc l'ensemble $\{ y \in E \mid a * y = y * a = e \}$ contient au plus un élément qui est $z$.
   \end{itemize}
 \end{question_kholle}
 \begin{question_kholle}[{Soit $(G, *)$ un groupe, et $H$ une partie de $G$ $$
@@ -1193,12 +1193,12 @@ $$
             \item $H$ est non vide par hypothèse
             \item Puisque $H \neq \emptyset$, $\exists h \in H$.\\
                   Ainsi, en appliquant (2) pour $(x,y)\leftarrow (h,h)$, on obtient $h * h^{-1} \in H$ donc $H$ possède un élément neutre $e$.
-            \item Soient $(x, y) \in H^{2}$ fixés quelconques.
-                  $y \in H$ permet d'appliquer (2) pour $(x,y) \leftarrow (y,e)$:
+            \item Soit $h \in H$ fixé quelconque.
+                  $h \in H$ permet d'appliquer (2) pour $(x,y) \leftarrow (h,e)$:
                   $$
-                    e * y^{-1} \in H
+                    e * h^{-1} \in H
                   $$
-                  Donc $y^{-1} \in H$. Ainsi, tout élément est symétrisable dans $H$
+                  Donc $h^{-1} \in H$. Ainsi, tout élément est symétrisable dans $H$
             \item Soient $(x, y) \in H^{2}$ fixés quelconques. On a montré que $y$ est symétrisable dans H, donc en appliquant (2) pour $x \leftarrow x$ et $y \leftarrow y^{-1}$:
                   $$
                     x * (y^{-1})^{-1} \in H \implies x* y \in H
@@ -1226,7 +1226,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
 \begin{question_kholle}{Si $\varphi$ est un morphisme de groupes de $G_1$ de neutre $e_1$ dans $G_2$ de neutre $e_2$, calculer $\varphi(e_1)$ et $\varphi(x^{-1})$}
   \;\\
-  \begin{itemize}[label=$\star$]
+  \begin{itemize}[label=$\star$,nosep]
     \item Soit $f$ un morphisme de groupe de $(G_{1}, *_{1})$ dans $(G_{2}, *_{2})$
 
           D'une part $f(e_{1} *_{1} e_{1}) = f(e_{1})$.\\
