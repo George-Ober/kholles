@@ -41,6 +41,7 @@
 \RequirePackage{mathrsfs}
 \RequirePackage{braket}
 \usepackage[b]{esvect}
+\usepackage{bm} % Bold math
 
 % changement de puces dans les listes
 \RequirePackage{enumitem}
@@ -67,6 +68,7 @@
 }
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
+\usepackage{tkz-tab}
 \usetikzlibrary{shapes.geometric}
 \usetikzlibrary{arrows.meta, arrows}
 \usetikzlibrary{math} % pour les variables
@@ -165,9 +167,13 @@
 \newcommand{\bda}{\ensuremath{\lambda} }
 \newcommand{\e}{\ensuremath{\mathrm e} }
 
+% Différentielles
+\newcommand{\dd}{\ensuremath{\mathrm d}}
+
 % Nombres entiers
 \newcommand{\lient}{\ensuremath{[\![} }
 \newcommand{\rient}{\ensuremath{]\!]} }
+\newcommand{\iset}[1]{\ensuremath{\lient #1 \rient}}
 
 % Régularité
 \newcommand{\regularite}[5]{\ensuremath{
