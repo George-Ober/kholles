@@ -416,10 +416,52 @@
 
 \pagebreak
 
-\begin{question_kholle}{Technique de l'intégration par parties (preuve théorique suivie d'exemple(s) explicite(s) au choix de l'examinateur).}
+\begin{question_kholle}{Technique de l'intégration par parties.}
+
+
+
+$$
+\int_{a}^{b} u'(t)v(t) dt= u(b)v(b) - u(a)v(a) - \int_{a}^{b} u(t)v'(t) dt
+$$
+
+Démonstration : il suffit de reconnaître un terme issu de la dérivée d'un produit de fonctions:
+$$
+(uv)' = u'v + uv' \implies u'v = (uv)' - uv'
+$$
+
+d'où :
+
+\begin{eqnarray*}
+	\int_{a}^{b} u'(t)v(t)dt &=& \int_{a}^{b} ((uv)'(t) - u(t)v'(t)) dt \\
+	&=& \int_{a}^{b} (uv)'(t)dt - \int_{a}^{b}u(t)v'(t)dt  \text{ (linéarité de l'intégrale)} \\
+	&=& \left[ u(t)v(t)\right]_{a}^{b} - \int_{a}^{b} u(t)v'(t)dt \\
+	&=& u(b)v(b) - u(a)v(a) - \int_{a}^{b} u(t)v'(t)dt
+\end{eqnarray*}
+
+La preuve sera suivie d'exemples explicites aux choix de l'examinateur.
+
 \end{question_kholle}
 
-\begin{question_kholle}{Technique du changement de variable parties (preuve théorique suivie d'exemple(s) explicite(s) au choix de l'examinateur).}
+\begin{question_kholle}{Technique du changement de variable parties.}
+	
+$$
+\int_{\phi(a)}^{\phi(b)} f(s)ds \underset{\underset{ds = \phi'(u)du}{s = \phi(u)}}{=} \int_{a}^{b} f(\phi(u))\phi'(u)du
+$$
+
+Démonstration : il suffit de reconnaître la dérivée d'une composée de fonctions.
+En effet, en notant F une primitive de f sur I (ce qui a bien un sens car f est continue sur I),
+
+\begin{eqnarray*}
+	\int_{a}^{b} f(\phi(u))\phi'(u)du &=&
+	\left[ (F \circ \phi)(u)\right]_{a}^{b} \\ &=& 
+	F(\phi(b)) - F(\phi(a)) \\ 
+	&=& \int_{\phi(a)}^{\phi(b)} f(s)ds
+\end{eqnarray*}
+
+
+La preuve sera suivie d'exemples explicites aux choix de l'examinateur.
+
+	
 \end{question_kholle}
 
 \begin{question_kholle}{Montrer que, pour $f$ $T$-périodique sur $\R$, pour tout $a\in\R$, $\displaystyle\int_{a}^{a+T}f(t)\dd t = \int_{0}^{T}f(t)\dd t$.}
