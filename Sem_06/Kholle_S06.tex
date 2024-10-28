@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \date{19 novembre 2023}
-\usepackage[nb-sem=6, auteurs={Kylian Boyet, George Ober, Félix Rondeau, Hugo Vangilluwen (relecture)}]{../kholles}
+\usepackage[nb-sem=6, auteurs={Kylian Boyet, George Ober, Félix Rondeau, Elijah Gaillard, Hugo Vangilluwen (relecture)}]{../kholles}
 
 \begin{document}
 
@@ -143,7 +143,7 @@
     \item $\arccos$ est strictement décroissante sur $[-1,1]$.
     \item $\arccos \in \mathcal{C}^0\left([-1,1],[0 , \pi] \right)$.
     \item $\arccos \in \mathcal{D}^1\left(]-1,1[,]0 ,\pi [ \right)$.
-    \item $i\displaystyle\arccos'(x) = -\frac{1}{\sqrt{1-x^2}}$ pour tout $x\in]-1,1[$.
+    \item $\displaystyle\arccos'(x) = -\frac{1}{\sqrt{1-x^2}}$ pour tout $x\in]-1,1[$.
     \item $\arccos$ admet deux demi-tangentes verticales en $-1$ et $1$.
   \end{enumerate}
 
@@ -387,6 +387,7 @@
       1 \text{ si } m=0 \\
       0 \text{ si } m \neq 0
     \end{cases}
+    = \delta_{m, 1}
   $$
   \\
   Soit $n\in \N$ et $(a_0, ..., a_n) \in \C^{n+1}$ fixés quelconques. Posons, pour tout $z\in\C, P(z) = \sum_{k=0}^n a_k z^k$.\\
@@ -461,7 +462,7 @@
 
 \pagebreak
 
-\begin{question_kholle}{Montrer que, pour $f$ $T$-périodique sur $\R$, pour tout $a\in\R$, $\displaystyle\int_{a}^{a+T}f(t)\dd t = \int_{0}^{T}f(t)\dd t$.}
+\begin{question_kholle}{Montrer que pour $f$ \ $T$-périodique sur $\R$, pour tout $a\in\R$, $\displaystyle\int_{a}^{a+T}f(t)\dd t = \int_{0}^{T}f(t)\dd t$.}
   Il existe $k_0\in\Z$ tel que $a\leq k_0 T<a+T$ car
   \begin{equation*}
     a\leq k_0T<a+T \iff \frac{a}{T} \leq K_0 < \frac{a}{T}+1 \iff k_0 = \left\lceil \frac{a}{T}\right\rceil
@@ -534,7 +535,8 @@
       \draw (4*pi,-0.1) -- (4*pi,0.1) node[above] {\footnotesize $k_0T$};
       \draw (6*pi-\offset,-0.1) -- (6*pi-\offset,0.1) node[above] {\footnotesize $a+T$};
     \end{tikzpicture}
-    \caption{Illustration de la relation \eqref{S6:Q10:4}.}
+    \caption{Illustration de la relation \eqref{S6:Q10:4}. \\
+    		 En bleu \eqref{S6:Q10:2} et en gris \eqref{S6:Q10:3} }
   \end{figure}
 \end{question_kholle}
 \end{document}
