@@ -459,6 +459,82 @@
 
 \end{question_kholle}
 
+\pagebreak
+
 \begin{question_kholle}{Montrer que, pour $f$ $T$-périodique sur $\R$, pour tout $a\in\R$, $\displaystyle\int_{a}^{a+T}f(t)\dd t = \int_{0}^{T}f(t)\dd t$.}
+  Il existe $k_0\in\Z$ tel que $a\leq k_0 T<a+T$ car
+  \begin{equation*}
+    a\leq k_0T<a+T \iff \frac{a}{T} \leq K_0 < \frac{a}{T}+1 \iff k_0 = \left\lceil \frac{a}{T}\right\rceil
+  \end{equation*}
+  Fixons un tel $k_0$. Ainsi,
+  \begin{equation}\label{S6:Q10:1}
+    \int_{a}^{a+T}{f(t)\dd t} = \int_{a}^{k_0T}{f(t)\dd t} + \int_{k_0T}^{a+T}{f(t)\dd t}
+  \end{equation}
+  Or,
+  \begin{equation}\label{S6:Q10:2}
+    \int_{k_0T}^{a+T}{f(t)\dd t} \underset{\substack{u=t-k_0T \\ \dd u=\dd t}}{=} \int_{0}^{a+T-k_0T}{f(u+k_0T)\dd u} = \int_{0}^{a-(k_0-1)T}{f(u)\dd u}
+  \end{equation}
+  Et
+  \begin{equation}\label{S6:Q10:3}
+    \int_{a}^{k_0T}{f(t)}{\dd t} \underset{\substack{u=t-(k_0-1)T \\ \dd u=\dd t}}{=} \int_{a-(k_0-1)T}^{T}{f(u+(k_0-1)T)\dd u} = \int_{a-(k_0-1)T}^{T}{f(u)\dd u}
+  \end{equation}
+  La relation \eqref{S6:Q10:1} donne alors, en utilisant \eqref{S6:Q10:2} et \eqref{S6:Q10:3},
+  \begin{equation}\label{S6:Q10:4}
+    \int_{a}^{a+T}{f(t)\dd t} = \int_{0}^{a-(k_0-1)T}{f(t)\dd t}+\int_{a-(k_0-1)T}^{T}{f(t)\dd t} = \int_{0}^{T}{f(t)\dd t}
+  \end{equation}
+
+  On peut visualiser cette démonstration sur un graphe :
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+      \def\offset{0.8}
+      \definecolor{mycolor}{HTML}{44a2ce}
+
+      \fill [mycolor, samples=500, domain=0:2*pi-\offset, variable=\x]
+      (0, 0)
+      -- (0, -0.8)
+      -- plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))})
+      -- (2*pi-\offset, 0)
+      -- cycle;
+      \fill [lightgray, samples=500, domain=2*pi-\offset:2*pi, variable=\x]
+      (2*pi-\offset, 0)
+      -- (2*pi-\offset, -0.8)
+      -- plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))})
+      -- (2*pi, 0)
+      -- cycle;
+      \fill [pattern=north west lines, samples=500, domain=0:2*pi, variable=\x]
+      (0, 0)
+      -- (0, -0.8)
+      -- plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))})
+      -- (2*pi, 0)
+      -- cycle;
+
+      \fill [lightgray, samples=500, domain=4*pi-\offset:4*pi, variable=\x]
+      (4*pi-\offset, 0)
+      -- (4*pi-\offset, -0.8)
+      -- plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))})
+      -- (4*pi, 0)
+      -- cycle;
+      \fill [mycolor, samples=500, domain=4*pi:6*pi-\offset, variable=\x]
+      (4*pi, 0)
+      -- (4*pi, -0.8)
+      -- plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))})
+      -- (6*pi-\offset, 0)
+      -- cycle;
+
+      \draw [thick, purple, samples=500, domain=-0.5:6*pi+0.5] plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))});
+
+      \draw [->] (-0.5,0) -- (6*pi+0.5,0);
+      \draw [->] (0,-2) -- (0,4);
+
+      \draw (0,-0.1) -- (0,0.1) node[above right] {\footnotesize $0$};
+      \draw (2*pi,-0.1) -- (2*pi,0.1) node[above] {\footnotesize $T$};
+      \draw (4*pi-\offset,-0.1) -- (4*pi-\offset,0.1) node[above] {\footnotesize $a$};
+      \draw (4*pi,-0.1) -- (4*pi,0.1) node[above] {\footnotesize $k_0T$};
+      \draw (6*pi-\offset,-0.1) -- (6*pi-\offset,0.1) node[above] {\footnotesize $a+T$};
+    \end{tikzpicture}
+    \caption{Illustration de la relation \eqref{S6:Q10:4}.}
+  \end{figure}
 \end{question_kholle}
 \end{document}
