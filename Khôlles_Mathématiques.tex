@@ -1991,7 +1991,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
       1 \text{ si } m=0 \\
       0 \text{ si } m \neq 0
     \end{cases}
-    = \delta_{m, 1}
+    \bigl(= \delta_{m, 1}\bigr)
   $$
   \\
   Soit $n\in \N$ et $(a_0, ..., a_n) \in \C^{n+1}$ fixés quelconques. Posons, pour tout $z\in\C, P(z) = \sum_{k=0}^n a_k z^k$.\\
@@ -1999,24 +1999,24 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \begin{align*}
     \frac{1}{2 \pi} \int_0^{2\pi} P(Re^{it}) e^{-ist} \mathrm d t & = \frac{1}{2 \pi} \int_0^{2\pi} \bigg (\sum_{k=0}^n a_k (Re^{it})^k \bigg) e^{-ist} \mathrm d t                                                                                                                                                                                                                                                     \\
                                                                   & = \frac{1}{2\pi}\sum_{k=0}^{n}\left(\int_{0}^{2\pi}a_kR^ke^{it(k-s)}\right)                                                                                                                                                                                                                               \quad\text{ par linéarité de l'intégrale} \\
-                                                                  & = \sum_{k=0}^n\left(\frac{a_k R^k}{2\pi} \smash[b]{\underbrace{\int_0^{2\pi} e^{it(k-s)} \dd t}_{=\begin{cases}0&\text{ si $k\neq s$} \\ 1 &\text{sinon}\end{cases}}}\right) \vphantom{\underbrace{\int_0^{2\pi} e^{it(k-s)} \dd t}_{=\begin{cases}0&\text{ si $k\neq s$} \\ 1 &\text{sinon}\end{cases}}}                                           \\
-                                                                  & = \begin{cases}0 & \text{ si $s\not\in\iset{0,n}$}\\\displaystyle\frac{a_sR^s}{2\pi} &\text{ sinon}\end{cases}
+                                                                  & = \sum_{k=0}^n\left(a_k R^k\cdot\smash[b]{\underbrace{\frac{1}{2\pi}\int_0^{2\pi} e^{it(k-s)} \dd t}_{=\begin{cases}0&\text{ si $k\neq s$} \\ 1 &\text{sinon}\end{cases}}}\right) \vphantom{\underbrace{\frac{1}{2\pi}\int_0^{2\pi} e^{it(k-s)} \dd t}_{=\begin{cases}0&\text{ si $k\neq s$} \\ 1 &\text{sinon}\end{cases}}}                        \\
+                                                                  & = \begin{cases}0 & \text{ si $s\not\in\iset{0,n}$}\\\displaystyle a_sR^s &\text{ sinon}\end{cases}
   \end{align*}
   Supposons à présent qu'il existe un cercle centré en l'origine sur lequel $P$ est identiquement nulle. Notons $R\in\R_+^*$ le rayon d'un tel cercle. Alors,
   \[
-    \forall t\in\R, P(Re^{it})=0
+    \forall t\in\R,\; P(Re^{it})=0
   \]
   donc
   \[
-    \forall s\in\Z, \frac{1}{2\pi}\int_0^{2\pi}P(Re^{it})e^{-ist}\dd t = \frac{1}{2\pi}\int_0^{2\pi}0\,\dd t=\frac{1}{2\pi}\bigl[1\bigr]_0^{2\pi}=0
+    \forall s\in\Z,\; \frac{1}{2\pi}\int_0^{2\pi}P(Re^{it})e^{-ist}\dd t = \frac{1}{2\pi}\int_0^{2\pi}0\,\dd t=\frac{1}{2\pi}\bigl[1\bigr]_0^{2\pi}=0
   \]
   or, nous avons vu que
   \[
-    \forall s\in\iset{0,n}, \frac{1}{2\pi}\int_0^{2\pi}P(Re^{it})e^{-ist}\dd t = \frac{a_s R^s}{2\pi}
+    \forall s\in\iset{0,n},\; \frac{1}{2\pi}\int_0^{2\pi}P(Re^{it})e^{-ist}\dd t = a_s R^s
   \]
   donc
   \[
-    \forall s\in\iset{0,n}, \frac{a_sR^s}{2\pi} = 0 \quad\text{donc}\quad \forall z\in\iset{0,n}, a_s = 0
+    \forall s\in\iset{0,n},\; a_sR^s = 0 \quad\text{d'où}\quad \forall z\in\iset{0,n}, a_s = 0
   \]
   ainsi, $P$ est la fonction polynomiale nulle sur $\C$.
 \end{question_kholle}
@@ -2066,7 +2066,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
 \pagebreak
 
-\begin{question_kholle}{Montrer que pour $f$ \ $T$-périodique sur $\R$, pour tout $a\in\R$, $\displaystyle\int_{a}^{a+T}f(t)\dd t = \int_{0}^{T}f(t)\dd t$.}
+\begin{question_kholle}{Montrer que si $f$ est $T$-périodique sur $\R$, pour tout $a\in\R$, $\displaystyle\int_{a}^{a+T}f(t)\dd t = \int_{0}^{T}f(t)\dd t$.}
   Il existe $k_0\in\Z$ tel que $a\leq k_0 T<a+T$ car
   \begin{equation*}
     a\leq k_0T<a+T \iff \frac{a}{T} \leq K_0 < \frac{a}{T}+1 \iff k_0 = \left\lceil \frac{a}{T}\right\rceil
@@ -2140,7 +2140,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
       \draw (6*pi-\offset,-0.1) -- (6*pi-\offset,0.1) node[above] {\footnotesize $a+T$};
     \end{tikzpicture}
     \caption{Illustration de la relation \eqref{S6:Q10:4}. \\
-    		 En bleu \eqref{S6:Q10:2} et en gris \eqref{S6:Q10:3} }
+      En bleu \eqref{S6:Q10:2} et en gris \eqref{S6:Q10:3} }
   \end{figure}
 \end{question_kholle}
 \pagebreak\section{Semaine 7}
