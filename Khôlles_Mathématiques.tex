@@ -1380,7 +1380,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \end{align*}
   D'où l'imparité de $f^{-1}$.
 
-  \noindent\textbf{$\vartriangleright$ Exemple :} Prenons notre fonction bijective impaire préférée, la fonction $\bigl.\sin\bigr|_{\left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]}^{[-1,1]}$ que l'on notera $\widetilde{\sin}$. Sa bijection réciproque est $\arcsin : [-1,1] \to \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$.\\
+  \noindent $\vartriangleright$\textbf{Exemple :} Prenons notre fonction bijective impaire préférée, la fonction $\bigl.\sin\bigr|_{\left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]}^{[-1,1]}$ que l'on notera $\widetilde{\sin}$. Sa bijection réciproque est $\arcsin : [-1,1] \to \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$.\\
   Comme dans la démonstration, prenons $y\in [-1, 1]$. Comme $[-1,1]$ est centré en $0$, $-y\in [-1,1]$, et dès lors,
   \begin{align*}
     \arcsin(-y) & = \arcsin(-\widetilde{\sin}(\arcsin(y))) \\
@@ -1455,7 +1455,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \]
   Ainsi, le théorème d'existence de limite par encadrement permet de conclure que $\frac{\ln x}{x^2}$ admet une limite en $+\infty$ et que cette limite est nulle :
   \[
-    \lim_{x\to+\infty}\frac{\ln x}{x} = 0
+    \lim_{x\to+\infty}\frac{\ln x}{x^2} = 0
   \]
   On en déduit alors le cas général :
   \\
@@ -1539,10 +1539,19 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=2]
-      \draw [->] (-1.5,0) -- (1.5,0);
+      \draw [->] (-pi/2-0.5,0) -- (pi/2+0.5,0);
       \draw [->] (0,-pi/2-0.5) -- (0,pi/2+0.5);
+
+      \draw (-pi/2,-0.05) -- (-pi/2,0.05) node[below, yshift=-3mm] {\footnotesize $-\frac{\pi}{2}$};
+      \draw (-1,-0.05) -- (-1,0.05) node[below, yshift=-3mm] {\footnotesize $-1$};
       \draw (1,-0.05) -- (1,0.05) node[below, yshift=-3mm] {\footnotesize $1$};
+      \draw (pi/2,-0.05) -- (pi/2,0.05) node[below, yshift=-3mm] {\footnotesize $\frac{\pi}{2}$};
+
+      \draw (-0.05,-pi/2) -- (0.05,-pi/2) node[left, xshift=-3mm] {\footnotesize $-\frac{\pi}{2}$};
+      \draw (-0.05,-1) -- (0.05,-1) node[left, xshift=-3mm] {\footnotesize $-1$};
+      \draw (-0.05,1) -- (0.05,1) node[left, xshift=-3mm] {\footnotesize $1$};
       \draw (-0.05,pi/2) -- (0.05,pi/2) node[left, xshift=-3mm] {\footnotesize $\frac{\pi}{2}$};
+
       \draw[thick, domain=-1.5:1.5, smooth, variable=\x, lime] plot ({\x}, {sin(\x*180/pi)});
       \draw[thick, domain=-1.5:1.5, smooth, variable=\x, teal] plot ({\x}, {\x});
       \draw[thick, domain=-1:1, samples=100, variable=\x, purple] plot ({\x}, {pi*asin(\x)/180});
@@ -1602,402 +1611,233 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 \end{question_kholle}
 \pagebreak\section{Semaine 6}
 
+\begin{question_kholle}{Liens entre le graphe de $f$ et ceux de $g$ et $h$ définies par $g(x)=af(x)$ et $h(x)=f(x+a)$.}
+  \hfill\\
+  \begin{minipage}{0.5\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \node at (3.3,2.5) {$\mathcal{D}_g=\mathcal{D}_f$};
+        \draw [->] (-1,0) -- (4,0);
+        \draw [->] (0,-2) -- (0,3);
 
-\begin{question_kholle}{Montrer que si $f$ est impaire et bijective, alors $f^{-1}$ est aussi impaire. Donnez un/des exemples.}
-  Soit $f: I \to F$, avec $I,F$ deux parties non-vides de $\mathbb{R}$, une telle fonction et notons $f^{-1}$ sa bijection réciproque. Si $f$ est impaire sur $I$, alors pour tout $x\in I$, $-x\in I$, ainsi $I$ est centré en $0$ et on a :
+        \coordinate (A) at (1.5, 2);
+        \coordinate (B) at (1.5, -1);
 
-  \begin{equation*}
-    \forall x \in I, \ f(-x) = -f(x).
-  \end{equation*}
+        \draw [dashed, gray] (0, 2) -- (A) -- (1.5,0);
+        \draw [dashed, gray] (0, -1) -- (B) -- (1.5,0);
 
-  Ainsi, prenons $y\in F$, alors $-y \in F$ par imparité et bijectivité de $f$. On a donc :
+        \fill [radius=1.5pt] (A) circle node[above=2pt] {\small $(x,g(x))$};
+        \fill [radius=1.5pt] (B) circle node[below=2pt] {\small $(x,f(x))$};
 
-  \begin{eqnarray*}
-    f^{-1}(-y) & = & f^{-1}(-f(f^{-1}(y))) \\
-    & = & f^{-1}(f(-f^{-1}(y))) \\
-    & = & -f^{-1}(y).
-  \end{eqnarray*}
+        \draw[-Stealth, thick] (1.7,-1) arc (-90:90:1.5) node [midway, right] {$\bm{\times a}$};
 
-  \
+        \draw (1.5,-0.05) -- (1.5,0.05) node[fill=white, above] {\footnotesize $x$};
+        \draw (-0.05,2) -- (0.05,2) node[left, xshift=-3mm] {\footnotesize $g(x)$};
+        \draw (-0.05,-1) -- (0.05,-1) node[left, xshift=-3mm] {\footnotesize $f(x)$};
+      \end{tikzpicture}
+      \caption{Lien entre le graphe de $f$ et de $g$.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \node at (2.5,3.5) {$\mathcal{D}_h=\{x-a\mid x\in\mathcal{D}_f\}$};
+        \draw [->] (-1,0) -- (5,0);
+        \draw [->] (0,-1) -- (0,4);
 
-  D'où l'imparité de $f^{-1}$.
+        \coordinate (A) at (1.2, 2);
+        \coordinate (B) at (3.5, 2);
 
-  \
+        \draw (1.2,-0.05) -- (1.2,0.05) node[below, yshift=-1mm] {\footnotesize $x$};
+        \draw (3.5,-0.05) -- (3.5,0.05) node[below, yshift=-1mm] {\footnotesize $x+a$};
+        \draw (-0.05,2) -- (0.05,2) node[left, xshift=-3mm] {\footnotesize $f(x+a)$};
 
-  Pour ce qui est de l'exemple, prenons notre fonction bijective impaire préférée, la fonction $\textstyle \sin |_{\left[ -\frac{\pi}{2}, \frac{\pi}{2}\right] }^{[-1,1]}$ que l'on notera $\widetilde{\sin}$. Sa bijection réciproque est bien entendu $\textstyle \arcsin : [-1,1] \to \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$.
+        \draw [dashed, gray] (0,2) -- (A) -- (1.2, 0);
+        \draw [dashed, gray] (0,2) -- (B) -- (3.5, 0);
 
-  De la même manière que dans la démonstration du cas général, prenons $y\in [-1, 1]$, comme $[-1,1]$ est centré en $0$, $-y\in [-1,1]$, on a dès lors :
+        \fill [radius=1.5pt] (A) circle node[above=2pt] {\small $(x,h(x))$};
+        \fill [radius=1.5pt] (B) circle node[below=2pt, fill=white] {\small $(x+a, f(x+a))$};
 
-  \begin{eqnarray*}
-    \arcsin(-y) & = & \arcsin(-\widetilde{\sin}(\arcsin(y))) \\
-    & = & \arcsin(\widetilde{\sin}(-\arcsin(y))) \\
-    & = & -\arcsin(y).
-  \end{eqnarray*}
+        \draw (A) node [below=1ex, white, fill=white] {a}; % TODO: Dirty fix. Change it.
+        \draw [-Stealth, thick] (B) -- (A) node [below] {$\bm{-a}\vv{\bm{i}}$};
+      \end{tikzpicture}
+      \caption{Lien entre le graphe de $f$ et de $h$.}
+    \end{figure}
+  \end{minipage}
 \end{question_kholle}
 
-\begin{question_kholle}{Limite (et preuve) lorsque $x$ tend vers $+\infty$ de $\frac{(\ln x)^{\alpha}}{x^{\beta}}$ pour $\alpha ,\beta \in \left( \mathbb{R}_+^*\right) ^2$.}
+\begin{question_kholle}{Liens entre le graphe de $f$ et ceux de $g$ et $h$ définies par $g(x)=f(ax)$ et $h(x)=f(a-x)$.}
+  \hfill\\
+  \begin{minipage}{0.5\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \node at (2.5,3.5) {$\mathcal{D}_g=\left\{\frac{x}{a}\mid x\in\mathcal{D}_f\right\}$};
+        \draw [->] (-1,0) -- (5,0);
+        \draw [->] (0,-1) -- (0,4);
 
-  Premièrement, posons :
+        \coordinate (A) at (1.2, 2);
+        \coordinate (B) at (3.5, 2);
 
-  \begin{equation*}
-    \forall  (x,\alpha,\beta)\in [1,+\infty[ \times \left( \mathbb{R}_+^*\right) ^2, \quad  f_{\alpha,\beta}(x)=\frac{(\ln x)^{\alpha}}{x^{\beta}}.
-  \end{equation*}
+        \draw (1.2,-0.05) -- (1.2,0.05) node[below, yshift=-1mm] {\footnotesize $x$};
+        \draw (3.5,-0.05) -- (3.5,0.05) node[below, yshift=-1mm] {\footnotesize $ax$};
+        \draw (-0.05,2) -- (0.05,2) node[left, xshift=-3mm] {\footnotesize $f(ax)$};
 
-  Deuxièmement, montrons que :
-  \[ \frac{\ln (x)}{x^2}\xrightarrow[n \to +\infty ]{} 0. \]
+        \draw [dashed, gray] (0,2) -- (A) -- (1.2, 0);
+        \draw [dashed, gray] (0,2) -- (B) -- (3.5, 0);
 
-  Soit $x \in [1,+\infty[ \ = \mathcal{A}$. Nous savons que la fonction $\ln$ est concave sur $\mathbb{R}_+^*$, donc en particulier sur $\mathcal{A}$. Ainsi, $\ln$ est en dessous de toutes ses tangentes, d'où :
-  \[
-    \forall x \in \mathcal{A}, \quad 0 \; \leq \; \ln (x) \; \leq \; x-1.
-  \]
+        \fill [radius=1.5pt] (A) circle node[above=2pt] {\small $(x,g(x))$};
+        \fill [radius=1.5pt] (B) circle node[above=2pt] {\small $(ax, f(ax))$};
 
-  \newpage
+        \draw [-Stealth, thick] (3.5, 1.9) arc (0:-180:1.15) node [midway, above=2pt] {$\bm{\times \frac{1}{a}}$};
+      \end{tikzpicture}
+      \caption{Lien entre le graphe de $f$ et de $g$.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \draw [->] (-1,0) -- (5,0);
+        \draw [->] (0,-1) -- (0,4);
 
-  Illustration de l'inégalité :
+        \coordinate (A) at (0.8, 2);
+        \coordinate (B) at (3.7, 2);
 
-  \
+        \draw [dashed, gray] (0,2) -- (A) -- (0.8, 0);
+        \draw [dashed, gray] (0,2) -- (B) -- (3.7, 0);
 
-  \begin{center}
-    \definecolor{ttttff}{rgb}{0.2,0.2,1}
-    \definecolor{ffttww}{rgb}{1,0.2,0.4}
-    \definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
-    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-      \draw [color=cqcqcq,dash pattern=on 1pt off 1pt, xstep=1.0cm,ystep=1.0cm] (-1,-2) grid (3,2);
-      \draw[->,color=black] (-1,0) -- (3,0);
-      \foreach \x in {-1,1,2}
-      \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-      \draw[->,color=black] (0,-2) -- (0,2);
-      \foreach \y in {-2,-1,1}
-      \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-      \draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-      \clip(-1,-2) rectangle (3,2);
-      \draw[color=ffttww, smooth,samples=100,domain=3.244085366007135E-3:3.0] plot(\x,{ln(\x)});
-      \draw[color=ttttff, smooth,samples=100,domain=-1.0:3.0] plot(\x,{\x-1});
-      \draw (12.46,5.36) node[anchor=north west] {y = x-1};
-      \draw (9.62,5.22) node[anchor=north west] {y = ln(x)};
-    \end{tikzpicture}
+        \fill [radius=1.5pt] (A) circle node[above=2pt] {\small $(x,h(x))$};
+        \fill [radius=1.5pt] (B) circle node[above=2pt] {\small $(x-a, f(x-a))$};
 
-    \
+        \draw [thick, dashed] (2.25, -1) -- (2.25, 3.5);
 
-    \textbf{Figure 1.} $\ln$ en rouge et la première bissectrice en bleu.
-  \end{center}
+        \draw (0.8,-0.05) -- (0.8,0.05) node[below, yshift=-1mm] {\footnotesize $x$};
+        \draw (3.7,-0.05) -- (3.7,0.05) node[below, yshift=-1mm] {\footnotesize $a-x$};
+        \draw (2.25,-0.05) -- (2.25,0.05) node[below, yshift=-1mm, fill=white] {\footnotesize $\frac{a}{2}$};
+        \draw (-0.05,2) -- (0.05,2) node[left, xshift=-3mm] {\footnotesize $f(a-x)$};
 
-  \
-
-  On peut alors diviser par $x^2$ (car $x \neq 0$):
-
-  \
-
-  \[
-    \forall x \in \mathcal{A},\quad 0 \; \leq \; \underset{f_{1,2}(x)}{\underbrace{\frac{\ln (x)}{x^2}}} \; \leq \; \underset{\xrightarrow[x\to+\infty]{} \ 0}{\underbrace{\frac{1}{x}}} - \underset{\xrightarrow[x\to+\infty]{} \ 0}{\underbrace{\frac{1}{x^2}}}.
-  \]
-
-  \
-
-  Donc par théorème d'encadrement $f_{1,2}(x)\xrightarrow[x\to+\infty]{} 0$.
-
-  \
-
-  Dernièrement, le cas général. Soit $x\in \mathcal{A}$ et soient $(\alpha,\beta)\in \left( \mathbb{R}_+^* \right)^2$. On fait une preuve directe.
-
-  \begin{eqnarray*}
-    \frac{(\ln (x))^\alpha}{x^\beta} & = & \left( \frac{\ln (x)}{x^{\frac{\beta}{\alpha}}} \right)^\alpha \\[1.5ex]
-    & = & \underset{\underset{\text{par produit}}{\xrightarrow[x\to+\infty]{} \ 0}}{\underbrace{\underset{c^{\underline{te}} \ \text{(définie!)}}{\underbrace{\left( \frac{2\alpha}{\beta} \right)^\alpha}} \cdot \underset{\underset{\text{par composition des limites}}{\xrightarrow[x\to+\infty]{} \ 0}}{\underbrace{\left[ \underset{\underset{\text{d'après le dernier point}}{\xrightarrow[x\to+\infty]{} \ 0}}{\underbrace{ \frac{\ln \left( x^{\frac{\beta}{2 \alpha}} \right) }{\left( x^{\frac{\beta}{2\alpha}} \right)^2} }}\right]^\alpha}}}}.
-  \end{eqnarray*}
-
+        \node [fill=white] at (2.5,3.5) {$\mathcal{D}_g=\{a-x \mid x\in\mathcal{D}_f\}$};
+      \end{tikzpicture}
+      \caption{Lien entre le graphe de $f$ et de $h$.}
+    \end{figure}
+  \end{minipage}
 \end{question_kholle}
 
-\
-
-%-------------------------------------------------------------
-
-\begin{question_kholle}{Limite en $0$ de $\frac{1-\cos (x)}{x^2}$ et limite en $+\infty$ suivant $n$ de $\frac{\left(q^n \right)^\alpha}{(n!)^\beta}$ pour $q\in \mathbb{R}$ et $(\alpha,\beta)\in \left( \mathbb{R}_+^* \right)^2.$}
-
-  \
-
-  Montrons que $\frac{1-\cos (x)}{x^2} \xrightarrow[x\to 0]{} \frac{1}{2}$.
-
-  \
-
-  On fait toujours une preuve directe.
-  \begin{eqnarray*}
-    \lim_{x\to0} \ \frac{1-\cos (x)}{x^2} & = & \lim_{x\to0} \ \frac{1-\cos \left( \frac{2x}{2}\right) }{x^2} \\[1ex]
-    & = & \lim_{x\to0} \ \frac{1-\left( 1-2\sin ^2 \left( \frac{x}{2}\right) \right) }{x^2} \\[1ex]
-    & = &  \lim_{x\to0} \ \frac{2\sin ^2 \left( \frac{x}{2}\right) }{4 \left( \frac{x}{2}\right) ^2} \\[1ex]
-    & = & \lim_{x\to0} \ \underset{\underset{\text{par produit}}{\xrightarrow[x\to 0]{} \ \frac{1}{2}}}{\underbrace{\underset{c^{\underline{te}}}{\underbrace{\frac{1}{2}}} \cdot \underset{\underset{\text{par composition}}{\xrightarrow[x\to 0]{} \ 1}}{\underbrace{\left[\underset{\underset{\text{limite usuelle}}{\xrightarrow[x\to 0]{} \ 1}}{\underbrace{\frac{\sin \left( \frac{x}{2}\right) }{\left( \frac{x}{2}\right)} }} \right] ^2}}}} \\[1ex]
-    & = & \frac{1}{2}
-  \end{eqnarray*}
-
-  \
-
-
-
-  \
-
-  Trouvons la limite, sous réserve d'existence, de $\frac{\left(q^n \right)^\alpha}{(n!)^\beta}$ pour $q\in \mathbb{R}$ et $(\alpha,\beta)\in \left( \mathbb{R}_+^* \right)^2$ suivant $n$ en $+\infty$.
-
-  \
-
-  Remarquons que si $q\leq0$, il est \textbf{\textit{nécessaire}} d'avoir $\alpha\in\mathbb{Z}^*$ sinon l'expression n'a tout simplement \textbf{\textit{aucun sens}}. De fait, on supposera $q>0$ tout le long, les cas $q<0$ se font naturellement (convergence pour $q\in \mathbb{R_-}$).
-
-  \
-
-  Soit donc $0<q<1$, ce cas est immédiat, $\left( \left(q^n \right)^\alpha\right)_{n\in\mathbb{N}}=\left( \left(q^\alpha \right)^n\right)_{n\in\mathbb{N}}$, donc il s'agit de la suite géométrique de raison $q^\alpha \in ]0,1[$ et de premier terme $q^{\min_{I}(n)\alpha}$ ($\min_{I}(n)$, avec $I$ une partie non vide de $\mathbb{N}$, car la suite ne démarre pas forcément à $0$), donc elle converge vers $0$.
-
-  \
-
-  Si $q\geq 1$, on montre le cas trivial $\alpha = \beta =1$ :
-  \[
-    \forall n\in [\![ \lfloor q \rfloor +1,+\infty [\![, \quad 0 \leq \frac{q^n}{n!} = \underset{=\ \lambda \text{ (une constante)}}{\underbrace{\frac{q}{1} \times \frac{q}{2} \times \dots \times \frac{q}{\lfloor q \rfloor} }}\times \underset{\leq 1}{\underbrace{\frac{q}{\lfloor q\rfloor +1}}} \times \dots \times \underset{\leq1}{\underbrace{\frac{q}{n-1}}} \times \frac{q}{n} \leq \underset{\xrightarrow[n\to +\infty]{} \ 0}{\underbrace{\frac{\lambda q}{n}}}
-  \]
-
-  \
-
-  Par théorème d'existence de limite par encadrement, $\left( \frac{q^n}{n!} \right)_{n\in \mathbb{N}}$ converge et sa limite est $0$.
-
-  \
-
-  Soient $(\alpha,\beta)\in \mathbb{R}^*_+$, montrons le cas général pour $q\geq 1$.
-
-  \[
-    \forall n \in \mathbb{N}, \quad \frac{(q^n)^\alpha}{(n!)\beta} = \left( \frac{\left(q^{\frac{\alpha}{\beta}}\right)^n}{n!} \right)^\beta = \underset{\underset{\text{par composition des limites }(\beta>0)}{\xrightarrow[n\to +\infty]{} 0}}{\underbrace{\left( \underset{\underset{\text{c'est le cas trivial}}{\xrightarrow[n\to +\infty]{} 0}}{\underbrace{\frac{\left(q^{\frac{\alpha}{\beta}}\right)^n}{n!}}} \right)^\beta}}
-  \]
-
-\end{question_kholle}
-
-\begin{question_kholle}{Présentation exhaustive de la fonction $\arcsin$.}
-  Premièrement, ladite fonction est la bijection réciproque de la fonction $\widetilde{\sin}$ (voir \textbf{1}.). D'où :
-  \begin{equation*}
-    \arcsin = \left\{
-    \begin{array}{c c c}
-      [-1,1] & \to     & [-\frac{\pi}{2} , \frac{\pi}{2}]        \\ [1ex]
-      x      & \mapsto & \left( \widetilde{\sin} \right)^{-1}(x)
-    \end{array}
-    \right.
-  \end{equation*}
-
-  \
-
-  Ainsi, pour $x\in [-1,1]$, $\arcsin (x)$ est l'unique solution de l'équation d'inconnue $\theta \in \textstyle \left[-\frac{\pi}{2} , \frac{\pi}{2}\right]$, $\sin(\theta) = x$.
-
-  \
-
-  \noindent Il découle alors naturellement des propriétés héréditairement acquises de $\widetilde{\sin}$ :
-
-  \begin{enumerate}
-    \item $\arcsin$ est impaire.
-    \item $\arcsin$ est strictement croissante sur $[-1,1]$.
-    \item $\arcsin \in \mathcal{C}^0\left([-1,1],[-\frac{\pi}{2} , \frac{\pi}{2}] \right)$.
-    \item $\arcsin \in \mathcal{D}^1\left(]-1,1[,\left]-\frac{\pi}{2} , \frac{\pi}{2}\right[ \right)$.
-    \item $\arcsin'(x) = \frac{1}{\sqrt{1-x^2}}$ pour tout $x\in]-1,1[$.
-    \item $\arcsin$ admet deux demi-tangentes verticales en $-1$ et $1$.
-  \end{enumerate}
-
-  \
-
-  Graphe de $\arcsin$ :
-  \begin{center}
-    \definecolor{ffttww}{rgb}{1,0.2,0.4}
-    \definecolor{ttzzff}{rgb}{0.2,0.6,1}
-    \definecolor{zzffzz}{rgb}{0.6,1,0.6}
-    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.910828025477707cm,y=1.910828025477707cm]
-      \draw[->,color=black] (-1.57,0) -- (1.57,0);
-      \foreach \x in {-1.5,-1,-0.5,0.5,1,1.5}
-      \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-      \draw[->,color=black] (0,-1.57) -- (0,1.57);
-      \foreach \y in {-1.5,-1,-0.5,0.5,1,1.5}
-      \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-      \draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-      \clip(-1.57,-1.57) rectangle (1.57,1.57);
-      \draw[color=zzffzz] plot[raw gnuplot, id=func0] function{set samples 100; set xrange [-1.57:1.57]; plot sin(x)};
-      \draw[color=ttzzff] plot[raw gnuplot, id=func1] function{set samples 100; set xrange [-1.57:1.57]; plot asin(x)};
-      \draw[color=ffttww] plot[raw gnuplot, id=func2] function{set samples 100; set xrange [-1.57:1.57]; plot x};
-      \draw [line width=0.4pt,dash pattern=on 1pt off 1pt,domain=-1.57:1.57] plot(\x,{(--1.57-0*\x)/1});
-      \draw [line width=0.4pt,dash pattern=on 1pt off 1pt] (1,-1.57) -- (1,1.57);
-      \draw [line width=0.4pt,dash pattern=on 1pt off 1pt] (1.57,-1.57) -- (1.57,1.57);
-      \draw [line width=0.4pt,dash pattern=on 1pt off 1pt,domain=-1.57:1.57] plot(\x,{(--1-0*\x)/1});
-      \draw [line width=0.4pt,dash pattern=on 1pt off 1pt] (-1.57,-1.57) -- (-1.57,1.57);
-      \draw [line width=0.4pt,dash pattern=on 1pt off 1pt] (-1,-1.57) -- (-1,1.57);
-      \draw [line width=0.4pt,dash pattern=on 1pt off 1pt,domain=-1.57:1.57] plot(\x,{(-1-0*\x)/1});
-      \draw [line width=0.4pt,dash pattern=on 1pt off 1pt,domain=-1.57:1.57] plot(\x,{(-1.57-0*\x)/1});
-      \draw [->] (-1.57,-1) -- (-1.18,-1);
-      \draw [->] (-1,-1.57) -- (-1,-1.16);
-      \draw [->] (1,1.57) -- (1,1.16);
-      \draw [->] (1.57,1) -- (1.12,1);
-    \end{tikzpicture}
-
-    \
-
-    \textbf{Figure 2.} $\arcsin$ en bleu, $\widetilde{\sin}$ en vert et la première bissectrice en rouge.
-  \end{center}
-
-  \
-
-  On a aussi, grâce au taux d'accroissement en 0 d'$\arcsin$ :
-  \[
-    \lim_{x\to0} \frac{\arcsin(x)}{x} \ = \ 1.
-  \]
-
-  \
-
-  Puis finalement (visible sur le graphe) :
-  \[
-    \forall x \in [0,1], \quad \arcsin(x) \geq x.
-  \]
-\end{question_kholle}
+\pagebreak
 
 \begin{question_kholle}{Présentation exhaustive de la fonction $\arccos$.}
 
-  Premièrement, ladite fonction est la bijection réciproque de la fonction $\cos |_{[0,\pi]}^{[-1,1]} := \widetilde{\cos}$. D'où :
-  \begin{equation*}
-    \arccos = \left\{
-    \begin{array}{c c c}
-      [-1,1] & \to     & [0 , \pi]                               \\ [1ex]
-      x      & \mapsto & \left( \widetilde{\cos} \right)^{-1}(x)
+  Premièrement, ladite fonction est la bijection réciproque de la fonction $\bigl.\cos\bigr|_{[0,\pi]}^{[-1,1]}$. D'où :
+  \[
+    \arccos = \left|
+    \begin{array}{rcl}
+      [-1,1] & \to     & [0 , \pi]                                                 \\ [1ex]
+      x      & \mapsto & \left( \bigl.\cos\bigr|_{[0,\pi]}^{[-1,1]}\right)^{-1}(x)
     \end{array}
     \right.
-  \end{equation*}
+  \]
+  Ainsi, pour $x\in [-1,1]$, $\arccos (x)$ est l'unique solution de l'équation d'inconnue $\theta \in \textstyle [0 ,\pi]$, \[\cos(\theta) = x\].
 
-  \
-
-  Ainsi, pour $x\in [-1,1]$, $\arccos (x)$ est l'unique solution de l'équation d'inconnue $\theta \in \textstyle [0 ,\pi]$, $\cos(\theta) = x$.
-
-  \noindent Il découle alors naturellement des propriétés héréditairement acquises de $\widetilde{\cos}$ :
+  \noindent Il découle alors naturellement des propriétés héréditairement acquises de $\bigl.\cos\bigr|_{[0,\pi]}^{[-1,1]}$ :
 
   \begin{enumerate}
     \item $\arccos$ est strictement décroissante sur $[-1,1]$.
     \item $\arccos \in \mathcal{C}^0\left([-1,1],[0 , \pi] \right)$.
     \item $\arccos \in \mathcal{D}^1\left(]-1,1[,]0 ,\pi [ \right)$.
-    \item $\arccos'(x) = -\frac{1}{\sqrt{1-x^2}}$ pour tout $x\in]-1,1[$.
+    \item $\displaystyle\arccos'(x) = -\frac{1}{\sqrt{1-x^2}}$ pour tout $x\in]-1,1[$.
     \item $\arccos$ admet deux demi-tangentes verticales en $-1$ et $1$.
   \end{enumerate}
 
   \
 
   Graphe de $\arccos$ :
-  \begin{center}
-    \definecolor{cczzff}{rgb}{0.8,0.6,1.0}
-    \definecolor{qqffqq}{rgb}{0.0,1.0,0.0}
-    \definecolor{ffqqqq}{rgb}{1.0,0.0,0.0}
-    \definecolor{xfqqff}{rgb}{0.4980392156862745,0.0,1.0}
-    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.3636363636363635cm,y=1.3636363636363635cm]
-      \draw[->,color=black] (-1.2,0.0) -- (3.2,0.0);
-      \foreach \x in {-1.0,-0.5,0.5,1.0,1.5,2.0,2.5,3.0}
-      \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-      \draw[->,color=black] (0.0,-1.2) -- (0.0,3.2);
-      \foreach \y in {-1.0,-0.5,0.5,1.0,1.5,2.0,2.5,3.0}
-      \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-      \draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-      \clip(-1.2,-1.2) rectangle (3.2,3.2);
-      \draw[color=xfqqff] plot[raw gnuplot, id=func0] function{set samples 100; set xrange [0:3.14]; plot cos(x)};
-      \draw[color=ffqqqq] plot[raw gnuplot, id=func1] function{set samples 100; set xrange [-1.2:3.2]; plot x};
-      \draw[color=qqffqq] plot[raw gnuplot, id=func2] function{set samples 100; set xrange [-1:1]; plot acos(x)};
-      \draw[dotted,color=cczzff] plot[raw gnuplot, id=func3] function{set samples 100; set xrange [-1.2:3.2]; plot 3.1415926535/2.0-x};
-      \draw [dotted] (-1.0,0.0)-- (-1.0,3.141592653589793);
-      \draw [dotted] (-1.0,3.141592653589793)-- (0.0,3.141592653589793);
-      \draw [dotted] (0.0,1.0)-- (1.0,1.0);
-      \draw [dotted] (1.0,0.0)-- (1.0,1.0);
-      \draw [dotted] (0.0,-1.0)-- (3.141592653589793,-1.0);
-      \draw [dotted] (3.141592653589793,0.0)-- (3.141592653589793,-1.0);
-      \draw [->] (-1.0,3.141592653589793) -- (-1.0,2.6982051899765422);
-      \draw [->] (0.0,1.0) -- (0.41398424427733616,1.0);
-      \draw [->] (1.0,0.0) -- (1.0,0.41498464079523883);
-      \draw [->] (3.141592653589793,-1.0) -- (2.697204793458636,-1.0);
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=2]
+      \draw [->] (-1.5,0) -- (pi+0.5,0);
+      \draw [->] (0,-1.5) -- (0,pi+0.5);
+
+      \draw (1,-0.05) -- (1,0.05) node[below, yshift=-3mm] {\footnotesize $1$};
+      \draw (-1,-0.05) -- (-1,0.05) node[below, yshift=-3mm] {\footnotesize $-1$};
+      \draw (pi/2,-0.05) -- (pi/2,0.05) node[below, yshift=-3mm] {\footnotesize $\frac{\pi}{2}$};
+      \draw (pi,-0.05) -- (pi,0.05) node[below, yshift=-3mm] {\footnotesize $\pi$};
+
+      \draw (-0.05,1) -- (0.05,1) node[left, xshift=-3mm] {\footnotesize $1$};
+      \draw (-0.05,-1) -- (0.05,-1) node[left, xshift=-3mm] {\footnotesize $-1$};
+      \draw (-0.05,pi/2) -- (0.05,pi/2) node[left, xshift=-3mm] {\footnotesize $\frac{\pi}{2}$};
+      \draw (-0.05,pi) -- (0.05,pi) node[left, xshift=-3mm] {\footnotesize $\pi$};
+
+      \draw[thick, domain=0:pi, smooth, variable=\x, lime] plot ({\x}, {cos(\x*180/pi)});
+      \draw[thick, domain=-1:1, samples=100, variable=\x, purple] plot ({\x}, {pi*acos(\x)/180});
+      \draw[thick, domain=-1:pi, smooth, variable=\x, teal] plot ({\x}, {\x});
+      \draw[dashed, thick, domain=-1.5:pi, smooth, variable=\x, gray] plot ({\x}, {pi/2-\x}) node[left, xshift=1cm, fill=white] {$y=\frac{\pi}{2}-x$};
+
+      \draw [->] (-1,pi) -- (-1,pi-0.5);
+      \draw [->] (1,0) -- (1,0.5);
+      \draw [->] (pi,-1) -- (pi-0.5,-1);
+      \draw [->] (0,1) -- (0.5,1);
     \end{tikzpicture}
-
-    \
-
-    \textbf{Figure 3.} $\arccos$ en vert, $\widetilde{\cos}$ en violet, la première bissectrice en rouge et $y = \frac{\pi}{2} - x$ en rose.
-  \end{center}
-
+    \caption{$\arccos$ en violet, $\cos$ en vert et la première bissectrice en bleu.}
+  \end{figure}
 \end{question_kholle}
 
+\pagebreak
+
 \begin{question_kholle}{Présentation exhaustive de la fonction $\arctan$.}
-
-  \
-
-  Premièrement, ladite fonction est la bijection réciproque de la fonction $\tan |_{\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ }:=\widetilde{\tan}$. D'où :
-        \begin{center}
-
-          $\arctan = \left\{
-            \begin{array}{c c c}
-              \mathbb{R} & \to     & \left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ \\ [1ex]
-              x          & \mapsto & \left( \widetilde{\tan} \right)^{-1}(x)
-            \end{array}
-            \right.
-          $
-        \end{center}
-
-        \
-
-        Ainsi, pour $x\in \mathbb{R}$, $\arctan (x)$ est l'unique solution de l'équation d'inconnue $\theta \in \textstyle \left] -\frac{\pi}{2}, \frac{\pi}{2}\right[$, $\tan(\theta) = x$.
-
-  \
-
-  \noindent Il découle alors naturellement des propriétés héréditairement acquises de $\widetilde{\tan}$ :
+  Premièrement, ladite fonction est la bijection réciproque de la fonction $\bigl. \tan\bigr| _{\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ }$. D'où :
+        \[
+          \arctan = \left|\begin{array}{rcl}
+            \mathbb{R} & \to     & \left] -\frac{\pi}{2}, \frac{\pi}{2}\right[                                         \\ [1ex]
+            x          & \mapsto & \left(\bigl.\tan\bigr|_{\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[}\right)^{-1}(x)
+          \end{array}\right.
+        \]
+        Ainsi, pour $x\in \mathbb{R}$, $\arctan (x)$ est l'unique solution de l'équation d'inconnue $\theta \in \textstyle \left] -\frac{\pi}{2}, \frac{\pi}{2}\right[$,
+  \[
+    \tan(\theta) = x
+  \]
+  \noindent Il découle alors naturellement des propriétés héréditairement acquises de $\bigl.\tan\bigr|_{\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[}$ :
 
   \begin{enumerate}
     \item $\arctan$ est impaire.
     \item $\arctan \in \mathcal{C}^0\left(\mathbb{R},\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ \right)$.
     \item $\arctan \in \mathcal{D}^1\left(\mathbb{R},\left] -\frac{\pi}{2}, \frac{\pi}{2}\right[ \right)$.
-    \item $\arctan'(x) = \frac{1}{1+x^2}$ pour tout $x\in\mathbb{R}$.
+    \item $\displaystyle\arctan'(x) = \frac{1}{1+x^2}$ pour tout $x\in\mathbb{R}$.
   \end{enumerate}
 
-  \newpage
-
   Graphe de $\arctan$ :
-  \begin{center}
-    \definecolor{ffqqqq}{rgb}{1.0,0.0,0.0}
-    \definecolor{qqffqq}{rgb}{0.0,1.0,0.0}
-    \definecolor{qqffff}{rgb}{0.0,1.0,1.0}
-    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
-      \draw[->,color=black] (-3.0,0.0) -- (3.0,0.0);
-      \foreach \x in {-3.0,-2.5,-2.0,-1.5,-1.0,-0.5,0.5,1.0,1.5,2.0,2.5}
-      \draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
-      \draw[->,color=black] (0.0,-3.0) -- (0.0,3.0);
-      \foreach \y in {-3.0,-2.5,-2.0,-1.5,-1.0,-0.5,0.5,1.0,1.5,2.0,2.5}
-      \draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
-      \draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
-      \clip(-3.0,-3.0) rectangle (3.0,3.0);
-      \draw[color=qqffff] plot[raw gnuplot, id=func0] function{set samples 100; set xrange [-1.56:1.56]; plot tan(x)};
-      \draw[color=qqffqq] plot[raw gnuplot, id=func1] function{set samples 100; set xrange [-3:3]; plot atan(x)};
-      \draw[color=ffqqqq] plot[raw gnuplot, id=func2] function{set samples 100; set xrange [-3:3]; plot x};
-      \draw [domain=-3.0:3.0] plot(\x,{(--1.5707963267948966-0.0*\x)/1.0});
-      \draw (1.5707963267948966,-3.0) -- (1.5707963267948966,3.0);
-      \draw [domain=-3.0:3.0] plot(\x,{(-1.5707963267948966-0.0*\x)/1.0});
-      \draw (-1.5707963267948966,-3.0) -- (-1.5707963267948966,3.0);
-      \draw [dotted] (0.7853981633974483,1.0)-- (0.7853981633974483,0.0);
-      \draw [dotted] (0.0,0.7853981633974483)-- (1.0,0.7853981633974483);
-      \draw [dotted] (0.0,1.0)-- (1.0,1.0);
-      \draw [dotted] (1.0,0.0)-- (1.0,1.0);
-      \draw [dotted] (-1.0,0.0)-- (-1.0,-1.0);
-      \draw [dotted] (0.0,-1.0)-- (-1.0,-1.0);
-      \draw [dotted] (-0.7853981633974483,0.0)-- (-0.7853981633974483,-1.0);
-      \draw [dotted] (0.0,-0.7853981633974483)-- (-1.0,-0.7853981633974483);
-      \begin{scriptsize}
-        \draw[color=qqffff] (-3.1177254400173355,-0.014744648606977613) node {$f$};
-        \draw[color=qqffqq] (-3.1177254400173355,-1.3072326284088318) node {};
-        \draw[color=ffqqqq] (-1.8026940652189338,-1.8332451783281911) node {};
-        \draw[color=black] (-3.1177254400173355,1.5106917461591645) node {$a$};
-        \draw[color=black] (1.4660982092799508,2.322253966034747) node {};
-        \draw[color=black] (-3.1177254400173355,-1.4500074633869435) node {$c$};
-        \draw[color=black] (-1.4946010002661654,2.322253966034747) node {};
-      \end{scriptsize}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.5]
+      \draw [->] (-pi-0.5,0) -- (pi+0.5,0);
+      \draw [->] (0,-pi-0.5) -- (0,pi+0.5);
+
+      \draw (-pi/2,-0.05) -- (-pi/2,0.05) node[below, xshift=-5mm, yshift=-3mm] {\footnotesize $-\frac{\pi}{2}$};
+      \draw (pi/2,-0.05) -- (pi/2,0.05) node[below, xshift=-3mm, yshift=-3mm] {\footnotesize $\frac{\pi}{2}$};
+
+      \draw (-0.05,pi/2) -- (0.05,pi/2) node[left, xshift=-3mm, yshift=-5mm] {\footnotesize $\frac{\pi}{2}$};
+      \draw (-0.05,-pi/2) -- (0.05,-pi/2) node[left, xshift=-3mm, yshift=-5mm] {\footnotesize $-\frac{\pi}{2}$};
+
+      \draw[thick, domain=-pi-0.5:pi+0.5, samples=100, variable=\x, purple] plot ({\x}, {pi*atan(\x)/180});
+      \clip(-pi-0.5,-pi-0.5) rectangle (pi+0.5,pi+0.5);
+      \draw[thick, domain=-pi/2+0.25:pi/2-0.25, smooth, variable=\x, lime] plot ({\x}, {tan(\x*180/pi)});
+      \draw[thick, domain=-pi:pi, smooth, variable=\x, teal] plot ({\x}, {\x});
+
+      \draw[dashed, thick, gray] (-pi-0.5, pi/2) -- (pi+0.5,pi/2);
+      \draw[dashed, thick, gray] (-pi-0.5, -pi/2) -- (pi+0.5,-pi/2);
+      \draw[dashed, thick, gray] (pi/2, -pi-0.5) -- (pi/2, pi+0.5);
+      \draw[dashed, thick, gray] (-pi/2, -pi-0.5) -- (-pi/2, pi+0.5);
     \end{tikzpicture}
-
-    \
-
-    \textbf{Figure 4.} $\arctan$ en vert, $\widetilde{\tan}$ en bleu, la première bissectrice en rouge, et les fonctions $y = \pm \frac{\pi}{2}$ et $x = \pm \frac{\pi}{2}$ en noir.
-  \end{center}
-
-  \
-
+    \caption{$\arctan$ en violet, $\tan$ en vert et la première bissectrice en bleu.}
+  \end{figure}
   On a aussi (visible sur le graphe) :
   \[
     \forall x \in \mathbb{R}_+, \quad \arctan(x) \leq x.
   \]
 
-  Et enfin :
+  Et enfin : % TODO: Graphe
   \[
     \forall x \in \mathbb{R}^*, \quad \arctan(x) + \arctan \left( \frac{1}{x} \right) =
     \left\{ \begin{array}{cl}
@@ -2008,80 +1848,48 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
 \end{question_kholle}
 
-%-------------------------------------------------------------
-\begin{question_kholle}{$2$ preuves de $\arcsin(x) + \arccos(x) =\frac{\pi}{2}$ sur $[-1,1]$, dont une basée sur une interprétation géométrique du cercle trigonométrique.}
+\begin{question_kholle}{2 preuves de $\arcsin(x) + \arccos(x) =\frac{\pi}{2}$ sur $[-1,1]$, dont une basée sur une interprétation géométrique du cercle trigonométrique.}
+  On remarque sur la \autoref{sem6:q4:1} que la droite d'équation polaire $\displaystyle\theta=\frac{\pi}{4}$ est axe de symétrie de la figure. On a donc
+  \[
+    \frac{\arcsin x+\arccos x}{2} = \frac{\pi}{4}
+  \]
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=4]
+      \draw [ultra thick, violet] (1.008,0) arc (0:180:1.008);
+      \draw [ultra thick, teal] (0,0.992) arc (90:-90:0.992);
+      \draw (0,0) circle (1);
+      \draw (-1.2,0) -- (1.2,0);
+      \draw (0,-1.2) -- (0,1.2);
+      \draw [thick, gray, domain=-1.2:1.2] plot (\x,\x) node[below right] {$y=x$};
 
-  L'interprétation géométrique sur $[0,1]$, celle sur $[-1,0]$ est laissée au lecteur car il s'agit du même principe modulo des détails :
+      \coordinate (O) at (0,0);
+      \coordinate (U) at (1,0);
 
-  \begin{center}
-    \definecolor{eqbqff}{rgb}{0.8784313725490196,0.6901960784313725,1.0}
-    \definecolor{xfqqff}{rgb}{0.4980392156862745,0.0,1.0}
-    \definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
-    \definecolor{ffqqqq}{rgb}{1.0,0.0,0.0}
-    \definecolor{qqffff}{rgb}{0.0,1.0,1.0}
-    \definecolor{cqcqcq}{rgb}{0.7529411764705882,0.7529411764705882,0.7529411764705882}
-    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=2.5cm,y=2.5cm]
-      \clip(-1.2,-1.2) rectangle (1.2,1.2);
-      \fill[fill=black,fill opacity=1.0] (0.08956860342780414,0.20707624336357297) -- (0.08145277478981197,0.18983010750783963) -- (0.0742401101509475,0.2039730262575521) -- cycle;
-      \fill[fill=black,fill opacity=1.0] (0.3604343842207928,0.11272973544691409) -- (0.3441578360574464,0.12526320821437803) -- (0.33811585546631434,0.10562838538867093) -- cycle;
-      \draw [color=cqcqcq] (0.0,0.0) circle (2.5cm);
-      \draw [shift={(0.0,0.0)},line width=1.2000000000000002pt,color=qqffff]  plot[domain=0.0:3.141592653589793,variable=\t]({1.0*1.0*cos(\t r)+-0.0*1.0*sin(\t r)},{0.0*1.0*cos(\t r)+1.0*1.0*sin(\t r)});
-      \draw [shift={(3.061616997868383E-17,0.0)},line width=1.2000000000000002pt,color=ffqqqq]  plot[domain=-1.5707963267948966:1.5707963267948963,variable=\t]({1.0*1.0*cos(\t r)+-0.0*1.0*sin(\t r)},{0.0*1.0*cos(\t r)+1.0*1.0*sin(\t r)});
-      \draw [shift={(0.0,-0.0)},line width=1.2000000000000002pt,color=xfqqff]  plot[domain=0.0:1.5707963267948966,variable=\t]({1.0*1.0*cos(\t r)+-0.0*1.0*sin(\t r)},{0.0*1.0*cos(\t r)+1.0*1.0*sin(\t r)});
-      \draw [line width=1.2000000000000002pt,color=qqffff] (-1.0589461703485412,0.0)-- (-0.9410538296514588,0.0);
-      \draw [line width=1.2000000000000002pt,color=qqffff] (1.0589461703485412,0.0)-- (0.9410538296514588,0.0);
-      \draw [line width=1.2000000000000002pt,color=ffqqqq] (6.484175189933444E-17,1.0589461703485412)-- (5.762292801540088E-17,0.9410538296514588);
-      \draw [line width=1.2000000000000002pt,color=ffqqqq] (-1.945252556980033E-16,-1.0589461703485412)-- (-1.7286878404620264E-16,-0.9410538296514588);
-      \draw [line width=1.2000000000000002pt,color=ffqqqq] (6.484175189933444E-17,1.0589461703485412)-- (0.05398708109469719,1.0589461703485412);
-      \draw [line width=1.2000000000000002pt,color=ffqqqq] (5.762292801540088E-17,0.9410538296514588)-- (0.05398708109469719,0.9410538296514588);
-      \draw [line width=1.2000000000000002pt,color=ffqqqq] (6.484175189933444E-17,-1.0589461703485412)-- (0.05398708109469719,-1.0589461703485412);
-      \draw [line width=1.2000000000000002pt,color=ffqqqq] (5.762292801540088E-17,-0.9410538296514588)-- (0.05398708109469719,-0.9410538296514588);
-      \draw [line width=1.2000000000000002pt,color=qqffff] (-1.0589461703485412,1.2968350379866888E-16)-- (-1.0589461703485412,0.05398708109469725);
-      \draw [line width=1.2000000000000002pt,color=qqffff] (-0.9410538296514588,1.1524585603080177E-16)-- (-0.9410538296514588,0.05398708109469724);
-      \draw [line width=1.2000000000000002pt,color=qqffff] (0.9410538296514588,1.1524585603080177E-16)-- (0.9410538296514588,0.05398708109469724);
-      \draw [line width=1.2000000000000002pt,color=qqffff] (1.0589461703485412,1.2968350379866888E-16)-- (1.0589461703485412,0.05398708109469725);
-      \draw [dash pattern=on 1pt off 1pt on 3pt off 4pt] (6.123233995736766E-17,1.0)-- (0.0,-1.0);
-      \draw [dash pattern=on 1pt off 1pt on 3pt off 4pt] (-1.0,0.0)-- (1.0,-0.0);
-      \draw[color=eqbqff] plot[raw gnuplot, id=func0] function{set samples 100; set xrange [-1.0999999999999999:1.0999999999999999]; plot x};
-      \draw (0.3420201433256688,0.9396926207859083)-- (0.0,-0.0);
-      \draw (0.0,-0.0)-- (0.9396926207859084,0.3420201433256687);
-      \draw [shift={(0.0,-0.0)}] plot[domain=0.0:0.3490658503988659,variable=\t]({1.0*0.36624511935574344*cos(\t r)+-0.0*0.36624511935574344*sin(\t r)},{0.0*0.36624511935574344*cos(\t r)+1.0*0.36624511935574344*sin(\t r)});
-      \draw [shift={(0.0,-0.0)}] plot[domain=0.0:1.2217304763960306,variable=\t]({1.0*0.21706356072793254*cos(\t r)+-0.0*0.21706356072793254*sin(\t r)},{0.0*0.21706356072793254*cos(\t r)+1.0*0.21706356072793254*sin(\t r)});
-      \draw (0.08956860342780414,0.20707624336357297)-- (0.08145277478981197,0.18983010750783963);
-      \draw (0.08145277478981197,0.18983010750783963)-- (0.0742401101509475,0.2039730262575521);
-      \draw (0.0742401101509475,0.2039730262575521)-- (0.08956860342780414,0.20707624336357297);
-      \draw (0.3604343842207928,0.11272973544691409)-- (0.3441578360574464,0.12526320821437803);
-      \draw (0.3441578360574464,0.12526320821437803)-- (0.33811585546631434,0.10562838538867093);
-      \draw (0.33811585546631434,0.10562838538867093)-- (0.3604343842207928,0.11272973544691409);
-      \draw [dash pattern=on 3pt off 3pt] (5.938595898438009E-17,0.9396926207859083)-- (0.3420201433256688,0.9396926207859083);
-      \draw [dash pattern=on 3pt off 3pt] (4.108751682287631E-17,0.34202014332566877)-- (0.9396926207859084,0.3420201433256687);
-      \draw [dash pattern=on 3pt off 3pt] (0.3420201433256688,0.9396926207859083)-- (0.3420201433256688,-0.0);
-      \draw [dash pattern=on 3pt off 3pt] (0.9396926207859084,0.3420201433256687)-- (0.9396926207859084,-0.0);
-      \draw (0.3106196735830377,0.20690669566269085) node[anchor=north west] {arccos(x)};
-      \draw (0.06201603682796799,0.3536235960427321) node[anchor=north west] {arcsin(x)};
-      \draw (-0.18658759992710172,0.9853213615679096) node[anchor=north west] {x};
-      \draw (0.8241288249131816,0.0031332229126335774) node[anchor=north west] {x};
-      \begin{scriptsize}
-        \draw [fill=uuuuuu] (0.0,-0.0) circle (1.5pt);
-        \draw[color=uuuuuu] (-0.011342413362052578,0.09279355092265877) node {$\Omega$};
-        \draw [fill=uuuuuu] (5.938595898438009E-17,0.9396926207859083) circle (1.5pt);
-        \draw [fill=uuuuuu] (0.9396926207859084,-0.0) circle (1.5pt);
-      \end{scriptsize}
+      \draw [thick] (0,0) -- ({cos(30)},{sin(30)}) coordinate (A);
+      \draw [thick] (0,0) -- ({cos(60)},{sin(60)}) coordinate (B);
+      \draw pic[-Stealth,"$\arccos x$",draw=black,thick, angle radius=55,angle eccentricity=1.4, pic text options={shift={(1mm,-2mm)}}]{angle = U--O--A};
+      % \draw pic[-Stealth,"$\arccos x$",draw=black,thick, angle radius=55,angle eccentricity=1.4, pic text options={fill=white,shift={(-2mm,-2mm)}}]{angle = B--O--(0,1)};
+      \draw pic[-Stealth,"$\arcsin x$",draw=black,thick,angle radius=50,angle eccentricity=1.4, pic text options={fill=white,shift={(0,3mm)}}]{angle = U--O--B};
+      \draw [thick, dashed, gray] (A) -- ({cos(30)},0) node[below, black] {$x$};
+      \draw [thick, dashed, gray] (B) -- (0,{cos(30)}) node[left, black] {$x$};
+
+      %---
+      \draw [thick] (0,0) -- ({-cos(30)},{sin(30)}) coordinate (C);
+      \draw [thick] (0,0) -- ({cos(60)},{-sin(60)}) coordinate (D);
+      \draw pic[-Stealth,"$\arccos x'$",draw=black,thick, angle radius=35,angle eccentricity=1.4, pic text options={shift={(-13mm,-2mm)}}]{angle = U--O--C};
+      \draw pic[Stealth-,"$\arcsin x'$",draw=black,thick,angle radius=30,angle eccentricity=1.4, pic text options={shift={(5mm,2mm)}}]{angle = D--O--U};
+      \draw [thick, dashed, gray] (C) -- ({-cos(30)},0) node[below, black] {$x'$};
+      \draw [thick, dashed, gray] (D) -- (0,{-cos(30)}) node[left, black] {$x'$};
+
+
     \end{tikzpicture}
+    \caption{Illustration de la relation $\arccos x + \arcsin x = \frac{\pi}{2}$ pour $x\geq 0$ et $x'\leq 0$.\\ En violet le domaine de définition de $\arccos$ et en bleu celui de $\arcsin$.}
+    \label{sem6:q4:1}
+  \end{figure}
 
-    \
-
-    \textbf{Figure 5.}
-  \end{center}
-
-  \
-
-  Preuve formelle :
-
-  \
-
+  \noindent\textbf{Preuve formelle :}
   Soit $x\in [-1,1]$. Posons  $\varphi \ = \ \arcsin(x) \in \left[-\frac{\pi}{2},\frac{\pi}{2}\right]$. Ainsi :
-
   \[
     \arcsin(x) + \arccos(x) \ = \ \varphi + \arccos(\sin(\varphi)) \ = \ \varphi + \arccos \left( \cos \left( \frac{\pi}{2}- \varphi \right) \right),
   \]
@@ -2096,62 +1904,245 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
 \end{question_kholle}
 
-\begin{question_kholle}{Présentation analytique rapide des fonctions \(\cosh\) et \(\sinh \).}
+\pagebreak
+
+\begin{question_kholle}{Étude analytique rapide des fonctions \(\cosh\) et \(\sinh \).}
   ~\smallbreak
 
   \begin{itemize}[label=$\bullet$]
-    \item Domaine de définition et symétries.
-          \newline
+    \item \textit{Domaine de définition et symétries:}
           $\sinh$ et $\cosh$ sont définies sur $\mathbb{R}$.
-          \newline
           De plus,
-          \newline
-          $(i)$ $\forall x \in \mathbb{R}$, $-x\in \mathbb{R}$,
-          \newline
-          $(ii)$ $\forall x \in \mathbb{R}$,
-          $
-            \left\{ \begin{array}{c c c c c c c}
-              \sinh (-x) & = & \frac{e^{-x} - e^{x}}{2}     & = & - \frac{e^x - e^{-x}}{2} & = & -\sinh(x) \\
-              \text{et}  &   &                              &   &                          &   &           \\
-              \cosh (-x) & = & \frac{e^{-x} + e^{-(-x)}}{2} & = & \frac{e^x + e^{-x}}{2}   & = & \cosh(x).
-            \end{array}
-            \right.
-          $
-          \newline
+          \begin{propositions}
+            \item $\forall x \in \mathbb{R}, -x\in \mathbb{R}$,
+            \item $\forall x \in \mathbb{R},
+              \left\{ \begin{array}{c c c c c c c}
+                \sinh (-x) & = & \displaystyle\frac{e^{-x} - e^{x}}{2}     & = & -\displaystyle\frac{e^x - e^{-x}}{2} & = & -\sinh(x) \\
+                \text{et}  &   &                                           &   &                                      &   &           \\
+                \cosh (-x) & = & \displaystyle\frac{e^{-x} + e^{-(-x)}}{2} & = & \displaystyle\frac{e^x + e^{-x}}{2}  & = & \cosh(x).
+              \end{array}
+              \right.
+            $
+          \end{propositions}
           Donc $\sinh$ et $\cosh$ sont respectivement impaire et paire.
           \newline
           Nous les étudierons sur $\mathbb{R}_+$ et pour les obtenir les graphes $(\mathcal{C}_{\sinh} \text{ et } \mathcal{C}_{\cosh})$ de ces fonctions sur $\mathbb{R}$ à partir de ceux $(\mathcal{C}_{\sinh}^+ \text{ et } \mathcal{C}_{\cosh}^+)$ obtenus sur $\mathbb{R}_+$, nous le complèterons en traçant les images de ces graphes par la symétrie centrale $s$ de centre $O$ et par la réflexion $r$ d'axe $\left( O, \overrightarrow{\jmath} \right)$ :
           \[
             \mathcal{C}_{\sinh} = \mathcal{C}_{\sinh}^+ \cup s \left( \mathcal{C}_{\sinh}^+ \right) \qquad \text{ et } \qquad \mathcal{C}_{\cosh} = \mathcal{C}_{\cosh}^+ \cup r \left( \mathcal{C}_{\cosh}^+ \right)
           \]
+    \item \textit{Variations :} La fonction $\sinh' = \cosh$ est strictement positive sur \R donc $\sinh$ est strictement croissante sur \R. On en déduit alors le signe de $\sinh=\cosh'$ et donc les variations de $\cosh$:
+          \begin{center}
+            \begin{tikzpicture}
+              \tkzTabInit[lgt=4, espcl=3]
+              {$x$ / 1, $\cosh' x=\sinh x$ / 1, $\cosh$ / 2, $\sinh'(x)=\cosh x$ / 1, $\sinh$ / 2}
+              {$-\infty$, $0$, $+\infty$}
 
-          \
+              % Ligne des variations pour cosh(x)
+              \tkzTabLine{ , -, z , + }
+              \tkzTabVar{ +/$+\infty$, -/ 1, +/$+\infty$ }
 
-    \item Variations : triviales.
+              % Ligne des variations pour sinh(x)
+              \tkzTabLine{ , +, , + }
+              \tkzTabVar{ -/$-\infty$, R/, +/$+\infty$ }
+              \tkzTabIma{1}{3}{2}{$0$}
+            \end{tikzpicture}
+          \end{center}
 
-          \
-
-    \item Branches infinies en $+\infty$ et position relative de $\mathcal{C}_{\sinh}$ et $\mathcal{C}_{\cosh}$.
+    \item \textit{Branches infinies en $+\infty$ et position relative de $\mathcal{C}_{\sinh}$ et $\mathcal{C}_{\cosh}$.}
 
           \[
             \frac{\cosh(x)}{x} = \underset{\xrightarrow[x\to +\infty]{} \ +\infty}{\underbrace{\frac{e^{x}}{x}}} + \underset{\xrightarrow[x\to +\infty]{} \ 0}{\underbrace{\frac{e^{-x}}{x}}} \xrightarrow[x\to +\infty]{} \ +\infty
           \]
-          Donc le graphe de $\cosh$ admet une branche parabolique de direction asymptotique $\left( O, \overrightarrow{\jmath}\right)$.
-          \newline
-          On a :
+          Donc \textbf{le graphe de $\bm{\cosh}$ admet une branche parabolique de direction asymptotique $\bm{\left( O, \overrightarrow{\jmath}\right)}$}.
+          De plus,
           \[
             \forall x \in \mathbb{R}, \quad \cosh(x) - \sinh(x) = e^{-x} \xrightarrow[x\to +\infty]{} 0^+
           \]
-          Donc les graphes des deux fonctions se rapprochent l'un de l'autre arbitrairement près lorsque $x \to +\infty$, et le graphe de $\cosh$ est au-dessus de celui de $\sinh$.
+          Ainsi, les graphes des deux fonctions se rapprochent l'un de l'autre arbitrairement près lorsque $x \to +\infty$, et le graphe de $\cosh$ est au-dessus de celui de $\sinh$.
 
-          \
-
-    \item Tangente au graphe de $\sinh$ à l'origine et position relative.
+    \item \textit{Tangente au graphe de $\sinh$ à l'origine et position relative.}\\
+          Posons l'application
+          \[
+            g\left|\begin{array}{rcl}\R_+ & \longrightarrow & \R \\ x & \longmapsto & \sinh(x) - x\end{array}\right.
+          \]
+          Elle est dérivable sur son ensemble de définition, sa dérivée est positive sur cet intervalle ($\forall x\in\R_+, g'(x)=\cosh x - 1 \geq 0$), et $g(0)=0$ donc \textbf{le graphe de $\bm{\sinh}$ est situé au dessus de sa tangente sur $\bm{\R_+}$}.\\
+          Par imparité de la fonction $\sinh$, la position relative courbe / tangente s'inverse si bien que \textbf{l'origine est un point d'inflexion du graphe de $\bm{\sinh}$}.
   \end{itemize}
-
-  Il s'agira d'étudier $g : x\in \mathbb{R}_+ \mapsto \sinh(x) -x$, de remarquer sa dérivabilité d'en étudier les variations puis de conclure, en précisant que cette étude révèle l'inflexion du graphe de $\sinh$ en 0.
 \end{question_kholle}
 
+\pagebreak
+
+\begin{question_kholle}{Calcul de $\displaystyle\int_0^{2\pi}e^{imt} \mathrm d t$ en fonction de $m \in \Z$. En Déduire qu'une fonction polynomiale nulle sur un cercle centré en l'origine a tous ses coefficients nuls.}
+  Soit $m \in \Z$ fixé quelconque. Calculons
+  $$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t$$
+  \begin{itemize}[label=$\star$]
+    \item Si $m \neq 0$:
+          \begin{align*}
+            \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t & = \frac{1}{2 \pi} \Big[ \frac{e^{mt}}{im} \Big]_0^{2\pi}      \\
+                                                             & = \frac{1}{2 \pi} \Big( \frac{1}{im} - \frac{1}{im} \Big) = 0
+          \end{align*}
+    \item Si $m = 0$:
+          $$
+            \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t = \frac{1}{2 \pi} \int_0^{2\pi} \mathrm d t = \frac{2 \pi}{2 \pi} = 1
+          $$
+  \end{itemize}
+  Donc $$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t =
+    \begin{cases}
+      1 \text{ si } m=0 \\
+      0 \text{ si } m \neq 0
+    \end{cases}
+    \bigl(= \delta_{m, 1}\bigr)
+  $$
+  \\
+  Soit $n\in \N$ et $(a_0, ..., a_n) \in \C^{n+1}$ fixés quelconques. Posons, pour tout $z\in\C, P(z) = \sum_{k=0}^n a_k z^k$.\\
+  Soient $s\in\Z$ et $R\in\R_+^*$ fixés quelconques.
+  \begin{align*}
+    \frac{1}{2 \pi} \int_0^{2\pi} P(Re^{it}) e^{-ist} \mathrm d t & = \frac{1}{2 \pi} \int_0^{2\pi} \bigg (\sum_{k=0}^n a_k (Re^{it})^k \bigg) e^{-ist} \mathrm d t                                                                                                                                                                                                                                                     \\
+                                                                  & = \frac{1}{2\pi}\sum_{k=0}^{n}\left(\int_{0}^{2\pi}a_kR^ke^{it(k-s)}\right)                                                                                                                                                                                                                               \quad\text{ par linéarité de l'intégrale} \\
+                                                                  & = \sum_{k=0}^n\left(a_k R^k\cdot\smash[b]{\underbrace{\frac{1}{2\pi}\int_0^{2\pi} e^{it(k-s)} \dd t}_{=\begin{cases}0&\text{ si $k\neq s$} \\ 1 &\text{sinon}\end{cases}}}\right) \vphantom{\underbrace{\frac{1}{2\pi}\int_0^{2\pi} e^{it(k-s)} \dd t}_{=\begin{cases}0&\text{ si $k\neq s$} \\ 1 &\text{sinon}\end{cases}}}                        \\
+                                                                  & = \begin{cases}0 & \text{ si $s\not\in\iset{0,n}$}\\\displaystyle a_sR^s &\text{ sinon}\end{cases}
+  \end{align*}
+  Supposons à présent qu'il existe un cercle centré en l'origine sur lequel $P$ est identiquement nulle. Notons $R\in\R_+^*$ le rayon d'un tel cercle. Alors,
+  \[
+    \forall t\in\R,\; P(Re^{it})=0
+  \]
+  donc
+  \[
+    \forall s\in\Z,\; \frac{1}{2\pi}\int_0^{2\pi}P(Re^{it})e^{-ist}\dd t = \frac{1}{2\pi}\int_0^{2\pi}0\,\dd t=\frac{1}{2\pi}\bigl[1\bigr]_0^{2\pi}=0
+  \]
+  or, nous avons vu que
+  \[
+    \forall s\in\iset{0,n},\; \frac{1}{2\pi}\int_0^{2\pi}P(Re^{it})e^{-ist}\dd t = a_s R^s
+  \]
+  donc
+  \[
+    \forall s\in\iset{0,n},\; a_sR^s = 0 \quad\text{d'où}\quad \forall z\in\iset{0,n}, a_s = 0
+  \]
+  ainsi, $P$ est la fonction polynomiale nulle sur $\C$.
+\end{question_kholle}
+
+
+\pagebreak
+
+\begin{question_kholle}[{
+        \[
+          \int_{a}^{b} u'(t)v(t) \dd t= u(b)v(b) - u(a)v(a) - \int_{a}^{b} u(t)v'(t) \dd t
+        \]
+      }]{Technique de l'intégration par parties.}
+  Il suffit de reconnaître un terme issu de la dérivée d'un produit de fonctions:
+  $$
+    (uv)' = u'v + uv' \implies u'v = (uv)' - uv'
+  $$
+
+  d'où :
+
+  \begin{align*}
+    \int_{a}^{b} u'(t)v(t)\dd t & = \int_{a}^{b} \bigl((uv)'(t) - u(t)v'(t)\bigr) \dd t                                         \\
+                                & = \int_{a}^{b} (uv)'(t)\dd t - \int_{a}^{b}u(t)v'(t)\dd t  \text{ (linéarité de l'intégrale)} \\
+                                & = \Bigl[ u(t)v(t)\Bigr]_{a}^{b} - \int_{a}^{b} u(t)v'(t)\dd t                                 \\
+                                & = u(b)v(b) - u(a)v(a) - \int_{a}^{b} u(t)v'(t)\dd t
+  \end{align*}
+  La preuve sera suivie d'exemples explicites aux choix de l'examinateur.
+
+\end{question_kholle}
+
+\begin{question_kholle}[{				\[
+          \int_{\ph(a)}^{\ph(b)} f(s)\dd s \underset{\substack{\dd s = \ph'(u)\dd u \\ s = \ph(u)}}{=} \int_{a}^{b} f(\ph(u))\ph'(u)\dd u
+        \]
+      }]{Technique du changement de variable.}
+  Il suffit de reconnaître la dérivée d'une composée de fonctions.
+  En effet, en notant $F$ une primitive de $f$ sur $I$ (ce qui a bien un sens car $f$ est continue sur $I$),
+
+  \begin{align*}
+    \int_{a}^{b} f(\ph(u))\ph'(u)\dd u & =
+    \left[ (F \circ \ph)(u)\right]_{a}^{b}                                  \\
+                                       & =	F(\ph(b)) - F(\ph(a))            \\
+                                       & = \int_{\ph(a)}^{\ph(b)} f(s)\dd s
+  \end{align*}
+  La preuve sera suivie d'exemples explicites aux choix de l'examinateur.
+
+
+\end{question_kholle}
+
+\pagebreak
+
+\begin{question_kholle}{Montrer que si $f$ est $T$-périodique sur $\R$, pour tout $a\in\R$, $\displaystyle\int_{a}^{a+T}f(t)\dd t = \int_{0}^{T}f(t)\dd t$.}
+  Il existe $k_0\in\Z$ tel que $a\leq k_0 T<a+T$ car
+  \begin{equation*}
+    a\leq k_0T<a+T \iff \frac{a}{T} \leq K_0 < \frac{a}{T}+1 \iff k_0 = \left\lceil \frac{a}{T}\right\rceil
+  \end{equation*}
+  Fixons un tel $k_0$. Ainsi,
+  \begin{equation}\label{S6:Q10:1}
+    \int_{a}^{a+T}{f(t)\dd t} = \int_{a}^{k_0T}{f(t)\dd t} + \int_{k_0T}^{a+T}{f(t)\dd t}
+  \end{equation}
+  Or,
+  \begin{equation}\label{S6:Q10:2}
+    \int_{k_0T}^{a+T}{f(t)\dd t} \underset{\substack{u=t-k_0T \\ \dd u=\dd t}}{=} \int_{0}^{a+T-k_0T}{f(u+k_0T)\dd u} = \int_{0}^{a-(k_0-1)T}{f(u)\dd u}
+  \end{equation}
+  Et
+  \begin{equation}\label{S6:Q10:3}
+    \int_{a}^{k_0T}{f(t)}{\dd t} \underset{\substack{u=t-(k_0-1)T \\ \dd u=\dd t}}{=} \int_{a-(k_0-1)T}^{T}{f(u+(k_0-1)T)\dd u} = \int_{a-(k_0-1)T}^{T}{f(u)\dd u}
+  \end{equation}
+  La relation \eqref{S6:Q10:1} donne alors, en utilisant \eqref{S6:Q10:2} et \eqref{S6:Q10:3},
+  \begin{equation}\label{S6:Q10:4}
+    \int_{a}^{a+T}{f(t)\dd t} = \int_{0}^{a-(k_0-1)T}{f(t)\dd t}+\int_{a-(k_0-1)T}^{T}{f(t)\dd t} = \int_{0}^{T}{f(t)\dd t}
+  \end{equation}
+
+  On peut visualiser cette démonstration sur un graphe :
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+      \def\offset{0.8}
+      \definecolor{mycolor}{HTML}{44a2ce}
+
+      \fill [mycolor, samples=500, domain=0:2*pi-\offset, variable=\x]
+      (0, 0)
+      -- (0, -0.8)
+      -- plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))})
+      -- (2*pi-\offset, 0)
+      -- cycle;
+      \fill [lightgray, samples=500, domain=2*pi-\offset:2*pi, variable=\x]
+      (2*pi-\offset, 0)
+      -- (2*pi-\offset, -0.8)
+      -- plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))})
+      -- (2*pi, 0)
+      -- cycle;
+      \fill [pattern=north west lines, samples=500, domain=0:2*pi, variable=\x]
+      (0, 0)
+      -- (0, -0.8)
+      -- plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))})
+      -- (2*pi, 0)
+      -- cycle;
+
+      \fill [lightgray, samples=500, domain=4*pi-\offset:4*pi, variable=\x]
+      (4*pi-\offset, 0)
+      -- (4*pi-\offset, -0.8)
+      -- plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))})
+      -- (4*pi, 0)
+      -- cycle;
+      \fill [mycolor, samples=500, domain=4*pi:6*pi-\offset, variable=\x]
+      (4*pi, 0)
+      -- (4*pi, -0.8)
+      -- plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))})
+      -- (6*pi-\offset, 0)
+      -- cycle;
+
+      \draw [thick, purple, samples=500, domain=-0.5:6*pi+0.5] plot ({\x}, {2*sin(\x*180/pi - 90) - 1.2*cos(2*(\x*180/pi - 90))});
+
+      \draw [->] (-0.5,0) -- (6*pi+0.5,0);
+      \draw [->] (0,-2) -- (0,4);
+
+      \draw (0,-0.1) -- (0,0.1) node[above right] {\footnotesize $0$};
+      \draw (2*pi,-0.1) -- (2*pi,0.1) node[above] {\footnotesize $T$};
+      \draw (4*pi-\offset,-0.1) -- (4*pi-\offset,0.1) node[above] {\footnotesize $a$};
+      \draw (4*pi,-0.1) -- (4*pi,0.1) node[above] {\footnotesize $k_0T$};
+      \draw (6*pi-\offset,-0.1) -- (6*pi-\offset,0.1) node[above] {\footnotesize $a+T$};
+    \end{tikzpicture}
+    \caption{Illustration de la relation \eqref{S6:Q10:4}. \\
+      En bleu \eqref{S6:Q10:2} et en gris \eqref{S6:Q10:3} }
+  \end{figure}
+\end{question_kholle}
 \pagebreak\section{Semaine 7}
 
 \begin{question_kholle}{Calcul de $\int_0^{2\pi}e^{imt} \mathrm d t$ en fonction de $m \in \Z$. En Déduire qu'une fonction polynomiale nulle sur un cercle centré en l'origine a tous ses coefficients nuls.}

@@ -50,7 +50,7 @@
   \end{align*}
   D'où l'imparité de $f^{-1}$.
 
-  \noindent\textbf{$\vartriangleright$ Exemple :} Prenons notre fonction bijective impaire préférée, la fonction $\bigl.\sin\bigr|_{\left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]}^{[-1,1]}$ que l'on notera $\widetilde{\sin}$. Sa bijection réciproque est $\arcsin : [-1,1] \to \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$.\\
+  \noindent $\vartriangleright$\textbf{Exemple :} Prenons notre fonction bijective impaire préférée, la fonction $\bigl.\sin\bigr|_{\left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]}^{[-1,1]}$ que l'on notera $\widetilde{\sin}$. Sa bijection réciproque est $\arcsin : [-1,1] \to \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$.\\
   Comme dans la démonstration, prenons $y\in [-1, 1]$. Comme $[-1,1]$ est centré en $0$, $-y\in [-1,1]$, et dès lors,
   \begin{align*}
     \arcsin(-y) & = \arcsin(-\widetilde{\sin}(\arcsin(y))) \\
@@ -125,7 +125,7 @@
   \]
   Ainsi, le théorème d'existence de limite par encadrement permet de conclure que $\frac{\ln x}{x^2}$ admet une limite en $+\infty$ et que cette limite est nulle :
   \[
-    \lim_{x\to+\infty}\frac{\ln x}{x} = 0
+    \lim_{x\to+\infty}\frac{\ln x}{x^2} = 0
   \]
   On en déduit alors le cas général :
   \\
@@ -209,10 +209,19 @@
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=2]
-      \draw [->] (-1.5,0) -- (1.5,0);
+      \draw [->] (-pi/2-0.5,0) -- (pi/2+0.5,0);
       \draw [->] (0,-pi/2-0.5) -- (0,pi/2+0.5);
+
+      \draw (-pi/2,-0.05) -- (-pi/2,0.05) node[below, yshift=-3mm] {\footnotesize $-\frac{\pi}{2}$};
+      \draw (-1,-0.05) -- (-1,0.05) node[below, yshift=-3mm] {\footnotesize $-1$};
       \draw (1,-0.05) -- (1,0.05) node[below, yshift=-3mm] {\footnotesize $1$};
+      \draw (pi/2,-0.05) -- (pi/2,0.05) node[below, yshift=-3mm] {\footnotesize $\frac{\pi}{2}$};
+
+      \draw (-0.05,-pi/2) -- (0.05,-pi/2) node[left, xshift=-3mm] {\footnotesize $-\frac{\pi}{2}$};
+      \draw (-0.05,-1) -- (0.05,-1) node[left, xshift=-3mm] {\footnotesize $-1$};
+      \draw (-0.05,1) -- (0.05,1) node[left, xshift=-3mm] {\footnotesize $1$};
       \draw (-0.05,pi/2) -- (0.05,pi/2) node[left, xshift=-3mm] {\footnotesize $\frac{\pi}{2}$};
+
       \draw[thick, domain=-1.5:1.5, smooth, variable=\x, lime] plot ({\x}, {sin(\x*180/pi)});
       \draw[thick, domain=-1.5:1.5, smooth, variable=\x, teal] plot ({\x}, {\x});
       \draw[thick, domain=-1:1, samples=100, variable=\x, purple] plot ({\x}, {pi*asin(\x)/180});

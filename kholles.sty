@@ -40,7 +40,8 @@
 \RequirePackage{nicefrac}
 \RequirePackage{mathrsfs}
 \RequirePackage{braket}
-\usepackage[b]{esvect}
+\RequirePackage[b]{esvect}
+\RequirePackage{bm} % Bold math
 
 % changement de puces dans les listes
 \RequirePackage{enumitem}
@@ -67,6 +68,7 @@
 }
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
+\usepackage{tkz-tab}
 \usetikzlibrary{shapes.geometric}
 \usetikzlibrary{arrows.meta, arrows}
 \usetikzlibrary{math} % pour les variables
@@ -81,6 +83,7 @@
 \usepgfplotslibrary{fillbetween}
 \pgfplotsset{compat=1.15,width=10cm}
 \RequirePackage{float}
+\RequirePackage{caption}
 
 %À faire : trouver une manière de pouvoir choisir manuellement le chiffre de la question de kholle
 %J'ai ajouté ici une commande qui permet de créer une section avec son propre numéro avec  \DIV[42]{section}{Le titre}
@@ -165,9 +168,13 @@
 \newcommand{\bda}{\ensuremath{\lambda} }
 \newcommand{\e}{\ensuremath{\mathrm e} }
 
+% Différentielles
+\newcommand{\dd}{\ensuremath{\mathrm d}}
+
 % Nombres entiers
 \newcommand{\lient}{\ensuremath{[\![} }
 \newcommand{\rient}{\ensuremath{]\!]} }
+\newcommand{\iset}[1]{\ensuremath{\lient #1 \rient}}
 
 % Régularité
 \newcommand{\regularite}[5]{\ensuremath{
