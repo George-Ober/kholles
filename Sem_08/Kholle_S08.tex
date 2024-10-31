@@ -392,4 +392,74 @@
 
 \end{question_kholle}
 
+\begin{question_kholle}[]{Déterminer le solutions réelles définies sur $]0, + \infty [$ de $y'' + 3y' +2y = \frac{t-1}{t^{2}}e^{ -t }$}
+  
+
+Il s'agit d'une EDL2 avec second membre à coefficients constants avec second membre défini sur $]0, +\infty[$.
+
+Ce second membre est de plus continu sur $\mathbb{R}_{+}^{*}$ donc les solutions définies sur un intervalle maximal sont définies sur $\mathbb{R}^{*}_{+}$ et leur ensemble $\mathcal{S}$ est un plan affine, le plan affine passant par une solution particulière et dirigé par le plan vectoriel $\mathcal{S}_{H}$.
+\begin{itemize}[label=$\star$]
+  \item L'équation caractéristique de $y'' + 3y' + 2y = 0$ est $r^{2} + 3r + 2 = 0 \iff (r+1)(r+2) = 0$
+
+Donc
+$$
+\mathcal{S}_{H} = \left\{ \left.\begin{array}{ll} \mathbb{R}^{*}_{+} &\to \mathbb{R} \\ t &\mapsto \lambda e^{-t}+\mu e^{-2t} \end{array}\right| (\lambda, \mu) \in \mathbb{R}^{2}\right\} 
+$$
+
+\item Cherchons une solution particulière de la forme $t \mapsto \lambda(t)e^{ -t }$ avec $\lambda \in \mathcal{D}^{2}(\mathbb{R}^{*}_{+}, \mathbb{R})$
+
+
+\begin{align*}
+\begin{matrix}
+t \mapsto \lambda(t)e^{ -t } \text{ est solution}\\ \text{ particulière dans }\mathbb{R}_{+}^{*}
+\end{matrix}  & \iff \forall t \in \mathbb{R}^{*}_{+},  (\lambda (t)e^{ -t })'' + 3 (\lambda(t)e^{ -t })' + 2(\lambda(t)e^{ -t }) = \frac{t-1}{t^{2}}e^{ -t } \\
+&\iff \forall t \in \mathbb{R}_{+}^{*}, (\lambda''(t)- 2\lambda'(t)+\lambda(t))e^{ -t } + 3 (\lambda(t) ' - \lambda(t))e^{ -t  } + 2 \lambda(t) e^{ -t } = \frac{t-1}{t^{2}}e^{ -t } \\
+ & \iff\forall t \in \mathbb{R}_{+}^{*}, \lambda'' (t) + \lambda'(t) = \frac{t-1}{t^{2}}
+\end{align*}
+
+\begin{itemize}[label=$\lozenge$]
+  \item Cherchons donc une solution particulière de
+$$
+y' + y = \frac{t-1}{t^{2}}
+$$
+
+C'est une EDL1 définie et résolue sur $\mathbb{R}_{+}^{*}$, à coefficients et second membre résolus, donc l'ensemble des solutions est une droite affine de solutions définies sur $\mathbb{R}_{+}^{*}$
+
+\begin{itemize}[label=$\triangle$] 
+  \item Par la méthode de la variation de la constante, cherchons une solution de la forme $t \mapsto \alpha (t) e^{ -t }$ avec $\alpha \in \mathcal{D}^{1}(\mathbb{R}_{+}^{*}, \mathbb{R})$.
+
+
+\begin{align*}
+t \mapsto \alpha(t)e^{ -t } \text{ est solution particulière } &\iff \forall t \in \mathbb{R}_{+}^{*}, (\alpha(t)e^{ -t })' + \alpha(t)e^{ -t }= \frac{t-1}{t^{2}}\\
+&\iff \forall t \in \mathbb{R}_{+}^{*}, \alpha'(t) = \frac{t-1}{t^{2}}e^{ t }
+\end{align*}
+
+
+Cherchons une primitive de $t \mapsto \frac{t-1}{t^{2}}e^{ t }$
+
+
+\begin{align*}
+\int_{1}^{t} \frac{u-1}{u^{2}}e^{ u } \, \mathrm du &= \int_{1}^{t} \frac{e^{ u }}{u} - \frac{e^{ u }}{u^{2}} \, \mathrm du \\
+&= \int_{1}^{t} \frac{e^{ u }}{u} \, \mathrm du - \int_{1}^{t} \frac{e^{ u }}{u^{2}} \, \mathrm du \\
+&= \int_{1}^{t} \frac{e^{ u }}{u} \, \mathrm du  - \left( \left[ -\frac{1}{u}e^{ u } \right] _{1}^{t} - \int_{1}^{t} -\left( \frac{1}{u} \right) e^{ u } \, \mathrm du  \right)   \\
+&= \left[ \frac{e^{ u }}{u} \right] _{1}^{t} = \frac{e^{t}}{t} - e
+\end{align*}
+
+
+Donc $\alpha(t) = \frac{e^{ t }}{t}$ convient.
+\end{itemize}
+
+Donc $t \mapsto \alpha(t)e^{ -t } = \frac{e^{ t }}{t}e^{ -t } = \frac{1}{t}$ est une solution particulière de $y'+y = \frac{t-1}{t^{2}}$
+\end{itemize}
+Donc $\lambda'(t) = \frac{1}{t}$ donc $\lambda(t) = \ln(t)$ convient
+
+Donc $t \mapsto \ln (t) e^{ -t }$ est une solution particulière de (EDL2)
+\end{itemize}
+Ainsi, le plan affine des solutions sur $\mathbb{R}_{+}^{*}$ est
+$$
+\mathcal{S} = \left\{ \left.\begin{array}{ll} \mathbb{R}_{+}^{*} &\to \mathbb{R} \\ t &\mapsto (\ln t)e^{ -t }+ \lambda e^{ -t }+\mu e^{ -2t } \end{array}\right| (\lambda , \mu) \in \mathbb{R}^{2}\right\} 
+$$
+
+\end{question_kholle}
+
 \end{document}
