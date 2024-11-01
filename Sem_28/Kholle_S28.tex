@@ -140,6 +140,7 @@
   }]{Pour $f$ continue sur $[n_0, +\infty[$, décroissante et minorée, $\displaystyle\sum_{n\geqslant n_{0}}\left( f(n)- \int_{n}^{n+1} f(u) \, \mathrm du  \right)$ converge. Application au DA en $o(1)$ de la somme partielle de la série harmonique}
 
   Montrons que la suite $(S_{n})_{n\geqslant n_{0}}$ est majorée, et que la suite est à termes $\geqslant 0$
+  
   La décroissance de $f$ donne l'encadrement suivant
 
   $$\forall n \in [ \! [ n_{0} , +\infty[\![,  f(n) - \int_{n}^{n+1} f(t) \, \mathrm dt \geqslant 0$$
@@ -157,10 +158,58 @@
 
   En reconnaissant un phénomène télescopique
 
-  $$S_{n} \leqslant f(n_{0})-f(n+1)\leqslant f(n_{0})-n$$
+  $$S_{n} \leqslant f(n_{0})-f(n+1)\leqslant f(n_{0})- m $$
 
-  Donc $(S_{n})_{n\geqslant n_{0}}$ est majorée, et croissante, elle converge donc.
+  Donc $(S_{n})_{n\geqslant n_{0}}$ est croissante et majorée, elle converge.
   \\
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+
+      % Axes
+      \draw[->] (-0.5,0) -- (7.5,0) node[right] {$x$}; % x-axis
+      \draw[->] (0,-0.5) -- (0,4.5) node[above] {$f(x) = \frac{1}{x}$}; % y-axis
+      
+      % Define the function f(x) = 1/x from x=1 to x=6, scaling the y-axis
+      \draw[domain=1:7,samples=100,smooth,thick,blue] plot (\x, {1/\x*4}) node[right] {};
+      
+      % Draw integer points on x-axis and their corresponding values of f(n)
+      \foreach \n in {1,2,...,6} {
+          % Mark x = n on x-axis
+          \draw[dashed] (\n, 0) -- (\n, {4/\n});
+          % Place a dot at (n, f(n))
+          \filldraw (\n, {4/\n}) circle (2pt) node[above right] {$f(\n)$};
+          
+          % Draw the rectangle from (n,0) to (n+1, f(n)) for each interval [n, n+1]
+          \draw[red, thick] (\n, {4/\n}) -- (\n+1, {4/\n}) -- (\n+1, {4/(\n + 1)});
+          
+          % Fill the area not covered by the integral as the difference (shaded in gray)
+          \fill[gray, opacity=0.3] 
+              plot[domain=\n:\n+1, samples=50] (\x, {4/\x}) -- 
+              (\n+1, {4/\n}) -- (\n, {4/\n}) -- cycle;
+          
+          \fill[gray, opacity=0.3] 
+              plot[domain=\n:\n+1, samples=50] (\x - \n + 9, {4/\x}) -- 
+              (10, {4/\n}) -- (9, {4/\n}) -- cycle;
+      
+          \draw[blue] plot[domain = \n:\n+1, samples = 50] (\x - \n + 9, {4/\x});
+          \draw[red] (9, {4/\n}) -- (10, {4/\n}) -- (10, {4/(\n+1)});
+          % Label the integral area
+          % \node[blue] at (\n+0.5, 0.25) {$\int_{\n}^{\n+1} f(x) \, dx$};
+      }
+      
+      \draw[dashed] (9, 4) -- (9, 0) -- (10, 0) -- (10, 1);
+      
+      % \draw (8.9, -0.1) rectangle (10.1, 4.1);
+      % \fill[gray] (10, 3) -- (8, 3) -- (9, 1.5);
+      
+      % \draw (9.5, 0)  {$\vdots$};
+      
+      
+      \end{tikzpicture}
+      \caption{Une visualisation graphique de la bornitude de $(S_n)_{n \geqslant n_0}$ pour le cas particulier de $f \leftarrow (x \mapsto \nicefrac 1 x), m \leftarrow 0, n_0 \leftarrow 1$. On interprète chaque terme de la somme comme l'aire du rectangle à laquelle on retranche l'aire sous la courbe : cela correspond à l'aire grise, qui peut être aisément installée dans un rectangle d'aire $f(1)$.}
+  \end{figure}
 
   \textit{Application au DA en $o(1)$ de la somme partielle de la série harmonique.}
   Appliquons ce qui précède pour $f = x \mapsto \nicefrac{1}{x}$ et $n_0 = 1$. $f$ est bien continue, décroissante et minorée (par 0). sur $[1; + \infty[$.
