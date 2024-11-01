@@ -3381,6 +3381,46 @@ $$
 \end{question_kholle}
 \pagebreak\section{Semaine 11}
 
+\begin{question_kholle}{Convergence d'une suite si ses sous-suites paires et impaires convergent}
+  Soit $(a_{n})_{n \in \N}$ telle que $(a_{2n})_{n \in \N}$ et $(a_{2n+1})_{n \in \N}$ convergent vers la même limite $\ell$.
+Montrons que $a$ converge vers $\ell$.
+
+Soit $\varepsilon>0$. On veut construire un $N \in \N$ tel que $\forall n \geqslant N, \lvert a_{n} - \ell \rvert \leqslant \varepsilon$
+
+Appliquons la définition de la limite de $(a_{2n})_{n \in \N}$ et $(a_{2n+1})_{n \in \N}$
+
+\begin{align*}
+\exists N_{1} \in \N : \forall n \geqslant N_{1}, \lvert a_{2n} - \ell\rvert  \leqslant \varepsilon \\
+\exists N_{2} \in \N : \forall n \geqslant N_{2}, \lvert a_{2n+1} - \ell  \rvert \leqslant \varepsilon
+\end{align*}
+
+Posons $N = \max(2N_{1}, 2N_{2}+1)$ et vérifions que ce rang convient.
+Soit $n \in \N$ tel que $n \geqslant N$. 
+\begin{itemize}[label=$\star$]
+  \item Si $n$ est pair, $\exists p \in \N :$ $n = 2p$
+$$
+n\geqslant N \geqslant 2N_{1} \implies 2p \geqslant 2N_{1} \implies p \geqslant N_{1}
+$$
+Donc d'après la définition de la convergence de $(a_{2n})_{n \in \N}$, on a
+$$
+\lvert a_{2p} - \ell \rvert  \leqslant \varepsilon \implies \lvert a_{n} - \ell  \rvert  \leqslant \varepsilon
+$$
+
+\item Si $n$ est impair, $\exists p \in \N : n = 2p +1$
+$$
+n \geqslant N \geqslant 2N_{2}+1 +\implies 2p+1 \geqslant 2N_{2} + 1 \implies p \geqslant N_{2}
+$$
+Donc d'après la définition de la convergence de $(a_{2n+1})_{n \in \N}$, on a 
+$$
+\lvert a_{2p+1} - \ell\rvert  \leqslant \varepsilon \implies \lvert a_{n} - \ell \rvert \leqslant \varepsilon
+$$
+\end{itemize}
+Donc $\lvert a_{n} - \ell  \rvert\leqslant \varepsilon$
+Donc $a$ tend vers $\ell$.
+
+\end{question_kholle}
+\textbf{Remarque} Si les deux suites ne convergent pas vers la même limite, comme pour $((-1)^{n})_{n \in \N}$, la suite n'admet pas de limite.
+
 \begin{question_kholle}
   [Soient $(A,B) \in (\mathcal{P}(\R) \setminus \{\varnothing\})^{2}$. Montrons que :
     \\
