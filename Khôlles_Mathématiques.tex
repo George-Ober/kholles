@@ -7604,11 +7604,11 @@ Nous rappelons que $\dim \{0_E\} = 0$ et que $\{0_E\} = \Vect \emptyset$.
                   \fill[black] (\i, \number) circle (2pt);
           
                   \ifnum\number>0
-                      \draw[blue] (\i, \number) circle (4pt);
-                      \draw[red] (\i, 0) circle (4pt);
+                      \draw[blue] (\i, \number) circle (4pt) node[above right] {$u_\i^+$};
+                      \draw[red] (\i, 0) circle (4pt) node[above right] {$u_\i^-$};
                   \else        
-                      \draw[red] (\i, -\number) circle (4pt);
-                      \draw[blue] (\i, 0) circle (4pt);
+                      \draw[red] (\i, -\number) circle (4pt) node[above right] {$u_\i^-$};
+                      \draw[blue] (\i, 0) circle (4pt) node[above right] {$u_\i^+$};
                   \fi
               }
               
