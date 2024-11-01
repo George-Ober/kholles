@@ -3080,82 +3080,82 @@ $$
 
 \begin{question_kholle}
   [\noindent Soient $(A, B) \in \mathcal{P}(\R)^2$ fq. \\
-    \textit{Définition de la densité}
-    \begin{align}
-      A \text{ est dense dans } B
-      \text{ si } \left\{ \begin{array}{ll}
-                            A \subset B \\
-                            \mathrm{et} \\
-                            \forall (u,v) \in \R^2, B \cap {]}u;v{[} \neq \emptyset \implies A \cap  {]}u;v{[} \neq \emptyset
-                          \end{array} \right.
-    \end{align}
-    \textit{Caractérisation de la densité par les $\varepsilon$}
-    \begin{align}
-      A \text{ est dense dans } B
-      \iff \left\{ \begin{array}{ll}
-                     A \subset B \\
-                     \mathrm{et} \\
-                     \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon
-                   \end{array} \right.
-    \end{align}
+  \textit{Définition de la densité}
+  \begin{align}
+    A \text{ est dense dans } B
+    \text{ si } \left\{ \begin{array}{ll}
+      A \subset B \\
+      \mathrm{et} \\
+      \forall (u,v) \in \R^2, B \cap {]}u;v{[} \neq \emptyset \implies A \cap  {]}u;v{[} \neq \emptyset
+    \end{array} \right.
+  \end{align}
+  \textit{Caractérisation de la densité par les $\varepsilon$}
+  \begin{align}
+    A \text{ est dense dans } B
+    \iff \left\{ \begin{array}{ll}
+      A \subset B \\
+      \mathrm{et} \\
+      \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon
+    \end{array} \right.
+  \end{align}
   ]
   {Caractérisation de la densité d’une partie $A$ de \R dans une partie $B$ de \R la contenant avec des $\varepsilon$.}
-
+  
   \textit{Montrons la caractérisation de la densité}\\
   \emph{Sens Direct} Supposons $A$ dense dans $B$
   \begin{itemize}[label=\textemdash]
     \item Par déf $A \subset B$
     \item Soit $b \in B$ et $\varepsilon \in \R_+^*$ fq
-
-          Appliquons le (ii) de la déf de Densité pour $u \leftarrow b - \varepsilon$ et $v \leftarrow b + \varepsilon$
-          $$B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset \implies A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$$
-            Or, $B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset$ est vraie
-              donc $A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$
-
-              Ce qui permet de choisir $a \in A \cap ]b - \varepsilon,  b + \varepsilon[$.
-              Un tel $a$ vérifie $a \in A$ et $a \in ]b - \varepsilon,  b + \varepsilon[ \iff |b-a| < \varepsilon$
+    
+    Appliquons le (ii) de la déf de Densité pour $u \leftarrow b - \varepsilon$ et $v \leftarrow b + \varepsilon$
+    $$B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset \implies A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$$
+    Or, $B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset$ est vraie
+    donc $A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$
+    
+    Ce qui permet de choisir $a \in A \cap ]b - \varepsilon,  b + \varepsilon[$.
+    Un tel $a$ vérifie $a \in A$ et $a \in ]b - \varepsilon,  b + \varepsilon[ \iff |b-a| < \varepsilon$
   \end{itemize}
   \bigbreak
   \noindent \emph{Sens réciproque} Supposons $\left\{\begin{array}{ll} A \subset B \\\mathrm{et}\\ \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon \end{array}\right.$
-
+  
   \begin{itemize}
     \item On a donc $A \subset B$
     \item Soient $(u, v) \in \R^2$ fq tq $B \cap ]u, v[ \neq \emptyset$
-
-                  Soit $b \in B \cap ]u, v[$ fq.
-                  Appliquons l'hypothèse pour $b\leftarrow b$ et $\varepsilon \leftarrow \min\{v - b, b - u\}$, qui est autorisé $v-b$ et $b-u$ sont positifs
-
-                  Donc $\exists a \in A: | b - a| < \varepsilon $
-
-                  Fixons un tel a, alors:
-                  $$
-                    b-\varepsilon < a < b + \varepsilon
-                  $$
-
-                  Donc $$
-                    \left\{\begin{array}{ll}
-                      a < b + \varepsilon = b + \underbrace{\min\{v - b, b - u\}}_{\leqslant v - b} \leqslant b + v - b = v \\ \mathrm{et}\\
-                      a > b - \varepsilon = b - \underbrace{\min\{v - b, b - u\}}_{\leqslant b - u} \geqslant b - (b - u) = u
-                    \end{array}\right.
-                  $$
-
-                  Donc $a \in ]u, v[$.
+    
+    Soit $b \in B \cap ]u, v[$ fq.
+    Appliquons l'hypothèse pour $b\leftarrow b$ et $\varepsilon \leftarrow \min\{v - b, b - u\}$, qui est autorisé $v-b$ et $b-u$ sont positifs
+    
+    Donc $\exists a \in A: | b - a| < \varepsilon $
+    
+    Fixons un tel a, alors:
+    $$
+    b-\varepsilon < a < b + \varepsilon
+    $$
+    
+    Donc $$
+    \left\{\begin{array}{ll}
+      a < b + \varepsilon = b + \underbrace{\min\{v - b, b - u\}}_{\leqslant v - b} \leqslant b + v - b = v \\ \mathrm{et}\\
+      a > b - \varepsilon = b - \underbrace{\min\{v - b, b - u\}}_{\leqslant b - u} \geqslant b - (b - u) = u
+    \end{array}\right.
+    $$
+    
+    Donc $a \in ]u, v[$.
   \end{itemize}
   Donc $A \cap ]u, v[ \neq \emptyset$
-
+  
 \end{question_kholle}
 
 \begin{question_kholle}
   [\begin{equation}
-      \forall (a, b) \in \R \times \R^*,
-      \exists ! (q, r) \in \Z \times \R :
-      \left\{ \begin{matrix}
-        a = b q + r \\
-        r \in [0;|b|[
-      \end{matrix} \right.
-    \end{equation}]
+    \forall (a, b) \in \R \times \R^*,
+    \exists ! (q, r) \in \Z \times \R :
+    \left\{ \begin{matrix}
+      a = b q + r \\
+      r \in [0;|b|[
+    \end{matrix} \right.
+  \end{equation}]
   {Théorème de la division pseudo-euclidienne dans \R}
-
+  
   \textit{Unicité} \;
   Soient deux tels entiers $(a,b) \in \R^2$ et deux couples $((q,r),(q',r')) \in \left(\Z \times \R\right)^2$ tels que
   \begin{equation*}
@@ -3171,11 +3171,11 @@ $$
   \end{equation*}
   Directement,
   \[
-    b(q-q') = r'-r,
+  b(q-q') = r'-r,
   \]
   mais comme $-|b| < r' - r < |b|$, il vient en divisant par $|b|$ l'inégalité précédente :
   \[
-    -1 < q - q' < 1,
+  -1 < q - q' < 1,
   \]
   puisque $q$ et $q'$ sont dans $\Z$ leur différence est obligatoirement $0$, ainsi $q = q'$ ce qui implique $ r= r'$ et donc on a unicité de ladite écriture de $a$.
   \newline
@@ -3190,28 +3190,28 @@ $$
   Posons $r = a - bq$. Par construction, $a = bq + r$ et comme $q = \max \Omega$ et $r \in \R$.
   \\
   Par suite, $q \in \Omega$ donc $bq \leqslant a$ d'où $0 \leqslant r$. Et $q = \max \Omega$ donc $b(q+1) > a$ d'où $b > r$, c'est-à-dire, $r \in [ 0, |b| [$.
-
+  
   Si $b < 0$, il suffit de prendre $q \leftarrow -q$ dans la preuve précédente.C'est donc l'existence de ladite écriture de $a$.
 \end{question_kholle}
 
 \begin{question_kholle}
   {\Q est dense dans \R et $\R \setminus \Q$ est aussi dense dans \R}
-
+  
   Soit $x \in \R$ fq.
   Posons $\forall n \in \N, a_n = \frac{\lfloor2^n x\rfloor}{2^n}$. \\
   Soit $n \in \N$ fq. \\
   \begin{itemize}
     \item $a_n \in \Q$ car $\lfloor2^n x\rfloor \in \Z$ et $2^n \in \N$.
     \item \begin{equation*}
-            a_n = \frac{\lfloor2^n x\rfloor}{2^n}
-            \implies \frac{2^n x - 1}{2^n} \leqslant a_n \leqslant \frac{2^n x}{2^n}
-            \implies x - \frac{1}{2^n} \leqslant a_n \leqslant x
-          \end{equation*}
-          Or $\nicefrac{1}{2^n} \arrowlim{n}{+\infty} 0$ donc d'après le théorème d'existence de limite par encadrement, \\ $a_n \arrowlim{n}{+\infty} x$.
+      a_n = \frac{\lfloor2^n x\rfloor}{2^n}
+      \implies \frac{2^n x - 1}{2^n} \leqslant a_n \leqslant \frac{2^n x}{2^n}
+      \implies x - \frac{1}{2^n} \leqslant a_n \leqslant x
+    \end{equation*}
+    Or $\nicefrac{1}{2^n} \arrowlim{n}{+\infty} 0$ donc d'après le théorème d'existence de limite par encadrement, \\ $a_n \arrowlim{n}{+\infty} x$.
   \end{itemize}
   Donc d'après la caractérisation séquentielle de la densité, \Q est dense dans \R.
   \bigbreak
-
+  
   \noindent Soit $x \in \R$ fq. \\
   Alors $x + \sqrt{2} \in \R$.
   D'après la démonstration précédente, $\exists b \in \Q^\N : b_n \arrowlim{n}{+\infty} x + \sqrt{2}$. \\
@@ -3221,71 +3221,163 @@ $$
   \begin{itemize}
     \item $c_n \in \R\setminus\Q$ car $b_n \in \Q$ et $\sqrt{2} \in \R \setminus \Q$.
     \item \begin{equation*}
-            \left. \begin{matrix}
-              b_n \arrowlim{n}{+\infty} x + \sqrt{2} \\
-              c_n = b_n - \sqrt{2}
-            \end{matrix} \right\}
-            \implies c_n \arrowlim{n}{+\infty} x
-          \end{equation*}
+      \left. \begin{matrix}
+        b_n \arrowlim{n}{+\infty} x + \sqrt{2} \\
+        c_n = b_n - \sqrt{2}
+      \end{matrix} \right\}
+      \implies c_n \arrowlim{n}{+\infty} x
+    \end{equation*}
   \end{itemize}
   Donc d'après la caractérisation séquentielle de la densité, $\R\setminus \Q$ est dense dans \R.
 \end{question_kholle}
 
 \begin{question_kholle}[
-    Soit u $\in \K ^ \N, (\ell_1, \ell_2) \in \K ^2$
-    Si u converge vers $\ell_1$ et $\ell_2$, alors $\ell_1 = \ell_2$
+  Soit u $\in \K ^ \N, (\ell_1, \ell_2) \in \K ^2$
+  Si u converge vers $\ell_1$ et $\ell_2$, alors $\ell_1 = \ell_2$
   ]{Preuve de l'unicité de la limite d'une suite convergente}
   Par l'absurde, supponsons que $u$ converge vers $\ell_1$ et $\ell_2$, et $\ell_1 \neq \ell_2$.
   On prendra $\varepsilon_0 = \varepsilon_1 = \varepsilon_2$ assez petit pour que les tubes soient disjoints.\\
   Posons donc $\varepsilon_0 = \frac{|\ell_1 - \ell_2|}{3}$
   \begin{itemize}
     \item Appliquons la définition de la convergence de u vers $\ell_1$, pour $\varepsilon \leftarrow \varepsilon_0$, ce qui est autorisé car $\varepsilon_0 \in \R_+^*$
-          \begin{equation}\label{eq:1}
-            \exists N_1 \in \N : \forall n \in \N, n \geqslant N_1 \implies |u_n - \ell_1| \leqslant \varepsilon_0
-          \end{equation}
-          \begin{equation}\label{eq:2}
-            \exists N_2 \in \N : \forall n \in \N, n \geqslant N_2 \implies |u_n - \ell_2| \leqslant \varepsilon_0
-          \end{equation}
-          Fixons de tels $N_1$ et $N_2$.
+    \begin{equation}\label{eq:1}
+      \exists N_1 \in \N : \forall n \in \N, n \geqslant N_1 \implies |u_n - \ell_1| \leqslant \varepsilon_0
+    \end{equation}
+    \begin{equation}\label{eq:2}
+      \exists N_2 \in \N : \forall n \in \N, n \geqslant N_2 \implies |u_n - \ell_2| \leqslant \varepsilon_0
+    \end{equation}
+    Fixons de tels $N_1$ et $N_2$.
     \item Posons $n_0 = N_1 + N_2$
-          \begin{itemize}
-            \item $n_0 \geqslant N_1$, donc (\ref{eq:1}) s'applique: $|u_{n_0} - \ell_1| \leqslant \varepsilon_0$
-            \item $n_0 \geqslant N_2$, donc (\ref{eq:2}) s'applique: $|u_{n_0} - \ell_2| \leqslant \varepsilon_0$
-          \end{itemize}
+    \begin{itemize}
+      \item $n_0 \geqslant N_1$, donc (\ref{eq:1}) s'applique: $|u_{n_0} - \ell_1| \leqslant \varepsilon_0$
+      \item $n_0 \geqslant N_2$, donc (\ref{eq:2}) s'applique: $|u_{n_0} - \ell_2| \leqslant \varepsilon_0$
+    \end{itemize}
     \item \begin{align*}
-            |\ell_1 - \ell_2| & = |\ell_1 - u_{n_0} + u_{n_0} - \ell_2|                                                                                         \\
-                              & \leqslant \underbrace{|\ell_1 - u_{n_0}|}_{\leqslant \varepsilon_0} + \underbrace{|u_{n_0} - \ell_2|}_{\leqslant \varepsilon_0} \\
-                              & \leqslant 2 \frac{|\ell_1 - \ell_2|}{3}                                                                                         \\
-            \implies 1        & \leqslant \frac 2 3
-          \end{align*}
-          Contradiction
+      |\ell_1 - \ell_2| & = |\ell_1 - u_{n_0} + u_{n_0} - \ell_2|                                                                                         \\
+      & \leqslant \underbrace{|\ell_1 - u_{n_0}|}_{\leqslant \varepsilon_0} + \underbrace{|u_{n_0} - \ell_2|}_{\leqslant \varepsilon_0} \\
+      & \leqslant 2 \frac{|\ell_1 - \ell_2|}{3}                                                                                         \\
+      \implies 1        & \leqslant \frac 2 3
+    \end{align*}
+    Contradiction
   \end{itemize}
 \end{question_kholle}
-
+\begin{question_kholle}[{
+  Soient $(x, y) \in \R^2$ tels que $x \leqslant y$. $$[x, y] = \{z \in \R \mid x \leqslant z \leqslant y \} = \{tx + (1-t)y \mid t \in [0, 1]\}$$
+  }]{Description d'un segment de la droite réelle par les barycentres à coefficients positifs.}
+  Le résultat est immédiat pour $x = y$ : $\forall t \in [0, 1], xt+(1-t)x = xt - xt +x =x = y$
+  
+  Supposons que $x <y$. On procède par double inclusion.
+  \begin{itemize}[label=$\star$]
+    \item Soit $z \in \{ xt+(1-t)y \mid t \in [0, 1] \}$.
+    
+    $\exists t \in [0, 1] : z = xt+(1-t)y$
+    
+    Puisque $t \in [0, 1]$, $t \geqslant 0$ et $1-t \geqslant 0$.
+    Donc
+    
+    \begin{align*}
+      x < y \implies x\leqslant y &\underset{ \substack{t \geqslant 0 \\1-t \geqslant 0} }{ \implies } \left\{ \begin{array}{ll}
+        tx \leqslant ty \\
+        (1-t)x \leqslant (1-t)y 
+      \end{array}\right. \\
+      &\implies \left\{ \begin{array}{ll}
+        tx + (1-t)y \leqslant ty + (1-t) y\\
+        tx + (1-t)x  \leqslant tx + (1-t)y
+      \end{array}\right. \\
+      & \implies \left\{ \begin{array}{ll}
+        z \leqslant y \\
+        x \leqslant z 
+      \end{array}\right. \\
+      & \implies z \in[x, y]
+    \end{align*}
+    
+    
+    
+    \item Réciproquement, soit $z \in[x, y]$. Cherchons le $t\in[0, 1]$ tel que $tx + (1-t)y = z$.
+    
+$$
+    tx + (1-t)y = z \iff t(x-y) = z-y \iff t = \frac{z-y}{x-y} = \frac{y-z}{y-x} \text{ (autorisé car }x<y \implies x-y \neq 0 \text{)}
+$$
+    
+    Vérifions si ce $t$ convient : posons $t = \frac{y-z}{y-x}$. 
+    \begin{itemize}[label=$\bullet$]
+      \item Vérifions d'abord que $t \in [0,1]$
+      
+$$
+      x\leqslant z \leqslant y
+      \implies x-y \leqslant z-y \leqslant 0 \implies y-x\geqslant y-z \geqslant 0 \implies 1 \geqslant \frac{y-z}{y-x} \geqslant 0 \implies 0\leqslant t \leqslant 1
+$$
+      \item Calculons
+$$
+      tx+(1-t)y = \frac{y-z}{y-x} x + \left( 1- \frac{y-z}{y-x} \right)y = \frac{y-z}{y-x}x + \frac{z-x}{y-x}y = \frac{yx-zx+zy - xy}{y-x} =  z
+$$
+      Donc ce $t$ convient.
+    \end{itemize}
+    Donc $z \in \{ xt+(1-t)y \mid t \in [0, 1] \}$.
+  \end{itemize}
+  Donc $\{ xt+(1-t)y \mid t \in [0, 1] \} = [x, y]$.
+\end{question_kholle}
 \begin{question_kholle}{Une suite convergente est bornée}
-
+  
   Soit $u \in \mathbb{K}^{\mathbb{N}}$ convergente.
   Posons $\ell = \lim u$
   Appliquons la définition de la convergence pour $\varepsilon \leftarrow 1$
   $$
-    \exists N_{1}\in \mathbb{N}: \forall n \in \mathbb{N}, n \geqslant N_{1} \implies |u_{n}-\ell| \leqslant 1
+  \exists N_{1}\in \mathbb{N}: \forall n \in \mathbb{N}, n \geqslant N_{1} \implies |u_{n}-\ell| \leqslant 1
   $$
   Fixons un tel $N_{1}$
   Posons alors $M = \max\left\{ |u_{0}|, |u_{1}|, |u_{2}| \dots |u_{N_{1}}|, |\ell|+1 \right\}$, qui est bien défini, car toute partie finie, non vide d'un ensemble totalement ordonné (ici $(\mathbb{R}, \leqslant)$) admet un pgE.
-
+  
   Soit $n \in \mathbb{N}$ fq.
   \begin{itemize}
     \item Si $n \in [[0, N_{1}]], |u_{n}| \in \left\{ |u_{0}|, |u_{1}|, |u_{2}| \dots |u_{N_{1}}|, |\ell|+1 \right\}$ donc $|u_{n}| \leqslant M$
     \item Sinon,
   \end{itemize}
-
+  
   \begin{align*}
     n> N_{1} & \implies |u_{n} - \ell| \leqslant 1              \\
-             & \implies |u_{n}| - |\ell| \leqslant 1            \\
-             & \implies |u_{n}| \leqslant 1+ |\ell| \leqslant M
+    & \implies |u_{n}| - |\ell| \leqslant 1            \\
+    & \implies |u_{n}| \leqslant 1+ |\ell| \leqslant M
   \end{align*}
-
+  
   Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
+\end{question_kholle}
+\begin{question_kholle}[{Soit $A \in \mathcal{P}(\R)$ non vide et majorée. Soit $\sigma \in \R$
+  $$
+  \sigma = \sup A \iff \left\{ \begin{array}{ll}
+    \sigma \in M(A)  \\
+    \exists (a_{n})_{n \in \N} \in A^{\N} : \lim_{n \to +\infty} a_n = \sigma
+  \end{array}\right.
+  $$
+  }]{Caractérisation séquentielle de la borne supérieure}
+  \begin{itemize}[label=$\star$]
+    \item Supposons que $\sigma = \sup A$.
+    \begin{itemize}[label=$\bullet$]
+      \item Par définition d'une borne sup, $\sigma \in M(A)$.
+      \item Soit $n \in \N$. Appliquons la caractérisation de la borne sup par les epsilon pour $\varepsilon \leftarrow \frac{1}{2^{n}}$.
+$\exists c \in A : \sigma - \frac{1}{2^{n}} < c \leqslant \sigma$.
+      Fixons un tel $c$ et notons le $a_{n}$. En relâchant le caractère fixé de $n$, on a crée la suite $(a_{n})_{n \in \N}$ telle que
+$$
+      \forall n \in \N, \sigma - \frac{1}{2^{n}} < a_{n}\leqslant \sigma
+$$
+      Cette suite converge vers $\sigma$ par encadrement.
+    \end{itemize}
+    \item Réciproquement, supposons que $\sigma \in M(A)$ et qu'il existe une suite $(a_{n})_{n \in \N}$ d'éléments de $A$ qui converge vers $\sigma$. Montrons que $\sigma = \sup A$ d'après la caractérisation par les $\varepsilon$.
+    \begin{itemize}[label=$\bullet$]
+      \item$\sigma \in M(A)$
+      \item Soit $\varepsilon>0$. Appliquons la définition de la convergence de $a$ pour $\varepsilon \leftarrow \frac{\varepsilon}{2}$
+      
+$$
+      \exists N \in \N : \forall n \geqslant N, \lvert a_{n} - \sigma \rvert  \leqslant \frac{\varepsilon}{2} \implies \sigma - \frac{\varepsilon}{2}\leqslant a_{n}
+$$
+      En particulier $a_{N} \in A$ vérifie
+$$
+      \sigma - \varepsilon < \sigma - \frac{\varepsilon}{2} \leqslant a_{N} \underbrace{ \leqslant }_{ \sigma \in M(A) } \sigma
+$$
+      Ce qui permet de conclure.
+      Donc $\sigma = \sup A$.
+    \end{itemize}
+  \end{itemize}
 \end{question_kholle}
 \pagebreak\section{Semaine 11}
 
