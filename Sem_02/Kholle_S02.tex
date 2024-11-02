@@ -68,7 +68,7 @@
 
   \begin{figure}[!h]
     \centering
-    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=-2pt}]
+    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=2pt}]
       \node[label=above:$E$] at (0, 4.5) {};
       \node[label=above:$F$] at (4, 4.5) {};
       \node[label=above:$G$] at (8, 4.5) {};
@@ -80,7 +80,7 @@
       \node[ele,label=left:$a$] (a1) at (0,4) {};
       \node[ele,label=left:$b$] (a2) at (0,3) {};
 
-      \node[ele,,label=below:$1$] (b1) at (4,4) {};
+      \node[ele,,label=above:$1$] (b1) at (4,4) {};
       \node[ele,,label=above:$2$] (b2) at (4,3) {};
       \node[ele,,label=above:$3$] (b3) at (4,2) {};
 
@@ -97,8 +97,8 @@
       \draw[->,thick,shorten <=2pt,shorten >=2] (b2) -- (c2);
       \draw[->,thick,shorten <=2pt,shorten >=2] (b3) -- (c2);
     \end{tikzpicture}
+    \caption{Ici, $v \circ u$ est injective, on a montré que cela impliquait $u$ injective. Pourtant, $v$ n'est pas injective.}
   \end{figure}
-  Ici, $v \circ u$ est injective, on a montré que cela impliquait $u$ injective. Pourtant, $v$ n'est pas injective.
 
 \end{question_kholle}
 
@@ -114,7 +114,7 @@
 
   \begin{figure}[!h]
     \centering
-    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=-2pt}]
+    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=2pt}]
       \node[label=above:$E$] at (0, 4.5) {};
       \node[label=above:$F$] at (4, 4.5) {};
       \node[label=above:$G$] at (8, 4.5) {};
@@ -126,7 +126,7 @@
       \node[ele,label=left:$a$] (a1) at (0,4) {};
       \node[ele,label=left:$b$] (a2) at (0,3) {};
 
-      \node[ele,,label=below:$1$] (b1) at (4,4) {};
+      \node[ele,,label=above:$1$] (b1) at (4,4) {};
       \node[ele,,label=above:$2$] (b2) at (4,3) {};
       \node[ele,,label=above:$3$] (b3) at (4,2) {};
 
@@ -143,9 +143,9 @@
       \draw[->,thick,shorten <=2pt,shorten >=2] (b2) -- (c2);
       \draw[->,thick,shorten <=2pt,shorten >=2] (b3) -- (c2);
     \end{tikzpicture}
+    \caption{Ici, $v \circ u$ est surjective, on a montré que cela impliquait $v$ surjective. Pourtant, $u$ n'est pas surjective.}
   \end{figure}
-
-  Ici, $v \circ u$ est surjective, on a montré que cela impliquait $v$ surjective. Pourtant, $u$ n'est pas surjective.
+  
 
 \end{question_kholle}
 
