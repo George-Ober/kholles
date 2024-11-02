@@ -7830,37 +7830,38 @@ Nous rappelons que $\dim \{0_E\} = 0$ et que $\{0_E\} = \Vect \emptyset$.
     \centering
     \begin{tikzpicture}
 
-      \draw[->] (-0.5,0) -- (7.5,0) node[right] {$x$}; % x-axis
-      \draw[->] (0,-0.5) -- (0,4.5) node[above] {$f(x) = \frac{1}{x}$}; % y-axis
+      \draw[->] (-0.5,0) -- (8.5,0) node[right] {$x$}; % x-axis
+      \draw[->] (0,-0.5) -- (0,5.5) node[above] {$f(x) = \frac{1}{x} + 1$}; % y-axis
       
-      \draw[domain=1:7,samples=100,smooth,thick,blue] plot (\x, {1/\x*4}) node[right] {};
+      \draw[domain=1:8,samples=100,smooth,thick,blue] plot (\x, {1/\x*4 + 1}) node[right] {};
       
-      \foreach \n in {1,2,...,6} {
+      \foreach \n in {1,2,...,7} {
           
-          \draw[dashed] (\n, 0) -- (\n, {4/\n}); 
-          \filldraw (\n, {4/\n}) circle (2pt) node[above right] {$f(\n)$};
+          \draw[dashed] (\n, 0) -- (\n, {4/\n + 1}); 
+          \filldraw (\n, {4/\n + 1}) circle (2pt) node[above right] {$f(\n)$};
           
           
-          \draw[red, thick] (\n, {4/\n}) -- (\n+1, {4/\n}) -- (\n+1, {4/(\n + 1)});
+          \draw[red, thick] (\n, {4/\n + 1}) -- (\n+1, {4/\n + 1}) -- (\n+1, {1 + 4/(\n + 1)});
           
           \fill[gray, opacity=0.3] 
-              plot[domain=\n:\n+1, samples=50] (\x, {4/\x}) -- 
-              (\n+1, {4/\n}) -- (\n, {4/\n}) -- cycle;
+              plot[domain=\n:\n+1, samples=50] (\x, {1 + 4/\x}) -- 
+              (\n+1, {1 + 4/\n}) -- (\n, {1 + 4/\n}) -- cycle;
           
           \fill[gray, opacity=0.3] 
-              plot[domain=\n:\n+1, samples=50] (\x - \n + 9, {4/\x}) -- 
-              (10, {4/\n}) -- (9, {4/\n}) -- cycle;
+              plot[domain=\n:\n+1, samples=50] (\x - \n + 9, {1+ 4/\x}) -- 
+              (10, {1 + 4/\n}) -- (9, {1+ 4/\n}) -- cycle;
       
-          \draw[blue] plot[domain = \n:\n+1, samples = 50] (\x - \n + 9, {4/\x});
-          \draw[red] (9, {4/\n}) -- (10, {4/\n}) -- (10, {4/(\n+1)});
+          \draw[blue] plot[domain = \n:\n+1, samples = 50] (\x - \n + 9, {1 + 4/\x});
+          \draw[red] (9, {1 + 4/\n}) -- (10, {1 + 4/\n}) -- (10, {1 + 4/(\n+1)});
       }
       
-      \draw[dashed] (9, 4) -- (9, 0) -- (10, 0) -- (10, 1);
+      \draw[dashed] (9, 5) -- (9, 1) -- (10, 1) -- (10, 2);
+      \draw[dotted] (0, 1) node[left] {$m = 1$} -- (9, 1);
       
-
+      \draw[<->] (10.2, 1) -- (10.2, 5) node[pos=0.5, right] {$f(1) - 1$};
       
       \end{tikzpicture}
-      \caption{Une visualisation graphique de la bornitude de $(S_n)_{n \geqslant n_0}$ pour le cas particulier de $f \leftarrow (x \mapsto \nicefrac 1 x), m \leftarrow 0, n_0 \leftarrow 1$. On interprète chaque terme de la somme comme l'aire du rectangle à laquelle on retranche l'aire sous la courbe : cela correspond à l'aire grise, qui peut être aisément installée dans un rectangle d'aire $f(1)$.}
+      \caption{Une visualisation graphique de la bornitude de $(S_n)_{n \geqslant n_0}$ pour le cas particulier de $f \leftarrow (x \mapsto \nicefrac 1 x + 1), m \leftarrow 1, n_0 \leftarrow 1$. On interprète chaque terme de la somme comme l'aire du rectangle à laquelle on retranche l'aire sous la courbe : cela correspond à l'aire grise, qui peut être aisément installée dans un rectangle d'aire $f(1) - 1 = f(n_0) - m$.}
   \end{figure}
 
   \textit{Application au DA en $o(1)$ de la somme partielle de la série harmonique.}
