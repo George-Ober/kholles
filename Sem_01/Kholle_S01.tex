@@ -13,7 +13,7 @@
 \allowdisplaybreaks[4]
 \begin{question_kholle}{Preuve formelle de la somme des entiers et des termes d'une suite géométrique}
   \begin{itemize}[label=$\lozenge$]
-    \item Soit $n \in \mathbb{N}$ fq. Posons $$S_{n} = \sum_{k=0}^{n}k$$
+    \item Soit $n \in \mathbb{N}$ fixé quelconque. Posons $$S_{n} = \sum_{k=0}^{n}k$$
           En posant la symétrie d'indice $i = n-k$, on a aussi
           $$
             S_{n}= \sum_{i=0}^{n}(n-i)=\sum_{i=0}^{n}n - \sum_{i=0}^{n}i=(n \times \mathrm{card}[ \! [ 0, n ] \!]) - \sum_{i=0}^{n} i
@@ -271,7 +271,194 @@
   \end{itemize}
 \end{question_kholle}
 
-\begin{question_kholle}{Illustration graphique de certaines identités trigonométriques}
+\begin{question_kholle}[]{Illustration graphique de certaines identités trigonométriques}
+  \hfill\\
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+        
+        \draw[thick] (0,0) circle (2);
+        
+        
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        
+
+        \def\angle{30}
+        \def\compAngle{60}
+        
+
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+
+        
+
+        \draw[thick, ->, green!60!black] (0,0) -- ({2*sin(\angle)}, {2*cos(\angle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5);
+        \node[blue] at (0.7,0.2) {$x$};
+        
+        \draw[->, thick, green!60!black] (1,0) arc (0:\compAngle:1);
+        \node[green!60!black] at (1.4,0.3) {$\frac \pi 2 - x$};
+        
+        \draw[thick,->,  blue] (0,0.5) arc (90:\compAngle:0.5);
+        \node[blue] at (0.2,0.7) {$x$};
+        
+        \filldraw[blue] ({2*cos(\angle)}, {2*sin(\angle)}) circle (2pt);
+        \filldraw[green!60!black] ({2*sin(\angle)}, {2*cos(\angle)}) circle (2pt);
+        
+        \draw[thick, ->, red] (-0.1, 0) -- (-0.1, {2*cos(\angle)}) node[pos=0.3, left]{$\sin(\frac \pi 2 - x)$};
+        \draw[thick, ->, red] (0, -0.1) -- ({2*cos(\angle)}, -0.1) node[pos=0.5, below]{$\cos x$};
+
+        \draw[dotted] (0, 0) -- (2, 2);
+
+      \end{tikzpicture}
+      \caption{Illustration de $\sin (\frac \pi 2 -  x) = \cos x$. On retrouve l'égalité par réflexion sur la première bissectrice.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+
+        \draw[thick] (0,0) circle (2);
+        
+
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        
+
+        \def\angle{30} 
+        \def\compAngle{210}
+        
+
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+
+        
+
+        \draw[thick, ->, green!60!black] (0,0) -- ({-2*cos(\angle)}, {-2*sin(\angle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5);
+        
+        \draw[dotted] (0, {2*sin(\angle)}) -- ({2*cos(\angle)}, {2*sin(\angle)});
+        \draw[dotted] (0, {-2*sin(\angle)}) -- ({-2*cos(\angle)}, {-2*sin(\angle)});
+        
+        \draw[->, thick, green!60!black] (1.5,0) arc (0:\compAngle:1.5);
+        
+        
+        
+        
+        \filldraw[blue] ({2*cos(\angle)}, {2*sin(\angle)}) circle (2pt) node[above right] {$x$};
+        \filldraw[green!60!black] ({-2*cos(\angle)}, {-2*sin(\angle)}) circle (2pt)node[below left] {$x + \pi$};
+        
+        \draw[thick, ->, red] (-0.1, 0) -- (-0.1, {2*sin(\angle)}) node[pos=0.3, left]{$\sin x$};
+        \draw[thick, ->, red] (0.1, 0) -- (0.1, -{2*sin(\angle)}) node[pos=0.5, right]{$-\sin x$};
+
+      \end{tikzpicture}
+      \caption{Illustration de $\sin (x + \pi) = - \sin x$. On retrouve l'égalité par symétrie centrale.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+
+        \draw[thick] (0,0) circle (2);
+        
+
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        \draw[thick] (2, 3) -- (2, -3);
+
+        \def\angle{45}
+        \def\compAngle{-45}
+        
+
+        \draw[dotted, blue] (0,0) -- ({2}, {2*tan(\angle)});
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+        
+        
+        
+        \draw[dotted, green!60!black] (0,0) -- ({2}, {-2*tan(\angle)});
+        \draw[thick, ->, green!60!black] (0,0) -- ({2*cos(\angle)}, {-2*sin(\angle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5) node[pos=0.5, right] {$x$};
+        
+        
+        \draw[->, thick, green!60!black] (0.5,0) arc (0:\compAngle:0.5) node[pos=0.5, right] {$-x$};
+        
+        
+        
+        
+        \filldraw[blue] (2, {2*tan(\angle)}) circle (2pt) node[above right] {$\tan x$};
+        \filldraw[green!60!black] (2, {-2*tan(\angle)}) circle (2pt) node[below right] {$\tan (-x)$};
+        
+        
+
+      \end{tikzpicture}
+      \caption{Illustration de $\tan (-x) = - \tan x$. On retrouve l'égalité par réflexion sur l'axe des abscisses.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+        
+        \draw[thick] (0,0) circle (2);
+        
+        
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        
+
+        \def\angle{30} 
+        \def\compAngle{120}
+        
+
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+
+        
+
+        \draw[thick, ->, green!60!black] (0,0) -- ({2*cos(\compAngle)}, {2*sin(\compAngle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5) node[pos=0.5, right] {$x$};
+        
+        \draw[dotted] (0, {2*sin(\angle)}) -- ({2*cos(\angle)}, {2*sin(\angle)});
+        \draw[dotted] ({2*cos(\compAngle)}, {2*sin(\compAngle)}) -- ({2*cos(\compAngle)}, 0);
+        
+        \draw[->, thick, green!60!black] (1.5,0) arc (0:\compAngle:1.5) node[pos=1, above right] {$x + \frac \pi 2$};
+        
+        
+        
+        
+        \filldraw[blue] ({2*cos(\angle)}, {2*sin(\angle)}) circle (2pt) node[above right] {$x$};
+        \filldraw[green!60!black] ({2*cos(\compAngle)}, {2*sin(\compAngle)}) circle (2pt)node[above left] {$x + \frac \pi 2$};
+        
+        \draw[thick, ->, red] (0, 0) -- (0, {2*sin(\angle)}) node[pos=0.7, right]{$\sin x$};
+        \draw[thick, ->, red] (0, 0) -- ({2*cos(\compAngle)},0) node[pos=0.9, below]{$\cos (x + \frac \pi 2)$};
+        
+        \draw[dotted] (0, 0) -- (-2, 2);
+
+      \end{tikzpicture}
+      \caption{Illustration de $\cos (x + \frac \pi 2) = - \sin x$. On retrouve l'égalité par réflexion sur la deuxième bissectrice.}
+    \end{figure}
+  \end{minipage}
 \end{question_kholle}
 
 \begin{question_kholle}{Technique de résolution des équations trigonométriques du type $A \cos x + B \sin x = C$}
