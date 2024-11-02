@@ -44,7 +44,7 @@
 \allowdisplaybreaks[4]
 \begin{question_kholle}{Preuve formelle de la somme des entiers et des termes d'une suite géométrique}
   \begin{itemize}[label=$\lozenge$]
-    \item Soit $n \in \mathbb{N}$ fq. Posons $$S_{n} = \sum_{k=0}^{n}k$$
+    \item Soit $n \in \mathbb{N}$ fixé quelconque. Posons $$S_{n} = \sum_{k=0}^{n}k$$
           En posant la symétrie d'indice $i = n-k$, on a aussi
           $$
             S_{n}= \sum_{i=0}^{n}(n-i)=\sum_{i=0}^{n}n - \sum_{i=0}^{n}i=(n \times \mathrm{card}[ \! [ 0, n ] \!]) - \sum_{i=0}^{n} i
@@ -302,7 +302,194 @@
   \end{itemize}
 \end{question_kholle}
 
-\begin{question_kholle}{Illustration graphique de certaines identités trigonométriques}
+\begin{question_kholle}[]{Illustration graphique de certaines identités trigonométriques}
+  \hfill\\
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+        
+        \draw[thick] (0,0) circle (2);
+        
+        
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        
+
+        \def\angle{30}
+        \def\compAngle{60}
+        
+
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+
+        
+
+        \draw[thick, ->, green!60!black] (0,0) -- ({2*sin(\angle)}, {2*cos(\angle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5);
+        \node[blue] at (0.7,0.2) {$x$};
+        
+        \draw[->, thick, green!60!black] (1,0) arc (0:\compAngle:1);
+        \node[green!60!black] at (1.4,0.3) {$\frac \pi 2 - x$};
+        
+        \draw[thick,->,  blue] (0,0.5) arc (90:\compAngle:0.5);
+        \node[blue] at (0.2,0.7) {$x$};
+        
+        \filldraw[blue] ({2*cos(\angle)}, {2*sin(\angle)}) circle (2pt);
+        \filldraw[green!60!black] ({2*sin(\angle)}, {2*cos(\angle)}) circle (2pt);
+        
+        \draw[thick, ->, red] (-0.1, 0) -- (-0.1, {2*cos(\angle)}) node[pos=0.3, left]{$\sin(\frac \pi 2 - x)$};
+        \draw[thick, ->, red] (0, -0.1) -- ({2*cos(\angle)}, -0.1) node[pos=0.5, below]{$\cos x$};
+
+        \draw[dotted] (0, 0) -- (2, 2);
+
+      \end{tikzpicture}
+      \caption{Illustration de $\sin (\frac \pi 2 -  x) = \cos x$. On retrouve l'égalité par réflexion sur la première bissectrice.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+
+        \draw[thick] (0,0) circle (2);
+        
+
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        
+
+        \def\angle{30} 
+        \def\compAngle{210}
+        
+
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+
+        
+
+        \draw[thick, ->, green!60!black] (0,0) -- ({-2*cos(\angle)}, {-2*sin(\angle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5);
+        
+        \draw[dotted] (0, {2*sin(\angle)}) -- ({2*cos(\angle)}, {2*sin(\angle)});
+        \draw[dotted] (0, {-2*sin(\angle)}) -- ({-2*cos(\angle)}, {-2*sin(\angle)});
+        
+        \draw[->, thick, green!60!black] (1.5,0) arc (0:\compAngle:1.5);
+        
+        
+        
+        
+        \filldraw[blue] ({2*cos(\angle)}, {2*sin(\angle)}) circle (2pt) node[above right] {$x$};
+        \filldraw[green!60!black] ({-2*cos(\angle)}, {-2*sin(\angle)}) circle (2pt)node[below left] {$x + \pi$};
+        
+        \draw[thick, ->, red] (-0.1, 0) -- (-0.1, {2*sin(\angle)}) node[pos=0.3, left]{$\sin x$};
+        \draw[thick, ->, red] (0.1, 0) -- (0.1, -{2*sin(\angle)}) node[pos=0.5, right]{$-\sin x$};
+
+      \end{tikzpicture}
+      \caption{Illustration de $\sin (x + \pi) = - \sin x$. On retrouve l'égalité par symétrie centrale.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+
+        \draw[thick] (0,0) circle (2);
+        
+
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        \draw[thick] (2, 3) -- (2, -3);
+
+        \def\angle{45}
+        \def\compAngle{-45}
+        
+
+        \draw[dotted, blue] (0,0) -- ({2}, {2*tan(\angle)});
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+        
+        
+        
+        \draw[dotted, green!60!black] (0,0) -- ({2}, {-2*tan(\angle)});
+        \draw[thick, ->, green!60!black] (0,0) -- ({2*cos(\angle)}, {-2*sin(\angle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5) node[pos=0.5, right] {$x$};
+        
+        
+        \draw[->, thick, green!60!black] (0.5,0) arc (0:\compAngle:0.5) node[pos=0.5, right] {$-x$};
+        
+        
+        
+        
+        \filldraw[blue] (2, {2*tan(\angle)}) circle (2pt) node[above right] {$\tan x$};
+        \filldraw[green!60!black] (2, {-2*tan(\angle)}) circle (2pt) node[below right] {$\tan (-x)$};
+        
+        
+
+      \end{tikzpicture}
+      \caption{Illustration de $\tan (-x) = - \tan x$. On retrouve l'égalité par réflexion sur l'axe des abscisses.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+        
+        \draw[thick] (0,0) circle (2);
+        
+        
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        
+
+        \def\angle{30} 
+        \def\compAngle{120}
+        
+
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+
+        
+
+        \draw[thick, ->, green!60!black] (0,0) -- ({2*cos(\compAngle)}, {2*sin(\compAngle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5) node[pos=0.5, right] {$x$};
+        
+        \draw[dotted] (0, {2*sin(\angle)}) -- ({2*cos(\angle)}, {2*sin(\angle)});
+        \draw[dotted] ({2*cos(\compAngle)}, {2*sin(\compAngle)}) -- ({2*cos(\compAngle)}, 0);
+        
+        \draw[->, thick, green!60!black] (1.5,0) arc (0:\compAngle:1.5) node[pos=1, above right] {$x + \frac \pi 2$};
+        
+        
+        
+        
+        \filldraw[blue] ({2*cos(\angle)}, {2*sin(\angle)}) circle (2pt) node[above right] {$x$};
+        \filldraw[green!60!black] ({2*cos(\compAngle)}, {2*sin(\compAngle)}) circle (2pt)node[above left] {$x + \frac \pi 2$};
+        
+        \draw[thick, ->, red] (0, 0) -- (0, {2*sin(\angle)}) node[pos=0.7, right]{$\sin x$};
+        \draw[thick, ->, red] (0, 0) -- ({2*cos(\compAngle)},0) node[pos=0.9, below]{$\cos (x + \frac \pi 2)$};
+        
+        \draw[dotted] (0, 0) -- (-2, 2);
+
+      \end{tikzpicture}
+      \caption{Illustration de $\cos (x + \frac \pi 2) = - \sin x$. On retrouve l'égalité par réflexion sur la deuxième bissectrice.}
+    \end{figure}
+  \end{minipage}
 \end{question_kholle}
 
 \begin{question_kholle}{Technique de résolution des équations trigonométriques du type $A \cos x + B \sin x = C$}
@@ -5579,11 +5766,10 @@ $$
       \exists \ (c_1, \dots, c_n)\in \R ^*_+ \ : \ \sum_{k=1}^n c_k z_k = u \ \text{et} \ \sum_{k=1}^n c_k = 1.
     \end{equation}]
   {Théorème de Gauss-Lucas et interprétation graphique.}
-  Pour ce qui est de l'interprétation graphique, elle n'est pas prévue à l'heure qu'il est dans ce pdf, pour la faire soi-même dessiner des points et les "clôturer" dans un polygone convexe, ou même faire ceci avec un cas concret. \\
-
-  \noindent $\rightarrow$ Si $u$ est une racine de $P$ alors noter $k_0$ son indice et utiliser le symbole de Kronecker. \\
-  $ \sum_{k=1}^n \delta_{k, k_0} z_k = u \ \text{et} \ \sum_{k=1}^n \delta_{k, k_0} = 1. $ \\
-  $\rightarrow$ Sinon, $u$ n'appartient pas aux racines de $P$, donc $u$ n'est pas pôle de $\frac{P'}{P}$ ce qui permet de prendre l'image par le morphisme d'évaluation en $u$ de cette même fraction rationnelle :
+  \begin{itemize}[label=$\star$]
+    \item Si $u$ est une racine de $P$ alors noter $k_0$ son indice et utiliser le symbole de Kronecker. 
+  $$ \sum_{k=1}^n \delta_{k, k_0} z_k = u \ \text{et} \ \sum_{k=1}^n \delta_{k, k_0} = 1 $$
+  \item Sinon, $u$ n'appartient pas aux racines de $P$, donc $u$ n'est pas pôle de $\frac{P'}{P}$ ce qui permet de prendre l'image par le morphisme d'évaluation en $u$ de cette même fraction rationnelle :
   \[
     0_\K = \frac{P'(u)}{P(u)} = \sum_{k = 1}^n \frac{1}{u - z_k} = \sum_{k = 1}^n \frac{\overline{u}- \overline{z_k}}{|u-z_k|^2} = \sum_{k = 1}^n \frac{\overline{u}}{|u-z_k|^2}- \sum_{k = 1}^n \frac{\overline{z_k}}{|u-z_k|^2}.
   \]
@@ -5591,8 +5777,8 @@ $$
   \[
     \sum_{k = 1}^n\frac{u}{|u-z_k|^2} = \sum_{k = 1}^n \frac{z_k}{|u-z_k|^2} \ \implies \ u = \frac{\sum_{k = 1}^n \frac{z_k}{|u-z_k|^2}}{\sum_{k = 1}^n\frac{1}{|u-z_k|^2}}= \sum_{k = 1}^n\underset{= \ c_k}{\underbrace{\frac{\frac{1}{|u-z_k|^2}}{\sum_{i = 1}^n\frac{1}{|u-z_i|^2}}}} z_k = \sum_{k=1}^n c_k z_k ,
   \]
-  ce qui démontre la première partie du résultat, il est immédiat de vérifier que $\sum_{k=1}^nc_k = 1$, vérification laissée aux lecteurs. Ce qui achève la preuve. \\
-
+  ce qui démontre la première partie du résultat, il est immédiat de vérifier que $\sum_{k=1}^nc_k = 1$, vérification laissée aux lecteurs. Ce qui achève la preuve. 
+\end{itemize}
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}
@@ -5635,16 +5821,16 @@ $$
       \filldraw[orange] (L) circle (1pt) node[anchor=south] {$r'_5$};
       \filldraw[orange] (M) circle (1pt) node[anchor=east] {$r'_6$};
   
-  \end{tikzpicture}
-    \newline
+    \end{tikzpicture}
+  \end{figure}
+    
     \begin{itemize}[label=$\star$]
       \item En {\color{blue} bleu}, les racines du polynôme\\$P = (X - (-2 + i))(X - (2 + 1.5i))(X - (1 -2i))(X - (-1.5 - i))(X - (-0.5 + 2i))(X - (0.5 - 1.5i))(X- (1.5 + 0.5i))$\\
-    \item Délimitée en {\color{red} rouge}, l'enveloppe convexe des racines.\\
-    \item En {\color{orange} orange}, les racines du polynôme dérivé\\
-$P' = (21.8125 + 40.1875 i) - (3.5 + 21.375 i) X + (7.125 - 25.125 i) X^2 + (16 - 31.5 i) X^3 + (3.75 + 5 i) X^4 - (6 + 3 i) X^5 + 7 X^6$\\
-\end{itemize}
-Les racines de $P'$ se retrouvent bien dans l'enveloppe convexe des racines de $P$.
-  \end{figure}
+        \item Délimitée en {\color{red} rouge}, l'enveloppe convexe des racines.\\
+        \item En {\color{orange} orange}, les racines du polynôme dérivé\\
+         $P' = (21.8125 + 40.1875 i) - (3.5 + 21.375 i) X + (7.125 - 25.125 i) X^2 + (16 - 31.5 i) X^3 + (3.75 + 5 i) X^4 - (6 + 3 i) X^5 + 7 X^6$\\
+    \end{itemize}
+    Les racines de $P'$ se retrouvent bien dans l'enveloppe convexe des racines de $P$.
 \end{question_kholle}
 
 \begin{question_kholle}
@@ -8199,6 +8385,44 @@ Nous rappelons que $\dim \{0_E\} = 0$ et que $\{0_E\} = \Vect \emptyset$.
             \left( 1, \ 2\sqrt{ 3 }X-\sqrt{ 3 }, \ 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
           $$
   \end{itemize}
+  \begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{80}{110} % Set the 3D view angles
+    \begin{tikzpicture}[tdplot_main_coords, scale=4]
+
+        % Pas à l'échelle pour que ça soit plus visible.
+        \coordinate (A) at (2, 0, 0);
+        \coordinate (B) at (1.5, 0.8660, 0);
+        \coordinate (C) at (1, 0.8660, 0.55);
+        \coordinate (D) at (1, 0.8660, 0);
+
+        \draw[thick,->,blue] (0,0,0) -- (A) node[anchor=south east]{$X^0 = P_1' = P_1$};
+        \draw[thick,->,red] (0,0,0) -- (B) node[anchor=north west]{$X$};
+        \draw[thick,->,green!60!black] (0,0,0) -- (C) node[anchor=south west]{$X^2$};
+
+        \draw[thick,->,black] (0,0,0) -- (0, 0.8660, 0) node[anchor=south west]{$P_2'$};
+        \draw[thick,->,black] (0,0,0) -- (0, 2, 0) node[anchor=north east]{$P_2$};
+        
+        \draw[thick,->,black] (0,0,0) -- (0, 0, 0.55) node[anchor=north east]{$P_3'$};
+        \draw[thick,->,black] (0,0,0) -- (0, 0, 2) node[anchor=north east]{$P_3$};
+
+
+        \draw[dotted] (B) -- (1.5, 0, 0);
+        \draw[dotted] (B) -- (0, 0.8660, 0);
+
+        \draw[<-, black] (1.5, 0.9, 0) -- (0.2, 0.9, 0) node[pos=0.5, anchor=north west]{$\braket{X \mid X^0}.X^0$};
+
+        \draw[->, black] (0, 0, 0.6) -- (1, 0.8660, 0.6) node[pos=0.5, anchor=south west]{$\braket{X^2 \mid X^0}.X^0 + \braket{X^2 \mid X}.X$};
+
+        \draw[dotted] (C) -- (1, 0.8660, 0);
+        \draw[dotted] (C) -- (D);
+        \draw[dotted] (C) -- (0, 0, 0.55);
+        \draw[dotted] (0, 0, 0) -- (D);
+        \draw[dotted] (D) -- (1, 0, 0);
+        \draw[dotted] (D) -- (1, 0, 0);
+    \end{tikzpicture}
+    \caption{Orthonormalisation de $(1, X, X^2)$ pour ce produit. Ces vecteurs ne sont ni orthogonaux, ni unitaires pour ce produit scalaire, mais engendrent bien $\R_2[X]$. En soustrayant leurs composantes respectives, on crée une base orthogonale que l'on peut ensuite normer.}
+  \end{figure}
 \end{question_kholle}
 
 \begin{question_kholle}[{Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace préhilbertien Réel.
