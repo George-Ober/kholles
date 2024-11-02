@@ -187,6 +187,44 @@
             \left( 1, \ 2\sqrt{ 3 }X-\sqrt{ 3 }, \ 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
           $$
   \end{itemize}
+  \begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{80}{110} % Set the 3D view angles
+    \begin{tikzpicture}[tdplot_main_coords, scale=4]
+
+        % Pas à l'échelle pour que ça soit plus visible.
+        \coordinate (A) at (2, 0, 0);
+        \coordinate (B) at (1.5, 0.8660, 0);
+        \coordinate (C) at (1, 0.8660, 0.55);
+        \coordinate (D) at (1, 0.8660, 0);
+
+        \draw[thick,->,blue] (0,0,0) -- (A) node[anchor=south east]{$X^0 = P_1' = P_1$};
+        \draw[thick,->,red] (0,0,0) -- (B) node[anchor=north west]{$X$};
+        \draw[thick,->,green!60!black] (0,0,0) -- (C) node[anchor=south west]{$X^2$};
+
+        \draw[thick,->,black] (0,0,0) -- (0, 0.8660, 0) node[anchor=south west]{$P_2'$};
+        \draw[thick,->,black] (0,0,0) -- (0, 2, 0) node[anchor=north east]{$P_2$};
+        
+        \draw[thick,->,black] (0,0,0) -- (0, 0, 0.55) node[anchor=north east]{$P_3'$};
+        \draw[thick,->,black] (0,0,0) -- (0, 0, 2) node[anchor=north east]{$P_3$};
+
+
+        \draw[dotted] (B) -- (1.5, 0, 0);
+        \draw[dotted] (B) -- (0, 0.8660, 0);
+
+        \draw[<-, black] (1.5, 0.9, 0) -- (0.2, 0.9, 0) node[pos=0.5, anchor=north west]{$\braket{X \mid X^0}.X^0$};
+
+        \draw[->, black] (0, 0, 0.6) -- (1, 0.8660, 0.6) node[pos=0.5, anchor=south west]{$\braket{X^2 \mid X^0}.X^0 + \braket{X^2 \mid X}.X$};
+
+        \draw[dotted] (C) -- (1, 0.8660, 0);
+        \draw[dotted] (C) -- (D);
+        \draw[dotted] (C) -- (0, 0, 0.55);
+        \draw[dotted] (0, 0, 0) -- (D);
+        \draw[dotted] (D) -- (1, 0, 0);
+        \draw[dotted] (D) -- (1, 0, 0);
+    \end{tikzpicture}
+    \caption{Orthonormalisation de $(1, X, X^2)$ pour ce produit. Ces vecteurs ne sont ni orthogonaux, ni unitaires pour ce produit scalaire, mais engendrent bien $\R_2[X]$. En soustrayant leurs composantes respectives, on crée une base orthogonale que l'on peut ensuite normer.}
+  \end{figure}
 \end{question_kholle}
 
 \begin{question_kholle}[{Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace préhilbertien Réel.
