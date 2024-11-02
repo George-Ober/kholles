@@ -34,6 +34,193 @@
   \end{equation*}
 \end{question_kholle}
 
+\begin{question_kholle}[{
+  Soit $f : \mathcal{D}_{f}\to \R$, $a \in \overline{\mathcal{D}_{f}}$ et $\ell \in \overline{\R}$
+$$
+f \text{ admet } \ell \text{ pour limite en } a \iff \left\{ \begin{array}{ll}
+ \text{pour toute suite } u \in \mathcal{D}_{f}^{\N}, \\
+\text{si } u \text{ tend vers } a, \text{ alors } f(u) \text{ tend vers } \ell
+\end{array}\right.
+$$
+}]{Caractérisation séquentielle de la limite}
+  
+\begin{itemize}[label=$\star$]
+  \item Supposons que $f$ admet $\ell$ pour limite en $a$. Traitons le cas $a \in \R$ et $\ell \in \R$.
+  Soit $u \in \mathcal{D}_{f}^{\N}$ fixée quelconque telle que $u$ tend vers $a$.
+  Soit $\varepsilon>0$ fixé quelconque. Appliquons la définition de la limite de $f$ en $a$ pour $\varepsilon$
+
+  $$
+  \exists \eta >0 : \forall x \in \mathcal{D}_{f}, \lvert x - a \rvert \leqslant \eta \implies \lvert f(x) - \ell \rvert  \leqslant \varepsilon
+  $$
+  Fixons un tel $\eta$ et appliquons la définition de la convergence de $u$ pour $\varepsilon \leftarrow \eta$
+  $$
+  \exists N \in \N : \forall n \geqslant N, \lvert u_{n} - a \rvert  \leqslant \eta
+  $$
+  Fixons un tel $N$.
+  Soit $n \in \N$ tel que $n \geqslant N$.
+  On a, bien entendu
+  $$
+  \lvert u_{n} - a \rvert  \leqslant \eta \implies \lvert f(u_{n}) - \ell \rvert \leqslant \varepsilon
+  $$
+  Ce qui montre la convergence de $(f(u_{n}))_{n \in \N}$ vers $\ell$.
+
+  \item Réciproquement, raisonnons par contraposée et montrons l'implication suivante
+  $$
+  \mathrm{non}(f \text{ admet }\ell \text{ pour limite en }a) \implies \underbrace{ \mathrm{non} \left\{ \begin{array}{ll}
+    \text{pour toute suite } u \in \mathcal{D}_{f}^{\N}, \\
+  \text{si } u \text{ tend vers } a, \text{ alors } f(u) \text{ tend vers } \ell
+  \end{array}\right. }_{ \exists u \in \mathcal{D}_{f}^{\N} : u \text{ tend vers }a \text{ et } f(u) \text{ ne tend pas vers }\ell }
+  $$
+
+  Supposons donc 
+  
+  \begin{align}
+  \mathrm{non}(f \text{ admet }\ell \text{ pour limite en }a)  &\iff \mathrm{non}(\forall \varepsilon>0, \exists \eta >0 : \forall x \in \mathcal{D_{f}}, \lvert x -a\rvert \leqslant \eta \implies \lvert f(x) - \ell \rvert\leqslant \varepsilon  ) \\
+  &\iff \exists \varepsilon>0 : \forall \eta >0, \exists x \in \mathcal{D}_{f} : \lvert x-a \rvert \leqslant \eta \text{ et } \lvert f(x) - \ell \rvert  > \varepsilon \label{S13:Q2:1}
+  \end{align}
+  
+
+  Fixons donc un tel $\varepsilon$ et construisons une suite $u \in \mathcal{D}_{f}^{\N}$ telle que $u$ tend vers $a$ et $f(u)$ ne tend pas vers $\ell$.
+
+  Soit $n \in \N$ fixé quelconque. Appliquons l'hypothèse \eqref{S13:Q2:1} pour $\eta \leftarrow \frac{1}{2^{n}}$.
+  $$
+  \exists x_{n} \in \mathcal{D}_{f} : \lvert x_{n} - a \rvert  \leqslant \frac{1}{2^{n}} \text{ et } \lvert f(x_{n}) - \ell \rvert  > \varepsilon
+  $$
+  En relâchant le caractère fixé de $n$, on a constuit une suite $(x_{n})_{n \in \N} \in \mathcal{D}_{f}^{\N}$ telle que
+  $$
+  \forall n \in \N, \lvert x_{n} - a \rvert \leqslant \underbrace{ \frac{1}{2^{n}} }_{ \xrightarrow[n \to \infty]{} 0}
+  $$
+  Donc $(x_{n})_{n \in \N}$ tend vers $a$.
+
+  La suite vérifie aussi
+  $$
+  \forall n \in \N, \lvert f(x_{n}) - \ell \rvert > \varepsilon
+  $$
+  ce qui montre que $(f(x_{n}))_{n \in \N}$ ne converge pas vers $\ell$ car 
+  
+  \begin{align*}
+  \text{non}((f(x_{n}))_{n \in \N} \text{ converge vers } \ell) &\iff \mathrm{non}(\forall \varepsilon_{1}>0, \exists N \in \N : \forall n \in \N, n \geqslant N \implies \lvert f(x_{n}) - \ell \rvert \leqslant \varepsilon_{1}) \\
+  &\iff \exists \varepsilon_{1}>0: \forall N \in \N, \exists n  \in \N : n\geqslant N \text{ et } \lvert f(x_{n}) - \ell \rvert  > \varepsilon_{1}
+  \end{align*}
+  
+  Ce qui est immédiat en posant $\varepsilon_{1} = \varepsilon$ et pour n'importe quel $N$ en posant $n = N$.
+  \end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}[]{Deux stratégies pour prouver qu'une fonction n'admet pas de limite en un point}
+  \begin{itemize}[label=$\bullet$]
+    \item Soit en exhibant une suite $(y_n)_{n \in \N} \in \mathcal D_f^{\N}$ qui tend vers $a$ et telle que $(f(y_n))_{n \in \N}$ n'admet pas de limite en $a$.
+    
+    Par exemple $f(x) = \cos \frac 1 x$ n'a pas de limite en zéro : observons que la suite $y = \left( \frac{1}{n\pi} \right)_{n \in \N^{*}}$ converge vers $0$ tandis que la suite $f(y)=((-1)^{n})_{n \in \N^{*}}$ diverge.
+
+    \item Soit en exhibant deux suites $y, z$ qui tendent vers $a$ et telles que $(f(y_{n}))_{n \in \N}$ et $(f(z_{n}))_{n \in \N}$ admettent deux limites différentes.
+
+    Par exemple, pour montrer que $f(x) = \sin x$ n'admet pas de limite en $+\infty$, il suffit d'observer que les suites $y = (n \pi)_{n \in \N}$ et $z = (2n\pi + \frac{\pi}{2})_{n \in \N}$ tendent vers $+\infty$ et ont respectivement pour suites images $\tilde{0}$ et $\tilde{1}$ qui convergent respectivement vers $0$ et $1$.
+  \end{itemize}
+  
+\end{question_kholle}
+
+\begin{question_kholle}[{
+  Soient $f$ et $g$ définies sur $\mathcal{D}$ et $a \in \overline{\mathcal{D}}$. Si
+  \begin{itemize}[label=$\bullet$]
+    \item $f \leqslant g$ sur un voisinnage de $a$
+    \item $f$ et $g$ admettent une limite finie en $a$
+  \end{itemize}
+alors $\displaystyle \lim_{ x \to a }f(x) \leqslant \lim_{ x \to a }g(x)$
+}]{Passage à la limite dans une inégalité}
+\begin{itemize}[label=$\star$]
+  \item \textbf{En utilisant la caractérisation séquentielle de la limite}
+  
+  Traitons le cas $a = +\infty$.
+  
+  Posons $\ell_{f} \in\R$ et $\ell_{g} \in \R$ les limites finies respectives de $f$ et $g$.
+  
+  Par définition de $a \in \overline{\mathcal{D}}$, $\exists (a_{n})_{n \in \N} \in \mathcal{D}^{\N} : \lim_{ n \to \infty }a_{n} = a = +\infty$
+  
+  Par définition de voisinnage de $a$ en $+\infty$, $\exists A \in \R : \forall x \in \mathcal{D}, x\geqslant A \implies f(x) \leqslant g(x)$
+  
+  Fixons un tel $A$ et appliquons la définition de la divergence de $(a_{n})_{n \in \N}$ vers $+\infty$ pour $A$.
+  $$
+  \exists N \in \N : \forall n \geqslant N, a_{n} \geqslant A
+  $$
+  Fixons un tel $N$. On a alors
+  $$
+  \forall n \geqslant N, a_{n} \geqslant A \implies f(a_{n}) \leqslant g(a_{n})
+  $$
+  Donc par passage à la limite dans l'inégalité pour les suites
+  $$
+  \lim_{ n \to \infty } f(a_{n}) \leqslant \lim_{ n \to \infty } g(a_{n})
+  $$
+  donc par caractérisation séquentielle de la limite
+  $$
+  \lim_{ x \to a=+\infty}  f(x) \leqslant \lim_{ x \to a  = +\infty} g(x) 
+  $$
+
+  \item \textbf{En utilisant le caractère local de la limite}
+  Tout d'abord $f \leqslant g$ sur un voisinnage de $a$, donc $g - f \geqslant 0$ sur un voisinnage de $a$ donc $g-f = \lvert g-f \rvert$ sur un voisinnage de $a$.
+  Or,
+  $$
+  \left. \begin{array}{ll}
+  \lim_{ x \to a }g(x) = \ell_{g} \\
+  \lim_{ x \to a } f(x) = \ell_{f}
+  \end{array}\right\}
+  \implies \lim_{ x \to a } \lvert g(x) - f(x) \rvert  = \lvert \ell_{g} - \ell _{f} \rvert 
+  $$
+  Donc, avec le caractère local de la limite, puisque $g-f$ et $|g-f|$ coïncident sur un voisinnage de $a$,
+  $$
+  \lim_{ x \to a } g(x) - f(x) = \lim_{ x \to a } \lvert g(x) - f(x) \rvert  = \lvert \ell_{g} - \ell_{f} \rvert 
+  $$
+  Or,  on a aussi $\lim_{ x \to a }g(x) - f(x) = \ell_{g} - \ell_{f}$.
+  Donc
+  $$
+  \ell_{g} - \ell_{f} = \lvert \ell_{g} - \ell_{f} \rvert \geqslant 0 \implies \ell_{g} \geqslant \ell_{f}
+  $$
+  \end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}[{
+  Soit $f$ une fonction croissante définie sur $]a, b[$ avec $(a, b) \in \overline{\R}^{2}, a<b$.
+  \begin{itemize}[label=$\bullet$]
+    \item Si $f$ est majorée, alors $f$ admet une limite finie en $b$ qui vaut $\lim_{ x \to b }f(x) = \sup f(]a, b[)$.
+    \item Si $f$ n'est pas majorée, alors $f$ tend vers $+\infty$ en $b$.
+  \end{itemize}
+}]{Limite de fonctions monotones sur un segment.}
+  \begin{itemize}[label=$\star$]
+    \item Supposons que $f$ est majorée sur $]a, b[$. L'ensemble $f(]a, b[)$ est une partie de $\R$, non vide et majorée, donc admet une borne supérieure $S \in \R$.
+    Montrons que $\lim_{ x \to b }f(x) = S$.
+    
+    Soit $\varepsilon>0$ fixé quelconque. On veut construire un $\eta>0$ tel que $\forall x \in ]b-\eta, b[$, $\lvert f(x) - S \rvert \leqslant \varepsilon$.
+    D'après la caractérisation de la borne supérieure par les epsilon appliquée pour $\varepsilon$, $$\exists y_{\varepsilon} \in f(]a, b[) : S - \varepsilon < y_{\varepsilon} \leqslant \varepsilon$$
+    Or, $y_{\varepsilon} \in f(]a, b[) \implies \exists x_{\varepsilon}\in ]a, b[ : y_{\varepsilon} = f(x_{\varepsilon})$
+    Posons $\eta = b - x_{\varepsilon} > 0$ et vérifions qu'il convient.
+    Soit $x \in ]b - \eta, b[$ fixé quelconque.
+    on a $$
+    b-\eta < x \implies b- (b - x_{\varepsilon})< x \implies x_{\varepsilon} < x \implies \underbrace{ f(x_{\varepsilon}) }_{ y_{\varepsilon} } \leqslant f(x)
+    $$
+    De plus, $f(x) \leqslant S$ par définition de la borne supérieure, donc
+    $$
+    S - \varepsilon < y_{\varepsilon} \leqslant f(x) \leqslant S
+    $$
+    Donc $\lvert f(x) - S \rvert \leqslant \varepsilon$ ce qui prouve la convergence.
+
+    \item Supposons que $f$ n'est pas majorée sur $]a, b[$.
+    On veut montrer que $f$ tend vers $+\infty$, autrement dit que
+    $$
+    \forall A \in \R, \exists \eta >0 : \forall x \in ]b- \eta , b[, f(x)\geqslant A
+    $$
+    Soit $A \in \R$ fixé quelconque.
+    $f$ n'est pas majorée, donc $\exists x_{0} \in ]a, b[ : f(x_{0}) \geqslant A$.
+    Posons $\eta = b - x_{0} > 0$
+    Soit $x \in ]b-\eta, b[$ fixé quelconque.
+    $$
+    b-\eta< x \implies b-(b-x_{0})< x \implies x_{0}<x \implies f(x_{0}) \leqslant f(x)
+    $$
+    Donc $f(x) \geqslant f(x_{0})\geqslant A$
+    Donc $\forall x \in ]b-\eta, b[, f(x) \geqslant A$.
+    Donc $f$ tend vers $+\infty$ en $b$.
+  \end{itemize}
+\end{question_kholle}
+
 \begin{question_kholle}
   [{ Soit une fonction continue $f : [a;b] \rightarrow \R$ avec $(a,b) \in \R^2$ et $a < b$. \\
   Si $f(a)f(b) \leqslant 0$ alors $\exists c \in [a;b] : f(c) = 0$. \\
@@ -104,7 +291,7 @@
 \end{question_kholle}
 
 \begin{question_kholle}
-  [{L'image d'un segment par une fonction continue sur ce segment est un segment : soient $(a, b) \in \mathbb{R}^2$ tels que $a < b$ et $f: [a, b] \to \mathbb{R}$. Si $f \in \mathcal{C}^0([a, b], \mathbb{R})$ alors $\exists (x_{1}, x_{2}) \in \mathbb{R}^2 : f([a, b]) = [f(x_{1}), f(x_{2})]$}]
+  [{L'image d'un segment par une fonction continue sur ce segment est un segment : soient $(a, b) \in \R^2$ tels que $a < b$ et $f: [a, b] \to \R$. Si $f \in \mathcal{C}^0([a, b], \R)$ alors $\exists (x_{1}, x_{2}) \in \R^2 : f([a, b]) = [f(x_{1}), f(x_{2})]$}]
   {Théorème de Weierstraß}
   \begin{itemize}
 
@@ -113,40 +300,40 @@
           Par l'absurde, supposons que $f([a, b])$ n'est pas majoré
 
           Alors \begin{equation}\label{eq:1}
-            \forall A \in \mathbb{R}, \exists x \in [a, b] : f(x) > A
+            \forall A \in \R, \exists x \in [a, b] : f(x) > A
           \end{equation}
 
-          Soit $n \in \mathbb{N}$ fq.
+          Soit $n \in \N$ fq.
           Appliquons (\ref{eq:1}) pour $A \leftarrow n$:
           $\exists x \in [a, b] : f(x) > n$, et fixons un tel $x$ que l'on note $x_{n}$
-          Nous venons de créer la suite $(x_{n})_{n \in \mathbb{N}} \in [a, b]^{\mathbb{N}}$ qui vérifie:
+          Nous venons de créer la suite $(x_{n})_{n \in \N} \in [a, b]^{\N}$ qui vérifie:
 
 
           $$
             \left.
             \begin{array}{ll}
-              \forall n \in \mathbb{N}, f(x_{n}) \geqslant n \\
+              \forall n \in \N, f(x_{n}) \geqslant n \\
               \lim_{ n \to \infty } n =  +\infty
             \end{array}
             \right\} \underbrace{ \implies }_{ \text{théorème de divergence par minoration} } f(x_{n}) \xrightarrow[n \to +\infty]{} + \infty
           $$
 
 
-          $(x_{n})_{n \in \mathbb{N}}$ est bornée (à valeurs dans $[a, b]$) donc, selon le théorème de Bolzanno-Weierstraß:
+          $(x_{n})_{n \in \N}$ est bornée (à valeurs dans $[a, b]$) donc, selon le théorème de Bolzanno-Weierstraß:
           $$
-            \exists \ell \in \mathbb{R} : \exists \varphi : \mathbb{N} \to \mathbb{N} : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \mathbb{N}} \text{ tend vers } \ell
+            \exists \ell \in \R : \exists \varphi : \N \to \N : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \N} \text{ tend vers } \ell
           $$
-          Donc, en passant à la limite : $\forall n \in \mathbb{N}, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
+          Donc, en passant à la limite : $\forall n \in \N, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
 
-          Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$ converge vers $f(\ell)$.
+          Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \N}$ converge vers $f(\ell)$.
 
           Or $$
             \left\{ \begin{array}{ll}
-              (f(x_{\varphi(n)}))_{n \in \mathbb{N}} \text{ est une sous suite de } (f(x_{n}))_{n \in \mathbb{N}} \\
+              (f(x_{\varphi(n)}))_{n \in \N} \text{ est une sous suite de } (f(x_{n}))_{n \in \N} \\
               f(x_{n}) \xrightarrow[n \to + \infty]{} + \infty
             \end{array}\right.$$
 
-          donc $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$, tend vers $+ \infty$, ce qui est absurde, donc $f$ est majorée.
+          donc $(f(x_{\varphi(n)}))_{n \in \N}$, tend vers $+ \infty$, ce qui est absurde, donc $f$ est majorée.
 
           On fait de même pour la minoration.
 
@@ -156,7 +343,7 @@
 
           $$
             f([a, b]) \text{ est } \left\{ \begin{array}{ll}
-              \text{ une partie de } \mathbb{R}   \\
+              \text{ une partie de } \R   \\
               \text{ non vide car contient } f(a) \\
               \text{majorée d'après l'étape 1}
             \end{array}\right.
@@ -166,27 +353,27 @@
 
           Appliquons la caractérisation séquentielle de la borne supérieure:
           $$
-            \exists (y_{n})_{n \in \mathbb{N}}, \in f([a, b])^{\mathbb{N}} : (y_{n}) \text{ converge vers } \sigma
+            \exists (y_{n})_{n \in \N}, \in f([a, b])^{\N} : (y_{n}) \text{ converge vers } \sigma
           $$
           $$
-            \forall n \in \mathbb{N}, y_{n} \in f([a, b]) \implies \exists x_{n} \in [a, b] : f(x_{n} ) = y_{n}
+            \forall n \in \N, y_{n} \in f([a, b]) \implies \exists x_{n} \in [a, b] : f(x_{n} ) = y_{n}
           $$
           Fixons un tel $x_{n}$ pour tout $y_{n}$.
-          On a donc construit $(x_{n})_{n \in \mathbb{N}} \in [a, b]^{\mathbb{N}} : f(x_{n}) \xrightarrow[n \to +\infty]{} \sigma$
+          On a donc construit $(x_{n})_{n \in \N} \in [a, b]^{\N} : f(x_{n}) \xrightarrow[n \to +\infty]{} \sigma$
 
           De plus, $(x_{n})$ est bornée (à valeurs dans $[a, b]$) donc, selon le théorème de Bolzanno-Weierstraß:
           $$
-            \exists \ell \in \mathbb{R} : \exists \varphi : \mathbb{N} \to \mathbb{N} : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \mathbb{N}} \text{ tend vers } \ell
+            \exists \ell \in \R : \exists \varphi : \N \to \N : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \N} \text{ tend vers } \ell
           $$
-          Donc, en passant à la limite : $\forall n \in \mathbb{N}, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
+          Donc, en passant à la limite : $\forall n \in \N, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
 
 
-          Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$ converge vers $f(\ell)$.
+          Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \N}$ converge vers $f(\ell)$.
 
           Or,
           $$
             \left\{ \begin{array}{ll}
-              (f(x_{\varphi(n)}))_{n \in \mathbb{N}} \text{ est une sous suite de } (f(x_{n}))_{n \in \mathbb{N}} \\
+              (f(x_{\varphi(n)}))_{n \in \N} \text{ est une sous suite de } (f(x_{n}))_{n \in \N} \\
               f(x_{n}) \xrightarrow[n \to + \infty]{} \sigma
             \end{array}\right.$$
 
