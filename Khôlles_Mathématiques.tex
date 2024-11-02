@@ -3915,10 +3915,10 @@ $$
 
 \begin{question_kholle}
   [Soient $a \in \K$ et $v \in \K^\N$ où \K peut être \C ou \R.
-    L'ensemble des solutions de l'équation $\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n}$
+    L'ensemble des solutions de l'équation $\forall n \in \N, u_{n+1} = au_{n} + v_{n}$
     est la droite affine :
     \begin{equation}
-      \left\{ w + \lambda \left( a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
+      \left\{ w + \lambda \left( a^n \right) _{n \in \N} \mid \lambda \in \K \right\}
     \end{equation}
   ]
   {Résolution d'une relation de récurrence linéaire d'ordre 1 à coefficients constants et avec second membre}
@@ -3926,7 +3926,7 @@ $$
   Posons $w$ la suite définie par $$
     \left\{ \begin{array}{ll}
       w_{0} = 1 \\
-      \forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n}
+      \forall n \in \N, w_{n+1} = aw_{n} + v_{n}
     \end{array}\right.
   $$
   $w$ est "évidemment solution de particulière de l'équation"
@@ -3935,13 +3935,13 @@ $$
 
 
   \begin{align*}
-    \forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = v_{n}                                                         \\
-                                                       & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = w_{n+1} - aw_{n}                                              \\
-                                                       & \iff \forall n \in \mathbb{N}, (u-w)_{n+1} = a(u-w)_{n}                                                         \\
-                                                       & \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}                                 \\
-                                                       & \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}}                    \\
-                                                       & \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n                     \\
-                                                       & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
+    \forall n \in \N, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \N, u_{n+1} - au_{n} = v_{n}                                                         \\
+                                                       & \iff \forall n \in \N, u_{n+1} - au_{n} = w_{n+1} - aw_{n}                                              \\
+                                                       & \iff \forall n \in \N, (u-w)_{n+1} = a(u-w)_{n}                                                         \\
+                                                       & \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \N} \right\}                                 \\
+                                                       & \iff \exists \lambda \in \K : u-w = \lambda \left( a^{n} \right) _{n \in \N}                    \\
+                                                       & \iff \exists \lambda \in \K : \forall n \in \N, u_{n} = w_{n} + \lambda a^n                     \\
+                                                       & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \N} \mid \lambda \in \K \right\}
   \end{align*}
 
 \end{question_kholle}
@@ -4014,7 +4014,7 @@ $$
 \end{question_kholle}
 
 \begin{question_kholle}
-  [Soit $u$ une suite bornée. $u$ converge si et seulement si il existe $\ell \in \mathbb{K}$ tel que $L(u)$ est le singleton $\ell$ ]
+  [Soit $u$ une suite bornée. $u$ converge si et seulement si il existe $\ell \in \K$ tel que $L(u)$ est le singleton $\ell$ ]
   {Caractérisation de la convergence par l'unicité d'une valeur d'adhérence pour une suite bornée.}
 
   Traitons le cas réel, celui sur \C est à adapter sans peine.\\
@@ -4056,7 +4056,7 @@ $$
       \item Si $f$ est décroissante sur $I$.
             \subitem Les sous-suites $\left(u_{2n}\right))_{n\in\N}$ et $\left(u_{2n+1}\right))_{n\in\N}$ sont monotone et ont une monotonie opposée (utiliser les premiers termes pour trouver leur monotonie respectives).
     \end{itemize}]
-  {Monotonie de $u$ et des sous-suites des termes pairs et impairs de la suite$u_{n+1} = f(u_n)$ selon la monotonie de $f$}
+  {Monotonie de $u$ et des sous-suites des termes pairs et impairs de la suite $u_{n+1} = f(u_n)$ selon la monotonie de $f$}
 
   Soient de tels $f, I$ et $u$.
   \begin{itemize}
@@ -4086,6 +4086,85 @@ $$
           Donc $\left(u_{2n+1}\right)_{n\in\N}$ est décroissante. \\
           De même, si $\left(u_{2n}\right)_{n\in\N}$ est décroissante alors $\left(u_{2n+1}\right)_{n\in\N}$ est croissante.
   \end{itemize}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      
+      \draw[->] (-6, 0) -- (7, 0) node[below] {$x$};
+      \draw[->] (0, -0.5) -- (0, 4.5) node[right] {$f(x) = \sqrt{2 - x}$}; 
+        
+
+      \draw[black, dashed] (0, 0) -- (4, 4);
+
+      \draw[black] (-1.5 * 2, 0) node[below] {$u_0$} -- (-1.5 * 2, 1.870 * 2);
+      \draw[black, dotted] (-1.5 * 2, 1.870 * 2) -- (1.870 * 2, 1.870 * 2);
+      \draw[black, dotted] (1.870 * 2, 1.870 * 2) -- (1.870 * 2, 0);
+      
+      \draw[black] (1.870 * 2, 0) node[below] {$u_1$} -- (1.870 * 2, 0.3605 * 2);
+      \draw[black, dotted] (1.870 * 2, 0.3605 * 2) -- (0.3605 * 2, 0.3605 * 2);
+      \draw[black, dotted] (0.3605 * 2, 0.3605 * 2) -- (0.3605 * 2, 0);
+      
+      \draw[black] (0.3605 * 2, 0) node[below] {$u_2$} -- (0.3605 * 2, 1.2804 * 2);
+      \draw[black, dotted] (0.3605 * 2, 1.2804 * 2) -- (1.2804 * 2, 1.2804 * 2);
+      \draw[black, dotted] (1.2804 * 2, 1.2804 * 2) -- (1.2804 * 2, 0);
+      
+      \draw[black] (1.2804 * 2, 0) node[below] {$u_3$} -- (1.2804 * 2, 0.8483 * 2);
+      \draw[black, dotted] (1.2804 * 2, 0.8483 * 2) -- (0.8483 * 2, 0.8483 * 2);
+      \draw[black, dotted] (0.8483 * 2, 0.8483 * 2) -- (0.8483 * 2, 0);
+      
+      \draw[black] (0.8483 * 2, 0) node[below] {$u_4$} -- (0.8483 * 2, 1.0732 * 2);
+      \draw[black, dotted] (0.8483 * 2, 1.0732 * 2) -- (1.0732 * 2, 1.0732 * 2);
+      \draw[black, dotted] (1.0732 * 2, 1.0732 * 2) -- (1.0732 * 2, 0);
+      
+      \draw[black] (1.0732 * 2, 0) node[below] {$u_5$} -- (1.0732 * 2, 0.9627 * 2);
+    %   \draw[black, dotted] (1.0732 * 2, 0.9627 * 2) -- (0.9627 * 2, 0.9627 * 2);
+    %   \draw[black, dotted] (0.9627 * 2, 0.9627 * 2) -- (0.9627 * 2, 0);
+      
+      
+      \draw[thick, smooth, domain=-4:4, samples=100] plot(\x, {2 * sqrt (2 - \x/2)});
+
+    \end{tikzpicture}
+    \caption{Construction des termes de la suite de vérifiant la relation de récurrence $u_{n+1} = \sqrt{2 - u_n}$ pour le permier terme $u_0 = - \frac 3 2$. $f: x \mapsto \sqrt{2-x}$ est une fonction décroissante, et l'on remarque effectivement que la sous suite de termes pairs $(u_0, u_2, u_4, \dots)$ croît, alors que la sous suite de termes impairs $(u_1, u_3, u_5, \dots)$ décroît.}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      
+      \draw[->] (-0.5, 0) -- (7, 0) node[below] {$x$};
+      \draw[->] (0, -0.5) -- (0, 4.5) node[right] {$g(x) = x^2$}; 
+        
+
+      \draw[black, dashed] (0, 0) -- (4.3, 4.3);
+
+      \draw[black] (0.9 * 4, 0) node[below] {$v_0$} -- (0.9 * 4, 0.81 * 4);
+      \draw[black, dotted] (0.9 * 4, 0.81 * 4) -- (0.81 * 4, 0.81 * 4);
+      \draw[black, dotted] (0.81 * 4, 0.81 * 4) -- (0.81 * 4, 0);
+      
+      \draw[black] (0.81 * 4, 0) node[below] {$v_1$} -- (0.81 * 4, 0.6561 * 4);
+      \draw[black, dotted] (0.81 * 4, 0.6561 * 4) -- (0.6561 * 4, 0.6561 * 4);
+      \draw[black, dotted] (0.6561 * 4, 0.6561 * 4) -- (0.6561 * 4, 0);
+      
+      \draw[black] (0.6561 * 4, 0) node[below] {$v_2$} -- (0.6561 * 4, 0.4305 * 4);
+      \draw[black, dotted] (0.6561 * 4, 0.4305 * 4) -- (0.4305 * 4, 0.4305 * 4);
+      \draw[black, dotted] (0.4305 * 4, 0.4305 * 4) -- (0.4305 * 4, 0);
+      
+      \draw[black] (0.4305 * 4, 0) node[below] {$v_3$} -- (0.4305 * 4, 0.1853 * 4);
+      \draw[black, dotted] (0.4305 * 4, 0.1853 * 4) -- (0.1853 * 4, 0.1853 * 4);
+      \draw[black, dotted] (0.1853 * 4, 0.1853 * 4) -- (0.1853 * 4, 0);
+      
+      \draw[black] (0.1853 * 4, 0) node[below] {$v_4$} -- (0.1853 * 4, 0.0343 * 4);
+      \draw[black, dotted] (0.1853 * 4, 0.0343 * 4) -- (0.0343 * 4, 0.0343 * 4);
+      \draw[black, dotted] (0.0343 * 4, 0.0343 * 4) -- (0.0343 * 4, 0);
+      
+      \draw[black] (0.0343 * 4, 0) node[below] {$v_5$} -- (0.0343 * 4, 0);
+      
+      
+      \draw[thick, smooth, domain=0:4.3, samples=100] plot(\x, {(\x/2)^2});
+
+    \end{tikzpicture}
+    \caption{Construction des termes de la suite de vérifiant la relation de récurrence $v_{n+1} = v_n^2$ pour le permier terme $v_0 = \frac {9} {10}$. $g: x \mapsto x^2$ est croissante sur $[0, +\infty[$, et l'on remarque effectivement que la suite $v$ est monotone.}
+  \end{figure}
 \end{question_kholle}
 
 \begin{question_kholle}
