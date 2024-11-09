@@ -106,7 +106,7 @@
         \draw [dashed, gray] (0,2) -- (B) -- (3.7, 0);
 
         \fill [radius=1.5pt] (A) circle node[above=2pt] {\small $(x,h(x))$};
-        \fill [radius=1.5pt] (B) circle node[above=2pt] {\small $(x-a, f(x-a))$};
+        \fill [radius=1.5pt] (B) circle node[above=2pt] {\small $(a-x, f(a-x))$};
 
         \draw [thick, dashed] (2.25, -1) -- (2.25, 3.5);
 
@@ -374,7 +374,7 @@
   \begin{itemize}[label=$\star$]
     \item Si $m \neq 0$:
           \begin{align*}
-            \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t & = \frac{1}{2 \pi} \Big[ \frac{e^{mt}}{im} \Big]_0^{2\pi}      \\
+            \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t & = \frac{1}{2 \pi} \Big[ \frac{e^{imt}}{im} \Big]_0^{2\pi}     \\
                                                              & = \frac{1}{2 \pi} \Big( \frac{1}{im} - \frac{1}{im} \Big) = 0
           \end{align*}
     \item Si $m = 0$:

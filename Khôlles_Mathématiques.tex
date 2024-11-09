@@ -1897,7 +1897,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
         \draw [dashed, gray] (0,2) -- (B) -- (3.7, 0);
 
         \fill [radius=1.5pt] (A) circle node[above=2pt] {\small $(x,h(x))$};
-        \fill [radius=1.5pt] (B) circle node[above=2pt] {\small $(x-a, f(x-a))$};
+        \fill [radius=1.5pt] (B) circle node[above=2pt] {\small $(a-x, f(a-x))$};
 
         \draw [thick, dashed] (2.25, -1) -- (2.25, 3.5);
 
@@ -2165,7 +2165,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \begin{itemize}[label=$\star$]
     \item Si $m \neq 0$:
           \begin{align*}
-            \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t & = \frac{1}{2 \pi} \Big[ \frac{e^{mt}}{im} \Big]_0^{2\pi}      \\
+            \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t & = \frac{1}{2 \pi} \Big[ \frac{e^{imt}}{im} \Big]_0^{2\pi}     \\
                                                              & = \frac{1}{2 \pi} \Big( \frac{1}{im} - \frac{1}{im} \Big) = 0
           \end{align*}
     \item Si $m = 0$:
@@ -2332,120 +2332,199 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 \end{question_kholle}
 \pagebreak\section{Semaine 7}
 
-\begin{question_kholle}{Calcul de $\int_0^{2\pi}e^{imt} \mathrm d t$ en fonction de $m \in \Z$. En Déduire qu'une fonction polynomiale nulle sur un cercle centré en l'origine a tous ses coefficients nuls.}
-  Soit $m \in \Z$ fq. Calculons:
-  $$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t$$
-  Si $m \neq 0$:
-  \begin{align*}
-    \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t & = \frac{1}{2 \pi} \Big[ \frac{e^{mt}}{im} \Big]_0^{2\pi}      \\
-                                                     & = \frac{1}{2 \pi} \Big( \frac{1}{im} - \frac{1}{im} \Big) = 0
-  \end{align*}
-  Si $m = 0$:
-  $$
-    \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t = \frac{1}{2 \pi} \int_0^{2\pi} \mathrm d t = \frac{2 \pi}{2 \pi} = 1
-  $$
-  \\
-  Donc $$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t =
-    \begin{cases}
-      1 \text{ si } m=0 \\
-      0 \text{ si } m \neq 0
-    \end{cases}
-  $$
-  \\
-  Soit $n\in \N$ fq
-
-  Soient $(a_0, ..., a_n) \in \C^{n+1}$ les coefficients de $P(z) = \sum_{k=0}^n a_k z^k$, et $s\in \Z$, et $r \in \R_+^*$ fq. tels que P soit nulle lorsqu'elle est évaluée sur $\mathscr C(0,r)$
-  \begin{align*}
-    \frac{1}{2 \pi} \int_0^{2\pi} P(re^{it}) e^{-imt} \mathrm d t & = \frac{1}{2 \pi} \int_0^{2\pi} \bigg (\sum_{k=0}^n a_k (re^{it})^k \bigg) e^{-imt} \mathrm d t \\
-                                                                  & = \sum_{k=0}^n a_k r^k \underbrace{\int_0^{2\pi} \frac{e^{it(k-s)}}{2 \pi}  \mathrm d t}_{I_k}
-  \end{align*}
-  On remarque que:
-  \begin{itemize}
-    \item Si $s \notin [ \! [0, n] \! ], \{k \in [ \! [0, n] \! ] \text{ }| \text{ } k = s\}$ = $\emptyset$, Donc $$\sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k  = \sum_{\substack{k \in [ \! [0, n] \! ] \\ k = s}} a_k r^k  = 0$$
-    \item Si $s \in [ \! [0, n] \! ], \{k \in [ \! [0, n] \! ] \text{ }| \text{ } k = s\}$ = ${s}$, Donc $$\sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k = \sum_{\substack{k \in [ \! [0, n] \! ] \\ k = s}} a_k s^k = a_s r^s \label{1}$$
-  \end{itemize}
-  Or, puisque $P$ s'annule sur le cercle de rayon $r$ et de centre $0$,  $\mathscr C(0,r)$, ces sommes sont aussi nulles. On en déduit, en particularisant pour un $s \in [ \! [0, n] \! ]$ fixé quelconque que:
-  $$
-    \sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k = a_sr^s = 0 \implies a_s = 0
-  $$
-
-  Donc $$
-    (\exists r \in \R_+^* : \forall \theta \in \R, P(re^{i\theta})=0) \implies \forall s \in [ \! [0, n] \! ]
-  $$
-  \\
-  Pour la preuve réciproque,  soit $n \in \N$ fq. Soient $(a_0,...,a_n) \in \{ 0 \} ^{n+1}$ les coefficients nuls de la fonction polynomiale $P \in \C[z]$ définie pour tout $z \in \C$.
-
-  En remarquant que $\forall z \in \C , P(z) = 0$, puisque n'importe quel cercle centré en 0 est un sous ensemble de $\C$,  $\exists r \in \R_+^*: \forall z \in \mathscr C(0, r), P(z) = 0$.
+\begin{question_kholle}{Résolution de l'ED  $\forall t \in J, y' + a_{0}(t) = b(t)$ par équivalences avec la méthode fu facteur intégral.}
+	
+	Pour cette preuve, il est nécessaire de supposer $a_{0}$ et $b$ continus.
+	Ainsi, on note $A$ la primitive de $a_{0}$ définie sur J. 
+  
+  	$$\begin{array}{ccl}
+  	f : J \to \mathbb{C} \text{ est sol. de } y' + a_{0} = b \text{ sur J} 
+  	& \iff & \left\{ \begin{array}{l}
+  		f \in \mathcal{D}^1 (J, \mathbb{K}) \\
+  		f' + a_{0} = b \text{ sur J }
+  	\end{array}  \right.                                                                                \\\\
+  	& \iff & \left\{ \begin{array}{l}
+  		f \in \mathcal{D}^1 (J, \mathbb{K}) \\
+  		f'  e^A + \underset{(= A')}{a_{0}} f  e^A = b  e^A \text{ sur J } (e^A \text{ est le facteur intégrant})
+  	\end{array}\right.        
+  \end{array} $$
+  
+  Notons B une primitive de $be^A$ definie sur J (car $b$ et $e^A$ sont continues)
+  
+  $$\begin{array}{ccl}  	
+   & \iff &  \left\{ \begin{array}{l}
+  			f \in \mathcal{D}^1 (J, \mathbb{K}) \\
+  			(fe^A)' = B' \text{ sur J}
+  	\end{array} \right. \\\\
+  	 & \iff &  \left\{ \begin{array}{l}
+  		f \in \mathcal{D}^1 (J, \mathbb{K}) \\
+  		(fe^A - B)' = 0 \text{ sur J}
+  	\end{array} \right. \\\\
+   & \iff &  \left\{ \begin{array}{l}
+  	f \in \mathcal{D}^1 (J, \mathbb{K}) \\
+  	\exists \lambda \in \mathbb{K} : fe^A - B = \lambda
+  \end{array} \right. \\\\
+  & \iff & \exists \lambda \in \mathbb{K} : f = \lambda e^{-A} + B e^{-A} \\\\
+  & \iff & f \in \left\lbrace \lambda e^{-A} + B e^{-A} \right\rbrace 
+  \end{array} $$
+  
+  Ainsi $\mathcal{S} = \underset{\text{sol. particluière}}{Be^{-A}} + \underset{\text{droite vectorielle des sol. de l'EDLH}}{\left\lbrace \lambda e^{-A} | \lambda \in \mathbb{K}\right\rbrace }$
+ 
 \end{question_kholle}
 
-\begin{question_kholle}{Preuve de la Linéarité de la dérivation d'une fonction complexe}
-  Définissons les fonctions $f_r$ et $f_i$ comme les parties réelles et imaginaires de $f$.
+\begin{question_kholle}{Théorème de résolution des EDLH d'ordre 2 à coefficients constants complexes.}
 
-  Soient $(f, g) \in \mathcal{F}(I, \C)^2$, $(\alpha, \beta) \in \C^2$ fixés quelconques.
+\end{question_kholle}
+
+\begin{question_kholle}{Caractérisation des fonctions exponentielles et de la fonction nulle par la propriété de dérivabilité en 0 et celle de morphisme de (\R, +) dans (\C, $\times$).}
+  
+\end{question_kholle}
+
+\begin{question_kholle}{Preuve de l’expression des solutions réelles des EDL homogènes d’ordre 2 à coefficients constants réels dans le cas $\Delta < 0$ (en admettant la connaissance de l’expression des solutions à valeurs complexes des EDLH2 à coeff. constants).}
+  Notons $\Sol_{H, \C}$ et $\Sol_{H, \R}$ les ensembles des solutions complexes et réelles de l'équation différentielle, puisque nous nous plaçons dans le cas $\Delta < 0$ et $\alpha \pm i \beta$ les deux racines complexes conjuguées.
+  $$
+  \Sol_{H, \C} =
+  \left\{
+  \begin{array}{l}
+  	\R \to \C \\
+  	t \mapsto \lambda e^{(\alpha + i \beta) t}  + \mu e^{(\alpha - i \beta)t}
+  \end{array}
+  \middle\vert  (\lambda, \mu) \in \C ^2 \right\}
+  $$
+  
+  Montrons que $\forall f \in \Sol_{H ,\C}, \Re(f) \in  \Sol_{H ,\R}$\\
+  Soit $f \in \Sol_{H ,\C}$ fq.
+  $$f \in \mathcal D^2(\R, \C) \implies \Re(f) \in \mathcal D^2(\R, \R)$$
+  Et, de plus, par morphisme additif de \Re
+  $$
+  a_2\Re(f)'' + a_1\Re(f)' + a_0\Re(f) = \Re( a_2 f'' + a_1 f' + a_0 f) = 0
+  $$
+  D'où, avec $f:t \mapsto e^{(\alpha + i \beta)t}$; $\Re(f(t)) = \Re(e^{(\alpha + i \beta)t}) = e^{\alpha t } \cos (\beta t)$. Qui appartient donc à $\Sol_{H, \R}$\\
+  En suivant le même raisonnement pour $\Im(f)$, $(t \mapsto e^\alpha \sin(\beta t)) \in \Sol_{H, \R}$
+  
+  
+  Ainsi, par combinaison linéaire (qui se base sur le principe de superposition),
+  $$
+  \left\{
+  \begin{array}{l}
+  	\R \to \R \\
+  	t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
+  \end{array}
+  \middle\vert  (\lambda, \mu) \in \R ^2 \right\}
+  \subset \Sol_{H ,\R}
+  $$
+  
+  Réciproquement, soit $ f \in \Sol_{H ,\R}$ fq. Puisque $\R \subset \C$,  $ f \in \Sol_{H ,\C}$.
+  
+  $$
+  \exists (a, b) \in \C^2 : f \left| \begin{array}{l}
+  	\R \to \C \\
+  	t \mapsto a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t}
+  \end{array}\right.$$
+  
+  Or, puisque toutes les valeurs de $f$ sont réelles, en notant $(a_r, a_i, b_r, b_i)$ les parties réelles et imaginaires respectives de $a$ et $b$.
   \begin{align*}
-    f_r = \Re(f)           & , f_i = \Im(f)      & g_r = \Re(f)     & , g_i = \Im(g)     \\
-    \alpha_r = \Re(\alpha) & , \alpha_i = \Im(f) & \beta_r = \Re(f) & , \beta_i = \Im(g)
+  	\forall t \in \R, f(t) & = \Re(f(t))                                                                                                     \\
+  	& = \Re(a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t})                                                  \\
+  	& = \Re((a_r + i a_i) e^{(\alpha + i \beta) t}  + (b_r + i b_i) e^{(\alpha - i \beta)t})                          \\
+  	& = a_r \cos(\beta t)e^\alpha - a_i\sin(\beta t)e^\alpha + b_r \cos(\beta t)e^\alpha + b_i \sin(\beta t) e^\alpha \\
+  	& = (a_r + b_r) \cos(\beta t) e^\alpha + (b_i - a_i) \sin(\beta t) e^\alpha
   \end{align*}
-
-  \begin{align*}
-    \Re( \alpha f + \beta g) & = \Re((\alpha_r + i \alpha_i)(f_r + i f_i) + (\beta_r+ i\beta_i)(g_r+ i g_i))                                                                                                                     \\
-                             & = \underbrace{\alpha_r f_r + \beta_r g_r - \alpha_i f_i - \beta_i g_i}_{\text{Combinaison linéaire de } \underbrace{(f_r, f_i, g_r, g_i) \in \mathcal D^1(I, \R)^4}_{car (f,g) \in D^1(I, \R)^2}}
-  \end{align*}
-  Donc, selon le théorème de stabilité par combinaison linéaire des fonctions à valeurs réelles, $\Re(\alpha f + \beta g) \in \mathcal D^1(I, \R)$ et $\big(\Re(\alpha f + \beta g)\big)' = \alpha_r f_r' + \beta_r g_r' - \alpha_i f_i' - \beta_i g_i'$
-  \\
-  On montre de même que $\Im(\alpha f + \beta g) \in \mathcal D^1(I, \R)$ et $\big(\alpha f + \beta g\big)' = \alpha_r f_i' +\alpha f_r' +\beta_r g_i' +\beta_i g_r'$
-
   Ainsi,
-  \begin{align*}
-    \big( \alpha f + \beta g \big)' & = (\alpha_r f_r' + \beta_r g_r' - \alpha_i f_i' - \beta_i g_i') + i (\alpha_r f_i' +\alpha f_r' +\beta_r g_i' +\beta_i g_r')                                         \\
-                                    & = \alpha_r(f_r' + if_i') + \beta_r(g_r' + ig_i') + \alpha_i \underbrace{(-f_i' + if_r')}_{i(f_r' + if_i')} + \beta_i \underbrace{( -g_i' + ig_r')}_{i(g_r' + ig_i')} \\
-                                    & =\alpha f' + \beta g'
-  \end{align*}
+  $$f\in \left\{
+  \begin{array}{l}
+  	\R \to \R \\
+  	t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
+  \end{array}
+  \middle\vert  (\lambda, \mu) \in \R ^2 \right\}
+  $$
+  Ce qui conclut la preuve par double inclusion.
+
 \end{question_kholle}
 
-\begin{question_kholle}{Dérivée composée d'une fonction à valeurs complexes}
-  Soient $f \in \mathcal D ^1(J, \C) $ et $h \in \mathcal D^1(I, J)$ (I et J sont deux intervalles réels) fixés quelconques. Notons $f_r$ et $f_i$ respectivement la partie réelle et imaginaire de $f$.
-
-  \begin{align*}
-    \left .
-    \begin{array}{ll}
-      h \in \mathcal D^1(I, J) \\
-      f_r \in \mathcal D^1(J, \R) \text{, car } f \in \mathcal D^1(J, \C)
-    \end{array}
-    \right \}
-    \implies f_r \circ h \in \mathcal D^1(I, \R)
-  \end{align*}
-
-  On montre de même que $f_i \circ h \in \mathcal D^1(I, \mathbb  R)$ donc $f \circ h \in \mathcal D^1(I, \C)$.
-
-  De plus,
-
-  \begin{align*}
-    (f \circ h)' & = (f_r \circ h)' + i (f_i \circ h)'                       \\
-                 & = (f_r' \circ h ) \times h' + i((f_i' \circ h) \times h') \\
-                 & =(f_r' \circ h + if_i' \circ h) \times h'                 \\
-                 & = (f' \circ h) \times h'
-  \end{align*}
-\end{question_kholle}
-
-\begin{question_kholle}{Caractérisation des fonctions dérivables de dérivée nulle sur un intervalle}
-  Soit $f \in \mathcal D ^1 (I, \C)$ où $I$ est un intervalle réel;
-  Posons $f_r = \Re (f)$ et $f_i = \Im(f)$.
-
-  \begin{align*}
-    \forall t \in I, f'(t) = 0 & \iff \forall t \in I, f_r'(t) + i f_i'(t) = 0                        \\
-                               & \iff \begin{cases}
-                                        \forall t \in I, f_r'(t) = 0 \\
-                                        \forall t \in I, f_i'(t) = 0
-                                      \end{cases}                                    \\
-                               & \iff \begin{cases}
-                                        \exists \lambda_r \in \R : \forall t \in I,  f_r(t) = \lambda_r \\
-                                        \exists \lambda_i \in \R : \forall t \in I,  f_i(t) = \lambda_i
-                                      \end{cases} \\
-                               & \iff \exists \lambda \in \C : \forall t \in I,  f(t) = \lambda
-  \end{align*}
-\end{question_kholle}
-
+ \pagebreak
+ 
+ \begin{question_kholle}[
+ 	Considérons le problème de Cauchy suivant :
+ 	$$\left\{ \begin{array}{l}
+ 		a_{2}y''+a_{1}y'+a_{0}y = b \text{ sur } J \\
+ 		y(t_{0}) = \alpha_{0}                      \\
+ 		y'(t_{0}) = \alpha_{1}
+ 	\end{array} \right. \text{ où } (\alpha_{0}, \alpha_{1}) \in \mathbb{K}^{2}, t_{0} \in J, (a_{0}, a_{1}, a_{2}) \in \mathbb{K}^{2} \times \mathbb{K}^{*}, b \in \mathcal{F}(J, \mathbb{K})$$
+ 	Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.
+ 	]
+ 	{Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).}
+ 	
+ 	\textbf{Cas 1. } $\mathbb{K} = \mathbb{C}$ \\
+ 	Nous savons que sous l'hyphothèse de continuité de $b$ sur $J$, les solutions de (EDL2) définies sur $J$ constituent le plan affine $S$ :
+ 	$$S = \left\{ \lambda f_{1} + \mu f_{2} + s | (\lambda, \mu) \in \mathbb{C}^{2} \right\}$$
+ 	où $s$ est une solution particulière de (EDL2), $(f_{1}, f_{2})$ sont deux solutions de (EDLH2) qui engendrent $S_{h}$. On a : \\
+ 	
+ 	$$\begin{array}{ccl}
+ 		f : J \to \mathbb{C} \text{ est sol. du pb de Cauchy }
+ 		& \iff & \left\{ \begin{array}{l}
+ 			f \text{ sol de (EDL2) sur } J \\
+ 			f(t_{0}) = \alpha_{0}          \\
+ 			f'(t_{0}) = \alpha_{1}
+ 		\end{array}  \right.                                                                                \\\\
+ 		& \iff & \left\{ \begin{array}{l}
+ 			f \in S               \\
+ 			f(t_{0}) = \alpha_{0} \\
+ 			f'(t_{0}) = \alpha_{1}
+ 		\end{array}\right.                                                                                         \\\\
+ 		& \iff & \exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
+ 			f = \lambda f_{1} + \mu f_{2} + s                                  \\
+ 			\lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) + s(t_{0}) = \alpha_{0}    \\
+ 			\lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) + s'(t_{0}) = \alpha_{1} \\
+ 		\end{array} \right. \\\\
+ 		& \iff & \exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
+ 			f = \lambda f_{1} + \mu f_{2} + s                                  \\
+ 			\lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) = \alpha_{0} - s(t_{0})    \\
+ 			\lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) = \alpha_{1} - s'(t_{0}) \\
+ 		\end{array} \right. \\\\
+ 	\end{array} $$
+ 	On en déduit donc que $(\lambda, \mu)$ doit être solution d'un système linéaire $(2,2)$. On a une unique solution si et seulement si les déterminant de ce système est nul. \\
+ 	Explicitons alors le déterminant de ce système, que l'on notera $D$.
+ 	$$D = \left|
+ 	\begin{array}{cc}
+ 		f_{1}(t_{0})  & f_{2}(t_{0})  \\
+ 		f'_{1}(t_{0}) & f'_{2}(t_{0}) \\
+ 	\end{array}
+ 	\right| = f_{1}(t_{0}) \cdot f'_{2}(t_{0}) - f_{2}(t_{0}) \cdot f'_{1}(t_{0}) $$
+ 	Notons $\Delta$ le discriminant de l'équation caractéristique de (EDL2) ($a_{2}r^{2} + a_{1}r^{1} + a_{0} = 0$). On distingue alors deux cas selon la nullité ou non de $\Delta$. Traitons d'abord le cas $\Delta \neq 0$. On peut choisir :
+ 	$$ f_{1}(t_{0}) = e^{r_{1}t_{0}} \text{ et } f_{2}(t_{0}) = e^{r_{2}t_{0}}$$
+ 	$$ f'_{1}(t_{0}) = r_{1}e^{r_{1}t_{0}} \text{ et } f'_{2}(t_{0}) = r_{2}e^{r_{2}t_{0}}$$
+ 	Donc (en sachant que $\Delta \neq 0 \Rightarrow r_{1} \neq r_{2}$):
+ 	$$ D = e^{r_{1}t_{0}} \cdot r_{2}e^{r_{2}t_{0}} - r_{1}e^{r_{1}t_{0}} \cdot e^{r_{2}t_{0}} = (r_{2} - r_{1}) \cdot e^{r_{1}t_{0} + r_{2}t_{0}} \neq 0$$
+ 	
+ 	Dans le deuxième cas, on a $\Delta = 0$ ; on peut alors prendre :
+ 	$$ f_{1}(t_{0}) = e^{r_{0}t_{0}} \text{ et } f_{2}(t_{0}) = t_{0}e^{r_{0}t_{0}}$$
+ 	Ainsi :
+ 	$$ D = e^{r_{0}t_{0}} \left(r_{0}t_{0}e^{r_{0}t_{0}} + e^{r_{0}t_{0}} \right) - r_{0}e^{r_{0}t_{0}} \times t_{0}e^{r_{0}t_{0}} = e^{2r_{0}t_{0}} \neq 0$$
+ 	On remarque alors que, dans les deux cas, $D \neq 0$, donc le système $(2, 2)$ étudié admet une unique solution, donc il existe un unique couple $(\lambda, \mu)$ le vérifiant d'où l'unicité et existence d'une solution au problème de Cauchy.
+ 	\newline\newline
+ 	
+ 	\textbf{Cas 2. } $\mathbb{K} = \mathbb{R}$ \\
+ 	$(a_{0}, a_{1}, a_{2}) \in \mathbb{R}^{2} \times \mathbb{R}^{*},(\alpha_{0}, \alpha_{1}) \in \mathbb{R}^{2}, b \in C^{0}(J, \mathbb{R})$
+ 	\newline
+ 	\textbf{Existence :} Puisque $\mathbb{R} \subset \mathbb{C}$, le problème de Cauchy admet, dans $\mathbb{R}$, une solution à valeurs complexes $g$. Posons $f = \Re(g)$ et montrons que $f$ est une solution réelle du problème de Cauchy. \\
+ 	\begin{itemize}
+ 		\item[$\star$] $g \in \mathcal{D}^{2}(J, \mathbb{C}) \text{ donc } f \in \mathcal{D}^{2}(J, \mathbb{R})$
+ 		\item[$\star$] $g$ vérifie $a_{2}g'' + a_{1}g' + a_{0}g = b$ sur $J$ donc en prenant $\Re(\cdot)$ :
+ 		$$\begin{array}{ccl}
+ 			\Re(a_{2}g'' + a_{1}g' + a_{0}g = b) = \Re(b)
+ 			& \iff & a_{2}\Re(g'') + a_{1}\Re(g') + a_{0}\Re(g) = b \\\\
+ 			& \iff & a_{2}f'' + a_{1}f' + a_{0}f = b \text{ sur } J
+ 		\end{array}$$
+ 		\item[$\star$] $f(t_{0}) = \Re(g(t_{0})) = \Re(\alpha_{0}) = \alpha_{0}$
+ 		\item[$\star$] $f'(t_{0}) = \Re(g(t_{0}))' = \Re(g'(t_{0})) = \Re(\alpha_{1}) = \alpha_{1}$
+ 	\end{itemize}
+ 	Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy.
+ 	\newline
+ 	
+ 	\textbf{Unicité : }Soient $f_{1}$ et $f_{2}$ deux fonctions à valeurs réelles solutions du problème de Cauchy ci-dessus fixées quelconques : puisque $\mathbb{R} \subset \mathbb{C}$, $f_{1}$ et $f_{2}$ sont des fonctions à valeurs dans $\mathbb{C}$ solutions du même problème de Cauchy; or il y a unicité de la solution au problème de Cauchy dans les fonctions à valeurs complexes, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{C})$, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{R})$.
+ \end{question_kholle}
+ 
 \pagebreak\section{Semaine 8}
 
 \begin{question_kholle}{Preuve de l’expression des solutions réelles des EDL homogènes d’ordre 2 à coefficients constants réels dans le cas $\Delta < 0$ (en admettant la connaissance de l’expression des solutions à valeurs complexes des EDLH2 à coeff. constants).}
