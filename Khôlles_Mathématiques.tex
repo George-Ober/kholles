@@ -2332,199 +2332,367 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 \end{question_kholle}
 \pagebreak\section{Semaine 7}
 
-\begin{question_kholle}{Résolution de l'ED  $\forall t \in J, y' + a_{0}(t) = b(t)$ par équivalences avec la méthode fu facteur intégral.}
-	
-	Pour cette preuve, il est nécessaire de supposer $a_{0}$ et $b$ continus.
-	Ainsi, on note $A$ la primitive de $a_{0}$ définie sur J. 
-  
-  	$$\begin{array}{ccl}
-  	f : J \to \mathbb{C} \text{ est sol. de } y' + a_{0} = b \text{ sur J} 
-  	& \iff & \left\{ \begin{array}{l}
-  		f \in \mathcal{D}^1 (J, \mathbb{K}) \\
-  		f' + a_{0} = b \text{ sur J }
-  	\end{array}  \right.                                                                                \\\\
-  	& \iff & \left\{ \begin{array}{l}
-  		f \in \mathcal{D}^1 (J, \mathbb{K}) \\
-  		f'  e^A + \underset{(= A')}{a_{0}} f  e^A = b  e^A \text{ sur J } (e^A \text{ est le facteur intégrant})
-  	\end{array}\right.        
-  \end{array} $$
-  
-  Notons B une primitive de $be^A$ definie sur J (car $b$ et $e^A$ sont continues)
-  
-  $$\begin{array}{ccl}  	
-   & \iff &  \left\{ \begin{array}{l}
-  			f \in \mathcal{D}^1 (J, \mathbb{K}) \\
-  			(fe^A)' = B' \text{ sur J}
-  	\end{array} \right. \\\\
-  	 & \iff &  \left\{ \begin{array}{l}
-  		f \in \mathcal{D}^1 (J, \mathbb{K}) \\
-  		(fe^A - B)' = 0 \text{ sur J}
-  	\end{array} \right. \\\\
-   & \iff &  \left\{ \begin{array}{l}
-  	f \in \mathcal{D}^1 (J, \mathbb{K}) \\
-  	\exists \lambda \in \mathbb{K} : fe^A - B = \lambda
-  \end{array} \right. \\\\
-  & \iff & \exists \lambda \in \mathbb{K} : f = \lambda e^{-A} + B e^{-A} \\\\
-  & \iff & f \in \left\lbrace \lambda e^{-A} + B e^{-A} \right\rbrace 
-  \end{array} $$
-  
-  Ainsi $\mathcal{S} = \underset{\text{sol. particluière}}{Be^{-A}} + \underset{\text{droite vectorielle des sol. de l'EDLH}}{\left\lbrace \lambda e^{-A} | \lambda \in \mathbb{K}\right\rbrace }$
- 
+\begin{question_kholle}{Résolution de l'ED  $\forall t \in J, y' + a_{0}(t) = b(t)$ par équivalences avec la méthode du facteur intégral.}
+
+  Pour cette preuve, il est nécessaire de supposer $a_{0}$ et $b$ continues.
+  Ainsi, on note $A$ la primitive de $a_{0}$ définie sur J.
+
+  \begin{align*}
+    \parbox{12em}{\centering$f:J\longmapsto\C$ est solution de $y'+a_{0}=b$ sur $J$}                                      & \iff \begin{cases}
+                                                                                                                                   f \in \mathcal{D}^1(J,\K) \\
+                                                                                                                                   f'+ a_0 = b \text{ sur } J
+                                                                                                                                 \end{cases}                                                                                                                                         \\
+                                                                                                                          & \iff \begin{cases}
+                                                                                                                                   f\in\mathcal{D}^1(J,\K) \\
+                                                                                                                                   f' e^{A} + \underbrace{a_{0}}_{=A'}f e^{A} = b e^{A} \text{ sur } J \quad\text{($e^{A}$ est le facteur intégrant)}
+                                                                                                                                 \end{cases} \\
+    \parbox{12em}{\scriptsize (on note $B$ une primitive de $b e^{A}$ définie sur $J$ car $b$ et $e^{A}$ sont continues)} & \iff \begin{cases}
+                                                                                                                                   f\in\mathcal{D}^1(J,K) \\
+                                                                                                                                   \left(f e^{A}\right)' = B' \text{ sur } J
+                                                                                                                                 \end{cases}                                                                                                                          \\
+                                                                                                                          & \iff \begin{cases}
+                                                                                                                                   f\in\mathcal{D}^1(J,\K) \\
+                                                                                                                                   \left(f e^{A}-B\right)' = 0 \text{ sur } J
+                                                                                                                                 \end{cases}                                                                                                                         \\
+                                                                                                                          & \iff \begin{cases}
+                                                                                                                                   f\in\mathcal{D}^{1}(J,K) \\
+                                                                                                                                   \exists \lambda\in\K: f e^{A}-B=\lambda
+                                                                                                                                 \end{cases}                                                                                                                            \\
+                                                                                                                          & \iff \exists \lambda\in\K: f=\lambda e^{-A}+B e^{-A}                                                                                                                   \\
+                                                                                                                          & \iff f\in \left\{\lambda e^{-A}+B e^{-A}\right\}
+  \end{align*}
+  Ainsi, les solution de l’équation différentielle sont
+  \[
+    \mathcal{S}=\underbrace{B e^{-A}}_{\text{sol. particulière}} + \underbrace{\left\{\lambda e^{-A}+B e^{-A}\right\}}_{\text{droite vect. des sol. de l'EDLH}}
+  \]
 \end{question_kholle}
 
-\begin{question_kholle}{Théorème de résolution des EDLH d'ordre 2 à coefficients constants complexes.}
-
+\begin{question_kholle}[{
+  Soient \((a_{0}, a_{1}, a_{2})\in\C^2\times C^*\). Notons \(S_H\) l’ensemble des solutions définies sur \R de
+  \[
+    a_{2}y''+a_{1}y' + a_{0}=0
+  \]
+  Alors, $S_{H}$ est un plan vectoriel (espace vectoriel de dimension 2). Plus précisément, en notant $\Delta$ le discrimianat de l'équation caractéristique de l'équation différentielle ci-dessus,
+  \begin{itemize}[label=$\star$]
+    \item si $\Delta=0$, l'équation caractéristique admet une unique racine double $r_{0}$ et
+          \begin{align*}
+            S_{H} & =\left\{\applic{\R}{\C}{t}{(\lambda+\mu t)e^{r_{0}t}} \middle| (\lambda, \mu)\in\C^{2}\right\}        \\
+                  & = \left\{\lambda \left(\applic{\R}{\C}{t}{e^{r_{0}t}}\right) \middle| (\lambda, \mu)\in\C^{2}\right\} \\
+                  & =  \Vect \left\{\applic{\R}{\C}{t}{e^{r_{0}t}}, \applic{\R}{\C}{t}{t e^{r_{0}t}}\right\}
+          \end{align*}
+    \item si $\Delta\neq 0$, l’équation caractéristique admet deux solution distinctes $r_{1}$ et $r_{2}$ et
+          \begin{align*}
+            S_{H} & = \left\{\applic{\R}{\C}{t}{\lambda e^{r_{1}t} + \mu e^{r_{2}t}} \middle| (\lambda, \mu)\in\C^{2}\right\}                                              \\
+                  & = \left\{\lambda\left(\applic{\R}{\C}{t}{e^{r_{1}t}}\right) + \mu \left(\applic{\R}{\C}{t}{e^{r_{2}t}}\right) \middle| (\lambda, \mu)\in\R^{2}\right\} \\
+                  & = \Vect \left\{\applic{\R}{\C}{t}{e^{r_{1}t}}, \applic{\R}{\C}{t}{e^{r_{2}t}}\right\}
+          \end{align*}
+  \end{itemize}
+  }]{Théorème de résolution des EDLH d'ordre 2 à coefficients constants complexes.}
+  Dans \C, l’équation caractéristique admet au moins une solution que l’on note $r$. On a donc
+  \[
+    a_{2}r^{2} + a_{1}r^{1}+a_{0}=0
+  \]
+  Soit $\lambda\in\mathcal{D}^{2}(\R, \C)$.
+  \begin{align}
+    \parbox{12em}{\centering$t\mapsto \lambda(t) e^{rt}$ est solution                                                                                                                                                                                            \\ de l’$\mathrm{EDLH_{2}}$ sur \R} & \iff a_{2} \left(\lambda f_{r}\right)'' + a_{1} \left(\lambda f_{r}\right)' + a_{0} \lambda f_{r} = 0 \quad\text{sur } \R \nonumber \\
+                                            & \iff a_{2} \left(\lambda'' f_{r} + \lambda' f_{r}' + \lambda f_{r}' + \lambda f_{r}''\right) + a_{1} \left(\lambda' f_{r} + \lambda f_{r}'\right) + a_{0} \lambda f_{r} = 0                              \nonumber \\
+                                            & \iff a_{2} \left(\lambda'' f_{r} + 2r \lambda' f_{r} + \lambda r^{2} f_{r}\right) + a_{1} \left(kl' f_{r} + \lambda r f_{r}\right)+ a_{0} \lambda f_{r} = 0                                     \nonumber          \\
+    \text{\scriptsize $f_{r}\neq 0$ sur \R} & \iff a_{2} \lambda'' + \left(2a_{2}r + a_{1}\right)\lambda' + a_{2}r^{2} + a_{1}r + a_{0}\lambda = 0                                                                                  \nonumber                    \\
+                                            & \iff a_{2} \lambda'' + \left(2a_{2}r +a_{1}\right)\lambda' = 0 \quad\text{sur } \R                                                                                          \nonumber                              \\
+                                            & \iff \lambda' \text{ sol. définie sur \R de l'$\mathrm{EDLH_{1}}$ } a_{2}y' + (2a_{2}r + a_{1})y=0 \label{s7:q2:1}
+  \end{align}
+  L'$\mathrm{EDLH_{1}}$ ci-dessus admet comme droite vectorielle de solutions définies sur \R
+  \[
+    \left\{\applic{\R}{\C}{t}{\alpha e^{-\left(\frac{2a_{2}r+a_{1}}{a_{2}}\right)t}} \middle | \alpha\in\C\right\}
+  \]
+  Ainsi,
+  \begin{align*}
+    te & \iff \exists \alpha\in\C: \forall t\in\R, \lambda'(t)=\alpha e^{-\left(\frac{2a_{2}r + a_{1}}{a_{2}}\right)}                                                                                                                                                 \\
+       & \iff \exists (\alpha, \beta)\in\C^{2}: \forall t\in\R, \begin{cases}
+                                                                  \lambda(t)=\frac{\alpha}{-\left(2r+\frac{a_{1}}{a_{2}}\right)}e^{-\left(2r+\frac{a_{1}}{a_{2}}\right)t}+\beta & \text{sinon}                        \\
+                                                                  \lambda(t)=\alpha t+\beta                                                                                     & \text{si } 2r+\frac{a_{1}}{a_{2}}=0
+                                                                \end{cases} \\
+  \end{align*}
+  On remarque que
+  \[
+    2r+\frac{a_{1}}{a_{2}}=0 \iff 2r=\underbrace{-\frac{a_{1}}{a_{2}}}_{\mathclap{\text{somme des racines de l’eq. carac}}} \iff \parbox{12em}{l'éq. caractéristique admet une racine double} \iff \Delta=0
+  \]
+  Donc
+  \begin{itemize}[label=$\star$]
+    \item si $\Delta=0$, appelons $r_{0}$ la racine double de l'équation caractéristique. Alors
+          \[
+            \parbox{12em}{\centering$t\mapsto \lambda(t) e^{r_{0}t}$ est solution                                                                                                                                                                                            \\ de l’$\mathrm{EDLH_{2}}$ sur \R} \iff \exists(\alpha, \beta)\in\C^{2}: \forall t\in\R, \lambda(t)=\alpha t + \beta
+          \]
+    \item si $\Delta\neq 0$, notons $r_{1}$ et $r_{2}$ les deux racines de l'équation caractéristique et prenons $r=r_{1}$. Dans ce cas,
+          \[
+            2r_{1}+\frac{a_{1}}{a_{2}} = 2r_{1} + (-r_{1}-r_{2}) = r_{1}-r_{2}
+          \]
+          d'où
+          \begin{align*}
+            \parbox{12em}{\centering$t\mapsto \lambda(t) e^{r_{1}t}$ est solution                                    \\ de l’$\mathrm{EDLH_{2}}$ sur \R} & \iff \exists(\alpha, \beta)\in\C^{2}: \forall t\in\R, \lambda(t)=\frac{\alpha}{r_{2}-r_{1}}e^{(r_{2}-r_{1})t}+\beta \\
+             & \iff \exists (\alpha ', \beta)\in\C^{2}: \forall t\in\R, \lambda(t)=\alpha ' e^{(r_{2}-r_{1})t}+\beta
+          \end{align*}
+  \end{itemize}
+  Observons que $f_{r}:\R\rightarrow \C$ est solution de l'équation homogène si et seulement si
+  \begin{align*}
+    \parbox{12em}{\centering $f_{r}:\R\rightarrow\C$ est solution de l' $\mathrm{EDLH_{2}}$} & \iff	\frac{f}{f_{r}}f_{r} \text{ est une solution sur \R de l'équation homogène}         \\
+                                                                                             & \iff \frac{f}{f_{r}} \in \left\{\text{fonctions $\lambda$ déterminées ci-dessus}\right\} \\
+                                                                                             & \iff f\in \left\{f_{r} \times \text{ fonction $\lambda$ déterminées ci-dessus}\right\}
+  \end{align*}
+  Ainsi, $f_{r}:\R\rightarrow\C$ est solution de l'équation homogène si et seulement si
+  \[
+    \begin{cases}
+      f\in \left\{\applic{\R}{\C}{t}{e^{r_{0}t}(\alpha t+\beta)} \middle| (\alpha, \beta)\in\C^{2}\right\}                                 & \text{si $\Delta=0$}     \\[15pt]
+      f\in \left\{\applic{\R}{\C}{t}{e^{r_{1}t}\left(\alpha ' e^{(r_{2}-r_{1})t}+\beta\right)} \middle| (\alpha ', \beta)\in\C^{2}\right\} & \text{si $\Delta\neq 0$}
+    \end{cases}
+  \]
 \end{question_kholle}
 
-\begin{question_kholle}{Caractérisation des fonctions exponentielles et de la fonction nulle par la propriété de dérivabilité en 0 et celle de morphisme de (\R, +) dans (\C, $\times$).}
-  
+\begin{question_kholle}[{
+        \begin{propositions}
+          \item \textit{Comme solution d’un problème de Cauchy.} Soit $\alpha\in\C$.
+          \[
+            \applic{\R}{\C}{t}{e^{\alpha t}} \text{ est l’unique solution de } \begin{cases}
+              y'-\alpha y & =0 \\
+              y(0)        & =1
+            \end{cases}
+          \]
+          \item \textit{Par la propriété de morphisme et de non-annulation.}
+          \begin{multline}
+            \left\{f:\R\longrightarrow\C \middle| f \text{ dérivable en 0 et } \forall (s,u)\in\R^{2}, f(s+u)=f(s)f(u)\right\} \\=\{\widetilde{0}\}\cup \left\{\applic{\R}{\C}{t}{e^{\alpha t}}\middle| \alpha\in\C\right\}
+          \end{multline}
+        \end{propositions}
+      }]{Caractérisation des fonctions exponentielles et de la fonction nulle par la propriété de dérivabilité en 0 et celle de morphisme de (\R, +) dans (\C, $\times$).}
+  \begin{propositions}
+    \item Soit $\alpha\in\C$. Le problème de Cauchy
+    \[
+      \begin{cases}
+        y'-\alpha y & =0 \\
+        y(0)        & =1
+      \end{cases}
+    \]
+    admet une unique solution car l’$\mathrm{EDL_{1}}$ est résolue et à coefficients et second membre continus.\\
+    Par ailleurs, en notant
+    \[
+      f:\applic{\R}{\C}{t}{e^{\alpha t}}
+    \]
+    on a bien
+    \[
+      f(0)=1 \quad , \quad f\in\mathcal{D}^{1}(\R,\C) \quad\text{et}\quad \forall t\in\R, f'(t)=\alpha e^{\alpha t}=\alpha f(t)
+    \]
+    donc $f$ est solution du problème de Cauchy, et par unicité de la solution d’un problème de Cauchy, elle est unique.
+
+    \item Procédons par analyse-synthèse.
+    \begin{itemize}[label=$\vartriangleright$]
+      \item \textit{Analyse.} Soit $f:\R\longrightarrow\C$ telle que
+            \begin{numcases}{}
+              f \text{ est dérivable en 0} \tag{1}\\
+              \forall(s,u)\in\R^{2}, f(s+u)=f(s)f(u) \tag{2}
+            \end{numcases}
+            On obtient, en particularisant (2) pour $(s,u)\leftarrow (0,0)$
+            \[
+              f(0+0)=f(0)f(0) \quad \text{donc} \quad f(0)-f(0)^{2} = 0 \quad \text{donc}\quad f(0)\in\{0,1\}
+            \]
+            \begin{itemize}[label=$\circ$]
+              \item Supposons que $f(0)=0$.\\
+                    Soit $x\in\R$ fixé quelconque. Appliquons (2) pour $(s,u)\leftarrow (x,0)$:
+                    \[
+                      f(x+0)=f(x)\underbrace{f(0)}_{=0} \quad \text{donc}\quad f(x)=0 \quad \text{donc}\quad f=\widetilde{0}
+                    \]
+              \item Supposons à présent $f(0)=1$.\\
+                    Soit $x\in\R$ et $h\in\R^{*}$ fixés quelconques.
+                    \[
+                      \frac{f(x+h)-f(x)}{h}=\frac{f(x)f(h)-f(x)}{h} = f(x)\frac{f(h)-1}{h}
+                    \]
+                    $f(0)$ valant 1, on reconnaît le taux d’acroissement en 0 de la fonction $f$. On a donc
+                    \[
+                      \frac{f(x+h)-f(x)}{h}\arrowlim{h}{0} f(x)f'(0)
+                    \]
+                    donc $f$ est dérivable en $x$ (par hypothèse) et $f'(x)=f'(0)f(x)$. Ainsi,
+                    \[
+                      \begin{cases}
+                        f\in\mathcal{D}(\R,\C) \\
+                        f \text{ est solution de } y'-f'(0)y=0
+                      \end{cases}
+                    \]
+                    La droite vectorielle des solution de $y'-f'(0)y=0$ est
+                    \[
+                      \left\{\applic{\R}{\C}{t}{\lambda e^{f'(0)t}} \middle| \lambda\in\C\right\}
+                    \]
+                    donc
+                    \[
+                      \exists \lambda\in\C: \forall t\in\R, f(t)=\lambda e^{f'(0)t}
+                    \]
+                    or, $f(0)=1$, donc pour $t=0$, on trouve $1=\lambda e^{0}=\lambda$. On a donc
+                    \[
+                      \forall t\in\R, f(t)=e^{f'(0)t} \quad\text{d’où}\quad  f\in \left\{\applic{\R}{\C}{t}{e^{\alpha t}}\middle| \alpha\in\C\right\}
+                    \]
+            \end{itemize}
+            ce qui prouve l’inclusion.
+
+      \item\textit{Synthèse.}
+            \begin{itemize}[label=$\circ$]
+              \item $\widetilde{0}$ est dérivable en 0 et
+                    \[
+                      \forall (s,u)\in\R^{2}, \left(\widetilde{0}(s+u)=0 \quad \text{et}\quad \widetilde{0}(s)\cdot\widetilde{0}(u)=0\right)
+                    \]
+              \item Soit $\alpha\in\C$ fixé quelconque. Posons
+                    \[
+                      f:\left|\applic{\R}{\C}{t}{e^{\alpha t}}\right.
+                    \]
+                    \begin{itemize}[label=$\rightarrow$]
+                      \item $f$ est dérivable en 0 (car $f=exp_{\C}\circ (t\mapsto \alpha t)$).
+                      \item $\forall (s,u)\in\R^{2}, f(s+u)=e^{\alpha (s+u)}=e^{\alpha s} \cdot e^{\alpha u}$
+                    \end{itemize}
+            \end{itemize}
+            ce qui prouve l’inclusion réciproque.
+    \end{itemize}
+  \end{propositions}
 \end{question_kholle}
 
 \begin{question_kholle}{Preuve de l’expression des solutions réelles des EDL homogènes d’ordre 2 à coefficients constants réels dans le cas $\Delta < 0$ (en admettant la connaissance de l’expression des solutions à valeurs complexes des EDLH2 à coeff. constants).}
   Notons $\Sol_{H, \C}$ et $\Sol_{H, \R}$ les ensembles des solutions complexes et réelles de l'équation différentielle, puisque nous nous plaçons dans le cas $\Delta < 0$ et $\alpha \pm i \beta$ les deux racines complexes conjuguées.
   $$
-  \Sol_{H, \C} =
-  \left\{
-  \begin{array}{l}
-  	\R \to \C \\
-  	t \mapsto \lambda e^{(\alpha + i \beta) t}  + \mu e^{(\alpha - i \beta)t}
-  \end{array}
-  \middle\vert  (\lambda, \mu) \in \C ^2 \right\}
+    \Sol_{H, \C} =
+    \left\{
+    \begin{array}{l}
+      \R \to \C \\
+      t \mapsto \lambda e^{(\alpha + i \beta) t}  + \mu e^{(\alpha - i \beta)t}
+    \end{array}
+    \middle\vert  (\lambda, \mu) \in \C ^2 \right\}
   $$
-  
-  Montrons que $\forall f \in \Sol_{H ,\C}, \Re(f) \in  \Sol_{H ,\R}$\\
+
+  \noindent Montrons que $\forall f \in \Sol_{H ,\C}, \Re(f) \in  \Sol_{H ,\R}$.\\
   Soit $f \in \Sol_{H ,\C}$ fq.
   $$f \in \mathcal D^2(\R, \C) \implies \Re(f) \in \mathcal D^2(\R, \R)$$
   Et, de plus, par morphisme additif de \Re
   $$
-  a_2\Re(f)'' + a_1\Re(f)' + a_0\Re(f) = \Re( a_2 f'' + a_1 f' + a_0 f) = 0
+    a_2\Re(f)'' + a_1\Re(f)' + a_0\Re(f) = \Re( a_2 f'' + a_1 f' + a_0 f) = 0
   $$
-  D'où, avec $f:t \mapsto e^{(\alpha + i \beta)t}$; $\Re(f(t)) = \Re(e^{(\alpha + i \beta)t}) = e^{\alpha t } \cos (\beta t)$. Qui appartient donc à $\Sol_{H, \R}$\\
-  En suivant le même raisonnement pour $\Im(f)$, $(t \mapsto e^\alpha \sin(\beta t)) \in \Sol_{H, \R}$
-  
-  
+  D'où, avec $f:t \mapsto e^{(\alpha + i \beta)t}$; $\Re(f(t)) = \Re(e^{(\alpha + i \beta)t}) = e^{\alpha t } \cos (\beta t)$. Qui appartient donc à $\Sol_{H, \R}$.\\
+  En suivant le même raisonnement pour $\Im(f)$, $(t \mapsto e^\alpha \sin(\beta t)) \in \Sol_{H, \R}$.\\
   Ainsi, par combinaison linéaire (qui se base sur le principe de superposition),
   $$
-  \left\{
-  \begin{array}{l}
-  	\R \to \R \\
-  	t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
-  \end{array}
-  \middle\vert  (\lambda, \mu) \in \R ^2 \right\}
-  \subset \Sol_{H ,\R}
+    \left\{
+    \begin{array}{l}
+      \R \to \R \\
+      t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
+    \end{array}
+    \middle\vert  (\lambda, \mu) \in \R ^2 \right\}
+    \subset \Sol_{H ,\R}
   $$
-  
   Réciproquement, soit $ f \in \Sol_{H ,\R}$ fq. Puisque $\R \subset \C$,  $ f \in \Sol_{H ,\C}$.
-  
   $$
-  \exists (a, b) \in \C^2 : f \left| \begin{array}{l}
-  	\R \to \C \\
-  	t \mapsto a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t}
-  \end{array}\right.$$
-  
+    \exists (a, b) \in \C^2 : f \left| \begin{array}{l}
+      \R \to \C \\
+      t \mapsto a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t}
+    \end{array}\right.
+  $$
   Or, puisque toutes les valeurs de $f$ sont réelles, en notant $(a_r, a_i, b_r, b_i)$ les parties réelles et imaginaires respectives de $a$ et $b$.
   \begin{align*}
-  	\forall t \in \R, f(t) & = \Re(f(t))                                                                                                     \\
-  	& = \Re(a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t})                                                  \\
-  	& = \Re((a_r + i a_i) e^{(\alpha + i \beta) t}  + (b_r + i b_i) e^{(\alpha - i \beta)t})                          \\
-  	& = a_r \cos(\beta t)e^\alpha - a_i\sin(\beta t)e^\alpha + b_r \cos(\beta t)e^\alpha + b_i \sin(\beta t) e^\alpha \\
-  	& = (a_r + b_r) \cos(\beta t) e^\alpha + (b_i - a_i) \sin(\beta t) e^\alpha
+    \forall t \in \R, f(t) & = \Re(f(t))                                                                                                     \\
+                           & = \Re(a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t})                                                  \\
+                           & = \Re((a_r + i a_i) e^{(\alpha + i \beta) t}  + (b_r + i b_i) e^{(\alpha - i \beta)t})                          \\
+                           & = a_r \cos(\beta t)e^\alpha - a_i\sin(\beta t)e^\alpha + b_r \cos(\beta t)e^\alpha + b_i \sin(\beta t) e^\alpha \\
+                           & = (a_r + b_r) \cos(\beta t) e^\alpha + (b_i - a_i) \sin(\beta t) e^\alpha
   \end{align*}
   Ainsi,
   $$f\in \left\{
-  \begin{array}{l}
-  	\R \to \R \\
-  	t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
-  \end{array}
-  \middle\vert  (\lambda, \mu) \in \R ^2 \right\}
+    \begin{array}{l}
+      \R \to \R \\
+      t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
+    \end{array}
+    \middle\vert  (\lambda, \mu) \in \R ^2 \right\}
   $$
   Ce qui conclut la preuve par double inclusion.
 
 \end{question_kholle}
 
- \pagebreak
- 
- \begin{question_kholle}[
- 	Considérons le problème de Cauchy suivant :
- 	$$\left\{ \begin{array}{l}
- 		a_{2}y''+a_{1}y'+a_{0}y = b \text{ sur } J \\
- 		y(t_{0}) = \alpha_{0}                      \\
- 		y'(t_{0}) = \alpha_{1}
- 	\end{array} \right. \text{ où } (\alpha_{0}, \alpha_{1}) \in \mathbb{K}^{2}, t_{0} \in J, (a_{0}, a_{1}, a_{2}) \in \mathbb{K}^{2} \times \mathbb{K}^{*}, b \in \mathcal{F}(J, \mathbb{K})$$
- 	Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.
- 	]
- 	{Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).}
- 	
- 	\textbf{Cas 1. } $\mathbb{K} = \mathbb{C}$ \\
- 	Nous savons que sous l'hyphothèse de continuité de $b$ sur $J$, les solutions de (EDL2) définies sur $J$ constituent le plan affine $S$ :
- 	$$S = \left\{ \lambda f_{1} + \mu f_{2} + s | (\lambda, \mu) \in \mathbb{C}^{2} \right\}$$
- 	où $s$ est une solution particulière de (EDL2), $(f_{1}, f_{2})$ sont deux solutions de (EDLH2) qui engendrent $S_{h}$. On a : \\
- 	
- 	$$\begin{array}{ccl}
- 		f : J \to \mathbb{C} \text{ est sol. du pb de Cauchy }
- 		& \iff & \left\{ \begin{array}{l}
- 			f \text{ sol de (EDL2) sur } J \\
- 			f(t_{0}) = \alpha_{0}          \\
- 			f'(t_{0}) = \alpha_{1}
- 		\end{array}  \right.                                                                                \\\\
- 		& \iff & \left\{ \begin{array}{l}
- 			f \in S               \\
- 			f(t_{0}) = \alpha_{0} \\
- 			f'(t_{0}) = \alpha_{1}
- 		\end{array}\right.                                                                                         \\\\
- 		& \iff & \exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
- 			f = \lambda f_{1} + \mu f_{2} + s                                  \\
- 			\lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) + s(t_{0}) = \alpha_{0}    \\
- 			\lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) + s'(t_{0}) = \alpha_{1} \\
- 		\end{array} \right. \\\\
- 		& \iff & \exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
- 			f = \lambda f_{1} + \mu f_{2} + s                                  \\
- 			\lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) = \alpha_{0} - s(t_{0})    \\
- 			\lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) = \alpha_{1} - s'(t_{0}) \\
- 		\end{array} \right. \\\\
- 	\end{array} $$
- 	On en déduit donc que $(\lambda, \mu)$ doit être solution d'un système linéaire $(2,2)$. On a une unique solution si et seulement si les déterminant de ce système est nul. \\
- 	Explicitons alors le déterminant de ce système, que l'on notera $D$.
- 	$$D = \left|
- 	\begin{array}{cc}
- 		f_{1}(t_{0})  & f_{2}(t_{0})  \\
- 		f'_{1}(t_{0}) & f'_{2}(t_{0}) \\
- 	\end{array}
- 	\right| = f_{1}(t_{0}) \cdot f'_{2}(t_{0}) - f_{2}(t_{0}) \cdot f'_{1}(t_{0}) $$
- 	Notons $\Delta$ le discriminant de l'équation caractéristique de (EDL2) ($a_{2}r^{2} + a_{1}r^{1} + a_{0} = 0$). On distingue alors deux cas selon la nullité ou non de $\Delta$. Traitons d'abord le cas $\Delta \neq 0$. On peut choisir :
- 	$$ f_{1}(t_{0}) = e^{r_{1}t_{0}} \text{ et } f_{2}(t_{0}) = e^{r_{2}t_{0}}$$
- 	$$ f'_{1}(t_{0}) = r_{1}e^{r_{1}t_{0}} \text{ et } f'_{2}(t_{0}) = r_{2}e^{r_{2}t_{0}}$$
- 	Donc (en sachant que $\Delta \neq 0 \Rightarrow r_{1} \neq r_{2}$):
- 	$$ D = e^{r_{1}t_{0}} \cdot r_{2}e^{r_{2}t_{0}} - r_{1}e^{r_{1}t_{0}} \cdot e^{r_{2}t_{0}} = (r_{2} - r_{1}) \cdot e^{r_{1}t_{0} + r_{2}t_{0}} \neq 0$$
- 	
- 	Dans le deuxième cas, on a $\Delta = 0$ ; on peut alors prendre :
- 	$$ f_{1}(t_{0}) = e^{r_{0}t_{0}} \text{ et } f_{2}(t_{0}) = t_{0}e^{r_{0}t_{0}}$$
- 	Ainsi :
- 	$$ D = e^{r_{0}t_{0}} \left(r_{0}t_{0}e^{r_{0}t_{0}} + e^{r_{0}t_{0}} \right) - r_{0}e^{r_{0}t_{0}} \times t_{0}e^{r_{0}t_{0}} = e^{2r_{0}t_{0}} \neq 0$$
- 	On remarque alors que, dans les deux cas, $D \neq 0$, donc le système $(2, 2)$ étudié admet une unique solution, donc il existe un unique couple $(\lambda, \mu)$ le vérifiant d'où l'unicité et existence d'une solution au problème de Cauchy.
- 	\newline\newline
- 	
- 	\textbf{Cas 2. } $\mathbb{K} = \mathbb{R}$ \\
- 	$(a_{0}, a_{1}, a_{2}) \in \mathbb{R}^{2} \times \mathbb{R}^{*},(\alpha_{0}, \alpha_{1}) \in \mathbb{R}^{2}, b \in C^{0}(J, \mathbb{R})$
- 	\newline
- 	\textbf{Existence :} Puisque $\mathbb{R} \subset \mathbb{C}$, le problème de Cauchy admet, dans $\mathbb{R}$, une solution à valeurs complexes $g$. Posons $f = \Re(g)$ et montrons que $f$ est une solution réelle du problème de Cauchy. \\
- 	\begin{itemize}
- 		\item[$\star$] $g \in \mathcal{D}^{2}(J, \mathbb{C}) \text{ donc } f \in \mathcal{D}^{2}(J, \mathbb{R})$
- 		\item[$\star$] $g$ vérifie $a_{2}g'' + a_{1}g' + a_{0}g = b$ sur $J$ donc en prenant $\Re(\cdot)$ :
- 		$$\begin{array}{ccl}
- 			\Re(a_{2}g'' + a_{1}g' + a_{0}g = b) = \Re(b)
- 			& \iff & a_{2}\Re(g'') + a_{1}\Re(g') + a_{0}\Re(g) = b \\\\
- 			& \iff & a_{2}f'' + a_{1}f' + a_{0}f = b \text{ sur } J
- 		\end{array}$$
- 		\item[$\star$] $f(t_{0}) = \Re(g(t_{0})) = \Re(\alpha_{0}) = \alpha_{0}$
- 		\item[$\star$] $f'(t_{0}) = \Re(g(t_{0}))' = \Re(g'(t_{0})) = \Re(\alpha_{1}) = \alpha_{1}$
- 	\end{itemize}
- 	Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy.
- 	\newline
- 	
- 	\textbf{Unicité : }Soient $f_{1}$ et $f_{2}$ deux fonctions à valeurs réelles solutions du problème de Cauchy ci-dessus fixées quelconques : puisque $\mathbb{R} \subset \mathbb{C}$, $f_{1}$ et $f_{2}$ sont des fonctions à valeurs dans $\mathbb{C}$ solutions du même problème de Cauchy; or il y a unicité de la solution au problème de Cauchy dans les fonctions à valeurs complexes, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{C})$, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{R})$.
- \end{question_kholle}
- 
+\begin{question_kholle}[
+    Considérons le problème de Cauchy suivant :
+    $$\left\{ \begin{array}{l}
+        a_{2}y''+a_{1}y'+a_{0}y = b \text{ sur } J \\
+        y(t_{0}) = \alpha_{0}                      \\
+        y'(t_{0}) = \alpha_{1}
+      \end{array} \right. \text{ où } (\alpha_{0}, \alpha_{1}) \in \mathbb{K}^{2}, t_{0} \in J, (a_{0}, a_{1}, a_{2}) \in \mathbb{K}^{2} \times \mathbb{K}^{*}, b \in \mathcal{F}(J, \mathbb{K})$$
+    Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.]
+  {Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).}
+  \hfill\\
+  \begin{enumerate}
+    \item
+          \textbf{Cas} $\mathbb{K} = \mathbb{C}$ \\
+          Nous savons que sous l'hyphothèse de continuité de $b$ sur $J$, les solutions de (EDL2) définies sur $J$ constituent le plan affine $S$ :
+          $$S = \left\{ \lambda f_{1} + \mu f_{2} + s | (\lambda, \mu) \in \mathbb{C}^{2} \right\}$$
+          où $s$ est une solution particulière de (EDL2), $(f_{1}, f_{2})$ sont deux solutions de (EDLH2) qui engendrent $S_{h}$. On a : \\
+
+          $$\begin{array}{ccl}
+              f : J \to \mathbb{C} \text{ est sol. du pb de Cauchy }
+               & \iff & \left\{ \begin{array}{l}
+                                  f \text{ sol de (EDL2) sur } J \\
+                                  f(t_{0}) = \alpha_{0}          \\
+                                  f'(t_{0}) = \alpha_{1}
+                                \end{array}  \right.                                                                                \\\\
+               & \iff & \left\{ \begin{array}{l}
+                                  f \in S               \\
+                                  f(t_{0}) = \alpha_{0} \\
+                                  f'(t_{0}) = \alpha_{1}
+                                \end{array}\right.                                                                                         \\\\
+               & \iff & \exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
+                                                                             f = \lambda f_{1} + \mu f_{2} + s                                  \\
+                                                                             \lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) + s(t_{0}) = \alpha_{0}    \\
+                                                                             \lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) + s'(t_{0}) = \alpha_{1} \\
+                                                                           \end{array} \right. \\\\
+               & \iff & \exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
+                                                                             f = \lambda f_{1} + \mu f_{2} + s                                  \\
+                                                                             \lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) = \alpha_{0} - s(t_{0})    \\
+                                                                             \lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) = \alpha_{1} - s'(t_{0}) \\
+                                                                           \end{array} \right. \\\\
+            \end{array} $$
+          On en déduit donc que $(\lambda, \mu)$ doit être solution d'un système linéaire $(2,2)$. On a une unique solution si et seulement si les déterminant de ce système est non nul. \\
+          Explicitons alors le déterminant de ce système, que l'on notera $D$.
+          $$D = \left|
+            \begin{array}{cc}
+              f_{1}(t_{0})  & f_{2}(t_{0})  \\
+              f'_{1}(t_{0}) & f'_{2}(t_{0}) \\
+            \end{array}
+            \right| = f_{1}(t_{0}) \cdot f'_{2}(t_{0}) - f_{2}(t_{0}) \cdot f'_{1}(t_{0}) $$
+          Notons $\Delta$ le discriminant de l'équation caractéristique de (EDL2) ($a_{2}r^{2} + a_{1}r^{1} + a_{0} = 0$). On distingue alors deux cas selon la nullité ou non de $\Delta$. Traitons d'abord le cas $\Delta \neq 0$. On peut choisir :
+          $$ f_{1}(t_{0}) = e^{r_{1}t_{0}} \text{ et } f_{2}(t_{0}) = e^{r_{2}t_{0}}$$
+          $$ f'_{1}(t_{0}) = r_{1}e^{r_{1}t_{0}} \text{ et } f'_{2}(t_{0}) = r_{2}e^{r_{2}t_{0}}$$
+          Donc (en sachant que $\Delta \neq 0 \Rightarrow r_{1} \neq r_{2}$):
+          $$ D = e^{r_{1}t_{0}} \cdot r_{2}e^{r_{2}t_{0}} - r_{1}e^{r_{1}t_{0}} \cdot e^{r_{2}t_{0}} = (r_{2} - r_{1}) \cdot e^{r_{1}t_{0} + r_{2}t_{0}} \neq 0$$
+
+          Dans le deuxième cas, on a $\Delta = 0$ ; on peut alors prendre :
+          $$ f_{1}(t_{0}) = e^{r_{0}t_{0}} \text{ et } f_{2}(t_{0}) = t_{0}e^{r_{0}t_{0}}$$
+          Ainsi :
+          $$ D = e^{r_{0}t_{0}} \left(r_{0}t_{0}e^{r_{0}t_{0}} + e^{r_{0}t_{0}} \right) - r_{0}e^{r_{0}t_{0}} \times t_{0}e^{r_{0}t_{0}} = e^{2r_{0}t_{0}} \neq 0$$
+          On remarque alors que, dans les deux cas, $D \neq 0$, donc le système $(2, 2)$ étudié admet une unique solution, donc il existe un unique couple $(\lambda, \mu)$ le vérifiant d'où l'unicité et existence d'une solution au problème de Cauchy.
+          \\\\
+
+    \item \textbf{Cas} $\mathbb{K} = \mathbb{R}$ \\
+          Dans cette partie, $(a_{0}, a_{1}, a_{2}) \in \mathbb{R}^{2} \times \mathbb{R}^{*},(\alpha_{0}, \alpha_{1}) \in \mathbb{R}^{2}$ et $b \in C^{0}(J, \mathbb{R})$.\\
+          \begin{itemize}[label=$\vartriangleright$]
+            \item
+                  \textit{Existence.} Puisque $\mathbb{R} \subset \mathbb{C}$, le problème de Cauchy admet, dans $\mathbb{R}$, une solution à valeurs complexes $g$. Posons $f = \Re(g)$ et montrons que $f$ est une solution réelle du problème de Cauchy. \\
+                  \begin{itemize}
+                    \item[$\star$] $g \in \mathcal{D}^{2}(J, \mathbb{C}) \text{ donc } f \in \mathcal{D}^{2}(J, \mathbb{R})$
+                    \item[$\star$] $g$ vérifie $a_{2}g'' + a_{1}g' + a_{0}g = b$ sur $J$ donc en prenant $\Re(\cdot)$ :
+                          $$\begin{array}{ccl}
+                              \Re(a_{2}g'' + a_{1}g' + a_{0}g = b) = \Re(b)
+                               & \iff & a_{2}\Re(g'') + a_{1}\Re(g') + a_{0}\Re(g) = b \\\\
+                               & \iff & a_{2}f'' + a_{1}f' + a_{0}f = b \text{ sur } J
+                            \end{array}$$
+                    \item[$\star$] $f(t_{0}) = \Re(g(t_{0})) = \Re(\alpha_{0}) = \alpha_{0}$
+                    \item[$\star$] $f'(t_{0}) = \Re(g(t_{0}))' = \Re(g'(t_{0})) = \Re(\alpha_{1}) = \alpha_{1}$
+                  \end{itemize}
+                  Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy.
+                  \newline
+
+            \item \textit{Unicité.} Soient $f_{1}$ et $f_{2}$ deux fonctions à valeurs réelles solutions du problème de Cauchy ci-dessus fixées quelconques : puisque $\mathbb{R} \subset \mathbb{C}$, $f_{1}$ et $f_{2}$ sont des fonctions à valeurs dans $\mathbb{C}$ solutions du même problème de Cauchy; or il y a unicité de la solution au problème de Cauchy dans les fonctions à valeurs complexes, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{C})$, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{R})$.
+          \end{itemize}
+  \end{enumerate}
+\end{question_kholle}
+
 \pagebreak\section{Semaine 8}
 
 \begin{question_kholle}{Preuve de l’expression des solutions réelles des EDL homogènes d’ordre 2 à coefficients constants réels dans le cas $\Delta < 0$ (en admettant la connaissance de l’expression des solutions à valeurs complexes des EDLH2 à coeff. constants).}
