@@ -18,7 +18,7 @@ Espérons qu'avec un peu plus d'expérience, on arrive à les rédiger bien plus
 - [x] [Semaine 4](Sem_04/Kholle_S04.pdf)
 - [x] [Semaine 5](Sem_05/Kholle_S05.pdf)
 - [x] [Semaine 6](Sem_06/Kholle_S06.pdf)
-- [ ] [Semaine 7](Sem_07/Kholle_S07.pdf)
+- [x] [Semaine 7](Sem_07/Kholle_S07.pdf)
 - [x] [Semaine 8](Sem_08/Kholle_S08.pdf)
 - [x] [Semaine 9](Sem_09/Kholle_S09.pdf)
 - [x] [Semaine 10](Sem_10/Kholle_S10.pdf)
