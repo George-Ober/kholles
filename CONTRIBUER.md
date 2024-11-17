@@ -87,6 +87,8 @@ Par exemple,
 
 - Si il manque des questions, la command \setnbquestion{} permet de fixer manuellement le **numéro de la question**.
 
+- L'environnement question_kholle_remarque permet d'ajouter une remarque à la fin de la question de khôlle.
+
 Et voilà !!!
 
 # Compilation
