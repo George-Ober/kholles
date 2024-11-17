@@ -44,7 +44,7 @@
 \allowdisplaybreaks[4]
 \begin{question_kholle}{Preuve formelle de la somme des entiers et des termes d'une suite géométrique}
   \begin{itemize}[label=$\lozenge$]
-    \item Soit $n \in \mathbb{N}$ fq. Posons $$S_{n} = \sum_{k=0}^{n}k$$
+    \item Soit $n \in \mathbb{N}$ fixé quelconque. Posons $$S_{n} = \sum_{k=0}^{n}k$$
           En posant la symétrie d'indice $i = n-k$, on a aussi
           $$
             S_{n}= \sum_{i=0}^{n}(n-i)=\sum_{i=0}^{n}n - \sum_{i=0}^{n}i=(n \times \mathrm{card}[ \! [ 0, n ] \!]) - \sum_{i=0}^{n} i
@@ -302,7 +302,194 @@
   \end{itemize}
 \end{question_kholle}
 
-\begin{question_kholle}{Illustration graphique de certaines identités trigonométriques}
+\begin{question_kholle}[]{Illustration graphique de certaines identités trigonométriques}
+  \hfill\\
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+        
+        \draw[thick] (0,0) circle (2);
+        
+        
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        
+
+        \def\angle{30}
+        \def\compAngle{60}
+        
+
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+
+        
+
+        \draw[thick, ->, green!60!black] (0,0) -- ({2*sin(\angle)}, {2*cos(\angle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5);
+        \node[blue] at (0.7,0.2) {$x$};
+        
+        \draw[->, thick, green!60!black] (1,0) arc (0:\compAngle:1);
+        \node[green!60!black] at (1.4,0.3) {$\frac \pi 2 - x$};
+        
+        \draw[thick,->,  blue] (0,0.5) arc (90:\compAngle:0.5);
+        \node[blue] at (0.2,0.7) {$x$};
+        
+        \filldraw[blue] ({2*cos(\angle)}, {2*sin(\angle)}) circle (2pt);
+        \filldraw[green!60!black] ({2*sin(\angle)}, {2*cos(\angle)}) circle (2pt);
+        
+        \draw[thick, ->, red] (-0.1, 0) -- (-0.1, {2*cos(\angle)}) node[pos=0.3, left]{$\sin(\frac \pi 2 - x)$};
+        \draw[thick, ->, red] (0, -0.1) -- ({2*cos(\angle)}, -0.1) node[pos=0.5, below]{$\cos x$};
+
+        \draw[dotted] (0, 0) -- (2, 2);
+
+      \end{tikzpicture}
+      \caption{Illustration de $\sin (\frac \pi 2 -  x) = \cos x$. On retrouve l'égalité par réflexion sur la première bissectrice.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+
+        \draw[thick] (0,0) circle (2);
+        
+
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        
+
+        \def\angle{30} 
+        \def\compAngle{210}
+        
+
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+
+        
+
+        \draw[thick, ->, green!60!black] (0,0) -- ({-2*cos(\angle)}, {-2*sin(\angle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5);
+        
+        \draw[dotted] (0, {2*sin(\angle)}) -- ({2*cos(\angle)}, {2*sin(\angle)});
+        \draw[dotted] (0, {-2*sin(\angle)}) -- ({-2*cos(\angle)}, {-2*sin(\angle)});
+        
+        \draw[->, thick, green!60!black] (1.5,0) arc (0:\compAngle:1.5);
+        
+        
+        
+        
+        \filldraw[blue] ({2*cos(\angle)}, {2*sin(\angle)}) circle (2pt) node[above right] {$x$};
+        \filldraw[green!60!black] ({-2*cos(\angle)}, {-2*sin(\angle)}) circle (2pt)node[below left] {$x + \pi$};
+        
+        \draw[thick, ->, red] (-0.1, 0) -- (-0.1, {2*sin(\angle)}) node[pos=0.3, left]{$\sin x$};
+        \draw[thick, ->, red] (0.1, 0) -- (0.1, -{2*sin(\angle)}) node[pos=0.5, right]{$-\sin x$};
+
+      \end{tikzpicture}
+      \caption{Illustration de $\sin (x + \pi) = - \sin x$. On retrouve l'égalité par symétrie centrale.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+
+        \draw[thick] (0,0) circle (2);
+        
+
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        \draw[thick] (2, 3) -- (2, -3);
+
+        \def\angle{45}
+        \def\compAngle{-45}
+        
+
+        \draw[dotted, blue] (0,0) -- ({2}, {2*tan(\angle)});
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+        
+        
+        
+        \draw[dotted, green!60!black] (0,0) -- ({2}, {-2*tan(\angle)});
+        \draw[thick, ->, green!60!black] (0,0) -- ({2*cos(\angle)}, {-2*sin(\angle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5) node[pos=0.5, right] {$x$};
+        
+        
+        \draw[->, thick, green!60!black] (0.5,0) arc (0:\compAngle:0.5) node[pos=0.5, right] {$-x$};
+        
+        
+        
+        
+        \filldraw[blue] (2, {2*tan(\angle)}) circle (2pt) node[above right] {$\tan x$};
+        \filldraw[green!60!black] (2, {-2*tan(\angle)}) circle (2pt) node[below right] {$\tan (-x)$};
+        
+        
+
+      \end{tikzpicture}
+      \caption{Illustration de $\tan (-x) = - \tan x$. On retrouve l'égalité par réflexion sur l'axe des abscisses.}
+    \end{figure}
+  \end{minipage}
+  \begin{minipage}{0.5\textwidth}
+      
+    \begin{figure}[H]
+      \centering
+    
+      \begin{tikzpicture}
+        
+        \draw[thick] (0,0) circle (2);
+        
+        
+        \draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+        \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+        
+
+        \def\angle{30} 
+        \def\compAngle{120}
+        
+
+        \draw[thick, ->, blue] (0,0) -- ({2*cos(\angle)}, {2*sin(\angle)});
+
+        
+
+        \draw[thick, ->, green!60!black] (0,0) -- ({2*cos(\compAngle)}, {2*sin(\compAngle)});
+
+        
+        
+        \draw[thick,->, blue] (0.5,0) arc (0:\angle:0.5) node[pos=0.5, right] {$x$};
+        
+        \draw[dotted] (0, {2*sin(\angle)}) -- ({2*cos(\angle)}, {2*sin(\angle)});
+        \draw[dotted] ({2*cos(\compAngle)}, {2*sin(\compAngle)}) -- ({2*cos(\compAngle)}, 0);
+        
+        \draw[->, thick, green!60!black] (1.5,0) arc (0:\compAngle:1.5) node[pos=1, above right] {$x + \frac \pi 2$};
+        
+        
+        
+        
+        \filldraw[blue] ({2*cos(\angle)}, {2*sin(\angle)}) circle (2pt) node[above right] {$x$};
+        \filldraw[green!60!black] ({2*cos(\compAngle)}, {2*sin(\compAngle)}) circle (2pt)node[above left] {$x + \frac \pi 2$};
+        
+        \draw[thick, ->, red] (0, 0) -- (0, {2*sin(\angle)}) node[pos=0.7, right]{$\sin x$};
+        \draw[thick, ->, red] (0, 0) -- ({2*cos(\compAngle)},0) node[pos=0.9, below]{$\cos (x + \frac \pi 2)$};
+        
+        \draw[dotted] (0, 0) -- (-2, 2);
+
+      \end{tikzpicture}
+      \caption{Illustration de $\cos (x + \frac \pi 2) = - \sin x$. On retrouve l'égalité par réflexion sur la deuxième bissectrice.}
+    \end{figure}
+  \end{minipage}
 \end{question_kholle}
 
 \begin{question_kholle}{Technique de résolution des équations trigonométriques du type $A \cos x + B \sin x = C$}
@@ -407,7 +594,7 @@
 
   \begin{align*}
     \cos(a+b) + \cos (a-b) = 2\cos a\cos b
-    \tag{$\spadesuit$}\label{eqn:cos}
+    \tag{$\spadesuit$}\label{S1:Q12:1}
   \end{align*}
 
 
@@ -423,7 +610,7 @@
       b= \frac{p-q}{2}
     \end{array}\right.
   $$
-  D'où, en injectant dans \eqref{eqn:cos}
+  D'où, en injectant dans \eqref{S1:Q12:1}
   $$
     \cos p + \cos q = 2\cos \frac{p+q}{2} \cos \frac{p-q}{2}
   $$
@@ -491,7 +678,7 @@
 
   \begin{figure}[!h]
     \centering
-    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=-2pt}]
+    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=2pt}]
       \node[label=above:$E$] at (0, 4.5) {};
       \node[label=above:$F$] at (4, 4.5) {};
       \node[label=above:$G$] at (8, 4.5) {};
@@ -503,7 +690,7 @@
       \node[ele,label=left:$a$] (a1) at (0,4) {};
       \node[ele,label=left:$b$] (a2) at (0,3) {};
 
-      \node[ele,,label=below:$1$] (b1) at (4,4) {};
+      \node[ele,,label=above:$1$] (b1) at (4,4) {};
       \node[ele,,label=above:$2$] (b2) at (4,3) {};
       \node[ele,,label=above:$3$] (b3) at (4,2) {};
 
@@ -520,8 +707,8 @@
       \draw[->,thick,shorten <=2pt,shorten >=2] (b2) -- (c2);
       \draw[->,thick,shorten <=2pt,shorten >=2] (b3) -- (c2);
     \end{tikzpicture}
+    \caption{Ici, $v \circ u$ est injective, on a montré que cela impliquait $u$ injective. Pourtant, $v$ n'est pas injective.}
   \end{figure}
-  Ici, $v \circ u$ est injective, on a montré que cela impliquait $u$ injective. Pourtant, $v$ n'est pas injective.
 
 \end{question_kholle}
 
@@ -537,7 +724,7 @@
 
   \begin{figure}[!h]
     \centering
-    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=-2pt}]
+    \begin{tikzpicture}[ele/.style={fill=black,circle,minimum width=.8pt,inner sep=1pt},every fit/.style={ellipse,draw,inner sep=2pt}]
       \node[label=above:$E$] at (0, 4.5) {};
       \node[label=above:$F$] at (4, 4.5) {};
       \node[label=above:$G$] at (8, 4.5) {};
@@ -549,7 +736,7 @@
       \node[ele,label=left:$a$] (a1) at (0,4) {};
       \node[ele,label=left:$b$] (a2) at (0,3) {};
 
-      \node[ele,,label=below:$1$] (b1) at (4,4) {};
+      \node[ele,,label=above:$1$] (b1) at (4,4) {};
       \node[ele,,label=above:$2$] (b2) at (4,3) {};
       \node[ele,,label=above:$3$] (b3) at (4,2) {};
 
@@ -566,9 +753,9 @@
       \draw[->,thick,shorten <=2pt,shorten >=2] (b2) -- (c2);
       \draw[->,thick,shorten <=2pt,shorten >=2] (b3) -- (c2);
     \end{tikzpicture}
+    \caption{Ici, $v \circ u$ est surjective, on a montré que cela impliquait $v$ surjective. Pourtant, $u$ n'est pas surjective.}
   \end{figure}
-
-  Ici, $v \circ u$ est surjective, on a montré que cela impliquait $v$ surjective. Pourtant, $u$ n'est pas surjective.
+  
 
 \end{question_kholle}
 
@@ -728,7 +915,7 @@
     \frac{1-(e^{i\theta})^{n+1}}{1-e^{i\theta}} = \frac{1-e^{i\theta(n+1)}}{1-e^{i\theta}}
      & =\frac{e^{\frac{i\theta(n+1)}2{}}\left( e^{-\frac{i\theta(n+1)}2{}}-e^{\frac{i\theta(n+1)}2{}} \right)}{e^{i\frac{\theta}{2}}\left( e^{-i\frac{\theta}{2}}- e^{i \frac{\theta}{2}} \right)} \\
      & = e^{i \frac{\theta n}2}\left( \frac{-2i \sin\left( \frac{\theta (n+1)}{2} \right)}{-2i\sin \frac{\theta}{2}} \right)                                                                       \\
-     & = \frac{\sin\left( \frac{\theta(n+1)}{2} \right)}{\sin \frac{\theta}{2}}\left( \cos \frac{\theta n}{2} + i \sin \frac{\theta n}{2} \right) \tag{$\clubsuit$}\label{eqn:somme1}
+     & = \frac{\sin\left( \frac{\theta(n+1)}{2} \right)}{\sin \frac{\theta}{2}}\left( \cos \frac{\theta n}{2} + i \sin \frac{\theta n}{2} \right) \tag{$\clubsuit$}\label{S3:Q3}
   \end{align*}
 
 
@@ -746,7 +933,7 @@
   $$
 \end{question_kholle}
 \textbf{Remarque}
-En prenant la partie imaginaire de \eqref{eqn:somme1}, on peut retrouver la somme $S_n(\theta)$:
+En prenant la partie imaginaire de \eqref{S3:Q3}, on peut retrouver la somme $S_n(\theta)$:
 $$
   S_{n}(\theta)= \sum_{k=0}^n \sin(k \theta) = \left\{ \begin{array}{ll}
     0                                                                                             & \text{ si } \theta \equiv 0 [2 \pi] \\
@@ -1710,7 +1897,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
         \draw [dashed, gray] (0,2) -- (B) -- (3.7, 0);
 
         \fill [radius=1.5pt] (A) circle node[above=2pt] {\small $(x,h(x))$};
-        \fill [radius=1.5pt] (B) circle node[above=2pt] {\small $(x-a, f(x-a))$};
+        \fill [radius=1.5pt] (B) circle node[above=2pt] {\small $(a-x, f(a-x))$};
 
         \draw [thick, dashed] (2.25, -1) -- (2.25, 3.5);
 
@@ -1978,7 +2165,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \begin{itemize}[label=$\star$]
     \item Si $m \neq 0$:
           \begin{align*}
-            \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t & = \frac{1}{2 \pi} \Big[ \frac{e^{mt}}{im} \Big]_0^{2\pi}      \\
+            \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t & = \frac{1}{2 \pi} \Big[ \frac{e^{imt}}{im} \Big]_0^{2\pi}     \\
                                                              & = \frac{1}{2 \pi} \Big( \frac{1}{im} - \frac{1}{im} \Big) = 0
           \end{align*}
     \item Si $m = 0$:
@@ -1991,7 +2178,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
       1 \text{ si } m=0 \\
       0 \text{ si } m \neq 0
     \end{cases}
-    = \delta_{m, 1}
+    \bigl(= \delta_{m, 1}\bigr)
   $$
   \\
   Soit $n\in \N$ et $(a_0, ..., a_n) \in \C^{n+1}$ fixés quelconques. Posons, pour tout $z\in\C, P(z) = \sum_{k=0}^n a_k z^k$.\\
@@ -1999,24 +2186,24 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \begin{align*}
     \frac{1}{2 \pi} \int_0^{2\pi} P(Re^{it}) e^{-ist} \mathrm d t & = \frac{1}{2 \pi} \int_0^{2\pi} \bigg (\sum_{k=0}^n a_k (Re^{it})^k \bigg) e^{-ist} \mathrm d t                                                                                                                                                                                                                                                     \\
                                                                   & = \frac{1}{2\pi}\sum_{k=0}^{n}\left(\int_{0}^{2\pi}a_kR^ke^{it(k-s)}\right)                                                                                                                                                                                                                               \quad\text{ par linéarité de l'intégrale} \\
-                                                                  & = \sum_{k=0}^n\left(\frac{a_k R^k}{2\pi} \smash[b]{\underbrace{\int_0^{2\pi} e^{it(k-s)} \dd t}_{=\begin{cases}0&\text{ si $k\neq s$} \\ 1 &\text{sinon}\end{cases}}}\right) \vphantom{\underbrace{\int_0^{2\pi} e^{it(k-s)} \dd t}_{=\begin{cases}0&\text{ si $k\neq s$} \\ 1 &\text{sinon}\end{cases}}}                                           \\
-                                                                  & = \begin{cases}0 & \text{ si $s\not\in\iset{0,n}$}\\\displaystyle\frac{a_sR^s}{2\pi} &\text{ sinon}\end{cases}
+                                                                  & = \sum_{k=0}^n\left(a_k R^k\cdot\smash[b]{\underbrace{\frac{1}{2\pi}\int_0^{2\pi} e^{it(k-s)} \dd t}_{=\begin{cases}0&\text{ si $k\neq s$} \\ 1 &\text{sinon}\end{cases}}}\right) \vphantom{\underbrace{\frac{1}{2\pi}\int_0^{2\pi} e^{it(k-s)} \dd t}_{=\begin{cases}0&\text{ si $k\neq s$} \\ 1 &\text{sinon}\end{cases}}}                        \\
+                                                                  & = \begin{cases}0 & \text{ si $s\not\in\iset{0,n}$}\\\displaystyle a_sR^s &\text{ sinon}\end{cases}
   \end{align*}
   Supposons à présent qu'il existe un cercle centré en l'origine sur lequel $P$ est identiquement nulle. Notons $R\in\R_+^*$ le rayon d'un tel cercle. Alors,
   \[
-    \forall t\in\R, P(Re^{it})=0
+    \forall t\in\R,\; P(Re^{it})=0
   \]
   donc
   \[
-    \forall s\in\Z, \frac{1}{2\pi}\int_0^{2\pi}P(Re^{it})e^{-ist}\dd t = \frac{1}{2\pi}\int_0^{2\pi}0\,\dd t=\frac{1}{2\pi}\bigl[1\bigr]_0^{2\pi}=0
+    \forall s\in\Z,\; \frac{1}{2\pi}\int_0^{2\pi}P(Re^{it})e^{-ist}\dd t = \frac{1}{2\pi}\int_0^{2\pi}0\,\dd t=\frac{1}{2\pi}\bigl[1\bigr]_0^{2\pi}=0
   \]
   or, nous avons vu que
   \[
-    \forall s\in\iset{0,n}, \frac{1}{2\pi}\int_0^{2\pi}P(Re^{it})e^{-ist}\dd t = \frac{a_s R^s}{2\pi}
+    \forall s\in\iset{0,n},\; \frac{1}{2\pi}\int_0^{2\pi}P(Re^{it})e^{-ist}\dd t = a_s R^s
   \]
   donc
   \[
-    \forall s\in\iset{0,n}, \frac{a_sR^s}{2\pi} = 0 \quad\text{donc}\quad \forall z\in\iset{0,n}, a_s = 0
+    \forall s\in\iset{0,n},\; a_sR^s = 0 \quad\text{d'où}\quad \forall z\in\iset{0,n}, a_s = 0
   \]
   ainsi, $P$ est la fonction polynomiale nulle sur $\C$.
 \end{question_kholle}
@@ -2066,7 +2253,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
 \pagebreak
 
-\begin{question_kholle}{Montrer que pour $f$ \ $T$-périodique sur $\R$, pour tout $a\in\R$, $\displaystyle\int_{a}^{a+T}f(t)\dd t = \int_{0}^{T}f(t)\dd t$.}
+\begin{question_kholle}{Montrer que si $f$ est $T$-périodique sur $\R$, pour tout $a\in\R$, $\displaystyle\int_{a}^{a+T}f(t)\dd t = \int_{0}^{T}f(t)\dd t$.}
   Il existe $k_0\in\Z$ tel que $a\leq k_0 T<a+T$ car
   \begin{equation*}
     a\leq k_0T<a+T \iff \frac{a}{T} \leq K_0 < \frac{a}{T}+1 \iff k_0 = \left\lceil \frac{a}{T}\right\rceil
@@ -2140,123 +2327,370 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
       \draw (6*pi-\offset,-0.1) -- (6*pi-\offset,0.1) node[above] {\footnotesize $a+T$};
     \end{tikzpicture}
     \caption{Illustration de la relation \eqref{S6:Q10:4}. \\
-    		 En bleu \eqref{S6:Q10:2} et en gris \eqref{S6:Q10:3} }
+      En bleu \eqref{S6:Q10:2} et en gris \eqref{S6:Q10:3} }
   \end{figure}
 \end{question_kholle}
 \pagebreak\section{Semaine 7}
 
-\begin{question_kholle}{Calcul de $\int_0^{2\pi}e^{imt} \mathrm d t$ en fonction de $m \in \Z$. En Déduire qu'une fonction polynomiale nulle sur un cercle centré en l'origine a tous ses coefficients nuls.}
-  Soit $m \in \Z$ fq. Calculons:
-  $$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t$$
-  Si $m \neq 0$:
+\begin{question_kholle}{Résolution de l'ED  $\forall t \in J, y' + a_{0}(t)y = b(t)$ par équivalences avec la méthode du facteur intégral.}
+
+  Pour cette preuve, il est nécessaire de supposer $a_{0}$ et $b$ continues.
+  Ainsi, on note $A$ la primitive de $a_{0}$ définie sur J.
+
   \begin{align*}
-    \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t & = \frac{1}{2 \pi} \Big[ \frac{e^{mt}}{im} \Big]_0^{2\pi}      \\
-                                                     & = \frac{1}{2 \pi} \Big( \frac{1}{im} - \frac{1}{im} \Big) = 0
+    \parbox{12em}{\centering$f:J\longmapsto\C$ est solution de $y'+a_{0}y=b$ sur $J$}                                     & \iff \begin{cases}
+                                                                                                                                   f \in \mathcal{D}^1(J,\K) \\
+                                                                                                                                   f'+ a_0f = b \text{ sur }
+                                                                                                                                 \end{cases}                                                                                                                                         \\
+                                                                                                                          & \iff \begin{cases}
+                                                                                                                                   f\in\mathcal{D}^1(J,\K) \\
+                                                                                                                                   f' e^{A} + \underbrace{a_{0}}_{=A'}f e^{A} = b e^{A} \text{ sur } J \quad\text{($e^{A}$ est le facteur intégrant)}
+                                                                                                                                 \end{cases} \\
+    \parbox{12em}{\scriptsize (on note $B$ une primitive de $b e^{A}$ définie sur $J$ car $b$ et $e^{A}$ sont continues)} & \iff \begin{cases}
+                                                                                                                                   f\in\mathcal{D}^1(J,K) \\
+                                                                                                                                   \left(f e^{A}\right)' = B' \text{ sur } J
+                                                                                                                                 \end{cases}                                                                                                                          \\
+                                                                                                                          & \iff \begin{cases}
+                                                                                                                                   f\in\mathcal{D}^1(J,\K) \\
+                                                                                                                                   \left(f e^{A}-B\right)' = 0 \text{ sur } J
+                                                                                                                                 \end{cases}                                                                                                                         \\
+                                                                                                                          & \iff \begin{cases}
+                                                                                                                                   f\in\mathcal{D}^{1}(J,K) \\
+                                                                                                                                   \exists \lambda\in\K: f e^{A}-B=\lambda
+                                                                                                                                 \end{cases}                                                                                                                            \\
+                                                                                                                          & \iff \exists \lambda\in\K: f=\lambda e^{-A}+B e^{-A}                                                                                                                   \\
+                                                                                                                          & \iff f\in \left\{\lambda e^{-A}+B e^{-A} \mid \lambda\in\K\right\}
   \end{align*}
-  Si $m = 0$:
-  $$
-    \frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t = \frac{1}{2 \pi} \int_0^{2\pi} \mathrm d t = \frac{2 \pi}{2 \pi} = 1
-  $$
-  \\
-  Donc $$\frac{1}{2 \pi} \int_0^{2\pi}e^{imt} \mathrm d t =
-    \begin{cases}
-      1 \text{ si } m=0 \\
-      0 \text{ si } m \neq 0
-    \end{cases}
-  $$
-  \\
-  Soit $n\in \N$ fq
-
-  Soient $(a_0, ..., a_n) \in \C^{n+1}$ les coefficients de $P(z) = \sum_{k=0}^n a_k z^k$, et $s\in \Z$, et $r \in \R_+^*$ fq. tels que P soit nulle lorsqu'elle est évaluée sur $\mathscr C(0,r)$
-  \begin{align*}
-    \frac{1}{2 \pi} \int_0^{2\pi} P(re^{it}) e^{-imt} \mathrm d t & = \frac{1}{2 \pi} \int_0^{2\pi} \bigg (\sum_{k=0}^n a_k (re^{it})^k \bigg) e^{-imt} \mathrm d t \\
-                                                                  & = \sum_{k=0}^n a_k r^k \underbrace{\int_0^{2\pi} \frac{e^{it(k-s)}}{2 \pi}  \mathrm d t}_{I_k}
-  \end{align*}
-  On remarque que:
-  \begin{itemize}
-    \item Si $s \notin [ \! [0, n] \! ], \{k \in [ \! [0, n] \! ] \text{ }| \text{ } k = s\}$ = $\emptyset$, Donc $$\sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k  = \sum_{\substack{k \in [ \! [0, n] \! ] \\ k = s}} a_k r^k  = 0$$
-    \item Si $s \in [ \! [0, n] \! ], \{k \in [ \! [0, n] \! ] \text{ }| \text{ } k = s\}$ = ${s}$, Donc $$\sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k = \sum_{\substack{k \in [ \! [0, n] \! ] \\ k = s}} a_k s^k = a_s r^s \label{1}$$
-  \end{itemize}
-  Or, puisque $P$ s'annule sur le cercle de rayon $r$ et de centre $0$,  $\mathscr C(0,r)$, ces sommes sont aussi nulles. On en déduit, en particularisant pour un $s \in [ \! [0, n] \! ]$ fixé quelconque que:
-  $$
-    \sum_{k \in [ \! [0, n] \! ]} a_k s^k I_k = a_sr^s = 0 \implies a_s = 0
-  $$
-
-  Donc $$
-    (\exists r \in \R_+^* : \forall \theta \in \R, P(re^{i\theta})=0) \implies \forall s \in [ \! [0, n] \! ]
-  $$
-  \\
-  Pour la preuve réciproque,  soit $n \in \N$ fq. Soient $(a_0,...,a_n) \in \{ 0 \} ^{n+1}$ les coefficients nuls de la fonction polynomiale $P \in \C[z]$ définie pour tout $z \in \C$.
-
-  En remarquant que $\forall z \in \C , P(z) = 0$, puisque n'importe quel cercle centré en 0 est un sous ensemble de $\C$,  $\exists r \in \R_+^*: \forall z \in \mathscr C(0, r), P(z) = 0$.
+  Ainsi, les solution de l’équation différentielle sont
+  \[
+    \mathcal{S}=\underbrace{B e^{-A}}_{\text{sol. particulière}} + \underbrace{\left\{\lambda e^{-A} \mid \lambda\in\K\right\}}_{\text{droite vect. des sol. de l'EDLH}}
+  \]
 \end{question_kholle}
 
-\begin{question_kholle}{Preuve de la Linéarité de la dérivation d'une fonction complexe}
-  Définissons les fonctions $f_r$ et $f_i$ comme les parties réelles et imaginaires de $f$.
-
-  Soient $(f, g) \in \mathcal{F}(I, \C)^2$, $(\alpha, \beta) \in \C^2$ fixés quelconques.
-  \begin{align*}
-    f_r = \Re(f)           & , f_i = \Im(f)      & g_r = \Re(f)     & , g_i = \Im(g)     \\
-    \alpha_r = \Re(\alpha) & , \alpha_i = \Im(f) & \beta_r = \Re(f) & , \beta_i = \Im(g)
-  \end{align*}
-
-  \begin{align*}
-    \Re( \alpha f + \beta g) & = \Re((\alpha_r + i \alpha_i)(f_r + i f_i) + (\beta_r+ i\beta_i)(g_r+ i g_i))                                                                                                                     \\
-                             & = \underbrace{\alpha_r f_r + \beta_r g_r - \alpha_i f_i - \beta_i g_i}_{\text{Combinaison linéaire de } \underbrace{(f_r, f_i, g_r, g_i) \in \mathcal D^1(I, \R)^4}_{car (f,g) \in D^1(I, \R)^2}}
-  \end{align*}
-  Donc, selon le théorème de stabilité par combinaison linéaire des fonctions à valeurs réelles, $\Re(\alpha f + \beta g) \in \mathcal D^1(I, \R)$ et $\big(\Re(\alpha f + \beta g)\big)' = \alpha_r f_r' + \beta_r g_r' - \alpha_i f_i' - \beta_i g_i'$
-  \\
-  On montre de même que $\Im(\alpha f + \beta g) \in \mathcal D^1(I, \R)$ et $\big(\alpha f + \beta g\big)' = \alpha_r f_i' +\alpha f_r' +\beta_r g_i' +\beta_i g_r'$
-
+\begin{question_kholle}[{
+  Soient \((a_{0}, a_{1}, a_{2})\in\C^2\times C^*\). Notons \(S_H\) l’ensemble des solutions définies sur \R de
+  \[
+    a_{2}y''+a_{1}y' + a_{0}=0
+  \]
+  Alors, $S_{H}$ est un plan vectoriel (espace vectoriel de dimension 2). Plus précisément, en notant $\Delta$ le discrimianat de l'équation caractéristique de l'équation différentielle ci-dessus,
+  \begin{itemize}[label=$\star$]
+    \item si $\Delta=0$, l'équation caractéristique admet une unique racine double $r_{0}$ et
+          \begin{align*}
+            S_{H} & =\left\{\applic{\R}{\C}{t}{(\lambda+\mu t)e^{r_{0}t}} \middle| (\lambda, \mu)\in\C^{2}\right\}        \\
+                  & = \left\{\lambda \left(\applic{\R}{\C}{t}{e^{r_{0}t}}\right) \middle| (\lambda, \mu)\in\C^{2}\right\} \\
+                  & =  \Vect \left\{\applic{\R}{\C}{t}{e^{r_{0}t}}, \applic{\R}{\C}{t}{t e^{r_{0}t}}\right\}
+          \end{align*}
+    \item si $\Delta\neq 0$, l’équation caractéristique admet deux solution distinctes $r_{1}$ et $r_{2}$ et
+          \begin{align*}
+            S_{H} & = \left\{\applic{\R}{\C}{t}{\lambda e^{r_{1}t} + \mu e^{r_{2}t}} \middle| (\lambda, \mu)\in\C^{2}\right\}                                              \\
+                  & = \left\{\lambda\left(\applic{\R}{\C}{t}{e^{r_{1}t}}\right) + \mu \left(\applic{\R}{\C}{t}{e^{r_{2}t}}\right) \middle| (\lambda, \mu)\in\R^{2}\right\} \\
+                  & = \Vect \left\{\applic{\R}{\C}{t}{e^{r_{1}t}}, \applic{\R}{\C}{t}{e^{r_{2}t}}\right\}
+          \end{align*}
+  \end{itemize}
+  }]{Théorème de résolution des EDLH d'ordre 2 à coefficients constants complexes.}
+  Dans \C, l’équation caractéristique admet au moins une solution que l’on note $r$. On a donc
+  \[
+    a_{2}r^{2} + a_{1}r^{1}+a_{0}=0
+  \]
+  Soit $\lambda\in\mathcal{D}^{2}(\R, \C)$.
+  \begin{align}
+    \parbox{12em}{\centering$t\mapsto \lambda(t) e^{rt}$ est solution                                                                                                                                                                                            \\ de l’$\mathrm{EDLH_{2}}$ sur \R} & \iff a_{2} \left(\lambda f_{r}\right)'' + a_{1} \left(\lambda f_{r}\right)' + a_{0} \lambda f_{r} = 0 \quad\text{sur } \R \nonumber \\
+                                            & \iff a_{2} \left(\lambda'' f_{r} + \lambda' f_{r}' + \lambda f_{r}' + \lambda f_{r}''\right) + a_{1} \left(\lambda' f_{r} + \lambda f_{r}'\right) + a_{0} \lambda f_{r} = 0                              \nonumber \\
+                                            & \iff a_{2} \left(\lambda'' f_{r} + 2r \lambda' f_{r} + \lambda r^{2} f_{r}\right) + a_{1} \left(\lambda' f_{r} + \lambda r f_{r}\right)+ a_{0} \lambda f_{r} = 0                                     \nonumber     \\
+    \text{\scriptsize $f_{r}\neq 0$ sur \R} & \iff a_{2} \lambda'' + \left(2a_{2}r + a_{1}\right)\lambda' + (a_{2}r^{2} + a_{1}r + a_{0})\lambda = 0                                                                                  \nonumber                  \\
+                                            & \iff a_{2} \lambda'' + \left(2a_{2}r +a_{1}\right)\lambda' = 0 \quad\text{sur } \R                                                                                          \nonumber                              \\
+                                            & \iff \lambda' \text{ sol. définie sur \R de l'$\mathrm{EDLH_{1}}$ } a_{2}y' + (2a_{2}r + a_{1})y=0 \label{s7:q2:1}
+  \end{align}
+  L'$\mathrm{EDLH_{1}}$ ci-dessus admet comme droite vectorielle de solutions définies sur \R
+  \[
+    \left\{\applic{\R}{\C}{t}{\alpha e^{-\left(\frac{2a_{2}r+a_{1}}{a_{2}}\right)t}} \middle | \alpha\in\C\right\}
+  \]
   Ainsi,
   \begin{align*}
-    \big( \alpha f + \beta g \big)' & = (\alpha_r f_r' + \beta_r g_r' - \alpha_i f_i' - \beta_i g_i') + i (\alpha_r f_i' +\alpha f_r' +\beta_r g_i' +\beta_i g_r')                                         \\
-                                    & = \alpha_r(f_r' + if_i') + \beta_r(g_r' + ig_i') + \alpha_i \underbrace{(-f_i' + if_r')}_{i(f_r' + if_i')} + \beta_i \underbrace{( -g_i' + ig_r')}_{i(g_r' + ig_i')} \\
-                                    & =\alpha f' + \beta g'
+    te & \iff \exists \alpha\in\C: \forall t\in\R, \lambda'(t)=\alpha e^{-\left(\frac{2a_{2}r + a_{1}}{a_{2}}\right)}                                                                                                                                                 \\
+       & \iff \exists (\alpha, \beta)\in\C^{2}: \forall t\in\R, \begin{cases}
+                                                                  \lambda(t)=\frac{\alpha}{-\left(2r+\frac{a_{1}}{a_{2}}\right)}e^{-\left(2r+\frac{a_{1}}{a_{2}}\right)t}+\beta & \text{sinon}                        \\
+                                                                  \lambda(t)=\alpha t+\beta                                                                                     & \text{si } 2r+\frac{a_{1}}{a_{2}}=0
+                                                                \end{cases} \\
   \end{align*}
+  On remarque que
+  \[
+    2r+\frac{a_{1}}{a_{2}}=0 \iff 2r=\underbrace{-\frac{a_{1}}{a_{2}}}_{\mathclap{\text{somme des racines de l’eq. carac}}} \iff \parbox{12em}{l'éq. caractéristique admet une racine double} \iff \Delta=0
+  \]
+  Donc
+  \begin{itemize}[label=$\star$]
+    \item si $\Delta=0$, appelons $r_{0}$ la racine double de l'équation caractéristique. Alors
+          \[
+            \parbox{12em}{\centering$t\mapsto \lambda(t) e^{r_{0}t}$ est solution                                                                                                                                                                                            \\ de l’$\mathrm{EDLH_{2}}$ sur \R} \iff \exists(\alpha, \beta)\in\C^{2}: \forall t\in\R, \lambda(t)=\alpha t + \beta
+          \]
+    \item si $\Delta\neq 0$, notons $r_{1}$ et $r_{2}$ les deux racines de l'équation caractéristique et prenons $r=r_{1}$. Dans ce cas,
+          \[
+            2r_{1}+\frac{a_{1}}{a_{2}} = 2r_{1} + (-r_{1}-r_{2}) = r_{1}-r_{2}
+          \]
+          d'où
+          \begin{align*}
+            \parbox{12em}{\centering$t\mapsto \lambda(t) e^{r_{1}t}$ est solution                                    \\ de l’$\mathrm{EDLH_{2}}$ sur \R} & \iff \exists(\alpha, \beta)\in\C^{2}: \forall t\in\R, \lambda(t)=\frac{\alpha}{r_{2}-r_{1}}e^{(r_{2}-r_{1})t}+\beta \\
+             & \iff \exists (\alpha ', \beta)\in\C^{2}: \forall t\in\R, \lambda(t)=\alpha ' e^{(r_{2}-r_{1})t}+\beta
+          \end{align*}
+  \end{itemize}
+  Observons que $f_{r}:\R\rightarrow \C$ est solution de l'équation homogène si et seulement si
+  \begin{align*}
+    \parbox{12em}{\centering $f_{r}:\R\rightarrow\C$ est solution de l' $\mathrm{EDLH_{2}}$} & \iff	\frac{f}{f_{r}}f_{r} \text{ est une solution sur \R de l'équation homogène}         \\
+                                                                                             & \iff \frac{f}{f_{r}} \in \left\{\text{fonctions $\lambda$ déterminées ci-dessus}\right\} \\
+                                                                                             & \iff f\in \left\{f_{r} \times \text{ fonction $\lambda$ déterminées ci-dessus}\right\}
+  \end{align*}
+  Ainsi, $f_{r}:\R\rightarrow\C$ est solution de l'équation homogène si et seulement si
+  \[
+    \begin{cases}
+      f\in \left\{\applic{\R}{\C}{t}{e^{r_{0}t}(\alpha t+\beta)} \middle| (\alpha, \beta)\in\C^{2}\right\}                                 & \text{si $\Delta=0$}     \\[15pt]
+      f\in \left\{\applic{\R}{\C}{t}{e^{r_{1}t}\left(\alpha ' e^{(r_{2}-r_{1})t}+\beta\right)} \middle| (\alpha ', \beta)\in\C^{2}\right\} & \text{si $\Delta\neq 0$}
+    \end{cases}
+  \]
 \end{question_kholle}
 
-\begin{question_kholle}{Dérivée composée d'une fonction à valeurs complexes}
-  Soient $f \in \mathcal D ^1(J, \C) $ et $h \in \mathcal D^1(I, J)$ (I et J sont deux intervalles réels) fixés quelconques. Notons $f_r$ et $f_i$ respectivement la partie réelle et imaginaire de $f$.
+\begin{question_kholle}[{
+        \begin{propositions}
+          \item \textit{Comme solution d’un problème de Cauchy.} Soit $\alpha\in\C$.
+          \[
+            \applic{\R}{\C}{t}{e^{\alpha t}} \text{ est l’unique solution de } \begin{cases}
+              y'-\alpha y & =0 \\
+              y(0)        & =1
+            \end{cases}
+          \]
+          \item \textit{Par la propriété de morphisme et de non-annulation.}
+          \begin{multline}
+            \left\{f:\R\longrightarrow\C \middle| f \text{ dérivable en 0 et } \forall (s,u)\in\R^{2}, f(s+u)=f(s)f(u)\right\} \\=\{\widetilde{0}\}\cup \left\{\applic{\R}{\C}{t}{e^{\alpha t}}\middle| \alpha\in\C\right\}
+          \end{multline}
+        \end{propositions}
+      }]{Caractérisation des fonctions exponentielles et de la fonction nulle par la propriété de dérivabilité en 0 et celle de morphisme de (\R, +) dans (\C, $\times$).}
+  \begin{propositions}
+    \item Soit $\alpha\in\C$. Le problème de Cauchy
+    \[
+      \begin{cases}
+        y'-\alpha y & =0 \\
+        y(0)        & =1
+      \end{cases}
+    \]
+    admet une unique solution car l’$\mathrm{EDL_{1}}$ est résolue et à coefficients et second membre continus.\\
+    Par ailleurs, en notant
+    \[
+      f:\applic{\R}{\C}{t}{e^{\alpha t}}
+    \]
+    on a bien
+    \[
+      f(0)=1 \quad , \quad f\in\mathcal{D}^{1}(\R,\C) \quad\text{et}\quad \forall t\in\R, f'(t)=\alpha e^{\alpha t}=\alpha f(t)
+    \]
+    donc $f$ est solution du problème de Cauchy, et par unicité de la solution d’un problème de Cauchy, elle est unique.
 
-  \begin{align*}
-    \left .
-    \begin{array}{ll}
-      h \in \mathcal D^1(I, J) \\
-      f_r \in \mathcal D^1(J, \R) \text{, car } f \in \mathcal D^1(J, \C)
+    \item Procédons par analyse-synthèse.
+    \begin{itemize}[label=$\vartriangleright$]
+      \item \textit{Analyse.} Soit $f:\R\longrightarrow\C$ telle que
+            \begin{numcases}{}
+              f \text{ est dérivable en 0} \tag{1}\\
+              \forall(s,u)\in\R^{2}, f(s+u)=f(s)f(u) \tag{2}
+            \end{numcases}
+            On obtient, en particularisant (2) pour $(s,u)\leftarrow (0,0)$
+            \[
+              f(0+0)=f(0)f(0) \quad \text{donc} \quad f(0)-f(0)^{2} = 0 \quad \text{donc}\quad f(0)\in\{0,1\}
+            \]
+            \begin{itemize}[label=$\circ$]
+              \item Supposons que $f(0)=0$.\\
+                    Soit $x\in\R$ fixé quelconque. Appliquons (2) pour $(s,u)\leftarrow (x,0)$:
+                    \[
+                      f(x+0)=f(x)\underbrace{f(0)}_{=0} \quad \text{donc}\quad f(x)=0 \quad \text{donc}\quad f=\widetilde{0}
+                    \]
+              \item Supposons à présent $f(0)=1$.\\
+                    Soit $x\in\R$ et $h\in\R^{*}$ fixés quelconques.
+                    \[
+                      \frac{f(x+h)-f(x)}{h}=\frac{f(x)f(h)-f(x)}{h} = f(x)\frac{f(h)-1}{h}
+                    \]
+                    $f(0)$ valant 1, on reconnaît le taux d’acroissement en 0 de la fonction $f$. On a donc
+                    \[
+                      \frac{f(x+h)-f(x)}{h}\arrowlim{h}{0} f(x)f'(0)
+                    \]
+                    donc $f$ est dérivable en $x$ (par hypothèse) et $f'(x)=f'(0)f(x)$. Ainsi,
+                    \[
+                      \begin{cases}
+                        f\in\mathcal{D}(\R,\C) \\
+                        f \text{ est solution de } y'-f'(0)y=0
+                      \end{cases}
+                    \]
+                    La droite vectorielle des solution de $y'-f'(0)y=0$ est
+                    \[
+                      \left\{\applic{\R}{\C}{t}{\lambda e^{f'(0)t}} \middle| \lambda\in\C\right\}
+                    \]
+                    donc
+                    \[
+                      \exists \lambda\in\C: \forall t\in\R, f(t)=\lambda e^{f'(0)t}
+                    \]
+                    or, $f(0)=1$, donc pour $t=0$, on trouve $1=\lambda e^{0}=\lambda$. On a donc
+                    \[
+                      \forall t\in\R, f(t)=e^{f'(0)t} \quad\text{d’où}\quad  f\in \left\{\applic{\R}{\C}{t}{e^{\alpha t}}\middle| \alpha\in\C\right\}
+                    \]
+            \end{itemize}
+            ce qui prouve l’inclusion.
+
+      \item\textit{Synthèse.}
+            \begin{itemize}[label=$\circ$]
+              \item $\widetilde{0}$ est dérivable en 0 et
+                    \[
+                      \forall (s,u)\in\R^{2}, \left(\widetilde{0}(s+u)=0 \quad \text{et}\quad \widetilde{0}(s)\cdot\widetilde{0}(u)=0\right)
+                    \]
+              \item Soit $\alpha\in\C$ fixé quelconque. Posons
+                    \[
+                      f:\left|\applic{\R}{\C}{t}{e^{\alpha t}}\right.
+                    \]
+                    \begin{itemize}[label=$\rightarrow$]
+                      \item $f$ est dérivable en 0 (car $f=exp_{\C}\circ (t\mapsto \alpha t)$).
+                      \item $\forall (s,u)\in\R^{2}, f(s+u)=e^{\alpha (s+u)}=e^{\alpha s} \cdot e^{\alpha u}$
+                    \end{itemize}
+            \end{itemize}
+            ce qui prouve l’inclusion réciproque.
+    \end{itemize}
+  \end{propositions}
+\end{question_kholle}
+
+\begin{question_kholle}{Preuve de l’expression des solutions réelles des EDL homogènes d’ordre 2 à coefficients constants réels dans le cas $\Delta < 0$ (en admettant la connaissance de l’expression des solutions à valeurs complexes des EDLH2 à coeff. constants).}
+  Notons $\Sol_{H, \C}$ et $\Sol_{H, \R}$ les ensembles des solutions complexes et réelles de l'équation différentielle, puisque nous nous plaçons dans le cas $\Delta < 0$ et $\alpha \pm i \beta$ les deux racines complexes conjuguées.
+  $$
+    \Sol_{H, \C} =
+    \left\{
+    \begin{array}{l}
+      \R \to \C \\
+      t \mapsto \lambda e^{(\alpha + i \beta) t}  + \mu e^{(\alpha - i \beta)t}
     \end{array}
-    \right \}
-    \implies f_r \circ h \in \mathcal D^1(I, \R)
-  \end{align*}
+    \middle\vert  (\lambda, \mu) \in \C ^2 \right\}
+  $$
 
-  On montre de même que $f_i \circ h \in \mathcal D^1(I, \mathbb  R)$ donc $f \circ h \in \mathcal D^1(I, \C)$.
-
-  De plus,
-
+  \noindent Montrons que $\forall f \in \Sol_{H ,\C}, \Re(f) \in  \Sol_{H ,\R}$.\\
+  Soit $f \in \Sol_{H ,\C}$ fq.
+  $$f \in \mathcal D^2(\R, \C) \implies \Re(f) \in \mathcal D^2(\R, \R)$$
+  Et, de plus, par morphisme additif de \Re
+  $$
+    a_2\Re(f)'' + a_1\Re(f)' + a_0\Re(f) = \Re( a_2 f'' + a_1 f' + a_0 f) = 0
+  $$
+  D'où, avec $f:t \mapsto e^{(\alpha + i \beta)t}$; $\Re(f(t)) = \Re(e^{(\alpha + i \beta)t}) = e^{\alpha t } \cos (\beta t)$. Qui appartient donc à $\Sol_{H, \R}$.\\
+  En suivant le même raisonnement pour $\Im(f)$, $(t \mapsto e^\alpha \sin(\beta t)) \in \Sol_{H, \R}$.\\
+  Ainsi, par combinaison linéaire (qui se base sur le principe de superposition),
+  $$
+    \left\{
+    \begin{array}{l}
+      \R \to \R \\
+      t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
+    \end{array}
+    \middle\vert  (\lambda, \mu) \in \R ^2 \right\}
+    \subset \Sol_{H ,\R}
+  $$
+  Réciproquement, soit $ f \in \Sol_{H ,\R}$ fq. Puisque $\R \subset \C$,  $ f \in \Sol_{H ,\C}$.
+  $$
+    \exists (a, b) \in \C^2 : f \left| \begin{array}{l}
+      \R \to \C \\
+      t \mapsto a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t}
+    \end{array}\right.
+  $$
+  Or, puisque toutes les valeurs de $f$ sont réelles, en notant $(a_r, a_i, b_r, b_i)$ les parties réelles et imaginaires respectives de $a$ et $b$.
   \begin{align*}
-    (f \circ h)' & = (f_r \circ h)' + i (f_i \circ h)'                       \\
-                 & = (f_r' \circ h ) \times h' + i((f_i' \circ h) \times h') \\
-                 & =(f_r' \circ h + if_i' \circ h) \times h'                 \\
-                 & = (f' \circ h) \times h'
+    \forall t \in \R, f(t) & = \Re(f(t))                                                                                                     \\
+                           & = \Re(a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t})                                                  \\
+                           & = \Re((a_r + i a_i) e^{(\alpha + i \beta) t}  + (b_r + i b_i) e^{(\alpha - i \beta)t})                          \\
+                           & = a_r \cos(\beta t)e^\alpha - a_i\sin(\beta t)e^\alpha + b_r \cos(\beta t)e^\alpha + b_i \sin(\beta t) e^\alpha \\
+                           & = (a_r + b_r) \cos(\beta t) e^\alpha + (b_i - a_i) \sin(\beta t) e^\alpha
   \end{align*}
+  Ainsi,
+  $$f\in \left\{
+    \begin{array}{l}
+      \R \to \R \\
+      t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
+    \end{array}
+    \middle\vert  (\lambda, \mu) \in \R ^2 \right\}
+  $$
+  Ce qui conclut la preuve par double inclusion.
+
 \end{question_kholle}
 
-\begin{question_kholle}{Caractérisation des fonctions dérivables de dérivée nulle sur un intervalle}
-  Soit $f \in \mathcal D ^1 (I, \C)$ où $I$ est un intervalle réel;
-  Posons $f_r = \Re (f)$ et $f_i = \Im(f)$.
+\begin{question_kholle}[
+    Considérons le problème de Cauchy suivant :
+    $$\left\{ \begin{array}{l}
+        a_{2}y''+a_{1}y'+a_{0}y = b \text{ sur } J \\
+        y(t_{0}) = \alpha_{0}                      \\
+        y'(t_{0}) = \alpha_{1}
+      \end{array} \right. \text{ où } (\alpha_{0}, \alpha_{1}) \in \mathbb{K}^{2}, t_{0} \in J, (a_{0}, a_{1}, a_{2}) \in \mathbb{K}^{2} \times \mathbb{K}^{*}, b \in \mathcal{F}(J, \mathbb{K})$$
+    Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.]
+  {Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).}
+  \hfill\\
+  \begin{enumerate}
+    \item
+          \textbf{Cas} $\mathbb{K} = \mathbb{C}$ \\
+          Nous savons que sous l'hyphothèse de continuité de $b$ sur $J$, les solutions de (EDL2) définies sur $J$ constituent le plan affine $S$ :
+          $$S = \left\{ \lambda f_{1} + \mu f_{2} + s | (\lambda, \mu) \in \mathbb{C}^{2} \right\}$$
+          où $s$ est une solution particulière de (EDL2), $(f_{1}, f_{2})$ sont deux solutions de (EDLH2) qui engendrent $S_{h}$. On a : \\
 
-  \begin{align*}
-    \forall t \in I, f'(t) = 0 & \iff \forall t \in I, f_r'(t) + i f_i'(t) = 0                        \\
-                               & \iff \begin{cases}
-                                        \forall t \in I, f_r'(t) = 0 \\
-                                        \forall t \in I, f_i'(t) = 0
-                                      \end{cases}                                    \\
-                               & \iff \begin{cases}
-                                        \exists \lambda_r \in \R : \forall t \in I,  f_r(t) = \lambda_r \\
-                                        \exists \lambda_i \in \R : \forall t \in I,  f_i(t) = \lambda_i
-                                      \end{cases} \\
-                               & \iff \exists \lambda \in \C : \forall t \in I,  f(t) = \lambda
-  \end{align*}
+          $$\begin{array}{ccl}
+              f : J \to \mathbb{C} \text{ est sol. du pb de Cauchy }
+               & \iff & \left\{ \begin{array}{l}
+                                  f \text{ sol de (EDL2) sur } J \\
+                                  f(t_{0}) = \alpha_{0}          \\
+                                  f'(t_{0}) = \alpha_{1}
+                                \end{array}  \right.                                                                                \\\\
+               & \iff & \left\{ \begin{array}{l}
+                                  f \in S               \\
+                                  f(t_{0}) = \alpha_{0} \\
+                                  f'(t_{0}) = \alpha_{1}
+                                \end{array}\right.                                                                                         \\\\
+               & \iff & \exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
+                                                                             f = \lambda f_{1} + \mu f_{2} + s                                  \\
+                                                                             \lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) + s(t_{0}) = \alpha_{0}    \\
+                                                                             \lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) + s'(t_{0}) = \alpha_{1} \\
+                                                                           \end{array} \right. \\\\
+               & \iff & \exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
+                                                                             f = \lambda f_{1} + \mu f_{2} + s                                  \\
+                                                                             \lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) = \alpha_{0} - s(t_{0})    \\
+                                                                             \lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) = \alpha_{1} - s'(t_{0}) \\
+                                                                           \end{array} \right. \\\\
+            \end{array} $$
+          On en déduit donc que $(\lambda, \mu)$ doit être solution d'un système linéaire $(2,2)$. On a une unique solution si et seulement si les déterminant de ce système est non nul. \\
+          Explicitons alors le déterminant de ce système, que l'on notera $D$.
+          $$D = \left|
+            \begin{array}{cc}
+              f_{1}(t_{0})  & f_{2}(t_{0})  \\
+              f'_{1}(t_{0}) & f'_{2}(t_{0}) \\
+            \end{array}
+            \right| = f_{1}(t_{0}) \cdot f'_{2}(t_{0}) - f_{2}(t_{0}) \cdot f'_{1}(t_{0}) $$
+          Notons $\Delta$ le discriminant de l'équation caractéristique de (EDL2) ($a_{2}r^{2} + a_{1}r^{1} + a_{0} = 0$). On distingue alors deux cas selon la nullité ou non de $\Delta$. Traitons d'abord le cas $\Delta \neq 0$. On peut choisir :
+          $$ f_{1}(t_{0}) = e^{r_{1}t_{0}} \text{ et } f_{2}(t_{0}) = e^{r_{2}t_{0}}$$
+          $$ f'_{1}(t_{0}) = r_{1}e^{r_{1}t_{0}} \text{ et } f'_{2}(t_{0}) = r_{2}e^{r_{2}t_{0}}$$
+          Donc (en sachant que $\Delta \neq 0 \Rightarrow r_{1} \neq r_{2}$):
+          $$ D = e^{r_{1}t_{0}} \cdot r_{2}e^{r_{2}t_{0}} - r_{1}e^{r_{1}t_{0}} \cdot e^{r_{2}t_{0}} = (r_{2} - r_{1}) \cdot e^{r_{1}t_{0} + r_{2}t_{0}} \neq 0$$
+
+          Dans le deuxième cas, on a $\Delta = 0$ ; on peut alors prendre :
+          $$ f_{1}(t_{0}) = e^{r_{0}t_{0}} \text{ et } f_{2}(t_{0}) = t_{0}e^{r_{0}t_{0}}$$
+          Ainsi :
+          $$ D = e^{r_{0}t_{0}} \left(r_{0}t_{0}e^{r_{0}t_{0}} + e^{r_{0}t_{0}} \right) - r_{0}e^{r_{0}t_{0}} \times t_{0}e^{r_{0}t_{0}} = e^{2r_{0}t_{0}} \neq 0$$
+          On remarque alors que, dans les deux cas, $D \neq 0$, donc le système $(2, 2)$ étudié admet une unique solution, donc il existe un unique couple $(\lambda, \mu)$ le vérifiant d'où l'unicité et existence d'une solution au problème de Cauchy.
+          \\\\
+
+    \item \textbf{Cas} $\mathbb{K} = \mathbb{R}$ \\
+          Dans cette partie, $(a_{0}, a_{1}, a_{2}) \in \mathbb{R}^{2} \times \mathbb{R}^{*},(\alpha_{0}, \alpha_{1}) \in \mathbb{R}^{2}$ et $b \in C^{0}(J, \mathbb{R})$.\\
+          \begin{itemize}[label=$\vartriangleright$]
+            \item
+                  \textit{Existence.} Puisque $\mathbb{R} \subset \mathbb{C}$, le problème de Cauchy admet, dans $\mathbb{R}$, une solution à valeurs complexes $g$. Posons $f = \Re(g)$ et montrons que $f$ est une solution réelle du problème de Cauchy. \\
+                  \begin{itemize}
+                    \item[$\star$] $g \in \mathcal{D}^{2}(J, \mathbb{C}) \text{ donc } f \in \mathcal{D}^{2}(J, \mathbb{R})$
+                    \item[$\star$] $g$ vérifie $a_{2}g'' + a_{1}g' + a_{0}g = b$ sur $J$ donc en prenant $\Re(\cdot)$ :
+                          $$\begin{array}{ccl}
+                              \Re(a_{2}g'' + a_{1}g' + a_{0}g = b) = \Re(b)
+                               & \iff & a_{2}\Re(g'') + a_{1}\Re(g') + a_{0}\Re(g) = b \\\\
+                               & \iff & a_{2}f'' + a_{1}f' + a_{0}f = b \text{ sur } J
+                            \end{array}$$
+                    \item[$\star$] $f(t_{0}) = \Re(g(t_{0})) = \Re(\alpha_{0}) = \alpha_{0}$
+                    \item[$\star$] $f'(t_{0}) = \Re(g(t_{0}))' = \Re(g'(t_{0})) = \Re(\alpha_{1}) = \alpha_{1}$
+                  \end{itemize}
+                  Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy.
+                  \newline
+
+            \item \textit{Unicité.} Soient $f_{1}$ et $f_{2}$ deux fonctions à valeurs réelles solutions du problème de Cauchy ci-dessus fixées quelconques : puisque $\mathbb{R} \subset \mathbb{C}$, $f_{1}$ et $f_{2}$ sont des fonctions à valeurs dans $\mathbb{C}$ solutions du même problème de Cauchy; or il y a unicité de la solution au problème de Cauchy dans les fonctions à valeurs complexes, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{C})$, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{R})$.
+          \end{itemize}
+  \end{enumerate}
 \end{question_kholle}
 
 \pagebreak\section{Semaine 8}
@@ -2647,95 +3081,282 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
 \end{question_kholle}
 
+\begin{question_kholle}[]{Déterminer le solutions réelles définies sur $]0, + \infty [$ de $y'' + 3y' +2y = \frac{t-1}{t^{2}}e^{ -t }$}
+  
+
+Il s'agit d'une EDL2 avec second membre à coefficients constants avec second membre défini sur $]0, +\infty[$.
+
+Ce second membre est de plus continu sur $\mathbb{R}_{+}^{*}$ donc les solutions définies sur un intervalle maximal sont définies sur $\mathbb{R}^{*}_{+}$ et leur ensemble $\mathcal{S}$ est un plan affine, le plan affine passant par une solution particulière et dirigé par le plan vectoriel $\mathcal{S}_{H}$.
+\begin{itemize}[label=$\star$]
+  \item L'équation caractéristique de $y'' + 3y' + 2y = 0$ est $r^{2} + 3r + 2 = 0 \iff (r+1)(r+2) = 0$
+
+Donc
+$$
+\mathcal{S}_{H} = \left\{ \left.\begin{array}{ll} \mathbb{R}^{*}_{+} &\to \mathbb{R} \\ t &\mapsto \lambda e^{-t}+\mu e^{-2t} \end{array}\right| (\lambda, \mu) \in \mathbb{R}^{2}\right\} 
+$$
+
+\item Cherchons une solution particulière de la forme $t \mapsto \lambda(t)e^{ -t }$ avec $\lambda \in \mathcal{D}^{2}(\mathbb{R}^{*}_{+}, \mathbb{R})$
+
+
+\begin{align*}
+\begin{matrix}
+t \mapsto \lambda(t)e^{ -t } \text{ est solution}\\ \text{ particulière dans }\mathbb{R}_{+}^{*}
+\end{matrix}  & \iff \forall t \in \mathbb{R}^{*}_{+},  (\lambda (t)e^{ -t })'' + 3 (\lambda(t)e^{ -t })' + 2(\lambda(t)e^{ -t }) = \frac{t-1}{t^{2}}e^{ -t } \\
+&\iff \forall t \in \mathbb{R}_{+}^{*}, (\lambda''(t)- 2\lambda'(t)+\lambda(t))e^{ -t } + 3 (\lambda(t) ' - \lambda(t))e^{ -t  } + 2 \lambda(t) e^{ -t } = \frac{t-1}{t^{2}}e^{ -t } \\
+ & \iff\forall t \in \mathbb{R}_{+}^{*}, \lambda'' (t) + \lambda'(t) = \frac{t-1}{t^{2}}
+\end{align*}
+
+\begin{itemize}[label=$\lozenge$]
+  \item Cherchons donc une solution particulière de
+$$
+y' + y = \frac{t-1}{t^{2}}
+$$
+
+C'est une EDL1 définie et résolue sur $\mathbb{R}_{+}^{*}$, à coefficients et second membre résolus, donc l'ensemble des solutions est une droite affine de solutions définies sur $\mathbb{R}_{+}^{*}$
+
+\begin{itemize}[label=$\triangle$] 
+  \item Par la méthode de la variation de la constante, cherchons une solution de la forme $t \mapsto \alpha (t) e^{ -t }$ avec $\alpha \in \mathcal{D}^{1}(\mathbb{R}_{+}^{*}, \mathbb{R})$.
+
+
+\begin{align*}
+t \mapsto \alpha(t)e^{ -t } \text{ est solution particulière } &\iff \forall t \in \mathbb{R}_{+}^{*}, (\alpha(t)e^{ -t })' + \alpha(t)e^{ -t }= \frac{t-1}{t^{2}}\\
+&\iff \forall t \in \mathbb{R}_{+}^{*}, \alpha'(t) = \frac{t-1}{t^{2}}e^{ t }
+\end{align*}
+
+
+Cherchons une primitive de $t \mapsto \frac{t-1}{t^{2}}e^{ t }$
+
+
+\begin{align*}
+\int_{1}^{t} \frac{u-1}{u^{2}}e^{ u } \, \mathrm du &= \int_{1}^{t} \frac{e^{ u }}{u} - \frac{e^{ u }}{u^{2}} \, \mathrm du \\
+&= \int_{1}^{t} \frac{e^{ u }}{u} \, \mathrm du - \int_{1}^{t} \frac{e^{ u }}{u^{2}} \, \mathrm du \\
+&= \int_{1}^{t} \frac{e^{ u }}{u} \, \mathrm du  - \left( \left[ -\frac{1}{u}e^{ u } \right] _{1}^{t} - \int_{1}^{t} -\left( \frac{1}{u} \right) e^{ u } \, \mathrm du  \right)   \\
+&= \left[ \frac{e^{ u }}{u} \right] _{1}^{t} = \frac{e^{t}}{t} - e
+\end{align*}
+
+
+Donc $\alpha(t) = \frac{e^{ t }}{t}$ convient.
+\end{itemize}
+
+Donc $t \mapsto \alpha(t)e^{ -t } = \frac{e^{ t }}{t}e^{ -t } = \frac{1}{t}$ est une solution particulière de $y'+y = \frac{t-1}{t^{2}}$
+\end{itemize}
+Donc $\lambda'(t) = \frac{1}{t}$ donc $\lambda(t) = \ln(t)$ convient
+
+Donc $t \mapsto \ln (t) e^{ -t }$ est une solution particulière de (EDL2)
+\end{itemize}
+Ainsi, le plan affine des solutions sur $\mathbb{R}_{+}^{*}$ est
+$$
+\mathcal{S} = \left\{ \left.\begin{array}{ll} \mathbb{R}_{+}^{*} &\to \mathbb{R} \\ t &\mapsto (\ln t)e^{ -t }+ \lambda e^{ -t }+\mu e^{ -2t } \end{array}\right| (\lambda , \mu) \in \mathbb{R}^{2}\right\} 
+$$
+
+\end{question_kholle}
+
 \pagebreak\section{Semaine 9}
 
 \begin{question_kholle}
   [\noindent Soit \Rel une relation d'équivalence sur $E$. \\
-    Soit $x \in E$. \\
-    La classe de $x$, notée $\bar{x}$, est l'ensemble des éléments de $E$ en relation avec x.
-    \begin{equation}
-      \bar{x} = \left\{ y \in E \;|\; x \Rel y \right\}
-    \end{equation}]
+  Soit $x \in E$. \\
+  La classe de $x$, notée $\bar{x}$, est l'ensemble des éléments de $E$ en relation avec x.
+  $$
+  \bar{x} = \left\{ y \in E \;|\; x \Rel y \right\}
+  $$
+  ]
   {Deux classes d'équivalence sont disjointes ou confondues. Les classes d'équivalence constituent une partition de l'ensemble sur lequel on considère la relation d'équivalence.}
-
-  \textit{Montrons que deux classes d'équivalence sont disjointes ou confondues.}
-
-  Soit $(x, y) \in E^2$ fq.
+  
+  Montrons que deux classes d'équivalence sont disjointes ou confondues.
+  
+  Soient $(x, y) \in E^2$ fixés quelconques
   \begin{itemize}[label=\textemdash]
     \item Si $\bar{x} \cap \bar{y} = \emptyset$, rien à démontrer.
     \item Sinon $\bar{x} \cap \bar{y} \neq \emptyset$ donc $\exists z \in \bar{x} \cap \bar{y}$. Fixons un tel $z$.
-
-          Soit $x' \in \bar{x}$ fq.
-          \begin{equation*}
-            \left.
-            \begin{matrix}
-              \left. \begin{matrix}
-                       x' \in \bar{x} \implies x \Rel x' \underset{sym\acute{e}trie}{\implies} x' \Rel x \\
-                       z \in \bar{x} \implies x \Rel z
-                     \end{matrix}
-              \right\} \underset{transitivit\acute{e}}{\implies} x' \Rel z \\
-              z \in \bar{y} \implies y \Rel z \underset{sym\acute{e}trie}{\implies} z \Rel y
-            \end{matrix}
-            \right\} \underset{transitivit\acute{e}}{\implies} x' \Rel y
-            \underset{sym\acute{e}trie}{\implies} y \Rel x'
-          \end{equation*}
-
-          Donc $x' \in \bar{y}$ donc $\bar{x} \subset \bar{y}$.
-
-          En échangeant les rôles de $x$ et $y$, on montre la deuxième inclusion $\bar{y} \subset \bar{x}$.
+    
+    Soit $x' \in \bar{x}$ fq.
+    \begin{equation*}
+      \left.
+      \begin{matrix}
+        \left. \begin{matrix}
+          x' \in \bar{x} \implies x \Rel x' \underset{\text{symétrie}}{\implies} x' \Rel x \\
+          z \in \bar{x} \implies x \Rel z
+        \end{matrix}
+        \right\} \underset{\text{transitivité}}{\implies} x' \Rel z \\
+        z \in \bar{y} \implies y \Rel z \underset{\text{symétrie}}{\implies} z \Rel y
+      \end{matrix}
+      \right\} \underset{\text{transitivité}}{\implies} x' \Rel y
+      \underset{\text{symétrie}}{\implies} y \Rel x'
+    \end{equation*}
+    
+    Donc $x' \in \bar{y}$ donc $\bar{x} \subset \bar{y}$.
+    
+    En échangeant les rôles de $x$ et $y$, on montre la deuxième inclusion $\bar{y} \subset \bar{x}$.
   \end{itemize}
   \bigbreak
-
-  \textit{Montrons que les classes d'équivalence de E constituent une partition de E.}
-
+  
+  Montrons que les classes d'équivalence de E constituent une partition de E.
+  
   Soit $\Sol$ un système de représentant des classes fixé quelconque.
-
+  
   \begin{itemize}[label=\textemdash]
-    \item Soit $s\in \Sol$ fq. $\bar{s} \neq \emptyset$ car $s \Rel s$ par réflexivité.
+    \item Soit $s\in \Sol$ fixé quelconque $\bar{s} \neq \emptyset$ car $s \Rel s$ par réflexivité.
     \item Soit $(s, s') \in \Sol^2$ fq. D'après la démonstration ci-dessus ci-dessus, $\bar{s} \cap \bar{s'} = \emptyset$ ou $\bar{s} = \bar{s'}$. Si $\bar{s} = \bar{s'}$ alors $s$ et $s'$ représente la même classe ce qui est impossible car un système de représentants des classes contient un unique représentant de chaque classe. Par conséquent, $\bar{s}$ et $\bar{s'}$ sont disjoints.
     \item $\underset{s \in \Sol}{\bigcup} \bar{s} \subset E$ car $\forall s \in \Sol, \bar{s} \in E$ par définition d'une classe d'équivalence. \\
-          Réciproquement, soit $x \in E$ fq. \\
-          Par réflexivité de \Rel, $x \in \bar{x}$. \\
-          Par définition d'un système de classe $\exists ! s_x \in \Sol : s_x \in \bar{x}$ donc $\bar{s_x} = \bar{x}$. Donc $x \in \bar{s_x} \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. Donc $E \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. \\
-          Par double inclusion, $E = \underset{s \in \Sol}{\bigcup} \bar{s}$.
+    Réciproquement, soit $x \in E$ fq. \\
+    Par réflexivité de \Rel, $x \in \bar{x}$. \\
+    Par définition d'un système de classe $\exists ! s_x \in \Sol : s_x \in \bar{x}$ donc $\bar{s_x} = \bar{x}$. Donc $x \in \bar{s_x} \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. Donc $E \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. \\
+    Par double inclusion, $E = \underset{s \in \Sol}{\bigcup} \bar{s}$.
   \end{itemize}
-
+  
   Ainsi,
-  \begin{equation}
-    E = \bigsqcup_{s \in \Sol} \bar{s}
-  \end{equation}
+  $$E = \bigsqcup_{s \in \Sol} \bar{s}$$
+  
+\end{question_kholle}
 
+\begin{question_kholle}[{Soit $n \in \mathbb{N}^{*}$, on définit l'addition dans $\mathbb{Z}/n\mathbb{Z}$ de la manière suivante
+  $$
+  +_{\mathbb{Z}/n\mathbb{Z}} \left|
+  \begin{array}{ccccc} 
+    \mathbb{Z}/n\mathbb{Z}  &\times &\mathbb{Z}/n\mathbb{Z} &\to &\mathbb{Z}/n\mathbb{Z} \\ 
+    (\bar{x} &, &\bar{y}) &\mapsto &\overline{x+_{\mathbb{Z}}y} 
+  \end{array}\right.
+  $$
+  }]{Définition de l'addition pour $\Z / n \Z$}
+  
+  \begin{itemize}[label=$\star$]
+    \item Cette définition n'est pas cohérente à priori, car la valeur attribuée à $\bar x$ et $\bar y$ dépend de $x$ et de $y$ alors qu'elle ne doit dépendre que de $\bar x$ et $\bar y$. Il faudra bien vérifier que le résultat est le même, peu importe le représentant choisi.
+    
+    Soient $(x, x', y, y') \in \mathbb{Z}^{4}$ tels que $\bar{x} = \bar{x}'$ et $\bar{y} = \bar{y}'$.
+    
+    On a $\exists (p, q) \in \mathbb{Z}^{2} : x = x' + np, y=y'+nq$
+    
+$$
+    \overline{x+_{\mathbb{Z}}y} = \overline{x'+np + y' + nq} = \overline{x'+y' + n(p+q)} = \overline{x'+y'}
+$$
+    
+    On a donc bien égalité du résultat, peu importe le représentant de classe choisi, ce qui définit bien l'addition $+_{\mathbb{Z}/n\mathbb{Z}}$.
+    
+    \item Montrons que $(\mathbb{Z}/n\mathbb{Z}, +_{\mathbb{Z}/n\mathbb{Z}})$ est un groupe abélien.
+    \begin{itemize}[label=$\bullet$]
+      \item $\mathbb{Z}/n\mathbb{Z}$ est stable pour la loi $+_{\mathbb{Z}/n\mathbb{Z}}$ (par définition).
+      
+      \item Cette loi est associative : 
+      Soient $(a, b, c) \in \mathbb{Z}/n\mathbb{Z}^{3}$, on peut choisir un représentant de classe pour ces trois classes : $(x,y, z) \in \mathbb{Z}^{3}$ tels que $\bar{x} = a, \bar{y} = b, \bar{z} = c$
+$$
+      (a +_{\mathbb{Z}/n\mathbb{Z}} b)+_{\mathbb{Z}/n\mathbb{Z}} c =  \overline{x+_{\mathbb{Z}}y} +_{\mathbb{Z}/n\mathbb{Z}} c = \underbrace{ \overline{(x+_{\mathbb{Z}}y) +_{\mathbb{Z}} z}= \overline{x+_{\mathbb{Z}}(y+_{\mathbb{Z}}z)} }_{ \text{associativité de }+_{\mathbb{Z}} } =  a +_{\mathbb{Z}/n\mathbb{Z}}\overline{y +_{\mathbb{Z}} z} = a +_{\mathbb{Z}/n\mathbb{Z}} (b +_{\mathbb{Z}/n\mathbb{Z}} c)
+$$
+      \item Cette loi est commutative :
+      Soient $(a, b) \in \mathbb{Z}/n\mathbb{Z}^{2}$, on choisit, $(x, y) \in \mathbb{Z}^{2}$ des représentants de classe tels que $\bar{x} = a, \bar{y} = b$
+$$
+      a+_{\mathbb{Z}/n\mathbb{Z}}b = \underbrace{ \overline{x +_{\mathbb{Z}} y} = \overline{y+_{\mathbb{Z}}x} }_{ \text{commutativité de } +_{\mathbb{Z}} } = b +_{\mathbb{Z}/n\mathbb{Z}}a
+$$
+      \item $\mathbb{Z}/n\mathbb{Z}$ possède un élément neutre pour $+_{\mathbb{Z}/n\mathbb{Z}}$ : 
+      Soit $a \in \mathbb{Z}/n\mathbb{Z}$, on choisit $x \in \mathbb{Z}$ un représentant de classe tel que $\bar{x} = a$
+$$
+      a +_{\mathbb{Z}/n\mathbb{Z}} \bar{0} = \overline{x+_{\mathbb{Z}}0} = \bar{x} = a
+$$
+      Donc $\bar{0}$ est un élément neutre à droite, et par commutativité de $+_{\mathbb{Z}/n\mathbb{Z}}$ prouvée plus haut, $\bar{0}$ est aussi élément neutre à gauche.
+    \end{itemize}
+    Ainsi, $(\mathbb{Z}/n\mathbb{Z}, +_{\mathbb{Z}/n\mathbb{Z}})$ est un Groupe Abélien.
+  \end{itemize}  
+\end{question_kholle}
+
+
+\begin{question_kholle}[]{Dans un ensemble totalement ordonné, toute partie finie non vide possède un plus grand élément et un plus petit élément.}
+  Soit $(E, \preccurlyeq)$ un ensemble totalement ordonné, considérons pour tour $n \in \mathbb{N}^{*}$ la propriété.
+$$
+  \mathcal{H}_{n} : \text{toute partie de }E \text{ de cardinal }n \text{ admet un plus petit et un plus grand élément}
+$$
+  \begin{itemize}[label=$\star$]
+    \item Initialisation $n \leftarrow 1$
+    
+    Soit $A \in \mathcal{P}(E)$ fixée telle que $\lvert A \rvert = 1$
+$A$ est non vide, donc $\exists a \in A : A = \{ a \}$
+    
+$a$ est le plus petit et le plus grand élément, donc $\mathcal{H}_{1}$ est vraie.
+    
+    \item Hérédité
+    Soit $n \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{H}_{n}$ est vraie.
+    Soit $A \in \mathcal{P}(E)$ fixée quelconque tel que $\lvert A \rvert = n+1$
+$$
+    A \neq \emptyset \implies \exists a \in A : A = (A \setminus \{ a \}) \cup \{ a \}
+$$
+    Or, $\lvert A \setminus \{ a \} \rvert = n$ donc $\mathcal{H}_{n}$ s'applique et $A \setminus \{ a \}$ possède un plus grand et plus petit élément
+$$
+    \left\{ \begin{array}{ll}
+      m &= \min A \setminus \{ a \}  \\
+      M &= \max A \setminus \{ a \}
+    \end{array}\right.
+$$
+    \begin{itemize}[label=$\lozenge$]
+      \item Construisons le plus grand élément de $A$
+      \begin{itemize}[label=$\bullet$]
+        \item Supposons $M \preccurlyeq a$
+        D'une part $a \in A$
+        D'autre part
+        $$
+        \forall x \in A, \left. \begin{array}{ll}
+          \text{si }x = a, x \preccurlyeq a \text{ (réflexivité)} \\
+          \text{sinon } x \in A \setminus \{ a \} \implies x \preccurlyeq M \preccurlyeq a \implies x \preccurlyeq a
+        \end{array}\right\} \implies \forall x \in A, x \preccurlyeq a
+        $$
+        
+        Donc $A$ admet un plus grand élément, et c'est $a$.
+        
+        \item Sinon, si $M \succ a$, mais $M \in A$ et 
+        $$
+        \forall x \in A, \left. \begin{array}{ll}
+          \text{si }x = a, x \preccurlyeq M\\
+          \text{sinon } x \in A \setminus \{ a \} \implies x \preccurlyeq \max(A\setminus \{ a \}) =  M
+        \end{array}\right\} \implies \forall x \in A, x \preccurlyeq a
+        $$
+        Donc $A$ admet un plus grand élément, et c'est $M$
+      \end{itemize}
+      \item On procède de même pour construire le le plus petit élément de $A$ avec $m$.
+    \end{itemize}
+    Donc $\mathcal{H}_{n+1}$ est vraie.
+    Donc toute partie finie non vide d'un ensemble totalement ordonné possède un plus petit et un plus grand élément.
+  \end{itemize}
+  Étudions l'importance des hypothèses :
+  \begin{itemize}[label=$\star$]
+    \item Importance de la finitude de la partie :
+    
+    On sait qu'une partie infinie d'un ensemble totalement ordonné n'admet pas de plus grand élément : $[0, 1[$ dans $(\mathbb{R}, \leqslant)$, $\mathbb{N}$ dans $(\mathbb{R}, \leqslant)$.
+    \item Importance du caractère total de l'ordre : on connait des ensembles finis partiellement ordonnés qui n'ont pas de plus grand élément :
+    \begin{itemize}
+      \item $\{ 3, 12 \}$ dans $(\mathbb{R}, =)$ n'admet pas de plus grand élément
+      \item $\{ [1, 2], [3, 4] \}$ dans $(\mathcal{P}(\mathbb{R}), \subset)$ n'admet pas de plus grand élément
+      \item $\{ 2, 3 \}$ dans $(\mathbb{N}, |)$ non plus.
+    \end{itemize}
+  \end{itemize}
 \end{question_kholle}
 
 \begin{question_kholle}
   [\noindent Soit $(E, \leq)$ un ensemble ordonné, et $A$ une partie non-vide de $E$. \\
-    Si $A$ admet un plus grand élément alors $A$ admet une borne supérieure et $\sup{A} = \max{A}$. \\
-    Si $A$ admet une borne supérieure appartenant à elle-même alors $A$ admet un plus grand élément et $\max{A} = \sup{A}$.]
+  Si $A$ admet un plus grand élément alors $A$ admet une borne supérieure et $\sup{A} = \max{A}$. \\
+  Si $A$ admet une borne supérieure appartenant à elle-même alors $A$ admet un plus grand élément et $\max{A} = \sup{A}$.]
   {Si $A$ admet un plus grand élément c'est aussi sa borne supérieure. Si $A$ admet une borne supérieure dans $A$ c'est sont plus grand élément.}
-
+  
   Soient un tel ensemble $E$ et une telle partie $A$ et notons $M$ son plus grand élément. \\
   Posons l'ensemble des majorants de $A$, $M(A) = \{ m\in E \ | \ \forall a \in A, \ a \leq m\}$. \\
   Par définition :
   \[
-    \forall m \in M(A), \ M \leq m,
+  \forall m \in M(A), \ M \leq m,
   \]
   car $M\in A$, mais comme $M\in M(A)$, on a directement que $M = \min{M(A)} = \sup{A}$. \\
-
+  
   Pseudo-réciproquement, soit $A$ une partie de $E$ admettant une borne supérieure dans elle même, notons cette borne $S$. \\
   Comme $S \in M(A)$, par définition, $S$ est plus grand que tous les éléments de $A$ mais appartient à $A$, donc de tous les éléments de $A$, $S$ est le plus grand.
 \end{question_kholle}
 
 \begin{question_kholle}
   [\begin{equation}
-      \forall (a, b) \in \Z^2,
-      \exists ! (q, r) \in \Z \times \N :
-      \left\{ \begin{matrix}
-        a = b q + r \\
-        r \in {[\![} 0 ; |b|-1 {]\!]}
-      \end{matrix} \right.
-    \end{equation}]
+    \forall (a, b) \in \Z^2,
+    \exists ! (q, r) \in \Z \times \N :
+    \left\{ \begin{matrix}
+      a = b q + r \\
+      r \in {[\![} 0 ; |b|-1 {]\!]}
+    \end{matrix} \right.
+  \end{equation}]
   {Théorème de la division Euclidienne dans \Z}
-
+  
   \textit{Unicité} \;
   Soient deux tels entiers $(a,b) \in \Z^2$ et deux couples $((q,r),(q',r')) \in \left(\Z \times \N\right)^2$ tels que
   \begin{equation*}
@@ -2751,11 +3372,11 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \end{equation*}
   Directement,
   \[
-    b(q-q') = r'-r,
+  b(q-q') = r'-r,
   \]
   mais comme $-(|b|-1) \leqslant r' - r \leqslant |b| -1$, il vient en divisant par $|b|$ l'inégalité précédente :
   \[
-    -1 < q - q' < 1,
+  -1 < q - q' < 1,
   \]
   puisque $q$ et $q'$ sont dans $\Z$ leur différence est obligatoirement $0$, ainsi $q = q'$ ce qui implique $ r= r'$ et donc on a unicité de ladite écriture de $a$.
   \newline
@@ -2770,7 +3391,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   Posons $r = a - bq$. Par construction, $a = bq + r$ et comme $q = \max \Omega$ et $\Omega \subset \Z$, $q \in \Z$ donc $r \in \Z$.
   \\
   Par suite, $q \in \Omega$ donc $bq \leqslant a$ d'où $0 \leqslant r$. Et $q = \max \Omega$ donc $b(q+1) > a$ d'où $b > r$, c'est-à-dire, $r\in [\![ 0, |b| -1 ]\!]$.
-
+  
   Si $b< 1$, il suffit de prendre $q \leftarrow -q$ dans la preuve précédente.C'est donc l'existence de ladite écriture de $a$.
 \end{question_kholle}
 
@@ -2786,93 +3407,189 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   Soit $n \in \N$ fq tq $n \geqslant n_0$.
   \begin{equation*}
     \left. \begin{matrix}
-      u_n \in A \implies u_n \geqslant min A = u_{n_0} \\
+      u_n \in A \implies u_n \geqslant \min A = u_{n_0} \\
       u \text{ est décroissante et } n \geqslant n_0 \text{ donc } u_n \leqslant u_{n_0}
     \end{matrix}
     \right\} \implies u_n = u_{n_0}
   \end{equation*}
   Ainsi, $u$ est stationnaire.
 \end{question_kholle}
+
+\begin{question_kholle}[{
+  Soit $A \in \mathcal{P}(\mathbb{R})$ une partie non vide et majorée.
+  Soit $\sigma \in \mathbb{R}$
+$$
+  \sigma = \sup A \iff \left\{ \begin{array}{ll}
+    \forall a \in A, a \leqslant \sigma \\
+    \forall \varepsilon \in \mathbb{R}_{+}^{*}, \exists a \in A : \sigma - \varepsilon < a \leqslant \sigma 
+  \end{array}\right.
+$$
+  }]{Caractérisation par les $\varepsilon$ de la borne supérieure}
+  
+  \begin{itemize}[label = $\star$]
+    \item Supposons $\sigma = \sup A$
+    \begin{itemize}[label = $\bullet$]
+      \item Par définition $\sup A = \min M(A)$ donc $\sigma \in M(A)$ donc $\forall a \in A, a \leqslant \sigma$
+      
+      \item Soit $\varepsilon >0$ fixé quelconque
+      
+      \begin{align*}
+        \sigma = \min M(A) &\iff \sigma - \varepsilon \not\in M(A) (\text{ sinon } \sigma - \varepsilon \geqslant \min M(A)= \sigma \implies \varepsilon \leqslant 0) \\
+        &\iff \exists a \in A: \sigma - \varepsilon < a \leqslant \sigma
+      \end{align*} 
+      
+    \end{itemize}
+    
+    \item Réciproquement, supposons
+$$
+    \left\{ \begin{array}{ll}
+      \forall a \in A, a \leqslant \sigma \\
+      \forall \varepsilon \in \mathbb{R}_{+}^{*}, \exists a \in A : \sigma - \varepsilon < a \leqslant \sigma 
+    \end{array}\right.
+$$
+    \begin{itemize}[label = $\bullet$]
+      \item D'après la première propriété, $\sigma \in M(A)$
+      \item Montrons que $\sigma$ est le plus petit des minorants par l'absurde en supposant qu'il existe $M \in M(A)$ tel que $M < \sigma$.
+      On a $\sigma - M >0$ donc on peut appliquer la deuxième propriété pour $\varepsilon \leftarrow \sigma - M$
+$$
+      \exists a \in A : \sigma - (\sigma - M )<a 
+$$
+      Fixons un tel $a$.
+      On a donc trouvé un $a \in A$ tel que $M < a$ ce qui contredit le fait que $M$ soit un majorant de $A$.
+      Donc il n'existe pas de majorant plus petit que $\sigma$.
+      Donc $A$ admet une borne supérieure qui est $\sigma$.
+    \end{itemize}
+  \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[]{Montrer que si $A$ et $B$ sont deux parties non vides majorées de $\R$, alors $\sup(A+B) = \sup A + \sup B$}
+  Soient $A$ et $B$ deux parties non vides et majorées de $\mathbb{R}$. On note $A+B$ l'ensemble
+$$
+  A+B = \{ a+b \mid (a, b) \in A\times B \}
+$$
+  C'est aussi une partie non vide de $\mathbb{R}$.
+  
+  Soit $x \in (A+B)$ fixé quelconque. Par définition de $A+B$, $\exists(a, b) \in A\times B : x=a+b$
+  
+$$
+  \left. \begin{array}{ll}
+    a \leqslant \sup A\\
+    b \leqslant \sup B
+  \end{array}\right\} \implies x = a+b \leqslant \sup A + \sup B
+$$
+  On a donc montré que $\sup A+\sup B$ est un majorant de $A+B$, donc $A+B$ admet un majorant, donc $A+B$ est une partie non vide majorée de $\mathbb{R}$, donc $A+B$ admet une borne supérieure.
+  
+  Par définition de la borne supérieure, car $\sup(A+B)$ est le plus petit élément de l'ensemble des majorants :
+$$\sup(A+B) \leqslant \sup A + \sup B$$
+  
+  De plus $\sup(A+B)$ est un majorant de $A+B$ donc, pour $(a, b) \in A\times B$ fixés, on a
+$$
+  a+b \leqslant \sup (A+B) \iff a \leqslant \sup(A+B) -b
+$$
+  en relâchant le caractère fixé de $a$, on a
+$$
+  \forall a \in A, a\leqslant \sup(A+B) - b
+$$
+  donc $\sup(A+B) - b$ est un majorant de $A$, donc plus petit que $\sup A$, d'où
+  
+$$
+  \sup A \leqslant \sup(A+B) - b \iff b \leqslant \sup(A+B) - \sup A
+$$
+  Donc en relâchant le caractère fixé de $b$ on a
+$$
+  \forall b \in B, b\leqslant \sup(A+B) - \sup A
+$$
+  donc $\sup(A+B) - \sup A$ est un majorant de $B$ donc plus petit que $\sup B$
+  d'où
+  
+$$
+  \sup B \leqslant \sup(A+B) - \sup A \iff \sup A + \sup B \leqslant \sup (A+B)
+$$
+  Donc par double inégalité
+$$
+  \sup A + \sup B = \sup (A+B)
+$$
+  
+\end{question_kholle}
 \pagebreak\section{Semaine 10}
 
 \begin{question_kholle}
   [\noindent Soient $(A, B) \in \mathcal{P}(\R)^2$ fq. \\
-    \textit{Définition de la densité}
-    \begin{align}
-      A \text{ est dense dans } B
-      \text{ si } \left\{ \begin{array}{ll}
-                            A \subset B \\
-                            \mathrm{et} \\
-                            \forall (u,v) \in \R^2, B \cap {]}u;v{[} \neq \emptyset \implies A \cap  {]}u;v{[} \neq \emptyset
-                          \end{array} \right.
-    \end{align}
-    \textit{Caractérisation de la densité par les $\varepsilon$}
-    \begin{align}
-      A \text{ est dense dans } B
-      \iff \left\{ \begin{array}{ll}
-                     A \subset B \\
-                     \mathrm{et} \\
-                     \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon
-                   \end{array} \right.
-    \end{align}
+  \textit{Définition de la densité}
+  \begin{align}
+    A \text{ est dense dans } B
+    \text{ si } \left\{ \begin{array}{ll}
+      A \subset B \\
+      \mathrm{et} \\
+      \forall (u,v) \in \R^2, B \cap {]}u;v{[} \neq \emptyset \implies A \cap  {]}u;v{[} \neq \emptyset
+    \end{array} \right.
+  \end{align}
+  \textit{Caractérisation de la densité par les $\varepsilon$}
+  \begin{align}
+    A \text{ est dense dans } B
+    \iff \left\{ \begin{array}{ll}
+      A \subset B \\
+      \mathrm{et} \\
+      \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon
+    \end{array} \right.
+  \end{align}
   ]
   {Caractérisation de la densité d’une partie $A$ de \R dans une partie $B$ de \R la contenant avec des $\varepsilon$.}
-
+  
   \textit{Montrons la caractérisation de la densité}\\
   \emph{Sens Direct} Supposons $A$ dense dans $B$
   \begin{itemize}[label=\textemdash]
     \item Par déf $A \subset B$
     \item Soit $b \in B$ et $\varepsilon \in \R_+^*$ fq
-
-          Appliquons le (ii) de la déf de Densité pour $u \leftarrow b - \varepsilon$ et $v \leftarrow b + \varepsilon$
-          $$B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset \implies A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$$
-            Or, $B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset$ est vraie
-              donc $A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$
-
-              Ce qui permet de choisir $a \in A \cap ]b - \varepsilon,  b + \varepsilon[$.
-              Un tel $a$ vérifie $a \in A$ et $a \in ]b - \varepsilon,  b + \varepsilon[ \iff |b-a| < \varepsilon$
+    
+    Appliquons le (ii) de la déf de Densité pour $u \leftarrow b - \varepsilon$ et $v \leftarrow b + \varepsilon$
+    $$B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset \implies A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$$
+    Or, $B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset$ est vraie
+    donc $A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$
+    
+    Ce qui permet de choisir $a \in A \cap ]b - \varepsilon,  b + \varepsilon[$.
+    Un tel $a$ vérifie $a \in A$ et $a \in ]b - \varepsilon,  b + \varepsilon[ \iff |b-a| < \varepsilon$
   \end{itemize}
   \bigbreak
   \noindent \emph{Sens réciproque} Supposons $\left\{\begin{array}{ll} A \subset B \\\mathrm{et}\\ \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon \end{array}\right.$
-
+  
   \begin{itemize}
     \item On a donc $A \subset B$
     \item Soient $(u, v) \in \R^2$ fq tq $B \cap ]u, v[ \neq \emptyset$
-
-                  Soit $b \in B \cap ]u, v[$ fq.
-                  Appliquons l'hypothèse pour $b\leftarrow b$ et $\varepsilon \leftarrow \min\{v - b, b - u\}$, qui est autorisé $v-b$ et $b-u$ sont positifs
-
-                  Donc $\exists a \in A: | b - a| < \varepsilon $
-
-                  Fixons un tel a, alors:
-                  $$
-                    b-\varepsilon < a < b + \varepsilon
-                  $$
-
-                  Donc $$
-                    \left\{\begin{array}{ll}
-                      a < b + \varepsilon = b + \underbrace{\min\{v - b, b - u\}}_{\leqslant v - b} \leqslant b + v - b = v \\ \mathrm{et}\\
-                      a > b - \varepsilon = b - \underbrace{\min\{v - b, b - u\}}_{\leqslant b - u} \geqslant b - (b - u) = u
-                    \end{array}\right.
-                  $$
-
-                  Donc $a \in ]u, v[$.
+    
+    Soit $b \in B \cap ]u, v[$ fq.
+    Appliquons l'hypothèse pour $b\leftarrow b$ et $\varepsilon \leftarrow \min\{v - b, b - u\}$, qui est autorisé $v-b$ et $b-u$ sont positifs
+    
+    Donc $\exists a \in A: | b - a| < \varepsilon $
+    
+    Fixons un tel a, alors:
+    $$
+    b-\varepsilon < a < b + \varepsilon
+    $$
+    
+    Donc $$
+    \left\{\begin{array}{ll}
+      a < b + \varepsilon = b + \underbrace{\min\{v - b, b - u\}}_{\leqslant v - b} \leqslant b + v - b = v \\ \mathrm{et}\\
+      a > b - \varepsilon = b - \underbrace{\min\{v - b, b - u\}}_{\leqslant b - u} \geqslant b - (b - u) = u
+    \end{array}\right.
+    $$
+    
+    Donc $a \in ]u, v[$.
   \end{itemize}
   Donc $A \cap ]u, v[ \neq \emptyset$
-
+  
 \end{question_kholle}
 
 \begin{question_kholle}
   [\begin{equation}
-      \forall (a, b) \in \R \times \R^*,
-      \exists ! (q, r) \in \Z \times \R :
-      \left\{ \begin{matrix}
-        a = b q + r \\
-        r \in [0;|b|[
-      \end{matrix} \right.
-    \end{equation}]
+    \forall (a, b) \in \R \times \R^*,
+    \exists ! (q, r) \in \Z \times \R :
+    \left\{ \begin{matrix}
+      a = b q + r \\
+      r \in [0;|b|[
+    \end{matrix} \right.
+  \end{equation}]
   {Théorème de la division pseudo-euclidienne dans \R}
-
+  
   \textit{Unicité} \;
   Soient deux tels entiers $(a,b) \in \R^2$ et deux couples $((q,r),(q',r')) \in \left(\Z \times \R\right)^2$ tels que
   \begin{equation*}
@@ -2888,11 +3605,11 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \end{equation*}
   Directement,
   \[
-    b(q-q') = r'-r,
+  b(q-q') = r'-r,
   \]
   mais comme $-|b| < r' - r < |b|$, il vient en divisant par $|b|$ l'inégalité précédente :
   \[
-    -1 < q - q' < 1,
+  -1 < q - q' < 1,
   \]
   puisque $q$ et $q'$ sont dans $\Z$ leur différence est obligatoirement $0$, ainsi $q = q'$ ce qui implique $ r= r'$ et donc on a unicité de ladite écriture de $a$.
   \newline
@@ -2907,28 +3624,28 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   Posons $r = a - bq$. Par construction, $a = bq + r$ et comme $q = \max \Omega$ et $r \in \R$.
   \\
   Par suite, $q \in \Omega$ donc $bq \leqslant a$ d'où $0 \leqslant r$. Et $q = \max \Omega$ donc $b(q+1) > a$ d'où $b > r$, c'est-à-dire, $r \in [ 0, |b| [$.
-
+  
   Si $b < 0$, il suffit de prendre $q \leftarrow -q$ dans la preuve précédente.C'est donc l'existence de ladite écriture de $a$.
 \end{question_kholle}
 
 \begin{question_kholle}
   {\Q est dense dans \R et $\R \setminus \Q$ est aussi dense dans \R}
-
+  
   Soit $x \in \R$ fq.
   Posons $\forall n \in \N, a_n = \frac{\lfloor2^n x\rfloor}{2^n}$. \\
   Soit $n \in \N$ fq. \\
   \begin{itemize}
     \item $a_n \in \Q$ car $\lfloor2^n x\rfloor \in \Z$ et $2^n \in \N$.
     \item \begin{equation*}
-            a_n = \frac{\lfloor2^n x\rfloor}{2^n}
-            \implies \frac{2^n x - 1}{2^n} \leqslant a_n \leqslant \frac{2^n x}{2^n}
-            \implies x - \frac{1}{2^n} \leqslant a_n \leqslant x
-          \end{equation*}
-          Or $\nicefrac{1}{2^n} \arrowlim{n}{+\infty} 0$ donc d'après le théorème d'existence de limite par encadrement, \\ $a_n \arrowlim{n}{+\infty} x$.
+      a_n = \frac{\lfloor2^n x\rfloor}{2^n}
+      \implies \frac{2^n x - 1}{2^n} \leqslant a_n \leqslant \frac{2^n x}{2^n}
+      \implies x - \frac{1}{2^n} \leqslant a_n \leqslant x
+    \end{equation*}
+    Or $\nicefrac{1}{2^n} \arrowlim{n}{+\infty} 0$ donc d'après le théorème d'existence de limite par encadrement, \\ $a_n \arrowlim{n}{+\infty} x$.
   \end{itemize}
   Donc d'après la caractérisation séquentielle de la densité, \Q est dense dans \R.
   \bigbreak
-
+  
   \noindent Soit $x \in \R$ fq. \\
   Alors $x + \sqrt{2} \in \R$.
   D'après la démonstration précédente, $\exists b \in \Q^\N : b_n \arrowlim{n}{+\infty} x + \sqrt{2}$. \\
@@ -2938,108 +3655,283 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \begin{itemize}
     \item $c_n \in \R\setminus\Q$ car $b_n \in \Q$ et $\sqrt{2} \in \R \setminus \Q$.
     \item \begin{equation*}
-            \left. \begin{matrix}
-              b_n \arrowlim{n}{+\infty} x + \sqrt{2} \\
-              c_n = b_n - \sqrt{2}
-            \end{matrix} \right\}
-            \implies c_n \arrowlim{n}{+\infty} x
-          \end{equation*}
+      \left. \begin{matrix}
+        b_n \arrowlim{n}{+\infty} x + \sqrt{2} \\
+        c_n = b_n - \sqrt{2}
+      \end{matrix} \right\}
+      \implies c_n \arrowlim{n}{+\infty} x
+    \end{equation*}
   \end{itemize}
   Donc d'après la caractérisation séquentielle de la densité, $\R\setminus \Q$ est dense dans \R.
 \end{question_kholle}
 
 \begin{question_kholle}[
-    Soit u $\in \K ^ \N, (\ell_1, \ell_2) \in \K ^2$
-    Si u converge vers $\ell_1$ et $\ell_2$, alors $\ell_1 = \ell_2$
+  Soit u $\in \K ^ \N, (\ell_1, \ell_2) \in \K ^2$
+  Si u converge vers $\ell_1$ et $\ell_2$, alors $\ell_1 = \ell_2$
   ]{Preuve de l'unicité de la limite d'une suite convergente}
   Par l'absurde, supponsons que $u$ converge vers $\ell_1$ et $\ell_2$, et $\ell_1 \neq \ell_2$.
   On prendra $\varepsilon_0 = \varepsilon_1 = \varepsilon_2$ assez petit pour que les tubes soient disjoints.\\
   Posons donc $\varepsilon_0 = \frac{|\ell_1 - \ell_2|}{3}$
   \begin{itemize}
     \item Appliquons la définition de la convergence de u vers $\ell_1$, pour $\varepsilon \leftarrow \varepsilon_0$, ce qui est autorisé car $\varepsilon_0 \in \R_+^*$
-          \begin{equation}\label{eq:1}
-            \exists N_1 \in \N : \forall n \in \N, n \geqslant N_1 \implies |u_n - \ell_1| \leqslant \varepsilon_0
-          \end{equation}
-          \begin{equation}\label{eq:2}
-            \exists N_2 \in \N : \forall n \in \N, n \geqslant N_2 \implies |u_n - \ell_2| \leqslant \varepsilon_0
-          \end{equation}
-          Fixons de tels $N_1$ et $N_2$.
+    \begin{equation}\label{eq:1}
+      \exists N_1 \in \N : \forall n \in \N, n \geqslant N_1 \implies |u_n - \ell_1| \leqslant \varepsilon_0
+    \end{equation}
+    \begin{equation}\label{eq:2}
+      \exists N_2 \in \N : \forall n \in \N, n \geqslant N_2 \implies |u_n - \ell_2| \leqslant \varepsilon_0
+    \end{equation}
+    Fixons de tels $N_1$ et $N_2$.
     \item Posons $n_0 = N_1 + N_2$
-          \begin{itemize}
-            \item $n_0 \geqslant N_1$, donc (\ref{eq:1}) s'applique: $|u_{n_0} - \ell_1| \leqslant \varepsilon_0$
-            \item $n_0 \geqslant N_2$, donc (\ref{eq:2}) s'applique: $|u_{n_0} - \ell_2| \leqslant \varepsilon_0$
-          \end{itemize}
+    \begin{itemize}
+      \item $n_0 \geqslant N_1$, donc (\ref{eq:1}) s'applique: $|u_{n_0} - \ell_1| \leqslant \varepsilon_0$
+      \item $n_0 \geqslant N_2$, donc (\ref{eq:2}) s'applique: $|u_{n_0} - \ell_2| \leqslant \varepsilon_0$
+    \end{itemize}
     \item \begin{align*}
-            |\ell_1 - \ell_2| & = |\ell_1 - u_{n_0} + u_{n_0} - \ell_2|                                                                                         \\
-                              & \leqslant \underbrace{|\ell_1 - u_{n_0}|}_{\leqslant \varepsilon_0} + \underbrace{|u_{n_0} - \ell_2|}_{\leqslant \varepsilon_0} \\
-                              & \leqslant 2 \frac{|\ell_1 - \ell_2|}{3}                                                                                         \\
-            \implies 1        & \leqslant \frac 2 3
-          \end{align*}
-          Contradiction
+      |\ell_1 - \ell_2| & = |\ell_1 - u_{n_0} + u_{n_0} - \ell_2|                                                                                         \\
+      & \leqslant \underbrace{|\ell_1 - u_{n_0}|}_{\leqslant \varepsilon_0} + \underbrace{|u_{n_0} - \ell_2|}_{\leqslant \varepsilon_0} \\
+      & \leqslant 2 \frac{|\ell_1 - \ell_2|}{3}                                                                                         \\
+      \implies 1        & \leqslant \frac 2 3
+    \end{align*}
+    Contradiction
   \end{itemize}
 \end{question_kholle}
-
+\begin{question_kholle}[{
+  Soient $(x, y) \in \R^2$ tels que $x \leqslant y$. $$[x, y] = \{z \in \R \mid x \leqslant z \leqslant y \} = \{tx + (1-t)y \mid t \in [0, 1]\}$$
+  }]{Description d'un segment de la droite réelle par les barycentres à coefficients positifs.}
+  Le résultat est immédiat pour $x = y$ : $\forall t \in [0, 1], xt+(1-t)x = xt - xt +x =x = y$
+  
+  Supposons que $x <y$. On procède par double inclusion.
+  \begin{itemize}[label=$\star$]
+    \item Soit $z \in \{ xt+(1-t)y \mid t \in [0, 1] \}$.
+    
+    $\exists t \in [0, 1] : z = xt+(1-t)y$
+    
+    Puisque $t \in [0, 1]$, $t \geqslant 0$ et $1-t \geqslant 0$.
+    Donc
+    
+    \begin{align*}
+      x < y \implies x\leqslant y &\underset{ \substack{t \geqslant 0 \\1-t \geqslant 0} }{ \implies } \left\{ \begin{array}{ll}
+        tx \leqslant ty \\
+        (1-t)x \leqslant (1-t)y 
+      \end{array}\right. \\
+      &\implies \left\{ \begin{array}{ll}
+        tx + (1-t)y \leqslant ty + (1-t) y\\
+        tx + (1-t)x  \leqslant tx + (1-t)y
+      \end{array}\right. \\
+      & \implies \left\{ \begin{array}{ll}
+        z \leqslant y \\
+        x \leqslant z 
+      \end{array}\right. \\
+      & \implies z \in[x, y]
+    \end{align*}
+    
+    
+    
+    \item Réciproquement, soit $z \in[x, y]$. Cherchons le $t\in[0, 1]$ tel que $tx + (1-t)y = z$.
+    
+$$
+    tx + (1-t)y = z \iff t(x-y) = z-y \iff t = \frac{z-y}{x-y} = \frac{y-z}{y-x} \text{ (autorisé car }x<y \implies x-y \neq 0 \text{)}
+$$
+    
+    Vérifions si ce $t$ convient : posons $t = \frac{y-z}{y-x}$. 
+    \begin{itemize}[label=$\bullet$]
+      \item Vérifions d'abord que $t \in [0,1]$
+      
+$$
+      x\leqslant z \leqslant y
+      \implies x-y \leqslant z-y \leqslant 0 \implies y-x\geqslant y-z \geqslant 0 \implies 1 \geqslant \frac{y-z}{y-x} \geqslant 0 \implies 0\leqslant t \leqslant 1
+$$
+      \item Calculons
+$$
+      tx+(1-t)y = \frac{y-z}{y-x} x + \left( 1- \frac{y-z}{y-x} \right)y = \frac{y-z}{y-x}x + \frac{z-x}{y-x}y = \frac{yx-zx+zy - xy}{y-x} =  z
+$$
+      Donc ce $t$ convient.
+    \end{itemize}
+    Donc $z \in \{ xt+(1-t)y \mid t \in [0, 1] \}$.
+  \end{itemize}
+  Donc $\{ xt+(1-t)y \mid t \in [0, 1] \} = [x, y]$.
+\end{question_kholle}
 \begin{question_kholle}{Une suite convergente est bornée}
-
+  
   Soit $u \in \mathbb{K}^{\mathbb{N}}$ convergente.
   Posons $\ell = \lim u$
   Appliquons la définition de la convergence pour $\varepsilon \leftarrow 1$
   $$
-    \exists N_{1}\in \mathbb{N}: \forall n \in \mathbb{N}, n \geqslant N_{1} \implies |u_{n}-\ell| \leqslant 1
+  \exists N_{1}\in \mathbb{N}: \forall n \in \mathbb{N}, n \geqslant N_{1} \implies |u_{n}-\ell| \leqslant 1
   $$
   Fixons un tel $N_{1}$
   Posons alors $M = \max\left\{ |u_{0}|, |u_{1}|, |u_{2}| \dots |u_{N_{1}}|, |\ell|+1 \right\}$, qui est bien défini, car toute partie finie, non vide d'un ensemble totalement ordonné (ici $(\mathbb{R}, \leqslant)$) admet un pgE.
-
+  
   Soit $n \in \mathbb{N}$ fq.
   \begin{itemize}
     \item Si $n \in [[0, N_{1}]], |u_{n}| \in \left\{ |u_{0}|, |u_{1}|, |u_{2}| \dots |u_{N_{1}}|, |\ell|+1 \right\}$ donc $|u_{n}| \leqslant M$
     \item Sinon,
   \end{itemize}
-
+  
   \begin{align*}
     n> N_{1} & \implies |u_{n} - \ell| \leqslant 1              \\
-             & \implies |u_{n}| - |\ell| \leqslant 1            \\
-             & \implies |u_{n}| \leqslant 1+ |\ell| \leqslant M
+    & \implies |u_{n}| - |\ell| \leqslant 1            \\
+    & \implies |u_{n}| \leqslant 1+ |\ell| \leqslant M
   \end{align*}
-
+  
   Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
+\end{question_kholle}
+\begin{question_kholle}[{Soit $A \in \mathcal{P}(\R)$ non vide et majorée. Soit $\sigma \in \R$
+  $$
+  \sigma = \sup A \iff \left\{ \begin{array}{ll}
+    \sigma \in M(A)  \\
+    \exists (a_{n})_{n \in \N} \in A^{\N} : \lim_{n \to +\infty} a_n = \sigma
+  \end{array}\right.
+  $$
+  }]{Caractérisation séquentielle de la borne supérieure}
+  \begin{itemize}[label=$\star$]
+    \item Supposons que $\sigma = \sup A$.
+    \begin{itemize}[label=$\bullet$]
+      \item Par définition d'une borne sup, $\sigma \in M(A)$.
+      \item Soit $n \in \N$. Appliquons la caractérisation de la borne sup par les epsilon pour $\varepsilon \leftarrow \frac{1}{2^{n}}$.
+$\exists c \in A : \sigma - \frac{1}{2^{n}} < c \leqslant \sigma$.
+      Fixons un tel $c$ et notons le $a_{n}$. En relâchant le caractère fixé de $n$, on a crée la suite $(a_{n})_{n \in \N}$ telle que
+$$
+      \forall n \in \N, \sigma - \frac{1}{2^{n}} < a_{n}\leqslant \sigma
+$$
+      Cette suite converge vers $\sigma$ par encadrement.
+    \end{itemize}
+    \item Réciproquement, supposons que $\sigma \in M(A)$ et qu'il existe une suite $(a_{n})_{n \in \N}$ d'éléments de $A$ qui converge vers $\sigma$. Montrons que $\sigma = \sup A$ d'après la caractérisation par les $\varepsilon$.
+    \begin{itemize}[label=$\bullet$]
+      \item$\sigma \in M(A)$
+      \item Soit $\varepsilon>0$. Appliquons la définition de la convergence de $a$ pour $\varepsilon \leftarrow \frac{\varepsilon}{2}$
+      
+$$
+      \exists N \in \N : \forall n \geqslant N, \lvert a_{n} - \sigma \rvert  \leqslant \frac{\varepsilon}{2} \implies \sigma - \frac{\varepsilon}{2}\leqslant a_{n}
+$$
+      En particulier $a_{N} \in A$ vérifie
+$$
+      \sigma - \varepsilon < \sigma - \frac{\varepsilon}{2} \leqslant a_{N} \underbrace{ \leqslant }_{ \sigma \in M(A) } \sigma
+$$
+      Ce qui permet de conclure.
+      Donc $\sigma = \sup A$.
+    \end{itemize}
+  \end{itemize}
 \end{question_kholle}
 \pagebreak\section{Semaine 11}
 
+\begin{question_kholle}{Convergence d'une suite si ses sous-suites paires et impaires convergent}
+  Soit $(a_{n})_{n \in \N}$ telle que $(a_{2n})_{n \in \N}$ et $(a_{2n+1})_{n \in \N}$ convergent vers la même limite $\ell$.
+  Montrons que $a$ converge vers $\ell$.
+  
+  Soit $\varepsilon>0$. On veut construire un $N \in \N$ tel que $\forall n \geqslant N, \lvert a_{n} - \ell \rvert \leqslant \varepsilon$
+  
+  Appliquons la définition de la limite de $(a_{2n})_{n \in \N}$ et $(a_{2n+1})_{n \in \N}$
+  
+  \begin{align*}
+    \exists N_{1} \in \N : \forall n \geqslant N_{1}, \lvert a_{2n} - \ell\rvert  \leqslant \varepsilon \\
+    \exists N_{2} \in \N : \forall n \geqslant N_{2}, \lvert a_{2n+1} - \ell  \rvert \leqslant \varepsilon
+  \end{align*}
+  \begin{figure}[H]
+    
+    \centering
+    \begin{tikzpicture}
+      \draw[thick, dashed] (0.5,2) -- (10,2) node[above left] {$\ell$};
+      
+      \draw[dotted, red] (0.5,2.5) -- (10,2.5) node[right] {$\ell + \varepsilon$};
+      \draw[dotted, red] (0.5,1.5) -- (10,1.5) node[right] {$\ell - \varepsilon$};
+      
+      \foreach \x in {0.5, 1.5, 2.5, 3.5} {
+      \node[circle, fill=blue, inner sep=1.5pt] at (\x, {1 + 0.8*rnd}) {}; % Odd terms
+      }
+      \foreach \x in {1, 2, 3, 4} {
+      \node[circle, fill=green, inner sep=1.5pt] at (\x, {1 + 1.8*rnd}) {}; % Even terms
+      }
+      
+      \node[circle, fill=green, inner sep=1.5pt] at (5, 1) {};
+      
+      \node[below] at (4.5,0) {$2N_1$};
+      \draw[thick, dashed, blue] (4.5, 0) -- (4.5, 2.5) {};
+      
+      \node[below] at (6,0) {$2N_2 + 1$};
+      \draw[thick, dashed, green] (6, 0) -- (6, 2.5) {};
+      
+      \foreach \x in {4.5, 5.5, 6.5, 7.5, 8.5} {
+      \node[circle, fill=blue, inner sep=1.5pt] at (\x, {1.8 + 0.4*rnd}) {};
+      }
+      
+      \foreach \x in { 6, 7, 8} {
+      \node[circle, fill=green, inner sep=1.5pt] at (\x, {1.8 + 0.4*rnd}) {};
+      }
+      
+      \draw[->] (0,0) -- (10.5,0) node[right] {$n$};
+      \node[below] at (0.5,0) {$0$};
+      
+      \draw[->] (0.5,0) -- (0.5, 3) node[right] {$a_n$};
+      
+      \draw[<->, red] (10,2.5) -- (10,1.5);
+      \node[right, red] at (10,2) {$\varepsilon$};
+      
+    \end{tikzpicture}
+    \caption{Les termes pairs et impairs sont contenus dans un voisinnage de $\ell$ après certains rangs}
+  \end{figure}
+  
+  Posons $N = \max(2N_{1}, 2N_{2}+1)$ et vérifions que ce rang convient.
+  Soit $n \in \N$ tel que $n \geqslant N$. 
+  \begin{itemize}[label=$\star$]
+    \item Si $n$ est pair, $\exists p \in \N :$ $n = 2p$
+$$
+    n\geqslant N \geqslant 2N_{1} \implies 2p \geqslant 2N_{1} \implies p \geqslant N_{1}
+$$
+    Donc d'après la définition de la convergence de $(a_{2n})_{n \in \N}$, on a
+$$
+    \lvert a_{2p} - \ell \rvert  \leqslant \varepsilon \implies \lvert a_{n} - \ell  \rvert  \leqslant \varepsilon
+$$
+    
+    \item Si $n$ est impair, $\exists p \in \N : n = 2p +1$
+$$
+    n \geqslant N \geqslant 2N_{2}+1 +\implies 2p+1 \geqslant 2N_{2} + 1 \implies p \geqslant N_{2}
+$$
+    Donc d'après la définition de la convergence de $(a_{2n+1})_{n \in \N}$, on a 
+$$
+    \lvert a_{2p+1} - \ell\rvert  \leqslant \varepsilon \implies \lvert a_{n} - \ell \rvert \leqslant \varepsilon
+$$
+  \end{itemize}
+  Donc $\lvert a_{n} - \ell  \rvert\leqslant \varepsilon$
+  Donc $a$ tend vers $\ell$.
+  
+\end{question_kholle}
+\textbf{Remarque} Si les deux suites ne convergent pas vers la même limite, comme pour $((-1)^{n})_{n \in \N}$, la suite n'admet pas de limite.
+
 \begin{question_kholle}
   [Soient $(A,B) \in (\mathcal{P}(\R) \setminus \{\varnothing\})^{2}$. Montrons que :
-    \\
-    $$A \text{ est dense dans } B \iff \left\{ \begin{array}{l}
-        A \subset B \\
-        \forall b \in B, \exists(a_{n}) \in A^{\N} : (a_{n}) \text{ converge vers }b
-      \end{array}\right. $$
+  \\
+  $$A \text{ est dense dans } B \iff \left\{ \begin{array}{l}
+    A \subset B \\
+    \forall b \in B, \exists(a_{n}) \in A^{\N} : (a_{n}) \text{ converge vers }b
+  \end{array}\right. $$
   ]
   {Caractérisation séquentielle de la densité.}
-
+  
   Sens indirect : supposons $A \subset B$ et $\forall b \in B, \exists(a_{n}) \in A^{\N} : (a_{n}) \text{ converge vers }b$ :\\
   \begin{itemize}
     \item[$\star$] $A \subset B$ par hypothèse.
     \item[$\star$] Montrons que $\forall b \in B, \forall \varepsilon \in \R^{*}_{+}, \exists a \in A : |b - a| < \varepsilon$ (on utilise la caractérisation de la densité avec les $\varepsilon$) \\
-          Soient $b \in B$ et $\varepsilon \in \R^{*}_{+}$ fixés quelconques : \\
-          Par hypothèse appliquée pour $b \leftarrow b$ : $\exists(a_{n}) \in A^{\N} : a_{n} \underset{n \to +\infty}{\longrightarrow}b$ \\
-          Appliquons la définition de la convergence de $(a_{n})$ vers $b$ pour $\varepsilon \leftarrow \frac{\varepsilon}{2}$ : \\
-          $$\exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow |a_{n} - b| \leqslant \frac{\varepsilon}{2}$$
-          Fixons un tel N : \\
-          En particulier, $a_{N} \in A$ et $|a_{N} - b| \leqslant \frac{\varepsilon}{2} \leqslant \varepsilon$ \\
-          Donc $A$ est dense dans $B$.
+    Soient $b \in B$ et $\varepsilon \in \R^{*}_{+}$ fixés quelconques : \\
+    Par hypothèse appliquée pour $b \leftarrow b$ : $\exists(a_{n}) \in A^{\N} : a_{n} \underset{n \to +\infty}{\longrightarrow}b$ \\
+    Appliquons la définition de la convergence de $(a_{n})$ vers $b$ pour $\varepsilon \leftarrow \frac{\varepsilon}{2}$ : \\
+    $$\exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow |a_{n} - b| \leqslant \frac{\varepsilon}{2}$$
+    Fixons un tel N : \\
+    En particulier, $a_{N} \in A$ et $|a_{N} - b| \leqslant \frac{\varepsilon}{2} \leqslant \varepsilon$ \\
+    Donc $A$ est dense dans $B$.
   \end{itemize}
-
+  
   Sens direct : supposons $A$ dense dans $B$ : \\
   \begin{itemize}
     \item[$\star$] Par définition, $A \subset B$
     \item[$\star$] Soit $b \in B$ fixé quelconque. \\
-          Soit $n \in \N$ fixé quelconque :  \\
-          Appliquons la caractérisation de la densité par les $\varepsilon$ pour $\varepsilon \leftarrow \frac{1}{2^{n}}$ (autorisé car $\frac{1}{2^{n}} > 0$), et $b \leftarrow b$ :
-          $$\exists a \in A : |a - b| \leqslant \frac{1}{2^{n}}$$
-          Notons $a_{n}$ un tel élément. Nous venons de construire $(a_{n})_{n \in \N} \in A^{\N}$ vérifiant : \\
-          $\forall n \in \N, |a_n - b| \leqslant \frac{1}{2^{n}}$ \\
-          Or : $\underset{n \to +\infty}{\lim} \frac{1}{2^{n}} = 0$ \\
-          Ainsi, d'après le théorème sans nom, $(a_{n})_{n \in \N}$ converge vers $b$.
+    Soit $n \in \N$ fixé quelconque :  \\
+    Appliquons la caractérisation de la densité par les $\varepsilon$ pour $\varepsilon \leftarrow \frac{1}{2^{n}}$ (autorisé car $\frac{1}{2^{n}} > 0$), et $b \leftarrow b$ :
+    $$\exists a \in A : |a - b| \leqslant \frac{1}{2^{n}}$$
+    Notons $a_{n}$ un tel élément. Nous venons de construire $(a_{n})_{n \in \N} \in A^{\N}$ vérifiant : \\
+    $\forall n \in \N, |a_n - b| \leqslant \frac{1}{2^{n}}$ \\
+    Or : $\underset{n \to +\infty}{\lim} \frac{1}{2^{n}} = 0$ \\
+    Ainsi, d'après le théorème sans nom, $(a_{n})_{n \in \N}$ converge vers $b$.
   \end{itemize}
 \end{question_kholle}
 
@@ -3047,82 +3939,82 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   [Soit $u \in \R^\N$ une suite monotone :
   {\begin{enumerate}
     \item Si $u$ est croissante
-          \begin{enumerate}[label=($\roman*$)]
-            \item Soit $u$ est majorée, et dans ce cas, $\lim u = \sup\{ u_k | k \in \N \}$
-            \item Soit $u$ n'est pas bornée, et dans ce cas, $u$ diverge vers $+\infty$.
-          \end{enumerate}
+    \begin{enumerate}[label=($\roman*$)]
+      \item Soit $u$ est majorée, et dans ce cas, $\lim u = \sup\{ u_k | k \in \N \}$
+      \item Soit $u$ n'est pas bornée, et dans ce cas, $u$ diverge vers $+\infty$.
+    \end{enumerate}
     \item Si $u$ est décroissante :
-          \begin{enumerate}[label=($\roman*$) Soit, leftmargin=4em]
-            \item $u$ est minorée, et dans ce cas, $\lim u = \inf\{ u_k | k \in \N \}$
-            \item $u$ n'est pas bornée, et dans ce cas, $u$ diverge vers $-\infty$.
-          \end{enumerate}
+    \begin{enumerate}[label=($\roman*$) Soit, leftmargin=4em]
+      \item $u$ est minorée, et dans ce cas, $\lim u = \inf\{ u_k | k \in \N \}$
+      \item $u$ n'est pas bornée, et dans ce cas, $u$ diverge vers $-\infty$.
+    \end{enumerate}
   \end{enumerate} }]
   {Théorème de la convergence monotone}
-
+  
   Soit $u \in \R^\N$ monotone fq.
-
+  
   \begin{enumerate}
     \item Supposons que $u$ est croissante.
-          \begin{enumerate}[label=($\roman*$)]
-            \item Supposons que $u$ est majorée. \\
-                  Alors $\exists M \in \R : \forall n \in \N, u_n \leqslant M$. Fixons un tel M. \\
-                  $\Omega = \{ u_k | k \in \N \}$ est \begin{itemize}
-                    \item une partie de \R
-                    \item non vide car $u_0$ y appartient
-                    \item majorée par M
-                  \end{itemize}
-                  donc elle admet un borne supérieure et notons-la $\sigma$. \\
-                  Soit $\epsilon \in \R_+^*$ fq. \\
-                  $\sigma - \epsilon < \sigma$ donc $\sigma - \epsilon$ ne majore pas $\Omega$. Donc $\exists N \in \N : u_N > \sigma - \epsilon$. Fixons un tel N. \\
-                  Soit $n \in \N$ fq tq $n \geqslant N$. \\
-                  Alors $u_n \underset{\text{par croissant de u}}{\geqslant} u_N \geqslant \sigma - \epsilon$ et $u_n \underset{\text{par défintion de }\sigma}{\leqslant} \sigma$. \\
-                  Ainsi,
-                  \begin{equation*}
-                    \begin{aligned}
-                      \sigma - \epsilon \leqslant u_n \leqslant \sigma
-                       & \implies - \epsilon \leqslant u_n - \sigma \leqslant 0 \\
-                       & \implies | u_n - \sigma | \leqslant \epsilon
-                    \end{aligned}
-                  \end{equation*}
-                  Donc $u_n \arrowlim{n}{+\infty} \sigma$.
-
-            \item Supposons que $u$ n'est pas bornée. \\
-                  Soit $A \in \R$ fq. \\
-                  $u$ n'est pas bornée donc $\exists N \in \N : u_N > A$. \\
-                  Or $u$ est croissante donc $\forall n \in \N, n \geqslant N \implies u_n \geqslant A$. \\
-                  Donc $u_n \arrowlim{n}{+\infty} +\infty$.
-          \end{enumerate}
-
+    \begin{enumerate}[label=($\roman*$)]
+      \item Supposons que $u$ est majorée. \\
+      Alors $\exists M \in \R : \forall n \in \N, u_n \leqslant M$. Fixons un tel M. \\
+      $\Omega = \{ u_k | k \in \N \}$ est \begin{itemize}
+        \item une partie de \R
+        \item non vide car $u_0$ y appartient
+        \item majorée par M
+      \end{itemize}
+      donc elle admet un borne supérieure et notons-la $\sigma$. \\
+      Soit $\epsilon \in \R_+^*$ fq. \\
+      $\sigma - \epsilon < \sigma$ donc $\sigma - \epsilon$ ne majore pas $\Omega$. Donc $\exists N \in \N : u_N > \sigma - \epsilon$. Fixons un tel N. \\
+      Soit $n \in \N$ fq tq $n \geqslant N$. \\
+      Alors $u_n \underset{\text{par croissant de u}}{\geqslant} u_N \geqslant \sigma - \epsilon$ et $u_n \underset{\text{par défintion de }\sigma}{\leqslant} \sigma$. \\
+      Ainsi,
+      \begin{equation*}
+        \begin{aligned}
+          \sigma - \epsilon \leqslant u_n \leqslant \sigma
+          & \implies - \epsilon \leqslant u_n - \sigma \leqslant 0 \\
+          & \implies | u_n - \sigma | \leqslant \epsilon
+        \end{aligned}
+      \end{equation*}
+      Donc $u_n \arrowlim{n}{+\infty} \sigma$.
+      
+      \item Supposons que $u$ n'est pas bornée. \\
+      Soit $A \in \R$ fq. \\
+      $u$ n'est pas bornée donc $\exists N \in \N : u_N > A$. \\
+      Or $u$ est croissante donc $\forall n \in \N, n \geqslant N \implies u_n \geqslant A$. \\
+      Donc $u_n \arrowlim{n}{+\infty} +\infty$.
+    \end{enumerate}
+    
     \item Supposons que $u$ est décroissante. \\
-          Il suffit dans la preuve ci-dessus de remplacer les inégalités inférieures par des inégalités supérieures et inversement et d'utiliser la notion de borne inférieure plutôt que de borne supérieure.
-          \begin{enumerate}[label=($\roman*$)]
-            \item Si $u$ est minorée, $u_n \arrowlim{n}{+\infty} \inf\{u_k|k\in\N\}$.
-            \item Si $u$ n'est pas bornée, $u_n \arrowlim{n}{+\infty} -\infty$.
-          \end{enumerate}
+    Il suffit dans la preuve ci-dessus de remplacer les inégalités inférieures par des inégalités supérieures et inversement et d'utiliser la notion de borne inférieure plutôt que de borne supérieure.
+    \begin{enumerate}[label=($\roman*$)]
+      \item Si $u$ est minorée, $u_n \arrowlim{n}{+\infty} \inf\{u_k|k\in\N\}$.
+      \item Si $u$ n'est pas bornée, $u_n \arrowlim{n}{+\infty} -\infty$.
+    \end{enumerate}
   \end{enumerate}
 \end{question_kholle}
 
 \begin{question_kholle}
   [Soit $u\in \R ^{\N}$ qui converge vers $\ell \in \R$. \\
-    Alors la moyenne arithmérique des $n\in \N$ premiers termes (appelée moyenne de Césarò) converge vers $\ell$.]
+  Alors la moyenne arithmérique des $n\in \N$ premiers termes (appelée moyenne de Césarò) converge vers $\ell$.]
   {Théorème de Césarò}
-
+  
   Soient $u$ une telle suite, $\varepsilon \in \R ^*_+$ et $\ell \in \R$ ladite limite de $u$. Appliquons la définition de la convergence de $u$ pour $\varepsilon \gets \frac{\varepsilon}{2}$ :
   \[
-    \exists N \in \N \ : \ \forall n \in \N , \ n\geq N \ \implies \ |u_n - \ell | \leq \frac{\varepsilon}{2}.
+  \exists N \in \N \ : \ \forall n \in \N , \ n\geq N \ \implies \ |u_n - \ell | \leq \frac{\varepsilon}{2}.
   \]
   Fixons un tel $N$. Posons $\omega = \sum_{k=0}^{N-1} |u_k - \ell | \in \R$. Soit $n\in \N$ tel que $n \geq N$. Calculons :
   \[
-    \left| \frac{1}{n} \sum_{k=0}^{n-1}u_k - \ell \right| = \left| \frac{1}{n} \left( \sum_{k=0}^{n-1}u_k - n\ell \right) \right|  = \left| \frac{1}{n} \sum_{k=0}^{n-1}(u_k - \ell)  \right| \leq \frac{1}{n} \underset{= \ \omega \in \R}{\underbrace{\sum_{k=0}^{N-1}|u_k - \ell|}} + \frac{1}{n} \underset{\leq \ \frac{\varepsilon}{2}}{\underbrace{\sum_{k=N}^{n}|u_k - \ell|}} \leq \frac{\omega}{n} + \underset{\leq \ \frac{\varepsilon}{2}}{\underbrace{\frac{\varepsilon}{2n}}}.
+  \left| \frac{1}{n} \sum_{k=0}^{n-1}u_k - \ell \right| = \left| \frac{1}{n} \left( \sum_{k=0}^{n-1}u_k - n\ell \right) \right|  = \left| \frac{1}{n} \sum_{k=0}^{n-1}(u_k - \ell)  \right| \leq \frac{1}{n} \underset{= \ \omega \in \R}{\underbrace{\sum_{k=0}^{N-1}|u_k - \ell|}} + \frac{1}{n} \underset{\leq \ \frac{\varepsilon}{2}}{\underbrace{\sum_{k=N}^{n}|u_k - \ell|}} \leq \frac{\omega}{n} + \underset{\leq \ \frac{\varepsilon}{2}}{\underbrace{\frac{\varepsilon}{2n}}}.
   \]
   Ces majorations sont issues de l'inégalité triangulaire et de la convergence de $u$. De plus, comme la suite $(v_n) _{n\in \N} = \left( \frac{\omega}{n} \right) _{n\in \N}$ converge vers $0$, on écrit sa définition pour $\varepsilon \gets \frac{\varepsilon}{2}$ :
   \[
-    \exists N' \in \N \ : \ \forall n \in \N , \ n\geq N' \ \implies \ |v_n| \leq \frac{\varepsilon}{2}.
+  \exists N' \in \N \ : \ \forall n \in \N , \ n\geq N' \ \implies \ |v_n| \leq \frac{\varepsilon}{2}.
   \]
   On fixe un tel $N'$ et on pose $\Lambda = \max{(N, N')}$ qui a bien un sens car $\{N, \ N'\}$ est une partie finie de $\N$.
   De la même manière qu'auparavant, pour $n\in \N$ tel que $n \geq \Lambda$, on a :
   \[
-    \left| \frac{1}{n} \sum_{k=0}^{n-1}u_k - \ell \right| \leq \underset{\leq \ \frac{\varepsilon}{2}}{\underbrace{\frac{\omega}{n}}} + \frac{\varepsilon}{2} \leq \varepsilon.
+  \left| \frac{1}{n} \sum_{k=0}^{n-1}u_k - \ell \right| \leq \underset{\leq \ \frac{\varepsilon}{2}}{\underbrace{\frac{\omega}{n}}} + \frac{\varepsilon}{2} \leq \varepsilon.
   \]
   C'est le théorème souhaité.
 \end{question_kholle}
@@ -3131,92 +4023,92 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   [Soient $(u,v) \in \R^{\N}$ : \\
   {\begin{enumerate}[label=($\roman*$)]
     \item Si $\begin{array}{|l}
-              \exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow u_{n} \geqslant 0 \\
-              u \text{ converge}
-            \end{array}$ \\
-          Alors $\lim u \geqslant 0$
+      \exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow u_{n} \geqslant 0 \\
+      u \text{ converge}
+    \end{array}$ \\
+    Alors $\lim u \geqslant 0$
     \item Si $\begin{array}{|l}
-              \exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow u_{n} \leqslant v_{n} \\
-              u \text{ et } v \text{ convergent}
-            \end{array}$ \\
-          Alors $\lim u \leqslant \lim v$
+      \exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow u_{n} \leqslant v_{n} \\
+      u \text{ et } v \text{ convergent}
+    \end{array}$ \\
+    Alors $\lim u \leqslant \lim v$
   \end{enumerate}}
   ]
   {Théorème de passage à la limite dans une inégalité.}
   ~\smallbreak
   \begin{enumerate}[label=($\roman*$)]
     \item L'hypothèse $\exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow u_{n} \geqslant 0$ permet d'affirmer que $u$ et $|u|$ coïncident à partir d'un certain rang. \\
-          Par ailleurs, la convergence de $u$ et la continuité de $|\cdot|$ sur $\R$ donc en $\lim u$ donnent $|u|$ converge vers $|\lim u|$. \\
-          Le caractère asymptotique de la limite permet de conclure que $u$ et $|u|$ ont la même limite. \\
-          Donc $\lim u = |\lim u| \geqslant 0$
+    Par ailleurs, la convergence de $u$ et la continuité de $|\cdot|$ sur $\R$ donc en $\lim u$ donnent $|u|$ converge vers $|\lim u|$. \\
+    Le caractère asymptotique de la limite permet de conclure que $u$ et $|u|$ ont la même limite. \\
+    Donc $\lim u = |\lim u| \geqslant 0$
     \item $\exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow u_{n} \leqslant v_{n} \Rightarrow v_{n} - u_{n} \geqslant 0$ \\
-          $u$ et $v$ convergent $\Rightarrow v-u$ converge vers $\lim v - \lim u$. \\
-          On applique $(i)$ pour $u \leftarrow v - u$, autorisé car $u \text{ et }v$ convergent. \\
-          On obtient $\lim v - \lim u \geqslant 0$ d'où $\lim u \leqslant \lim v$.
+    $u$ et $v$ convergent $\Rightarrow v-u$ converge vers $\lim v - \lim u$. \\
+    On applique $(i)$ pour $u \leftarrow v - u$, autorisé car $u \text{ et }v$ convergent. \\
+    On obtient $\lim v - \lim u \geqslant 0$ d'où $\lim u \leqslant \lim v$.
   \end{enumerate}
 \end{question_kholle}
 
 \begin{question_kholle}
   [Soient $u$ et $v$ deux suites réelles adjacentes. Alors $u$ et $v$ convergent et ont la même limite.]
   {Théorème des suites adjacentes}
-
+  
   Soient $u$ et $v$ de telles suites. Quitte à inverser les rôles desdites suites, prenons $u$ croissante et $v$ décroissante. \\
   On a donc :
   \[
-    \forall n \in \N, \ (u_n \leq v_n \leq \underset{\in \R}{\underbrace{v_0}}) \wedge (\underset{\in \R}{\underbrace{u_0}}\leq  u_n \leq v_n),
+  \forall n \in \N, \ (u_n \leq v_n \leq \underset{\in \R}{\underbrace{v_0}}) \wedge (\underset{\in \R}{\underbrace{u_0}}\leq  u_n \leq v_n),
   \]
   car la monotonie des suites induit ces inégalités. D'après le théorème de limite monotone, $u$ étant croissante et majorée elle converge, $v$ étant décroissante et minorée elle converge. \\
   Il s'en suit que par définition des suites adjacentes :
   \[
-    0 \ = \lim_{n \to +\infty} (u_n - v_n) \ \underset{u,v \ \text{ convergent}}{\underbrace{=}} \ \lim_{n \to +\infty} u_n - \lim_{n \to +\infty} v_n.
+  0 \ = \lim_{n \to +\infty} (u_n - v_n) \ \underset{u,v \ \text{ convergent}}{\underbrace{=}} \ \lim_{n \to +\infty} u_n - \lim_{n \to +\infty} v_n.
   \]
   Ainsi, $\lim u = \lim v$.
 \end{question_kholle}
 
 \begin{question_kholle}
   [Toute suite bornée réelle admet une sous-suite convergente. \\
-    L'ensemble des valeurs d'adhérence d'une suite réelle bornée est non vide.]
+  L'ensemble des valeurs d'adhérence d'une suite réelle bornée est non vide.]
   {\emph{Facultative} Théorème de Bolzano-Weierstrass}
-
+  
   Soit $u \in \R^\N$ fq bornée. \\
   Alors $\exists M \in \R_+ : \forall n \in \N, |u_n| \leqslant M$.
-
+  
   Construisons une suite de segments dans $[-M;M]$ de plus en plus petits par dichotomie. \\
   Posons $a_0 = -M$, $b_0 = M$ et définissons les suites $c$ et $I$ pour tout $n$ dans \N par $c_n = \frac{a_n + b_n}{2}$ et $I_n = [a_n;b_n]$. \\
-
+  
   \noindent Soit $n\in \N$ fq.
   Supposons $a_n \text{ et } b_n$ construits et $\{ k \in \N \;|\; u_k \in I_n \}$ infini.
   Construisons les termes d'indices $n+1$. \\
   Posons $\left| \begin{array}{lcr}
-      I_n^- & = & \{ k \in \N \;|\; u_k \in [a_n;c_n] \} \\
-      I_n^+ & = & \{ k \in \N \;|\; u_k \in [c_n;b_n] \} \\
-    \end{array} \right.$ \\
+    I_n^- & = & \{ k \in \N \;|\; u_k \in [a_n;c_n] \} \\
+    I_n^+ & = & \{ k \in \N \;|\; u_k \in [c_n;b_n] \} \\
+  \end{array} \right.$ \\
   Nous avons $I_n^- \cup I_n^+ = \{ k \in \N \;|\; u_k \in I_n \}$ donc $I_n^-$ ou $I_n^+$ est infini.
-
+  
   \begin{itemize}
     \item Si $I_n^-$ est infini, posons $\left| \begin{array}{lcl}
-              a_{n+1} & = & a_n \\
-              b_{n+1} & = & c_n
-            \end{array} \right.$ \\
-          Ainsi $\{ k \in \N \;|\; u_k \in I_{n+1} \} = I_n^-$ est infini.
+      a_{n+1} & = & a_n \\
+      b_{n+1} & = & c_n
+    \end{array} \right.$ \\
+    Ainsi $\{ k \in \N \;|\; u_k \in I_{n+1} \} = I_n^-$ est infini.
     \item Si $I_n^+$ est infini, posons $\left| \begin{array}{lcl}
-              a_{n+1} & = & c_n \\
-              b_{n+1} & = & b_n
-            \end{array} \right.$ \\
-          Ainsi $\{ k \in \N \;|\; u_k \in I_{n+1} \} = I_n^+$ est infini.
+      a_{n+1} & = & c_n \\
+      b_{n+1} & = & b_n
+    \end{array} \right.$ \\
+    Ainsi $\{ k \in \N \;|\; u_k \in I_{n+1} \} = I_n^+$ est infini.
   \end{itemize}
   \bigbreak
-
+  
   \noindent Étudions la suite $\left(I_n\right)_{n\in\N}$.
   \begin{itemize}
     \item Nous avons toujours $a_n \leqslant b_n$ donc $\forall n \in \N, I_n \neq \emptyset$
     \item Par construction, $\forall n \in \N, I_{n+1} \subset I_n$
     \item $ |I_{n+1}| = |a_{n+1}-b_{n+1}| = \frac{1}{2} |a_n-b_n| = \frac{1}{2} |I_n| $
-          donc la suite des cardinaux est une suite géométrique de raison $\nicefrac{1}{2}$.
-          Donc $|I_n| \arrowlim{n}{+\infty} 0$.
+    donc la suite des cardinaux est une suite géométrique de raison $\nicefrac{1}{2}$.
+    Donc $|I_n| \arrowlim{n}{+\infty} 0$.
   \end{itemize}
   Donc, d'après le théorème des segments emboîtés, $\exists ! l\ell \in \R : \underset{n\in\N}{\bigcap} I_n = \{\ell\}$. Fixons un tel $\ell$. \\
-
+  
   Construisons maintenant une extractrice $\varphi$ de $u$. \\
   Posons $\varphi(n) = 0$. \\
   Soit $n \in \N$ fq. Supposons $\varphi(n)$ construite.
@@ -3224,7 +4116,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
     \varphi(n+1) = \min\{ k \in \N | u_k \in I_{n+1} \wedge k > \varphi(n) \}
   \end{equation*}
   $\varphi(n+1)$ est bien définie car $\{ k \in \N | u_k \in I_{n+1} \}$ est une partie de \N non bornée (car infinie). \\
-
+  
   \noindent Ainsi, nous avons construit $\varphi : \N \rightarrow \N$ strictement croissante. Nous pouvons extraire une sous-suite de $u$. Or $\forall n \in \N, u_{\varphi(n)} \in I_n$ donc
   \begin{equation*}
     \forall n \in \N, \quad
@@ -3241,27 +4133,27 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   Supposons que $u$ converge et posons $\lim u =\ell \in \R  $. Toutes les sous-suites de $u$ convergent vers $\ell$ donc $L(u)=\{\ell \}$. \\
   Supposons maintenant qu'il existe un unique $\ell \in \R$ tel que $L(u) = \{ \ell \}$. Par l'absurde, supposons que $u$ ne converge pas vers $\ell$, c'est-à-dire :
   \[
-    \exists \varepsilon \in \R ^* _+ \ : \ \forall N \in \N, \ \exists n \in \N \ : \ n\geq N \text{ et } |u_n - \ell | > \varepsilon.
+  \exists \varepsilon \in \R ^* _+ \ : \ \forall N \in \N, \ \exists n \in \N \ : \ n\geq N \text{ et } |u_n - \ell | > \varepsilon.
   \]
   Fixons un tel $\varepsilon$. \\
   %\textbf{Etape 1} : \textit{Construction d'une sous-suite de $u$ dont les termes sont $\varepsilon$-éloignés de $\ell$.} \\
   Posons $\varphi (0) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon \} }$, ce qui a du sens car c'est une partie non-vide de $\N$. Posons ensuite $\varphi (1) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon, \ \varphi(0) < k \} } $, ce qui a du sens pour les mêmes raisons. On construit en itérant ce procédé $\varphi (n)$ tel que :
   \[
-    \forall n \in \N, \ \varphi(n+1) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon, \ \varphi(n) < k \} }.
+  \forall n \in \N, \ \varphi(n+1) = \min{ \{ k\in \N \ | \ |u_k - \ell| > \varepsilon, \ \varphi(n) < k \} }.
   \]
   De cette manière, nous venons de construire une extractrice telle que :
   \[
-    \forall n \in \N, \ |u_{\varphi(n)} - \ell| > \varepsilon.
+  \forall n \in \N, \ |u_{\varphi(n)} - \ell| > \varepsilon.
   \]
   Par hypothèse $u$ est bornée, donc il existe $M\in \R _+$ tel que :
   \[
-    \forall n \in \N, \ |u_n| \leq M,
+  \forall n \in \N, \ |u_n| \leq M,
   \]
   donc pour tout $n$ dans $\N$, $|u_{\varphi(n)}| \leq M$, donc $(u_{\varphi(n)})_{n\in \N}$ est bornée. \\
   Par le théorème de Bolzano-Weierstrass, il existe $\psi$ une extractrice et $\ell ' \in \R$, avec $\varphi \circ \psi$ qui est aussi une extractrice par composition d'applications strictement croissantes, donc$(u_{\varphi \circ \psi (n)})_{n\in \N}$ est une sous-suite de $u$ et $\ell ' \in L(u) = \{ \ell \}$.\\
   Par ailleurs, pour tout $n$ dans $\N$ :
   \[
-    \underset{\xrightarrow[n\to +\infty]{}|\ell' -\ell|}{\underbrace{|u_{\varphi \circ \psi (n)} - \ell|}} > \varepsilon,
+  \underset{\xrightarrow[n\to +\infty]{}|\ell' -\ell|}{\underbrace{|u_{\varphi \circ \psi (n)} - \ell|}} > \varepsilon,
   \]
   donc en passant à la limite dans l'inégalité on a pour tout $n$ dans $\N$, $|\ell ' - \ell | \geq \varepsilon > 0$, ce qui n'est pas possible car $\ell$ est la seule valeur d'adhérence possible et ici la différence n'est pas nulle.
 \end{question_kholle}
@@ -3270,10 +4162,10 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
 \begin{question_kholle}
   [Soient $a \in \K$ et $v \in \K^\N$ où \K peut être \C ou \R.
-    L'ensemble des solutions de l'équation $\forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n}$
+    L'ensemble des solutions de l'équation $\forall n \in \N, u_{n+1} = au_{n} + v_{n}$
     est la droite affine :
     \begin{equation}
-      \left\{ w + \lambda \left( a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
+      \left\{ w + \lambda \left( a^n \right) _{n \in \N} \mid \lambda \in \K \right\}
     \end{equation}
   ]
   {Résolution d'une relation de récurrence linéaire d'ordre 1 à coefficients constants et avec second membre}
@@ -3281,7 +4173,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   Posons $w$ la suite définie par $$
     \left\{ \begin{array}{ll}
       w_{0} = 1 \\
-      \forall n \in \mathbb{N}, w_{n+1} = aw_{n} + v_{n}
+      \forall n \in \N, w_{n+1} = aw_{n} + v_{n}
     \end{array}\right.
   $$
   $w$ est "évidemment solution de particulière de l'équation"
@@ -3290,13 +4182,13 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
 
   \begin{align*}
-    \forall n \in \mathbb{N}, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = v_{n}                                                         \\
-                                                       & \iff \forall n \in \mathbb{N}, u_{n+1} - au_{n} = w_{n+1} - aw_{n}                                              \\
-                                                       & \iff \forall n \in \mathbb{N}, (u-w)_{n+1} = a(u-w)_{n}                                                         \\
-                                                       & \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \mathbb{N}} \right\}                                 \\
-                                                       & \iff \exists \lambda \in \mathbb{K} : u-w = \lambda \left( a^{n} \right) _{n \in \mathbb{N}}                    \\
-                                                       & \iff \exists \lambda \in \mathbb{K} : \forall n \in \mathbb{N}, u_{n} = w_{n} + \lambda a^n                     \\
-                                                       & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \mathbb{N}} \mid \lambda \in \mathbb{K} \right\}
+    \forall n \in \N, u_{n+1} = au_{n} + v_{n} & \iff \forall n \in \N, u_{n+1} - au_{n} = v_{n}                                                         \\
+                                                       & \iff \forall n \in \N, u_{n+1} - au_{n} = w_{n+1} - aw_{n}                                              \\
+                                                       & \iff \forall n \in \N, (u-w)_{n+1} = a(u-w)_{n}                                                         \\
+                                                       & \iff u-w \in \text{Vect}\left\{ \left( a^n \right) _{n \in \N} \right\}                                 \\
+                                                       & \iff \exists \lambda \in \K : u-w = \lambda \left( a^{n} \right) _{n \in \N}                    \\
+                                                       & \iff \exists \lambda \in \K : \forall n \in \N, u_{n} = w_{n} + \lambda a^n                     \\
+                                                       & \iff  u \in \left\{ \left( w_{n} + \lambda a^n \right) _{n \in \N} \mid \lambda \in \K \right\}
   \end{align*}
 
 \end{question_kholle}
@@ -3369,7 +4261,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 \end{question_kholle}
 
 \begin{question_kholle}
-  [Soit $u$ une suite bornée. $u$ converge si et seulement si il existe $\ell \in \mathbb{K}$ tel que $L(u)$ est le singleton $\ell$ ]
+  [Soit $u$ une suite bornée. $u$ converge si et seulement si il existe $\ell \in \K$ tel que $L(u)$ est le singleton $\ell$ ]
   {Caractérisation de la convergence par l'unicité d'une valeur d'adhérence pour une suite bornée.}
 
   Traitons le cas réel, celui sur \C est à adapter sans peine.\\
@@ -3411,7 +4303,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
       \item Si $f$ est décroissante sur $I$.
             \subitem Les sous-suites $\left(u_{2n}\right))_{n\in\N}$ et $\left(u_{2n+1}\right))_{n\in\N}$ sont monotone et ont une monotonie opposée (utiliser les premiers termes pour trouver leur monotonie respectives).
     \end{itemize}]
-  {Monotonie de $u$ et des sous-suites des termes pairs et impairs de la suite$u_{n+1} = f(u_n)$ selon la monotonie de $f$}
+  {Monotonie de $u$ et des sous-suites des termes pairs et impairs de la suite $u_{n+1} = f(u_n)$ selon la monotonie de $f$}
 
   Soient de tels $f, I$ et $u$.
   \begin{itemize}
@@ -3441,6 +4333,85 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
           Donc $\left(u_{2n+1}\right)_{n\in\N}$ est décroissante. \\
           De même, si $\left(u_{2n}\right)_{n\in\N}$ est décroissante alors $\left(u_{2n+1}\right)_{n\in\N}$ est croissante.
   \end{itemize}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      
+      \draw[->] (-6, 0) -- (7, 0) node[below] {$x$};
+      \draw[->] (0, -0.5) -- (0, 4.5) node[right] {$f(x) = \sqrt{2 - x}$}; 
+        
+
+      \draw[black, dashed] (0, 0) -- (4, 4);
+
+      \draw[black] (-1.5 * 2, 0) node[below] {$u_0$} -- (-1.5 * 2, 1.870 * 2);
+      \draw[black, dotted] (-1.5 * 2, 1.870 * 2) -- (1.870 * 2, 1.870 * 2);
+      \draw[black, dotted] (1.870 * 2, 1.870 * 2) -- (1.870 * 2, 0);
+      
+      \draw[black] (1.870 * 2, 0) node[below] {$u_1$} -- (1.870 * 2, 0.3605 * 2);
+      \draw[black, dotted] (1.870 * 2, 0.3605 * 2) -- (0.3605 * 2, 0.3605 * 2);
+      \draw[black, dotted] (0.3605 * 2, 0.3605 * 2) -- (0.3605 * 2, 0);
+      
+      \draw[black] (0.3605 * 2, 0) node[below] {$u_2$} -- (0.3605 * 2, 1.2804 * 2);
+      \draw[black, dotted] (0.3605 * 2, 1.2804 * 2) -- (1.2804 * 2, 1.2804 * 2);
+      \draw[black, dotted] (1.2804 * 2, 1.2804 * 2) -- (1.2804 * 2, 0);
+      
+      \draw[black] (1.2804 * 2, 0) node[below] {$u_3$} -- (1.2804 * 2, 0.8483 * 2);
+      \draw[black, dotted] (1.2804 * 2, 0.8483 * 2) -- (0.8483 * 2, 0.8483 * 2);
+      \draw[black, dotted] (0.8483 * 2, 0.8483 * 2) -- (0.8483 * 2, 0);
+      
+      \draw[black] (0.8483 * 2, 0) node[below] {$u_4$} -- (0.8483 * 2, 1.0732 * 2);
+      \draw[black, dotted] (0.8483 * 2, 1.0732 * 2) -- (1.0732 * 2, 1.0732 * 2);
+      \draw[black, dotted] (1.0732 * 2, 1.0732 * 2) -- (1.0732 * 2, 0);
+      
+      \draw[black] (1.0732 * 2, 0) node[below] {$u_5$} -- (1.0732 * 2, 0.9627 * 2);
+    %   \draw[black, dotted] (1.0732 * 2, 0.9627 * 2) -- (0.9627 * 2, 0.9627 * 2);
+    %   \draw[black, dotted] (0.9627 * 2, 0.9627 * 2) -- (0.9627 * 2, 0);
+      
+      
+      \draw[thick, smooth, domain=-4:4, samples=100] plot(\x, {2 * sqrt (2 - \x/2)});
+
+    \end{tikzpicture}
+    \caption{Construction des termes de la suite de vérifiant la relation de récurrence $u_{n+1} = \sqrt{2 - u_n}$ pour le permier terme $u_0 = - \frac 3 2$. $f: x \mapsto \sqrt{2-x}$ est une fonction décroissante, et l'on remarque effectivement que la sous suite de termes pairs $(u_0, u_2, u_4, \dots)$ croît, alors que la sous suite de termes impairs $(u_1, u_3, u_5, \dots)$ décroît.}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      
+      \draw[->] (-0.5, 0) -- (7, 0) node[below] {$x$};
+      \draw[->] (0, -0.5) -- (0, 4.5) node[right] {$g(x) = x^2$}; 
+        
+
+      \draw[black, dashed] (0, 0) -- (4.3, 4.3);
+
+      \draw[black] (0.9 * 4, 0) node[below] {$v_0$} -- (0.9 * 4, 0.81 * 4);
+      \draw[black, dotted] (0.9 * 4, 0.81 * 4) -- (0.81 * 4, 0.81 * 4);
+      \draw[black, dotted] (0.81 * 4, 0.81 * 4) -- (0.81 * 4, 0);
+      
+      \draw[black] (0.81 * 4, 0) node[below] {$v_1$} -- (0.81 * 4, 0.6561 * 4);
+      \draw[black, dotted] (0.81 * 4, 0.6561 * 4) -- (0.6561 * 4, 0.6561 * 4);
+      \draw[black, dotted] (0.6561 * 4, 0.6561 * 4) -- (0.6561 * 4, 0);
+      
+      \draw[black] (0.6561 * 4, 0) node[below] {$v_2$} -- (0.6561 * 4, 0.4305 * 4);
+      \draw[black, dotted] (0.6561 * 4, 0.4305 * 4) -- (0.4305 * 4, 0.4305 * 4);
+      \draw[black, dotted] (0.4305 * 4, 0.4305 * 4) -- (0.4305 * 4, 0);
+      
+      \draw[black] (0.4305 * 4, 0) node[below] {$v_3$} -- (0.4305 * 4, 0.1853 * 4);
+      \draw[black, dotted] (0.4305 * 4, 0.1853 * 4) -- (0.1853 * 4, 0.1853 * 4);
+      \draw[black, dotted] (0.1853 * 4, 0.1853 * 4) -- (0.1853 * 4, 0);
+      
+      \draw[black] (0.1853 * 4, 0) node[below] {$v_4$} -- (0.1853 * 4, 0.0343 * 4);
+      \draw[black, dotted] (0.1853 * 4, 0.0343 * 4) -- (0.0343 * 4, 0.0343 * 4);
+      \draw[black, dotted] (0.0343 * 4, 0.0343 * 4) -- (0.0343 * 4, 0);
+      
+      \draw[black] (0.0343 * 4, 0) node[below] {$v_5$} -- (0.0343 * 4, 0);
+      
+      
+      \draw[thick, smooth, domain=0:4.3, samples=100] plot(\x, {(\x/2)^2});
+
+    \end{tikzpicture}
+    \caption{Construction des termes de la suite de vérifiant la relation de récurrence $v_{n+1} = v_n^2$ pour le permier terme $v_0 = \frac {9} {10}$. $g: x \mapsto x^2$ est croissante sur $[0, +\infty[$, et l'on remarque effectivement que la suite $v$ est monotone.}
+  \end{figure}
 \end{question_kholle}
 
 \begin{question_kholle}
@@ -3498,6 +4469,193 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \begin{equation*}
     g \circ f \arrowlim{x}{a} \ell
   \end{equation*}
+\end{question_kholle}
+
+\begin{question_kholle}[{
+  Soit $f : \mathcal{D}_{f}\to \R$, $a \in \overline{\mathcal{D}_{f}}$ et $\ell \in \overline{\R}$
+$$
+f \text{ admet } \ell \text{ pour limite en } a \iff \left\{ \begin{array}{ll}
+ \text{pour toute suite } u \in \mathcal{D}_{f}^{\N}, \\
+\text{si } u \text{ tend vers } a, \text{ alors } f(u) \text{ tend vers } \ell
+\end{array}\right.
+$$
+}]{Caractérisation séquentielle de la limite}
+  
+\begin{itemize}[label=$\star$]
+  \item Supposons que $f$ admet $\ell$ pour limite en $a$. Traitons le cas $a \in \R$ et $\ell \in \R$.
+  Soit $u \in \mathcal{D}_{f}^{\N}$ fixée quelconque telle que $u$ tend vers $a$.
+  Soit $\varepsilon>0$ fixé quelconque. Appliquons la définition de la limite de $f$ en $a$ pour $\varepsilon$
+
+  $$
+  \exists \eta >0 : \forall x \in \mathcal{D}_{f}, \lvert x - a \rvert \leqslant \eta \implies \lvert f(x) - \ell \rvert  \leqslant \varepsilon
+  $$
+  Fixons un tel $\eta$ et appliquons la définition de la convergence de $u$ pour $\varepsilon \leftarrow \eta$
+  $$
+  \exists N \in \N : \forall n \geqslant N, \lvert u_{n} - a \rvert  \leqslant \eta
+  $$
+  Fixons un tel $N$.
+  Soit $n \in \N$ tel que $n \geqslant N$.
+  On a, bien entendu
+  $$
+  \lvert u_{n} - a \rvert  \leqslant \eta \implies \lvert f(u_{n}) - \ell \rvert \leqslant \varepsilon
+  $$
+  Ce qui montre la convergence de $(f(u_{n}))_{n \in \N}$ vers $\ell$.
+
+  \item Réciproquement, raisonnons par contraposée et montrons l'implication suivante
+  $$
+  \mathrm{non}(f \text{ admet }\ell \text{ pour limite en }a) \implies \underbrace{ \mathrm{non} \left\{ \begin{array}{ll}
+    \text{pour toute suite } u \in \mathcal{D}_{f}^{\N}, \\
+  \text{si } u \text{ tend vers } a, \text{ alors } f(u) \text{ tend vers } \ell
+  \end{array}\right. }_{ \exists u \in \mathcal{D}_{f}^{\N} : u \text{ tend vers }a \text{ et } f(u) \text{ ne tend pas vers }\ell }
+  $$
+
+  Supposons donc 
+  
+  \begin{align}
+  \mathrm{non}(f \text{ admet }\ell \text{ pour limite en }a)  &\iff \mathrm{non}(\forall \varepsilon>0, \exists \eta >0 : \forall x \in \mathcal{D_{f}}, \lvert x -a\rvert \leqslant \eta \implies \lvert f(x) - \ell \rvert\leqslant \varepsilon  ) \\
+  &\iff \exists \varepsilon>0 : \forall \eta >0, \exists x \in \mathcal{D}_{f} : \lvert x-a \rvert \leqslant \eta \text{ et } \lvert f(x) - \ell \rvert  > \varepsilon \label{S13:Q2:1}
+  \end{align}
+  
+
+  Fixons donc un tel $\varepsilon$ et construisons une suite $u \in \mathcal{D}_{f}^{\N}$ telle que $u$ tend vers $a$ et $f(u)$ ne tend pas vers $\ell$.
+
+  Soit $n \in \N$ fixé quelconque. Appliquons l'hypothèse \eqref{S13:Q2:1} pour $\eta \leftarrow \frac{1}{2^{n}}$.
+  $$
+  \exists x_{n} \in \mathcal{D}_{f} : \lvert x_{n} - a \rvert  \leqslant \frac{1}{2^{n}} \text{ et } \lvert f(x_{n}) - \ell \rvert  > \varepsilon
+  $$
+  En relâchant le caractère fixé de $n$, on a constuit une suite $(x_{n})_{n \in \N} \in \mathcal{D}_{f}^{\N}$ telle que
+  $$
+  \forall n \in \N, \lvert x_{n} - a \rvert \leqslant \underbrace{ \frac{1}{2^{n}} }_{ \xrightarrow[n \to \infty]{} 0}
+  $$
+  Donc $(x_{n})_{n \in \N}$ tend vers $a$.
+
+  La suite vérifie aussi
+  $$
+  \forall n \in \N, \lvert f(x_{n}) - \ell \rvert > \varepsilon
+  $$
+  ce qui montre que $(f(x_{n}))_{n \in \N}$ ne converge pas vers $\ell$ car 
+  
+  \begin{align*}
+  \text{non}((f(x_{n}))_{n \in \N} \text{ converge vers } \ell) &\iff \mathrm{non}(\forall \varepsilon_{1}>0, \exists N \in \N : \forall n \in \N, n \geqslant N \implies \lvert f(x_{n}) - \ell \rvert \leqslant \varepsilon_{1}) \\
+  &\iff \exists \varepsilon_{1}>0: \forall N \in \N, \exists n  \in \N : n\geqslant N \text{ et } \lvert f(x_{n}) - \ell \rvert  > \varepsilon_{1}
+  \end{align*}
+  
+  Ce qui est immédiat en posant $\varepsilon_{1} = \varepsilon$ et pour n'importe quel $N$ en posant $n = N$.
+  \end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}[]{Deux stratégies pour prouver qu'une fonction n'admet pas de limite en un point}
+  \begin{itemize}[label=$\bullet$]
+    \item Soit en exhibant une suite $(y_n)_{n \in \N} \in \mathcal D_f^{\N}$ qui tend vers $a$ et telle que $(f(y_n))_{n \in \N}$ n'admet pas de limite en $a$.
+    
+    Par exemple $f(x) = \cos \frac 1 x$ n'a pas de limite en zéro : observons que la suite $y = \left( \frac{1}{n\pi} \right)_{n \in \N^{*}}$ converge vers $0$ tandis que la suite $f(y)=((-1)^{n})_{n \in \N^{*}}$ diverge.
+
+    \item Soit en exhibant deux suites $y, z$ qui tendent vers $a$ et telles que $(f(y_{n}))_{n \in \N}$ et $(f(z_{n}))_{n \in \N}$ admettent deux limites différentes.
+
+    Par exemple, pour montrer que $f(x) = \sin x$ n'admet pas de limite en $+\infty$, il suffit d'observer que les suites $y = (n \pi)_{n \in \N}$ et $z = (2n\pi + \frac{\pi}{2})_{n \in \N}$ tendent vers $+\infty$ et ont respectivement pour suites images $\tilde{0}$ et $\tilde{1}$ qui convergent respectivement vers $0$ et $1$.
+  \end{itemize}
+  
+\end{question_kholle}
+
+\begin{question_kholle}[{
+  Soient $f$ et $g$ définies sur $\mathcal{D}$ et $a \in \overline{\mathcal{D}}$. Si
+  \begin{itemize}[label=$\bullet$]
+    \item $f \leqslant g$ sur un voisinnage de $a$
+    \item $f$ et $g$ admettent une limite finie en $a$
+  \end{itemize}
+alors $\displaystyle \lim_{ x \to a }f(x) \leqslant \lim_{ x \to a }g(x)$
+}]{Passage à la limite dans une inégalité}
+\begin{itemize}[label=$\star$]
+  \item \textbf{En utilisant la caractérisation séquentielle de la limite}
+  
+  Traitons le cas $a = +\infty$.
+  
+  Posons $\ell_{f} \in\R$ et $\ell_{g} \in \R$ les limites finies respectives de $f$ et $g$.
+  
+  Par définition de $a \in \overline{\mathcal{D}}$, $\exists (a_{n})_{n \in \N} \in \mathcal{D}^{\N} : \lim_{ n \to \infty }a_{n} = a = +\infty$
+  
+  Par définition de voisinnage de $a$ en $+\infty$, $\exists A \in \R : \forall x \in \mathcal{D}, x\geqslant A \implies f(x) \leqslant g(x)$
+  
+  Fixons un tel $A$ et appliquons la définition de la divergence de $(a_{n})_{n \in \N}$ vers $+\infty$ pour $A$.
+  $$
+  \exists N \in \N : \forall n \geqslant N, a_{n} \geqslant A
+  $$
+  Fixons un tel $N$. On a alors
+  $$
+  \forall n \geqslant N, a_{n} \geqslant A \implies f(a_{n}) \leqslant g(a_{n})
+  $$
+  Donc par passage à la limite dans l'inégalité pour les suites
+  $$
+  \lim_{ n \to \infty } f(a_{n}) \leqslant \lim_{ n \to \infty } g(a_{n})
+  $$
+  donc par caractérisation séquentielle de la limite
+  $$
+  \lim_{ x \to a=+\infty}  f(x) \leqslant \lim_{ x \to a  = +\infty} g(x) 
+  $$
+
+  \item \textbf{En utilisant le caractère local de la limite}
+  Tout d'abord $f \leqslant g$ sur un voisinnage de $a$, donc $g - f \geqslant 0$ sur un voisinnage de $a$ donc $g-f = \lvert g-f \rvert$ sur un voisinnage de $a$.
+  Or,
+  $$
+  \left. \begin{array}{ll}
+  \lim_{ x \to a }g(x) = \ell_{g} \\
+  \lim_{ x \to a } f(x) = \ell_{f}
+  \end{array}\right\}
+  \implies \lim_{ x \to a } \lvert g(x) - f(x) \rvert  = \lvert \ell_{g} - \ell _{f} \rvert 
+  $$
+  Donc, avec le caractère local de la limite, puisque $g-f$ et $|g-f|$ coïncident sur un voisinnage de $a$,
+  $$
+  \lim_{ x \to a } g(x) - f(x) = \lim_{ x \to a } \lvert g(x) - f(x) \rvert  = \lvert \ell_{g} - \ell_{f} \rvert 
+  $$
+  Or,  on a aussi $\lim_{ x \to a }g(x) - f(x) = \ell_{g} - \ell_{f}$.
+  Donc
+  $$
+  \ell_{g} - \ell_{f} = \lvert \ell_{g} - \ell_{f} \rvert \geqslant 0 \implies \ell_{g} \geqslant \ell_{f}
+  $$
+  \end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}[{
+  Soit $f$ une fonction croissante définie sur $]a, b[$ avec $(a, b) \in \overline{\R}^{2}, a<b$.
+  \begin{itemize}[label=$\bullet$]
+    \item Si $f$ est majorée, alors $f$ admet une limite finie en $b$ qui vaut $\lim_{ x \to b }f(x) = \sup f(]a, b[)$.
+    \item Si $f$ n'est pas majorée, alors $f$ tend vers $+\infty$ en $b$.
+  \end{itemize}
+}]{Limite de fonctions monotones sur un segment.}
+  \begin{itemize}[label=$\star$]
+    \item Supposons que $f$ est majorée sur $]a, b[$. L'ensemble $f(]a, b[)$ est une partie de $\R$, non vide et majorée, donc admet une borne supérieure $S \in \R$.
+    Montrons que $\lim_{ x \to b }f(x) = S$.
+    
+    Soit $\varepsilon>0$ fixé quelconque. On veut construire un $\eta>0$ tel que $\forall x \in ]b-\eta, b[$, $\lvert f(x) - S \rvert \leqslant \varepsilon$.
+    D'après la caractérisation de la borne supérieure par les epsilon appliquée pour $\varepsilon$, $$\exists y_{\varepsilon} \in f(]a, b[) : S - \varepsilon < y_{\varepsilon} \leqslant \varepsilon$$
+    Or, $y_{\varepsilon} \in f(]a, b[) \implies \exists x_{\varepsilon}\in ]a, b[ : y_{\varepsilon} = f(x_{\varepsilon})$
+    Posons $\eta = b - x_{\varepsilon} > 0$ et vérifions qu'il convient.
+    Soit $x \in ]b - \eta, b[$ fixé quelconque.
+    on a $$
+    b-\eta < x \implies b- (b - x_{\varepsilon})< x \implies x_{\varepsilon} < x \implies \underbrace{ f(x_{\varepsilon}) }_{ y_{\varepsilon} } \leqslant f(x)
+    $$
+    De plus, $f(x) \leqslant S$ par définition de la borne supérieure, donc
+    $$
+    S - \varepsilon < y_{\varepsilon} \leqslant f(x) \leqslant S
+    $$
+    Donc $\lvert f(x) - S \rvert \leqslant \varepsilon$ ce qui prouve la convergence.
+
+    \item Supposons que $f$ n'est pas majorée sur $]a, b[$.
+    On veut montrer que $f$ tend vers $+\infty$, autrement dit que
+    $$
+    \forall A \in \R, \exists \eta >0 : \forall x \in ]b- \eta , b[, f(x)\geqslant A
+    $$
+    Soit $A \in \R$ fixé quelconque.
+    $f$ n'est pas majorée, donc $\exists x_{0} \in ]a, b[ : f(x_{0}) \geqslant A$.
+    Posons $\eta = b - x_{0} > 0$
+    Soit $x \in ]b-\eta, b[$ fixé quelconque.
+    $$
+    b-\eta< x \implies b-(b-x_{0})< x \implies x_{0}<x \implies f(x_{0}) \leqslant f(x)
+    $$
+    Donc $f(x) \geqslant f(x_{0})\geqslant A$
+    Donc $\forall x \in ]b-\eta, b[, f(x) \geqslant A$.
+    Donc $f$ tend vers $+\infty$ en $b$.
+  \end{itemize}
 \end{question_kholle}
 
 \begin{question_kholle}
@@ -3570,7 +4728,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 \end{question_kholle}
 
 \begin{question_kholle}
-  [{L'image d'un segment par une fonction continue sur ce segment est un segment : soient $(a, b) \in \mathbb{R}^2$ tels que $a < b$ et $f: [a, b] \to \mathbb{R}$. Si $f \in \mathcal{C}^0([a, b], \mathbb{R})$ alors $\exists (x_{1}, x_{2}) \in \mathbb{R}^2 : f([a, b]) = [f(x_{1}), f(x_{2})]$}]
+  [{L'image d'un segment par une fonction continue sur ce segment est un segment : soient $(a, b) \in \R^2$ tels que $a < b$ et $f: [a, b] \to \R$. Si $f \in \mathcal{C}^0([a, b], \R)$ alors $\exists (x_{1}, x_{2}) \in \R^2 : f([a, b]) = [f(x_{1}), f(x_{2})]$}]
   {Théorème de Weierstraß}
   \begin{itemize}
 
@@ -3579,40 +4737,40 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
           Par l'absurde, supposons que $f([a, b])$ n'est pas majoré
 
           Alors \begin{equation}\label{eq:1}
-            \forall A \in \mathbb{R}, \exists x \in [a, b] : f(x) > A
+            \forall A \in \R, \exists x \in [a, b] : f(x) > A
           \end{equation}
 
-          Soit $n \in \mathbb{N}$ fq.
+          Soit $n \in \N$ fq.
           Appliquons (\ref{eq:1}) pour $A \leftarrow n$:
           $\exists x \in [a, b] : f(x) > n$, et fixons un tel $x$ que l'on note $x_{n}$
-          Nous venons de créer la suite $(x_{n})_{n \in \mathbb{N}} \in [a, b]^{\mathbb{N}}$ qui vérifie:
+          Nous venons de créer la suite $(x_{n})_{n \in \N} \in [a, b]^{\N}$ qui vérifie:
 
 
           $$
             \left.
             \begin{array}{ll}
-              \forall n \in \mathbb{N}, f(x_{n}) \geqslant n \\
+              \forall n \in \N, f(x_{n}) \geqslant n \\
               \lim_{ n \to \infty } n =  +\infty
             \end{array}
             \right\} \underbrace{ \implies }_{ \text{théorème de divergence par minoration} } f(x_{n}) \xrightarrow[n \to +\infty]{} + \infty
           $$
 
 
-          $(x_{n})_{n \in \mathbb{N}}$ est bornée (à valeurs dans $[a, b]$) donc, selon le théorème de Bolzanno-Weierstraß:
+          $(x_{n})_{n \in \N}$ est bornée (à valeurs dans $[a, b]$) donc, selon le théorème de Bolzanno-Weierstraß:
           $$
-            \exists \ell \in \mathbb{R} : \exists \varphi : \mathbb{N} \to \mathbb{N} : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \mathbb{N}} \text{ tend vers } \ell
+            \exists \ell \in \R : \exists \varphi : \N \to \N : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \N} \text{ tend vers } \ell
           $$
-          Donc, en passant à la limite : $\forall n \in \mathbb{N}, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
+          Donc, en passant à la limite : $\forall n \in \N, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
 
-          Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$ converge vers $f(\ell)$.
+          Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \N}$ converge vers $f(\ell)$.
 
           Or $$
             \left\{ \begin{array}{ll}
-              (f(x_{\varphi(n)}))_{n \in \mathbb{N}} \text{ est une sous suite de } (f(x_{n}))_{n \in \mathbb{N}} \\
+              (f(x_{\varphi(n)}))_{n \in \N} \text{ est une sous suite de } (f(x_{n}))_{n \in \N} \\
               f(x_{n}) \xrightarrow[n \to + \infty]{} + \infty
             \end{array}\right.$$
 
-          donc $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$, tend vers $+ \infty$, ce qui est absurde, donc $f$ est majorée.
+          donc $(f(x_{\varphi(n)}))_{n \in \N}$, tend vers $+ \infty$, ce qui est absurde, donc $f$ est majorée.
 
           On fait de même pour la minoration.
 
@@ -3622,7 +4780,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
           $$
             f([a, b]) \text{ est } \left\{ \begin{array}{ll}
-              \text{ une partie de } \mathbb{R}   \\
+              \text{ une partie de } \R   \\
               \text{ non vide car contient } f(a) \\
               \text{majorée d'après l'étape 1}
             \end{array}\right.
@@ -3632,27 +4790,27 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
           Appliquons la caractérisation séquentielle de la borne supérieure:
           $$
-            \exists (y_{n})_{n \in \mathbb{N}}, \in f([a, b])^{\mathbb{N}} : (y_{n}) \text{ converge vers } \sigma
+            \exists (y_{n})_{n \in \N}, \in f([a, b])^{\N} : (y_{n}) \text{ converge vers } \sigma
           $$
           $$
-            \forall n \in \mathbb{N}, y_{n} \in f([a, b]) \implies \exists x_{n} \in [a, b] : f(x_{n} ) = y_{n}
+            \forall n \in \N, y_{n} \in f([a, b]) \implies \exists x_{n} \in [a, b] : f(x_{n} ) = y_{n}
           $$
           Fixons un tel $x_{n}$ pour tout $y_{n}$.
-          On a donc construit $(x_{n})_{n \in \mathbb{N}} \in [a, b]^{\mathbb{N}} : f(x_{n}) \xrightarrow[n \to +\infty]{} \sigma$
+          On a donc construit $(x_{n})_{n \in \N} \in [a, b]^{\N} : f(x_{n}) \xrightarrow[n \to +\infty]{} \sigma$
 
           De plus, $(x_{n})$ est bornée (à valeurs dans $[a, b]$) donc, selon le théorème de Bolzanno-Weierstraß:
           $$
-            \exists \ell \in \mathbb{R} : \exists \varphi : \mathbb{N} \to \mathbb{N} : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \mathbb{N}} \text{ tend vers } \ell
+            \exists \ell \in \R : \exists \varphi : \N \to \N : \text{strict. croissante tel que } (x_{\varphi(n)})_{n \in \N} \text{ tend vers } \ell
           $$
-          Donc, en passant à la limite : $\forall n \in \mathbb{N}, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
+          Donc, en passant à la limite : $\forall n \in \N, a \leqslant x_{\varphi(n)} \leqslant b \implies a \leqslant \ell \leqslant b \implies \ell \in [a, b]$
 
 
-          Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \mathbb{N}}$ converge vers $f(\ell)$.
+          Par continuité de $f$ sur $[a, b]$, donc en $\ell$, $(f(x_{\varphi(n)}))_{n \in \N}$ converge vers $f(\ell)$.
 
           Or,
           $$
             \left\{ \begin{array}{ll}
-              (f(x_{\varphi(n)}))_{n \in \mathbb{N}} \text{ est une sous suite de } (f(x_{n}))_{n \in \mathbb{N}} \\
+              (f(x_{\varphi(n)}))_{n \in \N} \text{ est une sous suite de } (f(x_{n}))_{n \in \N} \\
               f(x_{n}) \xrightarrow[n \to + \infty]{} \sigma
             \end{array}\right.$$
 
@@ -4730,17 +5888,17 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
 \begin{question_kholle}
   [{\begin{equation}
-          \K[X] ^\times = \left\{ \lambda X^0, \lambda \in \K^* \right\}
-        \end{equation}}]
+    \K[X] ^\times = \left\{ \lambda X^0, \lambda \in \K^* \right\}
+  \end{equation}}]
   {Éléments inversibles de l'anneau $\K[X]$}
-
+  
   Soit P un élément inversible de $\K[X]$.
   Alors $\exists Q \in \K[X] : P \cdot Q = Q \cdot P = 1_{\K[X]}$.
   En prenant les degrés des polynômes, $\text{deg } P + \text{deg } Q = 0$. \\
   Or $\text{deg } : \K[X] \rightarrow \N$ donc $\text{deg } P = \text{deg } Q = 0$.
   Donc $\exists \lambda \in \K^* : P = \lambda$. \\
   Ainsi $\K[X]^\times \subset \left\{ \lambda X^0, \lambda \in \K^* \right\}$.
-
+  
   Soit $\lambda \in \K^*$. Considérons $P = \lambda$.
   Posons $Q = \lambda^{-1}$ (car \K est un corps). $P \cdot Q = \lambda \lambda^{-1} = 1$ et $Q \cdot P = \lambda^{-1} \lambda = 1$ donc $P$ est inversible. Ainsi $\left\{ \lambda X^0, \lambda \in \K^* \right\} \subset \K[X]^\times$.
 \end{question_kholle}
@@ -4758,160 +5916,186 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
     P = \sum_{i=0}^{n}b_{i}L_{i}
   \end{equation}]
   {Théorème d'interpolation de lagrange}
-
+  
   \begin{itemize}
     \item Unicité
-
-          Supposons qu'il existe $(P, Q) \in \mathbb{K}_n[X]^{2}$ solutions du problème d'interpolation.
-
-          Alors $\forall i \in [ \! [ 0, n ] \!], \tilde{P}(a_{i}) = \tilde{Q}(a_{i}) = b_{i}$
-
-          Posons $H = P - Q$, alors, $\forall i \in [ \! [ 0, n ] \!], \tilde{H}(a_{i}) = \tilde{P}(a_{i}) - \tilde{Q}(a_{i}) = 0$.
-
-          De plus, $\deg H = \deg(P-Q) \leqslant \max \left\{ \deg P, \deg Q \right\}$
-
-          Donc $H$ est un polynôme de degré $\leqslant n$ avec $\lvert [ \! [ 0, n ] \!] \rvert = n+1$ racines.
-
-          Donc $H$ est le polynôme nul.
+    
+    Supposons qu'il existe $(P, Q) \in \mathbb{K}_n[X]^{2}$ solutions du problème d'interpolation.
+    
+    Alors $\forall i \in [ \! [ 0, n ] \!], \tilde{P}(a_{i}) = \tilde{Q}(a_{i}) = b_{i}$
+    
+    Posons $H = P - Q$, alors, $\forall i \in [ \! [ 0, n ] \!], \tilde{H}(a_{i}) = \tilde{P}(a_{i}) - \tilde{Q}(a_{i}) = 0$.
+    
+    De plus, $\deg H = \deg(P-Q) \leqslant \max \left\{ \deg P, \deg Q \right\}$
+    
+    Donc $H$ est un polynôme de degré $\leqslant n$ avec $\lvert [ \! [ 0, n ] \!] \rvert = n+1$ racines.
+    
+    Donc $H$ est le polynôme nul.
     \item Existence
-          Soit $i \in [ \! [ 0, n ] \!]$ fq
-          Notons $L_{i}$ une solution de degré $\leqslant n$ au problème $Pb_{i}$ suivant:
-          $$
-            (Pb_i)
-            \left\{ \begin{array}{ll}
-              \tilde{P}(a_{0}) = 0   \\
-              \vdots                 \\
-              \tilde{P}(a_{i-1}) = 0 \\
-              \tilde{P}(a_{i}) = 1   \\
-              \tilde{P}(a_{n}) = 0   \\
-              \vdots                 \\
-              \tilde{P}(a_{n}) = 0
-            \end{array} \right.
-          $$
-          On remarque que $(a_{0},\dots ,a_{i-1}, a_{i+1},\dots, a_{n})$ sont $n$ racines deux à deux distinctes de $L_{i}$. Or $L_{i}$ est de degré $\leqslant n$ et n'est pas le polynôme nul (car $\tilde{L_{i}}(a_{i}) = 0$) donc $(a_{0},\dots ,a_{i-1}, a_{i+1},\dots, a_{n})$ sont les \emph{seules} racines de $L_{i}$, toutes simples.
-
-          Dès lors,
-          $$
-            \exists c \in \mathbb{K}^{*} : L_{i} = c\prod_{\substack{j=0 \\ j\neq i}} ^{n}(X-a_{j})
-          $$
-          Pour trouver le $c$, remarquons que
-
-          \begin{align*}
-            \tilde{L_{i}}(a_{i}) = 1 & \iff c\prod_{\substack{j=0    \\ j\neq i}} ^{n}(a_{i}-a_{j}) = 1\\
-                                     & \iff c = \prod_{\substack{j=0 \\ j\neq i}} ^{n}\left( \frac{1}{a_{i}-a_{j}} \right)
-          \end{align*}
-
-          Ainsi, s'il existe une solution au problème $Pb_{i}$ c'est nécéssairement
-          $$L_{i} = \prod_{\substack{j=0 \\ j\neq i}} ^{n}\left( \frac{{X-a_{j}}}{a_{i}-a_{j}} \right)$$
-
-          Réciproquement, cette solution est correcte puisque
-          $$\forall k \in [ \! [ 0, n ] \!], k \neq i,  \tilde{L_{i}}(a_{k}) = \prod_{\substack{j=0 \\ j\neq i}} ^{n}\left( \frac{{\overbrace{ a_{k}-a_{j} }^{ =0 }}}{a_{i}-a_{j}} \right) = 0$$
-          Et
-          $$\tilde{L_{i}}(a_{i}) = \prod_{\substack{j=0 \\ j\neq i}} ^{n}\left( \frac{{a_{i}-a_{j}}}{a_{i}-a_{j}} \right) = \prod_{\substack{j=0 \\ j\neq i}} ^{n} 1 = 1$$
-
-          Posons donc $P = \sum_{i=0} ^{n} b_{i}Li$.
-
-          Alors, par construction,
-          $$
-            \forall k \in [ \! [ 0, n ] \!], \tilde{P}(a_{k}) = \sum_{i=0} ^{n}\left(  b_{i} \prod_{\substack{j=0 \\ j\neq i}} ^{n}\left( \frac{{a_{k}-a_{j}}}{a_{i}-a_{j}} \right) \right) = \sum_{i=0} ^{n}\left(  b_{i} \delta_{ki} \right) = b_{k} \delta_{kk} = b_{k}
-          $$
-          Nous avons donc construit une solution unique au problème d'interpolation de Lagrange
+    Soit $i \in [ \! [ 0, n ] \!]$ fq
+    Notons $L_{i}$ une solution de degré $\leqslant n$ au problème $Pb_{i}$ suivant:
+    $$
+    (Pb_i)
+    \left\{ \begin{array}{ll}
+      \tilde{P}(a_{0}) = 0   \\
+      \vdots                 \\
+      \tilde{P}(a_{i-1}) = 0 \\
+      \tilde{P}(a_{i}) = 1   \\
+      \tilde{P}(a_{n}) = 0   \\
+      \vdots                 \\
+      \tilde{P}(a_{n}) = 0
+    \end{array} \right.
+    $$
+    On remarque que $(a_{0},\dots ,a_{i-1}, a_{i+1},\dots, a_{n})$ sont $n$ racines deux à deux distinctes de $L_{i}$. Or $L_{i}$ est de degré $\leqslant n$ et n'est pas le polynôme nul (car $\tilde{L_{i}}(a_{i}) = 0$) donc $(a_{0},\dots ,a_{i-1}, a_{i+1},\dots, a_{n})$ sont les \emph{seules} racines de $L_{i}$, toutes simples.
+    
+    Dès lors,
+    $$
+    \exists c \in \mathbb{K}^{*} : L_{i} = c\prod_{\substack{j=0 \\ j\neq i}} ^{n}(X-a_{j})
+    $$
+    Pour trouver le $c$, remarquons que
+    
+    \begin{align*}
+      \tilde{L_{i}}(a_{i}) = 1 & \iff c\prod_{\substack{j=0    \\ j\neq i}} ^{n}(a_{i}-a_{j}) = 1\\
+      & \iff c = \prod_{\substack{j=0 \\ j\neq i}} ^{n}\left( \frac{1}{a_{i}-a_{j}} \right)
+    \end{align*}
+    
+    Ainsi, s'il existe une solution au problème $Pb_{i}$ c'est nécéssairement
+    $$L_{i} = \prod_{\substack{j=0 \\ j\neq i}} ^{n}\left( \frac{{X-a_{j}}}{a_{i}-a_{j}} \right)$$
+    
+    Réciproquement, cette solution est correcte puisque
+    $$\forall k \in [ \! [ 0, n ] \!], k \neq i,  \tilde{L_{i}}(a_{k}) = \prod_{\substack{j=0 \\ j\neq i}} ^{n}\left( \frac{{\overbrace{ a_{k}-a_{j} }^{ =0 }}}{a_{i}-a_{j}} \right) = 0$$
+    Et
+    $$\tilde{L_{i}}(a_{i}) = \prod_{\substack{j=0 \\ j\neq i}} ^{n}\left( \frac{{a_{i}-a_{j}}}{a_{i}-a_{j}} \right) = \prod_{\substack{j=0 \\ j\neq i}} ^{n} 1 = 1$$
+    
+    Posons donc $P = \sum_{i=0} ^{n} b_{i}Li$.
+    
+    Alors, par construction,
+    $$
+    \forall k \in [ \! [ 0, n ] \!], \tilde{P}(a_{k}) = \sum_{i=0} ^{n}\left(  b_{i} \prod_{\substack{j=0 \\ j\neq i}} ^{n}\left( \frac{{a_{k}-a_{j}}}{a_{i}-a_{j}} \right) \right) = \sum_{i=0} ^{n}\left(  b_{i} \delta_{ki} \right) = b_{k} \delta_{kk} = b_{k}
+    $$
+    Nous avons donc construit une solution unique au problème d'interpolation de Lagrange
   \end{itemize}
+  
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+      \pgfmathsetmacro{\a}{2/15}
+      \pgfmathsetmacro{\b}{-1.4}
+      \pgfmathsetmacro{\c}{64/15}
+      \pgfmathsetmacro{\d}{-2}
+      
+      \def\polynomial(#1){\a*(#1)^3 + \b*(#1)^2 + \c*(#1) + \d}
+      
+      \draw[->] (-0.5, 0) -- (6.5, 0) node[below] {$x$};
+      \draw[->] (0, -0.5) -- (0, 4.5) node[left] {$\tilde P (x)$};
+      
+      \fill (1, 1) circle (2pt) node[below right] {$(1, 1)$};
+      \fill (2, 2) circle (2pt) node[above left] {$(2, 2)$};
+      \fill (3.5, 1.5) circle (2pt) node[above right] {$(3.5, 1.5)$};
+      \fill (5, 1) circle (2pt) node[below right] {$(5, 1)$};
+      
+      \draw[thick, smooth, domain=0.4:6.4, samples=100] plot(\x, {\polynomial(\x)});
+      
+      \draw[gray, dotted] (0,0) grid (6,4);
+    \end{tikzpicture}
+    \caption{Le polynôme $\frac{2}{15}X^3 - \frac 7 5 X^2 + \frac{64}{15}X - 2$ est l'unique polynôme de degré $\leqslant 3$ passant par les points $\displaystyle \left((1, 1), (2, 2), \left(\frac 7 2, \frac 3 2 \right), (5, 1)\right)$}
+  \end{figure}
+  
 \end{question_kholle}
 
 \begin{question_kholle}
   [Soient $P$ à coefficients dans $\K$ et $a\in \K$. On a :
-    \begin{equation}
-      P = \sum_{n\in \N}\frac{\widetilde{P^{(n)}}(a)}{n!}(X-a)^n
-    \end{equation}
+  \begin{equation}
+    P = \sum_{n\in \N}\frac{\widetilde{P^{(n)}}(a)}{n!}(X-a)^n
+  \end{equation}
   ]
   {Formule de Taylor dans $\K [X]$ (caractéristique nulle)}
-
+  
   Considérons le prédicat $\PRIME (\cdot)$ défini sur $\N$ par :
   \[
-    \PRIME (n ) \ :  \text{\textquotedblleft} \ \forall P \in \K _n[X], \ P = \sum_{k = 0}^n\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^k \ \text{\textquotedblright}
+  \PRIME (n ) \ :  \text{\textquotedblleft} \ \forall P \in \K _n[X], \ P = \sum_{k = 0}^n\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^k \ \text{\textquotedblright}
   \]
   Initialisation : pour $n = 0 $, soit $P\in \K _0 [X]$. \\
   $\exists \ p_0 \in \K \ : \ P = p_0 X^0$ et $\sum_{k = 0}^0\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^k = \frac{\widetilde{P^{(0)}}(a)}{1}X^0 = p_0 X^0$, donc $\PRIME (0)$ vrai. \\ \\
   Hérédité : Soit $n\in \N$ tel que $\PRIME (n)$. Soit $P\in \K _{n+1} [X]$. On a donc $\deg P' = \deg P -1 \leq n$ donc $\PRIME (n)$ s'applique à $P'$ :
   \[
-    P' = \sum_{k = 0}^n\frac{\widetilde{P'^{(k)}}(a)}{k!}(X-a)^k = \left( \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} \right) ',
+  P' = \sum_{k = 0}^n\frac{\widetilde{P'^{(k)}}(a)}{k!}(X-a)^k = \left( \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} \right) ',
   \]
   donc :
   \[
-    \left( P - \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} \right) ' = 0 \ \implies \ \exists \ \mu \in \K \ : \ P - \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} = \mu ,
+  \left( P - \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} \right) ' = 0 \ \implies \ \exists \ \mu \in \K \ : \ P - \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{k!}\frac{(X-a)^{k+1}}{k+1} = \mu ,
   \]
   ainsi :
   \[
-    P = \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{(k+1)!}(X-a)^{k+1} + \mu = \sum_{k = 1}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k} + \mu,
+  P = \sum_{k = 0}^n\frac{\widetilde{P^{(k+1)}}(a)}{(k+1)!}(X-a)^{k+1} + \mu = \sum_{k = 1}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k} + \mu,
   \]
   donc en $a$ par $\ph _ a$ :
   \[
-    \widetilde{P}(a) = \mu \ \implies \ P = \sum_{k = 1}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k} + \widetilde{P}(a) = \sum_{k = 0}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k},
+  \widetilde{P}(a) = \mu \ \implies \ P = \sum_{k = 1}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k} + \widetilde{P}(a) = \sum_{k = 0}^{n+1}\frac{\widetilde{P^{(k)}}(a)}{k!}(X-a)^{k},
   \]
   donc $\PRIME (n+1) $ vrai. Ainsi par théorème de récurrence sur $\N$, $\PRIME (n)$ est vrai pour tout $n\in \N$.
 \end{question_kholle}
 
 \begin{question_kholle}
   [Soit {$P \in \K[X]$}. Soit $a \in \K$.
-    \begin{equation}
-      a \text{ est une racine de } P \text{ de multiplicité au moins } m
-      \iff \left\{ \begin{matrix}
-        P(a) = 0  \\
-        P'(a) = 0 \\
-        \ldots    \\
-        P^{(m-1)}(a) = 0
-      \end{matrix} \right.
-    \end{equation}
-    \begin{equation}
-      a \text{ est une racine de } P \text{ de multiplicité d'exactement } m
-      \iff \left\{ \begin{matrix}
-        P(a) = 0         \\
-        P'(a) = 0        \\
-        \ldots           \\
-        P^{(m-1)}(a) = 0 \\
-        P^{m}(a) \neq 0
-      \end{matrix} \right.
-    \end{equation}]
+  \begin{equation}
+    a \text{ est une racine de } P \text{ de multiplicité au moins } m
+    \iff \left\{ \begin{matrix}
+      P(a) = 0  \\
+      P'(a) = 0 \\
+      \ldots    \\
+      P^{(m-1)}(a) = 0
+    \end{matrix} \right.
+  \end{equation}
+  \begin{equation}
+    a \text{ est une racine de } P \text{ de multiplicité d'exactement } m
+    \iff \left\{ \begin{matrix}
+      P(a) = 0         \\
+      P'(a) = 0        \\
+      \ldots           \\
+      P^{(m-1)}(a) = 0 \\
+      P^{m}(a) \neq 0
+    \end{matrix} \right.
+  \end{equation}]
   {Caractérisation de la multiplicité d'une racine}
-
+  
   \begin{enumerate}[label=$\bullet$]
     \item Supposons que $a$ est une racine de $P$ de multiplicité au moins $m$. \\
-          Alors $\exists Q \in \K[X] : P = (X-a)^m Q$. D'après la formule de Leibniz, pour tout $k \in [\![0;m-1]\!]$,
-          \begin{equation*}
-            \begin{aligned}
-              P^{(k)}
-               & = \sum_{i=0}^{k} \binom{k}{i} \left( (X-a)^m \right) ^{(k-i)} Q^{(i)}       \\
-               & = \sum_{i=0}^{k} \binom{k}{i} \frac{m!}{(m-(k-i))!} (X-a)^{m-(k-i)} Q^{(i)} \\
-               & = \underbrace{ (X-a)^{(m-k)} }_{\substack{\text{c'est un bien un polynôme}  \\ \text{non constant car } k < m}} \sum_{i=0}^{k} \binom{k}{i} \frac{m!}{(m-(k-i))!} (X-a)^{i} Q^{(i)}
-            \end{aligned}
-          \end{equation*}
-          Donc $\forall k \in [\![0;m-1]\!], P^{(k)}(a) = 0$.
-
+    Alors $\exists Q \in \K[X] : P = (X-a)^m Q$. D'après la formule de Leibniz, pour tout $k \in [\![0;m-1]\!]$,
+    \begin{equation*}
+      \begin{aligned}
+        P^{(k)}
+        & = \sum_{i=0}^{k} \binom{k}{i} \left( (X-a)^m \right) ^{(k-i)} Q^{(i)}       \\
+        & = \sum_{i=0}^{k} \binom{k}{i} \frac{m!}{(m-(k-i))!} (X-a)^{m-(k-i)} Q^{(i)} \\
+        & = \underbrace{ (X-a)^{(m-k)} }_{\substack{\text{c'est un bien un polynôme}  \\ \text{non constant car } k < m}} \sum_{i=0}^{k} \binom{k}{i} \frac{m!}{(m-(k-i))!} (X-a)^{i} Q^{(i)}
+      \end{aligned}
+    \end{equation*}
+    Donc $\forall k \in [\![0;m-1]\!], P^{(k)}(a) = 0$.
+    
     \item Supposons que $\forall k \in [\![0;m-1]\!], P^{(k)}(a) = 0$. \\
-          Appliquons la formule de Taylor a.
-          \begin{equation*}
-            \begin{aligned}
-              P & = \sum_{n \in \N} \frac{P^{(n)}(a)}{n!} (X-a)^n                                                   \\
-                & = \sum_{n = 0}^{m-1} \underbrace{ \frac{P^{(n)}(a)}{n!} }_{=0} (X-a)^n + \sum_{\substack{n \in \N \\ n \geqslant m}} \frac{P^{(n)}(a)}{n!} (X-a)^n \\
-                & = (X-a)^m \sum_{\substack{n \in \N                                                                \\ n \geqslant m}} \frac{P^{(n)}(a)}{n!} \underbrace{(X-a)^{n-m}}_{\in \K[X] \textit{ car } n - m \in \N}
-            \end{aligned}
-          \end{equation*}
-          Donc $(X-a)^m | P$. Donc $a$ est racine de $P$ de multiplicité au moins $m$.
-
+    Appliquons la formule de Taylor a.
+    \begin{equation*}
+      \begin{aligned}
+        P & = \sum_{n \in \N} \frac{P^{(n)}(a)}{n!} (X-a)^n                                                   \\
+        & = \sum_{n = 0}^{m-1} \underbrace{ \frac{P^{(n)}(a)}{n!} }_{=0} (X-a)^n + \sum_{\substack{n \in \N \\ n \geqslant m}} \frac{P^{(n)}(a)}{n!} (X-a)^n \\
+        & = (X-a)^m \sum_{\substack{n \in \N                                                                \\ n \geqslant m}} \frac{P^{(n)}(a)}{n!} \underbrace{(X-a)^{n-m}}_{\in \K[X] \textit{ car } n - m \in \N}
+      \end{aligned}
+    \end{equation*}
+    Donc $(X-a)^m | P$. Donc $a$ est racine de $P$ de multiplicité au moins $m$.
+    
     \item Supposons que $a$ est une racine de $P$ de multiplicité exactement $m$. \\
-          Nous pouvons appliquer le point précédent car la multiplicité est supérieur à $m$ : $\forall k \in [\![0;m-1]\!], P^{(k)}(a) = 0$. \\
-          Par l'absurde, si $P^{(m)}(a) = 0$ alors le point précédent donne que $a$ a une multiplicité supérieur à $m + 1$ donc $m \geqslant m + 1$ ce qui est une contradiction. \\
-          Par conséquent, $P^{(m)}(a) \neq 0$.
-
+    Nous pouvons appliquer le point précédent car la multiplicité est supérieur à $m$ : $\forall k \in [\![0;m-1]\!], P^{(k)}(a) = 0$. \\
+    Par l'absurde, si $P^{(m)}(a) = 0$ alors le point précédent donne que $a$ a une multiplicité supérieur à $m + 1$ donc $m \geqslant m + 1$ ce qui est une contradiction. \\
+    Par conséquent, $P^{(m)}(a) \neq 0$.
+    
     \item Supposons $\forall k \in [\![0;m-1]\!], P^{(k)}(a) = 0$ et $P^{(m)}(a) \neq 0$. \\
-          En reprenant le calcul précédent, pour $k = m$, en sachant que $(X-a)^{(m-k)} = X^0$,
-          \begin{equation*}
-            P^{(m)} = \binom{m}{0} \frac{m!}{0!} (X-a)^{0} P + \sum_{i=1}^{m} \binom{m}{i} \frac{m!}{i!} (X-a)^{i} Q^{(i)}
-          \end{equation*}
-          D'où $P^{(m)}(a) = m! \ Q(a)$ donc $Q(a) = \frac{P^{(m)}(a)}{m!}$. Donc $Q(a) \neq 0$. \\
-          Par l'absurde, supposons que $(X-a)^{m+1} | P$. Alors $\exists R \in \K[X] : P = (X-a)^{m+1} R$. Donc $(X-a)^{m+1} R = (X-a)^m Q$ d'où $Q = (X-a) R$. Nous obtenons $Q(a) = 0$ ce qui est une contradiction avec $Q(a) = 0$. \\
-          Donc $a$ est une racine de $P$ de multiplicité strictement inférieur à $m + 1$ et, d'après le point précédent, supérieur à $m$. Donc $a$ est une racine de $P$ de multiplicité exactement $m$.
+    En reprenant le calcul précédent, pour $k = m$, en sachant que $(X-a)^{(m-k)} = X^0$,
+    \begin{equation*}
+      P^{(m)} = \binom{m}{0} \frac{m!}{0!} (X-a)^{0} P + \sum_{i=1}^{m} \binom{m}{i} \frac{m!}{i!} (X-a)^{i} Q^{(i)}
+    \end{equation*}
+    D'où $P^{(m)}(a) = m! \ Q(a)$ donc $Q(a) = \frac{P^{(m)}(a)}{m!}$. Donc $Q(a) \neq 0$. \\
+    Par l'absurde, supposons que $(X-a)^{m+1} | P$. Alors $\exists R \in \K[X] : P = (X-a)^{m+1} R$. Donc $(X-a)^{m+1} R = (X-a)^m Q$ d'où $Q = (X-a) R$. Nous obtenons $Q(a) = 0$ ce qui est une contradiction avec $Q(a) = 0$. \\
+    Donc $a$ est une racine de $P$ de multiplicité strictement inférieur à $m + 1$ et, d'après le point précédent, supérieur à $m$. Donc $a$ est une racine de $P$ de multiplicité exactement $m$.
   \end{enumerate}
 \end{question_kholle}
 
@@ -4920,30 +6104,30 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   {Identification de $\K[X]$ à $\K [x]$, par l'injectivité de $\Phi$}
   Montrons que l'application $\Phi$ définie comme suit est injective :
   \[
-    \Phi : \left|   \begin{array}{ccc}
-      \K[X] & \longrightarrow & \mathcal{F}(\K, \K) \\
-      P     & \longmapsto     & \widetilde{P}
-    \end{array} \right..
+  \Phi : \left|   \begin{array}{ccc}
+    \K[X] & \longrightarrow & \mathcal{F}(\K, \K) \\
+    P     & \longmapsto     & \widetilde{P}
+  \end{array} \right..
   \]
   Soit donc $P\in \ker \Phi $, on a :
   \[
-    \Phi (P)  = \widetilde{0} \ \implies \ \widetilde{P} = \widetilde{0} \text{ sur } \K \ \implies \ P = 0_{\K [X]},
+  \Phi (P)  = \widetilde{0} \ \implies \ \widetilde{P} = \widetilde{0} \text{ sur } \K \ \implies \ P = 0_{\K [X]},
   \]
   donc $\ker \Phi \subset \{ 0_{\K [X]} \}$. \\
   Réciproquement, on calcule l'image du polynôme nul par $\Phi$ :
   \[
-    \Phi (0 _{\K [X]} ) = \widetilde{0},
+  \Phi (0 _{\K [X]} ) = \widetilde{0},
   \]
   donc $0_{\K [X]} \in \ker \Phi$, ainsi on a l'égalité ensembliste et donc cela suffit.
 \end{question_kholle}
 
 \begin{question_kholle}
   [Les fonctions symétriques élémentaires $\displaystyle \left( \sigma_k \right)_{k \in [\![0;n]\!]}$ pour une famille $\displaystyle \left( x_k \right)_{k \in [\![1;n]\!]}$ sont définies par
-    \begin{equation}
-      \sigma_ k = \sum_{1 \leqslant i_1 < \ldots < i_k \leqslant n} \ \prod_{j=1}^{k} x_{i_j}
-    \end{equation}]
+  \begin{equation}
+    \sigma_ k = \sum_{1 \leqslant i_1 < \ldots < i_k \leqslant n} \ \prod_{j=1}^{k} x_{i_j}
+  \end{equation}]
   {Pour $P = (X-x_1)(X-x_2)(X-x_3)$, exprimer $x_1^3 + x_2^3 + x_3^3$ en fonction des fonctions symétriques élémentaires}
-
+  
   Sous forme développée, $P = X^3 - (x1 + x_2 + x_3) X^2 + (x_1 x_2 + x_1 x_3 + x_2 x_3) X - x_1 x_2 x_3 = X^3 - \sigma_1 X^2 + \sigma_2 X - \sigma_3$. Comme $x_1, x_2, x_3$ sont racines de $P$, nous avons les trois égalité suivantes :
   \begin{equation*}
     \begin{aligned}
@@ -4970,15 +6154,15 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
 \begin{question_kholle}
   [Les sommes de Newton $(S_k)_{k\in\Z^*}$ pour une famille $(x_k)_{k \in \N^*}$ sont définies par (sous réserve d'existence pour $k<0$) :
-    \begin{equation}
-      S_k = \sum_{i=1}^{n} x_i^k
-    \end{equation}]
+  \begin{equation}
+    S_k = \sum_{i=1}^{n} x_i^k
+  \end{equation}]
   {Expression de $S_2$, $S_{-1}$ et $S_{-2}$ à l'aide des fonctions élémentaires symétriques.}
-
+  
   \begin{equation*}
     \begin{aligned}
       \sigma_1^2   & = \left( \sum_{i=1}^{n} x_i \right)^2                                                                                      \\
-                   & = \underbrace{ \sum_{i=1}^{n} x_i^2 }_{S_2} + \ 2 \ \underbrace{ \sum_{1 \leqslant i < j \leqslant n} x_i x_j }_{\sigma_2} \\
+      & = \underbrace{ \sum_{i=1}^{n} x_i^2 }_{S_2} + \ 2 \ \underbrace{ \sum_{1 \leqslant i < j \leqslant n} x_i x_j }_{\sigma_2} \\
       \implies S_2 & = \sigma_1^2 - 2 \sigma_2
     \end{aligned}
   \end{equation*}
@@ -4990,9 +6174,9 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \begin{equation*}
     \begin{aligned}
       S_{-2} & = \sum_{i=1}^{n} \frac{1}{x_i^2}                                                                                         \\
-             & = \left( \sum_{i=1}^{n} \frac{1}{x_i} \right)^2 - 2 \sum_{1 \leqslant i < j \leqslant n} \frac{1}{x_i} \frac{1}{x_j}     \\
-             & = \frac{\sigma_{n-1}^2}{\sigma_n^2} - 2 \frac{\displaystyle \sum_{1 \leqslant i < j \leqslant n} \prod_{\substack{ k = 1 \\ k \notin \{i,j\} }} \frac{1}{x_j} }{\sigma_n} \\
-             & = \frac{\sigma_{n-1}^2 - 2 \sigma_{n-2}\sigma_n}{\sigma_n^2}
+      & = \left( \sum_{i=1}^{n} \frac{1}{x_i} \right)^2 - 2 \sum_{1 \leqslant i < j \leqslant n} \frac{1}{x_i} \frac{1}{x_j}     \\
+      & = \frac{\sigma_{n-1}^2}{\sigma_n^2} - 2 \frac{\displaystyle \sum_{1 \leqslant i < j \leqslant n} \prod_{\substack{ k = 1 \\ k \notin \{i,j\} }} \frac{1}{x_j} }{\sigma_n} \\
+      & = \frac{\sigma_{n-1}^2 - 2 \sigma_{n-2}\sigma_n}{\sigma_n^2}
     \end{aligned}
   \end{equation*}
 \end{question_kholle}
@@ -5095,11 +6279,10 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
       \exists \ (c_1, \dots, c_n)\in \R ^*_+ \ : \ \sum_{k=1}^n c_k z_k = u \ \text{et} \ \sum_{k=1}^n c_k = 1.
     \end{equation}]
   {Théorème de Gauss-Lucas et interprétation graphique.}
-  Pour ce qui est de l'interprétation graphique, elle n'est pas prévue à l'heure qu'il est dans ce pdf, pour la faire soi-même dessiner des points et les "clôturer" dans un polygone convexe, ou même faire ceci avec un cas concret. \\
-
-  \noindent $\rightarrow$ Si $u$ est une racine de $P$ alors noter $k_0$ son indice et utiliser le symbole de Kronecker. \\
-  $ \sum_{k=1}^n \delta_{k, k_0} z_k = u \ \text{et} \ \sum_{k=1}^n \delta_{k, k_0} = 1. $ \\
-  $\rightarrow$ Sinon, $u$ n'appartient pas aux racines de $P$, donc $u$ n'est pas pôle de $\frac{P'}{P}$ ce qui permet de prendre l'image par le morphisme d'évaluation en $u$ de cette même fraction rationnelle :
+  \begin{itemize}[label=$\star$]
+    \item Si $u$ est une racine de $P$ alors noter $k_0$ son indice et utiliser le symbole de Kronecker. 
+  $$ \sum_{k=1}^n \delta_{k, k_0} z_k = u \ \text{et} \ \sum_{k=1}^n \delta_{k, k_0} = 1 $$
+  \item Sinon, $u$ n'appartient pas aux racines de $P$, donc $u$ n'est pas pôle de $\frac{P'}{P}$ ce qui permet de prendre l'image par le morphisme d'évaluation en $u$ de cette même fraction rationnelle :
   \[
     0_\K = \frac{P'(u)}{P(u)} = \sum_{k = 1}^n \frac{1}{u - z_k} = \sum_{k = 1}^n \frac{\overline{u}- \overline{z_k}}{|u-z_k|^2} = \sum_{k = 1}^n \frac{\overline{u}}{|u-z_k|^2}- \sum_{k = 1}^n \frac{\overline{z_k}}{|u-z_k|^2}.
   \]
@@ -5107,19 +6290,60 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
   \[
     \sum_{k = 1}^n\frac{u}{|u-z_k|^2} = \sum_{k = 1}^n \frac{z_k}{|u-z_k|^2} \ \implies \ u = \frac{\sum_{k = 1}^n \frac{z_k}{|u-z_k|^2}}{\sum_{k = 1}^n\frac{1}{|u-z_k|^2}}= \sum_{k = 1}^n\underset{= \ c_k}{\underbrace{\frac{\frac{1}{|u-z_k|^2}}{\sum_{i = 1}^n\frac{1}{|u-z_i|^2}}}} z_k = \sum_{k=1}^n c_k z_k ,
   \]
-  ce qui démontre la première partie du résultat, il est immédiat de vérifier que $\sum_{k=1}^nc_k = 1$, vérification laissée aux lecteurs. Ce qui achève la preuve. \\
-
+  ce qui démontre la première partie du résultat, il est immédiat de vérifier que $\sum_{k=1}^nc_k = 1$, vérification laissée aux lecteurs. Ce qui achève la preuve. 
+\end{itemize}
   \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-      \draw[->] (-5, 0) -- (5, 0);
-      \draw[->] (0, -3) -- (0, 4);
-      \draw[blue][pattern={Hatch[angle=45, distance=7pt]}, pattern color = blue] (-4,0) -- (-1, 3) -- (2, 2) -- (3, 1) -- (1, -1) -- (-1, -2) -- cycle;
+      % Draw the axes
+      \draw[->] (-3, 0) -- (3, 0) node[anchor=north west] {Re};
+      \draw[->] (0, -3) -- (0, 3) node[anchor=south east] {Im};
+  
+      % Define and draw the 7 scattered points with labels
+      \coordinate (A) at (-2, 1);
+      \coordinate (B) at (2, 1.5);
+      \coordinate (C) at (1, -2);
+      \coordinate (D) at (-1.5, -1);
+      \coordinate (E) at (-0.5, 2);
+      \coordinate (F) at (0.5, -1.5);
+      \coordinate (G) at (1.5, 0.5);
+  
+      % Plot the points and add labels
+      \filldraw[blue] (A) circle (1pt) node[anchor=east] {$r_1$};
+      \filldraw[blue] (B) circle (1pt) node[anchor=west] {$r_2$};
+      \filldraw[blue] (C) circle (1pt) node[anchor=north] {$r_3$};
+      \filldraw[blue] (D) circle (1pt) node[anchor=east] {$r_4$};
+      \filldraw[blue] (E) circle (1pt) node[anchor=south] {$r_5$};
+      \filldraw[blue] (F) circle (1pt) node[anchor=south east] {$r_6$};
+      \filldraw[blue] (G) circle (1pt) node[anchor=north] {$r_7$};
+  
+      % Draw the corrected convex hull outline
+      \draw[red, thin, dashed] (A) -- (E) -- (B) -- (C) -- (D) -- (A);
+  
+      \coordinate (H) at (-1.33618, 0.780693);
+      \coordinate (I) at (-0.819814, -0.72006);
+      \coordinate (J) at (-0.256534, 1.22291);
+      \coordinate (K) at (0.70267, -0.260152);
+      \coordinate (L) at (0.822502, -1.77882);
+      \coordinate (M) at (1.7445, 1.18401);
+  
+      \filldraw[orange] (H) circle (1pt) node[anchor=east] {$r'_1$};
+      \filldraw[orange] (I) circle (1pt) node[anchor=west] {$r'_2$};
+      \filldraw[orange] (J) circle (1pt) node[anchor=north] {$r'_3$};
+      \filldraw[orange] (K) circle (1pt) node[anchor=east] {$r'_4$};
+      \filldraw[orange] (L) circle (1pt) node[anchor=south] {$r'_5$};
+      \filldraw[orange] (M) circle (1pt) node[anchor=east] {$r'_6$};
+  
     \end{tikzpicture}
-    \newline
-    $P = (X + 4)^3 (X + 1 - 3i) (X - 2 - 2i)^2 (X -3 - i) (X - 1 + i) (X + 1 + 2i)^2$ \\
-    Les racines de $P'$ sont dans le polygone bleu.
   \end{figure}
+    
+    \begin{itemize}[label=$\star$]
+      \item En {\color{blue} bleu}, les racines du polynôme\\$P = (X - (-2 + i))(X - (2 + 1.5i))(X - (1 -2i))(X - (-1.5 - i))(X - (-0.5 + 2i))(X - (0.5 - 1.5i))(X- (1.5 + 0.5i))$\\
+        \item Délimitée en {\color{red} rouge}, l'enveloppe convexe des racines.\\
+        \item En {\color{orange} orange}, les racines du polynôme dérivé\\
+         $P' = (21.8125 + 40.1875 i) - (3.5 + 21.375 i) X + (7.125 - 25.125 i) X^2 + (16 - 31.5 i) X^3 + (3.75 + 5 i) X^4 - (6 + 3 i) X^5 + 7 X^6$\\
+    \end{itemize}
+    Les racines de $P'$ se retrouvent bien dans l'enveloppe convexe des racines de $P$.
 \end{question_kholle}
 
 \begin{question_kholle}
@@ -6902,9 +8126,10 @@ Nous rappelons que $\dim \{0_E\} = 0$ et que $\{0_E\} = \Vect \emptyset$.
   Alors la série de terme général
   $$\left( f(n)- \int_{n}^{n+1} f(u) \, \mathrm du  \right)_{n\geqslant n_{0}}$$
   est à termes positifs ou nuls et converge.
-  }]{Pour $f$ continue sur $[n_0, +\infty[$, décroissante et minorée, $\sum_{n\geqslant n_{0}}\left( f(n)- \int_{n}^{n+1} f(u) \, \mathrm du  \right)$ converge. Application au DA en $o(1)$ de la somme partielle de la série harmonique}
+  }]{Pour $f$ continue sur $[n_0, +\infty[$, décroissante et minorée, $\displaystyle\sum_{n\geqslant n_{0}}\left( f(n)- \int_{n}^{n+1} f(u) \, \mathrm du  \right)$ converge. Application au DA en $o(1)$ de la somme partielle de la série harmonique}
 
   Montrons que la suite $(S_{n})_{n\geqslant n_{0}}$ est majorée, et que la suite est à termes $\geqslant 0$
+  
   La décroissance de $f$ donne l'encadrement suivant
 
   $$\forall n \in [ \! [ n_{0} , +\infty[\![,  f(n) - \int_{n}^{n+1} f(t) \, \mathrm dt \geqslant 0$$
@@ -6922,10 +8147,48 @@ Nous rappelons que $\dim \{0_E\} = 0$ et que $\{0_E\} = \Vect \emptyset$.
 
   En reconnaissant un phénomène télescopique
 
-  $$S_{n} \leqslant f(n_{0})-f(n+1)\leqslant f(n_{0})-n$$
+  $$S_{n} \leqslant f(n_{0})-f(n+1)\leqslant f(n_{0})- m $$
 
-  Donc $(S_{n})_{n\geqslant n_{0}}$ est majorée, et croissante, elle converge donc.
+  Donc $(S_{n})_{n\geqslant n_{0}}$ est croissante et majorée, elle converge.
   \\
+
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+
+      \draw[->] (-0.5,0) -- (8.5,0) node[right] {$x$}; % x-axis
+      \draw[->] (0,-0.5) -- (0,5.5) node[above] {$f(x) = \frac{1}{x} + 1$}; % y-axis
+      
+      \draw[domain=1:8,samples=100,smooth,thick,blue] plot (\x, {1/\x*4 + 1}) node[right] {};
+      
+      \foreach \n in {1,2,...,7} {
+          
+          \draw[dashed] (\n, 0) -- (\n, {4/\n + 1}); 
+          \filldraw (\n, {4/\n + 1}) circle (2pt) node[above right] {$f(\n)$};
+          
+          
+          \draw[red, thick] (\n, {4/\n + 1}) -- (\n+1, {4/\n + 1}) -- (\n+1, {1 + 4/(\n + 1)});
+          
+          \fill[gray, opacity=0.3] 
+              plot[domain=\n:\n+1, samples=50] (\x, {1 + 4/\x}) -- 
+              (\n+1, {1 + 4/\n}) -- (\n, {1 + 4/\n}) -- cycle;
+          
+          \fill[gray, opacity=0.3] 
+              plot[domain=\n:\n+1, samples=50] (\x - \n + 9, {1+ 4/\x}) -- 
+              (10, {1 + 4/\n}) -- (9, {1+ 4/\n}) -- cycle;
+      
+          \draw[blue] plot[domain = \n:\n+1, samples = 50] (\x - \n + 9, {1 + 4/\x});
+          \draw[red] (9, {1 + 4/\n}) -- (10, {1 + 4/\n}) -- (10, {1 + 4/(\n+1)});
+      }
+      
+      \draw[dashed] (9, 5) -- (9, 1) -- (10, 1) -- (10, 2);
+      \draw[dotted] (0, 1) node[left] {$m = 1$} -- (9, 1);
+      
+      \draw[<->] (10.2, 1) -- (10.2, 5) node[pos=0.5, right] {$f(1) - 1$};
+      
+      \end{tikzpicture}
+      \caption{Une visualisation graphique de la bornitude de $(S_n)_{n \geqslant n_0}$ pour le cas particulier de $f \leftarrow (x \mapsto \nicefrac 1 x + 1), m \leftarrow 1, n_0 \leftarrow 1$. On interprète chaque terme de la somme comme l'aire du rectangle à laquelle on retranche l'aire sous la courbe : cela correspond à l'aire grise, qui peut être aisément installée dans un rectangle d'aire $f(1) - 1 = f(n_0) - m$.}
+  \end{figure}
 
   \textit{Application au DA en $o(1)$ de la somme partielle de la série harmonique.}
   Appliquons ce qui précède pour $f = x \mapsto \nicefrac{1}{x}$ et $n_0 = 1$. $f$ est bien continue, décroissante et minorée (par 0). sur $[1; + \infty[$.
@@ -7024,7 +8287,38 @@ Nous rappelons que $\dim \{0_E\} = 0$ et que $\{0_E\} = \Vect \emptyset$.
           $$
 
           On montre de même que $\sum_{n\geqslant n_{0}}u_{n}^{-}$ converge, donc, par structure vectorielle de l'ensemble des termes généraux de suites convergentes, $\sum_{ n\geqslant n_{0}}(u_{n}^{+} - u_{n}^{-})= \sum_{n\geqslant n_{0}}u_{n}$ converge
-
+          \begin{figure}[H]
+            \centering
+            \begin{tikzpicture}
+              \def\numbers{{2.5, -1.8, 3.2, -2.5, -1.5, 3, 2.8, -1.2, 3.5, -2}}
+          
+          
+              \foreach \y in {-3,-2,-1,0,1,2,3}
+              \draw[gray!30] (-0.5,\y) -- (10.5,\y);
+              \foreach \x in {1,2,3,4,5,6,7,8,9,10}
+              \draw[gray!30] (\x,-4) -- (\x,4);
+          
+              \foreach \i in {0,1,2,3,4,5,6,7,8,9} {
+                  \pgfmathtruncatemacro{\number}{\numbers[\i]}
+          
+                  \fill[black] (\i, \number) circle (2pt);
+          
+                  \ifnum\number>0
+                      \draw[blue] (\i, \number) circle (4pt) node[above right] {$u_\i^+$};
+                      \draw[red] (\i, 0) circle (4pt) node[above right] {$u_\i^-$};
+                  \else        
+                      \draw[red] (\i, -\number) circle (4pt) node[above right] {$u_\i^-$};
+                      \draw[blue] (\i, 0) circle (4pt) node[above right] {$u_\i^+$};
+                  \fi
+              }
+              
+          
+              \draw[->] (-1, 0) -- (10, 0) node[right] {$n$};
+              \draw[->] (0, -4) -- (0, 4) node[above] {$u_n, {\color{blue} u_n^+}, {\color{red} u_n^-}$};
+              
+            \end{tikzpicture}
+            \caption{Décomposition de la suite $u$ en $u^+$ et $u^-$, les "partie positive" et "partie négative". Graphiquement, on retrouve $u_n^+ + u_n^- = |u_n|$ et $u_n^+ - u_n^- = u_n$}
+          \end{figure}
     \item Cas d'une série complexe,
 
           Posons, $\forall n\geqslant n_{0}, x_{n} = \mathrm{Re}(u_{n})$ et $y_{n} = \mathrm{Im}(u_{n})$
@@ -7040,7 +8334,8 @@ Nous rappelons que $\dim \{0_E\} = 0$ et que $\{0_E\} = \Vect \emptyset$.
           On montre de même que $\sum_{n\geqslant n_{0}}y_{n}$ converge
           Donc, par structure vectorielle, $\sum_{n\geqslant n_{0}}(x_{n}+ iy_{n})$ converge.
           Donc $u_{n}$ est le terme général d'une série convergente.
-  \end{itemize}
+        \end{itemize}
+        
 \end{question_kholle}
 
 \begin{question_kholle}
@@ -7604,6 +8899,44 @@ Nous rappelons que $\dim \{0_E\} = 0$ et que $\{0_E\} = \Vect \emptyset$.
             \left( 1, \ 2\sqrt{ 3 }X-\sqrt{ 3 }, \ 6\sqrt{ 5 }\left( X^{2}-X+\frac{1}{6} \right) \right)
           $$
   \end{itemize}
+  \begin{figure}[H]
+    \centering
+    \tdplotsetmaincoords{80}{110} % Set the 3D view angles
+    \begin{tikzpicture}[tdplot_main_coords, scale=4]
+
+        % Pas à l'échelle pour que ça soit plus visible.
+        \coordinate (A) at (2, 0, 0);
+        \coordinate (B) at (1.5, 0.8660, 0);
+        \coordinate (C) at (1, 0.8660, 0.55);
+        \coordinate (D) at (1, 0.8660, 0);
+
+        \draw[thick,->,blue] (0,0,0) -- (A) node[anchor=south east]{$X^0 = P_1' = P_1$};
+        \draw[thick,->,red] (0,0,0) -- (B) node[anchor=north west]{$X$};
+        \draw[thick,->,green!60!black] (0,0,0) -- (C) node[anchor=south west]{$X^2$};
+
+        \draw[thick,->,black] (0,0,0) -- (0, 0.8660, 0) node[anchor=south west]{$P_2'$};
+        \draw[thick,->,black] (0,0,0) -- (0, 2, 0) node[anchor=north east]{$P_2$};
+        
+        \draw[thick,->,black] (0,0,0) -- (0, 0, 0.55) node[anchor=north east]{$P_3'$};
+        \draw[thick,->,black] (0,0,0) -- (0, 0, 2) node[anchor=north east]{$P_3$};
+
+
+        \draw[dotted] (B) -- (1.5, 0, 0);
+        \draw[dotted] (B) -- (0, 0.8660, 0);
+
+        \draw[<-, black] (1.5, 0.9, 0) -- (0.2, 0.9, 0) node[pos=0.5, anchor=north west]{$\braket{X \mid X^0}.X^0$};
+
+        \draw[->, black] (0, 0, 0.6) -- (1, 0.8660, 0.6) node[pos=0.5, anchor=south west]{$\braket{X^2 \mid X^0}.X^0 + \braket{X^2 \mid X}.X$};
+
+        \draw[dotted] (C) -- (1, 0.8660, 0);
+        \draw[dotted] (C) -- (D);
+        \draw[dotted] (C) -- (0, 0, 0.55);
+        \draw[dotted] (0, 0, 0) -- (D);
+        \draw[dotted] (D) -- (1, 0, 0);
+        \draw[dotted] (D) -- (1, 0, 0);
+    \end{tikzpicture}
+    \caption{Orthonormalisation de $(1, X, X^2)$ pour ce produit. Ces vecteurs ne sont ni orthogonaux, ni unitaires pour ce produit scalaire, mais engendrent bien $\R_2[X]$. En soustrayant leurs composantes respectives, on crée une base orthogonale que l'on peut ensuite normer.}
+  \end{figure}
 \end{question_kholle}
 
 \begin{question_kholle}[{Soit $(E, \left\langle \cdot | \cdot \right\rangle)$ un espace préhilbertien Réel.
@@ -7715,6 +9048,55 @@ Nous rappelons que $\dim \{0_E\} = 0$ et que $\{0_E\} = \Vect \emptyset$.
   Ainsi $\varphi$ est une bijection donc $\left|F\right| = \left|\nicefrac{E}{\sim}\right|$.
 
   Ainsi $\displaystyle \left|E\right| = \sum_{C \in \nicefrac{E}{\sim}} \left|C\right| = \sum_{C \in \nicefrac{E}{\sim}} k = \left| \nicefrac{E}{\sim} \right| k = \left|F\right| k$.
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[ele/.style={ellipse,draw,inner sep=-2pt}]
+
+      \node (E1) at (0, 2) {$e_1$};
+      \node (E2) at (0, 1) {$e_2$};
+      \node (E3) at (0, 0) {$e_3$};
+      \node (E4) at (0, -1) {$e_4$};
+      \node (E5) at (0, -2) {$e_5$};
+      \node (E6) at (0, -3) {$e_6$};
+      \node (E7) at (0, -4) {$e_7$};
+      \node (E8) at (0, -5) {$e_8$};
+      
+      \node (F1) at (3, 1.5) {$f_1$};
+      \node (F2) at (3, -0.5) {$f_2$};
+      \node (F3) at (3, -2.5) {$f_3$};
+      \node (F4) at (3, -4.5) {$f_4$};
+      
+
+      \node (E) at (0, -6) {$E$};
+      \node (F) at (3, -5.5) {$F$};
+      
+      \node (f) at (1.5, -5.5) {$f$};
+
+      \node[draw,fit=(E) (E1) (E2) (E3) (E4) (E5) (E6) (E7) (E8), minimum width=2cm, inner sep=10pt] {} ;
+      \node[draw,fit=(F) (F1) (F2) (F3) (F4),minimum width=2cm] {} ;
+      
+      \node[ele, draw,fit=(E1) (E2),minimum width=1cm] {};
+      \node[ele, draw,fit=(E3) (E4),minimum width=1cm] {};
+      \node[ele, draw,fit=(E5) (E6),minimum width=1cm] {};
+      \node[ele, draw,fit=(E7) (E8),minimum width=1cm] {};
+
+      
+
+      \draw[->] (E1) -- (F1);
+      \draw[->] (E2) -- (F1);
+
+      \draw[->] (E3) -- (F2);
+      \draw[->] (E4) -- (F2);
+      
+      \draw[->] (E5) -- (F3);
+      \draw[->] (E6) -- (F3);
+      
+      \draw[->] (E7) -- (F4);
+      \draw[->] (E8) -- (F4);
+
+    \end{tikzpicture}
+    \caption{Représentation schématique du lemme des bergers. Les classes d'équivalence de $\sim$ sont les ovales qui contiennent des éléments qui ont la même image par $f$. Le lemme s'applique ici car tous les éléments de $F$ ont le même nombre d'antécédents par $f$.}
+  \end{figure}
 \end{question_kholle}
 \pagebreak\section{Semaine 31}
 

@@ -13,9 +13,9 @@
 
 % Le titre
 \ifdefined\nbweek
-	\title{Khôlles de Mathématiques - Semaine \nbweek}
+  \title{Khôlles de Mathématiques - Semaine \nbweek}
 \else
-	\title{Khôlles de Mathématiques}
+  \title{Khôlles de Mathématiques}
 \fi
 \author{\authors}
 
@@ -42,6 +42,8 @@
 \RequirePackage{braket}
 \RequirePackage[b]{esvect}
 \RequirePackage{bm} % Bold math
+\usepackage{mathtools} % for mathclap
+\usepackage{cases} % numbered cases
 
 % changement de puces dans les listes
 \RequirePackage{enumitem}
@@ -51,24 +53,25 @@
 % paquets graphiques
 \RequirePackage{geometry}
 \geometry{
-	a4paper,
-	top=2cm,
-	bottom=2cm,
-	right=3cm,
-	left=3cm
+  a4paper,
+  top=2cm,
+  bottom=2cm,
+  right=3cm,
+  left=3cm
 }
 \RequirePackage{hyperref}
 \hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	filecolor=magenta,
-	urlcolor=cyan,
-	pdftitle={Khôlles de Mathémtiques},
-	pdfauthor={\authors}
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=cyan,
+  pdftitle={Khôlles de Mathémtiques},
+  pdfauthor={\authors}
 }
 \RequirePackage{graphicx}
 \RequirePackage{tikz}
 \usepackage{tkz-tab}
+\usepackage{tikz-3dplot}
 \usetikzlibrary{shapes.geometric}
 \usetikzlibrary{arrows.meta, arrows}
 \usetikzlibrary{math} % pour les variables
@@ -90,42 +93,42 @@
 %Mais j'avoue que je ne connais pas bien la syntaxe pour la rajouter comme argument optionnel de l'environnement "question_kholle"
 
 \NewDocumentCommand{\DIV}{om}{% Dépréciée
-	\IfValueT{#1}{\setcounter{#2}{\numexpr#1-1\relax}}%
-	\csname #2\endcsname
+  \IfValueT{#1}{\setcounter{#2}{\numexpr#1-1\relax}}%
+  \csname #2\endcsname
 }
 
 \newcommand{\setnbquestion}[1]{
-	\setcounter{section}{\numexpr#1-1\relax}
+  \setcounter{section}{\numexpr#1-1\relax}
 }
 
 % environnement des questions de khôlles
 \newenvironment{question_kholle}[2][]
 {
-	\section{\texorpdfstring{#2}{}}
-	\notblank{#1}
-	{
-		\noindent #1
-		\bigbreak
-	}
-	{}
-	\begin{proof}
-		}
-		{
-	\end{proof}
+  \section{\texorpdfstring{#2}{}}
+  \notblank{#1}
+  {
+    \noindent #1
+    \bigbreak
+  }
+  {}
+  \begin{proof}
+    }
+    {
+  \end{proof}
 }
 
 % liste de propositoins
 \newenvironment{propositions}{
-	\begin{enumerate}[label=$(\roman*)$, labelindent=0pt, leftmargin=!] % identique à leftmargin=\leftmargin
-		}
-		{
-	\end{enumerate}
+  \begin{enumerate}[label=$(\roman*)$, labelindent=0pt, leftmargin=!] % identique à leftmargin=\leftmargin
+    }
+    {
+  \end{enumerate}
 }
 \newenvironment{liste}{
-	\begin{enumerate}[label=$\bullet$, leftmargin=!] % identique à leftmargin=\leftmargin
-		}
-		{
-	\end{enumerate}
+  \begin{enumerate}[label=$\bullet$, leftmargin=!] % identique à leftmargin=\leftmargin
+    }
+    {
+  \end{enumerate}
 }
 
 
@@ -158,6 +161,12 @@
 % Relation binaire
 \newcommand{\Rel}{\ensuremath{\mathcal R} }
 
+% Applications
+\newcommand{\applic}[4]{\ensuremath{\begin{array}{rcl}
+      #1 & \longrightarrow & #2 \\
+      #3 & \longmapsto     & #4
+    \end{array}}}
+
 % Limites et notations de Landau
 \newcommand{\arrowlim}[2]{\ \xrightarrow[\;#1 \to #2\;]{}\ }
 \newcommand{\textlim}[2]{\lim\limits_{\;#1 \to #2\;}\!\! }
@@ -178,17 +187,17 @@
 
 % Régularité
 \newcommand{\regularite}[5]{\ensuremath{
-		\mathcal{#1}_{#2}^{#3}
-		\notblank{#4}
-		{
-			\!
-			\left(
-			#4,
-			\notblank{#5}{#5}{\mathbb{R}}
-			\right)
-		}
-		{}
-	}}
+    \mathcal{#1}_{#2}^{#3}
+    \notblank{#4}
+    {
+      \!
+      \left(
+      #4,
+      \notblank{#5}{#5}{\mathbb{R}}
+      \right)
+    }
+    {}
+  }}
 \newcommand{\Cont}[3]{\regularite{C}{}{#1}{#2}{#3}}
 \newcommand{\Deriv}[3]{\regularite{D}{#1}{#2}{#3}}
 \newcommand{\ContU}[2]{\regularite{C}{u}{0}{#1}{#2}}

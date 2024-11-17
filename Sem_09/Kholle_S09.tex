@@ -9,91 +9,208 @@
 
 \begin{question_kholle}
   [\noindent Soit \Rel une relation d'équivalence sur $E$. \\
-    Soit $x \in E$. \\
-    La classe de $x$, notée $\bar{x}$, est l'ensemble des éléments de $E$ en relation avec x.
-    \begin{equation}
-      \bar{x} = \left\{ y \in E \;|\; x \Rel y \right\}
-    \end{equation}]
+  Soit $x \in E$. \\
+  La classe de $x$, notée $\bar{x}$, est l'ensemble des éléments de $E$ en relation avec x.
+  $$
+  \bar{x} = \left\{ y \in E \;|\; x \Rel y \right\}
+  $$
+  ]
   {Deux classes d'équivalence sont disjointes ou confondues. Les classes d'équivalence constituent une partition de l'ensemble sur lequel on considère la relation d'équivalence.}
-
-  \textit{Montrons que deux classes d'équivalence sont disjointes ou confondues.}
-
-  Soit $(x, y) \in E^2$ fq.
+  
+  Montrons que deux classes d'équivalence sont disjointes ou confondues.
+  
+  Soient $(x, y) \in E^2$ fixés quelconques
   \begin{itemize}[label=\textemdash]
     \item Si $\bar{x} \cap \bar{y} = \emptyset$, rien à démontrer.
     \item Sinon $\bar{x} \cap \bar{y} \neq \emptyset$ donc $\exists z \in \bar{x} \cap \bar{y}$. Fixons un tel $z$.
-
-          Soit $x' \in \bar{x}$ fq.
-          \begin{equation*}
-            \left.
-            \begin{matrix}
-              \left. \begin{matrix}
-                       x' \in \bar{x} \implies x \Rel x' \underset{sym\acute{e}trie}{\implies} x' \Rel x \\
-                       z \in \bar{x} \implies x \Rel z
-                     \end{matrix}
-              \right\} \underset{transitivit\acute{e}}{\implies} x' \Rel z \\
-              z \in \bar{y} \implies y \Rel z \underset{sym\acute{e}trie}{\implies} z \Rel y
-            \end{matrix}
-            \right\} \underset{transitivit\acute{e}}{\implies} x' \Rel y
-            \underset{sym\acute{e}trie}{\implies} y \Rel x'
-          \end{equation*}
-
-          Donc $x' \in \bar{y}$ donc $\bar{x} \subset \bar{y}$.
-
-          En échangeant les rôles de $x$ et $y$, on montre la deuxième inclusion $\bar{y} \subset \bar{x}$.
+    
+    Soit $x' \in \bar{x}$ fq.
+    \begin{equation*}
+      \left.
+      \begin{matrix}
+        \left. \begin{matrix}
+          x' \in \bar{x} \implies x \Rel x' \underset{\text{symétrie}}{\implies} x' \Rel x \\
+          z \in \bar{x} \implies x \Rel z
+        \end{matrix}
+        \right\} \underset{\text{transitivité}}{\implies} x' \Rel z \\
+        z \in \bar{y} \implies y \Rel z \underset{\text{symétrie}}{\implies} z \Rel y
+      \end{matrix}
+      \right\} \underset{\text{transitivité}}{\implies} x' \Rel y
+      \underset{\text{symétrie}}{\implies} y \Rel x'
+    \end{equation*}
+    
+    Donc $x' \in \bar{y}$ donc $\bar{x} \subset \bar{y}$.
+    
+    En échangeant les rôles de $x$ et $y$, on montre la deuxième inclusion $\bar{y} \subset \bar{x}$.
   \end{itemize}
   \bigbreak
-
-  \textit{Montrons que les classes d'équivalence de E constituent une partition de E.}
-
+  
+  Montrons que les classes d'équivalence de E constituent une partition de E.
+  
   Soit $\Sol$ un système de représentant des classes fixé quelconque.
-
+  
   \begin{itemize}[label=\textemdash]
-    \item Soit $s\in \Sol$ fq. $\bar{s} \neq \emptyset$ car $s \Rel s$ par réflexivité.
+    \item Soit $s\in \Sol$ fixé quelconque $\bar{s} \neq \emptyset$ car $s \Rel s$ par réflexivité.
     \item Soit $(s, s') \in \Sol^2$ fq. D'après la démonstration ci-dessus ci-dessus, $\bar{s} \cap \bar{s'} = \emptyset$ ou $\bar{s} = \bar{s'}$. Si $\bar{s} = \bar{s'}$ alors $s$ et $s'$ représente la même classe ce qui est impossible car un système de représentants des classes contient un unique représentant de chaque classe. Par conséquent, $\bar{s}$ et $\bar{s'}$ sont disjoints.
     \item $\underset{s \in \Sol}{\bigcup} \bar{s} \subset E$ car $\forall s \in \Sol, \bar{s} \in E$ par définition d'une classe d'équivalence. \\
-          Réciproquement, soit $x \in E$ fq. \\
-          Par réflexivité de \Rel, $x \in \bar{x}$. \\
-          Par définition d'un système de classe $\exists ! s_x \in \Sol : s_x \in \bar{x}$ donc $\bar{s_x} = \bar{x}$. Donc $x \in \bar{s_x} \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. Donc $E \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. \\
-          Par double inclusion, $E = \underset{s \in \Sol}{\bigcup} \bar{s}$.
+    Réciproquement, soit $x \in E$ fq. \\
+    Par réflexivité de \Rel, $x \in \bar{x}$. \\
+    Par définition d'un système de classe $\exists ! s_x \in \Sol : s_x \in \bar{x}$ donc $\bar{s_x} = \bar{x}$. Donc $x \in \bar{s_x} \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. Donc $E \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. \\
+    Par double inclusion, $E = \underset{s \in \Sol}{\bigcup} \bar{s}$.
   \end{itemize}
-
+  
   Ainsi,
-  \begin{equation}
-    E = \bigsqcup_{s \in \Sol} \bar{s}
-  \end{equation}
+  $$E = \bigsqcup_{s \in \Sol} \bar{s}$$
+  
+\end{question_kholle}
 
+\begin{question_kholle}[{Soit $n \in \mathbb{N}^{*}$, on définit l'addition dans $\mathbb{Z}/n\mathbb{Z}$ de la manière suivante
+  $$
+  +_{\mathbb{Z}/n\mathbb{Z}} \left|
+  \begin{array}{ccccc} 
+    \mathbb{Z}/n\mathbb{Z}  &\times &\mathbb{Z}/n\mathbb{Z} &\to &\mathbb{Z}/n\mathbb{Z} \\ 
+    (\bar{x} &, &\bar{y}) &\mapsto &\overline{x+_{\mathbb{Z}}y} 
+  \end{array}\right.
+  $$
+  }]{Définition de l'addition pour $\Z / n \Z$}
+  
+  \begin{itemize}[label=$\star$]
+    \item Cette définition n'est pas cohérente à priori, car la valeur attribuée à $\bar x$ et $\bar y$ dépend de $x$ et de $y$ alors qu'elle ne doit dépendre que de $\bar x$ et $\bar y$. Il faudra bien vérifier que le résultat est le même, peu importe le représentant choisi.
+    
+    Soient $(x, x', y, y') \in \mathbb{Z}^{4}$ tels que $\bar{x} = \bar{x}'$ et $\bar{y} = \bar{y}'$.
+    
+    On a $\exists (p, q) \in \mathbb{Z}^{2} : x = x' + np, y=y'+nq$
+    
+$$
+    \overline{x+_{\mathbb{Z}}y} = \overline{x'+np + y' + nq} = \overline{x'+y' + n(p+q)} = \overline{x'+y'}
+$$
+    
+    On a donc bien égalité du résultat, peu importe le représentant de classe choisi, ce qui définit bien l'addition $+_{\mathbb{Z}/n\mathbb{Z}}$.
+    
+    \item Montrons que $(\mathbb{Z}/n\mathbb{Z}, +_{\mathbb{Z}/n\mathbb{Z}})$ est un groupe abélien.
+    \begin{itemize}[label=$\bullet$]
+      \item $\mathbb{Z}/n\mathbb{Z}$ est stable pour la loi $+_{\mathbb{Z}/n\mathbb{Z}}$ (par définition).
+      
+      \item Cette loi est associative : 
+      Soient $(a, b, c) \in \mathbb{Z}/n\mathbb{Z}^{3}$, on peut choisir un représentant de classe pour ces trois classes : $(x,y, z) \in \mathbb{Z}^{3}$ tels que $\bar{x} = a, \bar{y} = b, \bar{z} = c$
+$$
+      (a +_{\mathbb{Z}/n\mathbb{Z}} b)+_{\mathbb{Z}/n\mathbb{Z}} c =  \overline{x+_{\mathbb{Z}}y} +_{\mathbb{Z}/n\mathbb{Z}} c = \underbrace{ \overline{(x+_{\mathbb{Z}}y) +_{\mathbb{Z}} z}= \overline{x+_{\mathbb{Z}}(y+_{\mathbb{Z}}z)} }_{ \text{associativité de }+_{\mathbb{Z}} } =  a +_{\mathbb{Z}/n\mathbb{Z}}\overline{y +_{\mathbb{Z}} z} = a +_{\mathbb{Z}/n\mathbb{Z}} (b +_{\mathbb{Z}/n\mathbb{Z}} c)
+$$
+      \item Cette loi est commutative :
+      Soient $(a, b) \in \mathbb{Z}/n\mathbb{Z}^{2}$, on choisit, $(x, y) \in \mathbb{Z}^{2}$ des représentants de classe tels que $\bar{x} = a, \bar{y} = b$
+$$
+      a+_{\mathbb{Z}/n\mathbb{Z}}b = \underbrace{ \overline{x +_{\mathbb{Z}} y} = \overline{y+_{\mathbb{Z}}x} }_{ \text{commutativité de } +_{\mathbb{Z}} } = b +_{\mathbb{Z}/n\mathbb{Z}}a
+$$
+      \item $\mathbb{Z}/n\mathbb{Z}$ possède un élément neutre pour $+_{\mathbb{Z}/n\mathbb{Z}}$ : 
+      Soit $a \in \mathbb{Z}/n\mathbb{Z}$, on choisit $x \in \mathbb{Z}$ un représentant de classe tel que $\bar{x} = a$
+$$
+      a +_{\mathbb{Z}/n\mathbb{Z}} \bar{0} = \overline{x+_{\mathbb{Z}}0} = \bar{x} = a
+$$
+      Donc $\bar{0}$ est un élément neutre à droite, et par commutativité de $+_{\mathbb{Z}/n\mathbb{Z}}$ prouvée plus haut, $\bar{0}$ est aussi élément neutre à gauche.
+    \end{itemize}
+    Ainsi, $(\mathbb{Z}/n\mathbb{Z}, +_{\mathbb{Z}/n\mathbb{Z}})$ est un Groupe Abélien.
+  \end{itemize}  
+\end{question_kholle}
+
+
+\begin{question_kholle}[]{Dans un ensemble totalement ordonné, toute partie finie non vide possède un plus grand élément et un plus petit élément.}
+  Soit $(E, \preccurlyeq)$ un ensemble totalement ordonné, considérons pour tour $n \in \mathbb{N}^{*}$ la propriété.
+$$
+  \mathcal{H}_{n} : \text{toute partie de }E \text{ de cardinal }n \text{ admet un plus petit et un plus grand élément}
+$$
+  \begin{itemize}[label=$\star$]
+    \item Initialisation $n \leftarrow 1$
+    
+    Soit $A \in \mathcal{P}(E)$ fixée telle que $\lvert A \rvert = 1$
+$A$ est non vide, donc $\exists a \in A : A = \{ a \}$
+    
+$a$ est le plus petit et le plus grand élément, donc $\mathcal{H}_{1}$ est vraie.
+    
+    \item Hérédité
+    Soit $n \in \mathbb{N}^{*}$ fixé quelconque tel que $\mathcal{H}_{n}$ est vraie.
+    Soit $A \in \mathcal{P}(E)$ fixée quelconque tel que $\lvert A \rvert = n+1$
+$$
+    A \neq \emptyset \implies \exists a \in A : A = (A \setminus \{ a \}) \cup \{ a \}
+$$
+    Or, $\lvert A \setminus \{ a \} \rvert = n$ donc $\mathcal{H}_{n}$ s'applique et $A \setminus \{ a \}$ possède un plus grand et plus petit élément
+$$
+    \left\{ \begin{array}{ll}
+      m &= \min A \setminus \{ a \}  \\
+      M &= \max A \setminus \{ a \}
+    \end{array}\right.
+$$
+    \begin{itemize}[label=$\lozenge$]
+      \item Construisons le plus grand élément de $A$
+      \begin{itemize}[label=$\bullet$]
+        \item Supposons $M \preccurlyeq a$
+        D'une part $a \in A$
+        D'autre part
+        $$
+        \forall x \in A, \left. \begin{array}{ll}
+          \text{si }x = a, x \preccurlyeq a \text{ (réflexivité)} \\
+          \text{sinon } x \in A \setminus \{ a \} \implies x \preccurlyeq M \preccurlyeq a \implies x \preccurlyeq a
+        \end{array}\right\} \implies \forall x \in A, x \preccurlyeq a
+        $$
+        
+        Donc $A$ admet un plus grand élément, et c'est $a$.
+        
+        \item Sinon, si $M \succ a$, mais $M \in A$ et 
+        $$
+        \forall x \in A, \left. \begin{array}{ll}
+          \text{si }x = a, x \preccurlyeq M\\
+          \text{sinon } x \in A \setminus \{ a \} \implies x \preccurlyeq \max(A\setminus \{ a \}) =  M
+        \end{array}\right\} \implies \forall x \in A, x \preccurlyeq a
+        $$
+        Donc $A$ admet un plus grand élément, et c'est $M$
+      \end{itemize}
+      \item On procède de même pour construire le le plus petit élément de $A$ avec $m$.
+    \end{itemize}
+    Donc $\mathcal{H}_{n+1}$ est vraie.
+    Donc toute partie finie non vide d'un ensemble totalement ordonné possède un plus petit et un plus grand élément.
+  \end{itemize}
+  Étudions l'importance des hypothèses :
+  \begin{itemize}[label=$\star$]
+    \item Importance de la finitude de la partie :
+    
+    On sait qu'une partie infinie d'un ensemble totalement ordonné n'admet pas de plus grand élément : $[0, 1[$ dans $(\mathbb{R}, \leqslant)$, $\mathbb{N}$ dans $(\mathbb{R}, \leqslant)$.
+    \item Importance du caractère total de l'ordre : on connait des ensembles finis partiellement ordonnés qui n'ont pas de plus grand élément :
+    \begin{itemize}
+      \item $\{ 3, 12 \}$ dans $(\mathbb{R}, =)$ n'admet pas de plus grand élément
+      \item $\{ [1, 2], [3, 4] \}$ dans $(\mathcal{P}(\mathbb{R}), \subset)$ n'admet pas de plus grand élément
+      \item $\{ 2, 3 \}$ dans $(\mathbb{N}, |)$ non plus.
+    \end{itemize}
+  \end{itemize}
 \end{question_kholle}
 
 \begin{question_kholle}
   [\noindent Soit $(E, \leq)$ un ensemble ordonné, et $A$ une partie non-vide de $E$. \\
-    Si $A$ admet un plus grand élément alors $A$ admet une borne supérieure et $\sup{A} = \max{A}$. \\
-    Si $A$ admet une borne supérieure appartenant à elle-même alors $A$ admet un plus grand élément et $\max{A} = \sup{A}$.]
+  Si $A$ admet un plus grand élément alors $A$ admet une borne supérieure et $\sup{A} = \max{A}$. \\
+  Si $A$ admet une borne supérieure appartenant à elle-même alors $A$ admet un plus grand élément et $\max{A} = \sup{A}$.]
   {Si $A$ admet un plus grand élément c'est aussi sa borne supérieure. Si $A$ admet une borne supérieure dans $A$ c'est sont plus grand élément.}
-
+  
   Soient un tel ensemble $E$ et une telle partie $A$ et notons $M$ son plus grand élément. \\
   Posons l'ensemble des majorants de $A$, $M(A) = \{ m\in E \ | \ \forall a \in A, \ a \leq m\}$. \\
   Par définition :
   \[
-    \forall m \in M(A), \ M \leq m,
+  \forall m \in M(A), \ M \leq m,
   \]
   car $M\in A$, mais comme $M\in M(A)$, on a directement que $M = \min{M(A)} = \sup{A}$. \\
-
+  
   Pseudo-réciproquement, soit $A$ une partie de $E$ admettant une borne supérieure dans elle même, notons cette borne $S$. \\
   Comme $S \in M(A)$, par définition, $S$ est plus grand que tous les éléments de $A$ mais appartient à $A$, donc de tous les éléments de $A$, $S$ est le plus grand.
 \end{question_kholle}
 
 \begin{question_kholle}
   [\begin{equation}
-      \forall (a, b) \in \Z^2,
-      \exists ! (q, r) \in \Z \times \N :
-      \left\{ \begin{matrix}
-        a = b q + r \\
-        r \in {[\![} 0 ; |b|-1 {]\!]}
-      \end{matrix} \right.
-    \end{equation}]
+    \forall (a, b) \in \Z^2,
+    \exists ! (q, r) \in \Z \times \N :
+    \left\{ \begin{matrix}
+      a = b q + r \\
+      r \in {[\![} 0 ; |b|-1 {]\!]}
+    \end{matrix} \right.
+  \end{equation}]
   {Théorème de la division Euclidienne dans \Z}
-
+  
   \textit{Unicité} \;
   Soient deux tels entiers $(a,b) \in \Z^2$ et deux couples $((q,r),(q',r')) \in \left(\Z \times \N\right)^2$ tels que
   \begin{equation*}
@@ -109,11 +226,11 @@
   \end{equation*}
   Directement,
   \[
-    b(q-q') = r'-r,
+  b(q-q') = r'-r,
   \]
   mais comme $-(|b|-1) \leqslant r' - r \leqslant |b| -1$, il vient en divisant par $|b|$ l'inégalité précédente :
   \[
-    -1 < q - q' < 1,
+  -1 < q - q' < 1,
   \]
   puisque $q$ et $q'$ sont dans $\Z$ leur différence est obligatoirement $0$, ainsi $q = q'$ ce qui implique $ r= r'$ et donc on a unicité de ladite écriture de $a$.
   \newline
@@ -128,7 +245,7 @@
   Posons $r = a - bq$. Par construction, $a = bq + r$ et comme $q = \max \Omega$ et $\Omega \subset \Z$, $q \in \Z$ donc $r \in \Z$.
   \\
   Par suite, $q \in \Omega$ donc $bq \leqslant a$ d'où $0 \leqslant r$. Et $q = \max \Omega$ donc $b(q+1) > a$ d'où $b > r$, c'est-à-dire, $r\in [\![ 0, |b| -1 ]\!]$.
-
+  
   Si $b< 1$, il suffit de prendre $q \leftarrow -q$ dans la preuve précédente.C'est donc l'existence de ladite écriture de $a$.
 \end{question_kholle}
 
@@ -144,11 +261,107 @@
   Soit $n \in \N$ fq tq $n \geqslant n_0$.
   \begin{equation*}
     \left. \begin{matrix}
-      u_n \in A \implies u_n \geqslant min A = u_{n_0} \\
+      u_n \in A \implies u_n \geqslant \min A = u_{n_0} \\
       u \text{ est décroissante et } n \geqslant n_0 \text{ donc } u_n \leqslant u_{n_0}
     \end{matrix}
     \right\} \implies u_n = u_{n_0}
   \end{equation*}
   Ainsi, $u$ est stationnaire.
+\end{question_kholle}
+
+\begin{question_kholle}[{
+  Soit $A \in \mathcal{P}(\mathbb{R})$ une partie non vide et majorée.
+  Soit $\sigma \in \mathbb{R}$
+$$
+  \sigma = \sup A \iff \left\{ \begin{array}{ll}
+    \forall a \in A, a \leqslant \sigma \\
+    \forall \varepsilon \in \mathbb{R}_{+}^{*}, \exists a \in A : \sigma - \varepsilon < a \leqslant \sigma 
+  \end{array}\right.
+$$
+  }]{Caractérisation par les $\varepsilon$ de la borne supérieure}
+  
+  \begin{itemize}[label = $\star$]
+    \item Supposons $\sigma = \sup A$
+    \begin{itemize}[label = $\bullet$]
+      \item Par définition $\sup A = \min M(A)$ donc $\sigma \in M(A)$ donc $\forall a \in A, a \leqslant \sigma$
+      
+      \item Soit $\varepsilon >0$ fixé quelconque
+      
+      \begin{align*}
+        \sigma = \min M(A) &\iff \sigma - \varepsilon \not\in M(A) (\text{ sinon } \sigma - \varepsilon \geqslant \min M(A)= \sigma \implies \varepsilon \leqslant 0) \\
+        &\iff \exists a \in A: \sigma - \varepsilon < a \leqslant \sigma
+      \end{align*} 
+      
+    \end{itemize}
+    
+    \item Réciproquement, supposons
+$$
+    \left\{ \begin{array}{ll}
+      \forall a \in A, a \leqslant \sigma \\
+      \forall \varepsilon \in \mathbb{R}_{+}^{*}, \exists a \in A : \sigma - \varepsilon < a \leqslant \sigma 
+    \end{array}\right.
+$$
+    \begin{itemize}[label = $\bullet$]
+      \item D'après la première propriété, $\sigma \in M(A)$
+      \item Montrons que $\sigma$ est le plus petit des minorants par l'absurde en supposant qu'il existe $M \in M(A)$ tel que $M < \sigma$.
+      On a $\sigma - M >0$ donc on peut appliquer la deuxième propriété pour $\varepsilon \leftarrow \sigma - M$
+$$
+      \exists a \in A : \sigma - (\sigma - M )<a 
+$$
+      Fixons un tel $a$.
+      On a donc trouvé un $a \in A$ tel que $M < a$ ce qui contredit le fait que $M$ soit un majorant de $A$.
+      Donc il n'existe pas de majorant plus petit que $\sigma$.
+      Donc $A$ admet une borne supérieure qui est $\sigma$.
+    \end{itemize}
+  \end{itemize}
+\end{question_kholle}
+\begin{question_kholle}[]{Montrer que si $A$ et $B$ sont deux parties non vides majorées de $\R$, alors $\sup(A+B) = \sup A + \sup B$}
+  Soient $A$ et $B$ deux parties non vides et majorées de $\mathbb{R}$. On note $A+B$ l'ensemble
+$$
+  A+B = \{ a+b \mid (a, b) \in A\times B \}
+$$
+  C'est aussi une partie non vide de $\mathbb{R}$.
+  
+  Soit $x \in (A+B)$ fixé quelconque. Par définition de $A+B$, $\exists(a, b) \in A\times B : x=a+b$
+  
+$$
+  \left. \begin{array}{ll}
+    a \leqslant \sup A\\
+    b \leqslant \sup B
+  \end{array}\right\} \implies x = a+b \leqslant \sup A + \sup B
+$$
+  On a donc montré que $\sup A+\sup B$ est un majorant de $A+B$, donc $A+B$ admet un majorant, donc $A+B$ est une partie non vide majorée de $\mathbb{R}$, donc $A+B$ admet une borne supérieure.
+  
+  Par définition de la borne supérieure, car $\sup(A+B)$ est le plus petit élément de l'ensemble des majorants :
+$$\sup(A+B) \leqslant \sup A + \sup B$$
+  
+  De plus $\sup(A+B)$ est un majorant de $A+B$ donc, pour $(a, b) \in A\times B$ fixés, on a
+$$
+  a+b \leqslant \sup (A+B) \iff a \leqslant \sup(A+B) -b
+$$
+  en relâchant le caractère fixé de $a$, on a
+$$
+  \forall a \in A, a\leqslant \sup(A+B) - b
+$$
+  donc $\sup(A+B) - b$ est un majorant de $A$, donc plus petit que $\sup A$, d'où
+  
+$$
+  \sup A \leqslant \sup(A+B) - b \iff b \leqslant \sup(A+B) - \sup A
+$$
+  Donc en relâchant le caractère fixé de $b$ on a
+$$
+  \forall b \in B, b\leqslant \sup(A+B) - \sup A
+$$
+  donc $\sup(A+B) - \sup A$ est un majorant de $B$ donc plus petit que $\sup B$
+  d'où
+  
+$$
+  \sup B \leqslant \sup(A+B) - \sup A \iff \sup A + \sup B \leqslant \sup (A+B)
+$$
+  Donc par double inégalité
+$$
+  \sup A + \sup B = \sup (A+B)
+$$
+  
 \end{question_kholle}
 \end{document}
