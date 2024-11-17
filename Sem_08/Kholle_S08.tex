@@ -1,152 +1,297 @@
 \documentclass{article}
 
-\date{19 novembre 2023}
+\date{17 novembre 2024}
 \usepackage[nb-sem=8, auteurs={Kylian Boyet, George Ober, Hugo Vangilluwen}]{../kholles}
 
 \begin{document}
 \maketitle
 
-\begin{question_kholle}{Preuve de l’expression des solutions réelles des EDL homogènes d’ordre 2 à coefficients constants réels dans le cas $\Delta < 0$ (en admettant la connaissance de l’expression des solutions à valeurs complexes des EDLH2 à coeff. constants).}
-  Notons $\Sol_{H, \C}$ et $\Sol_{H, \R}$ les ensembles des solutions complexes et réelles de l'équation différentielle, puisque nous nous plaçons dans le cas $\Delta < 0$ et $\alpha \pm i \beta$ les deux racines complexes conjuguées.
-  $$
-    \Sol_{H, \C} =
-    \left\{
-    \begin{array}{l}
-      \R \to \C \\
-      t \mapsto \lambda e^{(\alpha + i \beta) t}  + \mu e^{(\alpha - i \beta)t}
-    \end{array}
-    \middle\vert  (\lambda, \mu) \in \C ^2 \right\}
-  $$
-
-  Montrons que $\forall f \in \Sol_{H ,\C}, \Re(f) \in  \Sol_{H ,\R}$\\
-  Soit $f \in \Sol_{H ,\C}$ fq.
-  $$f \in \mathcal D^2(\R, \C) \implies \Re(f) \in \mathcal D^2(\R, \R)$$
-  Et, de plus, par morphisme additif de \Re
-  $$
-    a_2\Re(f)'' + a_1\Re(f)' + a_0\Re(f) = \Re( a_2 f'' + a_1 f' + a_0 f) = 0
-  $$
-  D'où, avec $f:t \mapsto e^{(\alpha + i \beta)t}$; $\Re(f(t)) = \Re(e^{(\alpha + i \beta)t}) = e^{\alpha t } \cos (\beta t)$. Qui appartient donc à $\Sol_{H, \R}$\\
-  En suivant le même raisonnement pour $\Im(f)$, $(t \mapsto e^\alpha \sin(\beta t)) \in \Sol_{H, \R}$
-
-
-  Ainsi, par combinaison linéaire (qui se base sur le principe de superposition),
-  $$
-    \left\{
-    \begin{array}{l}
-      \R \to \R \\
-      t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
-    \end{array}
-    \middle\vert  (\lambda, \mu) \in \R ^2 \right\}
-    \subset \Sol_{H ,\R}
-  $$
-
-  Réciproquement, soit $ f \in \Sol_{H ,\R}$ fq. Puisque $\R \subset \C$,  $ f \in \Sol_{H ,\C}$.
-
-  $$
-    \exists (a, b) \in \C^2 : f \left| \begin{array}{l}
-      \R \to \C \\
-      t \mapsto a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t}
-    \end{array}\right.$$
-
-  Or, puisque toutes les valeurs de $f$ sont réelles, en notant $(a_r, a_i, b_r, b_i)$ les parties réelles et imaginaires respectives de $a$ et $b$.
-  \begin{align*}
-    \forall t \in \R, f(t) & = \Re(f(t))                                                                                                     \\
-                           & = \Re(a e^{(\alpha + i \beta) t}  + b e^{(\alpha - i \beta)t})                                                  \\
-                           & = \Re((a_r + i a_i) e^{(\alpha + i \beta) t}  + (b_r + i b_i) e^{(\alpha - i \beta)t})                          \\
-                           & = a_r \cos(\beta t)e^\alpha - a_i\sin(\beta t)e^\alpha + b_r \cos(\beta t)e^\alpha + b_i \sin(\beta t) e^\alpha \\
-                           & = (a_r + b_r) \cos(\beta t) e^\alpha + (b_i - a_i) \sin(\beta t) e^\alpha
-  \end{align*}
-  Ainsi,
-  $$f\in \left\{
-    \begin{array}{l}
-      \R \to \R \\
-      t \mapsto \lambda e^{\alpha t } \cos (\beta t)   + \mu e^{\alpha t } \sin (\beta t)
-    \end{array}
-    \middle\vert  (\lambda, \mu) \in \R ^2 \right\}
-  $$
-  Ce qui conclut la preuve par double inclusion.
-\end{question_kholle}
-
-\begin{question_kholle}[
-    Considérons le problème de Cauchy suivant :
-    $$\left\{ \begin{array}{l}
-        a_{2}y''+a_{1}y'+a_{0}y = b \text{ sur } J \\
-        y(t_{0}) = \alpha_{0}                      \\
-        y'(t_{0}) = \alpha_{1}
-      \end{array} \right. \text{ où } (\alpha_{0}, \alpha_{1}) \in \mathbb{K}^{2}, t_{0} \in J, (a_{0}, a_{1}, a_{2}) \in \mathbb{K}^{2} \times \mathbb{K}^{*}, b \in \mathcal{F}(J, \mathbb{K})$$
-    Si $b$ est continu sur $J$, alors ce problème de Cauchy admet une unique solution définie sur $J$.
-  ]
-  {Existence et unicité d'une solution au problème de Cauchy pour les EDL d'ordre 2 à coefficients constants et second membre continu sur $I$ (cas complexe puis cas réel).}
-
-  \textbf{Cas 1. } $\mathbb{K} = \mathbb{C}$ \\
-  Nous savons que sous l'hyphothèse de continuité de $b$ sur $J$, les solutions de (EDL2) définies sur $J$ constituent le plan affine $S$ :
-  $$S = \left\{ \lambda f_{1} + \mu f_{2} + s | (\lambda, \mu) \in \mathbb{C}^{2} \right\}$$
-  où $s$ est une solution particulière de (EDL2), $(f_{1}, f_{2})$ sont deux solutions de (EDLH2) qui engendrent $S_{h}$. On a : \\
-
-  $$\begin{array}{ccl}
-      f : J \to \mathbb{C} \text{ est sol. du pb de Cauchy }
-       & \iff & \left\{ \begin{array}{l}
-                          f \text{ sol de (EDL2) sur } J \\
-                          f(t_{0}) = \alpha_{0}          \\
-                          f'(t_{0}) = \alpha_{1}
-                        \end{array}  \right.                                                                                \\\\
-       & \iff & \left\{ \begin{array}{l}
-                          f \in S               \\
-                          f(t_{0}) = \alpha_{0} \\
-                          f'(t_{0}) = \alpha_{1}
-                        \end{array}\right.                                                                                         \\\\
-       & \iff & \exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
-                                                                     f = \lambda f_{1} + \mu f_{2} + s                                  \\
-                                                                     \lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) + s(t_{0}) = \alpha_{0}    \\
-                                                                     \lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) + s'(t_{0}) = \alpha_{1} \\
-                                                                   \end{array} \right. \\\\
-       & \iff & \exists (\lambda, \mu) \in \mathbb{C}^{2}: \left\{ \begin{array}{l}
-                                                                     f = \lambda f_{1} + \mu f_{2} + s                                  \\
-                                                                     \lambda f_{1}(t_{0}) + \mu f_{2}(t_{0}) = \alpha_{0} - s(t_{0})    \\
-                                                                     \lambda f'_{1}(t_{0}) + \mu f'_{2}(t_{0}) = \alpha_{1} - s'(t_{0}) \\
-                                                                   \end{array} \right. \\\\
-    \end{array} $$
-  On en déduit donc que $(\lambda, \mu)$ doit être solution d'un système linéaire $(2,2)$. On a une unique solution si et seulement si les déterminant de ce système est nul. \\
-  Explicitons alors le déterminant de ce système, que l'on notera $D$.
-  $$D = \left|
-    \begin{array}{cc}
-      f_{1}(t_{0})  & f_{2}(t_{0})  \\
-      f'_{1}(t_{0}) & f'_{2}(t_{0}) \\
-    \end{array}
-    \right| = f_{1}(t_{0}) \cdot f'_{2}(t_{0}) - f_{2}(t_{0}) \cdot f'_{1}(t_{0}) $$
-  Notons $\Delta$ le discriminant de l'équation caractéristique de (EDL2) ($a_{2}r^{2} + a_{1}r^{1} + a_{0} = 0$). On distingue alors deux cas selon la nullité ou non de $\Delta$. Traitons d'abord le cas $\Delta \neq 0$. On peut choisir :
-  $$ f_{1}(t_{0}) = e^{r_{1}t_{0}} \text{ et } f_{2}(t_{0}) = e^{r_{2}t_{0}}$$
-  $$ f'_{1}(t_{0}) = r_{1}e^{r_{1}t_{0}} \text{ et } f'_{2}(t_{0}) = r_{2}e^{r_{2}t_{0}}$$
-  Donc (en sachant que $\Delta \neq 0 \Rightarrow r_{1} \neq r_{2}$):
-  $$ D = e^{r_{1}t_{0}} \cdot r_{2}e^{r_{2}t_{0}} - r_{1}e^{r_{1}t_{0}} \cdot e^{r_{2}t_{0}} = (r_{2} - r_{1}) \cdot e^{r_{1}t_{0} + r_{2}t_{0}} \neq 0$$
-
-  Dans le deuxième cas, on a $\Delta = 0$ ; on peut alors prendre :
-  $$ f_{1}(t_{0}) = e^{r_{0}t_{0}} \text{ et } f_{2}(t_{0}) = t_{0}e^{r_{0}t_{0}}$$
-  Ainsi :
-  $$ D = e^{r_{0}t_{0}} \left(r_{0}t_{0}e^{r_{0}t_{0}} + e^{r_{0}t_{0}} \right) - r_{0}e^{r_{0}t_{0}} \times t_{0}e^{r_{0}t_{0}} = e^{2r_{0}t_{0}} \neq 0$$
-  On remarque alors que, dans les deux cas, $D \neq 0$, donc le système $(2, 2)$ étudié admet une unique solution, donc il existe un unique couple $(\lambda, \mu)$ le vérifiant d'où l'unicité et existence d'une solution au problème de Cauchy.
-  \newline\newline
-
-  \textbf{Cas 2. } $\mathbb{K} = \mathbb{R}$ \\
-  $(a_{0}, a_{1}, a_{2}) \in \mathbb{R}^{2} \times \mathbb{R}^{*},(\alpha_{0}, \alpha_{1}) \in \mathbb{R}^{2}, b \in C^{0}(J, \mathbb{R})$
-  \newline
-  \textbf{Existence :} Puisque $\mathbb{R} \subset \mathbb{C}$, le problème de Cauchy admet, dans $\mathbb{R}$, une solution à valeurs complexes $g$. Posons $f = \Re(g)$ et montrons que $f$ est une solution réelle du problème de Cauchy. \\
+\begin{question_kholle}[{
+        Soient $(a,b)\in\C$, $f$ et $g$ les solutions, définies sur $\R$ à valeur dans $\C$ des problèmes de Cauchy suivants
+        \[
+          \begin{cases}
+            y''+ay'+by = 0 \\
+            y(3)=1         \\
+            y'(3)=0
+          \end{cases} \quad \text{et} \quad \begin{cases}
+            y''+ay'+by = 0 \\
+            y(3)=0         \\
+            y'(3)=1
+          \end{cases}
+        \]
+        Comment s’exprime la solution définie sur $\R$ de $\begin{cases}
+            y''+ay'+by=0 \\
+            y(3)=\alpha  \\
+            y'(3)=\beta
+          \end{cases}$ pour $(\alpha, \beta)\in\R^{2}$ fixés ?\\
+        Peut-on affirmer que le plan vectoriel des solutions définies sur $\R$ à valeur dans $\C$ de l’équation $y''+ay'+by=0$ est $\left\{\lambda\cdot f+\mu\cdot g | (\lambda, \mu)\in\C^{2}\right\}$ ?
+      }]{Superposition des solution d’un problème de Cauchy.}
+  Selon le théorème de superposition, $\alpha f+\beta g$ est solution sur $\R$ de l'équation différentielle $y''+ay'+by=0$, et de plus,
+  \[
+    (\alpha f+\beta g)(3) = \alpha\cdot 1+\beta\cdot 0 = \alpha \quad \text{et} \quad (\alpha f+\beta g)'(3) = \alpha f'(3)+\beta g'(3)=\beta
+  \]
+  Notons $\Sol$ le plan vectoriel des solutions de $y''+ay'+by=0$ définies sur $\R$.\\
+  Montrons que $\Sol=\Vect \left\{f,g\right\} = \left\{\lambda f+ \mu g | (\lambda, \mu)\in\K^{2}\right\}$
   \begin{itemize}
-    \item[$\star$] $g \in \mathcal{D}^{2}(J, \mathbb{C}) \text{ donc } f \in \mathcal{D}^{2}(J, \mathbb{R})$
-    \item[$\star$] $g$ vérifie $a_{2}g'' + a_{1}g' + a_{0}g = b$ sur $J$ donc en prenant $\Re(\cdot)$ :
-          $$\begin{array}{ccl}
-              \Re(a_{2}g'' + a_{1}g' + a_{0}g = b) = \Re(b)
-               & \iff & a_{2}\Re(g'') + a_{1}\Re(g') + a_{0}\Re(g) = b \\\\
-               & \iff & a_{2}f'' + a_{1}f' + a_{0}f = b \text{ sur } J
-            \end{array}$$
-    \item[$\star$] $f(t_{0}) = \Re(g(t_{0})) = \Re(\alpha_{0}) = \alpha_{0}$
-    \item[$\star$] $f'(t_{0}) = \Re(g(t_{0}))' = \Re(g'(t_{0})) = \Re(\alpha_{1}) = \alpha_{1}$
+    \item D’après le théorème de superposition, pour tout $(\lambda, \mu)\in\K^{2}$, $\lambda f + \mu g$ est solution de la même équation que $f$ et $g$, donc $\left\{\lambda f+\mu g| (\lambda, \mu)\in\K^{2}\right\}\in\Sol$.
+    \item Soit $h\in\Sol$ une solution du problème de Cauchy
+          \[
+            \begin{cases}
+              y''+ay'+by = 0 \\
+              y(3)=h(3)      \\
+              y'(3)=h'(3)
+            \end{cases}
+          \]
+          La fonction $h(3)f+h'(3)g$ est aussi solution de ce problème, donc par unicité de la soluton d’un problème de Cauchy,
+          \[
+            h = h(3)f+h'(3)g \quad \text{donc} \quad h\in\Vect \left\{f,g\right\}
+          \]
+          ainsi, $\Sol\in\Vect \left\{f,g\right\}$
   \end{itemize}
-  Donc $f$ est une solution réelle définie sur $J$ au problème de Cauchy.
-  \newline
 
-  \textbf{Unicité : }Soient $f_{1}$ et $f_{2}$ deux fonctions à valeurs réelles solutions du problème de Cauchy ci-dessus fixées quelconques : puisque $\mathbb{R} \subset \mathbb{C}$, $f_{1}$ et $f_{2}$ sont des fonctions à valeurs dans $\mathbb{C}$ solutions du même problème de Cauchy; or il y a unicité de la solution au problème de Cauchy dans les fonctions à valeurs complexes, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{C})$, donc $f_{1} = f_{2}$ dans $\mathcal{F}(J, \mathbb{R})$.
 \end{question_kholle}
+
+\begin{question_kholle}{Dans un ensemble totalement ordonné, toute partie finie non vide possède un plus grand élément et un plus petit élément. Donner un exemple illustrant l’importance du caractère totalement ordonné de l’ensemble considéré ainsi que de sa finitude.}
+  Considérons $(E,\preccurlyeq)$ fini et totalement ordonné.\\
+  Considérons la propriété $\prop(\cdot)$ définie pour tout $n\in\N^{*}$ par
+  \[
+    \prop(n) : \mathquote{toute partie $A$ de $E$ de cardinal $n$ admet un ppe et un pge}
+  \]
+  \begin{itemize}
+    \item \underline{Si $n=1$}: Soit $A$ un sigleton de $E$ fixé quelconque
+          \[
+            \exists a\in E, A=\{A\}
+          \]
+          par réflexivité de la relation d’ordre $\preccurlyeq$, on a $a\preccurlyeq a$ et $a\in A$ donc $A$ admet un ppe et un pge qui sont tous les deux $a$. Ce qui valide $\prop(1)$.
+    \item \underline{Si $n=2$} : Soit $A$ une partie de $E$ de cardinal 2 fixée quelconque. Alors il existe $a$ et $b$ deux éléments de $E$ tels que
+          \[
+            a\neq b \quad \text{et} \quad A=\left\{a,b\right\}
+          \]
+          Par hypothèse, $E$ est totalement ordonné donc $a\preccurlyeq b$ ou $b\preccurlyeq a$.
+          \begin{itemize}
+            \item si $a\preccurlyeq b$, d’une part $b\in A, b\preccurlyeq b$ et $a\preccurlyeq b$ donc $A$ admet un pge qui est $\max A = b$, et d’autre part, $a\in A, a\preccurlyeq a$ et $a\preccurlyeq b$ donc $A$ admet un ppe qui est $\min A=a$.
+            \item si $b\preccurlyeq a$, d’une part $a\in A, a\preccurlyeq a$ et $b\preccurlyeq a$ donc $A$ admet un pge qui est $\max A = a$, et d’autre part, $b\in A, b\preccurlyeq b$ et $b\preccurlyeq a$ donc $A$ admet un ppe qui est $\min A=b$.
+          \end{itemize}
+          donc $\prop(2)$ est vraie.
+    \item Soit $n\in\N$ fixé quelconque tel que $n\geq 2$ et $\prop(n)$ est vraie. Soit $A\in\mathcal(E)$  de cardinal $n+1$ fixé quelconque. Alors il existe $(a_{1}, \dots, a_{n+1})\in E^{n+1}$ deux à deux distncts tels que
+          \[
+            A=\{a_{1}, \dots, a_{n+1}\}
+          \]
+          Appliquons $\prop(n)$ pour $A\leftarrow \{a_{1}, \dots, a_{n+1}\}$ de cardinal n:
+          \[
+            \exists(i,j)\in\iset{1,n}^{2}: a_{i}=\min A \text{ et } a_{j}=\max A
+          \]
+          En appliquant $\prop(2)$ pour $A\leftarrow \{a_{i}, a_{n+1}\}$ puis pour $A\leftarrow \{a_{j}, a_{n+1}\}$, on trouve que $m=\min A$ et $M=\max A$ existent.
+          \begin{itemize}
+            \item $M\in A$ car $a_{j}$ et $a_{n+1}$ sont dans $A$.
+            \item $\forall k\in\iset{1,n}, a_{k}\preccurlyeq a_{j}$ car $a_{j}=\max \{a_{1}, \dots , a_{n+1}\}=M$ et de plus, $a_{n+1}\preccurlyeq M$ car $M=\max \{a_{j}, a_{n+1}\}$ donc $A$ admet un pge qui est $M=\max A$.
+          \end{itemize}
+          De même,
+          \begin{itemize}
+            \item $m\in A$ car $a_{i}$ et $a_{n+1}$ sont dans $A$.
+            \item $\forall k\in\iset{1,n}, a_{i}\preccurlyeq a_{k}$ car $a_{i}=\min \{a_{1}, \dots , a_{n+1}\}=m$ et de plus, $m\preccurlyeq a_{n+1}$ car $M=\max \{a_{i}, a_{n+1}\}$ donc $A$ admet un ppe qui est $m=\min A$.
+          \end{itemize}
+          Ainsi, $\prop(n+1)$ est vraie.
+  \end{itemize}
+  \vspace{1em}
+  \textbf{Nécessité du caractère totalement ordonné :}\\
+  Dans la partie $\{2,5\}$ de $(\N, |)$ n’admet ni ppe ni pge.\\[5pt]
+  \textbf{Nécessité de l’hypothèse de finitude :}\\
+  Dans $(\R, \leq)$ totalement ordonné, $\Z$ n’a ni ppe ni pge.
+\end{question_kholle}
+
+\begin{question_kholle}{Montrer que, dans un ensemble ordonné $(E,\leq)$, une partie $A$ possède un plus grand élément si et seulement si la partie $A$ possède une borne supérieure qui appartient à la partie $A$. De plus, dans ce cas, $\max A = \sup A$.}
+  \hfill\\
+  \begin{itemize}
+    \item Supposons $\sup A\in A$. Par définition, $\sup A\in M(A)\implies \forall a\in A, a\preccurlyeq \sup A \implies A$ admet un pge qui est $\max A=\sup A$.
+    \item Supposons que $A$ admet un pge ($\max A$ existe). Alors
+          \[
+            \forall a\in A, a\preccurlyeq \max A \text{ et } \max A\in\mathcal{P}(A)
+          \]
+          Soit $M\in M(A)$ fixé quelconque.
+          \[
+            \forall a\in A, a\preccurlyeq M
+          \]
+          Pour $a\leftarrow \max A$ (ce qui est autorisé car le pge de $A$ est dans $A$), $\max A\preccurlyeq M$. Or $\max A\in M$ donc $\max A=\min M(A)$. Ainsi $A$ admet une borne supérieure et $\sup A=\max A$.
+  \end{itemize}
+
+\end{question_kholle}
+
+\begin{question_kholle}
+  [Soit \Rel une relation d'équivalence sur $E$ et $x\in E$. \\
+    La classe de $x$, notée $\bar{x}$, est l'ensemble des éléments de $E$ en relation avec x :
+    $$
+      \bar{x} = \left\{ y \in E \;|\; x \Rel y \right\}
+    $$
+  ]
+  {Montrer que deux classes d’équivalence sont disjointes ou confondues, en déduire qu’elles constituent une partition de l’ensemble sur lequel on considème la relation d’équivalence.}
+  Soient $(x, y) \in E^2$ fixés quelconques.
+  \begin{itemize}[label=\textemdash]
+    \item Si $\bar{x} \cap \bar{y} = \emptyset$, rien à démontrer.
+    \item Sinon $\bar{x} \cap \bar{y} \neq \emptyset$ donc $\exists z \in \bar{x} \cap \bar{y}$. Fixons un tel $z$.
+
+          Soit $x' \in \bar{x}$ fq.
+          \begin{equation*}
+            \left.
+            \begin{array}{r}
+              \left. \begin{array}{r}
+                       x' \in \bar{x} \implies x \Rel x' \underset{\text{symétrie}}{\implies} x' \Rel x \\
+                       z \in \bar{x} \implies x \Rel z
+                     \end{array}
+              \right\} \underset{\text{transitivité}}{\implies} x' \Rel z \\
+              z \in \bar{y} \implies y \Rel z \underset{\text{symétrie}}{\implies} z \Rel y
+            \end{array}
+            \right\} \underset{\text{transitivité}}{\implies} x' \Rel y
+            \underset{\text{symétrie}}{\implies} y \Rel x'
+          \end{equation*}
+
+          Donc $x' \in \bar{y}$ donc $\bar{x} \subset \bar{y}$.
+
+          En échangeant les rôles de $x$ et $y$, on montre la deuxième inclusion $\bar{y} \subset \bar{x}$.
+  \end{itemize}
+  \bigbreak
+
+  Montrons que les classes d'équivalence de E constituent une partition de E.
+
+  Soit $\Sol$ un système de représentant des classes fixé quelconque.
+
+  \begin{itemize}[label=\textemdash]
+    \item Soit $s\in \Sol$ fixé quelconque. $\bar{s} \neq \emptyset$ car $s \Rel s$ par réflexivité.
+    \item Soit $(s, s') \in \Sol^2$ fixés quelconques. D'après la démonstration ci-dessus ci-dessus, $\bar{s} \cap \bar{s'} = \emptyset$ ou $\bar{s} = \bar{s'}$.\\
+          Si $\bar{s} = \bar{s'}$ alors $s$ et $s'$ représente la même classe ce qui est impossible car un système de représentants des classes contient un unique représentant de chaque classe. Par conséquent, $\bar{s}$ et $\bar{s'}$ sont disjointes.
+    \item $\underset{s \in \Sol}{\bigcup} \bar{s} \subset E$ car $\forall s \in \Sol, \bar{s} \in E$ par définition d'une classe d'équivalence. \\
+          Réciproquement, soit $x \in E$ fixé quelconque.
+          Par réflexivité de \Rel, $x \in \bar{x}$. \\
+          Par définition d'un système de classe $\exists ! s_x \in \Sol : s_x \in \bar{x}$ et $\bar{s_x} = \bar{x}$.\\
+          Donc $x \in \bar{s_x} \subset \underset{s \in \Sol}{\bigcup} \bar{s}$. Donc $E \subset \underset{s \in \Sol}{\bigcup} \bar{s}$.
+  \end{itemize}
+
+  Ainsi,
+  $$E = \bigsqcup_{s \in \Sol} \bar{s}$$
+
+\end{question_kholle}
+
+\begin{question_kholle}[{Soit $n \in \mathbb{N}^{*}$, on définit l'addition dans $\mathbb{Z}/n\mathbb{Z}$ de la manière suivante
+  $$
+    +_{\mathbb{Z}/n\mathbb{Z}} \left|
+    \begin{array}{ccccc}
+      \mathbb{Z}/n\mathbb{Z} & \times & \mathbb{Z}/n\mathbb{Z} & \to     & \mathbb{Z}/n\mathbb{Z}      \\
+      (\bar{x}               & ,      & \bar{y})               & \mapsto & \overline{x+_{\mathbb{Z}}y}
+    \end{array}\right.
+  $$
+  }]{Définir l’addition dans $\Z/n\Z$, dire pourquoi il est nécessaire de procéder à une vérification puis montrer que $(\Z/n\Z, +)$ est un groupe abélien.}
+  \begin{itemize}[label=$\star$]
+    \item Cette définition n'est pas cohérente à priori, car la valeur attribuée à $\bar x$ et $\bar y$ dépend de $x$ et de $y$ alors qu'elle ne doit dépendre que de $\bar x$ et $\bar y$. Il faudra bien vérifier que le résultat est le même, peu importe le représentant choisi.
+
+          Soient $(x, x', y, y') \in \mathbb{Z}^{4}$ tels que $\bar{x} = \bar{x}'$ et $\bar{y} = \bar{y}'$.
+
+          On a $\exists (p, q) \in \mathbb{Z}^{2} : x = x' + np, y=y'+nq$
+
+          $$
+            \overline{x+_{\mathbb{Z}}y} = \overline{x'+np + y' + nq} = \overline{x'+y' + n(p+q)} = \overline{x'+y'}
+          $$
+
+          On a donc bien égalité du résultat, peu importe le représentant de classe choisi, ce qui définit bien l'addition $+_{\mathbb{Z}/n\mathbb{Z}}$.
+
+    \item Montrons que $(\mathbb{Z}/n\mathbb{Z}, +_{\mathbb{Z}/n\mathbb{Z}})$ est un groupe abélien.
+          \begin{itemize}[label=$\bullet$]
+            \item $\mathbb{Z}/n\mathbb{Z}$ est stable pour la loi $+_{\mathbb{Z}/n\mathbb{Z}}$ (par définition).
+
+            \item Cette loi est associative :
+                  Soient $(a, b, c) \in \mathbb{Z}/n\mathbb{Z}^{3}$, on peut choisir un représentant de classe pour ces trois classes : $(x,y, z) \in \mathbb{Z}^{3}$ tels que $\bar{x} = a, \bar{y} = b, \bar{z} = c$.
+                  \begin{multline*}
+                    (a +_{\mathbb{Z}/n\mathbb{Z}} b)+_{\mathbb{Z}/n\mathbb{Z}} c =  \overline{x+_{\mathbb{Z}}y} +_{\mathbb{Z}/n\mathbb{Z}} c = \underbrace{ \overline{(x+_{\mathbb{Z}}y) +_{\mathbb{Z}} z}= \overline{x+_{\mathbb{Z}}(y+_{\mathbb{Z}}z)} }_{ \text{associativité de }+_{\mathbb{Z}} } \\
+                    =  a +_{\mathbb{Z}/n\mathbb{Z}}\overline{y +_{\mathbb{Z}} z} = a +_{\mathbb{Z}/n\mathbb{Z}} (b +_{\mathbb{Z}/n\mathbb{Z}} c)
+                  \end{multline*}
+            \item Cette loi est commutative :
+                  Soient $(a, b) \in \mathbb{Z}/n\mathbb{Z}^{2}$, on choisit, $(x, y) \in \mathbb{Z}^{2}$ des représentants de classe tels que $\bar{x} = a, \bar{y} = b$
+                  $$
+                    a+_{\mathbb{Z}/n\mathbb{Z}}b = \underbrace{ \overline{x +_{\mathbb{Z}} y} = \overline{y+_{\mathbb{Z}}x} }_{ \text{commutativité de } +_{\mathbb{Z}} } = b +_{\mathbb{Z}/n\mathbb{Z}}a
+                  $$
+            \item $\mathbb{Z}/n\mathbb{Z}$ possède un élément neutre pour $+_{\mathbb{Z}/n\mathbb{Z}}$ :
+                  Soit $a \in \mathbb{Z}/n\mathbb{Z}$, on choisit $x \in \mathbb{Z}$ un représentant de classe tel que $\bar{x} = a$
+                  $$
+                    a +_{\mathbb{Z}/n\mathbb{Z}} \bar{0} = \overline{x+_{\mathbb{Z}}0} = \bar{x} = a
+                  $$
+                  Donc $\bar{0}$ est un élément neutre à droite, et par commutativité de $+_{\mathbb{Z}/n\mathbb{Z}}$ prouvée plus haut, $\bar{0}$ est aussi élément neutre à gauche.
+          \end{itemize}
+          Ainsi, $(\mathbb{Z}/n\mathbb{Z}, +_{\mathbb{Z}/n\mathbb{Z}})$ est un Groupe Abélien.
+  \end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}
+  [\begin{equation}
+      \forall (a, b) \in \Z^2,
+      \exists ! (q, r) \in \Z \times \N :
+      \left\{ \begin{matrix}
+        a = b q + r \\
+        r \in {[\![} 0 ; |b|-1 {]\!]}
+      \end{matrix} \right.
+    \end{equation}]
+  {Théorème de la division Euclidienne dans \Z}
+
+  \textit{Unicité} \;
+  Soient deux tels entiers $(a,b) \in \Z^2$ et deux couples $((q,r),(q',r')) \in \left(\Z \times \N\right)^2$ tels que
+  \begin{equation*}
+    \left\{ \begin{matrix}
+      a = b q + r \\
+      0 \leqslant r \leqslant |b| - 1
+    \end{matrix} \right.
+    \qquad
+    \left\{ \begin{matrix}
+      a = b q' + r' \\
+      0 \leqslant r' \leqslant |b| - 1
+    \end{matrix} \right.
+  \end{equation*}
+  Directement,
+  \[
+    b(q-q') = r'-r,
+  \]
+  mais comme $-(|b|-1) \leqslant r' - r \leqslant |b| -1$, il vient en divisant par $|b|$ l'inégalité précédente :
+  \[
+    -1 < q - q' < 1,
+  \]
+  puisque $q$ et $q'$ sont dans $\Z$ leur différence est obligatoirement $0$, ainsi $q = q'$ ce qui implique $ r= r'$ et donc on a unicité de ladite écriture de $a$.
+  \newline
+  \\
+  \textit{Existence} \; Posons pour $b \geqslant 1$, $\Omega = \{ k\in \Z  \ | \ kb \leqslant a \}$
+  \begin{itemize}
+    \item $\Omega \subset \Z$
+    \item non-vide car $-|a| \in \Omega$ ($\Z$ archimédien suffit \ldots)
+    \item $\Omega$ est majoré par $|a|$ car supposons, par l'absurde, que $\exists k \in \Omega : k > |a|$, alors $kb > |a|b > a$ ce qui contradiction avec la définition d'$\Omega$.
+  \end{itemize}
+  Donc $\Omega$ admet un plus grand élément, notons-le $q$. \\
+  Posons $r = a - bq$. Par construction, $a = bq + r$ et comme $q = \max \Omega$ et $\Omega \subset \Z$, $q \in \Z$ donc $r \in \Z$.
+  \\
+  Par suite, $q \in \Omega$ donc $bq \leqslant a$ d'où $0 \leqslant r$. Et $q = \max \Omega$ donc $b(q+1) > a$ d'où $b > r$, c'est-à-dire, $r\in [\![ 0, |b| -1 ]\!]$.
+
+  Si $b< 1$, il suffit de prendre $q \leftarrow -q$ dans la preuve précédente.C'est donc l'existence de ladite écriture de $a$.
+\end{question_kholle}
+
+
+\begin{question_kholle}{Une suite décroissante et minorée de nombres entiers relatifs est stationnaire}
+  Soit $u \in \Z^\N$ une suite décroissante et minorée fixée quelconque. \\
+  Considérons $A = \{ u_n \;|\; n \in \N \}$ c'est-à-dire l'ensemble des valeurs prises par la suite $u$. \\
+  $A$ est : \begin{itemize}[label=\textemdash]
+    \item une partie de \Z car $u$ est à valeur dans \Z
+    \item non vide car $u_0 \in A$
+    \item minoré car $u$ est minorée
+  \end{itemize}
+  Donc $A$ admet un plus petit élément. Donc $\exists n_0 \in \N: u_{n_0} = min A$. Fixons un tel $n_0$. \\
+  Soit $n \in \N$ fq tq $n \geqslant n_0$.
+  \begin{equation*}
+    \left. \begin{matrix}
+      u_n \in A \implies u_n \geqslant \min A = u_{n_0} \\
+      u \text{ est décroissante et } n \geqslant n_0 \text{ donc } u_n \leqslant u_{n_0}
+    \end{matrix}
+    \right\} \implies u_n = u_{n_0}
+  \end{equation*}
+  Ainsi, $u$ est stationnaire.
+\end{question_kholle}
+
+
+%%% Non demandé
+\newpage
 
 \begin{question_kholle}[
     Soient $(a,b)\in \mathbb{C}^2$, $f$ et $g$ les  solutions, définies sur $\mathbb{R}$ à valeurs
@@ -175,7 +320,7 @@
     $\mathbb{C}$ de $y'' + ay' + by = 0$ est $\{ \lambda \cdot f + \mu \cdot g  |
       (\lambda, \mu)\in \mathbb{C}^2\}$
   ]
-  {Les solutions d'une EDL$_2$ constituent un espace vectoriel.}
+  {[Non demandée] Les solutions d'une EDL$_2$ constituent un espace vectoriel.}
 
   La solution s'exprime simplement comme combinaison linéaire de f et g, plus précisément, la
   combinaison linéaire en $\alpha$ et $\beta$. En effet, soient de tels scalaires, et soient $f$ et
@@ -234,7 +379,7 @@
       \item Si $ad - bc = 0$, alors l'ensemble des solutions est soit vide, soit une droite affine de $\K^2$, soit $\K^2$.
     \end{enumerate}
   ]
-  {Formules de Cramer pour les systèmes 2 $\times$ 2}
+  {[Non demandée] Formules de Cramer pour les systèmes 2 $\times$ 2}
   Procédons par disjonction de cas.
 
   \begin{itemize}[label=$\bullet$ Supposons]
@@ -392,74 +537,75 @@
 
 \end{question_kholle}
 
-\begin{question_kholle}[]{Déterminer le solutions réelles définies sur $]0, + \infty [$ de $y'' + 3y' +2y = \frac{t-1}{t^{2}}e^{ -t }$}
-  
-
-Il s'agit d'une EDL2 avec second membre à coefficients constants avec second membre défini sur $]0, +\infty[$.
-
-Ce second membre est de plus continu sur $\mathbb{R}_{+}^{*}$ donc les solutions définies sur un intervalle maximal sont définies sur $\mathbb{R}^{*}_{+}$ et leur ensemble $\mathcal{S}$ est un plan affine, le plan affine passant par une solution particulière et dirigé par le plan vectoriel $\mathcal{S}_{H}$.
-\begin{itemize}[label=$\star$]
-  \item L'équation caractéristique de $y'' + 3y' + 2y = 0$ est $r^{2} + 3r + 2 = 0 \iff (r+1)(r+2) = 0$
-
-Donc
-$$
-\mathcal{S}_{H} = \left\{ \left.\begin{array}{ll} \mathbb{R}^{*}_{+} &\to \mathbb{R} \\ t &\mapsto \lambda e^{-t}+\mu e^{-2t} \end{array}\right| (\lambda, \mu) \in \mathbb{R}^{2}\right\} 
-$$
-
-\item Cherchons une solution particulière de la forme $t \mapsto \lambda(t)e^{ -t }$ avec $\lambda \in \mathcal{D}^{2}(\mathbb{R}^{*}_{+}, \mathbb{R})$
+\begin{question_kholle}[]{[Non demandée] Déterminer les solutions réelles définies sur $]0, + \infty [$ de $y'' + 3y' +2y = \frac{t-1}{t^{2}}e^{ -t }$}
 
 
-\begin{align*}
-\begin{matrix}
-t \mapsto \lambda(t)e^{ -t } \text{ est solution}\\ \text{ particulière dans }\mathbb{R}_{+}^{*}
-\end{matrix}  & \iff \forall t \in \mathbb{R}^{*}_{+},  (\lambda (t)e^{ -t })'' + 3 (\lambda(t)e^{ -t })' + 2(\lambda(t)e^{ -t }) = \frac{t-1}{t^{2}}e^{ -t } \\
-&\iff \forall t \in \mathbb{R}_{+}^{*}, (\lambda''(t)- 2\lambda'(t)+\lambda(t))e^{ -t } + 3 (\lambda(t) ' - \lambda(t))e^{ -t  } + 2 \lambda(t) e^{ -t } = \frac{t-1}{t^{2}}e^{ -t } \\
- & \iff\forall t \in \mathbb{R}_{+}^{*}, \lambda'' (t) + \lambda'(t) = \frac{t-1}{t^{2}}
-\end{align*}
+  Il s'agit d'une EDL2 avec second membre à coefficients constants avec second membre défini sur $]0, +\infty[$.
 
-\begin{itemize}[label=$\lozenge$]
-  \item Cherchons donc une solution particulière de
-$$
-y' + y = \frac{t-1}{t^{2}}
-$$
+  Ce second membre est de plus continu sur $\mathbb{R}_{+}^{*}$ donc les solutions définies sur un intervalle maximal sont définies sur $\mathbb{R}^{*}_{+}$ et leur ensemble $\mathcal{S}$ est un plan affine, le plan affine passant par une solution particulière et dirigé par le plan vectoriel $\mathcal{S}_{H}$.
+  \begin{itemize}[label=$\star$]
+    \item L'équation caractéristique de $y'' + 3y' + 2y = 0$ est $r^{2} + 3r + 2 = 0 \iff (r+1)(r+2) = 0$
 
-C'est une EDL1 définie et résolue sur $\mathbb{R}_{+}^{*}$, à coefficients et second membre résolus, donc l'ensemble des solutions est une droite affine de solutions définies sur $\mathbb{R}_{+}^{*}$
+          Donc
+          $$
+            \mathcal{S}_{H} = \left\{ \left.\begin{array}{ll} \mathbb{R}^{*}_{+} &\to \mathbb{R} \\ t &\mapsto \lambda e^{-t}+\mu e^{-2t} \end{array}\right| (\lambda, \mu) \in \mathbb{R}^{2}\right\}
+          $$
 
-\begin{itemize}[label=$\triangle$] 
-  \item Par la méthode de la variation de la constante, cherchons une solution de la forme $t \mapsto \alpha (t) e^{ -t }$ avec $\alpha \in \mathcal{D}^{1}(\mathbb{R}_{+}^{*}, \mathbb{R})$.
+    \item Cherchons une solution particulière de la forme $t \mapsto \lambda(t)e^{ -t }$ avec $\lambda \in \mathcal{D}^{2}(\mathbb{R}^{*}_{+}, \mathbb{R})$
 
 
-\begin{align*}
-t \mapsto \alpha(t)e^{ -t } \text{ est solution particulière } &\iff \forall t \in \mathbb{R}_{+}^{*}, (\alpha(t)e^{ -t })' + \alpha(t)e^{ -t }= \frac{t-1}{t^{2}}\\
-&\iff \forall t \in \mathbb{R}_{+}^{*}, \alpha'(t) = \frac{t-1}{t^{2}}e^{ t }
-\end{align*}
+          \begin{align*}
+            \begin{matrix}
+              t \mapsto \lambda(t)e^{ -t } \text{ est solution} \\ \text{ particulière dans }\mathbb{R}_{+}^{*}
+            \end{matrix} & \iff \forall t \in \mathbb{R}^{*}_{+},  (\lambda (t)e^{ -t })'' + 3 (\lambda(t)e^{ -t })' + 2(\lambda(t)e^{ -t }) = \frac{t-1}{t^{2}}e^{ -t }                                                                                                                            \\
+                                                                                                              & \iff \forall t \in \mathbb{R}_{+}^{*}, (\lambda''(t)- 2\lambda'(t)+\lambda(t))e^{ -t } + 3 (\lambda(t) ' - \lambda(t))e^{ -t  } + 2 \lambda(t) e^{ -t } = \frac{t-1}{t^{2}}e^{ -t } \\
+                                                                                                              & \iff\forall t \in \mathbb{R}_{+}^{*}, \lambda'' (t) + \lambda'(t) = \frac{t-1}{t^{2}}
+          \end{align*}
+
+          \begin{itemize}[label=$\lozenge$]
+            \item Cherchons donc une solution particulière de
+                  $$
+                    y' + y = \frac{t-1}{t^{2}}
+                  $$
+
+                  C'est une EDL1 définie et résolue sur $\mathbb{R}_{+}^{*}$, à coefficients et second membre résolus, donc l'ensemble des solutions est une droite affine de solutions définies sur $\mathbb{R}_{+}^{*}$
+
+                  \begin{itemize}[label=$\triangle$]
+                    \item Par la méthode de la variation de la constante, cherchons une solution de la forme $t \mapsto \alpha (t) e^{ -t }$ avec $\alpha \in \mathcal{D}^{1}(\mathbb{R}_{+}^{*}, \mathbb{R})$.
 
 
-Cherchons une primitive de $t \mapsto \frac{t-1}{t^{2}}e^{ t }$
+                          \begin{align*}
+                            t \mapsto \alpha(t)e^{ -t } \text{ est solution particulière } & \iff \forall t \in \mathbb{R}_{+}^{*}, (\alpha(t)e^{ -t })' + \alpha(t)e^{ -t }= \frac{t-1}{t^{2}} \\
+                                                                                           & \iff \forall t \in \mathbb{R}_{+}^{*}, \alpha'(t) = \frac{t-1}{t^{2}}e^{ t }
+                          \end{align*}
 
 
-\begin{align*}
-\int_{1}^{t} \frac{u-1}{u^{2}}e^{ u } \, \mathrm du &= \int_{1}^{t} \frac{e^{ u }}{u} - \frac{e^{ u }}{u^{2}} \, \mathrm du \\
-&= \int_{1}^{t} \frac{e^{ u }}{u} \, \mathrm du - \int_{1}^{t} \frac{e^{ u }}{u^{2}} \, \mathrm du \\
-&= \int_{1}^{t} \frac{e^{ u }}{u} \, \mathrm du  - \left( \left[ -\frac{1}{u}e^{ u } \right] _{1}^{t} - \int_{1}^{t} -\left( \frac{1}{u} \right) e^{ u } \, \mathrm du  \right)   \\
-&= \left[ \frac{e^{ u }}{u} \right] _{1}^{t} = \frac{e^{t}}{t} - e
-\end{align*}
+                          Cherchons une primitive de $t \mapsto \frac{t-1}{t^{2}}e^{ t }$
 
 
-Donc $\alpha(t) = \frac{e^{ t }}{t}$ convient.
-\end{itemize}
+                          \begin{align*}
+                            \int_{1}^{t} \frac{u-1}{u^{2}}e^{ u } \, \mathrm du & = \int_{1}^{t} \frac{e^{ u }}{u} - \frac{e^{ u }}{u^{2}} \, \mathrm du                                                                                                         \\
+                                                                                & = \int_{1}^{t} \frac{e^{ u }}{u} \, \mathrm du - \int_{1}^{t} \frac{e^{ u }}{u^{2}} \, \mathrm du                                                                              \\
+                                                                                & = \int_{1}^{t} \frac{e^{ u }}{u} \, \mathrm du  - \left( \left[ -\frac{1}{u}e^{ u } \right] _{1}^{t} - \int_{1}^{t} -\left( \frac{1}{u} \right) e^{ u } \, \mathrm du  \right) \\
+                                                                                & = \left[ \frac{e^{ u }}{u} \right] _{1}^{t} = \frac{e^{t}}{t} - e
+                          \end{align*}
 
-Donc $t \mapsto \alpha(t)e^{ -t } = \frac{e^{ t }}{t}e^{ -t } = \frac{1}{t}$ est une solution particulière de $y'+y = \frac{t-1}{t^{2}}$
-\end{itemize}
-Donc $\lambda'(t) = \frac{1}{t}$ donc $\lambda(t) = \ln(t)$ convient
 
-Donc $t \mapsto \ln (t) e^{ -t }$ est une solution particulière de (EDL2)
-\end{itemize}
-Ainsi, le plan affine des solutions sur $\mathbb{R}_{+}^{*}$ est
-$$
-\mathcal{S} = \left\{ \left.\begin{array}{ll} \mathbb{R}_{+}^{*} &\to \mathbb{R} \\ t &\mapsto (\ln t)e^{ -t }+ \lambda e^{ -t }+\mu e^{ -2t } \end{array}\right| (\lambda , \mu) \in \mathbb{R}^{2}\right\} 
-$$
+                          Donc $\alpha(t) = \frac{e^{ t }}{t}$ convient.
+                  \end{itemize}
+
+                  Donc $t \mapsto \alpha(t)e^{ -t } = \frac{e^{ t }}{t}e^{ -t } = \frac{1}{t}$ est une solution particulière de $y'+y = \frac{t-1}{t^{2}}$
+          \end{itemize}
+          Donc $\lambda'(t) = \frac{1}{t}$ donc $\lambda(t) = \ln(t)$ convient
+
+          Donc $t \mapsto \ln (t) e^{ -t }$ est une solution particulière de (EDL2)
+  \end{itemize}
+  Ainsi, le plan affine des solutions sur $\mathbb{R}_{+}^{*}$ est
+  $$
+    \mathcal{S} = \left\{ \left.\begin{array}{ll} \mathbb{R}_{+}^{*} &\to \mathbb{R} \\ t &\mapsto (\ln t)e^{ -t }+ \lambda e^{ -t }+\mu e^{ -2t } \end{array}\right| (\lambda , \mu) \in \mathbb{R}^{2}\right\}
+  $$
 
 \end{question_kholle}
+
 
 \end{document}
