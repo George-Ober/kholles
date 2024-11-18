@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \date{17 novembre 2024}
-\usepackage[nb-sem=8, auteurs={Kylian Boyet, George Ober, Hugo Vangilluwen}]{../kholles}
+\usepackage[nb-sem=8, auteurs={Kylian Boyet, George Ober, Hugo Vangilluwen, Felix Rondeau}]{../kholles}
 
 \begin{document}
 \maketitle
@@ -33,7 +33,7 @@
   Notons $\Sol$ le plan vectoriel des solutions de $y''+ay'+by=0$ définies sur $\R$.\\
   Montrons que $\Sol=\Vect \left\{f,g\right\} = \left\{\lambda f+ \mu g | (\lambda, \mu)\in\K^{2}\right\}$
   \begin{itemize}
-    \item D’après le théorème de superposition, pour tout $(\lambda, \mu)\in\K^{2}$, $\lambda f + \mu g$ est solution de la même équation que $f$ et $g$, donc $\left\{\lambda f+\mu g| (\lambda, \mu)\in\K^{2}\right\}\in\Sol$.
+    \item D’après le théorème de superposition, pour tout $(\lambda, \mu)\in\K^{2}$, $\lambda f + \mu g$ est solution de la même équation que $f$ et $g$, donc $\left\{\lambda f+\mu g| (\lambda, \mu)\in\K^{2}\right\}\subset\Sol$.
     \item Soit $h\in\Sol$ une solution du problème de Cauchy
           \[
             \begin{cases}
@@ -46,7 +46,7 @@
           \[
             h = h(3)f+h'(3)g \quad \text{donc} \quad h\in\Vect \left\{f,g\right\}
           \]
-          ainsi, $\Sol\in\Vect \left\{f,g\right\}$
+          ainsi, $\Sol\subset\Vect \left\{f,g\right\}$
   \end{itemize}
 
 \end{question_kholle}
@@ -60,7 +60,7 @@
   \begin{itemize}
     \item \underline{Si $n=1$}: Soit $A$ un sigleton de $E$ fixé quelconque
           \[
-            \exists a\in E, A=\{A\}
+            \exists a\in E, A=\{a\}
           \]
           par réflexivité de la relation d’ordre $\preccurlyeq$, on a $a\preccurlyeq a$ et $a\in A$ donc $A$ admet un ppe et un pge qui sont tous les deux $a$. Ce qui valide $\prop(1)$.
     \item \underline{Si $n=2$} : Soit $A$ une partie de $E$ de cardinal 2 fixée quelconque. Alors il existe $a$ et $b$ deux éléments de $E$ tels que
@@ -73,23 +73,23 @@
             \item si $b\preccurlyeq a$, d’une part $a\in A, a\preccurlyeq a$ et $b\preccurlyeq a$ donc $A$ admet un pge qui est $\max A = a$, et d’autre part, $b\in A, b\preccurlyeq b$ et $b\preccurlyeq a$ donc $A$ admet un ppe qui est $\min A=b$.
           \end{itemize}
           donc $\prop(2)$ est vraie.
-    \item Soit $n\in\N$ fixé quelconque tel que $n\geq 2$ et $\prop(n)$ est vraie. Soit $A\in\mathcal(E)$  de cardinal $n+1$ fixé quelconque. Alors il existe $(a_{1}, \dots, a_{n+1})\in E^{n+1}$ deux à deux distncts tels que
+    \item Soit $n\in\N$ fixé quelconque tel que $n\geq 2$ et $\prop(n)$ est vraie. Soit $A\in\mathcal{P}(E)$  de cardinal $n+1$ fixé quelconque. Alors il existe $(a_{1}, \dots, a_{n+1})\in E^{n+1}$ deux à deux distncts tels que
           \[
             A=\{a_{1}, \dots, a_{n+1}\}
           \]
-          Appliquons $\prop(n)$ pour $A\leftarrow \{a_{1}, \dots, a_{n+1}\}$ de cardinal n:
+          Appliquons $\prop(n)$ pour $A\leftarrow \{a_{1}, \dots, a_{n}\}$ de cardinal n:
           \[
             \exists(i,j)\in\iset{1,n}^{2}: a_{i}=\min A \text{ et } a_{j}=\max A
           \]
           En appliquant $\prop(2)$ pour $A\leftarrow \{a_{i}, a_{n+1}\}$ puis pour $A\leftarrow \{a_{j}, a_{n+1}\}$, on trouve que $m=\min A$ et $M=\max A$ existent.
           \begin{itemize}
             \item $M\in A$ car $a_{j}$ et $a_{n+1}$ sont dans $A$.
-            \item $\forall k\in\iset{1,n}, a_{k}\preccurlyeq a_{j}$ car $a_{j}=\max \{a_{1}, \dots , a_{n+1}\}=M$ et de plus, $a_{n+1}\preccurlyeq M$ car $M=\max \{a_{j}, a_{n+1}\}$ donc $A$ admet un pge qui est $M=\max A$.
+            \item $\forall k\in\iset{1,n}, a_{k}\preccurlyeq a_{j}$ car $a_{j}=\max \{a_{1}, \dots , a_{n}\}$, et de plus, $a_{j}\preccurlyeq M$ et $a_{n+1}\preccurlyeq M$ car $M=\max\{a_{j}, a_{n+1}\}$ donc $A$ admet un pge qui est $M=\max A$.
           \end{itemize}
           De même,
           \begin{itemize}
             \item $m\in A$ car $a_{i}$ et $a_{n+1}$ sont dans $A$.
-            \item $\forall k\in\iset{1,n}, a_{i}\preccurlyeq a_{k}$ car $a_{i}=\min \{a_{1}, \dots , a_{n+1}\}=m$ et de plus, $m\preccurlyeq a_{n+1}$ car $M=\max \{a_{i}, a_{n+1}\}$ donc $A$ admet un ppe qui est $m=\min A$.
+            \item $\forall k\in\iset{1,n}, a_{i}\preccurlyeq a_{k}$ car $a_{i}=\min \{a_{1}, \dots , a_{n}\}$, et de plus, $m\preccurlyeq a_{i}$ et $m\preccurlyeq a_{n+1}$ car $m=\min\{a_{i}, a_{n+1}\}$ donc $A$ admet un ppe qui est $m=\min A$.
           \end{itemize}
           Ainsi, $\prop(n+1)$ est vraie.
   \end{itemize}
@@ -100,7 +100,7 @@
   Dans $(\R, \leq)$ totalement ordonné, $\Z$ n’a ni ppe ni pge.
 \end{question_kholle}
 
-\begin{question_kholle}{Montrer que, dans un ensemble ordonné $(E,\leq)$, une partie $A$ possède un plus grand élément si et seulement si la partie $A$ possède une borne supérieure qui appartient à la partie $A$. De plus, dans ce cas, $\max A = \sup A$.}
+\begin{question_kholle}{Montrer que, dans un ensemble ordonné $(E,\preccurlyeq)$, une partie $A$ possède un plus grand élément si et seulement si la partie $A$ possède une borne supérieure qui appartient à la partie $A$. De plus, dans ce cas, $\max A = \sup A$.}
   \hfill\\
   \begin{itemize}
     \item Supposons $\sup A\in A$. Par définition, $\sup A\in M(A)\implies \forall a\in A, a\preccurlyeq \sup A \implies A$ admet un pge qui est $\max A=\sup A$.
@@ -159,7 +159,7 @@
     \item Soit $s\in \Sol$ fixé quelconque. $\bar{s} \neq \emptyset$ car $s \Rel s$ par réflexivité.
     \item Soit $(s, s') \in \Sol^2$ fixés quelconques. D'après la démonstration ci-dessus ci-dessus, $\bar{s} \cap \bar{s'} = \emptyset$ ou $\bar{s} = \bar{s'}$.\\
           Si $\bar{s} = \bar{s'}$ alors $s$ et $s'$ représente la même classe ce qui est impossible car un système de représentants des classes contient un unique représentant de chaque classe. Par conséquent, $\bar{s}$ et $\bar{s'}$ sont disjointes.
-    \item $\underset{s \in \Sol}{\bigcup} \bar{s} \subset E$ car $\forall s \in \Sol, \bar{s} \in E$ par définition d'une classe d'équivalence. \\
+    \item $\underset{s \in \Sol}{\bigcup} \bar{s} \subset E$ car $\forall s \in \Sol, \bar{s} \subset E$ par définition d'une classe d'équivalence. \\
           Réciproquement, soit $x \in E$ fixé quelconque.
           Par réflexivité de \Rel, $x \in \bar{x}$. \\
           Par définition d'un système de classe $\exists ! s_x \in \Sol : s_x \in \bar{x}$ et $\bar{s_x} = \bar{x}$.\\
@@ -229,8 +229,8 @@
       \end{matrix} \right.
     \end{equation}]
   {Théorème de la division Euclidienne dans \Z}
-
-  \textit{Unicité} \;
+  \hfill\\
+  \textit{Unicité}. \;
   Soient deux tels entiers $(a,b) \in \Z^2$ et deux couples $((q,r),(q',r')) \in \left(\Z \times \N\right)^2$ tels que
   \begin{equation*}
     \left\{ \begin{matrix}
