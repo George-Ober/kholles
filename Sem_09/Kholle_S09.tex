@@ -1,14 +1,325 @@
 \documentclass{article}
 
-\date{29 novembre 2023}
-\usepackage[nb-sem=9, auteurs={Kylian Boyet, George Ober, Hugo Vangilluwen}]{../kholles}
+\date{24 Novembre 2024}
+\usepackage[nb-sem=9, auteurs={Kylian Boyet, George Ober, Hugo Vangilluwen, Felix Rondeau}]{../kholles}
 
 \begin{document}
 
 \maketitle
 
+\begin{question_kholle}[]{Montrer que si $A$ et $B$ sont deux parties non vides majorées de $\R$, alors $\sup(A+B) = \sup A + \sup B$}
+  Soient $A$ et $B$ deux parties non vides et majorées de $\mathbb{R}$. On note $A+B$ l'ensemble
+  $$
+    A+B = \{ a+b \mid (a, b) \in A\times B \}
+  $$
+  C'est aussi une partie non vide de $\mathbb{R}$.\\
+  Soit $x \in (A+B)$ fixé quelconque. Par définition de $A+B$, $\exists(a, b) \in A\times B : x=a+b$
+
+  $$
+    \left. \begin{array}{ll}
+      a \leqslant \sup A \\
+      b \leqslant \sup B
+    \end{array}\right\} \implies x = a+b \leqslant \sup A + \sup B
+  $$
+  donc $\sup A+\sup B$ est un majorant de $A+B$. Ainsi, comme l’ensemble $A+B$ est une partie non vide et majorée de \R, il admet une borne supérieure, plus petite que tous les majorants et en particulier que $\sup A+\sup B$:
+  $$\sup(A+B) \leqslant \sup A + \sup B$$
+  De plus, $\sup(A+B)$ est un majorant de $A+B$ donc, pour $(a, b) \in A\times B$ fixés, on a
+  $$
+    a+b \leqslant \sup (A+B) \iff a \leqslant \sup(A+B) -b
+  $$
+  en relâchant le caractère fixé de $a$, on a
+  $$
+    \forall a \in A, a\leqslant \sup(A+B) - b
+  $$
+  donc $\sup(A+B) - b$ est un majorant de $A$, donc plus petit que $\sup A$, d'où
+
+  $$
+    \sup A \leqslant \sup(A+B) - b \iff b \leqslant \sup(A+B) - \sup A
+  $$
+  Donc en relâchant le caractère fixé de $b$ on a
+  $$
+    \forall b \in B, b\leqslant \sup(A+B) - \sup A
+  $$
+  donc $\sup(A+B) - \sup A$ est un majorant de $B$ donc plus petit que $\sup B$
+  d'où
+
+  $$
+    \sup B \leqslant \sup(A+B) - \sup A \iff \sup A + \sup B \leqslant \sup (A+B)
+  $$
+  Ainsi, par double inégalité
+  $$
+    \sup A + \sup B = \sup (A+B)
+  $$
+
+\end{question_kholle}
+
+\begin{question_kholle}{Preuve de la caractérisation de la propriété de la borne supérieure dans \R avec des $\varepsilon$}
+  \hfill\\
+  \begin{description}
+    \item[$(\implies)$] Supposons que $\sigma =\sup A$.
+          \begin{itemize}
+            \item Par définition, la borne supérieure est le plus petit majorant donc $\forall a\in A, \leq \sigma$.
+            \item Soit $\varepsilon\in\R_{+}^{*}$ fixé quelconque. Par l’absurde, supposons que pour tout $a\in A$, $\sigma-\varepsilon\geq a$.\\
+                  Alors, $\sigma-\varepsilon\geq \sup A=\sigma$ d’où $-\varepsilon\geq 0$ ce qui contredit la définition de $\varepsilon$.
+          \end{itemize}
+          Ainsi, $\exists a\in A: \sigma-\varepsilon<a$.
+
+    \item[$(\impliedby)$] Supposons
+          \begin{numcases}{}
+            \forall a\in A, a\leq \sigma \label{10:2:hyp1}\\
+            \forall \varepsilon\in\R_{+}^{*}, \exists a\in A: \sigma-\varepsilon<a \label{10:2:hyp2}
+          \end{numcases}
+          \begin{itemize}
+            \item $\sigma\in M(A)$ par conséquence directe de \eqref{10:2:hyp1}
+            \item $\sigma$ est plus petit que tout autre majorant:\\
+                  Soit $M\in M(A)$ fixé quelconque. Par l’absurde, supposons que $M<\sigma$. Appliquons \eqref{10:2:hyp2} pour $\varepsilon\leftarrow \sigma - M$ (ce qui est autorisé car $M<\sigma$ donc $\sigma-M>0$):
+                  \[
+                    \exists a_{0}\in A: \sigma-(\sigma-M)<a_{0}
+                  \]
+                  Donc $M<a_{0}$ ce qui contredit $M\in M(A)$. Ainsi, $\sigma\leq M$, si bien que $M(A)$ admet $\sigma$ comme plus petit élément donc $A$ admet $\sigma$ comme borne supérieure.
+          \end{itemize}
+  \end{description}
+\end{question_kholle}
+
+\begin{question_kholle}
+  [\noindent Soient $(A, B) \in \mathcal{P}(\R)^2$ fq. \\
+    \textit{Définition de la densité}
+    \begin{align}
+      A \text{ est dense dans } B
+      \text{ si } \left\{ \begin{array}{ll}
+                            A \subset B \\
+                            \mathrm{et} \\
+                            \forall (u,v) \in \R^2, B \cap {]}u;v{[} \neq \emptyset \implies A \cap  {]}u;v{[} \neq \emptyset
+                          \end{array} \right.
+    \end{align}
+    \textit{Caractérisation de la densité par les $\varepsilon$}
+    \begin{align}
+      A \text{ est dense dans } B
+      \iff \left\{ \begin{array}{ll}
+                     A \subset B \\
+                     \mathrm{et} \\
+                     \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon
+                   \end{array} \right.
+    \end{align}
+  ]
+  {Preuve de la caractérisation de la densité}
+
+  \textit{Montrons la caractérisation de la densité}\\
+  \emph{Sens Direct} Supposons $A$ dense dans $B$
+  \begin{itemize}[label=\textemdash]
+    \item Par déf $A \subset B$
+    \item Soit $b \in B$ et $\varepsilon \in \R_+^*$ fq
+
+          Appliquons le (ii) de la déf de Densité pour $u \leftarrow b - \varepsilon$ et $v \leftarrow b + \varepsilon$
+          $$B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset \implies A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$$
+            Or, $B \cap ]b - \varepsilon, b + \varepsilon[ \neq \emptyset$ est vraie
+              donc $A \cap ]b - \varepsilon,  b + \varepsilon[ \neq \emptyset$
+
+              Ce qui permet de choisir $a \in A \cap ]b - \varepsilon,  b + \varepsilon[$.
+              Un tel $a$ vérifie $a \in A$ et $a \in ]b - \varepsilon,  b + \varepsilon[ \iff |b-a| < \varepsilon$
+  \end{itemize}
+  \bigbreak
+  \noindent \emph{Sens réciproque.} Supposons
+  \[
+    \left\{\begin{array}{ll} A \subset B \\\mathrm{et}\\ \forall b \in B, \forall \varepsilon \in \R_+^*, \exists a \in A: |b-a|< \varepsilon \end{array}\right.
+  \]
+
+  \begin{itemize}
+    \item On a donc $A \subset B$
+    \item Soient $(u, v) \in \R^2$ fq tq $B \cap ]u, v[ \neq \emptyset$
+
+                  Soit $b \in B \cap ]u, v[$ fq.
+                  Appliquons l'hypothèse pour $b\leftarrow b$ et $\varepsilon \leftarrow \min\{v - b, b - u\}$, qui est autorisé $v-b$ et $b-u$ sont positifs
+
+                  Donc $\exists a \in A: | b - a| < \varepsilon $
+
+                  Fixons un tel a, alors:
+                  $$
+                    b-\varepsilon < a < b + \varepsilon
+                  $$
+
+                  Donc $$
+                    \left\{\begin{array}{ll}
+                      a < b + \varepsilon = b + \underbrace{\min\{v - b, b - u\}}_{\leqslant v - b} \leqslant b + v - b = v \\ \mathrm{et}\\
+                      a > b - \varepsilon = b - \underbrace{\min\{v - b, b - u\}}_{\leqslant b - u} \geqslant b - (b - u) = u
+                    \end{array}\right.
+                  $$
+
+                  Donc $a \in ]u, v[$.
+  \end{itemize}
+  Donc $A \cap ]u, v[ \neq \emptyset$
+
+\end{question_kholle}
 
 
+\begin{question_kholle}
+  {Montrer que \Q et $\R\setminus\Q$ sont denses dans \R}
+
+  Soit $x \in \R$ fq.
+  Posons $\forall n \in \N, a_n = \frac{\lfloor2^n x\rfloor}{2^n}$. \\
+  Soit $n \in \N$ fq. \\
+  \begin{itemize}
+    \item $a_n \in \Q$ car $\lfloor2^n x\rfloor \in \Z$ et $2^n \in \N$.
+    \item \begin{equation*}
+            a_n = \frac{\lfloor2^n x\rfloor}{2^n}
+            \implies \frac{2^n x - 1}{2^n} \leqslant a_n \leqslant \frac{2^n x}{2^n}
+            \implies x - \frac{1}{2^n} \leqslant a_n \leqslant x
+          \end{equation*}
+          Or $\nicefrac{1}{2^n} \arrowlim{n}{+\infty} 0$ donc d'après le théorème d'existence de limite par encadrement, \\ $a_n \arrowlim{n}{+\infty} x$.
+  \end{itemize}
+  Donc d'après la caractérisation séquentielle de la densité, \Q est dense dans \R.
+  \bigbreak
+
+  \noindent Soit $x \in \R$ fq. \\
+  Alors $x + \sqrt{2} \in \R$.
+  D'après la démonstration précédente, $\exists b \in \Q^\N : b_n \arrowlim{n}{+\infty} x + \sqrt{2}$. \\
+  Fixons un telle suite $b$.
+  Considérons $c = b - \sqrt{2}$. \\
+  Soit $n \in \N$ fq.
+  \begin{itemize}
+    \item $c_n \in \R\setminus\Q$ car $b_n \in \Q$ et $\sqrt{2} \in \R \setminus \Q$.
+    \item \begin{equation*}
+            \left. \begin{matrix}
+              b_n \arrowlim{n}{+\infty} x + \sqrt{2} \\
+              c_n = b_n - \sqrt{2}
+            \end{matrix} \right\}
+            \implies c_n \arrowlim{n}{+\infty} x
+          \end{equation*}
+  \end{itemize}
+  Donc d'après la caractérisation séquentielle de la densité, $\R\setminus \Q$ est dense dans \R.
+\end{question_kholle}
+
+\begin{question_kholle}{Caractérisation séquentielle de la densité}
+  \hfill\\
+  \begin{description}
+    \item[$(\implies)$] Supposons que $A$ est dense dans $B$.
+          \begin{itemize}
+            \item $A\subset B$ par définition.
+            \item Soit $b\in B$ fixé quelconque. D’après la caractérisation de la densité appliqué pour $b\leftarrow b$ et $\varepsilon\leftarrow \frac{1}{2^{n}}$
+                  \[
+                    \exists a\in A: |b-a|\leq \frac{1}{2^{n}}
+                  \]
+                  Notons un tel $a$ $a_{n}$. On vient de construire la suite $(a_{n})\in A^{\N}$ telle que
+                  \[
+                    \forall n\in N, |b-a_{n}|\leq \frac{1}{2^{n}}\\
+                  \]
+                  or $\displaystyle\lim_{n\to +\infty}\frac{1}{2^{n}}=0$ donc, par le théorème sans nom, la suite $(a_{n})_{n\in\N}$ converge vers $b$.
+          \end{itemize}
+    \item[$(\impliedby)$] Supposons que tout élément de $B$ est limite d’une suite d’éléments de $A$.
+          \begin{itemize}
+            \item $A\subset B$ par hypothèse.
+            \item Soient $\varepsilon\in\R_{+}^{*}$ et $b\in B$ fixés quelconques.
+                  Soit $(a_{n})\in A^{\N}$ une suite qui converge vers $b$ (elle existe par hypothèse). Appliquons la définition de sa convergence pour $\varepsilon\leftarrow \frac{\varepsilon}{2}>0$ :
+                  \[
+                    \exists N\in\N: \forall n\in\N, n\geq N \implies |a_{n}-b|\leq \frac{\varepsilon}{2}
+                  \]
+                  Fixons un tel $N$. On a alors
+                  \[
+                    |a_{N}-b|\leq \frac{\varepsilon}{2} \quad \text{donc} \quad |a_{N}-b|<\varepsilon \quad \text{donc} \quad \exists a\in A: |b-a|<\varepsilon
+                  \]
+          \end{itemize}
+  \end{description}
+\end{question_kholle}
+
+\begin{question_kholle}[{Soit $A \in \mathcal{P}(\R)$ non vide et majorée. Soit $\sigma \in \R$
+        $$
+          \sigma = \sup A \iff \left\{ \begin{array}{ll}
+            \sigma \in M(A) \\
+            \exists (a_{n})_{n \in \N} \in A^{\N} : \lim_{n \to +\infty} a_n = \sigma
+          \end{array}\right.
+        $$
+      }]{Caractérisation séquentielle de la borne supérieure}
+  \hfill\\
+  \begin{itemize}[label=$\star$]
+    \item Supposons que $\sigma = \sup A$.
+          \begin{itemize}[label=$\bullet$]
+            \item Par définition d'une borne sup, $\sigma \in M(A)$.
+            \item Soit $n \in \N$. Appliquons la caractérisation de la borne sup par les epsilon pour $\varepsilon \leftarrow \frac{1}{2^{n}}$.
+                  $\exists c \in A : \sigma - \frac{1}{2^{n}} < c \leqslant \sigma$.
+                  Fixons un tel $c$ et notons le $a_{n}$. En relâchant le caractère fixé de $n$, on a crée la suite $(a_{n})_{n \in \N}$ telle que
+                  $$
+                    \forall n \in \N, \sigma - \frac{1}{2^{n}} < a_{n}\leqslant \sigma
+                  $$
+                  Cette suite converge vers $\sigma$ par encadrement.
+          \end{itemize}
+    \item Réciproquement, supposons que $\sigma \in M(A)$ et qu'il existe une suite $(a_{n})_{n \in \N}$ d'éléments de $A$ qui converge vers $\sigma$. Montrons que $\sigma = \sup A$ d'après la caractérisation par les $\varepsilon$.
+          \begin{itemize}[label=$\bullet$]
+            \item$\sigma \in M(A)$
+            \item Soit $\varepsilon>0$. Appliquons la définition de la convergence de $a$ pour $\varepsilon \leftarrow \frac{\varepsilon}{2}$
+
+                  $$
+                    \exists N \in \N : \forall n \geqslant N, \lvert a_{n} - \sigma \rvert  \leqslant \frac{\varepsilon}{2} \implies \sigma - \frac{\varepsilon}{2}\leqslant a_{n}
+                  $$
+                  En particulier $a_{N} \in A$ vérifie
+                  $$
+                    \sigma - \varepsilon < \sigma - \frac{\varepsilon}{2} \leqslant a_{N} \underbrace{ \leqslant }_{ \sigma \in M(A) } \sigma
+                  $$
+                  Ce qui permet de conclure.
+                  Donc $\sigma = \sup A$.
+          \end{itemize}
+  \end{itemize}
+\end{question_kholle}
+
+
+\begin{question_kholle}[
+    Soit u $\in \K ^ \N, (\ell_1, \ell_2) \in \K ^2$
+    Si u converge vers $\ell_1$ et $\ell_2$, alors $\ell_1 = \ell_2$
+  ]{Preuve de l'unicité de la limite d'une suite convergente}
+  Par l'absurde, supponsons que $u$ converge vers $\ell_1$ et $\ell_2$, et $\ell_1 \neq \ell_2$.
+  On prendra $\varepsilon_0 = \varepsilon_1 = \varepsilon_2$ assez petit pour que les tubes soient disjoints.\\
+  Posons donc $\displaystyle\varepsilon_0 = \frac{|\ell_1 - \ell_2|}{3}$
+  \begin{itemize}
+    \item Appliquons la définition de la convergence de u vers $\ell_1$, pour $\varepsilon \leftarrow \varepsilon_0$, ce qui est autorisé car $\varepsilon_0 \in \R_+^*$
+          \begin{equation}\label{eq:1}
+            \exists N_1 \in \N : \forall n \in \N, n \geqslant N_1 \implies |u_n - \ell_1| \leqslant \varepsilon_0
+          \end{equation}
+          \begin{equation}\label{eq:2}
+            \exists N_2 \in \N : \forall n \in \N, n \geqslant N_2 \implies |u_n - \ell_2| \leqslant \varepsilon_0
+          \end{equation}
+          Fixons de tels $N_1$ et $N_2$.
+    \item Posons $n_0 = N_1 + N_2$
+          \begin{itemize}
+            \item $n_0 \geqslant N_1$, donc (\ref{eq:1}) s'applique: $|u_{n_0} - \ell_1| \leqslant \varepsilon_0$
+            \item $n_0 \geqslant N_2$, donc (\ref{eq:2}) s'applique: $|u_{n_0} - \ell_2| \leqslant \varepsilon_0$
+          \end{itemize}
+    \item \begin{align*}
+            |\ell_1 - \ell_2| & = |\ell_1 - u_{n_0} + u_{n_0} - \ell_2|                                                                                         \\
+                              & \leqslant \underbrace{|\ell_1 - u_{n_0}|}_{\leqslant \varepsilon_0} + \underbrace{|u_{n_0} - \ell_2|}_{\leqslant \varepsilon_0} \\
+                              & \leqslant 2 \frac{|\ell_1 - \ell_2|}{3}                                                                                         \\
+            \implies 1        & \leqslant \frac 2 3
+          \end{align*}
+          Contradiction
+  \end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}{Toute suite convergente est bornée}
+
+  Soit $u \in \mathbb{K}^{\mathbb{N}}$ convergente.
+  Posons $\ell = \lim u$
+  Appliquons la définition de la convergence pour $\varepsilon \leftarrow 1$
+  $$
+    \exists N_{1}\in \mathbb{N}: \forall n \in \mathbb{N}, n \geqslant N_{1} \implies |u_{n}-\ell| \leqslant 1
+  $$
+  Fixons un tel $N_{1}$
+  Posons alors $M = \max\left\{ |u_{0}|, |u_{1}|, |u_{2}| \dots |u_{N_{1}}|, |\ell|+1 \right\}$, qui est bien défini, car toute partie finie, non vide d'un ensemble totalement ordonné (ici $(\mathbb{R}, \leqslant)$) admet un pgE.
+
+  Soit $n \in \mathbb{N}$ fq.
+  \begin{itemize}
+    \item Si $n \in [[0, N_{1}]], |u_{n}| \in \left\{ |u_{0}|, |u_{1}|, |u_{2}| \dots |u_{N_{1}}|, |\ell|+1 \right\}$ donc $|u_{n}| \leqslant M$
+    \item Sinon,
+  \end{itemize}
+
+  \begin{align*}
+    n> N_{1} & \implies |u_{n} - \ell| \leqslant 1              \\
+             & \implies |u_{n}| - |\ell| \leqslant 1            \\
+             & \implies |u_{n}| \leqslant 1+ |\ell| \leqslant M
+  \end{align*}
+
+  Ainsi, $\forall n \in \mathbb{N}, |u_{n}| \leqslant M$.
+\end{question_kholle}
+
+
+\pagebreak
 
 \begin{question_kholle}[]{Dans un ensemble totalement ordonné, toute partie finie non vide possède un plus grand élément et un plus petit élément.}
   Soit $(E, \preccurlyeq)$ un ensemble totalement ordonné, considérons pour tour $n \in \mathbb{N}^{*}$ la propriété.
@@ -83,7 +394,7 @@
   [\noindent Soit $(E, \leq)$ un ensemble ordonné, et $A$ une partie non-vide de $E$. \\
     Si $A$ admet un plus grand élément alors $A$ admet une borne supérieure et $\sup{A} = \max{A}$. \\
     Si $A$ admet une borne supérieure appartenant à elle-même alors $A$ admet un plus grand élément et $\max{A} = \sup{A}$.]
-  {Si $A$ admet un plus grand élément c'est aussi sa borne supérieure. Si $A$ admet une borne supérieure dans $A$ c'est sont plus grand élément.}
+  {Si $A$ admet un plus grand élément c'est aussi sa borne supérieure. Si $A$ admet une borne supérieure dans $A$ c'est son plus grand élément.}
 
   Soient un tel ensemble $E$ et une telle partie $A$ et notons $M$ son plus grand élément. \\
   Posons l'ensemble des majorants de $A$, $M(A) = \{ m\in E \ | \ \forall a \in A, \ a \leq m\}$. \\
@@ -144,54 +455,5 @@
                   Donc $A$ admet une borne supérieure qui est $\sigma$.
           \end{itemize}
   \end{itemize}
-\end{question_kholle}
-\begin{question_kholle}[]{Montrer que si $A$ et $B$ sont deux parties non vides majorées de $\R$, alors $\sup(A+B) = \sup A + \sup B$}
-  Soient $A$ et $B$ deux parties non vides et majorées de $\mathbb{R}$. On note $A+B$ l'ensemble
-  $$
-    A+B = \{ a+b \mid (a, b) \in A\times B \}
-  $$
-  C'est aussi une partie non vide de $\mathbb{R}$.
-
-  Soit $x \in (A+B)$ fixé quelconque. Par définition de $A+B$, $\exists(a, b) \in A\times B : x=a+b$
-
-  $$
-    \left. \begin{array}{ll}
-      a \leqslant \sup A \\
-      b \leqslant \sup B
-    \end{array}\right\} \implies x = a+b \leqslant \sup A + \sup B
-  $$
-  On a donc montré que $\sup A+\sup B$ est un majorant de $A+B$, donc $A+B$ admet un majorant, donc $A+B$ est une partie non vide majorée de $\mathbb{R}$, donc $A+B$ admet une borne supérieure.
-
-  Par définition de la borne supérieure, car $\sup(A+B)$ est le plus petit élément de l'ensemble des majorants :
-  $$\sup(A+B) \leqslant \sup A + \sup B$$
-
-  De plus $\sup(A+B)$ est un majorant de $A+B$ donc, pour $(a, b) \in A\times B$ fixés, on a
-  $$
-    a+b \leqslant \sup (A+B) \iff a \leqslant \sup(A+B) -b
-  $$
-  en relâchant le caractère fixé de $a$, on a
-  $$
-    \forall a \in A, a\leqslant \sup(A+B) - b
-  $$
-  donc $\sup(A+B) - b$ est un majorant de $A$, donc plus petit que $\sup A$, d'où
-
-  $$
-    \sup A \leqslant \sup(A+B) - b \iff b \leqslant \sup(A+B) - \sup A
-  $$
-  Donc en relâchant le caractère fixé de $b$ on a
-  $$
-    \forall b \in B, b\leqslant \sup(A+B) - \sup A
-  $$
-  donc $\sup(A+B) - \sup A$ est un majorant de $B$ donc plus petit que $\sup B$
-  d'où
-
-  $$
-    \sup B \leqslant \sup(A+B) - \sup A \iff \sup A + \sup B \leqslant \sup (A+B)
-  $$
-  Donc par double inégalité
-  $$
-    \sup A + \sup B = \sup (A+B)
-  $$
-
 \end{question_kholle}
 \end{document}
