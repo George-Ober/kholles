@@ -8,6 +8,8 @@ Quand on arrivera à s'organiser, ce _repo_ sera "Lendroit" où l'on publiera no
 
 Espérons qu'avec un peu plus d'expérience, on arrive à les rédiger bien plus vite.
 
+Pour nous aider - merci beaucoup -, allez lire [CONTRIBUER.md](CONTRIBUER.md).
+
 ## PDF de chaque semaine
 
 [Toutes les semaines](Khôlles_Mathématiques.pdf)

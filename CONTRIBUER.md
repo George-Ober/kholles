@@ -1,12 +1,18 @@
+# Bonjour
+
+Nous sommes peu à écrire les questions de khôlles alors *merci beaucoup* de contribuer. Tu peux simplement nous faire remarquer les fautes d'autographe, les raisonnements trop rapides, des idées pour améliorer ou autre. Si tu veux écrire toi-même les questions de khôlles, lis la suite.
+
 # Structure générale
 
 Dans le [README](README.md), les semaines cochées sont celles qui sont terminées !
 
-Les questions de Khôlles de chaque semaine sont dans le fichier `Sem_\${numéro}/Kholle_S\${numéro}.tex`. Par exemple, `Sem_12/Kholle_S12.tex`.
+Les questions de khôlles de chaque semaine sont dans le fichier `Sem_\${numéro}/Kholle_S\${numéro}.tex`. Par exemple, `Sem_12/Kholle_S12.tex`.
+
+Lors des pull request ou des push, il n'est pas nécessaire de d'ajouter le .pdf compilé. Il faut seulement modifier le fichier .tex et la compilation est automatique.
 
 # Utiliser kholles.sty
 
-Simplement, commencez votre document LaTeX par
+Simplement, commence votre document LaTeX par
 
 ```latex
 \documentclass{article}
@@ -18,7 +24,7 @@ Simplement, commencez votre document LaTeX par
     \maketitle
 ```
 
-Ensuite, utlise l'environnement fait maison.
+Ensuite, utilise l'environnement fait maison.
 
 ```latex
 \begin{question_kholle}
@@ -77,15 +83,17 @@ Par exemple,
 
 - La **norme infinie** \norminf[ensemble]{fonction} (usuellement, \norminf{f})
 
-- Les **espaces vectoriels** \Vect pour l'accronyme de "sous-espace vectoriel engendré par", \ev[corps] pour "corps-espace vectoriel" (le corps est factultatif), \evs pour le pluriel, \sev pour 'sous-espace vectoriel', \sevs au pluriel, \rg pour rg  (en mode math) (le rang d'une application linéaire)
+- Les **espaces vectoriels** \Vect pour l'acronyme de "sous-espace vectoriel engendré par", \ev[corps] pour "corps-espace vectoriel" (le corps est facultatif), \evs pour le pluriel, \sev pour 'sous-espace vectoriel', \sevs au pluriel, \rg pour rg  (en mode math) (le rang d'une application linéaire)
 
-- Les **familles** quelconques \famille[variable muette(i par défaut)]{nom de la famille}{ensemble indexant} ( \famille[k]{\sigma}{[\\![0;n]\\!]} por les fonctions symétriques élémentaires ), presque nulles \fpnulle[ensemble indexant (facultatif)]{nom de la famille}{ensemble de base} (par exemple \famille{\lambda}{E} pour une famille de vecteurs de E) et finies \ffinie[variable muette]{nom de la famille}{nombre d'éléments}{ensemble de base}
+- Les **familles** quelconques \famille[variable muette(i par défaut)]{nom de la famille}{ensemble indexant} ( \famille[k]{\sigma}{[\\![0;n]\\!]} pour les fonctions symétriques élémentaires ), presque nulles \fpnulle[ensemble indexant (facultatif)]{nom de la famille}{ensemble de base} (par exemple \famille{\lambda}{E} pour une famille de vecteurs de E) et finies \ffinie[variable muette]{nom de la famille}{nombre d'éléments}{ensemble de base}
 
 - Les **probabilités** \proba pour le P majuscule d'une probabilité, \esp pour le E majuscule de l'espérance et \variance pour le V majuscule de la variance
 
 - Pour les **flemmards**, \fq pour 'fixé quelconque' et \tq pour 'tel que' (ajouter '+' pour le féminin puis '\*' pour le pluriel, par exemple, \fq+* pour 'fixées quelconques', \tq* pour 'tels que'); \ssi pour 'si et seulement si', \ii pour `_{i \in I}`, \bdak pour `(\lambda_i)_{i\in I}\in \mathbb{K}^{(I)}}`
 
-- Si il manque des questions, la command \setnbquestion{} permet de fixer manuellement le **numéro de la question**.
+- Si il manque des questions, la commande \setnbquestion{} permet de fixer manuellement le **numéro de la question**.
+
+- L'environnement question_kholle_remarque permet d'ajouter une remarque à la fin de la question de khôlle.
 
 Et voilà !!!
 
