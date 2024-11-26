@@ -3590,6 +3590,43 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
           \end{align*}
           Contradiction
   \end{itemize}
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+
+      \draw[->] (-0.5, 0) -- (6, 0) node[right] {$n$};
+      \draw[->] (0, -0.5) -- (0, 4.5) node[above] {$u_n$};
+      
+      \draw[dashed] (0, 3.5) -- (5.5, 3.5) node[right] {$\ell_1$};
+      \draw[dashed] (0, 2) -- (5.5, 2) node[right] {$\ell_2$};
+      
+      \draw[red,  dashed] (0, 4) -- (5.5, 4) node[right] {$\ell_1 + \varepsilon_0$};
+      \draw[red,  dashed] (0, 3) -- (5.5, 3) node[right] {$\ell_1 - \varepsilon_0$};
+      
+      \draw[blue,  dashed] (0, 2.5) -- (5.5, 2.5) node[right] {$\ell_2 + \varepsilon_0$};
+      \draw[blue,  dashed] (0, 1.5) -- (5.5, 1.5) node[right] {$\ell_2 - \varepsilon_0$};
+      
+
+      \foreach \x in {1, 1.4, 1.8, 2.2, 2.6, 3, 3.4, 3.8, 4.2, 4.6, 5, 5.4} {
+          \node[circle, fill=red, scale=0.5] at (\x, {3.4 + 0.1*rand}) {};
+      }
+      \foreach \x in {2.2, 2.6, 3, 3.4, 3.8, 4.2, 4.6, 5, 5.4} {
+          \node[circle, fill=blue, scale=0.5] at (\x, {2.1 + 0.1*rand}) {};
+      }
+      
+
+      \draw[<->, thick] (-0.4, 3.5) -- (-0.4, 3);
+      \draw[<->, thick] (-0.4, 3) -- (-0.4, 2.5);
+      \draw[<->, thick] (-0.4, 2.5) -- (-0.4, 2);
+      \draw[<->, thick] (-0.2, 2) -- (-0.2, 3.5);
+      \node[left] at (-0.5, 2.7) {\small $\varepsilon_0 = \frac{|\ell_1 - \ell_2|}{3}$};
+      
+      \draw[dotted] (1, 4) -- (1, 0) node[below] {$N_1$};
+      \draw[dotted] (2.2, 2.5) -- (2.2, 0) node[below] {$N_2$};
+      
+      \end{tikzpicture}
+      \caption{À partir du rang $n_0$, supérieur à $N_1$ et $N_2$, tous les termes de la suite doivent être contenus dans les deux tubes disjoints, ce qui est impossible.}
+  \end{figure}
 \end{question_kholle}
 
 \begin{question_kholle}{Toute suite convergente est bornée}
@@ -3605,7 +3642,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 
   Soit $n \in \mathbb{N}$ fq.
   \begin{itemize}
-    \item Si $n \in [[0, N_{1}]], |u_{n}| \in \left\{ |u_{0}|, |u_{1}|, |u_{2}| \dots |u_{N_{1}}|, |\ell|+1 \right\}$ donc $|u_{n}| \leqslant M$
+    \item Si $n \in [\! [0, N_{1}]\!], |u_{n}| \in \left\{ |u_{0}|, |u_{1}|, |u_{2}| \dots |u_{N_{1}}|, |\ell|+1 \right\}$ donc $|u_{n}| \leqslant M$
     \item Sinon,
   \end{itemize}
 
