@@ -31,10 +31,17 @@ jobs:
           name: Khôlles_Mathématiques
           path: Khôlles_Mathématiques.pdf
 
+      - name: Upload individual PDF artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Khôlles_Semaines
+          path: Sem_*/Kholle_S*.pdf
+
       - name: Commit and push built files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "Action: add built files" -a
+          git add Khôlles_Mathématiques.pdf
+          git add Sem_*/Kholle_S*.pdf
+          git commit -m "Action: add built files" || echo "No changes to commit"
           git push
