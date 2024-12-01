@@ -27,3 +27,11 @@ jobs:
         with:
           name: Khôlles_Mathématiques
           path: Khôlles_Mathématiques.pdf
+
+      - name: Commit and push built files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Action: add built files" -a
+          git push
