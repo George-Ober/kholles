@@ -32,7 +32,7 @@ jobs:
           path: Khôlles_Mathématiques.pdf
 
       - name: Upload individual PDF artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Khôlles_Semaines
           path: Sem_*/Kholle_S*.pdf
