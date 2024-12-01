@@ -23,7 +23,7 @@ ${final_output} : ${pdf_ouput}
 	pdflatex -synctex=1 -interaction=nonstopmode ${final_output}
 
 %.pdf : %.tex
-	latexindent -w -s -y="defaultIndent:'  '" $<
+	# latexindent -w -s -y="defaultIndent:'  '" $<
 	cd $$(dirname $<) && pdflatex -synctex=1 -interaction=nonstopmode $$(basename $<) > /dev/null
 
 .PHONY : clean
