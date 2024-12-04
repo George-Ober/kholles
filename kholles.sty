@@ -116,6 +116,30 @@
     {
   \end{proof}
 }
+% les paramètres ne peuvent pas être utilisé dans la fin de l'environnement
+\newsavebox{\remarquekholle}
+\newenvironment{question_kholle_remarque}[3][]
+{
+	\sbox{\remarquekholle}{
+		\notblank{#3}
+		{
+			\parbox{\textwidth}{\textbf{Remarque} : #3}
+		}
+		{}
+	}
+	\section{\texorpdfstring{#2}{}}
+	\notblank{#1}
+	{
+		\noindent #1
+		\bigbreak
+	}
+	{}
+	\begin{proof}
+	}
+	{
+	\end{proof}
+	\hspace{-2.2em}\noindent\usebox{\remarquekholle}
+}
 
 % liste de propositoins
 \newenvironment{propositions}{

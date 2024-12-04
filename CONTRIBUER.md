@@ -95,6 +95,8 @@ Par exemple,
 
 - L'environnement question_kholle_remarque permet d'ajouter une remarque à la fin de la question de khôlle.
 
+- L'environnement question_kholle_remarque permet d'ajouter une remarque à la fin de la question de khôlle.
+
 Et voilà !!!
 
 # Compilation
