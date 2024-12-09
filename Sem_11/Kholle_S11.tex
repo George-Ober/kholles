@@ -1,50 +1,387 @@
 \documentclass{article}
 
-\date{13 décembre 2023}
-\usepackage[nb-sem=11, auteurs={Kylian Boyet, Hugo Vangilluwen, Jérémie Menard, George Ober}]{../kholles}
+\date{08 décembre 2024}
+\usepackage[nb-sem=11, auteurs={Félix Rondeau}]{../kholles}
 
 \begin{document}
 \maketitle
 
-\begin{question_kholle}
-  [Soient $(A,B) \in (\mathcal{P}(\R) \setminus \{\varnothing\})^{2}$. Montrons que :
-    \\
-    $$A \text{ est dense dans } B \iff \left\{ \begin{array}{l}
-        A \subset B \\
-        \forall b \in B, \exists(a_{n}) \in A^{\N} : (a_{n}) \text{ converge vers }b
-      \end{array}\right. $$
-  ]
-  {Caractérisation séquentielle de la densité.}
-
-  Sens indirect : supposons $A \subset B$ et $\forall b \in B, \exists(a_{n}) \in A^{\N} : (a_{n}) \text{ converge vers }b$ :\\
+\begin{question_kholle}{Preuve du théorème de Bolzano-Weierstrass
+    pour les suites complexes à partir du cas réel.}
+  \hfill\\
+  \textbf{Résultat préliminaire: existence d’une sous-suite
+    convergente commune.}\\
   \begin{itemize}
-    \item[$\star$] $A \subset B$ par hypothèse.
-    \item[$\star$] Montrons que $\forall b \in B, \forall \varepsilon \in \R^{*}_{+}, \exists a \in A : |b - a| < \varepsilon$ (on utilise la caractérisation de la densité avec les $\varepsilon$) \\
-          Soient $b \in B$ et $\varepsilon \in \R^{*}_{+}$ fixés quelconques : \\
-          Par hypothèse appliquée pour $b \leftarrow b$ : $\exists(a_{n}) \in A^{\N} : a_{n} \underset{n \to +\infty}{\longrightarrow}b$ \\
-          Appliquons la définition de la convergence de $(a_{n})$ vers $b$ pour $\varepsilon \leftarrow \frac{\varepsilon}{2}$ : \\
-          $$\exists N \in \N : \forall n \in \N, n \geqslant N \Rightarrow |a_{n} - b| \leqslant \frac{\varepsilon}{2}$$
-          Fixons un tel N : \\
-          En particulier, $a_{N} \in A$ et $|a_{N} - b| \leqslant \frac{\varepsilon}{2} \leqslant \varepsilon$ \\
-          Donc $A$ est dense dans $B$.
+    \item La suite $a$ étant bornée, on peut lui appliquer le
+          théorème de Bolsano-Weierstrass :
+          \[
+            \exists a_{\infty}\in\R : \exists \phi: \N\longrightarrow \N
+            \text{ strictement croissante telle que
+              $\left(b_{\phi(n)}\right)_{n\in\N}$ converge vers $b_{\infty}$.}
+          \]
+    \item La suite $\left(b_{\phi(n)}\right)_{n\in\N}$ étant bornée
+          (en tant que sous-suite d’une suite bornée), on peut lui
+          appliquer le théorème de Bolzano-Weierstrass:
+          \[
+            \exists b_{\infty}\in\R: \exists \psi : \N\longrightarrow \N
+            \text{ strictement croissante telle que } \left(b_{\phi\circ
+              \psi}\right)_{n\in\N} \text{ converge vers $b_{\infty}$}
+          \]
   \end{itemize}
+  Observons alors que $\left(a_{\phi\circ \psi(n)}\right)_{n\in\N}$
+  est une sous-suite de $\left(a_{\phi(n)}\right)_{n\in\N}$ donc elle
+  converge vers $a_{\infty}$.\\
+  Ainsi, l’extractrice $\chi = \phi\circ \psi: \N\longrightarrow \N$
+  strictement croissante est telle que les deux sous-suites
+  $\left(a_{\chi(n)}\right)_{n\in\N}$ et
+  $\left(b_{\chi(n)}\right)_{n\in\N}$ convergent.
 
-  Sens direct : supposons $A$ dense dans $B$ : \\
-  \begin{itemize}
-    \item[$\star$] Par définition, $A \subset B$
-    \item[$\star$] Soit $b \in B$ fixé quelconque. \\
-          Soit $n \in \N$ fixé quelconque :  \\
-          Appliquons la caractérisation de la densité par les $\varepsilon$ pour $\varepsilon \leftarrow \frac{1}{2^{n}}$ (autorisé car $\frac{1}{2^{n}} > 0$), et $b \leftarrow b$ :
-          $$\exists a \in A : |a - b| \leqslant \frac{1}{2^{n}}$$
-          Notons $a_{n}$ un tel élément. Nous venons de construire $(a_{n})_{n \in \N} \in A^{\N}$ vérifiant : \\
-          $\forall n \in \N, |a_n - b| \leqslant \frac{1}{2^{n}}$ \\
-          Or : $\underset{n \to +\infty}{\lim} \frac{1}{2^{n}} = 0$ \\
-          Ainsi, d'après le théorème sans nom, $(a_{n})_{n \in \N}$ converge vers $b$.
-  \end{itemize}
+  \textbf{Preuve du théorème.}\\
+  Soit $u\in\C^{\N}$ une suite bornée. Par définition,
+  \[
+    \exists M\in\R : \forall n\in\N, |u_{n}|\leq M
+  \]
+  Posons $x=\big(\Re(u_{n})\big)_{n\in\N}$ et
+  $y=\big(\Im(u_{n})\big)_{n\in\N}$. Alors
+  \[
+    \forall n\in\N, |x_{n}|\leq |u_{n}|\leq M \quad \text{et} \quad
+    |y_{n}|\leq |u_{n}|\leq M
+  \]
+  Par conséquent, $x$ et $y$ sont deux suites réelles bornées, donc
+  le résultat précedemment prouvé permet de construire une
+  extractrice $\phi:\N\longrightarrow \N$ strictement croissante
+  telle que $\left(x_{\phi(n)}\right)_{n\in\N}$ et
+  $\left(y_{\phi(n)}\right)_{n\in\N}$ sont deux suites qui convergent
+  dans \R vers leur limites respectives $x_{\infty}$ et $y_{\infty}$.
+  Ainsi, la suite $\left(u_{\phi(n)}\right)_{n\in\N}$, extraite de
+  $u$, converge vers $x_{\infty}+iy_{\infty}$.
+
 \end{question_kholle}
 
+\begin{question_kholle}{Illustrer par des exemples que la convergence
+    de la suite complexe $(u_{n})=(e^{i \theta_{n}})$ n’implique pas la
+    convergence de $(\theta_{n})$ même si on impose à $(\theta_{n})$
+    d’être dans l’intervalle $[0,2 \pi]$ pour la rendre unique et bornée.}
+  Considérons la suite $(\theta_{n})$ définie pour tout $n\in\N$ par
+  \[
+    \theta_{n}=\frac{\pi}{2}+2n \pi
+  \]
+  Alors, la suite $(u_{n})=(e^{i \theta_{n}}) = (i)_{n\in\N}$
+  converge mais $(\theta_{n})$ diverge vers $+\infty$.\\
+  Considérons à présent une seconde définition de la suite $(\theta_{n})$ :
+  \[
+    \forall n\in\N, \theta_{n}=
+    \begin{cases}
+      \frac{1}{n}           & \text{si } n\equiv 0[2] \\
+      2 \pi - \frac{1}{n+1} & \text{si } n\equiv 1[2]
+    \end{cases}
+  \]
+  Cette définition impose à la suite $(\theta)$ d’être à valeurs dans
+  l’intervalle $[0,2 \pi]$, et selon elle, la suite $(u_{n})=(e^{i
+        \theta_{n}})$ converge vers 1. Cependant, $(\theta_{n})$ diverge
+  car elle a deux valeurs d’adhérence qui sont $0$ et $2 \pi$.
 
+\end{question_kholle}
 
+\begin{question_kholle}{Calculer la limite de $\displaystyle
+      \left(1+\frac{z}{n}\right)^{n}$ en fonction de $z\in\C$.}
+  \begin{itemize}
+    \hfill\\
+    \item \textbf{Si $\bm{z\neq 0}$},
+          \begin{align*}
+            \left(1+\frac{z}{n}\right)^{n} = e^{n\ln
+                \left(1+\frac{z}{n}\right)} = e^{n\cdot \frac{\ln \left(1+
+                  \frac{z}{n}\right)}{\frac{z}{n}}\cdot \frac{z}{n}} =
+            e^{\frac{\ln \left(1+\frac{z}{n}\right)}{\frac{z}{n}}\cdot z}
+          \end{align*}
+          donc
+          \[
+            \lim_{n\to +\infty} \left(1+\frac{z}{n}\right)^{n} = e^{z}
+          \]
+    \item \textbf{Si $\bm{z=0}$},
+          \[
+            \lim_{n\to+\infty}\left(1+\frac{z}{n}\right)^{n} =
+            \lim_{n\to+\infty}1=1=e^{0}
+          \]
+  \end{itemize}
+  Ainsi, pour tout $z\in\C$,
+  \[
+    \lim_{n\to+\infty} \left(1+\frac{z}{n}\right)^{n}=e^{z}
+  \]
 
+\end{question_kholle}
+
+\begin{question_kholle}{Résolution explicite (sur un exemple) d’une
+    relation de récurrence linéaire d’ordre 1 ou 2 à coefficients
+    constants avec un second membre produit d’un polynôme et d’une
+    suite géométrique.}
+  \hfill\\
+  \begin{itemize}
+    \item \textbf{Résolution d’une relation d’ordre 1.}\\
+          Considérons une équation de récurrence linéaire d’ordre 1 de la forme
+          \[
+            \forall n\in\N, u_{n+1} - au_{n}=v_{n}
+          \]
+          L’ensemble des suites la vérifiant est la droite affine passant
+          par une solution particulière et dirigée par la droite
+          vectorielle des solution de l’équation homogène associée. Cette
+          droite vectorielle vaut, \textbf{dans le cas où $a$ est nul}
+          \[
+            \left\{\lambda\cdot \gamma^{0} \mid \lambda\in\K\right\}
+          \]
+          et \textbf{dans le cas où $a$ est non nul}
+          \[
+            \left\{(\lambda\cdot a^{n})_{n\in\N} \mid \lambda\in\K\right\}
+          \]
+          \vspace{5pt}
+          Si le second membre est de la forme $v_{n}=P(n)c^{n}$ avec $P$
+          un polynôme, on cherche une solution particulière de la forme
+          $Q(n)c^{n}$ avec, \textbf{si $\bm{c\neq a}$}, $Q$ un polynôme
+          de \K tel que
+          \[
+            \deg Q=\deg P
+          \]
+          et \textbf{si $\bm{c=a}$}, $Q$ un polynôme tel que
+          \[
+            \deg Q=\deg P + 1
+          \]
+
+    \item \textbf{Résolution d’une relation d’ordre 2.}
+          Considérons une équation de récurrence linéaire d’ordre 2 de la forme
+          \[
+            \forall n\in\N, u_{n+2}+a_{1}u_{n+1}+a_{0}u_{n} = v_{n}
+          \]
+          avec $(a_{0}\alpha_{1})\in\K^{2}$. L’ensemble des suites la
+          vérifiant est le plan affine passant par une solution
+          particulière $w$ et dirigé par le plan vectoriel des solutions
+          de l’équation homogène.
+          \begin{itemize}
+            \item Si \K désigne le corps des complexes, on distingue en
+                  fonction du discrimiant $\Delta$ de l’équation
+                  caractéristique deux cas :
+                  \begin{itemize}
+                    \item Lorsque $\Delta=0$, l’équation caractéristique
+                          possède une racine double $r_{0}\in\C$ et dans le cas
+                          où $a_{0}$ et $a_{1}$ ne sont pas tous deux nuls, le
+                          plan vectoriel des solution de la relation de
+                          récurrence homogène est
+                          \[
+                            \left\{((\lambda+\mu n)r_{0}^{n})_{n\in\N} \mid
+                            (\lambda,\mu)\in\C^{2}\right\}
+                          \]
+                          et sinon, il vaut
+                          \[
+                            \left\{\lambda \gamma^{0} + \mu \gamma^{1} \mid
+                            (\lambda, \mu)\in\C^{2}\right\}
+                          \]
+                    \item Lorsque $\Delta\neq 0$, l’équation caractéristique
+                          possède deux racines distinctes $r_{1}$ et $r_{2}$ et
+                          l’ensemble des solutions de l’équation de récurrence homogène est
+                          \[
+                            \left\{(\lambda r_{1}^{n}+ \mu r_{2}^{n})_{n\in\N}
+                            \mid (\lambda, \mu)\in\C^{2}\right\}
+                          \]
+                  \end{itemize}
+            \item Si \K désigne le corps des réels, on distingue en
+                  fonction du discrimiant $\Delta$ de l’équation
+                  caractéristique trois cas :
+                  \begin{itemize}
+                    \item Lorsque $\Delta=0$, l’ensemble des solutions de
+                          l’équation de récurrence homogène est similaire à celui
+                          du cas complexe.
+                    \item De même lorsque $\Delta>0$, l’ensemble des
+                          solutions de l’équation de récurrence homogène est
+                          similaire du cas $\Delta\neq 0$ dans le cas complexe.
+                    \item Enfin, lorsque $\Delta<0$, l’ensemble des solutions
+                          de l’équation de récurrence homogène est
+                          \[
+                            \Bigl\{\bigl(\rho^{n}(\lambda\cos(n \theta)+\mu\sin(n
+                            \theta))\bigr)_{n\in\N} \mid (\lambda, \mu)\in\R^{2}\Bigr\}
+                          \]
+                  \end{itemize}
+          \end{itemize}
+          On cherche une solution particulière de la forme $Q(n)a^{n}$
+          avec, $Q$ un polynôme de degré égal à celui de $P$ si $a$ n’est
+          pas racine de l’équation caractéristique et du degré de $P$
+          augmenté d’un nombre égal à la multiplicité de la racine $a$ sinon.
+  \end{itemize}
+
+\end{question_kholle}
+
+\begin{question_kholle}[
+    \[
+      \forall (a,b)\in\Z^{2}, \exists (u,v)\in\Z^{2}: au+bv=a\land b
+    \]]{Existence d’une relation de Bezout}
+  \hfill\\
+  \begin{itemize}
+    \item \textbf{Démonstration pour $(a,b)\in\Z\times\N$.}\\
+          Considérons la propriété de récurrence définie pour tout $b\in\N$ par
+          \[
+            \prop(b) : {\forall a\in\Z, \forall c\in\iset{0,b}, \exists
+            (u,v)\in\Z^{2}:au+cv=a\land c}
+          \]
+          \begin{itemize}
+            \item Supposons que $b=0$.\\
+                  Soit $a\in\Z$ fixé quelconque.\\
+                  Si $a=0, a\land 0 = 0\land 0=0$ donc $a\land 0=0\times
+                    a+232\times b$.\\
+                  Sinon, $a\neq 0, u=\frac{a}{|a|}\in\{-1,1\}\subset \Z$ et
+                  \[
+                    ua+232\times 0=\frac{a^{2}}{|a|}=\frac{{|a|}^{2}}{|a|}=|a|=a\land 0
+                  \]
+                  Ainsi, $\prop(0)$ est vraie
+            \item Soit $b\in\N$ fixé quelconque tel que $\prop(b)$ est vraie.\\
+                  Soient $a\in\Z$ et $c\in\iset{0,b+1}$ fixés quelconques.\\
+                  \begin{itemize}
+                    \item Si $c\in\iset{0,b}$, la véracité de $\prop(b)$
+                          permet d’affirmer que $\exists (u,v)\in\Z^{2}: au+cv=a\land c$.
+                    \item Sinon, $c=b+1$. Effectuons la division euclidienne
+                          de $a$ par $b+1$:
+                          \[
+                            \exists !(q,r)\in\N\times\iset{0,b}: a=(b+1)q+r
+                          \]
+                          Or, d’après le lemme d’Euclide,
+                          \[
+                            a\land (b+1)=r\land (b+1)
+                          \]
+                          Or $r\in\iset{0,b}$ donc $\prop(b)$ s’applique pour
+                          $a\leftarrow b+1$ et $c\leftarrow r$:
+                          \[
+                            \exists (u_{0},v_{0})\in\Z^{2}: (b+1)u_{0}+rv_{0}=(b+1)\land r
+                          \]
+                          si bien que
+                          \[
+                            a\land (b+1)=(b+1)u_{0}+rv_{0}=(b+1)u_{0} +
+                            (a-q(b+1))v_{0} = av_{0}+(b+1)(u_{0}-qv_{0})
+                          \]
+                          d’où le résultat attendu en posant $u=v_{0}$ et $v=u_{0}-qv_{0}$.
+                  \end{itemize}
+                  Par conséquent, $\prop(b+1)$ est vraie.
+
+                  \hspace{4pt}
+            \item \textbf{Démonstration du cas général :
+                    $(a,b)\in\Z\times(\Z\setminus\N)$}.\\
+                  Appliquons le résultat prouvé dans le cas précédent à
+                  $(a,|b|)\in\Z\times\N$ :
+                  \[
+                    \exists (u_{1},v_{1})\in\Z^{2}: au_{1}+bv_{1}=a\land |b|
+                  \]
+                  Posons $u=u_{1}$ et $v=-v_{1}$. On a $(u_{1},v_{1})\in\Z^{2}$ et
+                  \[
+                    au+bv=au_{1}+|b|v_{1} = a\land |b| = a\land b
+                  \]
+          \end{itemize}
+  \end{itemize}
+
+\end{question_kholle}
+
+\begin{question_kholle}[{
+        Soient $(a,b,c)\in\Z^{3}$.
+        \[
+          \left.
+          \begin{array}{l}
+            a\mid b c \\
+            a\land b = 1
+          \end{array}
+          \right\} \implies a\mid c
+        \]
+      }]{Théorème de Gauss}
+  Soient $(a,b,c)\in\Z^{3}$ fixés quelconques.\\
+  $a$ divise $b c$ donc
+  \begin{equation}
+    \exists k\in\Z: ka=b c
+  \end{equation}
+  $a$ et $b$ sont premiers entre eux donc
+  \begin{equation}
+    \exists (u,v)\in\Z^{2}: au+bv=1
+  \end{equation}
+  En multipliant la première relation par $c$, nous obtenons
+  \[
+    auc+bvc=c
+  \]
+  donc, en utilisant la deuxième relation,
+  \[
+    auc+akv = c \iff a(\underbrace{uc+kv}_{\in\Z})=c
+  \]
+  ce qui montre que $a$ divise $c$.
+\end{question_kholle}
+
+\begin{question_kholle}{Si $a\land c=b\land c=1$ alors $ab\land c=1$
+    et sa généralisation au cas de $n$ entiers premiers avec un même entier.}
+  Soient $p\in\N^{*}$ et $(a,b_{1},\dots,b_{p})\in\Z^{p+1}$ $n+1$
+  entiers fixés quelconques premiers entre eux deux à deux. Le théorème
+  d’existence d’une relation de bezout assure donc que
+  \[
+    \forall i\in\iset{1,p}, \exists (u_{i},v_{i})\in\Z^{2}: au_{i}+b_{i}v_{i}=1
+  \]
+  donc que
+  \[
+    \forall i\in\iset{1,p}, \exists (u_{i},v_{i})\in\Z^{2}: b_{i}v_{i}=1-au_{i}
+  \]
+  si bien qu’en effectuant le produit membre à membre de ces $p$ égalités,
+  \[
+    \prod_{i=1}^{p}(b_{i}v_{i})=\prod_{i=1}^{p}(1-au_{i})
+  \]
+  En développant le membre de droite, on obtient que
+  \[
+    \exists U\in\Z:\prod_{i=1}^{p}(b_{i}v_{i}) = 1-aU
+  \]
+  si bien qu’en posant $\displaystyle V=\prod_{i=1}^{p}v_{i}$,
+  \[
+    \left(\prod_{i=1}^{p}b_{i}\right)V = 1-aU
+  \]
+  ainsi, il existe deux entiers relatifs $U$ et $V$ tels que
+  \[
+    aU+\left(\prod_{i=1}^{p}b_{i}\right)V=1
+  \]
+  Le théorème de caractérisation de la propriété <<deux entiers sont
+  premiers entre eux>> par une relation de Bezout permet donc de conclure que
+  \[
+    a\land \left(\prod_{i=1}^{p}b_{i}\right)=1
+  \]
+
+\end{question_kholle}
+
+\begin{question_kholle}{$(a\land b)(a\lor b) = |ab|$}
+  Soient $(a,b)\if\Z^{2}$ fixés quelconques. Nous savons que
+  \[
+    \exists (a', b')\in\Z^{2}:
+    \begin{cases}
+      a=da' \\
+      b=db' \\
+      a'\land b'=1
+    \end{cases} \quad \text{ où } d=a\land b
+  \]
+  Observons alors que
+  \begin{align}
+    (a\land b)(a\lor b) & =(da'\land db')(da'\lor db')
+    \nonumber
+    \\
+                        & = d(\underbrace{a'\land b'}_{=1})\times d(a'\lor b') \nonumber \\
+                        & = d^{2}(a'\lor b') \label{S11:8}\tag{$\star$}
+  \end{align}
+  Calculons $a'\lor b'$:
+  \begin{itemize}
+    \item $a' b'$ est un multiple commun à $a'$ et $b'$ donc $a'\lor b'
+            \vert a' b'$.
+    \item $a'\lor b'$ est un multiple commun à $a'$ et $b'$ doonc
+          \[
+            \left.
+            \begin{array}{l}
+              a'\land b'=1       \\
+              a' \vert a'\lor b' \\
+              b' \vert a'\lor b'
+            \end{array}\right\} \implies  a' b' \vert a'\lor b'
+          \]
+  \end{itemize}
+  Ainsi, $a'\lor b'$ et $a' b'$ se divisent l’un l’autre donc ils sont
+  associés (égaux ou opposés), or $a'\lor b'\geq 0$ donc $a'\lor b'=|a' b'|$.\\
+  Par conséquent, en reprenant l’égalité \eqref{S11:8},
+  \[
+    (a\land b)(a\lor b) = d^{2}a' \lor b' = d^{2} |a' b'| = |da' \times
+    db'| = |ab|
+  \]
+
+\end{question_kholle}
 
 \end{document}
