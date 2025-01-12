@@ -1,357 +1,284 @@
 \documentclass{article}
 
-\date{15 Janvier 2024}
-\usepackage[nb-sem=14, auteurs={Kylian Boyet, Hugo Vangilluwen}]{../kholles}
+\date{12 janvier 2024}
+\usepackage[nb-sem=14, auteurs={Felix Rondeau}]{../kholles}
 
 \begin{document}
 \maketitle
 
-\begin{question_kholle}
-	[Soit $f \left| \begin{matrix}
-				\R_+^* \rightarrow \R \\
-				x \mapsto \frac{\ln x}{x}
-			\end{matrix} \right. $. \\
-		Exprimer $f^{(n)}$ pour tout $n \in \N$.]
-	{Expression de dérivées successives}
-	Soit $x\in \mathcal{D}_f$. \\
-	Considérons le prédicat $P(\cdot)$ définit pour $n\in \N$ par :
-	$$ P(n) \ : \ \text{\textquotedblleft} \ f^{(n)}(x) = \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right] \ " $$
-	Initialisation : \\
-	Pour $n = 0$, $$f^{(0)}(x) = f(x) = \frac{\ln (x)}{x} = \frac{(-1)^0 0!}{x^{0+1}}\left[ \ln (x) - \sum_{k=1}^0 \frac{1}{k} \right],$$ donc $P(0)$ est vrai. \\
-	Hérédité :
-	\\
-	Soit $n\in \N$ tel que $P(n)$. On a,
-	$$f^{(n+1)}(x) = (f^{(n)}(x))' = \left( \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right] \right)'$$
-	par véracité de $P(n)$. Ainsi,
-	$$\begin{array}{rcl}
-			f^{(n+1)}(x) & = & \frac{(-1)^nn!x^n - (-1)^n(n+1)!x^n\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right]}{x^{2(n+1)}} \\ [1ex]
-			             & = & \frac{(-1)^{n+1}(n+1)!\ln (x) - (-1)^{n+1}(n+1)!\sum_{k=1}^{n+1} \frac{1}{k} }{x^{n+2}}           \\ [1ex]
-			             & = & \frac{(-1)^{n+1} (n+1)!}{x^{n+2}}\left[ \ln (x) - \sum_{k=1}^{n+1} \frac{1}{k} \right]
-		\end{array}$$
-	c'est l'expression recherchée, donc $P(n+1)$ est vrai. \\
-	Par théorème de récurrence sur $\N$, $P(n)$ est vraie pour tout $n\in \N$.
+\begin{question_kholle}{Calcul de la signature d’une transposition par dénombrement de ses inversion}
+	Soient $n, i_{1}, i_{2}$ trois entiers tels que $1\leq i_{1}<i_{2}\leq n$. Observons que
+	\[
+		\tau_{i_{1}, i_{2}} = \left(\begin{array}{ccccccccccc}
+				1 & \cdots & i_{1}-1 & i_{1} & i_{1}+1 & \cdots & i_{2}-1 & i_{2} & i_{2}+1 & \cdots & n \\
+				1 & \cdots & i_{1}-1 & i_{2} & i_{1}+1 & \cdots & i_{2}-1 & i_{1} & i_{2}+1 & \cdots & n
+			\end{array}\right)
+	\]
+	si bien que la liste des inversions de $\tau_{i_{1}, i_{2}}$ (couple $(i,j)$ tel que $i<j$ et $\tau_{i_{1}, i_{2}}(i)>\tau_{i_{1}, i_{2}}(j)$) est
+	\[
+		I(\tau_{i_{1}, i_{2}})=\{\underbrace{(i_{1}, i_{1}+1),(i_{1}, i_{1}+2), \dots, (i_{1}, i_{2})}_{\text{$i_{2}-i_{1}$ inversions}}, \underbrace{(i_{1}+1, i_{2}), (i_{1}+2, i_{2}), \dots, (i_{2}-1, i_{2})}_{\text{$i_{2}-i_{1}-1$ inversions}}\}
+	\]
+	Ainsi, $|I(\tau_{i_{1}, i_{2}})| = 2(i_{2}-i_{1})-1 \equiv 1[2]$ donc $\varepsilon(\tau_{i_{1}, i_{2}}) = (-1)^{|I(\tau_{i_{1}, i_{2}})|}=-1$, d’où toute transposition est impaire (de signature -1).
 \end{question_kholle}
 
-\begin{question_kholle}
-	[Soit $f : I \rightarrow f(I) \subset \R$ continue, strictement monotone sur $I$ et dérivable en $a \in I$.
-		Si $f'(a) \neq 0$ alors $f$ est bijective, $f^{-1}$ est dérivable en $f(a)$ et $f^{-1}(f(a)) = \frac{1}{f'(a)}$.]
-	{Dérivé d'une bijection réciproque}
-	Soient de tels objets. \\
-	Rappelons le lemme inattendu. Soit $g : J \rightarrow \R$ monotone (où $J$ est un intervalle). Nous avons l'équivalence suivante :
-	\begin{equation*}
-		f(J) \text{ est un intervalle } \iff f \text{ est continue sur } J
-	\end{equation*}
-	Par définition, $f$ est surjective. Comme elle est strictement monotone, $f$ est injective. Ainsi $f$ est bijective. \\
-	D'après le lemme inattendu, $f(I)$ est un intervalle. Nous avons $f^{-1} : f(I) \rightarrow I$ avec $f(I)$ et $I$ des intervalles donc $f^{-1}$ est continue sur $f(I)$. \\
-	Calculons la limite du taux d'accroissement de $f^{-1}$ en $f(a)$ :
-	\begin{equation*}
-		\forall x \in f(I), \tau_{f^{-1},f(a)} = \frac{f^{-1}(x) - f^{-1}(f(a))}{x - f(a)}
-	\end{equation*}
-	Posons $u = f^{-1}(x)$. D'où :
-	\begin{equation*}
-		\tau_{f^{-1},f(a)} = \frac{u - a}{f(u) - f(a)}
-	\end{equation*}
-	De plus, par continuité de $f^{-1}$, $u \arrowlim{x}{f(a)} f^{-1}(f(a)) = a$.
-	Par dérivabilité en a et par continuité de $x \mapsto x^{-1}$ en $f(a) \neq 0$, $\frac{u - a}{f(u) - f(a)} \arrowlim{u}{a} \frac{1}{f('(a)}$. \\
-	Ainsi, $f^{-1}$ est dérivable en $f(a)$ et $f^{-1}(f(a)) = \frac{1}{f'(a)}$.
-\end{question_kholle}
+\begin{question_kholle}{Calculs des cardinaux du groupe symétrique $\mathcal{S}_{n}$ et du groupe alterné $\mathcal{A}_{n}$.}
+	\hfill
+	\begin{description}
+		\item[\textit{Cardinal de $\mathcal{S}_{n}$.}] La recherche de toutes les permutations possibles de $\{1,2,\dots,n\}$ par un arbre de dénombrement montre que l’on dispose de \begin{itemize}
+			      \item $n$ choix pour l’image de 1,
+			      \item $(n-1)$ choix pour l’image de 2,
+			      \item ...
+			      \item 1 choix pour l’image de $n$,
+		      \end{itemize} ce qui permet de dénombrer, par le principe des choix successifs, exactement $n(n-1)\cdots 1= n!$ permutations deux à deux distinctes.
 
-\begin{question_kholle}
-	[Soit $f : I \rightarrow \R$. Si $f$ admet un extremum local en $a \in \overset{\circ}{I}$ et si $f$ est dérivable en $a$ alors $f'(a) = 0$
-		{\begin{figure}[!h]
-					\centering
-					\tikzmath{ integer \m; real \fm; \m = 3; \fm = 0.8; }
-					\begin{tikzpicture}
-						\draw[-stealth] (0,0) -- (6,0) node[anchor=west] {$x$};
-						\draw[-stealth] (0,0) -- (0,3) node[anchor=south] {$y$};
-
-						\draw[red] plot [smooth] coordinates {(0,2.5) (\m,\fm) (6,1.7)};
-						\draw[blue, dashed] (\m,\fm) -- (\m,0) node[anchor=north] {minimum local};
-
-						\draw[stealth-stealth, teal] (\m-1,\fm) -- (\m+1,\fm);
-						\draw (\m,\fm) node[anchor=north east, teal] {$m$} node[anchor=south, teal] {$f'(m)=0$};
-					\end{tikzpicture}
-				\end{figure}}]
-	{Dérivée d'un extremum local intérieur au domaine de définition}
-	Soient de tels objets. \\
-	$a \in \overset{\circ}{I} \implies \exists \eta_1 \in \R_+^* : [a-\eta_1;a+\eta_1] \subset I$ Fixons un tel $\eta_1$. \\
-	Calculons le taux d'accroissement en $a$.
-	\begin{equation*}
-		\forall x \in [a-\eta_1;a+\eta_1], \tau_{f,a}(x) = \frac{f(x) - f(a)}{x - a}`
-	\end{equation*}
-	Or $f$ est dérivable en $a$ donc $\tau_{f,a}(x)$ admet une limite lorsque $x \rightarrow a$.
-	Traitons le cas où $a$ est maximum local. Par définition :
-	\begin{equation*}
-		\exists \eta_2 \in \R_+^* : \forall x \in [a-\eta_2;a+\eta_2], f(x) \leqslant f(a)
-	\end{equation*}
-	Fixons un tel $\eta_2$. Soit $x \in [a-\eta_2;a+\eta_2] \setminus \{a\}$ fq. \\
-	Alors $f(x) - f(a) \leqslant 0$. \\
-	Si $x > a$, $x - a > 0$. Alors $\frac{f(x) - f(a)}{x - a} \leqslant 0$. Donc $\textlim{x}{a} \tau_{f,a}(x) \leqslant 0$. \\
-	Sinon $x < a$, $x - a < 0$. Alors $\frac{f(x) - f(a)}{x - a} \geqslant 0$. Donc $\textlim{x}{a} \tau_{f,a}(x) \geqslant 0$. \\
-	Ainsi $0 \leqslant \textlim{x}{a} \tau_{f,a}(x) \leqslant 0$. Donc $f'a) = 0$.
-\end{question_kholle}
-
-\begin{question_kholle}
-	[Soient $(a,b)\in \R ^2$ tels que $a<b$. Soit $I$ le segment $a,b$.
-	\\
-	Soit $f \ : \ I \ \to \ \R $ continue sur ledit segment et dérivable sur l'ouvert associé.\\
-	{\begin{enumerate}[label=($\roman*$)]
-		\item Théroème de Rolle : \\
-		      Si $f(a) = f(b)$, alors $\exists \ c \in \overset{\circ}{I}$ tel que $f'(c) =0$
-		      \begin{figure}[!h]
-			      \centering
-			      \tikzmath{ integer \a \b \f \c \fc; \a = 1; \b = 9; \f = 2; \c = \a + 3; \fc = \f + 2; }
-			      \begin{tikzpicture}
-				      \draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
-				      \draw[-stealth] (0,0) -- (0,5) node[anchor=south] {$y$};
-
-				      \coordinate (A) at (\a,\f);
-				      \coordinate (B) at (\b,\f);
-				      \coordinate (C) at (\c,\fc);
-
-				      %\draw[red] (A) to[out angle=80, in angle=240, curve through={(C) (6,1.5)}] (B);
-				      \draw [red] plot [smooth] coordinates {(A) (C) (6,1.5) (B)};
-				      \draw[blue, thick] (A) -- (B);
-				      \draw[blue, dashed] (A) -- (\a,0) node[anchor=north] {$a$};
-				      \draw[blue, dashed] (B) -- (\b,0) node[anchor=north] {$b$};
-				      \draw[blue, dashed] (A) -- (0,\f) node[anchor=east] {$f(a)=f(b)$};
-
-				      \draw[stealth-stealth, teal] (\c-2,\fc) -- (\c+2,\fc);
-				      \draw (C) node[anchor=north, teal] {$c$} node[anchor=south, teal] {$f'(c)=0$};
-			      \end{tikzpicture}
-			      \caption{Théorème de Rolle}
-		      \end{figure}
-
-		\item Formule des accroissements finis : \\
-		      $\exists \ c \in \overset{\circ}{I} \ : \ f'(c) = \frac{f(b)-f(a)}{b-a}.$
-		      \begin{figure}[!h]
-			      \centering
-			      \tikzmath{integer \a \fa \b \fb \c \fc; \a = 1; \fa = 1; let \b = 9; \fb = 5; \c = \a + 5; \fc = \fa + 1; }
-			      \begin{tikzpicture}
-				      \draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
-				      \draw[-stealth] (0,0) -- (0,6) node[anchor=south] {$y$};
-
-				      \coordinate (A) at (\a,\fa);
-				      \coordinate (B) at (\b,\fb);
-				      \coordinate (C) at (\c,\fc);
-
-				      %\draw[red] (A) to[out angle=80, in angle=240, curve through={(C) (6,1.5)}] (B);
-				      \draw [red] plot [smooth] coordinates {(A) (3,4) (C) (7,4.5) (B)};
-				      \draw[blue, thick] (A) -- (B);
-				      \draw[blue, dashed] (A) -- (\a,0) node[anchor=north] {$a$};
-				      \draw[blue, dashed] (A) -- (0,\fa) node[anchor=east] {$f(a)$};
-				      \draw[blue, dashed] (B) -- (\b,0) node[anchor=north] {$b$};
-				      \draw[blue, dashed] (B) -- (0,\fb) node[anchor=east] {$f(b)$};
-
-				      \draw[stealth-stealth, teal] (\c-2,\fc-1) -- (\c+2,\fc+1);
-				      \draw (C) node[anchor=south, teal] {$c$} node[anchor=north west, teal] {$f'(c)=\frac{f(b)-f(a)}{b-a}$};
-			      \end{tikzpicture}
-			      \caption{Formule des accroissements finis}
-		      \end{figure}
-	\end{enumerate}}
-	]
-	{Théorème de Rolle et formule des accroissements finis}
-	Soient de tels objets. \\
-	Prouvons $(i)$, donc supposons $f(a) = f(b)$. \\
-	$f$ est continue sur $I$ donc par le théorème de Weierstraß, elle est bornée et atteint ses bornes sur ce segment :
-	\\
-	$$\exists \ (x_m, x_M)\in I^2 \ : \ (f(x_m) = \min f(I)) \wedge (f(x_M) = \max f(I))$$
-	donc, si $(x_m, x_M)\in \{a,b\}^2$, alors,
-	$$\forall x \in I, \ f(a)=f(x_m) \leq f(x) \leq f(x_M)=f(a)$$
-	donc $\forall x \in I, f(x) = f(a)$ c'est-à-dire que $f$ est constante et donc tous les points intermédiaires à $I$ sont des $c$ valides.\\
-	Sinon, $(x_m \notin \{a,b\}) \vee (x_M \notin \{a,b\}) $, quitte à prendre l'autre valeur, supposons que $x_M \notin \{a,b\}$, ainsi, $x_M \in \overset{\circ}{I}$ et $f(x_M)$ est un maximum global donc, $f$ étant dérivable sur $\overset{\circ}{I}$ elle est dérivable en $x_M$ donc $f'(x_M)=0$, on pose $c = x_M$, ce qui conclut. \\ \\
-	Prouvons $(ii)$.\\
-	Posons $d \ :\ I \ \to \ \R, \ x \ \mapsto \ f(x) - \left( \frac{f(b)-f(a)}{b-a}(x-a) +f(a) \right) $. $d$ est continue sur $I$ et dérivable sur $\overset{\circ}{I}$ comme combinaison linéaire de telles fonctions. On a $d(a) = 0$ et $d(b) = 0$ donc $d(a) = 0 = d(b)$. On peut alors appliquer le Théorème de Rolle pour $f \gets d, a \gets a $ et $ b \gets b$ : il existe $c\in \overset{\circ}{I}$ tel que $d'(c) = 0$, c'est le résultat.
-\end{question_kholle}
-
-\begin{question_kholle}
-	[
-	Soit $f\in \mathcal{C}^0(I, \R) \cap \mathcal{D}^1(\overset{\circ}{I}, \R)$ et $x_0 \in I$, posons {$X_- = ]-\infty;x_0]$} la demi-droite fermée en $x_0$ et vers $-\infty$, de même {$X_+ = [x_0;+\infty[$} la demi-droite fermée en $x_0$ et vers $+ \infty$. \\ \\
-	{\begin{enumerate}[label=$(\roman*)$]
-		\item \begin{itemize}[label=$\star$, leftmargin=0.4cm]
-			      \item Si $\exists \ m \in \R \ : \ \forall x \in \overset{\circ}{I}, \ m\leq f'(x)$, alors, $$\forall x \in I \cap X_+, \ f(x_0) + m(x-x_0) \leq f(x)$$ et $$\forall x \in I \cap X_-, \ f(x) \leq f(x_0) + m(x-x_0)$$
-			      \item Si $\exists \ M \in \R \ : \ \forall x \in \overset{\circ}{I}, \ f'(x) \leq M $, alors, $$\forall x \in I \cap X_+, \ f(x) \leq f(x_0) + M(x-x_0)$$ et $$\forall x \in I \cap X_-, \ f(x_0) + M(x-x_0) \leq f(x) $$
-			      \item Si $\exists \ (m,M) \in \R^2 \ : \ \forall x \in \overset{\circ}{I}, \ m\leq f'(x) \leq M$, alors, $$\forall x \in I \cap X_+, \ f(x_0) + m(x-x_0) \leq f(x) \leq f(x_0) +M(x-x_0)$$ et $$\forall x \in I \cap X_-, \ f(x_0) + M(x-x_0) \leq f(x) \leq f(x_0) +m(x-x_0)$$
+		\item [\textit{Cardinal de $\mathcal{A}_{n}$.}] Fixons $\tau=(1,2)$. Considérons l’application
+		      \[
+			      \Phi:\applic{\mathcal{A}_{n}}{\mathcal{S}_{n}\setminus \mathcal{A}_{n}}{\sigma}{\tau\circ \sigma}
+		      \]
+		      \begin{itemize}
+			      \item \textit{$\Phi$ est bien définie.}\\
+			            Soit $\sigma\in \mathcal{A}_{n}$ fixée quelconque. Par propriété de morphisme de la signature,
+			            \[
+				            \varepsilon(\tau\circ \sigma) = \varepsilon(\tau)\times \varepsilon(\sigma) = (-1)\times (+1)= -1
+			            \]
+			            donc $\tau\circ \sigma\notin \mathcal{A}_{n}$. Par conséquent, $\Phi(\sigma)\in \mathcal{S}_{n}\setminus \mathcal{A}_{n}$.
+			      \item \textit{$\Phi$ est bijective.} Soit $\gamma\in \mathcal{S}_{n}\setminus \mathcal{A}_{n}$ fixé quelconque. Résolvons l’éq. d’inconnue $\sigma\in \mathcal{A}_{n}$ :
+			            \begin{align*}
+				            \Phi(\sigma)=\gamma & \iff  \tau\circ \sigma=\gamma                                                                                                                               \\
+				                                & \iff \tau\circ \tau \circ \sigma = \tau\circ \gamma                                                                                                         \\
+				                                & \iff  \sigma = \tau\circ \gamma \in\mathcal{A}_{n} \quad\text{car $\varepsilon(\tau\circ \gamma)=\varepsilon(\tau)\times \varepsilon(\gamma) = (-1)^{2}=1$}
+			            \end{align*}
+			            d’où la bijectivité.
 		      \end{itemize}
-		\item Si $\exists M \in \R \ : \ \forall x \in \overset{\circ}{I}, \ |f'(x)|\leq M$, alors, $$\forall (x,y) \in I^2, \ |f(y) -f(x)| \leq M|y-x|$$
-	\end{enumerate}}
+		      Ainsi, puisque $\Phi$ est une bijection,
+		      \[
+			      |\mathcal{A}_{n}|=|\mathcal{S}_{n}\setminus \mathcal{A}_{n}| = |\mathcal{S}_{n}| - |\mathcal{A}_{n}|
+		      \]
+		      d’où
+		      \[
+			      |\mathcal{A}_{n}| = \frac{|\mathcal{A}_{n}}{2} = \frac{n!}{2}
+		      \]
 
-	{\begin{figure}[!h]
+	\end{description}
+
+\end{question_kholle}
+
+\begin{question_kholle}{Les transpositions engendrent les groupes symétriques}
+	Soit $n\geq 3$. Considérons la propriété $\prop(\cdot)$ définie pour tout $k\in\iset{1,n}$ par
+	\begin{multline*}
+		\prop(k): \text{<<~toute permutation de $\mathcal{S}_{n}$ qui fixe au moins les éléments de l’ensemble} \\ \text{$\{1,\dots, n\}\setminus \{1,\dots, k\}$ s’écrit comme un produit de transpositions~>>}
+	\end{multline*}
+	\begin{itemize}
+		\item Soit $\sigma\in\Sn$ une permutation qui fixe au moins tous les éléments de $\{2,\dots, n\}$. Alors, $\sigma$ étant une bijection de $\{1,\dots,n\}$ dans $\{1,\dots, n\}$, $\sigma=\mathrm{Id}$ donc $\sigma=\tau_{1,2}\circ \tau_{1,2}$. Par conséquent, $\prop(1)$ est vraie.
+		\item Soit $k\in\iset{1,n-1}$ fixé quelconque tel que $\prop(k)$ est vraie.\\
+		      Soit $\sigma\in\Sn$ une permutation qui fixe au moins tous les éléments de $\{1,\dots,n\setminus \{1,\dots,k+1\}\}$ (on a bien $k+1\leq n$ car $k\leq n-1$).
+		      \begin{itemize}
+			      \item Si $\sigma(k+1)=k+1$, alors $\sigma$ fixe les éléments de l’ensemble $\{1,\dots,n\}\setminus \{1,\dots,k\}$ or $\prop(k)$ est vraie donc $\sigma$ s’écrit comme un produit de transpositions.
+			      \item Si $\sigma(k+1)\neq k+1$, puisque $\forall i\in\{k+2,\dots, n\}, \sigma(i)=i, \sigma(k+1)<k+1$.\\
+			            Considérons la permutations $\sigma_{k} = \tau_{k+1,\sigma(k+1)}\circ \sigma$. Alors, $\forall i\in\{k+2,\dots,n\},\sigma(i) = i \implies \sigma_{k}(i)=i$ et de plus, $\sigma_{k}(k+1)=\tau_{k+1,\sigma(k+1)}(\sigma(k+1)) = k+1$. Par conséquent, $\sigma_{k}$ fixe les éléments de l’ensemble $\{1,\dots,n\}\setminus\{1,\dots,k\}$ or $\prop(k)$ est vraie dons $\exists p\in\N^{*}, \exists (\tau_{1},\dots, \tau_{p})$ une famille de transpositions telles que
+			            \[
+				            \tau_{k+1,\sigma(k+1)}\circ \sigma = \sigma_{k} = \tau_{1}\circ \cdots \circ \tau_{p}
+			            \]
+			            si bien qu’en composant par $\tau_{k+1,\sigma(k+1)}$ à gauche,
+			            \[
+				            \sigma=\tau_{k+1,\sigma(k+1)}\circ \tau_{1}\circ\cdots\circ \tau_{p}
+			            \]
+			            Ainsi, $\prop(k+1)$ est vraie.
+		      \end{itemize}
+	\end{itemize}
+
+
+\end{question_kholle}
+
+\begin{question_kholle}{Montrer que si $E$ est un ensemble fini et $f:E\longrightarrow F$, alors $f(E)$ est un ensemble fini et $|f(E)|\leq |E|$.}
+	\hfill\\
+	\textbf{Résultat préliminaire: si $A$ est un ensemble non vide et $f:A\longrightarrow B$ est surjective, il existe $g:B\longrightarrow A$ injective telle que $f\circ g=\mathrm{id}_{B}$.}\\
+	$A$ est fini et non vide donc on peut numéroter ses éléments: $A=\{a_{1},\dots,a_{n}\}$. Posons
+	\[
+		g:\applic{B}{A}{b}{a_{k(b)}} \quad\text{où $k(b)=\min\{i\in\iset{1,|A|} \mid f(a_{i})=b\}$}
+	\]
+	\begin{itemize}
+		\item Soit $b\in B$ fixé quelconque.
+		      \[
+			      f\circ g(b)=f(a_{k(b)}) = b \quad\text{car } k(b)\in\{i\in\iset{1,|A|}\mid f(a_{i})=b\}
+		      \]
+		      donc $f\circ g=\mathrm{id}_{B}$.
+		\item $\mathrm{id}_{B}$ est bijective donc $f\circ g$ est injective donc $g$ est injective.
+	\end{itemize}
+
+	\vspace{2em}
+
+	\noindent\textbf{Preuve du théorème.}
+	Soit $E$ un ensemble fini, $F$ un ensemble et $f$ une fonction de $E$ dans $F$.\\
+	La correstriction $f^{|f(E)}$ est surjective de $E$ dans $f(E)$ or $E$ est fini donc le lemme précédent s’applique et permer d’affirmer qu’il existe une application $g:f(E)\longrightarrow E$ injective telle que $f^{|f(E)}\circ g = \mathrm{id}_{f(E)}$.\\
+	$f(E)$ s’injecte donc dans l’ensemble fini $E$ d’ou la finitude de $f(E)$.\\
+	De plus, $f(E)$ est en bijection avec $g(f(E))$ donc $|f(E)|=|g(f(E))|\leq |E|$ car $g(f(E))$ est une partie de $E$.
+
+\end{question_kholle}
+
+\begin{question_kholle}{Dénombrer les surjections de $\iset{1,n}$ dans $\iset{1,2}$ puis de $\iset{1,n}$ dans $\iset{1,3}$}
+
+\end{question_kholle}
+
+\begin{question_kholle}
+	[Soient $E, F$ deux ensembles finis non vides et $f : E \rightarrow F$ telle que tout élément de $F$ possède le même nombre $k \in \N^*$ d'antécédents par $f$.
+		Alors $\left|F\right| = \frac{\left|E\right|}{k}$
+		\begin{quotation}
+			\textquotedblleft Pour compter les moutons, il faut compter les pattes puis diviser par quatre. \textquotedblright
+		\end{quotation}]
+	{Lemme des bergers et anagrammes de BARBARA}
+
+	Considérons la relation binaire définie sur $E$ par :
+	\begin{equation*}
+		\forall (x, y) \in E^2, x \sim y
+		\iff f(x) = f(y)
+	\end{equation*}
+	Elle est réflexive, transitive et symétrique donc c'est bien une relation d'équivalence.\\
+	Soit $x \in E$ \fq. Alors
+	\[
+		\bar{x} = \left\{ y \in E \;|\; f(x) = f(y) \right\} = f^{-1}(\{f(x)\})
+	\]
+	or $f$ est surjective donc il y a autant de classes d’équivalences que d’éléments dans $F$, et ces classes sont les éléments de l’ensemble
+	\[
+		\{f^{-1}(\{t\}) \mid t\in F\}
+	\]
+	De plus, $~$ étant une relation d’équivalence, ces classes forment une partition de $E$ donc
+	\[
+		|E| = \sum_{t\in F}\left|f^{-1}(\{t\})\right| = k|F|
+	\]
+	\begin{figure}[H]
 		\centering
-		\tikzmath{
-			integer \x0,\fx0,\m,\M;
-			\x0 = 5;
-			\fx0 = 2.5;
-			\m = 0.2;
-			\Max = 0.7;
-		}
-		\begin{tikzpicture}
-			\coordinate (A) at (1,\fx0-\m*\x0+\m*1);
-			\coordinate (B) at (9,\fx0-\m*\x0+\m*9);
-			\coordinate (C) at (1,\fx0-\Max*\x0+\Max*1);
-			\coordinate (D) at (9,\fx0-\Max*\x0+\Max*9);
-			\draw[ultra thick, black] (A) -- (B) node[anchor=north west] {$y = f(x_0) + m(x -x_0)$};
-			\draw[ultra thick, black] (C) -- (D) node[anchor=south east] {$y = f(x_0) + M(x -x_0)$};
-			\filldraw[magenta!30] (A) -- (B) -- (D) -- (C) -- cycle;
+		\begin{tikzpicture}[ele/.style={ellipse,draw,inner sep=-2pt}]
 
-			\draw (\x0,\fx0) node[cross out, minimum size=8*\pgflinewidth, inner sep=0pt, outer sep=0pt, draw=blue, rotate=45, thick] {};
-			\draw[blue, dashed] (\x0,\fx0) -- (0,\fx0) node[anchor=east] {$f(x_0)$};
-			\draw[blue, dashed] (\x0,\fx0) -- (\x0,0) node[anchor=north] {$x_0$};
+			\node (E1) at (0, 2) {$e_1$};
+			\node (E2) at (0, 1) {$e_2$};
+			\node (E3) at (0, 0) {$e_3$};
+			\node (E4) at (0, -1) {$e_4$};
+			\node (E5) at (0, -2) {$e_5$};
+			\node (E6) at (0, -3) {$e_6$};
+			\node (E7) at (0, -4) {$e_7$};
+			\node (E8) at (0, -5) {$e_8$};
 
-			\draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
-			\draw[-stealth] (0,0) -- (0,5) node[anchor=south] {$y$};
+			\node (F1) at (3, 1.5) {$f_1$};
+			\node (F2) at (3, -0.5) {$f_2$};
+			\node (F3) at (3, -2.5) {$f_3$};
+			\node (F4) at (3, -4.5) {$f_4$};
+
+
+			\node (E) at (0, -6) {$E$};
+			\node (F) at (3, -5.5) {$F$};
+
+			\node (f) at (1.5, -5.5) {$f$};
+
+			\node[draw,fit=(E) (E1) (E2) (E3) (E4) (E5) (E6) (E7) (E8), minimum width=2cm, inner sep=10pt] {} ;
+			\node[draw,fit=(F) (F1) (F2) (F3) (F4),minimum width=2cm] {} ;
+
+			\node[ele, draw,fit=(E1) (E2),minimum width=1cm] {};
+			\node[ele, draw,fit=(E3) (E4),minimum width=1cm] {};
+			\node[ele, draw,fit=(E5) (E6),minimum width=1cm] {};
+			\node[ele, draw,fit=(E7) (E8),minimum width=1cm] {};
+
+
+
+			\draw[->] (E1) -- (F1);
+			\draw[->] (E2) -- (F1);
+
+			\draw[->] (E3) -- (F2);
+			\draw[->] (E4) -- (F2);
+
+			\draw[->] (E5) -- (F3);
+			\draw[->] (E6) -- (F3);
+
+			\draw[->] (E7) -- (F4);
+			\draw[->] (E8) -- (F4);
+
 		\end{tikzpicture}
-		\caption{Interprétation géométrique des accroissements finis}
-	\end{figure}}
+		\caption{Représentation schématique du lemme des bergers. Les classes d'équivalence de $\sim$ sont les ovales qui contiennent des éléments qui ont la même image par $f$. Le lemme s'applique ici car tous les éléments de $F$ ont le même nombre d'antécédents par $f$.}
+	\end{figure}
+
+	\textbf{Application aux anagrammes: exemple du mot BARBARA.} Les lettres du mot BARBARA étiquetées en $\mathrm{B_{1}A_{1}R_{1}B_{2}A_{2}R_{2}A_{3}}$, on peur construire $7!$ mots différents avec. Chacun de ces mots peut être obtenu de plusieures façon: en échangeant l’ordre des même lettres au sein de celui-ci. Comme il y a $2!$ façons d’échanger les lettres $\mathrm{B_{1}}$ et $\mathrm{B_{2}}$, autant d’échanger les lettres $\mathrm{R_{1}}$ et $\mathrm{R_{2}}$ et $3!$ façons d’échanger les lettres $\mathrm{A_{1}}$, $\mathrm{A_{2}}$ et $\mathrm{A_{3}}$, un même mot est formé $2!2!3!$ fois. On peut alors appliquer le lemme des bergers pour trouver un nombre total d’anagrammes de $\frac{7!}{2!2!3!}$.
+\end{question_kholle}
+
+\begin{question_kholle}
+	[Soit $p \in \N^*$. Un $p$-partage de $E$ est un $p$-liste $(A_1, \ldots, A_p) \in \mathcal{P}(E)^p$ de parties de $E$ (éventuellement vide), deux à deux disjointes qui recouvrent $E$, i.e.
+		\begin{equation*}
+			\forall (i, j) \in \lient 1 ; p \rient,
+			i \neq j \implies A_i \cap A_j = \emptyset
+			\qquad \text{et} \qquad
+			\bigcup_{i=1}^{p} A_i = E
+		\end{equation*}
+		Soient $(n_1, \ldots n_p) \in \N^p$ \tqs $n = n_1 + \cdots + n_p$. Un $p$-partage de $E$ de type $(n_{1},\dots,n_{p})$ est un $p$-partage $(A_{1},\dots,A_{p})$ de $E$ tel que
+		\begin{equation*}
+			\forall (i, j) \in \iset{1,p},|A_i| = n_i
+		\end{equation*}
+		Le nombre de $p$-partage de type $(n_1, \ldots, n_p)$ est :
+		\begin{equation}
+			\frac{n!}{\displaystyle \prod_{i=1}^{p} n_i !}
+		\end{equation}
 	]
-	{Inégalité des accroissements finis}
-	$(i)$ Soit $x\in I$ et posons $S$ le segment d'extrémités $x$ et $x_0$. \\
-	$\star$ Si $x\neq x_0$, $f$ est continue sur $S$ et dérivable sur $\overset{\circ}{S}$, la formule des accroissements finis donne alors l'existence d'un $c$ appartenant à $\overset{\circ}{S}$ tel que $$f(x) - f(x_0) = (x-x_0)f'(c)$$ Si $x> x_0, \ x-x_0 > 0$, or $m \leq f'(c) \leq M$ donc $$m(x-x_0) \leq (x-x_0)f'(c) \leq M(x-x_0)$$ si bien que $$m(x-x_0) \leq f(x) - f(x_0) \leq M(x-x_0) $$ d'où $$f(x_0) + m(x-x_0) \leq f(x) \leq f(x_0) + M(x-x_0). $$ Si $x<x_0$, il suffit de retourner l'inégalité lors de la première multiplication et $(i)$ est prouvé.\\ \\
-	$(ii)$ Soit $y \in I.$\\
-	L'hypothèse $\forall x\in \overset{\circ}{I}, \ |f'(x)|\leq M$ équivaut à $\forall x \in \overset{\circ}{I}, \ -M \leq f'(x) \leq M$, donc on peut appliquer $(i)$ pour $x_0 \gets y, \ M \gets M$ et $m\gets -M$ : $$\forall x \in I\cap [y, +\infty [,  \ f(y) -M(x-y) \leq f(x) \leq f(y) + M(x-y)$$
-					Or $x-y >0$ donc $|f(x) -f(y) | \leq M|x-y|$.
-					Et $$\forall x \in I\cap ]-\infty, y ],  \ f(y) +M(x-y) \leq f(x) \leq f(y) - M(x-y)$$
-	Or $x-y < 0$ donc $|f(x) -f(y) | \leq M|x-y|$. \\
-	Par conséquent, $\forall (x,y)\in I^2, \ |f(y) -f(x)| \leq M|y-x|.$
+	{$p$-partage d'un ensemble $E$ et leur dénombrement. Anagrammes de MISSISSIPPI.}
+
+	Considérons les $p$-partages de type $(n_1, \ldots, n_p)$ et appliquons le principe des choix successifs :
+	\begin{equation*}
+		\left(
+		\underbrace{A_1}_{\binom{n}{n_1} \text{ choix}},
+		\underbrace{A_2}_{\binom{n}{n_2} \text{ choix}},
+		\underbrace{A_3}_{\binom{n}{n_3} \text{ choix}},
+		\ldots,
+		\underbrace{A_p}_{\binom{n}{n_p} \text{ choix}}
+		\right)
+	\end{equation*}
+	donc il y a
+	\begin{equation*}
+		\frac{ n! }{n_1! \cancel{(n-n_1)!} }
+		\frac{ \bcancel{(n-n_1)!} }{n_2! \cancel{(n-n_1-n_2)!} }
+		\frac{ \bcancel{(n-n_1-n_2)!} }{n_2! \cancel{(n-n_1-n_2-n_3)!} }
+		\ldots
+		\frac{ \bcancel{(n-(n_1+\ldots+n_{p-1})!} }{n_p! \underbrace{(n_1+\ldots+n_p)!}_{=0!} }
+	\end{equation*}
+	Donc, au total, il y a $\displaystyle\frac{n!}{n_1! n_2! \ldots n_p!}$ $p$-partages.\\
+
+	\vspace{1em}\noindent\textbf{Application aux anagrammes: exemple du mot MISSISSIPPI.} Ce mot comporte 11 lettres (1 M, 4 I, 4 S et 2 P). L’ensemble des anagrammes est en bijection avec l’ensemble des p-partages de $\iset{1,11}$ du type $(1,4,4,2)$. Par exemple, l’anagramme \textit{MISSSSIIIPP} correspond au p-partage $(\{1\}, \{2,7,8,9\}, \{3,4,5,6\}, {10,11})$. Par conséquent leur nombre est le nombre de p-partages d’un tel type, soit $\displaystyle\frac{11!}{1!4!4!2!}$.
 \end{question_kholle}
 
-\begin{question_kholle}
-	[Soit $f\in \mathcal{C}^1(I,\R)$, $I$ le segment $a,b$. Alors $f$ est $||f'||_{\infty,I}$-lipschitzienne sur I.]
-	{Caractère lipschitzien d'une fonction $\mathcal{C}^1$ sur un segment}
-	Soient de tels objets. \\
-	$\star$ $f\in \mathcal{C}^1(I, \R)$ donc $f\in \mathcal{C}^0(I, \R)$. \\
-	$\star$ $f\in \mathcal{C}^1(I,\R)$ donc $f\in \mathcal{D}^1(\overset{\circ}{I}, \R)$.\\
-	$\star$ $f\in \mathcal{C}^1(I,\R)$ donc $f'$ est continue sur $I$ donc le réel $||f'||_{\infty,I}$ est bien défini et $$\forall  x \in \overset{\circ}{I}, \ |f'(x)| \leq ||f'||_{\infty,I}.$$ Ces propriétés permettent d'appliquer le corollaire du TAF qui conclut que $f$ est $||f'||_{\infty,I}$-lipschitzienne.
-\end{question_kholle}
-
-\begin{question_kholle}
-	[Soit $f\in \mathcal{F}(I, \R)$ et $a\in I$.\\
-		\newline
-		\textit{Lemme} : \\
-		Si
-		$\left\{ \begin{array}{cl}
-				f \text{ est dérivable sur } I\backslash \{a\} \\
-				f \text{ est continue en }a                    \\
-				f'_{|I\backslash \{a\}} \text{ admet une limite $\ell \in \overline{\R}$ en }a
-			\end{array}
-			\right.$, alors $\lim_{x \to a} \frac{f(x) -f(a)}{x-a} = \ell$\\
-		\newline
-		\textit{Théorème} : \\
-		Si
-		$\left\{ \begin{array}{cl}
-				f \text{ est dérivable sur } I\backslash \{a\} \\
-				f \text{ est continue en }a                    \\
-				f'_{|I\backslash \{a\}} \text{ admet une limite \textbf{finie} $\ell \in \R$ en }a
-			\end{array}
-			\right.$, alors $\left\{ \begin{array}{cl}
-				f \text{ est dérivable en } a \\
-				f'(a) = \ell \ (\textbf{donc } f' \textbf{ est continue en } a)
-			\end{array}
-			\right.$ ]
-	{Théorème du prolongement de la propriété de la dérivabilité}
-	Prouvons le lemme pour $\ell\in \R$, c'est le cas qui nous intéresse. \\
-	Soient de tels objets. Soit $\varepsilon\in \R_+^*$. Appliquons la définition de $\lim_{\substack{x\to a \\ x\neq a}}  f'_{|I\backslash \{a\}}(x) =\ell $ pour $\varepsilon \gets \varepsilon$ :
-	$$\exists \ \eta \in \R_+^* \ : \ \forall x\in I\backslash \{a\}, \ |x-a| \leq \eta \ \implies \ | f'_{|I\backslash \{a\}}(x) - \ell |\leq \varepsilon.$$ Fixons un tel $\eta$.\\
-	Soit $x\in I\backslash \{a\}$ tel que $|x-a|\leq \eta$.\\ La fonction $f$ est continue sur $I$ donc $f$ est continue sur le segment d'extrémités $a$ et $x$ qui est par ailleurs inclus dans $I$ par convexité d'un intervalle.\\ La fonction $f$ est dérivable sur $I$ donc $f$ est dérivable sur l'intervalle ouvert $a$, $x$ qui est aussi inclus dans $\overset{\circ}{I}$ par convexité.\\ L'égalité des accroissements finis s'applique à $f$ sur l'intervalle $a$ et $x$ : $$\exists \ c_x \in ]a,x[ \cup ]x,a[ \ : \ \frac{f(x) -f(a)}{x-a} = f'(c_x)$$
-	Or $|c_x-a| \leq |x-a| \leq \eta $ donc ladite définition de la limite s'applique pour $x\gets c_x$ : $|f'(c_x) - \ell|\leq \varepsilon $ si bien que $$|\frac{f(x)-f(a)}{x-a}- \ell |\leq \varepsilon.$$ D'où le lemme. \\
-	\newline
-	Prouvons alors le théorème.\\
-	Sous ces hypothèses, le lemme s'applique donc $\lim_{x\to a} \frac{f(x) -f(a)}{x-a} = \ell$, or $\ell \in \R$, donc le taux d'accroissement de $f$ en $a$ admet une limite finie en $a$ ce qui prouve la dérivabilité de $f$ en $a$ et $f'(a) = \ell$. Ce qui suffit.
-\end{question_kholle}
-
-\begin{question_kholle}
-	[Posons $\zeta \left| \begin{matrix}
-				\R \longrightarrow \R \\
-				x \mapsto \left\{ \begin{array}{cc}
-					                  0                 & \text{si } x \leqslant 0 \\
-					                  \e^{-\frac{1}{x}} & \text{si } x > 0
-				                  \end{array} \right.
-			\end{matrix} \right.$.
-		Montrons que $\zeta \in \Cont{\infty}{\R}{\R}$.
-			{\begin{figure}[!h]
-					\centering
-					\begin{tikzpicture}
-						\begin{axis}[
-								axis lines = center,
-								xlabel = $x$,
-								ylabel = {$f(x)$},
-								width=15cm,
-								height=5cm,
-								ymax=1.5
-							]
-							\addplot[
-								domain=0.01:20,
-								samples=200,
-								color=red,
-							]
-							{exp(-1/x)};
-							\addplot[
-								domain=-10:0,
-								samples=100,
-								color=red,
-							]
-							{0};
-							\addlegendentry{$\zeta$}
-
-							\addplot[
-								domain=0:20,
-								samples=100,
-								color=blue,
-								dashed
-							]
-							{1};
-						\end{axis}
-					\end{tikzpicture}
-				\end{figure}}]
-	{La fonction $\zeta$ (pas celle-là une autre) est de classe \Cont{\infty}{}{} sur \R}
-	~ \\
-
-	\begin{itemize}[label=$\star$]
-		\item $\zeta_{]-\infty;0[}$ est constante donc $\zeta \in \Cont{\infty}{]-\infty;0[}{}$.
-		\item $x \mapsto - \frac{1}{x} \in \mathcal{C}^\infty(]0;+\infty[,]-\infty;0[)$ et $\exp \in \Cont{\infty}{]-\infty;0[}{}$ donc, par stabilité de \Cont{\infty}{}{} par composition, $\zeta \in \Cont{\infty}{]0;+\infty[}{}$.
+\begin{question_kholle}[La formule de Van der Monde est la suivante: pour tout $(n,p)\in\N^{2}$,
+		\[
+			\forall k\in\N,\;\sum_{i=0}^{k}\binom{n}{i}\binom{p}{k-i} = \binom{n+p}{k}
+		\]]{Énoncé et démonstration combinatoire de la formule de Van der Monde.}
+	\begin{itemize}
+		\item Si $k>n+p$. On a
+		      \[
+			      \binom{n+p}{k}=0 \quad\text{par définition}
+		      \]
+		      et
+		      \[
+			      \sum_{i=0}^{k}\binom{n}{i}\binom{p}{k-i} = \sum_{i=0}^{n}\binom{n}{i}\binom{p}{k-i} + \sum_{i=n+1}^{k}\binom{n}{i}\binom{p}{k-i} = 0+0 = 0
+		      \]
+		\item  Sinon, $k\leq n+p$. Considérons $E$ un ensemble de cardinal $n+p$ et $A$ une partie de cette ensemble, de cardinal $n$.\\
+		      Dénombrons les parties de $E$ de cardinal $k$ en fonction du cardinal de leur intersection avec $A$:
+		      \begin{align*}
+			      \mathcal{P}_{k}(E)=\bigsqcup_{i=0}^{n}\{B\in \mathcal{P}_{k}(E) \mid |B\cap A| = i\}
+			       & = \bigsqcup_{i=0}^{n}\{C\sqcup D\in \mathcal{P}_{k}(E) \mid C\in \mathcal{P}_{i}(A), D\in \mathcal{P}_{k-i}(\overline{A})\}
+		      \end{align*}
+		      or l’application
+		      \[
+			      \applic{\mathcal{P}_{i}(A)\times \mathcal{P}_{k-i}(\overline{A})}{\{C\sqcup D \mid C\in \mathcal{P}_{i}(A), D\in\mathcal{P}_{k-i}(\overline{A})\}}{(C,D)}{C\sqcup D}
+		      \]
+		      est bijective donc
+		      \begin{align*}
+			      |\{B\in\mathcal{P}_{k}(E) \mid |B\cap A| = i\}| & = |\mathcal{P}_{i}(A) \times \mathcal{P}_{k-i}(\overline{A})|   \\
+			                                                      & = |\mathcal{P}_{i}(A)| \times |\mathcal{P}_{k-i}(\overline{A})| \\
+			                                                      & = \binom{n}{i} \times \binom{p}{k-i}
+		      \end{align*}
+		      d’où
+		      \begin{align*}
+			      |\mathcal{P}_{k}(E)| & = \sum_{i=0}^{n}\left|\left\{B\in \mathcal{P}_{k}(E)\mid |B\cap A|=i\right\}\right|   \\
+			                           & = \sum_{i=0}^{n}\binom{n}{i}\binom{p}{k-i} = \sum_{i=0}^{n}\binom{n}{i}\binom{p}{k-i}
+		      \end{align*}
 	\end{itemize}
 
-	Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N$ :
-	\begin{equation}
-		\mathcal{P} : \text{\textquotedblleft} \ \exists P_n \in \R[x] : \forall x \in \R^*, \ \zeta^{(n)} = \left\{ \begin{array}{lc}
-			0                                       & \text{si } x < 0 \\
-			\frac{P_n(x)}{x^{2n}} \e^{-\frac{1}{x}} & \text{si } x > 0
-		\end{array} \right. \ \text{\textquotedblright}
-	\end{equation}
-	\begin{itemize}[label=$\star$]
-		\item $\mathcal{P}(0)$ est vrai par définition de $\zeta$ en posant $P_0(x) = 1$
-		\item Soit $n \in \N^*$ \fq \ tel que $\mathcal{P}$ est vrai.
-		      D'une part, $\forall x \in ]-\infty;0[, \zeta^{(n)}(x) = 0$ donc
-		      \begin{equation*}
-			      \forall x \in ]-\infty;0[, \zeta^{(n+1)}(x) = 0
-		      \end{equation*}
-		      D'autre part, $\forall x \in ]0;+\infty[, \zeta^{(n)}(x) = \frac{P_n(x)}{x^{2n}} \e^{-\frac{1}{x}}$ ce qui est un produit de trois expressions dérivables. D'où :
-		      \begin{equation*}
-			      \begin{aligned}
-				      \forall x \in ]-\infty;0[,
-				      \zeta^{(n+1)}(x)
-				       & = \left( P_n'(x) \frac{1}{x^{2n}} + P_n(x) \frac{-2n}{x^{2n+1}} + \frac{P_n(x)}{x^{2n}} \frac{1}{x^2} \right) \e^{-\frac{1}{x}} \\
-				       & = \frac{x^2 P_n'(x) - 2nxP_n(x) + P_n(x)}{x^{2(n+1)}} \e^{-\frac{1}{x}}
-			      \end{aligned}
-		      \end{equation*}
-		      Si bien qu'en posant $P_{n+1}(x) = x^2 P_n'(x) - 2 n x P_n(x) + P_n(x) \in \R[x]$, on obtient :
-		      \begin{equation*}
-			      \forall x \in ]0;+\infty[, \zeta^{(n+1)}(x) = \frac{P_{n+1}(x)}{x^{2(n+1)}} \e^{-\frac{1}{x}}
-		      \end{equation*}
-		      Par conséquent, $\mathcal{P}(x)$ est vrai.
-
-		      Appliquons maintenant le théorème de prolongement du caractère \Cont{\infty}{}{}.
-		      \begin{itemize}[label=$\star$]
-			      \item Nous avons montré que $\zeta \in  \Cont{\infty}{\R \!\setminus\! \{0\}}{}$.
-			      \item Calculons les limites à gauche et à droite de 0. Soit $k \in \N$ \fq.
-			            \begin{itemize}[label=$\star\star$]
-				            \item $\zeta^{(k)}$ est nulle sur $]-\infty;0[$, $\zeta^{(k)} \arrowlim{x}{0^-} 0$.
-				            \item De plus, $\exists P_n \in \R[x] : \ \forall x \in ]0;+\infty[, \zeta^{(k)}(x) = \frac{P_k(x)}{x^{2k}} \e^{-\frac{1}{x}}$. Posons $u = \frac{1}{x}$, ainsi $\zeta^{(k)}(x) = u^{2k} P_k(\frac{1}{u}) \e^{-\frac{1}{x}}$ et $u \arrowlim{x}{0^+} +\infty$. \\
-				                  Le théorème des croissances comparées donne $u^{2k} P_k(\frac{1}{u}) \e^{-u} \arrowlim{u}{+\infty} 0$ donc $\zeta^{(k)}(x) \arrowlim{x}{0^+} 0$.
-			            \end{itemize}
-		      \end{itemize}
-		      Donc $\zeta \in \Cont{\infty}{\R}{\R}$.
-	\end{itemize}
 \end{question_kholle}
+
+
 
 \end{document}
