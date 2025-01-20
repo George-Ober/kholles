@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \date{20 Janvier 2024}
-\usepackage[nb-sem=15, auteurs={Hugo Vangilluwen, Ober George}]{../kholles}
+\usepackage[nb-sem=15, auteurs={Hugo Vangilluwen, Ober George, Felix Rondeau}]{../kholles}
 
 \begin{document}
 \maketitle
@@ -254,16 +254,17 @@
 	Soit $n \in \N$ fixé quelconque.\\
 	Supposons les trois suites construites au rang $n$ telles que $f(a_n)f(b_n) \leqslant 0$ et $c_n = \frac{a_n+b_n}{2}$.
 	\begin{itemize}
-		\item Si $f(a_n)f(b_n) \leqslant 0$, posons $\left| \begin{array}{lcl}
+		\item Si $f(a_n)f(c_n) \leqslant 0$, posons $$\left\{ \begin{array}{lcl}
 				      a_{n+1} & = & a_n                       \\
 				      b_{n+1} & = & c_n                       \\
 				      c_{n+1} & = & \frac{a_{n+1}+b_{n+1}}{2}
-			      \end{array} \right.$
-		\item Sinon $f(a_n)f(b_n) > 0$. Or $f(a_n)f(b_n) \leqslant 0$, donc $f(a_n)^2 f(b_n) f(c_n) \leqslant 0$. Donc $f(b_n)f(c_n) \leqslant 0$. Posons $\left| \begin{array}{lcl}
+			      \end{array} \right.$$
+		\item Sinon $f(a_n)f(c_n) > 0$. Comme $f(a_n)f(b_n) \leqslant 0$, on a en multipliant par $f(a_{n})f(b_{n})$ $$f(a_n)^2 f(b_n) f(c_n) \leqslant 0 \quad \text{donc}\quad f(b_n)f(c_n) \leqslant 0$$
+		      Posons $$\left\{ \begin{array}{lcl}
 				      a_{n+1} & = & c_n                       \\
 				      b_{n+1} & = & b_n                       \\
 				      c_{n+1} & = & \frac{a_{n+1}+b_{n+1}}{2}
-			      \end{array} \right.$
+			      \end{array} \right.$$
 	\end{itemize}
 	Ainsi, nous avons bien construits $a_{n+1}, b_{n+1}, c_{n+1}$ telles que $f(a_{n+1})f(b_{n+1}) \leqslant 0$ et ${ c_{n+1} = \frac{a_{n+1}+b_{n+1}}{2} }$.
 	Par récurrence immédiate, $(a_n)_{n\in\N}$ est croissante, $(b_n)_{n\in\N}$ est décroissante et ${ \forall n \in \N, b_n - a_n = \frac{b-a}{2^n} }$ d'où $b_n - a_n \arrowlim{n}{+\infty} 0$.
@@ -285,8 +286,8 @@
 \begin{question_kholle}
 	[{L'image d'un segment par une fonction continue sur ce segment est un segment : soient $(a, b) \in \R^2$ tels que $a < b$ et $f: [a, b] \to \R$. Si $f \in \mathcal{C}^0([a, b], \R)$ alors $\exists (x_{1}, x_{2}) \in \R^2 : f([a, b]) = [f(x_{1}), f(x_{2})]$.}]
 	{Théorème de Weierstraß}
+	\hfill\\
 	\begin{itemize}
-
 		\item \emph{Étape 1} Montrons que $f([a, b])$ est majoré.
 
 		      Par l'absurde, supposons que $f([a, b])$ n'est pas majoré
@@ -415,7 +416,7 @@
 		      Supposons que $f$ est croissante (il suffit d’appliquer ce résultat à $-f$ pour prouver l’autre cas). Soit $x_{0}\in I$ fixé quelconque.\\
 		      \begin{itemize}[label=$\star$]
 			      \item
-			            Supposons que $x_{0}$ est un point intérieur à $I$.\\
+			            Supposons que $x_{0}$ est un point intérieur à $I$. Alors, $\exists\eta\in\R_{+}^{*}: [x_{0}-\eta,x_{0}+\eta]\subset I$.\\
 			            La fonction $f$ est croissante sur $[x_{0}-\eta,x_{0}[$ et majorée par $f(x_{0})$ donc $f$ admet une limite finie à gauche $\ell_{g}$ en $x_{0}$.\\
 			            De même, $f$ étant croissante sur $]x_{0}, x_{0}+\eta]$, elle admet une limite finie à droite $\ell_{d}$ en $x_{0}$.\\
 			            De plus,
@@ -424,22 +425,22 @@
 			            \end{equation*}
 			            Supposons que $\ell_{g}<f(x_{0})$. Montrons alors que $y_{0}=\frac{\ell_{g}+f(x_{0})}{2}$ ne possède aucun antécédent par $f$ ce qui contredit le fait que $f(I)$ est un intervalle car
 			            \begin{equation*}
-				            \left(f(x_{0}-\eta)\phi(x_{0})\right)\in f(I)^{2} \implies  \left[f(x_{0}-\eta), f(x_{0})\right]\subset f(I)
+				            \left(f(x_{0}-\eta), f(x_{0})\right)\in f(I)^{2} \implies  \left[f(x_{0}-\eta), f(x_{0})\right]\subset f(I)
 			            \end{equation*}
 			            en effet,
 			            \begin{itemize}
-				            \item si $x\in I$ vérifie $x<x_{0}$, alors $f(x)\leq \sup f(I\cap \left]-\infty,x_{0}\right[)=\ell_{g}<y$
-				            \item si $x\in I$ vérifie $x\geq x_{0}$, alors $f(x)\geq f(x_{0})>y$
+				            \item si $x\in I$ vérifie $x<x_{0}$, alors $f(x)\leq \sup f(I\cap \left]-\infty,x_{0}\right[)=\ell_{g}<y_{0}$
+				            \item si $x\in I$ vérifie $x\geq x_{0}$, alors $f(x)\geq f(x_{0})>y_{0}$
 			            \end{itemize}
-			            par conséquent, $y\notin f(I)$.\\
+			            par conséquent, $y_{0}\notin f(I)$.\\
 			            Ainsi, $\ell_{g}=f(x_{0})$ et on montre de même que $f(x_{0})=\ell_{d}$ si bien que nous pouvons conclure que $f$ est continue en $x_{0}$.\\
 			      \item Supposons à présent que $x_{0}$ est un bord de $I$. Il suffit d’adapter la preuve ci-dessus en ne considérant que l’intervalle contenant $I$ à choisir entre $[x_{0},+\infty[$ et $]-\infty,x_{0}]$.
 		      \end{itemize}
 
-		\item \textbf{Preuve du théorème.} Soit de tels objets. La preuve de la surjectivité est triviale car on se limite à $f(I)$. Celle de la surjectivité vient de la stricte monotonie de $f$. Montrons donc le second point.
+		\item \textbf{Preuve du théorème.} Soit de tels objets. La preuve de la surjectivité est triviale car on se limite à $f(I)$. Celle de l’injectifité vient de la stricte monotonie de $f$. Montrons donc le second point.
 		      \begin{itemize}
 			      \item $f$ est continue sur l’intervalle $I$ donc $J=f(I)$ est un intervalle.
-			      \item $f$ est bijective et moone donc $f^{-1}$ est monotone, et de plus, $f^{-1}(I)=J$ est un intervalle donc (résultat précédent), $f^{-1}$ est continue sur $J$.
+			      \item $f$ est bijective et monotone donc $f^{-1}$ est monotone, et de plus, $f^{-1}(I)=J$ est un intervalle donc (résultat précédent), $f^{-1}$ est continue sur $J$.
 		      \end{itemize}
 	\end{itemize}
 \end{question_kholle}
