@@ -1,128 +1,421 @@
 \documentclass{article}
 
-\date{8 Mai 2024}
-\usepackage[nb-sem=16, auteurs={Hugo Vangilluwen}]{../kholles}
+\date{24 Janvier 2024}
+\usepackage[nb-sem=16, auteurs={Hugo Vangilluwen, Felix Rondeau}]{../kholles}
 
 \begin{document}
 \maketitle
 
-\begin{question_kholle}
-  {Unicité de la partie régulière d'un développement limité}
 
-  Soit $f$ une fonction admettant un $DL_n(x_0)$ avec $n \in \N$ et $x_0 \in \mathcal{D}_f$. \\
-  Supposons que $f$ admette deux développements limités. C'est-à-dire qu'il existe $a \in \C^{n+1}$ et $b \in \C^{n+1}$ \tqs :
-  \begin{equation*}
-    \begin{aligned}
-      f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k (x - x_0)^k + o\left((x-x_0)^n\right) \\
-      f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k (x - x_0)^k + o\left((x-x_0)^n\right)
-    \end{aligned}
-  \end{equation*}
+\begin{question_kholle}[Soient $(f,g)\in \mathcal{D}^{p}(I,\R)^{2}$ et $p\in\N^{*}$. Alors $f\times g \in \mathcal{D}^{p}(I,\R)$ et
+		\[
+			\forall x\in I, (f\times g)^{(p)}(x) = \sum_{k=0}^{p}\binom{p}{k}f^{(k)}(x)g^{(p-k)}(x)
+		\]]{Formule de Leibniz}
+	Considérons la propriété $\prop(\cdot)$ définie pour tout $n\in\iset{1,p}$ par
+	\[
+		\prop(n):~\frquote{f\times g \in \mathcal{D}^{n}(I,\R) \quad\text{et}\quad (f\times g)^{(n)}=\sum_{k=0}^{n}\binom{n}{k}f^{(k)}g^{(n-k)}}
+	\]
+	\begin{itemize}[label=$\vartriangleright$]
+		\item $p\geq 1$ donc $\mathcal{D}^{p}(I,\R)\subset \mathcal{D}^{1}(I,\R)$ si bien que $(f,g)\in \mathcal{D}^{1}(I,\R)^{2}$ donc $f \times g \in \mathcal{D}^{1}(I,\R)$ et
+		      \[
+			      (f \times g)'=f \times g' + f' \times  g = \binom{1}{0}f^{(0)} \times g^{(1)} + \binom{1}{1}f^{(1)} \times g^{(0)} = \sum_{k=0}^{1}\binom{1}{k}f^{(k)} \times g^{(1-k)}
+		      \]
+		      Ainsi $\prop(1)$ est vraie.
+		\item Soit $f\in\iset{1,p-1}$ fixé quelconque tel que $\prop(n)$ est vraie.
+		      \begin{itemize}
+			      \item La véracité de $\prop(n)$ donne
+			            \[
+				            (f \times g)^{(n)} = \sum_{k=0}^{n}\binom{p}{k}\underbrace{f^{(k)}}_{\substack{\in \mathcal{D}^{p-k}(I,\R) \text{ donc dérivable car}\\k\leq n\leq p-1 \implies p-k\geq 1}} \times \underbrace{g^{(n-k)}}_{\substack{\in \mathcal{D}^{p-n+k}(I,\R) \text{ donc dérivable car}\\0\leq k\leq n\leq p-1 \implies p-n+k\geq 1}}
+			            \]
+			            donc $(f \times g)^{(n)}\in \mathcal{D}^{1}(I,\R)$ en tant que combinaison linéaire de fonctions dérivables.
+			      \item Sachant que $(f \times g)^{(n)}$ est dérivable sur $I$,
+			            \begin{align*}
+				            (f \times g)^{(n+1)} & = \left(\sum_{k=0}^{n}\binom{n}{k}f^{(k)}g^{(n-k)}\right)' \quad\text{en utilisant } \prop(n)                                                                     \\
+				                                 & = \sum_{k=0}^{n}\binom{n}{k}\left(f^{(k)}g^{(n-k)}\right)' \quad\text{par linéarité de la dérivation}                                                             \\
+				                                 & = \sum_{k=0}^{n}\binom{n}{k} \left[f^{(k+1)} \times g^{(n-k)} + f^{(k)} \times  g^{(n-k+1)}\right] \quad\text{par dérivation d’un produit}                        \\
+				                                 & = \sum_{k=0}^{n}\binom{n}{k}f^{(k+1)} \times g^{(n-k)}+\sum_{k=0}^{n}\binom{n}{k}f^{(k)} \times g^{(n-k+1)}                                                       \\
+				                                 & = \sum_{j=1}^{n+1}\binom{n}{j-1}nf^{(j)} \times g^{(n+1-j)} + \sum_{k=0}^{n}\binom{n}{k}f^{(k)} \times g^{(n-+1)} \quad\text{en posant } j=k+1                    \\
+				                                 & = \binom{n}{n}f^{(n+1)} \times g^{(0)} + \sum_{j=1}^{n}\left(\binom{n}{j-1}+\binom{n}{j}\right)f^{(j)} \times g^{(n+1-j)} + \binom{n}{0}f^{(0)} \times g^{(n+1)}  \\
+				                                 & = \binom{n+1}{n+1}f^{(n+1)} \times g^{(0)} + \sum_{j=1}^{n}\binom{n+1}{j}f^{(j)} \times g^{(n+1-j)} + \binom{n+1}{0}f^{(0)} \times g^{(n+1)} \quad\text{(Pascal)} \\
+				                                 & = \sum_{j=0}^{n+1}\binom{n+1}{j}f^{(j)} \times g^{(n+1-j)}
+			            \end{align*}
+			            ce qui montre $\prop(n+1)$.
+		      \end{itemize}
+		      Par conséquent, le théorème de récurrence permet de conclure que $\prop(p)$ est vraie, ce qui constitue le résultat à prouver.
+	\end{itemize}
 
-  Posons $u = x - x_0$ et  $\tilde{f}(u) = f(x_0+u)$ de sorte que les hypothèses sur $f$ se traduise par l'existence d'un $DL_n(0)$ pour $\tilde{f}$ :
-  \begin{equation*}
-    f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k u^k + o\left(u^n\right)
-    \text{ et }
-    f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k u^k + o\left(u^n\right)
-  \end{equation*}
-  Appliquons la définition d'un $DL_n(0)$. Il existe deux fonctions $\varepsilon_1$ et $\varepsilon_2$ définies sur $\mathcal{D}_{\tilde{f}}$ \tqs
-  \begin{equation*}
-    \begin{aligned}
-      \forall u \in \mathcal{D}_{\tilde{f}}, \ \tilde{f}(u) = \sum_{k=0}^{n} a_k u^k + u^n \varepsilon_1 \\
-      \forall u \in \mathcal{D}_{\tilde{f}}, \ \tilde{f}(u) = \sum_{k=0}^{n} b_k u^k + u^n \varepsilon_2 \\
-      \textlim{u}{0} \varepsilon_1(u) = 0 \text{ et } \textlim{u}{0} \varepsilon_2(u) = 0
-    \end{aligned}
-  \end{equation*}
-  Donc
-  \begin{equation*}
-    \forall u \in \mathcal{D}_{\tilde{f}}, \
-    \sum_{k=0}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
-  \end{equation*}
-
-  Par l'absurde, supposons que $\exists k_0 \in \lient 0; n \rient : a_{k_0} \neq b_{k_0}$. Posons $k_1$ le plus petit entier dont les coefficients $a$ et $b$ sont différents :
-  \begin{equation*}
-    k_1 = \min \left\{ k \in \lient 0;n \rient \;|\; a_k \neq b_k \right\}
-  \end{equation*}
-  Nous obtenons alors
-  \begin{equation*}
-    \forall u \in \mathcal{D}_{\tilde{f}}, \
-    \sum_{k=0}^{k_1-1} \underbrace{(a_k - b_k)}_{=0} u^k + (a_{k_1} - b_{k_1}) u^{k_1} + \sum_{k=k_1+1}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
-  \end{equation*}
-  Multiplions par $u^{-k_1}$ puis calculons la limite en $u \rightarrow 0$.
-  D'un coté, pour $k > k_1$, nous avons $k - k_1 \leqslant 1$ donc $(a_k - b_k) u^{k-k_1} \arrowlim{u}{0} 0$.
-  De l'autre coté, $u^{n-k_1}$ tend vers $0$ ou $1$ selon si $k_1 < n$ ou $k_1 = n$. Et, par hypothèse, $\varepsilon_2(u) - \varepsilon_1(u) \arrowlim{u}{0} 0$.
-  Par unicité de la limite, $a_{k_1} - b_{k_1} = 0$. Ce qui contredit la définition de $k_1$.
-
-  Par conséquent $\forall k \in \lient 0;n \rient, \ a_k = b_k$. Ainsi, la partie régulière d'un $DL$ est unique.
-\end{question_kholle}
-
-\setnbquestion{6}
-
-\begin{question_kholle}
-  {Deux fonctions équivalentes au voisinage de $a$ ont le même signe sur un voisinage de $a$}
-
-  Soient $f : \mathcal{D} \rightarrow \R$ et $g : \mathcal{D} \rightarrow \R$ telles que $f(x) \underset{x \rightarrow a}{\sim} g(x)$ avec $a \in \mathcal{D}$. \\
-  Appliquons la définition de l'équivalence pour $\varepsilon \leftarrow \frac{1}{2}$, il existe un voisinage $V$ de $a$ tel que :
-  \begin{equation*}
-    \forall x \in V \cap \mathcal{D},
-    | f(x) - g(x) | \leqslant \frac{1}{2} | g(x) |
-  \end{equation*}
-
-  Fixons un tel voisinage $V$.
-  Nous obtenons :
-  \begin{equation*}
-    \forall x \in V \cap \mathcal{D},
-    \underbrace{g(x) - \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
-    \leqslant f(x) \leqslant
-    \underbrace{g(x) + \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
-  \end{equation*}
-
-  Ainsi $f(x)$ et $g(x)$ ont le même signe sur $V \cap \mathcal{D}$.
 \end{question_kholle}
 
 \begin{question_kholle}
-  [ Soient $f \in \Cont{\infty}{\mathcal{D}}{}$ et $a \in \overset{\circ}{\mathcal{D}}$. Supposons que $E_0 = \left\{ p \in \N^* \setminus \{1\} \;|\; f^{(p)}(a) \neq 0 \right\}$ est non vide. \\
-    Posons $p_0 = \min E_0$. \\
-    $f$ admet un extremum local en $a$ si et seulement si $f'(a) = 0$ et $p_0$ est pair. \\
-    $f$ admet un point d'inflexion en $a$ si et seulement si $p_0$ est impair. ]
-  {Condition nécessaire et suffisante pour qu'une fonction \Cont{\infty}{}{} admette un extremum local ou un point d'inflexion}
-
-  Soient de tels objets. Traitons le cas de l'extremum local.
-
-  \noindent $f \in \Cont{\infty}{}{}$ donc, la formule Taylor-Young donne un $DL_{p_0}(a)$ de $f$ :
-  \begin{equation*}
-    f(x) \underset{x \rightarrow a}{=}
-    \sum_{k=0}^{p_0} \frac{f^{(k)}(a)}{k!} (x-a)^k + o \left( (x-a)^{p_0} \right)
-  \end{equation*}
-
-  En développant :
-  \begin{equation*}
-    f(x) \underset{x \rightarrow a}{=}
-    f(a) + \underbrace{f'(a)(x-a)}_{= 0} + \underbrace{\ldots + \frac{f^{(p_0-1)}(a)}{(p_0-1)!} (x-a)^{p_0-1}}_{= 0 \text{ par défintion de }p_0} + \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0} + o \left( (x-a)^{p_0} \right)
-  \end{equation*}
-
-  Ainsi (car $f^{(p_0)}(a) \neq 0$)
-  \begin{equation}
-    f(x) - f(a) \underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
-  \end{equation}
-  Au voisinage de $a$, $f(x) - f(a)$ et $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ ont le même signe.
-  \\
-
-  Supposons que $f$ admette un extremum local en $a$.
-  Or $a \in \overset{\circ}{\mathcal{D}}$ et $f$ est dérivable en 0, donc $f'(a) = 0$.
-  Comme $f$ admette un extremum local en $a$, $f(x) - f(a)$ est de signe constant au voisinage de $a$.
-  Donc $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$.
-  Par conséquent, $p_0$ est pair.
-  \\
-
-  Réciproquement, supposons que $f'(a) = 0$ et que $p_0$ est pair. $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$. Donc $f(x) - f(a)$ est de signe constant au voisinage de $a$. Ainsi, $a$ est un extremum local de $f$.
-  \\
-
-  Traitons le cas du point d'inflexion. La formule de Taylor-Young donne :
-  \begin{equation}
-    f(x) - \underbrace{\left( f(a) + (x-a)f'(a) \right)}_{\text{tangente en } (a,f(a))}
-    \underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
-  \end{equation}
-  Le signe de l'écart courbe/tangente en $a$ est donc celui de $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$. Ce qui conclut de la même manière que l'extremum local.
+	{Expression de dérivées successives}
+	Considérons l’application
+	\[
+		f:\begin{array}{rcl}
+			\R_+^* & \longrightarrow & \R              \\
+			x      & \longmapsto     & \frac{\ln x}{x}
+		\end{array}\]
+	Soit $x\in \mathcal{D}_f$.
+	Considérons le prédicat $P(\cdot)$ définit pour $n\in \N$ par :
+	$$ P(n): \frquote{\ f^{(n)}(x) = \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right]}$$
+	\begin{itemize}[label=$\star$]
+		\item \textbf{Initialisation: }
+		      Pour $n = 0$, $$f^{(0)}(x) = f(x) = \frac{\ln (x)}{x} = \frac{(-1)^0 0!}{x^{0+1}}\left[ \ln (x) - \sum_{k=1}^0 \frac{1}{k} \right],$$ donc $P(0)$ est vrai.
+		\item \textbf{Hérédité: }
+		      Soit $n\in \N$ tel que $P(n)$ est vraie. On a,
+		      $$f^{(n+1)}(x) = (f^{(n)}(x))' = \left( \frac{(-1)^n n!}{x^{n+1}}\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right] \right)'$$
+		      par véracité de $P(n)$. Ainsi,
+		      $$\begin{array}{rcl}
+				      f^{(n+1)}(x) & = & \frac{(-1)^nn!x^n - (-1)^n(n+1)!x^n\left[ \ln (x) - \sum_{k=1}^n \frac{1}{k} \right]}{x^{2(n+1)}} \\ [1ex]
+				                   & = & \frac{(-1)^{n+1}(n+1)!\ln (x) - (-1)^{n+1}(n+1)!\sum_{k=1}^{n+1} \frac{1}{k} }{x^{n+2}}           \\ [1ex]
+				                   & = & \frac{(-1)^{n+1} (n+1)!}{x^{n+2}}\left[ \ln (x) - \sum_{k=1}^{n+1} \frac{1}{k} \right]
+			      \end{array}$$
+		      c'est l'expression recherchée, donc $P(n+1)$ est vraie.
+	\end{itemize}
+	Ainsi, par théorème de récurrence sur $\N$, $P(n)$ est vraie pour tout $n\in \N$.
 \end{question_kholle}
 
+\begin{question_kholle}
+	[Soit $f : I \rightarrow f(I) \subset \R$ continue, strictement monotone sur $I$ et dérivable en $a \in I$.\\
+		Si $f'(a) \neq 0$ alors $f$ est bijective, $f^{-1}$ est dérivable en $f(a)$ et $f^{-1}(f(a)) = \displaystyle\frac{1}{f'(a)}$.]
+	{Dérivée d'une bijection réciproque}
+	Soient de tels objets. \\
+	Par définition, $f$ est surjective. Comme elle est strictement monotone, $f$ est injective. Ainsi $f$ est bijective. \\[4pt]
+	Soit $g : J \rightarrow \R$ monotone (où $J$ est un intervalle). Nous avons l'équivalence suivante :
+	\begin{equation*}
+		g(J) \text{ est un intervalle } \iff g \text{ est continue sur } J
+	\end{equation*}
+	Ainsi, $f(I)$ est un intervalle. De plus, nous avons $f^{-1} : f(I) \rightarrow I$ avec $f(I)$ et $I$ des intervalles donc $f^{-1}$ est continue sur $f(I)$. \\
+	Calculons la limite du taux d'accroissement de $f^{-1}$ en $f(a)$ :
+	\begin{equation*}
+		\forall x \in f(I), \tau_{f^{-1},f(a)} = \frac{f^{-1}(x) - f^{-1}(f(a))}{x - f(a)}
+	\end{equation*}
+	Posons $u = f^{-1}(x)$. D'où :
+	\begin{equation*}
+		\tau_{f^{-1},f(a)} = \frac{u - a}{f(u) - f(a)}
+	\end{equation*}
+	De plus, par continuité de $f^{-1}$, $u \arrowlim{x}{f(a)} f^{-1}(f(a)) = a$.\\
+	Par dérivabilité en a et par continuité de $x \mapsto x^{-1}$ en $f(a) \neq 0$, $\frac{u - a}{f(u) - f(a)} \arrowlim{u}{a} \frac{1}{f('(a)}$. \\
+	Ainsi, $f^{-1}$ est dérivable en $f(a)$ et $f^{-1}(f(a)) = \frac{1}{f'(a)}$.
+\end{question_kholle}
+
+
+\begin{question_kholle}
+	[Soit $f : I \rightarrow \R$. Si $f$ admet un extremum local en $a \in \overset{\circ}{I}$ et si $f$ est dérivable en $a$, alors $f'(a) = 0$.
+			{\begin{figure}[!h]
+					\centering
+					\tikzmath{ real \m; real \fm; \m = 5/3; \fm = 23/27; }
+					\begin{tikzpicture}[scale=2]
+						\draw[-stealth] (0,0) -- (3,0) node[anchor=west] {$x$};
+						\draw[-stealth] (0,0) -- (0,2) node[anchor=south] {$y$};
+
+						\draw[purple, thick, smooth, samples=200, domain=0.3:2.4]
+						plot(\x, {1 + pow((\x-1),3) - pow((\x-1),2)});
+						\draw[teal, dashed] (\m,\fm) -- (\m,0) node[anchor=north] {$m$};
+
+						\draw[stealth-stealth, teal] (\m-0.8,\fm) -- (\m+0.8,\fm);
+						\draw (\m,\fm) node[above=1em,teal] {$f'(m)=0$};
+					\end{tikzpicture}
+				\end{figure}}]
+	{Dérivée d'un extremum local intérieur au domaine de définition}
+	Soient de tels objets. \\
+	$$a \in \overset{\circ}{I} \implies \exists \eta_1 \in \R_+^* : [a-\eta_1;a+\eta_1] \subset I$$
+	Fixons un tel $\eta_1$.
+	Calculons le taux d'accroissement en $a$.
+	\begin{equation*}
+		\forall x \in [a-\eta_1;a+\eta_1], \tau_{f,a}(x) = \frac{f(x) - f(a)}{x - a}`
+	\end{equation*}
+	Or $f$ est dérivable en $a$ donc $\tau_{f,a}(x)$ admet une limite lorsque $x \rightarrow a$.\\
+	Traitons le cas où $a$ est maximum local. Par définition :
+	\begin{equation*}
+		\exists \eta_2 \in \R_+^* : \forall x \in [a-\eta_2;a+\eta_2], f(x) \leqslant f(a)
+	\end{equation*}
+	Fixons un tel $\eta_2$. Soit $x \in [a-\eta_2;a+\eta_2] \setminus \{a\}$ fixé quelconque.
+	Alors $f(x) - f(a) \leqslant 0$. \\
+	\begin{itemize}[label=$\bullet$]
+		\item	Si $x > a$, $x - a > 0$. Alors $\frac{f(x) - f(a)}{x - a} \leqslant 0$. Donc $\textlim{x}{a} \tau_{f,a}(x) \leqslant 0$. \\
+		\item Sinon $x < a$, $x - a < 0$. Alors $\frac{f(x) - f(a)}{x - a} \geqslant 0$. Donc $\textlim{x}{a} \tau_{f,a}(x) \geqslant 0$. \\
+	\end{itemize}
+	Ainsi $0 \leqslant \textlim{x}{a} \tau_{f,a}(x) \leqslant 0$. Donc $f'(a) = 0$.
+\end{question_kholle}
+
+
+\begin{question_kholle}
+	[Soient $(a,b)\in \R ^2$ tels que $a<b$. Soit $I$ le segment $a,b$.
+	\\
+	Soit $f \ : \ I \ \to \ \R $ continue sur ledit segment et dérivable sur l'ouvert associé.\\
+	{\begin{enumerate}[label=($\roman*$)]
+		\item Théroème de Rolle :
+		      Si $f(a) = f(b)$, alors $\exists \ c \in \overset{\circ}{I}$ tel que $f'(c) =0$
+		      \begin{figure}[!h]
+			      \centering
+			      \tikzmath{ integer \a \b \f \c \fc; \a = 1; \b = 9; \f = 2; \c = \a + 3; \fc = \f + 2; }
+			      \begin{tikzpicture}
+				      \draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
+				      \draw[-stealth] (0,0) -- (0,5) node[anchor=south] {$y$};
+
+				      \coordinate (A) at (\a,\f);
+				      \coordinate (B) at (\b,\f);
+				      \coordinate (C) at (\c,\fc);
+
+				      \draw [purple, thick] plot [smooth] coordinates {(A) (C) (6,1.5) (B)};
+				      \draw[gray, thick] (A) -- (B);
+				      \draw[gray, dashed] (A) -- (\a,0) node[anchor=north] {$a$};
+				      \draw[gray, dashed] (B) -- (\b,0) node[anchor=north] {$b$};
+				      \draw[gray, dashed] (A) -- (0,\f) node[anchor=east] {$f(a)=f(b)$};
+
+				      \draw[stealth-stealth, teal] (\c-2,\fc) -- (\c+2,\fc);
+				      \draw (C) node[anchor=south, teal] {$f'(c)=0$};
+				      \draw[teal, dashed] (\c,\fc) -- (\c,0) node[anchor=north] {$c$};
+			      \end{tikzpicture}
+			      \caption{Théorème de Rolle}
+		      \end{figure}
+
+		\item Formule des accroissements finis : \\
+		      \[
+			      \exists \ c \in \overset{\circ}{I} \ : \ f'(c) = \frac{f(b)-f(a)}{b-a}.
+		      \]
+		      \begin{figure}[!h]
+			      \centering
+			      \tikzmath{integer \a \fa \b \fb \c \fc; \a = 1; \fa = 1; let \b = 9; \fb = 5; \c = \a + 5; \fc = \fa + 1; }
+			      \begin{tikzpicture}
+				      \draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
+				      \draw[-stealth] (0,0) -- (0,6) node[anchor=south] {$y$};
+
+				      \coordinate (A) at (\a,\fa);
+				      \coordinate (B) at (\b,\fb);
+				      \coordinate (C) at (\c,\fc);
+
+				      \draw [purple, thick] plot [smooth] coordinates {(A) (3,4) (C) (7,4.5) (B)};
+				      \draw[gray, thick] (A) -- (B);
+				      \draw[gray, dashed] (A) -- (\a,0) node[anchor=north] {$a$};
+				      \draw[gray, dashed] (A) -- (0,\fa) node[anchor=east] {$f(a)$};
+				      \draw[gray, dashed] (B) -- (\b,0) node[anchor=north] {$b$};
+				      \draw[gray, dashed] (B) -- (0,\fb) node[anchor=east] {$f(b)$};
+
+				      \draw[stealth-stealth, teal] (\c+0.05-2,\fc-1) -- (\c+0.05+2,\fc+1);
+				      \draw (C) node[anchor=north west, teal] {$f'(c)=\frac{f(b)-f(a)}{b-a}$};
+				      \draw[teal, dashed] (\c+0.05,\fc) -- (\c,0) node[anchor=north] {$c$};
+			      \end{tikzpicture}
+			      \caption{Formule des accroissements finis}
+		      \end{figure}
+	\end{enumerate}}
+	]
+	{Théorème de Rolle et formule des accroissements finis}
+	Soient de tels objets. \\
+	\begin{itemize}[label=$\bullet$]
+		\item
+		      Prouvons $(i)$, donc supposons $f(a) = f(b)$. \\
+		      $f$ est continue sur $I$ donc par le théorème de Weierstraß, elle est bornée et atteint ses bornes sur ce segment :
+		      \\
+		      $$\exists \ (x_m, x_M)\in I^2 \ : \ (f(x_m) = \min f(I)) \quad\text{et}\quad (f(x_M) = \max f(I))$$
+		      donc, si $(x_m, x_M)\in \{a,b\}^2$, alors,
+		      $$\forall x \in I, \ f(a)=f(x_m) \leq f(x) \leq f(x_M)=f(a)$$
+		      donc $\forall x \in I, f(x) = f(a)$ c'est-à-dire que $f$ est constante et donc tous les points intermédiaires à $I$ sont des $c$ valides.\\
+		      Sinon, $(x_m \notin \{a,b\})$ ou $(x_M \notin \{a,b\}) $, quitte à prendre l'autre valeur, supposons que $x_M \notin \{a,b\}$, ainsi, $x_M \in \overset{\circ}{I}$ et $f(x_M)$ est un maximum global donc, $f$ étant dérivable sur $\overset{\circ}{I}$ elle est dérivable en $x_M$ donc $f'(x_M)=0$, on pose $c = x_M$, ce qui conclut. \\ \\
+		\item Prouvons $(ii)$.\\
+		      Posons $$d:\begin{array}{rcl}
+
+				      I & \longmapsto & \R \\ x&\longmapsto& f(x) - \left( \frac{f(b)-f(a)}{b-a}(x-a) +f(a) \right)\end{array} $$
+		      $d$ est continue sur $I$ et dérivable sur $\overset{\circ}{I}$ comme combinaison linéaire de telles fonctions. On a $d(a) = 0$ et $d(b) = 0$ donc $d(a) = 0 = d(b)$. On peut alors appliquer le Théorème de Rolle pour $f \gets d, a \gets a $ et $ b \gets b$ : il existe $c\in \overset{\circ}{I}$ tel que $d'(c) = 0$, c'est le résultat.
+	\end{itemize}
+\end{question_kholle}
+
+
+\begin{question_kholle}
+	[
+	Soit $f\in \mathcal{C}^0(I, \R) \cap \mathcal{D}^1(\overset{\circ}{I}, \R)$ et $x_0 \in I$, posons {$X_- = ]-\infty;x_0]$} la demi-droite fermée en $x_0$ et vers $-\infty$, de même {$X_+ = [x_0;+\infty[$} la demi-droite fermée en $x_0$ et vers $+ \infty$. \\ \\
+	{\begin{enumerate}[label=$(\roman*)$]
+		\item \begin{itemize}[label=$\star$, leftmargin=0.4cm]
+			      \item Si $\exists \ m \in \R \ : \ \forall x \in \overset{\circ}{I}, \ m\leq f'(x)$, alors, $$\forall x \in I \cap X_+, \ f(x_0) + m(x-x_0) \leq f(x)$$ et $$\forall x \in I \cap X_-, \ f(x) \leq f(x_0) + m(x-x_0)$$
+			      \item Si $\exists \ M \in \R \ : \ \forall x \in \overset{\circ}{I}, \ f'(x) \leq M $, alors, $$\forall x \in I \cap X_+, \ f(x) \leq f(x_0) + M(x-x_0)$$ et $$\forall x \in I \cap X_-, \ f(x_0) + M(x-x_0) \leq f(x) $$
+			      \item Si $\exists \ (m,M) \in \R^2 \ : \ \forall x \in \overset{\circ}{I}, \ m\leq f'(x) \leq M$, alors, $$\forall x \in I \cap X_+, \ f(x_0) + m(x-x_0) \leq f(x) \leq f(x_0) +M(x-x_0)$$ et $$\forall x \in I \cap X_-, \ f(x_0) + M(x-x_0) \leq f(x) \leq f(x_0) +m(x-x_0)$$
+		      \end{itemize}
+		\item Si $\exists M \in \R \ : \ \forall x \in \overset{\circ}{I}, \ |f'(x)|\leq M$, alors, $$\forall (x,y) \in I^2, \ |f(y) -f(x)| \leq M|y-x|$$
+	\end{enumerate}}
+
+	]
+	{Inégalité des accroissements finis}
+	\hfill
+	\begin{description}
+		\item[$(i)$] Soit $x\in I$ et posons $S$ le segment d'extrémités $x$ et $x_0$. \\
+		      $\star$ Si $x\neq x_0$, $f$ est continue sur $S$ et dérivable sur $\overset{\circ}{S}$, la formule des accroissements finis donne alors l'existence d'un $c$ appartenant à $\overset{\circ}{S}$ tel que $$f(x) - f(x_0) = (x-x_0)f'(c)$$ Si $x> x_0, \ x-x_0 > 0$, or $m \leq f'(c) \leq M$ donc $$m(x-x_0) \leq (x-x_0)f'(c) \leq M(x-x_0)$$ si bien que $$m(x-x_0) \leq f(x) - f(x_0) \leq M(x-x_0) $$ d'où $$f(x_0) + m(x-x_0) \leq f(x) \leq f(x_0) + M(x-x_0). $$ Si $x<x_0$, il suffit de retourner l'inégalité lors de la première multiplication et $(i)$ est prouvé.
+
+		\item[$(ii)$] Soit $y \in I.$\\
+		      L'hypothèse $\forall x\in \overset{\circ}{I}, \ |f'(x)|\leq M$ équivaut à $\forall x \in \overset{\circ}{I}, \ -M \leq f'(x) \leq M$, donc on peut appliquer $(i)$ pour $x_0 \gets y, \ M \gets M$ et $m\gets -M$ : $$\forall x \in I\cap [y, +\infty [,  \ f(y) -M(x-y) \leq f(x) \leq f(y) + M(x-y)$$
+						      Or $x-y >0$ donc $|f(x) -f(y) | \leq M|x-y|$.
+						      Et $$\forall x \in I\cap ]-\infty, y ],  \ f(y) +M(x-y) \leq f(x) \leq f(y) - M(x-y)$$
+		      Or $x-y < 0$ donc $|f(x) -f(y) | \leq M|x-y|$. \\
+		      Par conséquent, $\forall (x,y)\in I^2, \ |f(y) -f(x)| \leq M|y-x|.$
+	\end{description}
+
+	{\begin{figure}[!h]
+		\centering
+		\tikzmath{
+			integer \x0,\fx0,\m,\M;
+			\x0 = 5;
+			\fx0 = 2.5;
+			\m = 0.2;
+			\Max = 0.7;
+		}
+		\begin{tikzpicture}
+			\coordinate (A) at (1,\fx0-\m*\x0+\m*1);
+			\coordinate (B) at (9,\fx0-\m*\x0+\m*9);
+			\coordinate (C) at (1,\fx0-\Max*\x0+\Max*1);
+			\coordinate (D) at (9,\fx0-\Max*\x0+\Max*9);
+			\filldraw[cyan!20] (A) -- (B) -- (D) -- (C) -- cycle;
+			\draw[thick, purple] (A) -- (B) node[anchor=north west] {$y = f(x_0) + m(x -x_0)$};
+			\draw[thick, purple] (C) -- (D) node[anchor=south east] {$y = f(x_0) + M(x -x_0)$};
+
+			\draw (\x0,\fx0) node[cross out, minimum size=8*\pgflinewidth, inner sep=0pt, outer sep=0pt, draw=gray, rotate=45, thick] {};
+			\draw[gray, dashed] (\x0,\fx0) -- (0,\fx0) node[anchor=east] {$f(x_0)$};
+			\draw[gray, dashed] (\x0,\fx0) -- (\x0,0) node[anchor=north] {$x_0$};
+
+			\draw[-stealth] (0,0) -- (10,0) node[anchor=west] {$x$};
+			\draw[-stealth] (0,0) -- (0,5) node[anchor=south] {$y$};
+		\end{tikzpicture}
+		\caption{Interprétation géométrique des accroissements finis}
+	\end{figure}}
+\end{question_kholle}
+
+
+\begin{question_kholle}
+	[Soit $f\in \mathcal{C}^1(I,\R)$, $I$ le segment $a,b$. Alors $f$ est $||f'||_{\infty,I}$-lipschitzienne sur I.]
+	{Caractère lipschitzien d'une fonction $\mathcal{C}^1$ sur un segment}
+	Soient de tels objets. \\
+	$\star$ $f\in \mathcal{C}^1(I, \R)$ donc $f\in \mathcal{C}^0(I, \R)$. \\
+	$\star$ $f\in \mathcal{C}^1(I,\R)$ donc $f\in \mathcal{D}^1(\overset{\circ}{I}, \R)$.\\
+	$\star$ $f\in \mathcal{C}^1(I,\R)$ donc $f'$ est continue sur $I$ donc le réel $||f'||_{\infty,I}$ est bien défini et $$\forall  x \in \overset{\circ}{I}, \ |f'(x)| \leq ||f'||_{\infty,I}.$$ Ces propriétés permettent d'appliquer le corollaire du TAF qui conclut que $f$ est $||f'||_{\infty,I}$-lipschitzienne.
+\end{question_kholle}
+
+
+\begin{question_kholle}
+	[Soit $f\in \mathcal{F}(I, \R)$ et $a\in I$.\\
+		\newline
+		\textit{Lemme} : \\
+		Si
+		$\left\{ \begin{array}{cl}
+				f \text{ est dérivable sur } I\backslash \{a\} \\
+				f \text{ est continue en }a                    \\
+				f'_{|I\backslash \{a\}} \text{ admet une limite $\ell \in \overline{\R}$ en }a
+			\end{array}
+			\right.$, alors $\lim_{x \to a} \frac{f(x) -f(a)}{x-a} = \ell$\\
+		\newline
+		\textit{Théorème} : \\
+		Si
+		$\left\{ \begin{array}{cl}
+				f \text{ est dérivable sur } I\backslash \{a\} \\
+				f \text{ est continue en }a                    \\
+				f'_{|I\backslash \{a\}} \text{ admet une limite \textbf{finie} $\ell \in \R$ en }a
+			\end{array}
+			\right.$, alors $\left\{ \begin{array}{cl}
+				f \text{ est dérivable en } a \\
+				f'(a) = \ell \ (\textbf{donc } f' \textbf{ est continue en } a)
+			\end{array}
+			\right.$ ]
+	{Théorème du prolongement de la propriété de la dérivabilité}
+	Prouvons le lemme pour $\ell\in \R$, c'est le cas qui nous intéresse. \\
+	Soient de tels objets. Soit $\varepsilon\in \R_+^*$. Appliquons la définition de $\lim_{\substack{x\to a \\ x\neq a}}  f'_{|I\backslash \{a\}}(x) =\ell $ pour $\varepsilon \gets \varepsilon$ :
+	$$\exists \ \eta \in \R_+^* \ : \ \forall x\in I\backslash \{a\}, \ |x-a| \leq \eta \ \implies \ | f'_{|I\backslash \{a\}}(x) - \ell |\leq \varepsilon.$$ Fixons un tel $\eta$.\\
+	Soit $x\in I\backslash \{a\}$ tel que $|x-a|\leq \eta$.\\ La fonction $f$ est continue sur $I$ donc $f$ est continue sur le segment d'extrémités $a$ et $x$ qui est par ailleurs inclus dans $I$ par convexité d'un intervalle.\\ La fonction $f$ est dérivable sur $I$ donc $f$ est dérivable sur l'intervalle ouvert $a$, $x$ qui est aussi inclus dans $\overset{\circ}{I}$ par convexité.\\ L'égalité des accroissements finis s'applique à $f$ sur l'intervalle $a$ et $x$ : $$\exists \ c_x \in ]a,x[ \cup ]x,a[ \ : \ \frac{f(x) -f(a)}{x-a} = f'(c_x)$$
+	Or $|c_x-a| \leq |x-a| \leq \eta $ donc ladite définition de la limite s'applique pour $x\gets c_x$ : $|f'(c_x) - \ell|\leq \varepsilon $ si bien que $$|\frac{f(x)-f(a)}{x-a}- \ell |\leq \varepsilon.$$ D'où le lemme. \\
+	\newline
+	Prouvons alors le théorème.\\
+	Sous ces hypothèses, le lemme s'applique donc $\lim_{x\to a} \frac{f(x) -f(a)}{x-a} = \ell$, or $\ell \in \R$, donc le taux d'accroissement de $f$ en $a$ admet une limite finie en $a$ ce qui prouve la dérivabilité de $f$ en $a$ et $f'(a) = \ell$. Ce qui suffit.
+\end{question_kholle}
+
+
+\begin{question_kholle}
+	[Posons $$\zeta: \begin{array}{rcl}
+				\R & \longrightarrow & \R                                                               \\
+				x  & \longmapsto     & \left\{ \begin{array}{cc}
+					                               0                 & \text{si } x \leqslant 0 \\
+					                               \e^{-\frac{1}{x}} & \text{si } x > 0
+				                               \end{array} \right.
+			\end{array}$$
+		Montrons que $\zeta \in \Cont{\infty}{\R}{\R}$.
+			{\begin{figure}[!h]
+					\centering
+					\begin{tikzpicture}
+						\begin{axis}[
+								axis lines = center,
+								xlabel = $x$,
+								ylabel = {$f(x)$},
+								width=15cm,
+								height=5cm,
+								ymax=1.5
+							]
+							\addplot[
+								domain=0.01:20,
+								samples=200,
+								color=purple,
+							]
+							{exp(-1/x)};
+							\addplot[
+								domain=-10:0,
+								samples=100,
+								color=purple,
+							]
+							{0};
+							\addlegendentry{$\zeta$}
+
+							\addplot[
+								domain=0:20,
+								samples=100,
+								color=gray,
+								dashed
+							]
+							{1};
+						\end{axis}
+					\end{tikzpicture}
+				\end{figure}}]
+	{La fonction $\zeta$ (pas celle-là une autre) est de classe \Cont{\infty}{}{} sur~\R}
+	~ \\
+
+	\begin{itemize}[label=$\star$]
+		\item $\zeta_{]-\infty;0[}$ est constante donc $\zeta \in \Cont{\infty}{]-\infty;0[}{}$.
+		\item $x \mapsto - \frac{1}{x} \in \mathcal{C}^\infty(]0;+\infty[,]-\infty;0[)$ et $\exp \in \Cont{\infty}{]-\infty;0[}{}$ donc, par stabilité de \Cont{\infty}{}{} par composition, $\zeta \in \Cont{\infty}{]0;+\infty[}{}$.
+	\end{itemize}
+
+	Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N$ :
+	\begin{equation}
+		\mathcal{P} : \text{\textquotedblleft} \ \exists P_n \in \R[x] : \forall x \in \R^*, \ \zeta^{(n)} = \left\{ \begin{array}{lc}
+			0                                       & \text{si } x < 0 \\
+			\frac{P_n(x)}{x^{2n}} \e^{-\frac{1}{x}} & \text{si } x > 0
+		\end{array} \right. \ \text{\textquotedblright}
+	\end{equation}
+	\begin{itemize}[label=$\star$]
+		\item $\mathcal{P}(0)$ est vrai par définition de $\zeta$ en posant $P_0(x) = 1$
+		\item Soit $n \in \N^*$ \fq \ tel que $\mathcal{P}$ est vrai.
+		      D'une part, $\forall x \in ]-\infty;0[, \zeta^{(n)}(x) = 0$ donc
+		      \begin{equation*}
+			      \forall x \in ]-\infty;0[, \zeta^{(n+1)}(x) = 0
+		      \end{equation*}
+		      D'autre part, $\forall x \in ]0;+\infty[, \zeta^{(n)}(x) = \frac{P_n(x)}{x^{2n}} \e^{-\frac{1}{x}}$ ce qui est un produit de trois expressions dérivables. D'où :
+		      \begin{equation*}
+			      \begin{aligned}
+				      \forall x \in ]-\infty;0[,
+				      \zeta^{(n+1)}(x)
+				       & = \left( P_n'(x) \frac{1}{x^{2n}} + P_n(x) \frac{-2n}{x^{2n+1}} + \frac{P_n(x)}{x^{2n}} \frac{1}{x^2} \right) \e^{-\frac{1}{x}} \\
+				       & = \frac{x^2 P_n'(x) - 2nxP_n(x) + P_n(x)}{x^{2(n+1)}} \e^{-\frac{1}{x}}
+			      \end{aligned}
+		      \end{equation*}
+		      Si bien qu'en posant $P_{n+1}(x) = x^2 P_n'(x) - 2 n x P_n(x) + P_n(x) \in \R[x]$, on obtient :
+		      \begin{equation*}
+			      \forall x \in ]0;+\infty[, \zeta^{(n+1)}(x) = \frac{P_{n+1}(x)}{x^{2(n+1)}} \e^{-\frac{1}{x}}
+		      \end{equation*}
+		      Par conséquent, $\mathcal{P}(x)$ est vrai.
+
+		      Appliquons maintenant le théorème de prolongement du caractère \Cont{\infty}{}{}.
+		      \begin{itemize}[label=$\star$]
+			      \item Nous avons montré que $\zeta \in  \Cont{\infty}{\R \!\setminus\! \{0\}}{}$.
+			      \item Calculons les limites à gauche et à droite de 0. Soit $k \in \N$ \fq.
+			            \begin{itemize}[label=$\star\star$]
+				            \item $\zeta^{(k)}$ est nulle sur $]-\infty;0[$, $\zeta^{(k)} \arrowlim{x}{0^-} 0$.
+				            \item De plus, $\exists P_n \in \R[x] : \ \forall x \in ]0;+\infty[, \zeta^{(k)}(x) = \frac{P_k(x)}{x^{2k}} \e^{-\frac{1}{x}}$. Posons $u = \frac{1}{x}$, ainsi $\zeta^{(k)}(x) = u^{2k} P_k(\frac{1}{u}) \e^{-\frac{1}{x}}$ et $u \arrowlim{x}{0^+} +\infty$. \\
+				                  Le théorème des croissances comparées donne $u^{2k} P_k(\frac{1}{u}) \e^{-u} \arrowlim{u}{+\infty} 0$ donc $\zeta^{(k)}(x) \arrowlim{x}{0^+} 0$.
+			            \end{itemize}
+		      \end{itemize}
+		      Donc $\zeta \in \Cont{\infty}{\R}{\R}$.
+	\end{itemize}
+\end{question_kholle}
 \end{document}
