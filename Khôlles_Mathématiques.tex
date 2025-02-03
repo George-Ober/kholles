@@ -6972,58 +6972,333 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 		      Donc $\zeta \in \Cont{\infty}{\R}{\R}$.
 	\end{itemize}
 \end{question_kholle}
+
+\begin{question_kholle}{test}
+	Soit $x\in\R$
+	\[
+		\varphi :
+		\begin{array}{rcl}
+			\R & \longrightarrow & \R    \\
+			x  & \longmapsto     & x^{2}
+		\end{array}
+
+		\applic{\R}{\R}{x}{x^{2}}
+	\]
+\end{question_kholle}
 \pagebreak\section{Semaine 17}
 
-\setnbquestion{4}
-\begin{question_kholle}
-  [Soient $a,b\in \N ^*$ et $c\in \Z$. Il existe des entiers $x,y\in \Z$ tels que $ax + yb = c$ si et seulement si $c$ est multiple du pgcd de $a$ et $b$.]
-  {Théorème de Bézout}
-  Soient $a,b\in \N^*$. On suppose l'algorithme d'Euclide réalisé pour $a,b$, ainsi à la fin de ce dernier on a un entier naturel $r_n$ tel que $r_n = a\wedge b$. Comme l'algorithme est terminé, on peut remonter chaque ligne de proche en proche, on aurait, à titre d'exemple, pour une première itération, $r_n =r_{n-2} - q_{n} \cdot r_{n-1}$. En réalisant toutes les étapes nécessaires, on obtient une relation entre $r_n$ et $a,b$, cette relation s'écrit : $$\exists \ (x_0, y_0)\in (\Z ^*)^2 \ : \ a\wedge b = r_n = ax_0 + y_0b.$$
-  Si $c$ est un multiple de $a\wedge b $, alors il existe $k\in \Z^*$ tel que $c = k(a\wedge b)$, donc en multipliant le résultat montré au dessus par $k$, on a le sens indirect. Si pour $c\in \Z$, il existe des entiers $x,y\in \Z$ tels que $ax + yb = c$, alors le pgcd de $a$ et $b$ divise le membre de gauche et donc par égalite le membre de droite aussi donc $c$ est multiple de $a\wedge b$, ce qui suffit.
+\begin{question_kholle}{Caractérisation des fonction dérivables strictement croissantes}
+	Soit $f$ une fonction dérivable sur $I$.
+	\begin{description}
+		\item[$(\implies)$] Supposons que $f$ est strictement croissante sur $I$.
+		      \begin{itemize}
+			      \item $f$ est ctristement croissante donc croissante donc
+			            \[
+				            \forall x\in I, f'(x)\geq 0
+			            \]
+			      \item Par l’absurde, supposons qu’il existe un intervalle $[a,b]$ non réduit à un singleton en restriction auquel $f'$ est nulle. Alors, $f$ est constante sur cet intervalle donc $f(a)=f(b)$ et $a<b$, ce qui contredit la stricte monotonie de $f$.
+		      \end{itemize}
+		\item [$(\impliedby )$] Supposons que $f'$ est positive ou nulle sur $I$ et qu’elle n’est identiquement nulle en restriction à aucun intervalle inclus dans $I$.
+		      \begin{itemize}
+			      \item $f'$ est positive ou nulle sur $I$ donc $f$ est croissante sur $I$.
+			      \item Par l’absurde, supposons que $f$ n’est pas strictement croissante sur $I$. Alors
+			            \begin{align*}
+				            \mathrm{non}(\forall (x,y)\in I^{2}, x<y \implies  f(x)<f(y)) & \iff \exists (x_{0},y_{0})\in I^{2}: \mathrm{non}(x<y \implies f(x)<f(y))          \\
+				                                                                          & \iff \exists (x_{0},y_{0})\in I^{2}: x_{0}<y_{0} \text{ et } f(x_{0})\geq f(y_{0})
+			            \end{align*}
+			            Choisissons un tel couple $(x_{0},y_{0})$. Par croissance de $f$,
+			            \[
+				            \forall x\in [x_{0},y_{0}], f(x_{0})\leq f(x)\leq f(y_{0})=f(x_{0})
+			            \]
+			            donc $f(x)=f(x_{0})$.\\
+			            Par conséquent, $f$ est constante sur $[x_{0}, y_{0}]$ si bien que $f'$ est identiquement nulle sur $[x_{0}, y_{0}]$, ce qui contredit l’hypothèse faite sur $f$.
+		      \end{itemize}
+		      Ainsi, $f$ est strictement croissante sur $I$.
+	\end{description}
 \end{question_kholle}
 
-\setnbquestion{6}
-\begin{question_kholle}
-  [Soient $a,b,c$ trois entiers naturels non nuls. Si $c$ est premier avec $a$ et divise le produit $ab$, alors il divise $b$.]
-  {Théorème de Gauss}
-  Soient $a,b,c$ des entiers naturels vérifiant les hypothèses. \\
-  Comme $c$ est premier avec $a$ on écrit une relation de Bézout pour $1$, leur pgcd et on multiplie le tout par $b$ :
-  $$\exists \ (u,v) \in (\N ^*)^2 \ : \ au + vc = 1 \ \implies \ abu + vbc = b, $$
-  or $c$ divise $ab$ et lui-même donc aussi le membre de gauche donc par égalité, le membre droite, c'est le théorème.
+\begin{question_kholle}[Soient $n\in\N$ et $I$ un intervalle réel. Soit $f\in \mathcal{C}^{n}(I,\R)$ telle que $f^{(n)}\in \mathcal{D}^{1}(\mathring I, \R)$ et $\forall M\in\R^{+}: \forall t\in I, |f^{(n+1)}(t)| \leq M$. Alors
+		\[
+			\forall (x,x_{0})\in I^{2}, \left|f(x)-\sum_{k=0}^{n}\frac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k}\right| \leq \frac{|x-x_{0}|^{n+1}M}{(n+1)!}
+		\]]{Inégalité de Taylor-Lagrange}
+	Supposons $x\neq x_{0}$ (sinon, l’égalité est immédiate). Appliquons l’égalité de Taylor-Lagrange:
+	\begin{align*}
+		\exists c_{x}\in \left]x,x_{0}\right[\cup\left]x_{0}, x\right[: \left| f(x)-\sum_{k=0}^{n}\frac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k} \right| & = \left| f^{(n+1)}(c_{x})\frac{(x-x_{0})^{n+1}}{(n+1)!}\right|       \\
+		                                                                                                                                         & =\left|f^{(n+1)}(c_{x})\right| \times \frac{|x-x_{0}|^{(n+1)}}{n+1!} \\
+		                                                                                                                                         & =M \frac{|x-x_{0}|^{n+1}}{(n+1)!}
+	\end{align*}
 \end{question_kholle}
 
-\setnbquestion{8}
 \begin{question_kholle}
-  [Soient $a,b,c\in \Z$. Résoudre l'équation $$ax + yb = c,$$ d'inconnues $x$ et $y$ dans $\Z$.]
-  {Résoudre une équation du type $ax + yb = c$}
-  Soient $a,b,c\in \Z$ et une telle équation, notée $(i)$, en lesdites inconnues. \\
-  Si $a\wedge b \not| \ c$, alors le théorème de Bézout, affirme que l'équation n'a pas de solution. \\
-  Supposons le contraire. Posons $d = a\wedge b$. Le lemme technique affirme l'existence de $a'$ et $b'$ dans $\Z$, tels que $a'd= a$, $b'd =b$ et $a' \wedge b' = 1$. Donc, comme $d$ divise $c$, il existe $c'$ tel que $c = c'd$. On réécrit l'équation, notée $(ii)$ : $$ a'x +yb'  = c'.$$ On sait d'après le théorème de Bézout qu'il existe des solutions, en particulier grâce à l'algorithme d'Euclide on construit $(x_0,y_0)$, une solution de la nouvelle équation, puis on l'injecte et on raisonne par équivalence, on note $\omega$ l'ensemble des solutions de $(ii)$ et $\Omega$ celui de $(i)$ :
-  \begin{center}
-    $
-      \begin{array}{ccc}
-        (x,y) \in \Omega & \iff & (x,y)\in \omega                                           \\
-                         & \iff & a'x +yb' = c'                                             \\
-                         & \iff & a'x + yb' = a'x_0 + y_0b'                                 \\
-                         & \iff & a'(x-x_0) = b'(y_0 -y)                                    \\[1ex]
-                         & \iff & \exists \ k \in \Z \ :\left\{  \begin{array}{ccc}
-                                                                   a'(x-x_0) & = & b'(y_0 -y) \\
-                                                                   y_0 - y   & = & a'k
-                                                                 \end{array} \right. \\[2ex]
-                         & \iff & \exists \ k \in \Z \ :\left\{  \begin{array}{ccc}
-                                                                   a'(x-x_0) & = & b'(y_0 -y) \\
-                                                                   y         & = & y_0 - a'k
-                                                                 \end{array} \right. \\[2ex]
-                         & \iff & \exists \ k \in \Z \ :\left\{  \begin{array}{ccc}
-                                                                   x & = & x_0 + b'k \\
-                                                                   y & = & y_0 - a'k
-                                                                 \end{array} \right.        \\[2ex]
-                         & \iff & (x,y) \in \{ (x_0 + b'k,\  y_0 - a'k) \ | \ k\in \Z \}
-      \end{array}
-    $ \\
-  \end{center}
-  La première ligne découle de la divisibilité des coefficients par $d$, la deuxième est la définition d'appartenance à $\omega$, la troisième est une réécriture du fait que $(x_0,y_0)$ soit solution de $(ii)$, la quatrième est une factorisation banale, la cinquième une utilisation du théorème de Gauss pour le sens direct et le sens indirect ne pose pas de problème, la sixième est une réécriture de la deuxième relation, la septième découle de l'expression de $y$ pour le sens direct et le sens indirect s'obtient en multipliant avec parcimonie l'équation, la huitième est une réécriture de la septième qui ne pose pas de problème. C'est $\Omega$, par équivalence.
+	[Soit $f : I \rightarrow \R$ convexe sur $I$. \\
+		Soit $n \in \N^*$. Soient $x \in I^n$, $\lambda \in {[0;1]}^n$ telle que $\displaystyle \sum_{k=1}^{n} \lambda_k = 1$. \\
+		\begin{equation}
+			\sum_{k=1}^{n} \lambda_k x_k \in I \wedge
+			f\left( \sum_{k=1}^{n} \lambda_k x_k \right)
+			\leqslant \sum_{k=1}^{n} \lambda_k f\left( x_k \right)
+		\end{equation}]
+	{Inégalité de Jensen}
+	Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N^*$ par :
+	\begin{equation*}
+		\mathcal{P}(n) : \text{\textquotedblleft}
+		\forall x \in I^n,
+		\forall \lambda \in [0;1]^n,
+		\sum_{k=1}^{n} \lambda_k = 1 \implies
+		\sum_{k=1}^{n} \lambda_k x_k \in I \wedge
+		f\left( \sum_{k=1}^{n} \lambda_k x_k \right)
+		\leqslant \sum_{k=1}^{n} \lambda_k f\left( x_k \right)
+		\text{\textquotedblright}
+	\end{equation*}
 
+	\begin{itemize}[label=*, leftmargin=0.5cm]
+		\item Soient $x \in I^1$ et $\lambda \in [0;1]^1$ tel que $\sum_{k=1}^{1} \lambda_k = 1$. \\
+		      Alors $\lambda_1 = 1$. Trivialement, $\sum_{k=1}^{1} \lambda_k x_k = \lambda_1 x_1 = x_1 \in I$. \\
+		      De plus, $f\left( \sum_{k=1}^{1} \lambda_k x_k \right)
+			      = f\left( \lambda_1 x_1 \right)
+			      = f\left( x_1 \right)
+			      = \lambda_1 f\left( x_1 \right)
+			      = \sum_{k=1}^{1} \lambda_k f\left( x_k \right)$. \\
+		      Donc $\mathcal{P}(1)$ vrai.
+
+		\item  Soit $n \in \N^*$  tel que $\mathcal{P}(n)$ vrai. \\
+		      Soient $x \in I^{n+1}$ et $\lambda \in [0;1]^{n+1}$ tel que $\sum_{k=1}^{n+1} \lambda_k = 1$. \\
+		      $\{ x_k \;|_; k \in [\![1;n+1]\!] \}$ est une partie non vide ($n \geqslant 1$) d'un ensemble totalement ordonnée $\left(\R,\leqslant\right)$.
+		      Posons $a = \min\{ x_k \;|_; k \in [\![1;n+1]\!] \}$ et $b = \max\{ x_k \;|_; k \in [\![1;n+1]\!] \}$. D'où
+		      \begin{equation*}
+			      a
+			      \underbrace{=}_{\displaystyle \sum_{k=1}^{n+1} \lambda_k = 1} \sum_{k=1}^{n+1} \lambda_k a
+			      \underbrace{\leqslant}_{a \leqslant x_k} \sum_{k=1}^{n+1} \lambda_k x_k
+			      \underbrace{\leqslant}_{x_k \leqslant b} \sum_{k=1}^{n+1} \lambda_k b
+			      \underbrace{=}_{\displaystyle \sum_{k=1}^{n+1} \lambda_k = 1} b
+		      \end{equation*}
+		      Or $\{ x_k \;|_; k \in [\![1;n]\!] \} \subset I$ (car $x \in I^n$) donc $a \in I \wedge b \in I$. Donc
+		      \begin{equation*}
+			      \sum_{k=1}^{n+1} \lambda_k x_k
+			      \in [a;b]
+			      \underbrace{\subset}_{\begin{array}{c} \text{par convexité} \\ \text{de l'intervalle } I \end{array}} I
+		      \end{equation*}
+
+		      $\sum_{k=1}^{n+1} \lambda_k = 1$ donc $\exists i_0 \in [\![1;n+1]\!] : \lambda_{i_0} \neq 1$ (sinon $\sum_{k=1}^{n+1} \lambda_k = n+1 \neq 1$ car $n \neq 0$). \\
+		      Fixons un tel $i_0$.
+		      \begin{equation*}
+			      \begin{aligned}
+				      f\left( \sum_{k=1}^{n+1} \lambda_k x_k \right)
+				                                                                                                 & = f\left( \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \lambda_k x_k + \lambda_{i_0} x_{i_0} \right)                                                             \\
+				                                                                                                 & = f\left( \lambda_{i_0} x_{i_0} + \left( 1 - \lambda_{i_0} \right) \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} x_k \right)  \\
+				      \underbrace{\leqslant}_{\begin{array}{c} \text{Par convexité} \\ \text{de } f \end{array}} & \lambda_{i_0} f(x_{i_0}) + \left( 1 - \lambda_{i_0} \right) f\left( \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} x_k \right)
+			      \end{aligned}
+		      \end{equation*}
+		      Or $\displaystyle \forall i \in [\![1;n+1]\!] \lambda_i \leqslant \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \lambda_k = 1 - \lambda_{i_0}$ Donc $\displaystyle \frac{\lambda_i}{1 - \lambda_{i_0}} \in [0;1]$ et $\displaystyle \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} = 1$. Nous pouvons appliquer $\mathcal{P}(n)$ pour $\lambda_i \rightarrow \frac{\lambda_i}{1 - \lambda_{i_0}}$ :
+		      \begin{equation*}
+			      \begin{aligned}
+				      f\left( \sum_{k=1}^{n+1} \lambda_k x_k \right)
+				       & \leqslant \lambda_{i_0} f(x_{i_0}) + \left( 1 - \lambda_{i_0} \right) \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \frac{\lambda_k}{1 - \lambda_{i_0}} f\left( x_k \right) \\
+				       & \leqslant \lambda_{i_0} f(x_{i_0}) + \sum_{\begin{array}{c} k = 1 \\ k \neq i_0 \end{array}}^{n+1} \lambda_k f\left( x_k \right)                                                            \\
+				       & \leqslant \sum_{k = 1}^{n+1} \lambda_k f\left( x_k \right)                                                                                                                                  \\
+			      \end{aligned}
+		      \end{equation*}
+		      Donc $\mathcal{P}(n+1)$ vrai.
+	\end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}
+	[Soit $n \in \N^*$. Soient $(x_{1}, \dots, x_{n}) \in \R_+^{*n}$.
+		\begin{equation}
+			\left( \prod_{k=1}^{n} x_k \right)^{\nicefrac{1}{n}}
+			\leqslant \frac{1}{n} \sum_{k=1}^{n} x_k
+		\end{equation}]
+	{Inégalité arithmético-géométrique}
+	Soit de tels objets. Posons $\forall k \in [\![1;n]\!], \lambda_k = \nicefrac{1}{n}$. \\
+	Sachant que l'exponentielle est convexe, appliquons l'inégalité de Jensen pour $x_k \leftarrow ln(x_k)$ (autorisé car $x_k \in \R_+^*$) :
+	\begin{equation*}
+		\exp \left( \sum_{k=1}^{n} \frac{1}{n} \ln \left( x_k \right) \right)
+		\leqslant \sum_{k=1}^{n} \frac{1}{n} \exp \left( \ln \left( x_k \right) \right)
+	\end{equation*}
+	L'exponentielle est la bijection réciproque du logarithme népérien et est un morphisme additif. Nous obtenons ainsi l'inégalité recherchée.\\
+	Appliquons l’inégalité arithmético-géométrique pour l’inverse des $x_{i}$~:
+	\[
+		\left(\prod_{k=1}^{n} \frac{1}{x_{k}}\right)^{\frac{1}{n}} \leq \frac{1}{n} \sum_{k=1}^{n}\frac{1}{x_{k}}
+	\]
+	donc en prenant l’inverse de cette inégalité,
+	\[
+		\frac{n}{\displaystyle\sum_{k=1}^{n}\frac{1}{x_{k}}} \leq \left(\prod_{k=1}^{n}x_{k}\right)^{\frac{1}{n}}
+	\]
+	On a ainsi
+	\[
+		\frac{n}{\displaystyle\sum_{k=1}^{n}\frac{1}{x_{k}}} \leq \left(\prod_{k=1}^{n}x_{k}\right)^{\frac{1}{n}} \leq \frac{1}{n}\sum_{k=1}^{n}x_{k}
+	\]
+\end{question_kholle}
+
+\begin{question_kholle}[$f: I\longmapsto \R$ est convexe sur $I$ si et seulement si
+		\[
+			\forall (x,y,z)\in I^{3}, x<y \implies  \frac{f(y)-f(x)}{y-x}\leq \frac{f(z)-f(x)}{z-x}
+		\]]{Caractérisation de la convexité par les pentes}
+	\begin{description}
+		\item[$(\implies )$] Supposons que $f$ est convexe sur $I$. Soient $(x,y,z)\in I^{3}$ fixés quelconques tels que $x<y<z$. Cherchons à écrire $y$ comme barycentre des points $x$ et $z$, en résolvant l’équation d’inconnue $\lambda$:
+		      \[
+			      y=\lambda x + (1-\lambda)z \iff y-z = \lambda(x-z) \iff  \lambda=\frac{y-z}{x-z}
+		      \]
+		      De plus,
+		      \[
+			      x<y<z \implies x-z<y-z<0 \implies \frac{x-z}{y-z}>\frac{y-z}{x-z}>0 \implies \lambda\in \left]0,1\right[
+		      \]
+		      On peut donc appliquer la définition de la convexité~:
+		      \[
+			      f(y)=f(\lambda x+(1-\lambda)z) \leq \lambda f(x)+(1-\lambda)f(z)
+		      \]
+		      donc
+		      \[
+			      f(y)-f(x)\leq (1-\lambda)f(z)+\lambda f(x) - f(x) = (1-\lambda)(f(z)-f(x)) = 1-\frac{y-z}{x-z}= \frac{x-y}{x-z} = \frac{y-x}{z-x}
+		      \]
+
+		\item [$(\impliedby)$] Supposons que
+		      \[
+			      \forall (x,y,z)\in I^{3}, x<y<z \implies  \frac{f(y)-f(x)}{y-x}\\eq \frac{f(z)-f(x)}{z-x}
+		      \]
+		      Soient $(x_{1}, x_{2})\in I^{2}$ fixés quelconques tels que $x_{1}<x_{2}$. Soit $\lambda\in\left]0,1\right[$. Observons que $x_{1}<\lambda x_{1}+(1-\lambda)x_{2}<x_{2}$.\\ Appliquons l’hypothèse pour $x\leftarrow x_{1}$, $y\leftarrow \lambda x_{1} + (1-\lambda)x_{2}$ et $z\leftarrow x_{2}$~:
+		      \[
+			      \frac{f(\lambda x_{1} + (1-\lambda)x_{2}) - f(x_{1})}{\underbrace{\lambda x_{1}+(1-\lambda)x_{2} - x_{1}}_{=(1-\lambda)(x_{2}-x_{1})}} \leq \frac{f(x_{2})-f(x_{1})}{x_{2}-x_{1}}
+		      \]
+		      donc
+		      \[
+			      f(\lambda x_{1}+(1-\lambda)x_{2}) \leq (1-\lambda)\left(f(x_{2})-f(x_{1})\right) + f(x_{1}) \leq \lambda f(x_{1})(1-\lambda)f(x_{2})
+		      \]
+	\end{description}
+\end{question_kholle}
+
+\begin{question_kholle}{Une fonction convexe est continue en tout point intérieur à son domaine de définition}
+	\hfill\\
+	\begin{itemize}[label=$\vartriangleright$]
+		\item \textit{Lemme préliminaire: Une fonction convexe sur $I$ est lipschitzienne sur tout segment inclus dans l’intérieur de $I$.}\\
+		      Soit $f$ une fonction convexe sur le segment $[a,b]$, et $(\alpha, \beta)\in\R^{2}$ tels que $[\alpha, \beta]\in\left]a,b\right[$.
+		      Par la caractérisation de la convexité par les pentes, pour $(x,y)\in[\alpha, \beta]^{2}$ tels que $x<y$,
+		      \begin{multline*}
+			      -\left|\frac{f(\alpha)-f(a)}{\alpha-a}\right| \leq \frac{f(\alpha)-f(a)}{\alpha-a} \leq \frac{f(a)-f(x)}{a-x} \leq \frac{f(x)-f(y)}{x-y}\\ \leq \frac{f(y)-f(b)}{y-b} \leq \frac{f(b)-f(\beta)}{b-\beta} \leq \left|\frac{f(b)-f(\beta)}{b-\beta}\right|
+		      \end{multline*}
+		      donc
+		      \[
+			      \left|\frac{f(x)-f(y)}{x-y}\right| \leq K \quad\text{où}\quad K=\max \left\{\left|\frac{f(b)-f(\beta)}{b-\beta}\right|, \left|\frac{f(\alpha)-f(a)}{\alpha-a}\right|\right\}
+		      \]
+		      Par conséquent, pour tous $(x,y)\in I^{2}$,
+		      \begin{itemize}
+			      \item si $x<y$, alors $|f(x)-f(y)|\leq K |x-y|$
+			      \item si $x=y$, alors $|f(x)-f(y)|=0 \leq K\cdot 0 = K |x-y|$
+			      \item si $x>y$, alors $|f(x)-f(y)| \leq K|x-y|$ en échangeant les roles de $x$ et $y$.
+		      \end{itemize}
+		      Ainsi, $f$ est $K$-lipschitzienne sur $[\alpha, \beta]$.
+
+		\item \textit{Preuve du théorème.} Il se déduit du lemme précedent, en effet, toute fonction convexe sur un intervalle est lipschitzienne sur tout segment inclus dans l’intérieur de cet intervalle, tonc continue sur tout segment inclus dans l’intérieur de ce même intervalle, donc continue en tout point de celui-ci.
+	\end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}[{Soit $f:I\longrightarrow \R$ une fonction convexe.
+				\begin{itemize}
+					\item Si $(a,b)\in I^{2}$ tels que $a<b$, alors la courbe représentative de la fonction $f$ est au dessus de la corde reliant $(a, f(a))$ et $(b, f(b))$  sur l’intervalle $[a,b]$, i.e.
+					      \[
+						      \forall x\in [a,b], f(x)\leq f(a)+(x-a)\frac{f(b)-f(a)}{b-a}
+					      \]
+					\item Si $a\in I$, alors la courbe représentative de la fonction $f$ est au dessus de sa tengente en $a$, i.e.
+					      \[
+						      \forall x\in I, f(x)\leq f(a)+(x-a)f'(a)
+					      \]
+				\end{itemize}}]{Encadrement d’une fonction convexe par sa corde/tangente}
+	\begin{itemize}[label=$\vartriangleright$]
+		\item \textit{Majoration par la corde.} Soit $f$ convexe sur $I$ et $(a,b)\in I^{2}$ tels que $a<b$. Soit $x\in [a,b]$ fixé quelconque.
+		      \begin{itemize}
+			      \item si $x=a$ ou $x=b$, l’égalité à prouver est immédiate.
+			      \item si $a<x<b$, appliquons la caractérisation de la convexité par les pentes~:
+			            \[
+				            \frac{f(x)-f(a)}{x-a} \leq \frac{f(b)-f(a)}{b-a}
+			            \]
+			            d’où, après multiplication par $x-a>0$,
+			            \[
+				            f(x)-f(a) \geq (x-a)\frac{f(b)-f(a)}{b-a}
+			            \]
+			            ce qui donne le résultat.
+		      \end{itemize}
+
+		\item \textit{Minoration par la tangente.} Soit $f$ convexe sur $I$ et $a\in I$ un point en lequel $f$ est dérivable. Soit $x\in I$ fixé quelconque.
+		      \begin{itemize}
+			      \item si $x=a$, alors $f(x)=f(a)+(x-a)f'(a)$
+			      \item si $x<a$, alors pour tout $h\in\left]0, a-x\right[$, par caractérisation de la convexité par les pentes,
+					            \[
+						            x<a-h<a \implies  \frac{f(a)-f(x)}{a-x}\leq \frac{f(a)-f(a-h)}{a-(a-h)}
+					            \]
+					            donc
+					            \[
+					            \forall h\in\left]0, a-x\right[, \frac{f(a)-f(x)}{a-x}\leq \underbrace{\frac{f(a)f(a-h)}{a-(a-h)}}_{\substack{\arrowlim{h}{0} f'(a)\\ \text{car $f$ est dérivable en $a$}}}
+				            \]
+				            si bien qu’en passant à la limite sur $h\to 0$,
+				            \[
+					            \frac{f(a)-f(x)}{a-x}\leq f'(a)
+				            \]
+				            En multipliant l’inégalité ci-dessus par $(a-x)\geq 0$, on obtient le résultat.
+			      \item si $x>a$, alors pour tout $h\in\left]0, x-a\right[$, par caractérisation de la convexité par les pentes,
+					            \[
+						            a<a+h<x \implies  \frac{f(x)-f(a)}{x-a}\geq \frac{f(a+h)-f(a)}{(a+h)-a}
+					            \]
+					            donc
+					            \[
+					            \forall h\in\left]0, x-a\right[, \frac{f(x)-f(a)}{x-a}\geq \underbrace{\frac{f(a+h)f(a)}{(a+h)-a}}_{\substack{\arrowlim{h}{0} f'(a)\\ \text{car $f$ est dérivable en $a$}}}
+				            \]
+				            si bien qu’en passant à la limite sur $h\to 0$,
+				            \[
+					            \frac{f(x)-f(a)}{x-a}\geq f'(a)
+				            \]
+				            En multipliant l’inégalité ci-dessus par $(x-a)\geq 0$, on obtient le résultat.
+
+		      \end{itemize}
+	\end{itemize}
+
+\end{question_kholle}
+
+\begin{question_kholle}
+	{Unicité de la partie régulière d'un développement limité}
+
+	Soit $f$ une fonction admettant un $DL_n(x_0)$ avec $n \in \N$ et $x_0 \in \mathcal{D}_f$. \\
+	Supposons que $f$ admette deux développements limités. C'est-à-dire qu'il existe $a \in \C^{n+1}$ et $b \in \C^{n+1}$ \tqs :
+	\begin{equation*}
+		\begin{aligned}
+			f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k (x - x_0)^k + o\left((x-x_0)^n\right) \\
+			f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k (x - x_0)^k + o\left((x-x_0)^n\right)
+		\end{aligned}
+	\end{equation*}
+
+	Posons $u = x - x_0$ et  $\tilde{f}(u) = f(x_0+u)$ de sorte que les hypothèses sur $f$ se traduise par l'existence d'un $DL_n(0)$ pour $\tilde{f}$ :
+	\begin{equation*}
+		f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k u^k + o\left(u^n\right)
+		\text{ et }
+		f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k u^k + o\left(u^n\right)
+	\end{equation*}
+	Appliquons la définition d'un $DL_n(0)$. Il existe deux fonctions $\varepsilon_1$ et $\varepsilon_2$ définies sur $\mathcal{D}_{\tilde{f}}$ \tqs
+	\begin{equation*}
+		\begin{aligned}
+			\forall u \in \mathcal{D}_{\tilde{f}}, \ \tilde{f}(u) = \sum_{k=0}^{n} a_k u^k + u^n \varepsilon_1 \\
+			\forall u \in \mathcal{D}_{\tilde{f}}, \ \tilde{f}(u) = \sum_{k=0}^{n} b_k u^k + u^n \varepsilon_2 \\
+			\textlim{u}{0} \varepsilon_1(u) = 0 \text{ et } \textlim{u}{0} \varepsilon_2(u) = 0
+		\end{aligned}
+	\end{equation*}
+	Donc
+	\begin{equation*}
+		\forall u \in \mathcal{D}_{\tilde{f}}, \
+		\sum_{k=0}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
+	\end{equation*}
+
+	Par l'absurde, supposons que $\exists k_0 \in \lient 0; n \rient : a_{k_0} \neq b_{k_0}$. Posons $k_1$ le plus petit entier dont les coefficients $a$ et $b$ sont différents :
+	\begin{equation*}
+		k_1 = \min \left\{ k \in \lient 0;n \rient \;|\; a_k \neq b_k \right\}
+	\end{equation*}
+	Nous obtenons alors
+	\begin{equation*}
+		\forall u \in \mathcal{D}_{\tilde{f}}, \
+		\sum_{k=0}^{k_1-1} \underbrace{(a_k - b_k)}_{=0} u^k + (a_{k_1} - b_{k_1}) u^{k_1} + \sum_{k=k_1+1}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
+	\end{equation*}
+	Multiplions par $u^{-k_1}$ puis calculons la limite en $u \rightarrow 0$.
+	D'un coté, pour $k > k_1$, nous avons $k - k_1 \leqslant 1$ donc $(a_k - b_k) u^{k-k_1} \arrowlim{u}{0} 0$.
+	De l'autre coté, $u^{n-k_1}$ tend vers $0$ ou $1$ selon si $k_1 < n$ ou $k_1 = n$. Et, par hypothèse, $\varepsilon_2(u) - \varepsilon_1(u) \arrowlim{u}{0} 0$.
+	Par unicité de la limite, $a_{k_1} - b_{k_1} = 0$. Ce qui contredit la définition de $k_1$.
+
+	Par conséquent $\forall k \in \lient 0;n \rient, \ a_k = b_k$. Ainsi, la partie régulière d'un $DL$ est unique.
 \end{question_kholle}
 \pagebreak\section{Semaine 18}
 
