@@ -6992,7 +6992,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 	\begin{description}
 		\item[$(\implies)$] Supposons que $f$ est strictement croissante sur $I$.
 		      \begin{itemize}
-			      \item $f$ est ctristement croissante donc croissante donc
+			      \item $f$ est strictement croissante donc croissante donc
 			            \[
 				            \forall x\in I, f'(x)\geq 0
 			            \]
@@ -7010,7 +7010,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 			            \[
 				            \forall x\in [x_{0},y_{0}], f(x_{0})\leq f(x)\leq f(y_{0})=f(x_{0})
 			            \]
-			            donc $f(x)=f(x_{0})$.\\
+			            donc $\forall x\in[x_{0},y_{0}], f(x)=f(x_{0})$.\\
 			            Par conséquent, $f$ est constante sur $[x_{0}, y_{0}]$ si bien que $f'$ est identiquement nulle sur $[x_{0}, y_{0}]$, ce qui contredit l’hypothèse faite sur $f$.
 		      \end{itemize}
 		      Ainsi, $f$ est strictement croissante sur $I$.
@@ -7023,34 +7023,26 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 		\]]{Inégalité de Taylor-Lagrange}
 	Supposons $x\neq x_{0}$ (sinon, l’égalité est immédiate). Appliquons l’égalité de Taylor-Lagrange:
 	\begin{align*}
-		\exists c_{x}\in \left]x,x_{0}\right[\cup\left]x_{0}, x\right[: \left| f(x)-\sum_{k=0}^{n}\frac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k} \right| & = \left| f^{(n+1)}(c_{x})\frac{(x-x_{0})^{n+1}}{(n+1)!}\right|       \\
-		                                                                                                                                         & =\left|f^{(n+1)}(c_{x})\right| \times \frac{|x-x_{0}|^{(n+1)}}{n+1!} \\
+		\exists c_{x}\in \left]x,x_{0}\right[\cup\left]x_{0}, x\right[: \left| f(x)-\sum_{k=0}^{n}\frac{f^{(k)}(x_{0})}{k!}(x-x_{0})^{k} \right| & = \left| f^{(n+1)}(c_{x})\frac{(x-x_{0})^{n+1}}{(n+1)!}\right|     \\
+		                                                                                                                                         & =\left|f^{(n+1)}(c_{x})\right| \times \frac{|x-x_{0}|^{n+1}}{n+1!} \\
 		                                                                                                                                         & =M \frac{|x-x_{0}|^{n+1}}{(n+1)!}
 	\end{align*}
 \end{question_kholle}
 
 \begin{question_kholle}
-	[Soit $f : I \rightarrow \R$ convexe sur $I$. \\
-		Soit $n \in \N^*$. Soient $x \in I^n$, $\lambda \in {[0;1]}^n$ telle que $\displaystyle \sum_{k=1}^{n} \lambda_k = 1$. \\
-		\begin{equation}
-			\sum_{k=1}^{n} \lambda_k x_k \in I \wedge
-			f\left( \sum_{k=1}^{n} \lambda_k x_k \right)
-			\leqslant \sum_{k=1}^{n} \lambda_k f\left( x_k \right)
-		\end{equation}]
+	[{Soit $f : I \longrightarrow \R$ convexe sur $I$. Alors, pour tout $n\in\N^{*}$, pour tous $(x_{1},\dots,x_{n})\in I^{n}$ et tous $(\lambda_{1}, \dots, \lambda_{n})\in[0,1]^{n}$ tels que $\sum_{i=1}^{n}\lambda_{i}=1$,
+	\begin{equation}
+		\sum_{k=1}^{n} \lambda_k x_k \in I \quad\text{et}\quad
+		f\left( \sum_{k=1}^{n} \lambda_k x_k \right)
+		\leqslant \sum_{k=1}^{n} \lambda_k f\left( x_k \right)
+	\end{equation}}]
 	{Inégalité de Jensen}
 	Considérons le prédicat $\mathcal{P}(\cdot)$ défini pour tout $n \in \N^*$ par :
 	\begin{equation*}
-		\mathcal{P}(n) : \text{\textquotedblleft}
-		\forall x \in I^n,
-		\forall \lambda \in [0;1]^n,
-		\sum_{k=1}^{n} \lambda_k = 1 \implies
-		\sum_{k=1}^{n} \lambda_k x_k \in I \wedge
-		f\left( \sum_{k=1}^{n} \lambda_k x_k \right)
-		\leqslant \sum_{k=1}^{n} \lambda_k f\left( x_k \right)
-		\text{\textquotedblright}
+		\mathcal{P}(n):\frquote{\displaystyle\forall(x_{i})\in I^{n}, \forall (\lambda_{i})\in[0,1]^{n} \text{ tels que } \sum_{i=1}^{n}\lambda_{i}=1, \sum_{i=1}^{n}\lambda_{i}x_{i}\in I \text{ et } f \left(\sum_{i=1}^{n}\lambda_{i}x_{i}\right)\leq \sum_{i=a}^{n}\lambda_{i}f(x_{i})}
 	\end{equation*}
 
-	\begin{itemize}[label=*, leftmargin=0.5cm]
+	\begin{itemize}[label=$*$, leftmargin=0.5cm]
 		\item Soient $x \in I^1$ et $\lambda \in [0;1]^1$ tel que $\sum_{k=1}^{1} \lambda_k = 1$. \\
 		      Alors $\lambda_1 = 1$. Trivialement, $\sum_{k=1}^{1} \lambda_k x_k = \lambda_1 x_1 = x_1 \in I$. \\
 		      De plus, $f\left( \sum_{k=1}^{1} \lambda_k x_k \right)
@@ -7263,7 +7255,6 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 			f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} b_k (x - x_0)^k + o\left((x-x_0)^n\right)
 		\end{aligned}
 	\end{equation*}
-
 	Posons $u = x - x_0$ et  $\tilde{f}(u) = f(x_0+u)$ de sorte que les hypothèses sur $f$ se traduise par l'existence d'un $DL_n(0)$ pour $\tilde{f}$ :
 	\begin{equation*}
 		f(x) \underset{x \rightarrow x_0}{=} \sum_{k=0}^{n} a_k u^k + o\left(u^n\right)
@@ -7283,7 +7274,6 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 		\forall u \in \mathcal{D}_{\tilde{f}}, \
 		\sum_{k=0}^{n} (a_k - b_k) u^k = u^n \left( \varepsilon_2(u) - \varepsilon_1(u) \right)
 	\end{equation*}
-
 	Par l'absurde, supposons que $\exists k_0 \in \lient 0; n \rient : a_{k_0} \neq b_{k_0}$. Posons $k_1$ le plus petit entier dont les coefficients $a$ et $b$ sont différents :
 	\begin{equation*}
 		k_1 = \min \left\{ k \in \lient 0;n \rient \;|\; a_k \neq b_k \right\}
@@ -7297,7 +7287,6 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 	D'un coté, pour $k > k_1$, nous avons $k - k_1 \leqslant 1$ donc $(a_k - b_k) u^{k-k_1} \arrowlim{u}{0} 0$.
 	De l'autre coté, $u^{n-k_1}$ tend vers $0$ ou $1$ selon si $k_1 < n$ ou $k_1 = n$. Et, par hypothèse, $\varepsilon_2(u) - \varepsilon_1(u) \arrowlim{u}{0} 0$.
 	Par unicité de la limite, $a_{k_1} - b_{k_1} = 0$. Ce qui contredit la définition de $k_1$.
-
 	Par conséquent $\forall k \in \lient 0;n \rient, \ a_k = b_k$. Ainsi, la partie régulière d'un $DL$ est unique.
 \end{question_kholle}
 \pagebreak\section{Semaine 18}
