@@ -5317,7 +5317,7 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 \end{question_kholle}
 
 \begin{question_kholle}{Montrer que $(a\land b)(a\lor b) = |ab|$}
-	Soient $(a,b)\if\Z^{2}$ fixés quelconques. Nous savons que
+	Soient $(a,b)\in\Z^{2}$ fixés quelconques. Nous savons que
 	\[
 		\exists (a', b')\in\Z^{2}:
 		\begin{cases}
@@ -7291,249 +7291,263 @@ Donc $z_{1}z_{2}^{-1} \in \mathbb{U}_{n}$. On a donc montré que $(\mathbb{U}_{n
 \end{question_kholle}
 \pagebreak\section{Semaine 18}
 
-\begin{question_kholle}
-  {L'ensemble des nombres premiers est infini}
-  
-  Notons l'ensemble des nombres premiers $\PRIME = \left\{ n \in \N \;|\; \left| \mathcal{D}(n) \cup \N \right| = 2 \right\}$
-  Par l'absurde, supposons que \PRIME est fini. \\
-  Posons $\displaystyle m = 1 + \prod_{p \in \PRIME} p \in \N$. \\
-  Comme $2 \in \PRIME$, $m \geqslant 2$. Donc $m$ admet un diviseur premier, $\exists q \in \PRIME : q \;|\; m$. Donc $q \wedge m = q$. \\
-  Par ailleurs, $\displaystyle m = 1 + q \left( \prod_{\tiny \begin{matrix} p \in \PRIME \\ p \neq q \end{matrix}} p \right)$. Donc $\displaystyle m - q \left( \prod_{\tiny \begin{matrix} p \in \PRIME \\ p \neq q \end{matrix}} p \right) = 1$. D'après le théorème de Bézout, $q \wedge m = 1$. \\
-  Donc $q = 1$ ce qui est une contradiction avec $q \in \PRIME$.
+\begin{question_kholle}[{Soit $f$ définie sur un intervalle contenant $x_{0}$. Alors $f$ est dérivable en $x_{0}$ si et seulement si $f$ admet un $DL_{1}(x_{0})$.}]{Interprétation d’un DL en terme de dérivabilité}
+	\hfill\\
+	\begin{itemize}[label=$\vartriangleright$]
+		\item Soit $f$ une fonction définie sur un intervalle contenant $x_{0}$.
+		      \begin{description}
+			      \item[$(\implies)$] Supposons que $f$ admet le $DL_{1}(x_{0})$
+			            \[
+				            f(x)\underset{x\to x_{0}}{=} a_{0} + a_{1}(x-x_{0})+o(x-x_{0})
+			            \]
+			            Alors, son existence implique celle du développement limité à l’ordre 0
+			            \[
+				            f(x)\underset{x \rightarrow a}{=} a_{0}+o(1)
+			            \]
+			            ce qui permet d’affirmer que $f(x_{0})=a_{0}$.\\
+			            Par ailleurs, l’existence du $DL_{1}(x_{0})$ garantit qu’il existe une fonction $\varepsilon$ définie sur $\mathcal{D}_{f}$ à valeurs dans $\C$ telle que $\lim_{x\to x_{0}}\varepsilon(x)=0$ et
+			            \[
+				            \forall x\in \mathcal{D}_{f} ,\; f(x)=\underbrace{a_{0}}_{=f(x_{0})} + a_{1}(x-x_{0}) + (x-x_{0})\varepsilon (x)
+			            \]
+			            donc
+			            \[
+				            \forall x\in \mathcal{D}_{f}\setminus \{x_{0}\},\; \frac{f(x)f(x_{0})}{x-x_{0}}=a_{1}+\underbrace{\varepsilon(x)}_{\arrowlim{x}{x_{0}}0}
+			            \]
+			            d’où
+			            \[
+				            \lim_{x\to x_{0}}\frac{f(x)-f(x_{0})}{x-x_{0}}=a_{1}
+			            \]
+			            ce qui montre que $f$ est dérivable en $x_{0}$. On a de plus $f'(x_{0})=a_{1}$.
+
+			      \item[$(\impliedby)$] Réciproquement, si $f$ est dérivable en $x_{0}$, alors $f$ admet comme $DL_{1}(x_{0})$ son approximation au premier ordre, à savoir
+			            \[
+				            f(x)\underset{x \rightarrow a}{=} f(x_{0})+f'(x_{0})(x-x_{0})+o(x-x_{0})
+			            \]
+			            La preuve consiste à poser l’application
+			            \[
+				            \varepsilon \left|\applic{I}{\R}{x}{\begin{cases}
+						            \frac{f(x)-f(x_{0}) - f'(x_{0})(x-x_{0})}{x-x_{0}} & \text{si $x\in I\setminus\{x_{0}\}$} \\
+						            0                                                  & \text{si $x=x_{0}$}
+					            \end{cases}}\right.
+			            \]
+			            puis à montrer dans un premier temps que cette application convient, et dans un second temps à écrire $|\varepsilon(x)|$ comme la distance entre le taux d’accroissement en $x_{0}$ de $f$ et $f'(x_{0})$, pour pouvoir conclure en utilisant la définition de la dérivabilité de $f$ en $x_{0}$ (limite de son taux d’accroissement) quand à la convergence vers 0 de $\varepsilon$.
+		      \end{description}
+		\item \textit{Exemple de fonction admettant un $DL_{2}(0)$ mais pas de dérivée seconde.}\\
+		      Considérons la fonction $f$ définie aur $\R$ par
+		      \[
+			      f(x)=\begin{cases}
+				      \displaystyle x^{3}\sin \left(\frac{1}{x^{2}}\right) & \text{si $s\in\R$} \\
+				      0                                                    & \text{si $x=0$}
+			      \end{cases}
+		      \]
+		      Alors
+		      \[
+			      \forall x\in\R,\;|f(x)|\leq |x|^{3} \quad\text{donc}\quad f(x)\underset{x \rightarrow a}{=} o(x^{2})
+		      \]
+		      ainsi $f$ admet un $DL_{1}(0)$ et un $DL_{2}(0)$. Elle est donc dérivable en $x_{0}$ et les théorèmes usuels montrent que $f$ est dérivable sur $\R^{*}$. Cependant, pour tout $x\in\R^{*}$,
+		      \[
+			      f'(x)=3x^{2}\sin \left(\frac{1}{x^{2}}\right) + x^{3}\cos \left(\frac{1}{x^{2}}\right)\frac{-2}{x^{3}} = 3x^{2}\sin \left(\frac{1}{x^{2}}\right) -\underbrace{2\cos \left(\frac{1}{x^{2}}\right)}_{\text{n’as pas de limite en $0^{+}$}}
+		      \]
+		      donc $f'(x)$ n’a pas de limite à droite en 0 donc $f'(x)$ n’a pas de limte en 0 donc $f'$ n’est pas continue en 0 donc n’est pas dérivable.
+	\end{itemize}
+\end{question_kholle}
+
+\begin{question_kholle}{Calcul du $DL_{n}(0)$ de $(1+x)^{\alpha}$}
+	La fonction $f$ définie pour tout $x\in\R$ par $f_{\alpha}(x)=(1+x)^{\alpha}$ est de classe $\mathcal{C}^{\infty}$ sur $\left]-1, 1\right[$ donc la formule de Taylor-Young permet d’affirmer qu’elle admet en 0 des $DL$ à tout ordre donnés par
+	\[
+		f_{\alpha}(x) \underset{x\to 0}{=} \sum_{k=0}^{n}\frac{f_{\alpha}^{(k)}(0)}{k!}x^{k} + o(x^{n})
+	\]
+	or $f_{\alpha}^{(0)}(x)=(1+x)^{\alpha}$, $f_{\alpha}^{(1)}(x)=\alpha(1+x)^{\alpha-1}$, $f_{\alpha}^{(2)}(x)=\alpha(\alpha-1)(1+x)^{\alpha-2}$ et on obtient facilement par récurrence
+	\[
+		\forall k\in\N^{*}, f_{\alpha}^{(k)}(x)=\alpha(\alpha-1)\times\cdots\times (\alpha-k+1)(1+x)^{\alpha-k}
+	\]
+	si bien que $f_{\alpha}^{(0)}(0)=1$, $f_{\alpha}^{(1)}(0)=\alpha$, $f_{\alpha}^{(k)}(0)=\alpha(\alpha-1)$ et
+	\[
+		\forall k\in\N^{*}, f_{\alpha}^{(k)}(0) = \alpha(\alpha-1)\times\cdots\times (\alpha-k+1)
+	\]
+	Rappelons que, pour $(m,k)\in\N^{*}$ tels que $1\leq k\leq m$, le coefficient binomial $\binom{m}{k}$ vaut 1 si $k=0$ et sinon,
+	\[
+		\forall k\in\iset{1,m}, \binom{m}{k}=\frac{m!}{k!(m-k)!}=\frac{m(m-1)\times\cdots\times (m-k+1)}{k!}
+	\]
+	si bien qu’il semble assez naturel de généraliser cette notation en posant pour tout $\alpha\in\R^{*}$,
+	\[
+		\underbrace{\binom{\alpha}{0}=1}_{=f_{\alpha}^{(0)}(0)} \quad\text{et}\quad \forall k\in\N^{*}, \underbrace{\binom{\alpha}{k}=\frac{\alpha(\alpha-1)\times \cdots \times (\alpha-k+1)}{k!}}_{=\frac{f_{\alpha}^{(k)}(0)}{k!}}
+	\]
+	de sorte que la formule de Taylor Young s’écrive
+	\[
+		f_{\alpha}(x) \underset{x\to 0}{=}\sum_{k=0}^{n}\binom{\alpha}{k}x^{k}+o(x^{n})
+	\]
+\end{question_kholle}
+
+\begin{question_kholle}[{Soient $f$ une fonction définie et continue sur un intervalle $I$, $F$ une primitive de $f$ définie sur $I$, $x_{0}\in I$ et $n\in\N$. S’il existe $(a_{0}, \dots, a_{n})\in\C^{n+1}$ tels que $f$ admet en $x_{0}$ le $DL_{n}(x_{0})$:
+	\[
+		f(x)\underset{x\to x_{0}}{=} \sum_{k=0}^{n}a_{k}(x-x_{0})^{k} + o((x-x_{0})^{n})
+	\]
+	alors $F$ admet un $DL_{\bm{n+1}}(x_{0})$ qui est
+	\[
+		F(x)\underset{x\to x_{0}}{=} F(x_{0}) + \sum_{k=0}^{n}\frac{a_{0}}{k+1}(x-x_{0})^{k+1} + o((x-x_{0})^{n+1})
+	\]}]{Théorème d’intégragion d’un développement limité}
+	Posons
+	\[
+		g\left|\applic{I}{\C}{x}{F(x)-F(x_{0}) - \sum_{k=0}^{n}\frac{a_{k}(x-x_{0})^{k+1}}{k+1}}\right.
+	\]
+	\textit{On souhaite montrer que $g(x)=o((x-x_{0})^{n+1})$ pour avoir $\frac{g(x)}{(x-x_{0})^{n+1}}\arrowlim{x}{x_{0}}0$, i.e.
+	\[
+		\forall \varepsilon\in\R_{+}^{*}, \exists \eta>0: \forall x\in I, |x-x_{0}|\leq \eta \implies  \left|\frac{g(x)}{(x-x_{0})^{n+1}}\right| \leq \varepsilon
+	\]Nous allons pour cela utiliser l’inégalité des accroissements finis généralisée à $\C$.}
+	La fonction $g$ est de classe $\mathcal C^{1}$ sur $I$, et
+	\[
+		\forall x\in I, g'(x)=F'(x)-0-\sum_{k=0}^{n}\frac{a_{k}}{k+1}(k+1)(x-x_{0})^{k+1-1} = f(x)-\sum_{k=0}^{n}a_{k}(x-x_{0})^{k}
+	\]
+	L’hypothèse de l’existence du $DL_{n}(x_{1})$ de $f$ donne l’existence de $\delta:I\longrightarrow \C$ telle que
+	\[
+		\forall x\in I, f(x)=\sum_{k=0}^{n}a_{k}(x-x_{0})^{k}+(x-x_{0})^{n}\delta(x) \quad\text{et}\quad \lim_{x\to x_{0}}\delta(x)=0
+	\]
+	Par conséquent,
+	\[
+		\forall t\in I, |g'(t)| = |t-x|^{n}\delta(t)
+	\]
+	Appliquons l’inégalité des accroissements finis sur $[x_{0}, x]\cup [x, x_{0}]$ à $g$ continue sur cet intervalle et dérivable sur son intérieur~:
+	\begin{equation}\label{S18:2:1}
+		|g(x)-g(x_{0})| \leq \|g'\|_{\infty, [x, x_{0}]\cup[x_{0}, x]}|x-x_{0}|
+	\end{equation}
+	Soit $\varepsilon\in\R_{+}^{*}$ fixé quelconque. Appliquons la définition de la limite en $0$ de $\delta$~:
+	\begin{equation*}\label{S18:2:2}
+		\exists \eta\in\R_{+}^{*}: \forall t\in I, |t-x_{0}|\leq \eta \implies  |\delta(t)| \leq \varepsilon
+	\end{equation*}
+	Fixons un tel $\eta$. Soit $x\in I$ fixé quelconque tel que $|x-x_{0}|\leq \eta$. Majorons $\|g'\|_{\infty, [x, x_{0}]\cup[x_{0}, x]}$~: soit $t\in I$ tel que $t\in [x_{0}, x]\cup[x, x_{0}]$. Alors,
+	\[
+		|g'(t)| = \underbrace{|t-x_{0}|^{n}}_{\leq |x-x_{0}|} \times \underbrace{|\delta(t)|}_{\leq \varepsilon \text{ car $|t-x_{0}|\leq|x-x_{0}|\leq \eta$ donc (2)}} \leq |x-x_{0}|^{n} \varepsilon
+	\]
+	ce dernier terme ne dépendant pas de $t$, il majore $\left\{|g'(t)| \mid t\in[x_{0}, x]\cup [x, x_{0}]\right\}$, donc
+	\[
+		\|g'\|_{\infty, [x, x_{0}]\cup[x_{0}, x]}\leq |x-x_{0}|^{n}\times \varepsilon
+	\]
+	donc par $\eqref{S18:2:1}$,
+	\[
+		|g(x)| \leq |x-x_{0}|^{n} \times \varepsilon \times |x-x_{0}|
+	\]
+	donc $|g(x)|\leq \varepsilon|x-x_{0}|^{n+1}$ ce qui établit $g(x)\underset{x\to x_{0}}{=}o((x-x_{0})^{n+1})$.
+\end{question_kholle}
+
+\begin{question_kholle}{Formule explicite du $DL_{2n+1}(0)$ de $\arcsin$.}
+	La fonction $\arcsin$ est dérivable sur $\left]-1, 1\right[$, et
+			\[
+			\forall u\in\left]-1,1\right[, \arcsin'(u) = \frac{1}{\sqrt{1-u^{2}}} \quad\text{or}\quad \frac{1}{1+t^{2}}\underset{x\to 0}{=} \sum_{k=0}^{n}\binom{-\frac{1}{2}}{k}t^{k} +o(t^{n})
+		\]
+		donc pour $t\leftarrow -u^{2}$,
+		\[
+			\arcsin '(u) \underset{x\to 0}{=}\sum_{k=0ntn}^{\binom{-\frac{1}{2}}{k}(-u^{2})^{k}}+o(u^{2n})
+		\]
+		La fonction $\arcsin'$ est continue sur $\left]-1, 1\right[$ donc au voisinage de 0 si bien que par intégration du $DL_{2n}(0)$ ci-dessus,
+	\[
+		\arcsin(x) \underset{x\to 0}{=} \underbrace{\arcsin(0)}_{=0} + \sum_{k=0}^{n}(-1)^{k}\binom{-\frac{1}{2}}{k}\frac{u^{2k+1}}{2k+1} + o(x^{2n+1})
+	\]
+	Or
+	\begin{align*}
+		\binom{-\frac{1}{2}}{k} & =\frac{\left(-\frac{1}{2}\right)\times \left(-\frac{1}{2}-1\right)\times \left(-\frac{1}{2}-2\right)\times \cdots \times \left(-\frac{1}{2}-k+1\right)}{k!} \\
+		                        & =\frac{\frac{(-1)^{k}}{2}(1)\times (3)\times (5)\times \cdots \times (2k-1)}{k!}                                                                            \\
+		                        & = \frac{(1)^{k} (1)\times (2)\times (3)\times \cdots \times (2k-2) \times (2k11)\times (2k)}{2^{k}k! \times 2 \times 4 \times 6 \times \cdots \times 2k}    \\
+		                        & = \frac{(1)^{k}(2k)!}{2^{k}k!2^{k}k!}                                                                                                                       \\
+		                        & = \frac{(1)^{k}(2k)!}{2^{2k}k!^{2}}
+	\end{align*}
+	si bien que
+	\[
+		\forall n\in\N, \arcsin(x) \underset{x\to 0}{=}\sum_{k=0}^{n}\frac{(2k)!}{(2k+1)2^{2k}k!^{2}}x^{2k+1}o(x^{2n+1})
+	\]
+\end{question_kholle}
+
+\begin{question_kholle}{$DL_{10}(0)$ de $f(x)=\displaystyle\int_{x}^{x^{2}}\frac{\dd t}{\sqrt{1+t^{4}}}$}
+	Posons pour tout $x\in\R$, $F(x)=\int_{0}^{x}\frac{\dd t}{\sqrt{1+t^{4}}}$. C’est la primitive qui s’annule en $0$ d’une fonction de classe $\mathcal{C}^{\infty}$ donc $F\in \mathcal{C}^{\infty}(\R, \R)$. La formule de Taylor-Young permet alors d’affirmer que $F$ admet des DL est tout point à tout ordre. De plus,
+	\[
+		F'(x) = \frac{1}{\sqrt{1+x^{4}}} \underset{x\to 0}{=} 1-\frac{x^{4}}{2} + \frac{3}{8}x^{8}+o(x^{11})
+	\]
+	si bien que d’après le théorème d’intégration des DL ($F'$ est continue au voisinage de 0 sur \R),
+	\begin{align*}
+		F(x) & \underset{x\to 0}{=} F(0)+\int_{0}^{x}\left(1-\frac{t^{4}}{2}+\frac{3}{8}\right)\dd t + o(x{12}) \\
+		     & \underset{x\to 0}{=} 0+\left[t-\frac{t^{5}}{10} + \frac{1}{24}t^{9}\right]_{0}^{x} + o(x^{12})   \\
+		     & \underset{x\to 0}{=} x-\frac{1}{10}x^{5} + \frac{1}{24}x^{9} + o(x^{12})
+	\end{align*}
+	On en déduit alors
+	\begin{align*}
+		f(x) & = F(x^{2}) - F(x)                                                                                              \\
+		     & \underset{x\to 0}{=} x^{2}-\frac{1}{10}x^{10} + o(x^{17}) - x+\frac{1}{10}x^{5} -\frac{1}{24}x^{9} + o(x^{12}) \\
+		     & \underset{x\to 0}{=} -x+x^{2}+\frac{1}{10}x^{5}-\frac{1}{24}x^{9}-\frac{1}{10}x^{10}+o(x^{18})
+	\end{align*}
+	Ainsi,
+	\[
+		f(x)\underset{x\to 0}{=} -x+x^{2}+\frac{1}{10}x^{5} - \frac{1}{24}x^{9} - \frac{1}{10}x^{10} + o(x^{10})
+	\]
 \end{question_kholle}
 
 \begin{question_kholle}
-  [Soit $n \in \N^*, p \in \PRIME, k_0 \in \N$.
-    \begin{equation}
-      \nu_p(n) = k_0 \iff
-      \exists m \in \Z : \left\{ \begin{matrix}
-        n = p^{k_0} m \\
-        m \wedge p = 1
-      \end{matrix} \right.
-    \end{equation}
-  ]
-  {Caractérisation de la valuation \textit{p}-adique}
-  
-  $\implies$ Supposons que $\nu_p(n) = k_0$. \\
-  Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{k_0} \;|\; n$.
-  Notons $m \in \Z$ le quotient de la division euclidienne de $n$ par $p^{k_0}$. Nous avons $n = p^{k_0} m$. \\
-  Comme $m \wedge p \in \mathcal{D}(p) \cap \N$, $m \wedge p \in \left\{1,p\right\}$.
-  Par l'absurde, supposons que $m \wedge p = p$.
-  \begin{equation*}
-    \begin{aligned}
-      p \;|\; m
-       & \implies \exists m' \in \Z : m = p m'                                                     \\
-       & \implies \exists m' \in \Z : n = p p^{k_0} m' = p^{k_0+1} m'                              \\
-       & \implies k_0 + 1 \in \left\{ k \in \N \;|\; p^k | n \right\}                              \\
-       & \implies k_0 + 1 \leqslant \max \left\{ k \in \N \;|\; p^k | n \right\} = \nu_p(n) = k_0
-    \end{aligned}
-  \end{equation*}
-  Ce qui est une contradiction donc $m \wedge p = 1$.
-  
-  $\impliedby$ Supposons $\exists m \in \Z : \left\{ \begin{matrix}
-      n = p^{k_0} m \\
-      m \wedge p = 1
-    \end{matrix} \right.$ \\
-  Par définition de la valuation \textit{p}-adique, $p^{\nu_p(n)} \;|\; n$ donc $p^{\nu_p(n)} \;|\; p^{k_0} m$. Or $m \wedge p = 1$ donc $m \wedge p^{\nu_p(n)} = 1$.
-  D'après le théorème de Gauss, $p_{\nu_p(n)} \;|\; p^{k_0}$. Donc $\exists \alpha \in \Z : \alpha p_{\nu_p(n)} = p^{k_0}$
-  \begin{equation*}
-    \begin{aligned}
-      \alpha p_{\nu_p(n)} = p^{k_0}
-       & \implies p^{k_0} - \alpha p_{\nu_p(n)} = 0                                                            \\
-       & \implies p^{k_0} \left( 1 - \alpha p^{\nu_p(n) - k_0} \right) = 0 \text{ car } k_0 \leqslant \nu_p(n) \\
-       & \implies \alpha p^{\nu_p(n) - k_0} = 1 \text{ car \Z est intègre}                                     \\
-       & \implies p^{\nu_p(n) - k_0} \in \mathcal{D}(1) \cap \N                                                \\
-       & \implies p^{\nu_p(n) - k_0} = 1                                                                       \\
-       & \implies \nu_p(n) - k_0 = 0                                                                           \\
-       & \implies \nu_p(n) = k_0                                                                               \\
-    \end{aligned}
-  \end{equation*}
+	{Deux fonctions équivalentes au voisinage de $a$ ont le même signe sur un voisinage de $a$}
+
+	Soient $f : \mathcal{D} \rightarrow \R$ et $g : \mathcal{D} \rightarrow \R$ telles que $f(x) \underset{x \rightarrow a}{\sim} g(x)$ avec $a \in \mathcal{D}$. \\
+	Appliquons la définition de l'équivalence pour $\varepsilon \leftarrow \frac{1}{2}$, il existe un voisinage $V$ de $a$ tel que :
+	\begin{equation*}
+		\forall x \in V \cap \mathcal{D},
+		| f(x) - g(x) | \leqslant \frac{1}{2} | g(x) |
+	\end{equation*}
+
+	Fixons un tel voisinage $V$.
+	Nous obtenons :
+	\begin{equation*}
+		\forall x \in V \cap \mathcal{D},
+		\underbrace{g(x) - \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
+		\leqslant f(x) \leqslant
+		\underbrace{g(x) + \frac{1}{2} | g(x) |}_{\text{du signe de }g(x)}
+	\end{equation*}
+
+	Ainsi $f(x)$ et $g(x)$ ont le même signe sur $V \cap \mathcal{D}$.
 \end{question_kholle}
 
 \begin{question_kholle}
-  [\begin{equation}
-      \forall (a, b) \in \Z^2, \
-      a|b \ \iff \ \forall p \in \PRIME, \ \nu _p (a) \leq \nu _p (b)
-    \end{equation}]
-  {Caractérisation de $a | b$ par les valuations $p$-adiques et preuve de leur propriété de morphisme.}
-  Premièrement, montrons que la valuation $p$-adique est un morphisme de $(\Z ^* , \times)$ dans $(\N ,+)$. \\
-  Soient de tels entiers relatifs $a,b$. \\
-  \[
-    \exists \ m,n \in (\Z ^*)^2 \ : \ \left(\left(a = p^{\nu _p (a)}m\right) \ \wedge \ (m\wedge p = 1)\right) \ \wedge \ \left(\left(b = p^{\nu _p (b)}n\right) \ \wedge \ (n\wedge p = 1)\right),
-  \]
-  donc $ab = p^{\nu _p (a) + \nu _p (b)}mn$ et $mn \wedge p = 1$, par la réciproque de la caractérisation des valuations $p$-adiques :
-  \[
-    \nu _p (ab) = \nu _p (a) + \nu _p (b).
-  \]
-  Prouvons le sens réciproque de la susdite caractérisation.  Supposons le membre de droite. \\
-  D'après le théorème de décomposition en facteurs premiers,
-  \[
-    |b| = \prod_{p\in \PRIME} p^{\nu _p (b)} = \prod_{p\in \PRIME} p^{\nu _p (a)}(p^{\nu _p (b) - \nu _p (a)}) = \prod_{p\in \PRIME}  p^{\nu _p (a)} \prod_{p\in \PRIME} p^{\nu _p (b) - \nu _p (a)}= |a|\prod_{p\in \PRIME} p^{\nu _p (b) - \nu _p (a)},
-  \]
-  la première manipulation se justifie par hypothèse et la seconde peut se justifier par le calcul.\\
-  Ainsi, $|a| | |b|$ donc $a|b$. \\
-  Prouvons le sens direct. Supposons le membre de gauche.  \\
-  Soit $p \in \PRIME$. Il existe $k\in \Z$ tel que $ak = b $ car $a |b$. Ainsi,
-  \[
-    \nu _p (b) = \nu _p (ak) = \nu _p (a) + \nu _p (k) \geq \nu _p (a).
-  \]
-  Ce qui suffit.
+	[ Soient $f \in \Cont{\infty}{\mathcal{D}}{}$ et $a \in \overset{\circ}{\mathcal{D}}$. Supposons que $E_0 = \left\{ p \in \N^* \setminus \{1\} \;|\; f^{(p)}(a) \neq 0 \right\}$ est non vide. \\
+		Posons $p_0 = \min E_0$. \\
+		$f$ admet un extremum local en $a$ si et seulement si $f'(a) = 0$ et $p_0$ est pair. \\
+		$f$ admet un point d'inflexion en $a$ si et seulement si $p_0$ est impair. ]
+	{Condition nécessaire et suffisante pour qu'une fonction \Cont{\infty}{}{} admette un extremum local ou un point d'inflexion}
+
+	Soient de tels objets. Traitons le cas de l'extremum local.
+
+	\noindent $f \in \Cont{\infty}{}{}$ donc, la formule Taylor-Young donne un $DL_{p_0}(a)$ de $f$ :
+	\begin{equation*}
+		f(x) \underset{x \rightarrow a}{=}
+		\sum_{k=0}^{p_0} \frac{f^{(k)}(a)}{k!} (x-a)^k + o \left( (x-a)^{p_0} \right)
+	\end{equation*}
+
+	En développant :
+	\begin{equation*}
+		f(x) \underset{x \rightarrow a}{=}
+		f(a) + \underbrace{f'(a)(x-a)}_{= 0} + \underbrace{\ldots + \frac{f^{(p_0-1)}(a)}{(p_0-1)!} (x-a)^{p_0-1}}_{= 0 \text{ par défintion de }p_0} + \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0} + o \left( (x-a)^{p_0} \right)
+	\end{equation*}
+
+	Ainsi (car $f^{(p_0)}(a) \neq 0$)
+	\begin{equation}
+		f(x) - f(a) \underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
+	\end{equation}
+	Au voisinage de $a$, $f(x) - f(a)$ et $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ ont le même signe.
+	\\
+
+	Supposons que $f$ admette un extremum local en $a$.
+	Or $a \in \overset{\circ}{\mathcal{D}}$ et $f$ est dérivable en 0, donc $f'(a) = 0$.
+	Comme $f$ admette un extremum local en $a$, $f(x) - f(a)$ est de signe constant au voisinage de $a$.
+	Donc $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$.
+	Par conséquent, $p_0$ est pair.
+	\\
+
+	Réciproquement, supposons que $f'(a) = 0$ et que $p_0$ est pair. $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$ est de signe constant au voisinage de $a$. Donc $f(x) - f(a)$ est de signe constant au voisinage de $a$. Ainsi, $a$ est un extremum local de $f$.
+	\\
+
+	Traitons le cas du point d'inflexion. La formule de Taylor-Young donne :
+	\begin{equation}
+		f(x) - \underbrace{\left( f(a) + (x-a)f'(a) \right)}_{\text{tangente en } (a,f(a))}
+		\underset{x \rightarrow a}{\sim} \frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}
+	\end{equation}
+	Le signe de l'écart courbe/tangente en $a$ est donc celui de $\frac{f^{(p_0)}(a)}{p_0!} (x-a)^{p_0}$. Ce qui conclut de la même manière que l'extremum local.
 \end{question_kholle}
 
-\begin{question_kholle}
-  [Le pgcd comme produit des $p$ à la puissance du minimum des $\nu _p$ et le ppcm comme le produit des  $p$ à la puissance du maximum des $\nu _p$.
-    \begin{equation}
-      \begin{aligned}
-        a \wedge b & = \prod_{p\in \PRIME} p^{\min (\nu _p (a),\nu_p (b))} \\
-        a \vee b   & = \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
-      \end{aligned}
-    \end{equation}]
-  {Expression du pgcd et du ppcm à partir des décomposition en facteurs premiers de $a$ et $b$.}
-  Prouvons la formule du pgcd et déduisons-en la formule du ppcm. \\
-  Soient $(a,b)\in (\Z ^*)^2$. Soit $p \in \PRIME $. Il faut et il suffit de montrer que $\nu_p (a \wedge b) = \min (\nu_p(a), \nu_p(b))$ pour obtenir le résultat. On a $a\wedge b | a$ et $a \wedge b | b$ donc d'après la caractérisation de la divisibilité par les valuations $p$-adiques, $\nu_p (a \wedge b) \leq \nu _p (a)$ et $\nu _p (a\wedge b) \leq \nu _p (b)$ donc $\nu _p (a\wedge b) \leq \min (\nu _p(a), \nu_p (b)).$ \\
-  Posons $m = \min (\nu _p(a), \nu_p (b))$. On a
-  \[
-    |a| = \prod_{q \in \PRIME} q ^{\nu _q (a)} = p^m \left( (p^{\nu_p (a)- m})\prod_{q \in \PRIME \backslash \{p\}} q ^{\nu _q (a)} \right),
-  \]
-  car par définition, $m \leq \nu _p (a)$, donc $p^m | a$, on montrerait de même que $p^m |b$, donc par définition, $p^m | a\wedge b$, donc une nouvelle fois en appliquant la caractérisation de la divisibilité par les valuations $p$-adiques, $m \leq \nu_p ( a\wedge b)$. Finalement, $\nu_p (a\wedge b) = m$. \\
-  On en déduit la formule du ppcm :
-  \[
-    |a||b| = (a \wedge b) (a \vee b) \ \implies \ a\vee b = \prod_{p\in \PRIME} p^{\nu _p(a) + \nu _p(b) - \min (\nu _p (a),\nu_p (b))} =  \prod_{p\in \PRIME} p^{\max (\nu _p (a),\nu_p (b))}
-  \]
-  
-\end{question_kholle}
-
-\begin{question_kholle}
-  [Petit Th. de Fermat :
-  {\begin{enumerate}[label=($\roman*$)]
-    \item $\forall a \in \Z , \ a^p \equiv a \mod p$ \\
-          $\ \forall x \in \Z / p\Z, \ x^p = x $
-    \item $\forall a \in \Z, \ p\not | a, \ \implies \ a^{p-1} \equiv 1 \mod p$ \\
-          $\ \forall x \in \Z / p\Z, \ x^{p-1} = 1 $
-  \end{enumerate}}]
-  {Pour $p$ premier, $(a+b)^p \equiv a^p + b^p \mod p$, en déduire le petit Th. de Fermat (2 versions), expression du résultat dans $\Z / p\Z$.}
-  Soient $a,b$ de tels entiers relatifs et soit $p$ un nombre premier. Calculons,
-  \[
-    (a + b )^p  = \sum_{k = 0}^p \binom{p}{k}a^{p-k}b^k  = a^p + b^p + \sum_{k = 1}^{p-1} \binom{p}{k}a^{p-k}b^k \equiv a^p + b^p \mod p,
-  \]
-  car $\forall k \in [\![1,p-1 ]\!], \ p | \binom{p}{k}$ (élémentaire), d'où le résultat. \\
-  Dans $\Z /p\Z$, ce résultat s'énonce comme suit :
-  \[
-    \forall (x,y) \in \Z /p\Z ^2, \ (x+y)^p = x^p + y^p.
-  \]
-  En guise d'application, démontrons le petit Th. de Fermat énoncé plus haut. \\
-  Démonstration du $(i)$. Considérons le prédicat $\PRIME ( \cdot)$ défini sur $\N$  par :
-  \[
-    \PRIME (a) : "a^p \equiv a \mod p".
-  \]
-  Initialisation : Pour $a = 0$, rien à faire, donc $\PRIME (0)$ est vrai. \\
-  Hérédité : Soit $a\in \N$ \tq $\ \PRIME (a)$. Calculons,
-  \[
-    (a+1)^p  \equiv a^p + 1 \mod p \overset{\PRIME (a)}{\equiv} a + 1 \mod p,
-  \]
-  donc $\PRIME (a+1)$ vrai. \\
-  Par Th. de récurrence sur $\N$, $\PRIME(a)$ est vrai pour tout $a\in \N$. \\
-  Il faut maintenant étendre le résultat à $\Z$. Soit $p\in \PRIME \backslash \{2\}$, ainsi $p$ est impair. Soit $a\in \Z \backslash \N$. Calculons,
-  \[
-    a^p\equiv (-|a|)^p \mod p \equiv - |a|^p \mod p \overset{\underset{\text{pour }a \gets |a|}{\text{Th. de Fermat}}}{\equiv} - |a| \mod p \equiv a \mod p  .
-  \]
-  Si $p =2$, $\ a^2 \equiv |a|^2 \mod 2 \equiv |a| \mod 2 \equiv -|a| \mod 2 \equiv a \mod 2$. \\
-  Le $(ii)$, soit $a\in \Z$ tel que $p \not | a$.
-  \[
-    (p\not | a)\wedge (p\in \PRIME) \implies p\wedge a = 1,
-  \]
-  d'après le $(i)$, $\ p | a^p -a \ \implies \ p| a(a^{p-1} -1) \ \overset{\text{Th. de Gauss}}{\implies}  \ p| a^{p-1} -1 \ \implies \ a^{p-1} \equiv 1 \mod p$. \\
-  Les écritures dans $\Z /p \Z$ ne posent pas de problème.s, ce qui conclut.
-\end{question_kholle}
-
-\begin{question_kholle}
-  []
-  {$\Z /n\Z$ est un corps si et seulement si $n$ est premier.}
-  Montrons le sens réciproque, supposons $n\in \PRIME$. \\
-  Soit $x\in \Z/n\Z$ tel que $x \neq \overline{0}$. \\
-  $\exists \ a \in [\![0,p-1]\!]\ : \ c = \overline{a}$, $\ I =[\![0, p-1]\!]$ étant un système de représentant des classes. \\
-  Comme $a\in I, \ n\not | a$, or $n \in \PRIME$, donc $n \wedge a = 1$. Par Bezout, il existe $u,v \in \Z^2$ tels que $au +nv =1$, donc $u$ est l'inverse de $a$ modulo $n$ donc $a\in \Z/n\Z ^\times$, dès lors, tout élément non nul de $\Z/n\Z$ est inversible, or c'est un anneau commutatif, donc c'est un corps. \\ \\
-  Montrons le sens direct en raisonnant par contraposition, supposons $n\not \in \PRIME$. \\
-  Comme $n$ n'est pas premier et est plus grand que $2$, il admet un diviseur, $d$, dans $I\backslash \{0,1\} = J$. Notons $d'$ le quotient de la division euclidienne de $n$ par $d$, on a alors $a = dd'$ et $d'\in J$. Donc $\overline{d}\overline{d'}=\overline{0}$ et comme $d,d' \in J$, on a $d,d' \neq 0$, donc $\overline{d}$ est un diviseur de zéro de $\Z/n\Z$, donc $\overline{d}$ est un élément non nul de $\Z/n\Z$ non inversible, donc $\Z/n\Z$ n'est pas un corps. En contraposant ce que nous venons de démontrer on a le résulat. Ce qui conclut.
-\end{question_kholle}
-
-\begin{question_kholle}
-  {Les éléments inversibles d'un anneau $A$ forment un groupe multiplicatif noté $\left( A^\times, \times \right)$}
-  
-  Soit $(A, +, \times)$ un anneau. \\
-  Un élément inversible (ou unité) est un élément de $A$ symétrisable pour la loi $\times$. Posons l'ensemble des éléments inversibles $A^\times = \left\{ a \in A \;|\; \exists b \in A : a \times b = b \times a = 1_A \right\}$.
-  
-  \begin{itemize}[label=$\star$, leftmargin=.5cm]
-    \item Montrons que la LCI $\times$ se restreint bien à $A^\times$ en un LCI $\times_{A^\times}$. \\
-          Soient $(a_1, a_2) \in {A^\times}^2$.
-          Par défintion de $A^\times$, $\exists (b_1, b_2) \in A^2 : a_1 \times b_1 = b_1 \times a_1 = 1_A \text{ et } a_2 \times b_2 = b_2 \times a_2 = 1_A$.
-          \begin{equation*}
-            \left( a_1 \times a_2 \right) \times \left( b_2 \times b_1 \right)
-            \underbrace{=}_{\text{loi associative}} a_1 \times \underbrace{a_2 \times b_2}_{= ~ 1_A} \times b_1
-            = a_1 \times b_1
-            = 1_A
-          \end{equation*}
-          \begin{equation*}
-            \left( b_2 \times b_1 \right) \times \left( a_1 \times a_2 \right)
-            \underbrace{=}_{\text{loi associative}} b_2 \times \underbrace{b_1 \times a_1}_{= ~ 1_A} \times a_2
-            = b_2 \times a_2
-            = 1_A
-          \end{equation*}
-          Donc $\left( a_1 \times a_2 \right) \in A^\times$.
-          
-    \item La loi $\times$ est associative donc la loi $\times_{A^\times}$ l'est aussi.
-          
-    \item $1_A$ vérifie $1_A \times 1_A = 1_A$ donc $1_A \in A^\times$. \\
-          De plus, $\forall a \in A^\times, 1_A \times_{A^\times} a = a \times_{A^\times} 1_A = a$ donc $\times_{A^\times}$ admet $1_A$ comme élément neutre.
-          
-    \item Soit $a \in A^\times$. Par définition de $A^\times$, $\exists b \in A : a \times b = b \times a = 1_A$. \\
-          D'où $b \in A^\times$. En pensant les égalités ci-dessus dans $A^\times$,
-          \begin{equation*}
-            a \times_{A^\times} b = b \times_{A^\times} a = 1_A
-          \end{equation*}
-          Donc $a$ est inversible dans $A^\times$.
-  \end{itemize}
-  
-  Ainsi, $\left( A^\times, \times_{A^\times} \right)$ est un groupe.
-\end{question_kholle}
-
-\begin{question_kholle}
-  {L'image directe par un morphisme d'anneau d'un sous-anneau de l'anneau de départ est un sous anneau de l'anneau d'arrivée. De même pour l'image réciproque.}
-  
-  Soient $\left(A,+,\times\right)$ et $\left(B,+,\times\right)$ deux anneaux et $f : A \rightarrow B$ un morphisme d'anneau.
-  
-  \noindent Soit $A'$ un sous-anneau de $A$. Montrons que $f(A')$ est un sous-anneau de $B$.
-  \begin{itemize}[label=$\star$, leftmargin=.5cm]
-    \item Par définition de $f$, $f(A') \subset B$ et $(B,+,\times)$ est un anneau.
-    \item Soient $(u,v) \in f(A')^2$. Alors $\exists (a,b) \in A'^2 : f(a) = u \text{ et } f(b) = v$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
-          \begin{equation*}
-            u - v = f(a) - f(b) = f(a - b)
-          \end{equation*}
-          Comme $A'$ est un sous-anneau, $a - b \in A'$. Donc $u - v \in f(A')$. \\
-          De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
-          \begin{equation*}
-            u \times v = f(a) \times f(b) = f(a \times b)
-          \end{equation*}
-          Comme $A'$ est un sous-anneau, $a \times b \in A'$. Donc $u \times v \in f(A')$.
-    \item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $A'$ est un sous-anneau donc $1_A \in A'$. D'où $1_B \in f(A')$.
-  \end{itemize}
-  
-  \noindent Soit $B'$ un sous-anneau de $B$. Montrons que $f^{-1}(B')$ est un sous-anneau de $A$.
-  \begin{itemize}[label=$\star$, leftmargin=.5cm]
-    \item Par définition de $f$, $f^{-1}(B') \subset A$ et $(A,+,\times)$ est un anneau.
-    \item Soient $(a,b) \in f^{-1}(B')^2$. $f$ est un morphisme d'anneau donc un morphisme de groupe de $(A,+)$ dans $(B,+)$ donc
-          \begin{equation*}
-            f(a - b) = \underbrace{f(a)}_{\in B'} - \underbrace{f(b)}_{\in B'} \in B'
-          \end{equation*}
-          Donc $a - b \in f^{-1}(B')$. \\
-          De même, $f$ est un morphisme d'anneau donc un morphisme de monoïde de $(A,\times)$ dans $(B,\times)$ donc
-          \begin{equation*}
-            f(a b) = \underbrace{f(a)}_{\in B'} \underbrace{f(b)}_{\in B'} \in B'
-          \end{equation*}
-          Donc $a b \in f^{-1}(B')$.
-    \item $f$ est un morphisme d'anneau donc $1_B = f(1_A)$. Or $B'$ est un sous-anneau donc $1_B \in B'$. D'où $1_A \in f^{-1}(B')$.
-  \end{itemize}
-\end{question_kholle}
 \pagebreak\section{Semaine 19}
 
 \begin{question_kholle}
