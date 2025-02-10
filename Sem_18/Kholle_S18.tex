@@ -25,7 +25,7 @@
 			            \]
 			            donc
 			            \[
-				            \forall x\in \mathcal{D}_{f}\setminus \{x_{0}\},\; \frac{f(x)f(x_{0})}{x-x_{0}}=a_{1}+\underbrace{\varepsilon(x)}_{\arrowlim{x}{x_{0}}0}
+				            \forall x\in \mathcal{D}_{f}\setminus \{x_{0}\},\; \frac{f(x)-f(x_{0})}{x-x_{0}}=a_{1}+\underbrace{\varepsilon(x)}_{\arrowlim{x}{x_{0}}0}
 			            \]
 			            d’où
 			            \[
@@ -56,9 +56,9 @@
 		      \]
 		      Alors
 		      \[
-			      \forall x\in\R,\;|f(x)|\leq |x|^{3} \quad\text{donc}\quad f(x)\underset{x \rightarrow a}{=} o(x^{2})
+			      \forall x\in\R,\;|f(x)|\leq |x|^{3} \quad\text{donc}\quad f(x)\underset{x \rightarrow 0}{=} o(x^{2})
 		      \]
-		      ainsi $f$ admet un $DL_{1}(0)$ et un $DL_{2}(0)$. Elle est donc dérivable en $x_{0}$ et les théorèmes usuels montrent que $f$ est dérivable sur $\R^{*}$. Cependant, pour tout $x\in\R^{*}$,
+		      ainsi $f$ admet }un $DL_{1}(0)$ et un $DL_{2}(0)$. Elle est donc dérivable en $x_{0}$ et les théorèmes usuels montrent que $f$ est dérivable sur $\R^{*}$. Cependant, pour tout $x\in\R^{*}$,
 		      \[
 			      f'(x)=3x^{2}\sin \left(\frac{1}{x^{2}}\right) + x^{3}\cos \left(\frac{1}{x^{2}}\right)\frac{-2}{x^{3}} = 3x^{2}\sin \left(\frac{1}{x^{2}}\right) -\underbrace{2\cos \left(\frac{1}{x^{2}}\right)}_{\text{n’as pas de limite en $0^{+}$}}
 		      \]
@@ -147,11 +147,11 @@
 \begin{question_kholle}{Formule explicite du $DL_{2n+1}(0)$ de $\arcsin$.}
 	La fonction $\arcsin$ est dérivable sur $\left]-1, 1\right[$, et
 			\[
-			\forall u\in\left]-1,1\right[, \arcsin'(u) = \frac{1}{\sqrt{1-u^{2}}} \quad\text{or}\quad \frac{1}{1+t^{2}}\underset{x\to 0}{=} \sum_{k=0}^{n}\binom{-\frac{1}{2}}{k}t^{k} +o(t^{n})
+			\forall u\in\left]-1,1\right[, \arcsin'(u) = \frac{1}{\sqrt{1-u^{2}}} \quad\text{or}\quad \frac{1}{\sqrt{1+t^{2}}}\underset{x\to 0}{=} \sum_{k=0}^{n}\binom{-\frac{1}{2}}{k}t^{k} +o(t^{n})
 		\]
 		donc pour $t\leftarrow -u^{2}$,
 		\[
-			\arcsin '(u) \underset{x\to 0}{=}\sum_{k=0ntn}^{\binom{-\frac{1}{2}}{k}(-u^{2})^{k}}+o(u^{2n})
+			\arcsin '(u) \underset{x\to 0}{=}\sum_{k=0}^{n}\binom{-\frac{1}{2}}{k}(-u^{2})^{k}+o(u^{2n})
 		\]
 		La fonction $\arcsin'$ est continue sur $\left]-1, 1\right[$ donc au voisinage de 0 si bien que par intégration du $DL_{2n}(0)$ ci-dessus,
 	\[
@@ -178,14 +178,14 @@
 	\]
 	si bien que d’après le théorème d’intégration des DL ($F'$ est continue au voisinage de 0 sur \R),
 	\begin{align*}
-		F(x) & \underset{x\to 0}{=} F(0)+\int_{0}^{x}\left(1-\frac{t^{4}}{2}+\frac{3}{8}\right)\dd t + o(x{12}) \\
-		     & \underset{x\to 0}{=} 0+\left[t-\frac{t^{5}}{10} + \frac{1}{24}t^{9}\right]_{0}^{x} + o(x^{12})   \\
+		F(x) & \underset{x\to 0}{=} F(0)+\int_{0}^{x}\left(1-\frac{t^{4}}{2}+\frac{3}{8}\right)\dd t + o(x^{12}) \\
+		     & \underset{x\to 0}{=} 0+\left[t-\frac{t^{5}}{10} + \frac{1}{24}t^{9}\right]_{0}^{x} + o(x^{12})    \\
 		     & \underset{x\to 0}{=} x-\frac{1}{10}x^{5} + \frac{1}{24}x^{9} + o(x^{12})
 	\end{align*}
 	On en déduit alors
 	\begin{align*}
 		f(x) & = F(x^{2}) - F(x)                                                                                              \\
-		     & \underset{x\to 0}{=} x^{2}-\frac{1}{10}x^{10} + o(x^{17}) - x+\frac{1}{10}x^{5} -\frac{1}{24}x^{9} + o(x^{12}) \\
+		     & \underset{x\to 0}{=} x^{2}-\frac{1}{10}x^{10} + o(x^{18}) - x+\frac{1}{10}x^{5} -\frac{1}{24}x^{9} + o(x^{12}) \\
 		     & \underset{x\to 0}{=} -x+x^{2}+\frac{1}{10}x^{5}-\frac{1}{24}x^{9}-\frac{1}{10}x^{10}+o(x^{18})
 	\end{align*}
 	Ainsi,
