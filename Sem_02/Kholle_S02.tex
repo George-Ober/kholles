@@ -36,6 +36,7 @@
   \end{itemize}
 
 \end{question_kholle}
+
 \begin{question_kholle}{Montrer que, si $u$ est une application de $E$ dans $F$, si $v$ est une application de $F$ dans $E$ telle que $v \circ u = \mathrm{Id}_E$ et $u \circ v = \mathrm{Id}_F$ alors $u$ est bijective ($v$ aussi) et sa bijection réciproque est $v$}
   Soient $(u, v) \in \mathcal{F}(E, F) \times \mathcal{F}(F, E)$ qui satisfont les conditions de l'énnoncé.
   \begin{itemize}[label=$\lozenge$]
@@ -102,7 +103,8 @@
 
 \end{question_kholle}
 
-\begin{question_kholle}{Montrer que $v \circ u$ surjective implique $v$ surjective + montrer que cela n'implique pas $u$ surjective.}
+\begin{question_kholle_remarque}{Montrer que $v \circ u$ surjective implique $v$ surjective + montrer que cela n'implique pas $u$ surjective.}
+  {Les deux contre contre-exemples exhibés ici sont les mêmes, mais il y en a bien d'autres où $v \circ u$ n'est pas bijective.}
   Soient $(u, v) \in \mathcal{F}(E, F) \times \mathcal{F}(F, G)$.
 
   Supposons $v \circ u$ est surjective
@@ -145,11 +147,8 @@
     \end{tikzpicture}
     \caption{Ici, $v \circ u$ est surjective, on a montré que cela impliquait $v$ surjective. Pourtant, $u$ n'est pas surjective.}
   \end{figure}
-  
 
-\end{question_kholle}
-
-\textbf{Remarque} : Les deux contre contre-exemples exhibés ici sont les mêmes, mais il y en a bien d'autres où $v \circ u$ n'est pas bijective.
+\end{question_kholle_remarque}
 
 \begin{question_kholle}{Soit $u$ une application de $E$ dans $F$. Si $A$ et $A'$ sont des parties de $E$, y'a-t-il égalité entre $u(A \cap A')$ et $u(A) \cap u(A')$? (On justifiera les réponses aux deux inclusions suggérées par la question)}
   Soit $u \in \mathcal{F}(E, F)$ fixée quelconque, $(A, A') \in \mathcal{P}(E)^{2}$, deux parties de $E$.
