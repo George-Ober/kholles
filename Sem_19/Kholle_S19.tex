@@ -16,11 +16,13 @@
 
 	Supposons que $(x_i)_{i \in I}$ est liée.
 	Par définition,
-	\[\displaystyle \exists (\mu_i) \K^{(I)} :
-		\left\{ \begin{array}{ccc}
-			\sum_{i \in I} \mu_i x_i & = 0_E                 \\
-			(\mu_i)_{i \in I}        & \neq (0_\K)_{i \in I}
-		\end{array} \right.\]
+	\[
+		\displaystyle \exists (\mu_i) \K^{(I)} :
+		\begin{cases}
+			\sum_{i\in I}\mu_{i} x_{i} & =0_{E}                 \\
+			(\mu_{i})_{i\in I}         & \neq (0_{\K})_{i\in I}
+		\end{cases}
+	\]
 	Donc $\exists i_0 \in I : \mu_{i_0} \neq 0_\K$. Fixons un tel $i_0$. \\
 	\[
 		\mu_{i_0} x_{i_0} + \sum_{i \in I \setminus \{i_0\}} \mu_i x_i = 0_E
@@ -39,7 +41,7 @@
 	\]
 	Alors $-x_{i_0} + \sum_{\substack{i \in I \\ i \neq i_0}} \lambda_i \ldotp x_i = 0_E$.
 	Posons $\mu_{i_0} = - 1_\K$ et $\forall i \in I \!\setminus\! \{i_0\}, \mu_i = \lambda_i$.
-	Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i = 0_\K$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$. \\
+	Ainsi, $(\mu_i)_{i \in I} \in \K^{(I)}$ et $\sum_{i \in I} \mu_i \ldotp x_i = 0_\K$. Or $\mu_{i_0} \neq 0_\K$ donc $(\mu_i)_{i \in I} \neq (0_\K)_{i \in I}$.
 	Ainsi, $(\mu_i)_{i \in I}$ est liée.
 \end{question_kholle}
 
@@ -76,55 +78,126 @@
 			            \]
 			            Ainsi,
 			            \[
-				            x+y = \sum_{i\in I}(\lambda \times \lambda_{i} + \mu_{i})\cdot a_{i}
+				            \lambda x+y = \sum_{i\in I}\underbrace{(\lambda \times \lambda_{i} + \mu_{i})}_{\in\K}\cdot a_{i} \in W
 			            \]
-
 		      \end{itemize}
+		\item Montrons que $\left\{a_{i} \mid i\in I\right\}\in W$~: Soit $i_{0}\in I$ fixé quelconque. Pour $(\lambda_{i})\leftarrow (\delta_{i_{0}, i})$ (autorisé car $\mathrm{supp}\;(\delta_{i_{0}, i}) = \{i_{0}\}$ est fini),
+		      \[
+			      a_{i_{0}}=\sum_{i\in I}\delta_{i_{0}, i}a_{i}\in W
+		      \]
+
+		\item Montrons que $W\subset \Vect\{a_{i} \mid i\in I\}$~: Soit $x\in W$ fixé quelconque. Il existe une famille $(\lambda_{i})$ presque nulle de scalaires telle que
+		      \[
+			      x=\sum_{i\in I}\lambda_{i} a_{i} \in \Vect \{a_{i} \mid i\in I\}
+		      \]
+		      car $x$ est une combinaison linéaire de vecteurs de $\left\{a_{i} \mid i\in I\right\}$ donc de vecteurs de $\Vect \left\{a_{i} \mid i\in ei\right\}$, donc $\Vect \left\{a_{i} \mid i\in I\right\}$ est un sous-espace vectoriel de $E$.
 	\end{itemize}
+	Ainsi, les deux premiers points donnant l’inclusion directe, i.e.
+	\[
+		\Vect \{a_{i} \mid i\in I\}\subset W
+	\]
+	et le troisième l’inclusion réciproque, on a bien l’égalité recherchée.
 \end{question_kholle}
 
-\begin{question_kholle}{Stabilité de la liberté d’une famille par adjonction d’un vecteur n’appartenant pas au sous-espace qu’elle engendre.}
+\begin{question_kholle}[{
+				Si $\mathcal{F}$ est une famille libre de vecteurs de $E$ et $x\in E\setminus \Vect \mathcal{F}$, alors la famille $\mathcal{F}\cup\{x\}$ est libre.}]{Stabilité de la liberté d’une famille par adjonction d’un vecteur n’appartenant pas au sous-espace qu’elle engendre.}
+	Soit $x_{\triangle}\in E\setminus \Vect \{x_{i} \mid i\in I\}$ fixé quelconque. Soient $(\lambda_{i})_{i\in I\cup\{\triangle\}}\in\K^{(I\cup \{\triangle\})}$ fixée quelconque telle que
+	\begin{equation}\tag{$*$}
+		\sum_{i\in I\cup\{\triangle\}}\lambda_{i} x_{i} = 0_{E}
+	\end{equation}
+	Supposons $\lambda_{\triangle}\neq 0_{\K}$. Alors, $(*)$ donne
+	\[
+		\lambda_{\triangle}x_{\triangle} = \sum_{i\in I}-\lambda_{i}x_{i} \implies x_{\triangle}=\sum_{i\in I}-\frac{\lambda_{i}}{\lambda_{\triangle}}x_{i}
+	\]
+	donc $x_{\triangle}\in\Vect\{x_{i} \mid i\in I\}$ ce qui contredit le choix de $x_{\triangle}$. Par conséquent, $\lambda_{\triangle}=0_{\K}\quad (1)$ donc $(*)$ devient
+	\[
+		\sum_{i\in I}\lambda_{i} x_{i} = 0_{E}
+	\]
+	or $(x_{i})_{i\in I}$ est libre donc
+	\begin{equation}\tag{$2$}
+		\forall i\in I, \lambda_{i} = 0_{\K}
+	\end{equation}
+	Les relations $(1)$ et $(2)$ donnent $\forall i\in I\cup \{\triangle\}, \lambda_{i} = 0_{\K}$ donc la famille $(x_{i})_{i\in I\cup \{\triangle\}}$ est libre.
 \end{question_kholle}
 
-\begin{question_kholle}{Équivalence $\mathcal{F}$ base, tout vecteur se décompose de manière unique dans $\mathcal{F}$, $\mathcal{F}$ générarice minimale et $\mathcal{F}$ libre maximale.}
+\begin{question_kholle}[{
+				Si $E$ est un $\K$-espace vectoriel et $\mathcal{F}$ une famille de vecteurs de $E$, les propositions suivantes sont équivalentes~:
+				\begin{enumerate}[label=$(\roman*)$, labelindent=0pt, leftmargin=!]
+					\item $\mathcal{F}$ est une base de $E$
+					\item Tout vecteur de $E$ s’écrit d’une manière unique comme une combinaison linéaire des vecteurs de $\mathcal F$
+					\item $\mathcal{F}$ est une famille génératrice minimale (au sens de l’inclusion)
+					\item $\mathcal{F}$ est une famille libre maximale (au sens de l’inclusion)
+				\end{enumerate}
+			}]{Équivalence $\mathcal{F}$ base, tout vecteur se décompose de manière unique dans $\mathcal{F}$, $\mathcal{F}$ générarice minimale et $\mathcal{F}$ libre maximale.}
+	Notons $(a_{i})_{i\in I}$ la famille $\mathcal{F}$.
+	\begin{description}
+		\item[$\bigl((i) \implies (ii)\bigr)$] Supposons que $\mathcal{F}$ est une base de $E$. Soit $x\in E$ fixé quelconque.
+		      \begin{itemize}
+			      \item $\mathcal{F}$ est une base donc $\mathcal{F}$ est génératrice donc $x$ s’écrit comme une combinaison linéaire de vecteurs de $\mathcal{F}$
+			      \item $\mathcal{F}$ est une base donc $\mathcal{F}$ est libre donc $x$ s’écrit de manière unique comme combinaison linéaire de vecteurs de $\mathcal{F}$
+		      \end{itemize}
+
+		\item[$\bigl((ii) \implies (iii)\bigr)$] Supposons que tout vecteur de $E$ s’écrit d’une manière unique comme une combinaison linéaire des vecteurs de $\mathcal{F}$. Alors $E\subset \mathcal{F}$ or $\Vect \mathcal{F}\subset E$ donc $\Vect \mathcal{F} = E$ donc $\mathcal F$ est génératrice.\\[4pt]
+		      \quad \textit{Rappel~:} $\mathcal{F}$ est génératrice minimale signifie qu’aucune sous-famille stricte de $\mathcal{F}$ n’est génératrice. Il suffit donc de montrer qu’une sous-famille $\mathcal{F}'$ de $\mathcal{F}$ quelconque n’est pas génératrice.\\[4pt]
+		      Soit $\mathcal{F'}$ une sous-famille stricte de $\mathcal{F}$; supposons-la génératrice. Par définition, il existe un élément $a$ de $\mathcal{F}$ n’appartenant pas oà $\mathcal{F'}$. De plus, $\mathcal{F'}$ étant génératrice, cet élément s’écrit comme combinaison linéaire de vecteurs de $\mathcal{F'}$ (combinaison linéaire des vecteurs de $\mathcal{F}$ avec le coefficient devant $a$ nul). Or $a=1 \cdot a$ ce qui contredit l’unicité de lécriture de $a$ comme combinaison linéaire de vecteurs de $\mathcal{F}$. Ainsi, $\mathcal{F}$ est génératrice minimale.
+
+		\item[$\bigl((iii) \implies (iv)\bigr)$] Supposons que $\mathcal{F}$ est une famille génératrice minimale. Représentons $\mathcal{F}$ par $(x_{i})_{i\in I}$.
+		      \begin{itemize}
+			      \item Supposons $\mathcal{F}$ liée. Alors un des vecteur doté $x_{i_{0}}$ s’écrit comme combinaison linéaire des autres vecteurs de la famille~: $x_{i_{0}} \in \left\{x_{i} \mid i\in I\setminus \{i_{0}\}\right\}$. Or $\mathcal{F}$ est génératrice donc $(x_{i})_{i\in I\setminus \{i_{0}\}}$ l’est également. Ainsi $(x_{i})_{i\in ei\setminus \{i_{0}\}}$ est une sous-famille stricte de $\mathcal{F}$ qui est génératrice, ce qui contredit le caractère générateur minimal de $\mathcal{F}$, donc $\mathcal{F}$ est libre.
+			      \item \textit{Rappel~:} $\mathcal{F}$ est libre maximale signifie que toute famille ayant $\mathcal{F}$ comme sous-famille stricte est liée, ou encore qu’il n’existe pas de famille libre contenant strictement $\mathcal{F}$\\[4pt]
+			            Soit $\mathcal{F'}$ une famille libre admettant $\mathcal{F}$ comme sous-famille stricte. Notons $a$ un élément de $\mathcal{F}$ n’appartenant pas oà $\mathcal{F'}$.\\
+			            $\mathcal{F}$ est génératrice donc $a\in\Vect\mathcal{F}$ donc $a$ s’écrit comme combinaison linéaire des autres vecteurs de $\mathcal{F'}$. Or $a\in \mathcal{F'}$ donc $\mathcal{F'}$ est liée d’où une contradiction. Ainsi $\mathcal{F}$ n’admet aucune famille libre la contenant strictement, donc $\mathcal{F}$ est libre maximale.
+		      \end{itemize}
+
+		\item[$\bigl((iv) \implies (i)\bigr)$] Supposons que $\mathcal{F}$ est une famille libre maximale.
+		      \begin{itemize}
+			      \item $\mathcal{F}$ est libre
+			      \item Supposons que $\mathcal{F}$ n’est pas génératrice. Alors $\Vect\mathcal{F} \varsubsetneq E$ donc $\exists a\in E: a\notin \Vect \mathcal{F}$, or $\mathcal{F}$ est libre donc $(\mathcal{F}, a)$ (adjonction du vecteur $a$ oà la famille $\mathcal{F}$) est libre, ce qui contredit le fait que $\mathcal{F}$ est libre maximale (car $(\mathcal{F}, a)$ est libre et admet $\mathcal{F}$ comme sous-famille stricte). Par conséquent, $\mathcal{F}$ est génératrice, et ainsi, $\mathcal{F}$ est une base de $E$.
+		      \end{itemize}
+
+
+	\end{description}
 \end{question_kholle}
 
 \begin{question_kholle}
-	[Soit $f \in \mathcal{L}_\K(E, F)$.
-		\begin{equation}
-			\begin{aligned}
-				\ker f & = \left\{ x \in E \;|\; f(x) = 0_F \right\} = f^{-1} (\{0_F\}) \\
-				\Im f  & = \left\{ y \in F \;|\; \exists x \in E : f(x) = y \right\}
-			\end{aligned}
-		\end{equation}
-		Nous démontrerons le résultat plus général suivant :
-		\begin{propositions}
-			\item $f(E')$ est un \sev de $F$.
-			\item $f^{-1}(F')$ est un \sev de $E$.
-		\end{propositions}
-	]
+	[{
+				Soit $f \in \mathcal{L}_\K(E, F)$.
+				\begin{equation*}
+					\begin{aligned}
+						\ker f & = \left\{ x \in E \;|\; f(x) = 0_F \right\} = f^{-1} (\{0_F\}) \\
+						\Im f  & = \left\{ y \in F \;|\; \exists x \in E : f(x) = y \right\}
+					\end{aligned}
+				\end{equation*}
+				Nous démontrerons le résultat plus général suivant~:
+				\begin{enumerate}[label=$(\roman*)$, labelindent=0pt, leftmargin=!]
+					\item $f(E')$ est un \sev de $F$.
+					\item $f^{-1}(F')$ est un \sev de $E$.
+				\end{enumerate}
+			}]
 	{Le noyau et l'image d'une application linéaire sont des \sevs}
+	\hfill\\
+	\begin{enumerate}[label=$(\roman*)$, labelindent=0pt, leftmargin=!]
+		\item $0_E \in E'$ et $f(0_E) = 0_F$ donc $0_F \in f(E')$ d'où $f(E') \neq \emptyset$ \\
+		      Soit $(\alpha, \beta, y, y') \in \K^2 \times f(E')^2$ \fqs. \\
+		      Par définition, il existe $(x, x') \in E'^2$ tels que $f(x) = y$ et $f(x') = y$.
+		      \begin{equation*}
+			      \begin{aligned}
+				      \alpha y + \beta y'
+				       & = \alpha f(x) + \beta f(x')                                                                     \\
+				       & = f( \alpha x + \beta x' ) \quad \text{ car } f \in \mathcal{L}_\K(E, F)                        \\
+				       & \in f(E') \quad \text{ car } \alpha x + \beta x' \in E' \text{ puisque } E' \text{ est un \sev}
+			      \end{aligned}
+		      \end{equation*}
+		      Donc $f(E')$ est un \sev.
 
-	$(i)$ $0_E \in E'$ et $f(0_E) = 0_F$ donc $0_F \in f(E')$ d'où $f(E') \neq \emptyset$ \\
-	Soit $(\alpha, \beta, y, y') \in \K^2 \times f(E')^2$ \fqs. \\
-	Par définition, $\exists (x, x') \in E'^2 : f(x) = y \wedge f(x') = y$.
-	\begin{equation*}
-		\begin{aligned}
-			\alpha y + \beta y'
-			 & = \alpha f(x) + \beta f(x')                                                                     \\
-			 & = f( \alpha x + \beta x' ) \quad \text{ car } f \in \mathcal{L}_\K(E, F)                        \\
-			 & \in f(E') \quad \text{ car } \alpha x + \beta x' \in E' \text{ puisque } E' \text{ est un \sev}
-		\end{aligned}
-	\end{equation*}
-	Donc $f(E')$ est un \sev.
+		\item $0_F \in F'$ et $f(0_E) = 0_F$ donc $0_E \in f^{-1}(F')$ d'où $f(F') \neq \emptyset$ \\
+		      Soit $(\alpha, \beta, x, x') \in \K^2 \times f^{-1}(F')^2$ \fqs. \\
+		      Par définition, il existe $(y, y') \in F'^2$ tels que $f(x) = y$ et $f(x') = y$. \\
+		      Or $F'$ est \sev donc $\alpha y + \beta y' \in F'$. $f \in \mathcal{L}_\K(E, F)$ d'où $f(\alpha x + \beta x') = \alpha y + \beta y'$. Donc $\alpha x + \beta x' \in f^{-1}(F')$. \\
+		      Ainsi, $f^{-1}(F')$ est un \sev.
 
-	$(ii)$ $0_F \in F'$ et $f(0_E) = 0_F$ donc $0_E \in f^{-1}(F')$ d'où $f(F') \neq \emptyset$ \\
-	Soit $(\alpha, \beta, x, x') \in \K^2 \times f^{-1}(F')^2$ \fqs. \\
-	Par définition, $\exists (y, y') \in F'^2 : f(x) = y \wedge f(x') = y$. \\
-	Or $F'$ est \sev donc $\alpha y + \beta y' \in F'$. $f \in \mathcal{L}_\K(E, F)$ d'où $f(\alpha x + \beta x') = \alpha y + \beta y'$. Donc $\alpha x + \beta x' \in f^{-1}(F')$. \\
-	Ainsi, $f^{-1}(F')$ est un \sev.
-
-	En appliquant pour $E' = E$ et $F' = \{0_F\}$, nous obtenons que $\ker f$ et $\Im f$ sont des \sevs.
+		      En appliquant ce résultat pour $E' = E$ et $F' = \{0_F\}$, nous obtenons que $\ker f$ et $\Im f$ sont des \sevs.
+	\end{enumerate}
 \end{question_kholle}
 
 \end{document}
