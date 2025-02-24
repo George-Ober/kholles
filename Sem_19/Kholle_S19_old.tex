@@ -1,0 +1,193 @@
+\documentclass{article}
+
+\date{3 Mars 2024}
+\usepackage[nb-sem=19, auteurs={Hugo Vangilluwen, George Ober, Kylian Boyet}]{../kholles}
+\begin{document}
+\maketitle
+
+\begin{question_kholle}
+	[Pour une matrice $A \in \mathcal{M}_{(n,p)}(\K)$, la matrice transposée est définie :
+	{\begin{equation*}
+		\forall (k, l) \in [\![1,p]\!] \!\times\! [\![1,n]\!], \ \left[A^T\right]_{kl} = A_{lk}
+	\end{equation*}}
+	Formellement, la transposition est une application de $\mathcal{M}_{(n,p)}(\K)$ dans $\mathcal{M}_{(p,n)}(\K)$.]
+	{$\left(A \times B\right)^T = B^T \times A^T$}
+
+	Soit $(A, B) \in \mathcal{M}_{(n,p)}(\K) \times \mathcal{M}_{(p,q)}(\K)$. \\
+	$\left(A \times B\right)^T \in \mathcal{M}_{(q,n)}(\K)$. Soit $(i, j) \in [\![1,q]\!] \!\times\! [\![1,n]\!]$.
+	\begin{equation*}
+		\begin{aligned}
+			\left[ \left(A \times B\right)^T \right]_{i,j}
+			 & = \left[A \times B\right]_{j,i}                                          \\
+			 & = \sum_{k=1}^{p} A_{j,k} \times_\K B_{k,i}                               \\
+			 & = \sum_{k=1}^{p} B_{k,i} \times_\K A_{j,k}                               \\
+			 & = \sum_{k=1}^{p} \left[B^T\right]_{i,k} \times_\K \left[A^T\right]_{k,j} \\
+			 & = \left[ \left(B^T\right) \times \left(A^T\right) \right]_{i,j}
+		\end{aligned}
+	\end{equation*}
+\end{question_kholle}
+
+\begin{question_kholle}
+	[Le symbole de Kronecker est défini de la manière suivante :
+	\begin{equation*}
+		\forall (x, y) \in \R^2, \delta_{xy} = \left\{ \begin{matrix}
+			0 \text{ si } x \neq y \\
+			1 \text{ si } x = y
+		\end{matrix} \right.
+	\end{equation*}
+	La matrice $E^{i,j} \in \mathcal{M}_{(n, p)}(\K)$ avec {$(i, j) \in [\![ 1, n ]\!] \!\times\! [\![ 1, p ]\!]$} ne possède que des coefficients nuls sauf le coefficient de la $i^{e}$ ligne et $j^{e}$ colonne qui vaut 1. Formellement :
+	{\begin{equation*}
+		\forall (r, s) \in [\![ 1, n ]\!] \times [\![ 1, p ]\!], \
+		\left[E^{i,j}\right]_{rs} = \delta_{ir} \delta_{js}
+	\end{equation*}}]
+	{Calculer $E^{i,j} \times E^{k,l}$ en fonction de $i$, $j$, $k$, $l$ et des symboles de Kronecker}
+
+	Calculons $E^{i,j}(n,p) \times E^{k,l}(p,q)$.
+
+	Soient $(r, s) \in [ \! [ 1, n] \!] \times [ \! [ 1, q ] \!]$ fq
+
+	\begin{align*}
+		\left[ E^{i,j} \times E^{k,l} \right] _{rs}
+		 & = \sum_{t = 1}^{n}E^{i,j}_{r,t} E^{k,l}_{t,s}                     \\
+		 & =\sum_{t = 1}^{n} \delta_{ir} \delta_{jt} \delta_{kt} \delta_{ls} \\
+		 & = \delta_{jk} \delta_{ir} \delta_{ls}                             \\
+		 & = \delta_{jk} \left[ E^{i,l} \right] _{rs}
+	\end{align*}
+
+	Donc $E^{i,j} \times E^{k,l} = \delta_{jk} E^{i,l}$.
+
+
+	Ainsi, pour le calcul de $(E^{i,j})^{2}$, $q \leftarrow n$, $k \leftarrow i$, $l \leftarrow j$.
+
+	\begin{align*}
+		(E^{i,j})^{2} = \delta_{ji} E^{i,j} = \left\{
+		\begin{array}{ll}
+			E^{i,j} \text{ si } i = j \\
+			0_{n,p} \text{ si } i \neq j
+		\end{array}
+		\right.
+	\end{align*}
+
+\end{question_kholle}
+
+\begin{question_kholle}
+	{Les matrices triangulaires supérieures forment un sous-anneau de $\mathcal{M}_n(\K)$}
+
+	$\mathcal{T}_n^+(\K) \subset \mathcal(M)_n(\K)$ et $(\mathcal{M}_n(\K), +, \times)$ est un anneau. \\
+	$\mathcal{T}_n^+(\K) \neq \emptyset$ car $I_n \in \mathcal{T}_n^+(\K)$ ($I_n$ est le neutre multiplicatif de $\mathcal{M}_n(\K)$). \\
+	Soient $(A, B) \in \mathcal{T}_n^+(\K)^2$ . \\
+	Soient $(i, j) \in [\![1,n]\!]^2$ $\text{ tels que }$ $i > j$.
+	\begin{equation*}
+		(A - B)_{i,j}
+		= \underbrace{A_{i,j}}_{=0 \text{ car } A \in \mathcal{T}_n^+(\K)} - \underbrace{B_{i,j}}_{=0 \text{ car } B \in \mathcal{T}_n^+(\K)}
+		= 0
+	\end{equation*}
+	Donc, $A - B \in \mathcal{T}_n^+(\K)$.
+
+	\begin{equation*}
+		\begin{aligned}
+			(A \times B)_{i,j}
+			 & = \sum_{k=1}^{n} A_{i,k} \times_\K B_{k,j}                                                                                        \\
+			 & = \sum_{k=1}^{j} \underbrace{A_{i,k}}_{=0 \text{ car } i > j \geqslant k \text{ et } A \in \mathcal{T}_n^+(\K)} \times_\K B_{k,j}
+			+ \sum_{k=j+1}^{n} A_{i,k} \times_\K \underbrace{B_{k,j}}_{=0 \text{ car } k > j \text{ et } B \in \mathcal{T}_n^+(\K)}              \\
+			 & = 0
+		\end{aligned}
+	\end{equation*}
+	Donc, $A \times B \in \mathcal{T}_n^+(\K)$.
+\end{question_kholle}
+
+\begin{question_kholle}
+	{Si $A$ est une matrice d'ordre $n$ et $\lambda$ un scalaire non nul d'un corps, alors la transposée de $A$ et $\lambda A$ sont inversibles aussi.}
+	Soient $A,\lambda \in \mathcal{GL}_n(\mathbb{K})\times \mathbb{K}^*$, avec $\mathbb{K}$ un corps. \\
+	Par définition, il existe $B\in \mathcal{GL}_n(\mathbb{K})$ tel que $AB=BA=I_n$. Ainsi :
+	\[
+		(AB)^T = I_n^T \ \iff \ B^TA^T = I_n,
+	\]
+	donc $A^T$ admet un inverse à gauche, $B^T$, donc un inverse tout court et donc $A^T$ est inversible (on notera que $A^T$ reste dans les matrices d'ordre $n$). De même,
+	\[
+		\lambda AB = \lambda I_n \ \iff \ (\lambda A)B = \lambda I_n \ \iff \ (\lambda A) \left(\frac{1}{\lambda}B \right) = I_n,
+	\]
+	car les scalaires commutent avec toutes les matrices. Ainsi, $\lambda A$ admet un inverse à droite, donc un inverse tout court, donc est inversible, d'inverse $\frac{1}{\lambda}B$. Concluant la preuve.
+\end{question_kholle}
+
+\begin{question_kholle}
+	{Si $N$ est une matrice d'ordre $n$ nilpotente, alors $I_n + \lambda N$ est inversible pour tout $\lambda$, scalaire d'un corps.}
+	Soient $N$ une matrice d'ordre $n$ à coefficient dans $\mathbb{K}$, un corps, nilpotente, d'indice de nilpotence $k$ (un entier naturel donc) et $\lambda \in \mathbb{K}$. Calculons :
+	\[
+		I_n^{2k+1} + (\lambda N)^{2k+1} = I_n^{2k+1} - (- \lambda N)^{2k+1} = (I_n + \lambda N)\sum_{i=0}^{2k}(-\lambda N)^i =  (I_n + \lambda N)\sum_{i=0}^{k-1}(-\lambda N)^i,
+	\]
+	car $\lambda N$ commute avec $I_n$, or le membre de gauche est égal à $I_n$ car $2k+1 > k$, donc $I_n + \lambda N$ est inversible à droite, donc inversible tout court, d'inverse $\sum_{i=0}^{k-1}(-\lambda N)^i$. Ce qui conclut la preuve.
+\end{question_kholle}
+
+\begin{question_kholle}
+	[$A \in \mathcal{M}_n(\K)$ est inversible si et seulement si pour tout $Y \in \mathcal{M}_{n,1}(\K)$, l'équation $AX = Y$ d'inconnue $X \in \mathcal{M}_{n,1}$ admet une unique solution.
+		\begin{equation}
+			\forall A \mathcal{M}_n(\K),
+			A \in \mathcal{GL}_n(\K) \iff
+			\forall Y \in \mathcal{M}_{n,1}(\K), \exists ! X \in \mathcal{M}_{n,1} : AX = Y
+		\end{equation}]
+	{Caractérisation de l'inversibilité pour les matrices}
+
+	Supposons que $A \in \mathcal{GL}_n(\K)$.
+	Soit $Y \in \mathcal{M}_{n,1}(\K)$ \fq. \\
+	$AX = Y \iff A^{-1}AX = A^{-1}Y \iff X = A^{-1}Y$ donc l'équation $AX = Y$ d'inconnue $X \in \mathcal{M}_{n,1}$ admet une unique solution.
+
+	Supposons maintenant que $\forall Y \in \mathcal{M}_{n,1}(\K), \exists ! X \in \mathcal{M}_{n,1} : AX = Y$. \\
+	Pour $i \in [\![1;n]\!]$, notons  $X_i$ la solution de $AX = E^{i,1}$. \\
+	Posons $\displaystyle B = \left[ \begin{array}{c|c|c|c}
+				    &     &        &     \\
+				X_1 & X_2 & \ldots & X_n \\
+				    &     &        &     \\
+			\end{array} \right]$. \\
+	Calculons $\displaystyle AB
+		= \left[ \begin{array}{c|c|c|c}
+				     &      &        &      \\
+				AX_1 & AX_2 & \ldots & AX_n \\
+				     &      &        &      \\
+			\end{array} \right]
+		= \left[ \begin{array}{c|c|c|c}
+				        &         &        &         \\
+				E^{1,1} & E^{2,1} & \ldots & E^{n,1} \\
+				        &         &        &         \\
+			\end{array} \right]
+		= I_n$. \\
+	Ainsi A est inversible à droite donc $A \in \mathcal{GL}_n(\K)$ et $A^{-1} = B$.
+\end{question_kholle}
+
+\begin{question_kholle}
+	[Une matrice diagonale est inversible si et seulement si tous ses coefficients diagonaux sont non nuls.
+		\begin{equation}
+			\forall D = diag(d_1, d_2, \ldots, d_n) \in \mathcal{D}_n(\K),
+			D \in \mathcal{GL}_n(\K) \iff \prod_{i=1}^{n} d_i \neq 0
+		\end{equation}]
+	{Caractérisation des matrices diagonales inversibles}
+
+	Soit $D \in \mathcal{D}_n(\K)$ de coefficients diagonaux $d_1, d_2, \ldots, d_n \in \K^n$. \\
+	Soit $Y = \begin{bmatrix} y_1 \\ \ldots \\ y_n \end{bmatrix} \in \mathcal{M}_{n,1}(\K)$.
+	\'Etudions l'équation $DX = Y$ d'inconnue $X = \begin{bmatrix} x_1 \\ \ldots \\ x_n \end{bmatrix} \in \mathcal{M}_{n,1}(\K)$.
+	\begin{equation*}
+		DX = Y \iff
+		\left\{ \begin{array}{cccccccccc}
+			d_1 x_1 &         &        &         & = & y_1 &     &        &       \\
+			        & d_2 x_2 &        &         & = &     & y_2 &        &     & \\
+			        &         & \ddots &         & = &     &     & \ddots &       \\
+			        &         &        & d_n x_n & = &     &     &        & y_n   \\
+		\end{array} \right.
+	\end{equation*}
+
+	\begin{itemize}
+		\item Si $\exists i_0 \in [\![1;n]\!] : d_{i_0} = 0$, la $i_0$-ème ligne du système ci-dessus deviens une condition de compatibilité $0 = y_{i_0}$ qui ne sera pas respecté pour $Y = E^{i_0,1}$. Donc $D \notin \mathcal{GL}_{n}(\K)$.
+		\item Sinon $\forall i \in [\![1;n]\!] : d_i \neq 0$, le système est donc triangulaire à coefficients diagonaux non nuls. Il admet donc une unique solution. Ainsi $D \in \mathcal{GL}_{n}(\K)$.
+		      \begin{equation*}
+			      DX = Y \iff
+			      \left\{ \begin{array}{cccccccccc}
+				      x_1 &     &        &     & = & d_1^{-1} y_1 &              &        &                \\
+				          & x_2 &        &     & = &              & d_2^{-1} y_2 &        &              & \\
+				          &     & \ddots &     & = &              &              & \ddots &                \\
+				          &     &        & x_n & = &              &              &        & d_n^{-1} y_n   \\
+			      \end{array} \right.
+		      \end{equation*}
+		      Ainsi $D^{-1} = diag\left(d_1^{-1}, d_2^{-1}, \ldots, d_n^{-1}\right)$.
+	\end{itemize}
+\end{question_kholle}
+\end{document}
